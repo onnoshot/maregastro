@@ -2,489 +2,696 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Mare Gastro — Fine Dining · Sapanca</title>
 <meta name="description" content="Sapanca gölü kıyısında, Didi Otel bahçesinde fine dining deneyimi.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #05090F;
-  --navy: #0A1628;
-  --amber: #C8A96E;
-  --amber2: #D9BC8A;
-  --cream: #F0EBE0;
-  --muted: rgba(240,235,224,.48);
-  --glass: rgba(255,255,255,.055);
-  --glass-border: rgba(255,255,255,.09);
-  --glass-strong: rgba(255,255,255,.08);
-  --sf: -apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',sans-serif;
+:root{
+  --bg:#04080F;
+  --navy:#08131E;
+  --amber:#C8A96E;
+  --amber2:#DFC08A;
+  --amber3:rgba(200,169,110,.15);
+  --cream:#EDE8DC;
+  --muted:rgba(237,232,220,.45);
+  --glass:rgba(255,255,255,.055);
+  --glassBorder:rgba(255,255,255,.09);
+  --glassHover:rgba(255,255,255,.1);
+  --sf:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',sans-serif;
+  --ital:'Cormorant Garamond',serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --sab:env(safe-area-inset-bottom);
 }
+
+/* RESET */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+button{font-family:inherit;cursor:none}
+a{cursor:none}
 
 /* SCROLL SNAP */
 html{height:100%;overflow:hidden}
 body{
-  height:100%;
-  overflow-y:scroll;
+  height:100%;overflow-y:scroll;
   scroll-snap-type:y mandatory;
-  scroll-behavior:smooth;
   font-family:var(--sf);
-  background:var(--bg);
-  color:var(--cream);
-  overflow-x:hidden;
-  cursor:none;
+  background:var(--bg);color:var(--cream);
+  overflow-x:hidden;cursor:none;
+  -webkit-font-smoothing:antialiased;
 }
 body::-webkit-scrollbar{display:none}
 body{scrollbar-width:none}
 
-/* SECTIONS */
 .page{
   height:100vh;
-  min-height:600px;
   scroll-snap-align:start;
   position:relative;
   overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:flex;align-items:center;justify-content:center;
 }
 
-/* CURSOR */
-.cur{width:6px;height:6px;background:var(--amber);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .18s,height .18s,background .18s}
-.crng{width:30px;height:30px;border:1px solid rgba(200,169,110,.4);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .32s cubic-bezier(.25,.46,.45,.94),height .32s,opacity .2s}
-.cur.h{width:12px;height:12px;background:var(--amber2)}
-.crng.h{width:48px;height:48px;opacity:.5}
+/* CURSOR — desktop only */
+@media(hover:hover){
+  .cur{width:6px;height:6px;background:var(--amber);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .15s,height .15s,opacity .2s}
+  .crng{width:28px;height:28px;border:1px solid rgba(200,169,110,.38);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .28s var(--ease),opacity .2s}
+  .cur.h{width:10px;height:10px;background:var(--amber2)}
+  .crng.h{width:44px;height:44px;opacity:.5}
+}
 
-/* NAV */
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
 nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  padding:0 40px;height:60px;
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  height:60px;padding:0 20px;
   display:flex;align-items:center;justify-content:space-between;
-  background:rgba(5,9,15,.65);
-  backdrop-filter:blur(40px) saturate(180%);
-  -webkit-backdrop-filter:blur(40px) saturate(180%);
-  border-bottom:1px solid var(--glass-border);
+  background:rgba(4,8,15,.6);
+  backdrop-filter:blur(32px) saturate(180%);
+  -webkit-backdrop-filter:blur(32px) saturate(180%);
+  border-bottom:1px solid var(--glassBorder);
 }
-.nav-logo img{height:36px;filter:brightness(0) invert(1);opacity:.85}
-.nav-links{display:flex;gap:36px;list-style:none}
-.nav-links a{color:var(--cream);text-decoration:none;font-size:12px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;opacity:.6;transition:opacity .25s,color .25s}
-.nav-links a:hover{opacity:1;color:var(--amber)}
-.nav-cta{
-  background:var(--glass);
-  border:1px solid rgba(200,169,110,.4);
-  color:var(--amber);
-  padding:7px 20px;
-  font-size:11px;font-weight:500;
-  letter-spacing:.14em;text-transform:uppercase;
-  cursor:none;border-radius:100px;
-  backdrop-filter:blur(12px);
-  transition:background .25s,border-color .25s;
+.nl img{height:32px;filter:brightness(0) invert(1);opacity:.82;transition:opacity .3s}
+.nl img:hover{opacity:1}
+.nlinks{display:none}
+@media(min-width:768px){
+  nav{height:64px;padding:0 40px}
+  .nlinks{display:flex;gap:32px;list-style:none}
+  .nlinks a{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--cream);opacity:.6;text-decoration:none;transition:opacity .25s,color .25s}
+  .nlinks a:hover{opacity:1;color:var(--amber)}
 }
-.nav-cta:hover{background:rgba(200,169,110,.18);border-color:var(--amber)}
-.nav-ham{display:none;flex-direction:column;gap:4px;cursor:none;background:none;border:none}
-.nav-ham span{width:20px;height:1px;background:var(--cream);display:block}
+.nav-res{
+  display:none;
+  background:var(--glass);border:1px solid rgba(200,169,110,.35);
+  border-radius:100px;padding:8px 20px;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--amber);backdrop-filter:blur(12px);transition:background .25s;
+}
+.nav-res:hover{background:rgba(200,169,110,.18)}
+@media(min-width:768px){.nav-res{display:block}}
+.ham{display:flex;flex-direction:column;gap:5px;background:none;border:none;padding:4px}
+.ham span{width:20px;height:1px;background:var(--cream);display:block;transition:all .3s}
+@media(min-width:768px){.ham{display:none}}
 
-/* SECTION DOTS */
-.dots{
-  position:fixed;right:24px;top:50%;transform:translateY(-50%);
-  z-index:200;display:flex;flex-direction:column;gap:10px;
+/* MOBILE MENU */
+.mob-ov{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:900;opacity:0;pointer-events:none;transition:opacity .35s;backdrop-filter:blur(4px)}
+.mob-ov.open{opacity:1;pointer-events:all}
+.mob-menu{
+  position:fixed;top:0;right:-100%;width:78%;max-width:280px;height:100svh;
+  background:rgba(8,19,30,.95);backdrop-filter:blur(40px);
+  z-index:950;display:flex;flex-direction:column;
+  justify-content:center;padding:48px 32px;gap:24px;
+  transition:right .4s var(--ease);
+  border-left:1px solid var(--glassBorder);
 }
-.dot{
-  width:5px;height:5px;border-radius:50%;
-  background:rgba(200,169,110,.3);
-  cursor:none;transition:all .3s;
-  border:none;padding:0;
-}
-.dot.active{background:var(--amber);transform:scale(1.4)}
+.mob-menu.open{right:0}
+.mob-menu a{font-family:var(--ital);font-size:1.7rem;font-weight:300;color:var(--cream);text-decoration:none;opacity:.65;transition:opacity .25s,color .25s}
+.mob-menu a:hover{opacity:1;color:var(--amber)}
+.mob-menu .mob-res{color:var(--amber);opacity:1;font-style:italic}
+.mob-x{position:absolute;top:18px;right:18px;background:var(--glass);border:1px solid var(--glassBorder);border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:16px}
 
-/* ─── SECTION 1: HERO ─── */
+/* PAGE DOTS */
+.pdots{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:400;display:flex;flex-direction:column;gap:8px}
+@media(max-width:767px){.pdots{right:10px}}
+.pdot{width:4px;height:4px;border-radius:50%;background:rgba(200,169,110,.28);border:none;padding:0;cursor:none;transition:all .35s}
+.pdot.on{background:var(--amber);transform:scale(1.6)}
+
+/* ═══════════════════════════════════════
+   S1 — HERO
+═══════════════════════════════════════ */
 #s1{background:#000}
-.hero-bg{
-  position:absolute;inset:-10%;
+
+.hbg{
+  position:absolute;inset:-12%;
   background:url('images/header.jpg') center/cover no-repeat;
-  animation:kb 24s ease-in-out infinite alternate;
+  animation:kb 28s ease-in-out infinite alternate;
   will-change:transform;
 }
 @keyframes kb{
-  0%{transform:scale(1.12) translate(0,0)}
-  50%{transform:scale(1.16) translate(-1.2%,-.6%)}
-  100%{transform:scale(1.13) translate(1%,.5%)}
+  0%{transform:scale(1.14) translate(0,0)}
+  33%{transform:scale(1.18) translate(-1.4%,-.7%)}
+  66%{transform:scale(1.15) translate(.8%,.5%)}
+  100%{transform:scale(1.12) translate(1.2%,-.3%)}
 }
-.hero-ov{
+.hov1{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,8,15,.82) 0%,rgba(4,8,15,.25) 38%,rgba(4,8,15,.45) 68%,rgba(4,8,15,.92) 100%)}
+.hov2{position:absolute;inset:0;background:radial-gradient(ellipse 80% 55% at 50% 110%,rgba(200,169,110,.06) 0%,transparent 65%)}
+/* shimmer light sweep */
+.hshimmer{
   position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(5,9,15,.75) 0%,rgba(5,9,15,.35) 40%,rgba(5,9,15,.52) 75%,rgba(5,9,15,.88) 100%);
+  background:linear-gradient(105deg,transparent 40%,rgba(200,169,110,.04) 50%,transparent 60%);
+  animation:shimmer 8s ease-in-out infinite;
 }
-.hero-ov2{
-  position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 50% at 50% 105%,rgba(200,169,110,.07) 0%,transparent 65%);
+@keyframes shimmer{0%,100%{transform:translateX(-100%) skewX(-15deg)}50%{transform:translateX(200%) skewX(-15deg)}}
+
+/* Ambient particles */
+.hpar{position:absolute;border-radius:50%;background:var(--amber);opacity:0;animation:par linear infinite}
+@keyframes par{0%{opacity:0;transform:translateY(0)}8%{opacity:.5}90%{opacity:.12}100%{opacity:0;transform:translateY(-90vh)}}
+
+.hc{position:relative;z-index:2;text-align:center;padding:0 20px;display:flex;flex-direction:column;align-items:center}
+
+/* Logo — big in hero */
+.hero-logo{
+  margin-bottom:28px;
+  opacity:0;
+  animation:logoIn 1.4s var(--ease) .1s forwards;
 }
-.hero-c{
-  position:relative;z-index:2;
-  text-align:center;
-  padding:0 24px;
-  max-width:720px;
+.hero-logo img{
+  width:180px;
+  filter:brightness(0) invert(1);
+  opacity:.92;
 }
-.hero-tag{
-  display:inline-flex;align-items:center;gap:10px;
-  background:var(--glass);
-  border:1px solid var(--glass-border);
-  backdrop-filter:blur(20px);
-  padding:6px 18px;border-radius:100px;
-  font-size:10px;letter-spacing:.25em;text-transform:uppercase;
-  color:var(--amber);margin-bottom:28px;
-  opacity:0;animation:fu .9s .2s forwards;
+@media(min-width:768px){.hero-logo img{width:240px}}
+@keyframes logoIn{
+  0%{opacity:0;transform:scale(.85)}
+  60%{opacity:1}
+  100%{opacity:1;transform:scale(1)}
 }
-.hero-tag::before,.hero-tag::after{content:'';width:3px;height:3px;background:var(--amber);border-radius:50%;opacity:.6}
-.hero-title{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:300;
-  font-size:clamp(4.5rem,12vw,9.5rem);
-  line-height:.88;
-  color:var(--cream);
-  letter-spacing:-.02em;
-  margin-bottom:6px;
-  opacity:0;animation:fu 1.2s .42s forwards;
+
+.htag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  backdrop-filter:blur(16px);
+  padding:5px 16px;border-radius:100px;
+  font-size:9px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:20px;
+  opacity:0;animation:fadeUp .9s .6s forwards;
 }
-.hero-title em{font-style:italic;color:var(--amber2)}
-.hero-sub{
-  font-size:13px;font-weight:300;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:48px;
-  opacity:0;animation:fu 1s .7s forwards;
+.htag::before,.htag::after{content:'';width:3px;height:3px;background:var(--amber);border-radius:50%;opacity:.55}
+
+.htitle{
+  font-family:var(--ital);font-weight:300;
+  font-size:clamp(3.8rem,16vw,10rem);
+  line-height:.88;letter-spacing:-.02em;
+  color:var(--cream);margin-bottom:18px;
+  opacity:0;animation:fadeUp 1.2s var(--ease) .8s forwards;
 }
-.hero-btns{
-  display:flex;gap:12px;justify-content:center;
-  opacity:0;animation:fu .9s .95s forwards;
+.htitle em{font-style:italic;color:var(--amber2)}
+
+.hsub{
+  font-size:11px;font-weight:300;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:44px;
+  opacity:0;animation:fadeUp 1s .95s forwards;
 }
-.btn-a{
-  background:var(--amber);color:var(--bg);
-  border:none;padding:12px 32px;border-radius:100px;
-  font-family:var(--sf);font-size:12px;font-weight:500;
-  letter-spacing:.1em;text-transform:uppercase;cursor:none;
+
+.hbtns{
+  display:flex;flex-direction:column;gap:10px;width:100%;max-width:280px;
+  opacity:0;animation:fadeUp .9s 1.2s forwards;
+}
+@media(min-width:480px){.hbtns{flex-direction:row;max-width:360px;justify-content:center}}
+
+.btn-main{
+  flex:1;background:var(--amber);color:var(--bg);
+  border:none;padding:14px 24px;border-radius:100px;
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
   transition:background .25s,transform .2s;
 }
-.btn-a:hover{background:var(--amber2);transform:translateY(-1px)}
-.btn-b{
-  background:var(--glass);color:var(--cream);
-  border:1px solid var(--glass-border);
-  padding:12px 32px;border-radius:100px;
-  font-family:var(--sf);font-size:12px;font-weight:400;
-  letter-spacing:.1em;text-transform:uppercase;cursor:none;
-  backdrop-filter:blur(12px);
-  text-decoration:none;display:inline-block;
+.btn-main:hover{background:var(--amber2);transform:translateY(-1px)}
+.btn-ghost{
+  flex:1;background:var(--glass);color:var(--cream);
+  border:1px solid var(--glassBorder);
+  padding:14px 24px;border-radius:100px;
+  font-size:11px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;
+  backdrop-filter:blur(12px);text-decoration:none;display:flex;align-items:center;justify-content:center;
   transition:background .25s,border-color .25s;
 }
-.btn-b:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
-.hero-scroll{
-  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+
+.hscroll{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
   display:flex;flex-direction:column;align-items:center;gap:8px;
-  opacity:0;animation:fi .8s 1.8s forwards;
+  opacity:0;animation:fadeIn .8s 2s forwards;
 }
-.hero-scroll span{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
-.sline{width:1px;height:36px;background:linear-gradient(to bottom,var(--amber),transparent);animation:sp 2.2s ease-in-out infinite}
-@keyframes sp{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:.9;transform:scaleY(1.15)}}
+.hscroll span{font-size:8px;letter-spacing:.35em;text-transform:uppercase;color:var(--muted)}
+.hscroll-line{width:1px;height:32px;background:linear-gradient(to bottom,var(--amber),transparent);animation:puls 2.5s ease-in-out infinite}
+@keyframes puls{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:.9;transform:scaleY(1.2)}}
 
-@keyframes fu{to{opacity:1;transform:translateY(0)}}
-@keyframes fi{to{opacity:1}}
-.hero-tag,.hero-title,.hero-sub,.hero-btns{transform:translateY(22px)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{to{opacity:1}}
 
-/* ─── SECTION 2: ABOUT ─── */
-#s2{background:var(--bg)}
+/* ═══════════════════════════════════════
+   S2 — HAKKIMIZDA
+═══════════════════════════════════════ */
+#s2{background:var(--bg);align-items:stretch}
+
 .about-wrap{
-  display:grid;grid-template-columns:1fr 1fr;
-  width:100%;max-width:1100px;
-  padding:0 48px;gap:72px;
-  align-items:center;
+  width:100%;height:100%;
+  display:flex;flex-direction:column;
+  padding:80px 20px 40px;
+  max-width:1100px;margin:0 auto;
+  justify-content:center;gap:32px;
 }
-.about-left{}
-.atag{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--amber);margin-bottom:18px;display:block}
-.atitle{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:300;font-size:clamp(2.2rem,4.5vw,3.6rem);
-  line-height:1.06;color:var(--cream);margin-bottom:24px;
+@media(min-width:768px){
+  .about-wrap{flex-direction:row;align-items:center;padding:80px 48px;gap:72px}
 }
-.atitle em{font-style:italic;color:var(--amber2)}
-.abody{font-size:13px;font-weight:300;line-height:1.9;color:var(--muted);max-width:380px;margin-bottom:28px}
-.didi-badge{
-  display:inline-flex;align-items:flex-start;gap:14px;
+
+.about-left{flex:1}
+.a-eyebrow{font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:14px}
+.a-title{
+  font-family:var(--ital);font-weight:300;
+  font-size:clamp(2rem,7vw,3.8rem);
+  line-height:1.05;color:var(--cream);margin-bottom:20px;
+}
+.a-title em{font-style:italic;color:var(--amber2)}
+.a-body{font-size:13px;font-weight:300;line-height:1.9;color:var(--muted);max-width:380px;margin-bottom:24px}
+
+.didi-card{
+  display:flex;gap:0;
   background:var(--glass);
-  border:1px solid var(--glass-border);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-  border-radius:16px;
-  padding:20px 22px;
+  border:1px solid var(--glassBorder);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  border-radius:14px;overflow:hidden;
   max-width:380px;
 }
-.didi-line{width:2px;background:var(--amber);border-radius:2px;flex-shrink:0;align-self:stretch;min-height:40px}
-.didi-text p{
-  font-family:'Cormorant Garamond',serif;
-  font-style:italic;font-size:1rem;
-  color:var(--cream);line-height:1.65;opacity:.85;
-}
-.didi-text small{
-  display:block;margin-top:8px;
-  font-size:9px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--amber);
-}
-.about-right{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.aimg{overflow:hidden;border-radius:10px;position:relative}
-.aimg:first-child{margin-top:48px}
-.aimg img{
-  width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;
-  transition:transform .9s cubic-bezier(.25,.46,.45,.94);
-  filter:brightness(.82) saturate(.88);
-}
-.aimg:hover img{transform:scale(1.05)}
+.didi-bar{width:2px;background:linear-gradient(to bottom,var(--amber),rgba(200,169,110,.2));flex-shrink:0}
+.didi-inner{padding:18px 18px}
+.didi-inner p{font-family:var(--ital);font-style:italic;font-size:.95rem;color:var(--cream);line-height:1.68;opacity:.82}
+.didi-inner small{display:block;margin-top:10px;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber)}
 
-/* ─── SECTION 3: MENU ─── */
-#s3{background:linear-gradient(135deg,#060C17 0%,#0A1628 100%);align-items:stretch}
+.about-right{
+  display:none;
+}
+@media(min-width:768px){
+  .about-right{display:grid;grid-template-columns:1fr 1fr;gap:8px;flex:1}
+}
+.aimg{overflow:hidden;border-radius:10px}
+.aimg:first-child{margin-top:40px}
+.aimg img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:brightness(.8) saturate(.85);transition:transform .9s var(--ease),filter .5s}
+.aimg:hover img{transform:scale(1.06);filter:brightness(.9) saturate(1)}
+
+/* ═══════════════════════════════════════
+   S3 — MENÜ
+═══════════════════════════════════════ */
+#s3{background:linear-gradient(160deg,#050B14 0%,#091422 100%);align-items:stretch;flex-direction:column}
+
 .menu-wrap{
+  width:100%;height:100%;
   display:flex;flex-direction:column;
-  width:100%;max-width:1100px;
-  margin:0 auto;padding:80px 48px 40px;
-  height:100%;
+  padding:72px 0 0;
+  max-width:1100px;
+  margin:0 auto;
 }
-.menu-hd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;flex-shrink:0}
-.menu-hd-left{}
-.mtag{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:10px}
-.mtitle{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,4vw,3.2rem);line-height:1;color:var(--cream)}
-.mtitle em{font-style:italic;color:var(--amber2)}
 
-/* Pills tabs */
-.menu-tabs{
-  display:flex;gap:6px;
-  flex-shrink:0;margin-bottom:22px;
-  flex-wrap:wrap;
+/* Header row */
+.menu-top{
+  display:flex;flex-direction:column;gap:4px;
+  padding:0 20px 20px;flex-shrink:0;
 }
+@media(min-width:768px){.menu-top{flex-direction:row;align-items:flex-end;justify-content:space-between;padding:0 40px 24px}}
+
+.m-eyebrow{font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:8px}
+.m-title{font-family:var(--ital);font-weight:300;font-size:clamp(1.8rem,5vw,3rem);line-height:1;color:var(--cream)}
+.m-title em{font-style:italic;color:var(--amber2)}
+.m-hint{font-size:10px;letter-spacing:.06em;color:var(--muted);margin-top:4px}
+@media(min-width:768px){.m-hint{margin-top:0}}
+
+/* Category tabs — scrollable pills */
+.mtabs{
+  display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;
+  padding:0 20px 16px;flex-shrink:0;
+}
+@media(min-width:768px){.mtabs{padding:0 40px 20px}}
+.mtabs::-webkit-scrollbar{display:none}
 .mtab{
   background:var(--glass);
-  border:1px solid var(--glass-border);
+  border:1px solid var(--glassBorder);
   backdrop-filter:blur(12px);
-  color:var(--muted);
-  padding:6px 16px;border-radius:100px;
-  font-family:var(--sf);font-size:11px;font-weight:400;
-  letter-spacing:.1em;text-transform:uppercase;
-  cursor:none;transition:all .25s;white-space:nowrap;
+  border-radius:100px;
+  padding:8px 18px;white-space:nowrap;
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);transition:all .3s var(--ease);flex-shrink:0;
 }
-.mtab.active,.mtab:hover{background:rgba(200,169,110,.15);border-color:rgba(200,169,110,.5);color:var(--amber)}
+.mtab.on{
+  background:rgba(200,169,110,.18);
+  border-color:rgba(200,169,110,.55);
+  color:var(--amber);
+  box-shadow:0 0 20px rgba(200,169,110,.12);
+}
 
-.menu-body{flex:1;overflow:hidden;position:relative}
-.mpanel{display:none;height:100%;overflow-y:auto;scrollbar-width:none;padding-right:4px}
+/* Dish grid */
+.mpanels{flex:1;overflow:hidden;position:relative;padding:0 20px;padding-bottom:calc(16px + var(--sab))}
+@media(min-width:768px){.mpanels{padding:0 40px 24px}}
+.mpanel{
+  position:absolute;inset:0;padding:0 20px;padding-bottom:24px;
+  overflow-y:auto;scrollbar-width:none;
+  display:none;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  align-content:start;
+}
+@media(min-width:600px){.mpanel{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:900px){.mpanel{grid-template-columns:repeat(4,1fr)}}
 .mpanel::-webkit-scrollbar{display:none}
-.mpanel.active{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+.mpanel.on{display:grid;animation:panelIn .4s var(--ease)}
+@keyframes panelIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.mpanel.solo{grid-template-columns:1fr 1fr;max-width:420px}
+@media(min-width:768px){.mpanel.solo{grid-template-columns:repeat(2,1fr)}}
 
-.dish{
-  display:flex;align-items:center;gap:14px;
-  padding:12px 0;border-bottom:1px solid rgba(255,255,255,.05);
-  transition:background .2s;
+/* Dish CARD — liquid glass */
+.dc{
+  position:relative;overflow:hidden;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  transition:all .45s var(--ease);
+  cursor:none;
 }
-.dish:last-child{border-bottom:none}
-.dth{
-  width:52px;height:52px;flex-shrink:0;
-  border-radius:8px;overflow:hidden;
+.dc::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(200,169,110,.12),transparent 70%);
+  opacity:0;transition:opacity .4s;z-index:1;
 }
-.dth img{width:100%;height:100%;object-fit:cover;filter:brightness(.82) saturate(.85);transition:transform .5s ease}
-.dish:hover .dth img{transform:scale(1.08)}
-.dbl{
-  width:52px;height:52px;flex-shrink:0;border-radius:8px;
-  background:var(--glass);border:1px solid var(--glass-border);
+@media(hover:hover){
+  .dc:hover{
+    background:rgba(200,169,110,.1);
+    border-color:rgba(200,169,110,.35);
+    transform:translateY(-4px) scale(1.02);
+    box-shadow:0 16px 48px rgba(0,0,0,.45),0 0 0 1px rgba(200,169,110,.2),inset 0 1px 0 rgba(255,255,255,.1);
+  }
+  .dc:hover::before{opacity:1}
+  .dc:hover .dc-img img{transform:scale(1.1);filter:brightness(.95) saturate(1.1)}
+}
+/* touch active state */
+.dc:active{
+  background:rgba(200,169,110,.12);
+  border-color:rgba(200,169,110,.4);
+  transform:scale(.97);
+}
+.dc-img{
+  aspect-ratio:4/3;overflow:hidden;
+  background:rgba(255,255,255,.03);
+}
+.dc-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.82) saturate(.85);transition:transform .8s var(--ease),filter .5s}
+.dc-noimg{
+  aspect-ratio:4/3;
   display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.03);
 }
-.dbl svg{opacity:.2}
-.di{flex:1;min-width:0}
-.dn{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:400;font-size:.98rem;color:var(--cream);
-  line-height:1.2;margin-bottom:2px;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+.dc-noimg svg{opacity:.15}
+.dc-body{padding:10px 12px 12px;position:relative;z-index:2}
+.dc-name{
+  font-family:var(--ital);font-weight:400;
+  font-size:.9rem;color:var(--cream);line-height:1.2;margin-bottom:4px;
 }
-.dd{font-size:11px;font-weight:300;color:var(--muted);line-height:1.4;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.mnote-s{
-  grid-column:1/-1;margin-top:8px;
-  font-size:10px;letter-spacing:.1em;color:var(--muted);font-style:italic;
-  padding:8px 0;border-top:1px solid rgba(255,255,255,.05);
+.dc-desc{font-size:10px;font-weight:300;color:var(--muted);line-height:1.5}
+/* Glow edge */
+.dc-glow{
+  position:absolute;bottom:-1px;left:10%;right:10%;height:1px;
+  background:linear-gradient(to right,transparent,var(--amber),transparent);
+  opacity:0;transition:opacity .4s;
 }
-/* single col panels */
-.mpanel.solo{grid-template-columns:1fr;max-width:520px}
+@media(hover:hover){.dc:hover .dc-glow{opacity:.6}}
 
-/* ─── SECTION 4: REZERVASYON ─── */
-#s4{background:var(--bg)}
+.menu-note{
+  grid-column:1/-1;
+  font-size:10px;letter-spacing:.08em;color:var(--muted);font-style:italic;
+  padding-top:8px;border-top:1px solid rgba(255,255,255,.06);
+}
+
+/* ═══════════════════════════════════════
+   S4 — REZERVASYON
+═══════════════════════════════════════ */
+#s4{background:var(--bg);flex-direction:column;justify-content:flex-start;padding-top:0}
+
 .rez-wrap{
-  width:100%;max-width:900px;
-  padding:0 48px;
-  display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;
+  width:100%;height:100%;
+  display:flex;flex-direction:column;
+  padding:72px 0 0;
+  overflow-y:auto;scrollbar-width:none;
 }
-.rez-left{}
-.rtag{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--amber);margin-bottom:18px;display:block}
-.rtitle{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.2rem,4.5vw,3.6rem);line-height:1.06;color:var(--cream);margin-bottom:16px}
-.rtitle em{font-style:italic;color:var(--amber2)}
-.rbody{font-size:13px;font-weight:300;line-height:1.85;color:var(--muted)}
+.rez-wrap::-webkit-scrollbar{display:none}
 
-.rez-form{
-  background:var(--glass-strong);
-  border:1px solid var(--glass-border);
-  backdrop-filter:blur(40px) saturate(150%);
-  -webkit-backdrop-filter:blur(40px) saturate(150%);
+/* Left intro + right form layout on desktop */
+.rez-inner{
+  display:flex;flex-direction:column;
+  max-width:1000px;margin:0 auto;width:100%;
+  padding:28px 20px;gap:32px;
+  padding-bottom:calc(32px + var(--sab));
+}
+@media(min-width:768px){
+  .rez-inner{flex-direction:row;padding:40px 48px;align-items:flex-start;gap:64px}
+}
+.rez-left{flex-shrink:0}
+@media(min-width:768px){.rez-left{width:220px;padding-top:8px}}
+.r-eyebrow{font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:14px}
+.r-title{font-family:var(--ital);font-weight:300;font-size:clamp(1.9rem,5vw,3rem);line-height:1.05;color:var(--cream);margin-bottom:14px}
+.r-title em{font-style:italic;color:var(--amber2)}
+.r-body{font-size:12px;font-weight:300;line-height:1.85;color:var(--muted)}
+@media(max-width:767px){.r-body{display:none}}
+
+/* Form card */
+.rez-card{
+  flex:1;
+  background:rgba(255,255,255,.055);
+  border:1px solid var(--glassBorder);
+  backdrop-filter:blur(40px) saturate(160%);
+  -webkit-backdrop-filter:blur(40px) saturate(160%);
   border-radius:20px;
-  padding:28px;
+  padding:24px;
+  position:relative;overflow:hidden;
 }
-/* step indicator */
-.sind{display:flex;align-items:center;margin-bottom:24px}
-.sdot{width:26px;height:26px;border-radius:50%;border:1px solid rgba(200,169,110,.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);transition:all .35s;font-family:var(--sf)}
-.sdot.active{border-color:var(--amber);color:var(--amber);background:rgba(200,169,110,.1)}
-.sdot.done{border-color:var(--amber);background:var(--amber);color:var(--bg)}
-.sl{flex:1;height:1px;background:rgba(200,169,110,.15);transition:background .35s}
-.sl.done{background:var(--amber)}
+.rez-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(to right,transparent,rgba(200,169,110,.4),transparent);
+}
 
-.rstep{display:none}.rstep.active{display:block;animation:sin .35s ease}
-@keyframes sin{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:translateX(0)}}
-.stitle{font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);margin-bottom:16px}
-.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-.fg{display:flex;flex-direction:column;gap:5px}
-.fg label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-family:var(--sf)}
-.fg input,.fg select{
+/* Progress bar */
+.prog-bar{
+  display:flex;align-items:center;gap:0;margin-bottom:24px;
+}
+.pstep{
+  display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;
+}
+.pstep-dot{
+  width:28px;height:28px;border-radius:50%;
+  border:1px solid rgba(200,169,110,.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:500;
+  color:var(--muted);transition:all .4s var(--ease);
+  position:relative;z-index:1;
+  background:var(--bg);
+}
+.pstep-dot.active{
+  border-color:var(--amber);color:var(--amber);
+  background:rgba(200,169,110,.1);
+  box-shadow:0 0 0 4px rgba(200,169,110,.08);
+}
+.pstep-dot.done{
+  border-color:var(--amber);background:var(--amber);color:var(--bg);
+  font-size:0;
+}
+.pstep-dot.done::after{
+  content:'✓';font-size:12px;color:var(--bg);font-weight:700;
+}
+.pstep-label{font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .4s;white-space:nowrap}
+.pstep-dot.active ~ .pstep-label,.pstep.cur .pstep-label{color:var(--amber)}
+.pline{flex:1;height:1px;background:rgba(200,169,110,.15);margin-top:-22px;z-index:0;transition:background .4s}
+.pline.done{background:var(--amber)}
+
+/* Steps */
+.rstep{display:none;animation:stepIn .4s var(--ease)}
+.rstep.on{display:block}
+@keyframes stepIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:translateX(0)}}
+
+.step-title{
+  font-family:var(--ital);font-weight:400;font-size:1.25rem;
+  color:var(--cream);margin-bottom:18px;
+}
+
+/* Date input */
+.date-field{
   background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.1);
-  border-radius:10px;
-  color:var(--cream);padding:10px 13px;
-  font-family:var(--sf);font-size:12px;
-  outline:none;transition:border-color .25s;cursor:none;
+  border-radius:12px;padding:13px 16px;
+  font-family:var(--sf);font-size:14px;color:var(--cream);
+  outline:none;width:100%;
+  transition:border-color .3s,box-shadow .3s;
+  margin-bottom:16px;
   -webkit-appearance:none;appearance:none;
 }
-.fg input:focus,.fg select:focus{border-color:rgba(200,169,110,.5)}
-.fg select option{background:#0A1628;color:var(--cream)}
-.kopts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
-.kcard{
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:12px;padding:16px 14px;cursor:none;
-  transition:border-color .25s,background .25s;text-align:center;
-  background:rgba(255,255,255,.02);
-}
-.kcard:hover{border-color:rgba(200,169,110,.35);background:rgba(200,169,110,.04)}
-.kcard.sel{border-color:var(--amber);background:rgba(200,169,110,.08)}
-.kcard h4{font-family:'Cormorant Garamond',serif;font-size:.95rem;color:var(--cream);margin-bottom:3px}
-.kcard p{font-size:10px;color:var(--muted)}
-.kck{width:18px;height:18px;border:1px solid rgba(200,169,110,.25);border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;transition:all .25s}
-.kcard.sel .kck{background:var(--amber);border-color:var(--amber)}
-.kcard.sel .kck::after{content:'';width:6px;height:3.5px;border-left:1.5px solid var(--bg);border-bottom:1.5px solid var(--bg);transform:rotate(-45deg) translate(1px,-0.5px);display:block}
-.sacts{display:flex;gap:8px;margin-top:16px}
-.bb{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:100px;color:var(--muted);padding:10px 20px;font-family:var(--sf);font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:none;transition:all .25s}
-.bb:hover{border-color:rgba(200,169,110,.4);color:var(--amber)}
-.bn{flex:1;background:var(--amber);border:none;border-radius:100px;color:var(--bg);padding:10px 20px;font-family:var(--sf);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:none;transition:background .25s}
-.bn:hover{background:var(--amber2)}
-.bw{
-  flex:1;background:#25D366;border:none;border-radius:100px;color:#fff;
-  padding:10px 20px;font-family:var(--sf);font-size:11px;font-weight:500;
-  letter-spacing:.1em;text-transform:uppercase;cursor:none;
-  display:flex;align-items:center;justify-content:center;gap:7px;
-  text-decoration:none;transition:background .25s;
-}
-.bw:hover{background:#1ebe5a}
-.sum-g{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
-.si label{display:block;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:3px}
-.si span{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--cream)}
+.date-field:focus{border-color:rgba(200,169,110,.5);box-shadow:0 0 0 3px rgba(200,169,110,.08)}
 
-/* ─── SECTION 5: KONUM ─── */
-#s5{background:linear-gradient(135deg,#050910 0%,#0A1628 100%)}
+/* Time grid */
+.field-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;display:block}
+.time-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:18px}
+@media(min-width:480px){.time-grid{grid-template-columns:repeat(5,1fr)}}
+.tpill{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:10px;padding:9px 4px;
+  font-size:12px;font-weight:400;color:var(--muted);
+  text-align:center;transition:all .3s var(--ease);
+}
+.tpill.on{
+  background:rgba(200,169,110,.18);
+  border-color:rgba(200,169,110,.5);
+  color:var(--amber);
+  box-shadow:0 0 14px rgba(200,169,110,.1);
+  transform:scale(1.04);
+}
+.tpill:active{transform:scale(.95)}
+
+/* Guest counter */
+.guest-wrap{display:flex;align-items:center;justify-content:center;gap:24px;margin-bottom:8px}
+.gcnt-btn{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--glass);border:1px solid var(--glassBorder);
+  font-size:20px;font-weight:300;color:var(--amber);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .25s;
+}
+.gcnt-btn:hover{background:rgba(200,169,110,.18);border-color:rgba(200,169,110,.5)}
+.gcnt-btn:active{transform:scale(.9)}
+.gcnt-num{
+  font-family:var(--ital);font-size:2.8rem;font-weight:300;
+  color:var(--cream);line-height:1;min-width:60px;text-align:center;
+  transition:transform .2s var(--ease);
+}
+.gcnt-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:18px}
+
+/* Konaklama options */
+.kon-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.kopt{
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:14px;padding:18px 14px;
+  background:rgba(255,255,255,.03);
+  transition:all .35s var(--ease);
+  text-align:center;position:relative;overflow:hidden;
+}
+.kopt::after{
+  content:'';position:absolute;bottom:0;left:20%;right:20%;height:1px;
+  background:linear-gradient(to right,transparent,var(--amber),transparent);
+  opacity:0;transition:opacity .35s;
+}
+.kopt.on{
+  background:rgba(200,169,110,.1);
+  border-color:rgba(200,169,110,.45);
+  box-shadow:0 8px 32px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.08);
+}
+.kopt.on::after{opacity:.7}
+.kopt-check{
+  width:20px;height:20px;border-radius:50%;
+  border:1px solid rgba(200,169,110,.25);
+  margin:0 auto 12px;display:flex;align-items:center;justify-content:center;
+  transition:all .3s;background:transparent;
+}
+.kopt.on .kopt-check{background:var(--amber);border-color:var(--amber)}
+.kopt.on .kopt-check::after{content:'';width:6px;height:3.5px;border-left:1.5px solid var(--bg);border-bottom:1.5px solid var(--bg);transform:rotate(-45deg) translate(1px,-.5px);display:block}
+.kopt h4{font-family:var(--ital);font-size:1rem;color:var(--cream);margin-bottom:4px}
+.kopt p{font-size:10px;color:var(--muted);line-height:1.4}
+.kopt-icon{font-size:20px;margin-bottom:8px;display:block}
+
+/* Summary card */
+.sum-card{
+  background:rgba(200,169,110,.06);
+  border:1px solid rgba(200,169,110,.18);
+  border-radius:14px;padding:18px;
+  margin-bottom:16px;
+}
+.sum-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.sum-item{}
+.sum-item label{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:4px}
+.sum-item span{font-family:var(--ital);font-size:1rem;color:var(--cream)}
+.sum-note{font-size:11px;color:var(--muted);line-height:1.7;margin-bottom:16px;text-align:center}
+
+/* Step actions */
+.sacts{display:flex;gap:8px;margin-top:16px}
+.s-back{
+  background:var(--glass);border:1px solid var(--glassBorder);
+  border-radius:100px;padding:11px 20px;
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);transition:all .25s;flex-shrink:0;
+}
+.s-back:hover{border-color:rgba(200,169,110,.35);color:var(--amber)}
+.s-next{
+  flex:1;background:var(--amber);border:none;border-radius:100px;
+  padding:11px 24px;
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--bg);transition:background .25s,transform .2s;
+}
+.s-next:hover{background:var(--amber2);transform:translateY(-1px)}
+.s-next:active{transform:scale(.97)}
+.s-wa{
+  flex:1;background:#25D366;border:none;border-radius:100px;
+  padding:11px 24px;
+  font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:#fff;display:flex;align-items:center;justify-content:center;gap:7px;
+  text-decoration:none;transition:background .25s,transform .2s;
+}
+.s-wa:hover{background:#1dbd5a;transform:translateY(-1px)}
+.s-wa:active{transform:scale(.97)}
+
+/* ═══════════════════════════════════════
+   S5 — KONUM
+═══════════════════════════════════════ */
+#s5{background:linear-gradient(160deg,#030609 0%,#08131E 100%)}
+
 .konum-wrap{
-  display:grid;grid-template-columns:1fr 1fr;
-  width:100%;max-width:1100px;
-  padding:0 48px;gap:64px;align-items:center;
+  display:flex;flex-direction:column;gap:32px;
+  width:100%;max-width:1100px;padding:0 20px;
 }
-.konum-left{}
-.ktag{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--amber);margin-bottom:18px;display:block}
-.ktitle{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.2rem,4.5vw,3.6rem);line-height:1.06;color:var(--cream);margin-bottom:22px}
-.ktitle em{font-style:italic;color:var(--amber2)}
-.kdets{display:flex;flex-direction:column;gap:16px;margin-bottom:28px}
-.kd{display:flex;align-items:flex-start;gap:12px}
-.kico{
-  width:32px;height:32px;border-radius:8px;
-  background:var(--glass);border:1px solid var(--glass-border);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+@media(min-width:768px){
+  .konum-wrap{flex-direction:row;align-items:center;padding:0 48px;gap:64px}
 }
-.kico svg{opacity:.55}
-.kd-txt h4{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:2px;font-family:var(--sf)}
-.kd-txt p{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--cream);line-height:1.5}
-.socrow{display:flex;gap:8px}
+
+.k-left{flex:1}
+.k-eyebrow{font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:14px}
+.k-title{font-family:var(--ital);font-weight:300;font-size:clamp(1.9rem,5vw,3.4rem);line-height:1.05;color:var(--cream);margin-bottom:22px}
+.k-title em{font-style:italic;color:var(--amber2)}
+
+.kdets{display:flex;flex-direction:column;gap:14px;margin-bottom:24px}
+.kdet{display:flex;align-items:flex-start;gap:11px}
+.k-ico{
+  width:30px;height:30px;flex-shrink:0;
+  border-radius:8px;background:var(--glass);border:1px solid var(--glassBorder);
+  display:flex;align-items:center;justify-content:center;margin-top:1px;
+}
+.k-ico svg{opacity:.55}
+.kdet-body h4{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:3px}
+.kdet-body p{font-family:var(--ital);font-size:.95rem;color:var(--cream);line-height:1.48}
+
+.socrow{display:flex;gap:8px;margin-bottom:0}
 .socl{
-  width:36px;height:36px;border-radius:50%;
-  background:var(--glass);border:1px solid var(--glass-border);
+  width:34px;height:34px;border-radius:50%;
+  background:var(--glass);border:1px solid var(--glassBorder);
   display:flex;align-items:center;justify-content:center;
   color:var(--muted);text-decoration:none;
-  transition:border-color .25s,color .25s,background .25s;
+  transition:all .25s;
 }
-.socl:hover{border-color:rgba(200,169,110,.5);color:var(--amber);background:rgba(200,169,110,.08)}
+.socl:hover{border-color:rgba(200,169,110,.45);color:var(--amber);background:rgba(200,169,110,.08)}
+
+.k-right{flex:1;max-width:100%}
+@media(min-width:768px){.k-right{flex:1.2}}
 .kmap{
   border-radius:16px;overflow:hidden;
-  border:1px solid var(--glass-border);
+  border:1px solid var(--glassBorder);
   background:var(--navy);
   aspect-ratio:4/3;
 }
-.kmap iframe{width:100%;height:100%;border:none;filter:invert(.88) hue-rotate(180deg) brightness(.6) saturate(.75);opacity:.8}
+.kmap iframe{width:100%;height:100%;border:none;filter:invert(.9) hue-rotate(180deg) brightness(.58) saturate(.7);opacity:.78}
 
-/* FOOTER (inside konum section) */
-.kfooter{
+/* Footer strip */
+.kfoot{
   position:absolute;bottom:0;left:0;right:0;
-  padding:16px 48px;
-  display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:12px;
+  padding:12px 20px calc(12px + var(--sab));
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+  border-top:1px solid var(--glassBorder);
+  background:rgba(4,8,15,.5);backdrop-filter:blur(12px);
 }
-.kfooter img{height:26px;filter:brightness(0) invert(1);opacity:.3}
-.kfooter-txt{font-size:11px;color:rgba(240,235,224,.28);letter-spacing:.06em}
-.kfooter-txt a{color:var(--amber);text-decoration:none;opacity:.65}
-.kfooter-links{display:flex;gap:20px}
-.kfooter-links a{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(240,235,224,.28);text-decoration:none;transition:color .25s}
-.kfooter-links a:hover{color:var(--amber)}
-
-/* MOBILE MENU */
-.mob-ov{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1050;opacity:0;pointer-events:none;transition:opacity .35s}
-.mob-ov.open{opacity:1;pointer-events:all}
-.mob-menu{
-  position:fixed;top:0;right:-100%;width:75%;max-width:300px;height:100vh;
-  background:rgba(10,22,40,.95);backdrop-filter:blur(40px);
-  z-index:1100;display:flex;flex-direction:column;
-  justify-content:center;padding:48px 36px;gap:28px;
-  transition:right .38s cubic-bezier(.25,.46,.45,.94);
-  border-left:1px solid var(--glass-border);
-}
-.mob-menu.open{right:0}
-.mob-menu a{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--cream);text-decoration:none;opacity:.7;transition:opacity .25s,color .25s}
-.mob-menu a:hover{opacity:1;color:var(--amber)}
-.mob-x{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--muted);font-size:1.3rem;cursor:none}
+@media(min-width:768px){.kfoot{padding:14px 48px}}
+.kfoot img{height:22px;filter:brightness(0) invert(1);opacity:.3}
+.kfoot-t{font-size:10px;color:rgba(237,232,220,.25);letter-spacing:.05em}
+.kfoot-t a{color:var(--amber);text-decoration:none;opacity:.6}
+.kfoot-links{display:flex;gap:16px}
+.kfoot-links a{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(237,232,220,.25);text-decoration:none;transition:color .25s}
+.kfoot-links a:hover{color:var(--amber)}
 
 /* REVEAL */
-.rv{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
 .rv.in{opacity:1;transform:translateY(0)}
 .rv2{transition-delay:.14s}.rv3{transition-delay:.26s}
-
-/* RESPONSIVE */
-@media(max-width:860px){
-  nav{padding:0 20px}
-  .nav-links,.nav-cta{display:none}
-  .nav-ham{display:flex}
-  .dots{display:none}
-  .about-wrap{grid-template-columns:1fr;padding:0 24px;gap:36px}
-  .about-right{display:none}
-  .menu-wrap{padding:80px 24px 32px}
-  .mpanel.active{grid-template-columns:1fr}
-  .rez-wrap{grid-template-columns:1fr;padding:0 24px;gap:32px}
-  .rez-left{display:none}
-  .konum-wrap{grid-template-columns:1fr;padding:0 24px;gap:32px}
-  .kmap{display:none}
-  .kfooter{padding:16px 24px}
-  .fgrid{grid-template-columns:1fr}
-  .kopts{grid-template-columns:1fr}
-  .sacts{flex-direction:column-reverse}
-  .bw,.bn{width:100%}
-  .sum-g{grid-template-columns:1fr}
-}
-@media(max-width:480px){
-  .hero-title{font-size:3.6rem}
-  .hero-btns{flex-direction:column;align-items:center}
-  .btn-a,.btn-b{width:200px;text-align:center}
-}
 </style>
 </head>
 <body>
@@ -496,60 +703,70 @@ nav{
 <div class="mob-menu" id="mobMenu">
   <button class="mob-x" onclick="closeMob()">✕</button>
   <a href="#s1" onclick="closeMob()">Anasayfa</a>
-  <a href="#s2" onclick="closeMob()">Hakkımızda</a>
+  <a href="#s2" onclick="closeMob()">Hikayemiz</a>
   <a href="#s3" onclick="closeMob()">Menü</a>
   <a href="#s4" onclick="closeMob()">Rezervasyon</a>
-  <a href="#s5" onclick="closeMob()" style="color:var(--amber);opacity:1">Konum</a>
+  <a href="#s5" onclick="closeMob()" class="mob-res">Konum</a>
 </div>
 
 <nav>
-  <a href="#s1" class="nav-logo"><img src="images/marelogo.png" alt="Mare Gastro"></a>
-  <ul class="nav-links">
-    <li><a href="#s2">Hakkımızda</a></li>
+  <a href="#s1" class="nl"><img src="images/marelogo.svg" alt="Mare Gastro"></a>
+  <ul class="nlinks">
+    <li><a href="#s2">Hikayemiz</a></li>
     <li><a href="#s3">Menü</a></li>
     <li><a href="#s5">Konum</a></li>
   </ul>
-  <button class="nav-cta" onclick="scrollTo('#s4')">Rezervasyon</button>
-  <button class="nav-ham" onclick="openMob()" aria-label="Menü">
+  <button class="nav-res" onclick="goTo('#s4')">Rezervasyon</button>
+  <button class="ham" onclick="openMob()" aria-label="Menü">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<div class="dots" id="dots">
-  <button class="dot active" onclick="scrollTo('#s1')" title="Ana Sayfa"></button>
-  <button class="dot" onclick="scrollTo('#s2')" title="Hakkımızda"></button>
-  <button class="dot" onclick="scrollTo('#s3')" title="Menü"></button>
-  <button class="dot" onclick="scrollTo('#s4')" title="Rezervasyon"></button>
-  <button class="dot" onclick="scrollTo('#s5')" title="Konum"></button>
+<div class="pdots" id="pdots">
+  <button class="pdot on" onclick="goTo('#s1')" title="Ana Sayfa"></button>
+  <button class="pdot" onclick="goTo('#s2')" title="Hikayemiz"></button>
+  <button class="pdot" onclick="goTo('#s3')" title="Menü"></button>
+  <button class="pdot" onclick="goTo('#s4')" title="Rezervasyon"></button>
+  <button class="pdot" onclick="goTo('#s5')" title="Konum"></button>
 </div>
 
-<!-- ── S1: HERO ── -->
+<!-- ═══ S1: HERO ═══ -->
 <section class="page" id="s1">
-  <div class="hero-bg" id="heroBg"></div>
-  <div class="hero-ov"></div>
-  <div class="hero-ov2"></div>
-  <div class="hero-c">
-    <div class="hero-tag">Didi Otel &nbsp;·&nbsp; Sapanca &nbsp;·&nbsp; Fine Dining</div>
-    <h1 class="hero-title">Mare<br><em>Gastro</em></h1>
-    <p class="hero-sub">Gölün kıyısında, doğanın kalbinde</p>
-    <div class="hero-btns">
-      <button class="btn-a" onclick="scrollTo('#s4')">Rezervasyon Yap</button>
-      <a href="#s3" class="btn-b">Menüyü Gör</a>
+  <div class="hbg" id="hbg"></div>
+  <div class="hov1"></div><div class="hov2"></div><div class="hshimmer"></div>
+  <div class="hpar" style="left:10%;width:2px;height:2px;animation-duration:18s;animation-delay:0s;bottom:0"></div>
+  <div class="hpar" style="left:25%;width:1px;height:1px;animation-duration:24s;animation-delay:4s;bottom:0"></div>
+  <div class="hpar" style="left:50%;width:2px;height:2px;animation-duration:16s;animation-delay:1.5s;bottom:0"></div>
+  <div class="hpar" style="left:70%;width:1px;height:1px;animation-duration:20s;animation-delay:7s;bottom:0"></div>
+  <div class="hpar" style="left:85%;width:2px;height:2px;animation-duration:22s;animation-delay:3s;bottom:0"></div>
+  <div class="hpar" style="left:40%;width:3px;height:3px;animation-duration:26s;animation-delay:10s;bottom:0"></div>
+
+  <div class="hc">
+    <div class="hero-logo"><img src="images/marelogo.svg" alt="Mare Gastro"></div>
+    <div class="htag">
+      <img src="images/DidiLogo.png" alt="Didi Otel" style="height:14px;filter:brightness(0) invert(1);opacity:.7;vertical-align:middle">
+      &nbsp;·&nbsp; Sapanca &nbsp;·&nbsp; Fine Dining
+    </div>
+    <h1 class="htitle">Mare<br><em>Gastro</em></h1>
+    <p class="hsub">Gölün kıyısında, doğanın kalbinde</p>
+    <div class="hbtns">
+      <button class="btn-main" onclick="goTo('#s4')">Rezervasyon Yap</button>
+      <a href="#s3" class="btn-ghost">Menüyü Gör</a>
     </div>
   </div>
-  <div class="hero-scroll"><div class="sline"></div><span>Keşfet</span></div>
+  <div class="hscroll"><div class="hscroll-line"></div><span>Keşfet</span></div>
 </section>
 
-<!-- ── S2: ABOUT ── -->
+<!-- ═══ S2: HAKKIMIZDA ═══ -->
 <section class="page" id="s2">
   <div class="about-wrap">
     <div class="about-left rv">
-      <span class="atag">Hikayemiz</span>
-      <h2 class="atitle">Sapanca gölünün<br>ruhu, <em>tabakta</em></h2>
-      <p class="abody">Mare Gastro, Sapanca gölü kıyısının eşsiz manzarasını arka planına alan, Didi Otel bahçesinde konumlanan bir fine dining deneyimidir. Her tabak, Ege ve Akdeniz mutfağının en saf malzemeleriyle hazırlanır.</p>
-      <div class="didi-badge">
-        <div class="didi-line"></div>
-        <div class="didi-text">
+      <span class="a-eyebrow">Hikayemiz</span>
+      <h2 class="a-title">Sapanca gölünün<br>ruhu, <em>tabakta</em></h2>
+      <p class="a-body">Mare Gastro, Sapanca gölü kıyısının eşsiz manzarasını arka planına alan, Didi Otel bahçesinde konumlanan bir fine dining deneyimidir. Her tabak, Ege ve Akdeniz mutfağının en saf malzemeleriyle hazırlanır.</p>
+      <div class="didi-card">
+        <div class="didi-bar"></div>
+        <div class="didi-inner">
           <p>"Didi Otel'in doğayla bütünleşen ruhu, mutfak sanatıyla taçlanıyor."</p>
           <small>Didi Otel &nbsp;·&nbsp; Sapanca</small>
         </div>
@@ -564,186 +781,216 @@ nav{
   </div>
 </section>
 
-<!-- ── S3: MENU ── -->
+<!-- ═══ S3: MENÜ ═══ -->
 <section class="page" id="s3">
   <div class="menu-wrap">
-    <div class="menu-hd rv">
-      <div class="menu-hd-left">
-        <span class="mtag">Lezzetlerimiz</span>
-        <h2 class="mtitle">Menü</h2>
+    <div class="menu-top rv">
+      <div>
+        <span class="m-eyebrow">Lezzetlerimiz</span>
+        <h2 class="m-title">Menü</h2>
       </div>
+      <p class="m-hint">Bir kategoriye dokunun</p>
     </div>
-    <div class="menu-tabs rv rv2">
-      <button class="mtab active" onclick="mTab('b',this)">Başlangıçlar</button>
+
+    <div class="mtabs rv rv2">
+      <button class="mtab on" onclick="mTab('b',this)">Başlangıçlar</button>
       <button class="mtab" onclick="mTab('s',this)">Salatalar</button>
       <button class="mtab" onclick="mTab('a',this)">Ara Sıcaklar</button>
       <button class="mtab" onclick="mTab('n',this)">Ana Yemekler</button>
       <button class="mtab" onclick="mTab('t',this)">Tatlılar</button>
       <button class="mtab" onclick="mTab('c',this)">Çocuk</button>
     </div>
-    <div class="menu-body">
 
+    <div class="mpanels">
       <!-- Başlangıçlar -->
-      <div class="mpanel active" id="mp-b">
-        <div class="dish"><div class="dth"><img src="images/koz-patlican.jpg" alt=""></div><div class="di"><div class="dn">Köz Patlıcan</div><div class="dd">Köz kırmızı biber, yeşil biber, taze soğan</div></div></div>
-        <div class="dish"><div class="dth"><img src="images/humus.jpg" alt=""></div><div class="di"><div class="dn">Humus</div><div class="dd">İsli et, kornişon turşu, fındık, sızma zeytinyağı</div></div></div>
-        <div class="dish"><div class="dth"><img src="images/pilav.jpg" alt=""></div><div class="di"><div class="dn">Patlıcanlı Pilav</div><div class="dd">Fıstıklı, üzümlü, baharatlı zeytinyağlı patlıcanlı pilav</div></div></div>
-        <div class="dish"><div class="dth"><img src="images/levrek-marin.jpg" alt=""></div><div class="di"><div class="dn">Levrek Marin</div><div class="dd"></div></div></div>
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Girit Ezme, Kavun</div><div class="dd">Rakı ile marine edilmiş kavun, girit ezme</div></div></div>
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Zeytinyağlı Enginar</div><div class="dd">Araka püresi, fıstık, nane</div></div></div>
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Yoğurtlu Semizotu</div><div class="dd">Yeşil elma</div></div></div>
-        <div class="dish"><div class="dth"><img src="images/dana-carpaccio.jpg" alt=""></div><div class="di"><div class="dn">Dana Carpaccio</div><div class="dd">Roka, parmesan rende, kapari</div></div></div>
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Ahtapot Carpaccio</div><div class="dd">Patates salatası, kornişon turşu</div></div></div>
-        <div class="dish"><div class="dth"><img src="images/jumbo-karides.jpg" alt=""></div><div class="di"><div class="dn">Avakadolu Jumbo Karides Söğüş</div><div class="dd">Hardallı, portakallı narenciye sos</div></div></div>
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Dilim Kavun / Karpuz</div><div class="dd"></div></div></div>
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Dilim Ezine Peyniri</div><div class="dd"></div></div></div>
+      <div class="mpanel on" id="mp-b">
+        <div class="dc"><div class="dthumb"><img src="images/koz-patlican.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Köz Patlıcan</div><div class="dc-desc">Köz kırmızı biber, yeşil biber, taze soğan</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dthumb"><img src="images/humus.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Humus</div><div class="dc-desc">İsli et, kornişon turşu, fındık, sızma zeytinyağı</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dthumb"><img src="images/pilav.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Patlıcanlı Pilav</div><div class="dc-desc">Fıstıklı, üzümlü, baharatlı zeytinyağlı</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dthumb"><img src="images/levrek-marin.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Levrek Marin</div><div class="dc-desc"></div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Girit Ezme, Kavun</div><div class="dc-desc">Rakı ile marine edilmiş kavun, girit ezme</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-img"><img src="images/enginar.jpg" alt="Zeytinyağlı Enginar"></div><div class="dc-body"><div class="dc-name">Zeytinyağlı Enginar</div><div class="dc-desc">Araka püresi, fıstık, nane</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-img"><img src="images/semizotu.jpg" alt="Yoğurtlu Semizotu"></div><div class="dc-body"><div class="dc-name">Yoğurtlu Semizotu</div><div class="dc-desc">Yeşil elma</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dthumb"><img src="images/dana-carpaccio.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Dana Carpaccio</div><div class="dc-desc">Roka, parmesan, kapari</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-img"><img src="images/karides-sogus.jpg" alt="Ahtapot Carpaccio"></div><div class="dc-body"><div class="dc-name">Ahtapot Carpaccio</div><div class="dc-desc">Patates salatası, kornişon turşu</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dthumb"><img src="images/jumbo-karides.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Avakadolu Jumbo Karides Söğüş</div><div class="dc-desc">Hardallı, portakallı narenciye sos</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Dilim Kavun / Karpuz</div><div class="dc-desc"></div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Dilim Ezine Peyniri</div><div class="dc-desc"></div></div><div class="dc-glow"></div></div>
       </div>
 
       <!-- Salatalar -->
       <div class="mpanel" id="mp-s">
-        <div class="dish"><div class="dth"><img src="images/semizotu-salata.jpg" alt=""></div><div class="di"><div class="dn">Semizotu Salatası</div><div class="dd">Çilek, yeşil elma, ceviz, erzincan tulum nar ekşili vinaigrette</div></div></div>
-        <div class="dish"><div class="dth"><img src="images/yunan-salata.jpg" alt=""></div><div class="di"><div class="dn">Yunan Salata</div><div class="dd">Domates, salatalık, biber, siyah zeytin, ezine peynir</div></div></div>
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Roka Salatası</div><div class="dd">Kiraz domates, parmesan, sarımsaklı balzamik</div></div></div>
+        <div class="dc"><div class="dthumb"><img src="images/semizotu-salata.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Semizotu Salatası</div><div class="dc-desc">Çilek, yeşil elma, ceviz, nar ekşili vinaigrette</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dthumb"><img src="images/yunan-salata.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Yunan Salata</div><div class="dc-desc">Domates, salatalık, biber, siyah zeytin, ezine peynir</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Roka Salatası</div><div class="dc-desc">Kiraz domates, parmesan, sarımsaklı balzamik</div></div><div class="dc-glow"></div></div>
       </div>
 
       <!-- Ara Sıcaklar -->
       <div class="mpanel" id="mp-a">
-        <div class="dish"><div class="dth"><img src="images/kalamar-tava.jpg" alt=""></div><div class="di"><div class="dn">Kalamar Tava</div><div class="dd">Tarator sos</div></div></div>
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Baby Kalamar Izgara</div><div class="dd">Muhamara</div></div></div>
-        <div class="dish"><div class="dth"><img src="images/ahtapot-izgara.jpg" alt=""></div><div class="di"><div class="dn">Ahtapot Izgara</div><div class="dd">Maydanoz ve sarımsaklı tereyağlı sos</div></div></div>
-        <div class="dish"><div class="dth"><img src="images/karides-izgara.jpg" alt=""></div><div class="di"><div class="dn">Jumbo Karides Izgara</div><div class="dd">Sarımsaklı maydanozlu tereyağı</div></div></div>
-        <div class="dish"><div class="dth"><img src="images/tereyagli-karides.jpg" alt=""></div><div class="di"><div class="dn">Tereyağlı Karides</div><div class="dd">Sarımsaklı maydanozlu tereyağı</div></div></div>
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Ege / Karadeniz Otları Kavurma</div><div class="dd">Sarımsaklı yoğurt</div></div></div>
-        <div class="dish"><div class="dth"><img src="images/muska-boregi.jpg" alt=""></div><div class="di"><div class="dn">Muska Böreği</div><div class="dd">4 adet muska böreği</div></div></div>
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Patates Terin</div><div class="dd">Kestane mantar sos, isli et, mantar salsa</div></div></div>
+        <div class="dc"><div class="dthumb"><img src="images/kalamar-tava.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Kalamar Tava</div><div class="dc-desc">Tarator sos</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-img"><img src="images/baby-kalamar.jpg" alt="Baby Kalamar Izgara"></div><div class="dc-body"><div class="dc-name">Baby Kalamar Izgara</div><div class="dc-desc">Muhamara</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dthumb"><img src="images/ahtapot-izgara.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Ahtapot Izgara</div><div class="dc-desc">Sarımsaklı tereyağlı sos</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dthumb"><img src="images/karides-izgara.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Jumbo Karides Izgara</div><div class="dc-desc">Sarımsaklı maydanozlu tereyağı</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dthumb"><img src="images/tereyagli-karides.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Tereyağlı Karides</div><div class="dc-desc">Sarımsaklı maydanozlu tereyağı</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-img"><img src="images/ege-otlari.jpg" alt="Ege Otları Kavurma"></div><div class="dc-body"><div class="dc-name">Ege / Karadeniz Otları Kavurma</div><div class="dc-desc">Sarımsaklı yoğurt</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dthumb"><img src="images/muska-boregi.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Muska Böreği</div><div class="dc-desc">4 adet</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-img"><img src="images/patates-terin2.jpg" alt="Patates Terin"></div><div class="dc-body"><div class="dc-name">Patates Terin</div><div class="dc-desc">Kestane mantar sos, isli et, mantar salsa</div></div><div class="dc-glow"></div></div>
       </div>
 
       <!-- Ana Yemekler -->
       <div class="mpanel" id="mp-n">
-        <div class="dish"><div class="dth"><img src="images/citir-somon.jpg" alt=""></div><div class="di"><div class="dn">Çıtır Somon</div><div class="dd">Kuşkonmaz, fırın patates, hollandaise sos</div></div></div>
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Günün Izgara Balığı</div><div class="dd">Köz biber ve domates, bebek patates, beurre blanc</div></div></div>
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Fırında Kremalı Levrek</div><div class="dd">Domates, biber, kekik, kapari, maydanoz</div></div></div>
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Tekir Tempura</div><div class="dd">Otlu kaparili el yapımı mayonez</div></div></div>
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Deniz Mahsülleri Linguine</div><div class="dd">Kum midyeli, tereyağı, sarımsak, maydanoz</div></div></div>
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Somonlu Kremalı Spagetti</div><div class="dd"></div></div></div>
-        <div class="dish"><div class="dth"><img src="images/bonfile.jpg" alt=""></div><div class="di"><div class="dn">Biber Kremalı Bonfile</div><div class="dd">200 gr. dana bonfile, kibrit patates, karabiber kremalı sos</div></div></div>
+        <div class="dc"><div class="dthumb"><img src="images/citir-somon.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Çıtır Somon</div><div class="dc-desc">Kuşkonmaz, fırın patates, hollandaise</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-img"><img src="images/balik-izgara.jpg" alt="Günün Izgara Balığı"></div><div class="dc-body"><div class="dc-name">Günün Izgara Balığı</div><div class="dc-desc">Köz biber, domates, bebek patates, beurre blanc</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Fırında Kremalı Levrek</div><div class="dc-desc">Domates, biber, kekik, kapari</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-img"><img src="images/tekir-tempura.jpg" alt="Tekir Tempura"></div><div class="dc-body"><div class="dc-name">Tekir Tempura</div><div class="dc-desc">Otlu kaparili el yapımı mayonez</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Deniz Mahsülleri Linguine</div><div class="dc-desc">Kum midyeli, tereyağı, sarımsak, maydanoz</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Somonlu Kremalı Spagetti</div><div class="dc-desc"></div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dthumb"><img src="images/bonfile.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Biber Kremalı Bonfile</div><div class="dc-desc">200 gr. dana, kibrit patates, karabiber sos</div></div><div class="dc-glow"></div></div>
       </div>
 
       <!-- Tatlılar -->
       <div class="mpanel" id="mp-t">
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Mare Şekerpare</div><div class="dd"></div></div></div>
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Ormanda Bir Yürüyüş</div><div class="dd">Çikolata mus, profiterol, vanilyalı dondurma, çilek</div></div></div>
-        <div class="dish"><div class="dth"><img src="images/cheesecake.jpg" alt=""></div><div class="di"><div class="dn">Yanık Cheesecake</div><div class="dd"></div></div></div>
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Limonlu Tart</div><div class="dd"></div></div></div>
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Meyve Tabağı</div><div class="dd"></div></div></div>
-        <div class="mnote-s">* Tatlılar günlük olarak değişebilir</div>
+        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Mare Şekerpare</div><div class="dc-desc"></div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Ormanda Bir Yürüyüş</div><div class="dc-desc">Çikolata mus, profiterol, vanilyalı dondurma</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dthumb"><img src="images/cheesecake.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Yanık Cheesecake</div><div class="dc-desc"></div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Limonlu Tart</div><div class="dc-desc"></div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Meyve Tabağı</div><div class="dc-desc"></div></div><div class="dc-glow"></div></div>
+        <div class="menu-note">* Tatlılar günlük olarak değişebilir</div>
       </div>
 
       <!-- Çocuk -->
       <div class="mpanel solo" id="mp-c">
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Izgara Köfte</div><div class="dd">Patates kızartması, acılı sos ya da yoğurt, közlenmiş biber</div></div></div>
-        <div class="dish"><div class="dbl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="di"><div class="dn">Domates Soslu Makarna</div><div class="dd"></div></div></div>
+        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Izgara Köfte</div><div class="dc-desc">Patates kızartması, acılı sos ya da yoğurt</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Domates Soslu Makarna</div><div class="dc-desc"></div></div><div class="dc-glow"></div></div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ── S4: REZERVASYON ── -->
+<!-- ═══ S4: REZERVASYON ═══ -->
 <section class="page" id="s4">
   <div class="rez-wrap">
-    <div class="rez-left rv">
-      <span class="rtag">Rezervasyon</span>
-      <h2 class="rtitle">Masanızı<br><em>ayırtın</em></h2>
-      <p class="rbody">Sapanca gölü kenarında eşsiz bir deneyim için rezervasyonunuzu oluşturun. Üç adımda tamamlayın, WhatsApp üzerinden onaylayalım.</p>
-    </div>
-    <div class="rez-form rv rv2">
-      <div class="sind">
-        <div class="sdot active" id="sd1">1</div>
-        <div class="sl" id="sl1"></div>
-        <div class="sdot" id="sd2">2</div>
-        <div class="sl" id="sl2"></div>
-        <div class="sdot" id="sd3">3</div>
+    <div class="rez-inner">
+      <div class="rez-left rv">
+        <span class="r-eyebrow">Rezervasyon</span>
+        <h2 class="r-title">Masanızı<br><em>ayırtın</em></h2>
+        <p class="r-body">Sapanca gölü kenarında eşsiz bir akşam deneyimi için rezervasyonunuzu oluşturun. Üç adımda tamamlayın, WhatsApp üzerinden onaylayalım.</p>
       </div>
 
-      <!-- Step 1 -->
-      <div class="rstep active" id="rs1">
-        <div class="stitle">Tarih & Zaman</div>
-        <div class="fgrid">
-          <div class="fg"><label>Tarih</label><input type="date" id="rdate"></div>
-          <div class="fg"><label>Saat</label>
-            <select id="rtime">
-              <option value="">Seçin</option>
-              <option>12:00</option><option>12:30</option><option>13:00</option><option>13:30</option>
-              <option>19:00</option><option>19:30</option><option>20:00</option><option>20:30</option>
-              <option>21:00</option><option>21:30</option>
-            </select>
+      <div class="rez-card rv rv2">
+        <!-- Progress -->
+        <div class="prog-bar" id="progBar">
+          <div class="pstep cur" id="ps1">
+            <div class="pstep-dot active" id="pd1">1</div>
+            <div class="pstep-label">Zaman</div>
+          </div>
+          <div class="pline" id="pl1"></div>
+          <div class="pstep" id="ps2">
+            <div class="pstep-dot" id="pd2">2</div>
+            <div class="pstep-label">Konaklama</div>
+          </div>
+          <div class="pline" id="pl2"></div>
+          <div class="pstep" id="ps3">
+            <div class="pstep-dot" id="pd3">3</div>
+            <div class="pstep-label">Onay</div>
           </div>
         </div>
-        <div class="fg" style="margin-bottom:0"><label>Kişi Sayısı</label>
-          <select id="rguests">
-            <option value="">Seçin</option>
-            <option>1 Kişi</option><option>2 Kişi</option><option>3 Kişi</option>
-            <option>4 Kişi</option><option>5 Kişi</option><option>6 Kişi</option>
-            <option>7–10 Kişi</option><option>10+ Kişi (Özel Organizasyon)</option>
-          </select>
-        </div>
-        <div class="sacts"><button class="bn" onclick="gS(2)">Devam Et</button></div>
-      </div>
 
-      <!-- Step 2 -->
-      <div class="rstep" id="rs2">
-        <div class="stitle">Konaklama</div>
-        <div class="kopts">
-          <div class="kcard" onclick="selK(this,'Evet, konaklama istiyorum')"><div class="kck"></div><h4>Evet</h4><p>Didi Otel'de geceleme</p></div>
-          <div class="kcard" onclick="selK(this,'Hayır, sadece yemek')"><div class="kck"></div><h4>Hayır</h4><p>Sadece akşam yemeği</p></div>
+        <!-- STEP 1 -->
+        <div class="rstep on" id="rs1">
+          <div class="step-title">Tarih & Zaman</div>
+          <input type="date" class="date-field" id="rdate" placeholder="Tarih seçin">
+          <label class="field-label">Saat</label>
+          <div class="time-grid" id="timeGrid">
+            <button class="tpill" onclick="selTime(this,'12:00')">12:00</button>
+            <button class="tpill" onclick="selTime(this,'12:30')">12:30</button>
+            <button class="tpill" onclick="selTime(this,'13:00')">13:00</button>
+            <button class="tpill" onclick="selTime(this,'13:30')">13:30</button>
+            <button class="tpill" onclick="selTime(this,'19:00')">19:00</button>
+            <button class="tpill" onclick="selTime(this,'19:30')">19:30</button>
+            <button class="tpill" onclick="selTime(this,'20:00')">20:00</button>
+            <button class="tpill" onclick="selTime(this,'20:30')">20:30</button>
+            <button class="tpill" onclick="selTime(this,'21:00')">21:00</button>
+            <button class="tpill" onclick="selTime(this,'21:30')">21:30</button>
+          </div>
+          <label class="field-label">Kişi Sayısı</label>
+          <div class="guest-wrap">
+            <button class="gcnt-btn" onclick="adjG(-1)">−</button>
+            <div>
+              <div class="gcnt-num" id="gNum">2</div>
+            </div>
+            <button class="gcnt-btn" onclick="adjG(1)">+</button>
+          </div>
+          <div class="gcnt-label" id="gLabel">2 Kişi</div>
+          <div class="sacts"><button class="s-next" onclick="gS(2)">Devam Et →</button></div>
         </div>
-        <div class="sacts">
-          <button class="bb" onclick="gS(1)">Geri</button>
-          <button class="bn" onclick="gS(3)">Devam Et</button>
-        </div>
-      </div>
 
-      <!-- Step 3 -->
-      <div class="rstep" id="rs3">
-        <div class="stitle">Onay</div>
-        <div class="sum-g">
-          <div class="si"><label>Tarih</label><span id="sD">—</span></div>
-          <div class="si"><label>Saat</label><span id="sT">—</span></div>
-          <div class="si"><label>Kişi</label><span id="sG">—</span></div>
-          <div class="si"><label>Konaklama</label><span id="sK">—</span></div>
+        <!-- STEP 2 -->
+        <div class="rstep" id="rs2">
+          <div class="step-title">Konaklama Tercihiniz</div>
+          <div class="kon-grid">
+            <div class="kopt" onclick="selK(this,'Evet, konaklama istiyorum')">
+              <div class="kopt-check"></div>
+              <span class="kopt-icon">🌙</span>
+              <h4>Konaklamak<br>istiyorum</h4>
+              <p>Didi Otel'de<br>geceleme</p>
+            </div>
+            <div class="kopt" onclick="selK(this,'Hayır, sadece yemek')">
+              <div class="kopt-check"></div>
+              <span class="kopt-icon">🍽</span>
+              <h4>Sadece<br>yemek</h4>
+              <p>Akşam yemeği<br>rezervasyonu</p>
+            </div>
+          </div>
+          <div class="sacts">
+            <button class="s-back" onclick="gS(1)">← Geri</button>
+            <button class="s-next" onclick="gS(3)">Devam Et →</button>
+          </div>
         </div>
-        <p style="font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.7">Bilgileriniz WhatsApp üzerinden otomatik gönderilecek. Ekibimiz kısa sürede onaylayacak.</p>
-        <div class="sacts">
-          <button class="bb" onclick="gS(2)">Geri</button>
-          <a class="bw" id="waBtn" href="#" target="_blank">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            WhatsApp ile Onayla
-          </a>
+
+        <!-- STEP 3 -->
+        <div class="rstep" id="rs3">
+          <div class="step-title">Rezervasyon Özeti</div>
+          <div class="sum-card">
+            <div class="sum-row">
+              <div class="sum-item"><label>Tarih</label><span id="sD">—</span></div>
+              <div class="sum-item"><label>Saat</label><span id="sT">—</span></div>
+              <div class="sum-item"><label>Kişi Sayısı</label><span id="sG">—</span></div>
+              <div class="sum-item"><label>Konaklama</label><span id="sK">—</span></div>
+            </div>
+          </div>
+          <p class="sum-note">Bilgileriniz WhatsApp üzerinden otomatik olarak gönderilecek. Ekibimiz kısa sürede onaylayacak.</p>
+          <div class="sacts">
+            <button class="s-back" onclick="gS(2)">← Geri</button>
+            <a class="s-wa" id="waBtn" href="#" target="_blank">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              WhatsApp ile Onayla
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── S5: KONUM ── -->
+<!-- ═══ S5: KONUM ═══ -->
 <section class="page" id="s5">
   <div class="konum-wrap">
-    <div class="konum-left rv">
-      <span class="ktag">Bizi Bulun</span>
-      <h2 class="ktitle">Konum &<br><em>İletişim</em></h2>
+    <div class="k-left rv">
+      <span class="k-eyebrow">Bizi Bulun</span>
+      <h2 class="k-title">Konum &<br><em>İletişim</em></h2>
       <div class="kdets">
-        <div class="kd">
-          <div class="kico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div class="kd-txt"><h4>Adres</h4><p>Didi Otel, Sapanca · Sakarya</p></div>
+        <div class="kdet">
+          <div class="k-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="kdet-body"><h4>Adres</h4><p>Didi Otel, Sapanca · Sakarya</p></div>
         </div>
-        <div class="kd">
-          <div class="kico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div>
-          <div class="kd-txt"><h4>Çalışma Saatleri</h4><p>Salı–Pazar: 12:00–23:00<br>Pazartesi: Kapalı</p></div>
+        <div class="kdet">
+          <div class="k-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div>
+          <div class="kdet-body"><h4>Çalışma Saatleri</h4><p>Salı–Pazar: 12:00–23:00<br>Pazartesi: Kapalı</p></div>
         </div>
-        <div class="kd">
-          <div class="kico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <div class="kd-txt"><h4>İletişim</h4><p>info@maregastro.com</p></div>
+        <div class="kdet">
+          <div class="k-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="kdet-body"><h4>İletişim</h4><p>info@maregastro.com</p></div>
         </div>
       </div>
       <div class="socrow">
@@ -756,16 +1003,28 @@ nav{
         <a class="socl" href="mailto:info@maregastro.com" aria-label="E-posta">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </a>
+        <a class="socl" href="https://wa.me/905323540888" target="_blank" aria-label="WhatsApp">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        </a>
       </div>
     </div>
-    <div class="kmap rv rv2">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96016!2d30.2!3d40.68!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cb21be36fb1bed%3A0x8be5e16fb793b71e!2sSapanca%2C%20Sakarya!5e0!3m2!1str!2str!4v1700000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mare Gastro Konum"></iframe>
+    <div class="k-right rv rv2">
+      <div class="kmap">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96016!2d30.2!3d40.68!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cb21be36fb1bed%3A0x8be5e16fb793b71e!2sSapanca%2C%20Sakarya!5e0!3m2!1str!2str!4v1700000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mare Gastro Konum"></iframe>
+      </div>
     </div>
   </div>
-  <div class="kfooter">
-    <img src="images/marelogo.png" alt="Mare Gastro">
-    <div class="kfooter-txt">© 2026 Mare Gastro &nbsp;·&nbsp; <a href="https://www.instagram.com/didiotel/" target="_blank">Didi Otel</a> bünyesinde</div>
-    <div class="kfooter-links">
+  <div class="kfoot">
+    <img src="images/marelogo.svg" alt="Mare Gastro">
+    <div class="kfoot-t" style="display:flex;align-items:center;gap:8px">
+      © 2026 Mare Gastro &nbsp;·&nbsp;
+      <a href="https://www.instagram.com/didiotel/" target="_blank" style="display:inline-flex;align-items:center;gap:5px;color:var(--amber);text-decoration:none;opacity:.7">
+        <img src="images/DidiLogo.png" alt="Didi Otel" style="height:16px;filter:brightness(0) invert(1);opacity:.6">
+        Didi Otel
+      </a>
+      bünyesinde
+    </div>
+    <div class="kfoot-links">
       <a href="#s3">Menü</a>
       <a href="#s4">Rezervasyon</a>
       <a href="https://www.instagram.com/maregastrosapanca/" target="_blank">Instagram</a>
@@ -774,91 +1033,99 @@ nav{
 </section>
 
 <script>
-// CURSOR
-const c=document.getElementById('cur'),cr=document.getElementById('crng');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
-(function tick(){c.style.left=mx+'px';c.style.top=my+'px';rx+=(mx-rx)*.11;ry+=(my-ry)*.11;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(tick)})();
-document.querySelectorAll('a,button,.mtab,.dish,.kcard,.socl,.aimg').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{c.classList.add('h');cr.classList.add('h')});
-  el.addEventListener('mouseleave',()=>{c.classList.remove('h');cr.classList.remove('h')});
-});
+/* ── CURSOR ── */
+const cur=document.getElementById('cur'),crng=document.getElementById('crng');
+if(cur&&crng){
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+  (function t(){if(cur){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.11;ry+=(my-ry)*.11;crng.style.left=rx+'px';crng.style.top=ry+'px'}requestAnimationFrame(t)})();
+  document.querySelectorAll('a,button,.dc,.mtab,.kopt,.tpill,.socl,.aimg').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cur.classList.add('h');crng.classList.add('h')});
+    el.addEventListener('mouseleave',()=>{cur.classList.remove('h');crng.classList.remove('h')});
+  });
+}
 
-// SCROLL TO
-function scrollTo(id){document.querySelector(id).scrollIntoView({behavior:'smooth'})}
-
-// MOBILE
+/* ── NAV ── */
+function goTo(id){document.querySelector(id).scrollIntoView({behavior:'smooth'})}
 function openMob(){document.getElementById('mobMenu').classList.add('open');document.getElementById('mobOv').classList.add('open');document.body.style.overflow='hidden'}
 function closeMob(){document.getElementById('mobMenu').classList.remove('open');document.getElementById('mobOv').classList.remove('open');document.body.style.overflow=''}
 
-// DOTS
-const sections=['s1','s2','s3','s4','s5'];
-const dots=document.querySelectorAll('.dot');
-const obs=new IntersectionObserver(es=>{
-  es.forEach(e=>{
-    if(e.isIntersecting){
-      const i=sections.indexOf(e.target.id);
-      dots.forEach((d,j)=>d.classList.toggle('active',i===j));
-    }
-  });
-},{threshold:.5});
-sections.forEach(id=>{ const el=document.getElementById(id); if(el)obs.observe(el); });
+/* ── PAGE DOTS ── */
+const pages=['s1','s2','s3','s4','s5'];
+const dots=document.querySelectorAll('.pdot');
+new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){const i=pages.indexOf(e.target.id);dots.forEach((d,j)=>d.classList.toggle('on',i===j))}});
+},{threshold:.5}).observe && pages.forEach(id=>{const el=document.getElementById(id);if(el)new IntersectionObserver(es=>{if(es[0].isIntersecting){const i=pages.indexOf(id);dots.forEach((d,j)=>d.classList.toggle('on',i===j))}},{threshold:.5}).observe(el)});
 
-// REVEAL
+/* ── HERO PARALLAX ── */
+const hbg=document.getElementById('hbg');
+document.body.addEventListener('scroll',()=>{
+  if(hbg&&document.body.scrollTop<window.innerHeight)
+    hbg.style.transform=`translateY(${document.body.scrollTop*.28}px) scale(1.14)`;
+});
+
+/* ── REVEAL ── */
 const rvEls=document.querySelectorAll('.rv');
 const rvObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.1});
 rvEls.forEach(el=>rvObs.observe(el));
 
-// HERO PARALLAX
-const heroBg=document.getElementById('heroBg');
-document.body.addEventListener('scroll',()=>{
-  const s=document.body.scrollTop;
-  if(heroBg&&s<window.innerHeight)heroBg.style.transform=`translateY(${s*.3}px) scale(1.12)`;
-});
-
-// MENU TABS
+/* ── MENU TABS ── */
 function mTab(id,btn){
-  document.querySelectorAll('.mpanel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.mtab').forEach(b=>b.classList.remove('active'));
-  document.getElementById('mp-'+id).classList.add('active');
-  btn.classList.add('active');
+  document.querySelectorAll('.mpanel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.mtab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('mp-'+id).classList.add('on');
+  btn.classList.add('on');
 }
 
-// REZERVASYON
-let selKon='';
+/* fix dthumb references */
+document.querySelectorAll('.dthumb').forEach(el=>{el.classList.add('dc-img')});
+
+/* ── REZERVASYON ── */
+let selTime_val='',guestCount=2,selKon_val='';
 document.getElementById('rdate').min=new Date().toISOString().split('T')[0];
 
+function selTime(btn,val){
+  document.querySelectorAll('.tpill').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');selTime_val=val;
+}
+function adjG(d){
+  guestCount=Math.max(1,Math.min(20,guestCount+d));
+  const el=document.getElementById('gNum');
+  el.style.transform='scale(1.35)';
+  setTimeout(()=>el.style.transform='scale(1)',200);
+  el.textContent=guestCount;
+  document.getElementById('gLabel').textContent=guestCount+(guestCount===10?'+ Kişi':' Kişi');
+}
+function selK(card,val){
+  document.querySelectorAll('.kopt').forEach(k=>k.classList.remove('on'));
+  card.classList.add('on');selKon_val=val;
+}
 function gS(n){
   if(n===2){
-    const d=document.getElementById('rdate').value,t=document.getElementById('rtime').value,g=document.getElementById('rguests').value;
-    if(!d||!t||!g){alert('Lütfen tüm alanları doldurun.');return}
+    if(!document.getElementById('rdate').value){alert('Lütfen bir tarih seçin.');return}
+    if(!selTime_val){alert('Lütfen bir saat seçin.');return}
   }
   if(n===3){
-    if(!selKon){alert('Lütfen konaklama tercihini seçin.');return}
-    const d=document.getElementById('rdate').value,t=document.getElementById('rtime').value,g=document.getElementById('rguests').value;
+    if(!selKon_val){alert('Lütfen konaklama tercihini seçin.');return}
+    const d=document.getElementById('rdate').value;
     const fmt=new Date(d).toLocaleDateString('tr-TR',{day:'numeric',month:'long',year:'numeric'});
     document.getElementById('sD').textContent=fmt;
-    document.getElementById('sT').textContent=t;
-    document.getElementById('sG').textContent=g;
-    document.getElementById('sK').textContent=selKon;
-    const phone='905323540888';
-    const msg=`Merhaba, Mare Gastro rezervasyon talebim:\n\nTarih: ${fmt}\nSaat: ${t}\nKişi: ${g}\nKonaklama: ${selKon}\n\nOnayınızı bekliyorum.`;
-    document.getElementById('waBtn').href=`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+    document.getElementById('sT').textContent=selTime_val;
+    document.getElementById('sG').textContent=guestCount+' Kişi';
+    document.getElementById('sK').textContent=selKon_val;
+    const msg=`Merhaba, Mare Gastro rezervasyon talebim:\n\nTarih: ${fmt}\nSaat: ${selTime_val}\nKişi Sayısı: ${guestCount}\nKonaklama: ${selKon_val}\n\nOnayınızı bekliyorum.`;
+    document.getElementById('waBtn').href=`https://wa.me/905323540888?text=${encodeURIComponent(msg)}`;
   }
-  document.querySelectorAll('.rstep').forEach(s=>s.classList.remove('active'));
-  document.getElementById('rs'+n).classList.add('active');
+  document.querySelectorAll('.rstep').forEach(s=>s.classList.remove('on'));
+  document.getElementById('rs'+n).classList.add('on');
   for(let i=1;i<=3;i++){
-    const d=document.getElementById('sd'+i);
+    const d=document.getElementById('pd'+i);
     d.classList.remove('active','done');
-    if(i<n)d.classList.add('done');
-    else if(i===n)d.classList.add('active');
+    if(i<n){d.classList.add('done');document.getElementById('ps'+i).classList.remove('cur')}
+    else if(i===n){d.classList.add('active');document.getElementById('ps'+i).classList.add('cur')}
+    else{document.getElementById('ps'+i).classList.remove('cur')}
   }
-  for(let i=1;i<=2;i++)document.getElementById('sl'+i).classList.toggle('done',i<n);
-}
-
-function selK(card,val){
-  document.querySelectorAll('.kcard').forEach(k=>k.classList.remove('sel'));
-  card.classList.add('sel');selKon=val;
+  for(let i=1;i<=2;i++)document.getElementById('pl'+i).classList.toggle('done',i<n);
 }
 </script>
 </body>
