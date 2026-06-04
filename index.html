@@ -692,6 +692,296 @@ nav{
 .rv{opacity:0;transform:translateY(22px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
 .rv.in{opacity:1;transform:translateY(0)}
 .rv2{transition-delay:.14s}.rv3{transition-delay:.26s}
+
+/* ═══════════════════════════════════════
+   CHEF SECTION
+═══════════════════════════════════════ */
+#sc{background:var(--bg);align-items:stretch;overflow:hidden}
+.chef-wrap{
+  display:flex;flex-direction:column;
+  width:100%;height:100%;
+}
+@media(min-width:768px){
+  .chef-wrap{display:grid;grid-template-columns:42% 58%}
+}
+
+/* Photo side */
+.chef-photo{
+  position:relative;overflow:hidden;
+  flex-shrink:0;
+}
+@media(max-width:767px){.chef-photo{height:48vh}}
+@media(min-width:768px){.chef-photo{height:100%}}
+.chef-photo img{
+  width:100%;height:100%;object-fit:cover;
+  object-position:center 20%;
+  transform:scale(1.04);
+  animation:chefZoom 18s ease-in-out infinite alternate;
+}
+@keyframes chefZoom{
+  0%{transform:scale(1.04) translate(0,0)}
+  100%{transform:scale(1.08) translate(1%,.5%)}
+}
+.chef-photo-ov{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to right,transparent 55%,rgba(4,8,15,.8) 100%),
+    linear-gradient(to bottom,rgba(4,8,15,.45) 0%,transparent 25%,transparent 60%,rgba(4,8,15,.85) 100%);
+}
+.chef-photo-tag{
+  position:absolute;bottom:20px;left:20px;
+  background:rgba(4,8,15,.7);
+  backdrop-filter:blur(20px);
+  border:1px solid var(--glassBorder);
+  border-radius:10px;
+  padding:12px 16px;
+}
+.chef-photo-tag small{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:3px}
+.chef-photo-tag strong{font-family:var(--ital);font-weight:400;font-size:1.05rem;color:var(--cream)}
+
+/* Content side */
+.chef-content{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:24px 20px;
+  overflow-y:auto;scrollbar-width:none;
+}
+@media(min-width:768px){.chef-content{padding:72px 52px 72px 40px}}
+.chef-content::-webkit-scrollbar{display:none}
+
+.c-eyebrow{font-size:9px;letter-spacing:.38em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:10px}
+.c-name{
+  font-family:var(--ital);font-weight:300;
+  font-size:clamp(2.2rem,5.5vw,4.2rem);
+  line-height:.88;color:var(--cream);margin-bottom:5px;
+}
+.c-name em{font-style:italic;color:var(--amber2)}
+.c-role{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:22px;display:block}
+
+.c-quote{
+  font-family:var(--ital);font-style:italic;font-weight:300;
+  font-size:clamp(.95rem,2.2vw,1.25rem);
+  line-height:1.65;color:var(--cream);opacity:.9;
+  padding-left:16px;
+  border-left:2px solid var(--amber);
+  margin-bottom:26px;
+}
+
+/* Journey bar */
+.c-journey{
+  display:flex;align-items:center;gap:0;
+  margin-bottom:26px;
+  background:var(--glass);border:1px solid var(--glassBorder);
+  border-radius:12px;padding:14px 16px;overflow:hidden;position:relative;
+}
+.c-journey::after{
+  content:'';position:absolute;top:0;left:0;bottom:0;width:2px;
+  background:linear-gradient(to bottom,var(--amber),rgba(200,169,110,.2));
+}
+.cj-step{flex:1;text-align:center}
+.cj-step span{display:block;font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);margin-bottom:3px}
+.cj-step p{font-family:var(--ital);font-size:.88rem;color:var(--cream)}
+.cj-arrow{color:rgba(200,169,110,.4);font-size:.8rem;flex-shrink:0;padding:0 4px}
+
+/* Philosophy pills */
+.c-pillars{display:flex;flex-direction:column;gap:7px;margin-bottom:22px}
+.cpill{
+  display:flex;align-items:center;gap:12px;
+  padding:11px 14px;border-radius:11px;
+  background:var(--glass);border:1px solid var(--glassBorder);
+  cursor:none;transition:all .38s var(--ease);
+  position:relative;overflow:hidden;
+}
+.cpill::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 0% 50%,rgba(200,169,110,.1),transparent 65%);
+  opacity:0;transition:opacity .38s;
+}
+@media(hover:hover){
+  .cpill:hover{background:rgba(200,169,110,.09);border-color:rgba(200,169,110,.32);transform:translateX(5px)}
+  .cpill:hover::before{opacity:1}
+  .cpill:hover .cpill-icon{transform:scale(1.18) rotate(-4deg)}
+}
+.cpill:active{transform:scale(.97) translateX(2px)}
+.cpill-icon{font-size:1.2rem;flex-shrink:0;transition:transform .3s var(--ease)}
+.cpill-body h4{font-family:var(--ital);font-size:.95rem;color:var(--cream);line-height:1.2;margin-bottom:2px}
+.cpill-body p{font-size:10px;color:var(--muted);line-height:1.4}
+
+/* Instagram link */
+.c-ig{
+  display:inline-flex;align-items:center;gap:9px;
+  background:var(--glass);border:1px solid var(--glassBorder);
+  padding:10px 18px;border-radius:100px;
+  text-decoration:none;color:var(--cream);
+  transition:all .3s var(--ease);
+  backdrop-filter:blur(12px);width:fit-content;
+}
+.c-ig:hover{background:rgba(200,169,110,.14);border-color:rgba(200,169,110,.38)}
+.c-ig-handle{font-size:11px;letter-spacing:.08em}
+.c-ig-followers{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-left:4px}
+
+/* ═══════════════════════════════════════
+   REZERVASYON — REDESIGN
+═══════════════════════════════════════ */
+/* Overrides */
+.prog-bar{margin-bottom:20px}
+.pstep-dot{width:24px;height:24px;font-size:10px}
+.pstep-label{font-size:7px}
+
+.rez-step-header{margin-bottom:14px}
+.rez-step-header p{
+  font-family:var(--ital);font-style:italic;
+  font-size:1.1rem;color:var(--cream);
+}
+.rez-step-header small{
+  font-size:9px;letter-spacing:.12em;color:var(--muted);
+  margin-top:2px;display:block;
+}
+
+/* Date input enhanced */
+.date-field{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;padding:11px 14px;
+  font-family:var(--sf);font-size:14px;color:var(--cream);
+  outline:none;width:100%;
+  transition:border-color .3s,box-shadow .3s,background .3s;
+  margin-bottom:14px;
+  -webkit-appearance:none;appearance:none;
+}
+.date-field:focus{
+  border-color:rgba(200,169,110,.5);
+  background:rgba(200,169,110,.04);
+  box-shadow:0 0 0 3px rgba(200,169,110,.07);
+}
+
+/* Time pills — wider, more visual */
+.time-grid{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tpill{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:10px;padding:8px 12px;
+  font-size:12px;font-weight:400;color:var(--muted);
+  transition:all .3s var(--ease);flex-shrink:0;
+  min-width:54px;text-align:center;
+}
+.tpill.on{
+  background:rgba(200,169,110,.2);
+  border-color:rgba(200,169,110,.55);
+  color:var(--amber);font-weight:500;
+  box-shadow:0 0 16px rgba(200,169,110,.12);
+  transform:scale(1.05);
+}
+.tpill:active{transform:scale(.92)}
+
+/* Guest counter — larger */
+.guest-wrap{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 16px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+  margin-bottom:6px;
+}
+.gcnt-btn{
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(200,169,110,.1);border:1px solid rgba(200,169,110,.3);
+  font-size:18px;font-weight:300;color:var(--amber);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .25s;
+}
+.gcnt-btn:hover{background:rgba(200,169,110,.22);border-color:var(--amber)}
+.gcnt-btn:active{transform:scale(.85)}
+.gcnt-center{text-align:center}
+.gcnt-num{
+  font-family:var(--ital);font-size:2.4rem;font-weight:300;
+  color:var(--cream);line-height:1;
+  transition:transform .18s var(--ease),opacity .12s;
+  display:block;
+}
+.gcnt-sublabel{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.gcnt-note{font-size:10px;color:var(--muted);text-align:center;margin-bottom:14px}
+
+/* Accommodation cards */
+.kon-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.kopt{
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:14px;padding:16px 14px;
+  background:rgba(255,255,255,.03);
+  transition:all .38s var(--ease);
+  text-align:center;position:relative;overflow:hidden;
+}
+.kopt-glow{
+  position:absolute;bottom:0;left:15%;right:15%;height:1px;
+  background:linear-gradient(to right,transparent,var(--amber),transparent);
+  opacity:0;transition:opacity .38s;
+}
+.kopt.on .kopt-glow{opacity:.75}
+.kopt.on{
+  background:rgba(200,169,110,.09);
+  border-color:rgba(200,169,110,.4);
+  box-shadow:0 8px 28px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.07);
+  transform:translateY(-2px);
+}
+.kopt:active{transform:scale(.96)}
+.kopt-check{
+  width:18px;height:18px;border-radius:50%;
+  border:1px solid rgba(200,169,110,.22);
+  margin:0 auto 10px;display:flex;align-items:center;justify-content:center;
+  transition:all .3s;
+}
+.kopt.on .kopt-check{background:var(--amber);border-color:var(--amber)}
+.kopt.on .kopt-check::after{content:'';width:5px;height:3px;border-left:1.5px solid var(--bg);border-bottom:1.5px solid var(--bg);transform:rotate(-45deg) translate(1px,-.5px);display:block}
+.kopt-emoji{font-size:1.6rem;display:block;margin-bottom:7px;transition:transform .3s}
+.kopt.on .kopt-emoji{transform:scale(1.15)}
+.kopt h4{font-family:var(--ital);font-size:.98rem;color:var(--cream);margin-bottom:3px;line-height:1.2}
+.kopt p{font-size:9px;color:var(--muted);line-height:1.4}
+
+/* Summary */
+.sum-card{
+  background:linear-gradient(135deg,rgba(200,169,110,.06),rgba(200,169,110,.03));
+  border:1px solid rgba(200,169,110,.18);
+  border-radius:14px;padding:16px;margin-bottom:14px;
+  position:relative;overflow:hidden;
+}
+.sum-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(to right,transparent,rgba(200,169,110,.5),transparent);
+}
+.sum-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sum-item label{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:3px}
+.sum-item span{font-family:var(--ital);font-size:.98rem;color:var(--cream)}
+.sum-note{font-size:10px;color:var(--muted);line-height:1.7;margin-bottom:14px;text-align:center}
+.sum-wa-note{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(37,211,102,.06);border:1px solid rgba(37,211,102,.15);
+  border-radius:10px;padding:10px 12px;margin-bottom:14px;
+}
+.sum-wa-note p{font-size:11px;color:rgba(237,232,220,.65);line-height:1.5}
+
+/* Step actions */
+.sacts{display:flex;gap:8px}
+.s-back{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:100px;padding:10px 18px;
+  font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);transition:all .25s;flex-shrink:0;
+}
+.s-back:hover{border-color:rgba(200,169,110,.35);color:var(--amber)}
+.s-next{
+  flex:1;background:var(--amber);border:none;border-radius:100px;
+  padding:10px 20px;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--bg);transition:background .25s,transform .2s;
+}
+.s-next:hover{background:var(--amber2);transform:translateY(-1px)}
+.s-next:active{transform:scale(.97)}
+.s-wa{
+  flex:1;background:#25D366;border:none;border-radius:100px;
+  padding:10px 20px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:#fff;display:flex;align-items:center;justify-content:center;gap:7px;
+  text-decoration:none;transition:background .25s,transform .2s;
+}
+.s-wa:hover{background:#1dbd5a;transform:translateY(-1px)}
+.s-wa:active{transform:scale(.97)}
 </style>
 </head>
 <body>
@@ -704,6 +994,7 @@ nav{
   <button class="mob-x" onclick="closeMob()">✕</button>
   <a href="#s1" onclick="closeMob()">Anasayfa</a>
   <a href="#s2" onclick="closeMob()">Hikayemiz</a>
+  <a href="#sc" onclick="closeMob()">Şefimiz</a>
   <a href="#s3" onclick="closeMob()">Menü</a>
   <a href="#s4" onclick="closeMob()">Rezervasyon</a>
   <a href="#s5" onclick="closeMob()" class="mob-res">Konum</a>
@@ -713,6 +1004,7 @@ nav{
   <a href="#s1" class="nl"><img src="images/marelogo.svg" alt="Mare Gastro"></a>
   <ul class="nlinks">
     <li><a href="#s2">Hikayemiz</a></li>
+    <li><a href="#sc">Şefimiz</a></li>
     <li><a href="#s3">Menü</a></li>
     <li><a href="#s5">Konum</a></li>
   </ul>
@@ -725,6 +1017,7 @@ nav{
 <div class="pdots" id="pdots">
   <button class="pdot on" onclick="goTo('#s1')" title="Ana Sayfa"></button>
   <button class="pdot" onclick="goTo('#s2')" title="Hikayemiz"></button>
+  <button class="pdot" onclick="goTo('#sc')" title="Şefimiz"></button>
   <button class="pdot" onclick="goTo('#s3')" title="Menü"></button>
   <button class="pdot" onclick="goTo('#s4')" title="Rezervasyon"></button>
   <button class="pdot" onclick="goTo('#s5')" title="Konum"></button>
@@ -781,6 +1074,94 @@ nav{
   </div>
 </section>
 
+<!-- ═══ SC: ŞEF ═══ -->
+<section class="page" id="sc">
+  <div class="chef-wrap">
+    <!-- Photo -->
+    <div class="chef-photo rv">
+      <img src="images/dogansef.jpg" alt="Şef Doğan Anapa">
+      <div class="chef-photo-ov"></div>
+      <div class="chef-photo-tag">
+        <small>Mare Gastro · Sapanca</small>
+        <strong>Yönetici Şef</strong>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="chef-content">
+      <span class="c-eyebrow rv">Şefimiz</span>
+      <h2 class="c-name rv rv2"><em>Doğan</em><br>Anapa</h2>
+      <span class="c-role rv rv2">Yönetici Şef · Mare Gastro</span>
+
+      <blockquote class="c-quote rv rv2">
+        "Yemek yapmak tıpkı film çekmek gibi<br>bir hikâye anlatma biçimi."
+      </blockquote>
+
+      <div class="c-journey rv rv3">
+        <div class="cj-step">
+          <span>Reklam & Film</span>
+          <p>15 yıl<br><small style="color:var(--muted);font-size:9px">5 yıl yönetmenlik</small></p>
+        </div>
+        <div class="cj-arrow">→</div>
+        <div class="cj-step">
+          <span>Kantin · Şemsa Denizsel</span>
+          <p>Staj &<br>Dönüşüm</p>
+        </div>
+        <div class="cj-arrow">→</div>
+        <div class="cj-step">
+          <span>Mare Gastro</span>
+          <p>Mutfak<br>Sanatı</p>
+        </div>
+      </div>
+
+      <!-- Award badge -->
+      <div class="rv rv3" style="display:flex;align-items:center;gap:8px;margin-bottom:20px;padding:10px 14px;background:rgba(200,169,110,.07);border:1px solid rgba(200,169,110,.18);border-radius:10px;width:fit-content">
+        <span style="font-size:1.1rem">🏆</span>
+        <div>
+          <div style="font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber)">Gourmand World Cookbook Awards 2023</div>
+          <div style="font-family:var(--ital);font-size:.82rem;color:var(--cream)">Türkiye Temsilcisi · Mutfak Tarihi Kategorisi</div>
+        </div>
+      </div>
+
+      <div class="c-pillars rv rv3">
+        <div class="cpill">
+          <span class="cpill-icon">🎬</span>
+          <div class="cpill-body">
+            <h4>Film'den Mutfağa</h4>
+            <p>15 yıl reklam & sinema — "Sus", "Ve Gülümser Gökyüzü" filmleri; yaratıcı bakışı mutfağa taşıdı</p>
+          </div>
+        </div>
+        <div class="cpill">
+          <span class="cpill-icon">🌿</span>
+          <div class="cpill-body">
+            <h4>Yereli Evrensele</h4>
+            <p>Sakarya pazarından günlük temin, kendi bostanı — "Topraktan Sofraya Sakarya Mutfağı" kitap katkısı</p>
+          </div>
+        </div>
+        <div class="cpill">
+          <span class="cpill-icon">✦</span>
+          <div class="cpill-body">
+            <h4>Basit Güzeldir</h4>
+            <p>Doğru malzeme, doğru denge — tatlı, tuzlu, acı, ekşi; riski seven, konfor alanı dışı tabaklar</p>
+          </div>
+        </div>
+        <div class="cpill">
+          <span class="cpill-icon">🤝</span>
+          <div class="cpill-body">
+            <h4>Şemsa Denizsel Okulu</h4>
+            <p>Kantin Lokantası'nda staj — Türkiye'nin öncü farm-to-table şefinin yanında yetişti</p>
+          </div>
+        </div>
+      </div>
+
+      <a class="c-ig rv" href="https://www.instagram.com/chefdogananapa/" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <span class="c-ig-handle">@chefdogananapa</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ S3: MENÜ ═══ -->
 <section class="page" id="s3">
   <div class="menu-wrap">
@@ -808,9 +1189,9 @@ nav{
         <div class="dc"><div class="dthumb"><img src="images/humus.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Humus</div><div class="dc-desc">İsli et, kornişon turşu, fındık, sızma zeytinyağı</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dthumb"><img src="images/pilav.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Patlıcanlı Pilav</div><div class="dc-desc">Fıstıklı, üzümlü, baharatlı zeytinyağlı</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dthumb"><img src="images/levrek-marin.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Levrek Marin</div><div class="dc-desc"></div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Girit Ezme, Kavun</div><div class="dc-desc">Rakı ile marine edilmiş kavun, girit ezme</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-img"><img src="images/semizotu.jpg" alt="Girit Ezme, Kavun"></div><div class="dc-body"><div class="dc-name">Girit Ezme, Kavun</div><div class="dc-desc">Rakı ile marine edilmiş kavun, girit ezme</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dc-img"><img src="images/enginar.jpg" alt="Zeytinyağlı Enginar"></div><div class="dc-body"><div class="dc-name">Zeytinyağlı Enginar</div><div class="dc-desc">Araka püresi, fıstık, nane</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-img"><img src="images/semizotu.jpg" alt="Yoğurtlu Semizotu"></div><div class="dc-body"><div class="dc-name">Yoğurtlu Semizotu</div><div class="dc-desc">Yeşil elma</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Yoğurtlu Semizotu</div><div class="dc-desc">Yeşil elma</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dthumb"><img src="images/dana-carpaccio.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Dana Carpaccio</div><div class="dc-desc">Roka, parmesan, kapari</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dc-img"><img src="images/karides-sogus.jpg" alt="Ahtapot Carpaccio"></div><div class="dc-body"><div class="dc-name">Ahtapot Carpaccio</div><div class="dc-desc">Patates salatası, kornişon turşu</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dthumb"><img src="images/jumbo-karides.jpg" alt=""></div><div class="dc-body"><div class="dc-name">Avakadolu Jumbo Karides Söğüş</div><div class="dc-desc">Hardallı, portakallı narenciye sos</div></div><div class="dc-glow"></div></div>
@@ -898,7 +1279,10 @@ nav{
 
         <!-- STEP 1 -->
         <div class="rstep on" id="rs1">
-          <div class="step-title">Tarih & Zaman</div>
+          <div class="rez-step-header">
+            <p>Ne zaman gelmek istersiniz?</p>
+            <small>Tarih, saat ve kişi sayısını seçin</small>
+          </div>
           <input type="date" class="date-field" id="rdate" placeholder="Tarih seçin">
           <label class="field-label">Saat</label>
           <div class="time-grid" id="timeGrid">
@@ -916,28 +1300,34 @@ nav{
           <label class="field-label">Kişi Sayısı</label>
           <div class="guest-wrap">
             <button class="gcnt-btn" onclick="adjG(-1)">−</button>
-            <div>
-              <div class="gcnt-num" id="gNum">2</div>
+            <div class="gcnt-center">
+              <span class="gcnt-num" id="gNum">2</span>
+              <div class="gcnt-sublabel">Kişi</div>
             </div>
             <button class="gcnt-btn" onclick="adjG(1)">+</button>
           </div>
-          <div class="gcnt-label" id="gLabel">2 Kişi</div>
+          <div class="gcnt-note" id="gNote">Özel organizasyon için 10+ kişi seçin</div>
           <div class="sacts"><button class="s-next" onclick="gS(2)">Devam Et →</button></div>
         </div>
 
         <!-- STEP 2 -->
         <div class="rstep" id="rs2">
-          <div class="step-title">Konaklama Tercihiniz</div>
+          <div class="rez-step-header">
+            <p>Didi Otel'de kalmak ister misiniz?</p>
+            <small>Gece konaklaması ile deneyiminizi tamamlayın</small>
+          </div>
           <div class="kon-grid">
             <div class="kopt" onclick="selK(this,'Evet, konaklama istiyorum')">
               <div class="kopt-check"></div>
-              <span class="kopt-icon">🌙</span>
+              <div class="kopt-glow"></div>
+              <span class="kopt-emoji">🌙</span>
               <h4>Konaklamak<br>istiyorum</h4>
-              <p>Didi Otel'de<br>geceleme</p>
+              <p>Didi Otel'de göl kenarında<br>unutulmaz bir gece</p>
             </div>
             <div class="kopt" onclick="selK(this,'Hayır, sadece yemek')">
               <div class="kopt-check"></div>
-              <span class="kopt-icon">🍽</span>
+              <div class="kopt-glow"></div>
+              <span class="kopt-emoji">🍽️</span>
               <h4>Sadece<br>yemek</h4>
               <p>Akşam yemeği<br>rezervasyonu</p>
             </div>
@@ -950,7 +1340,10 @@ nav{
 
         <!-- STEP 3 -->
         <div class="rstep" id="rs3">
-          <div class="step-title">Rezervasyon Özeti</div>
+          <div class="rez-step-header">
+            <p>Her şey hazır, onaylayın</p>
+            <small>Bilgilerinizi kontrol edin</small>
+          </div>
           <div class="sum-card">
             <div class="sum-row">
               <div class="sum-item"><label>Tarih</label><span id="sD">—</span></div>
@@ -959,7 +1352,10 @@ nav{
               <div class="sum-item"><label>Konaklama</label><span id="sK">—</span></div>
             </div>
           </div>
-          <p class="sum-note">Bilgileriniz WhatsApp üzerinden otomatik olarak gönderilecek. Ekibimiz kısa sürede onaylayacak.</p>
+          <div class="sum-wa-note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <p>WhatsApp'a tıkladığınızda bilgileriniz otomatik gönderilecek. Ekibimiz en kısa sürede onaylayacak.</p>
+          </div>
           <div class="sacts">
             <button class="s-back" onclick="gS(2)">← Geri</button>
             <a class="s-wa" id="waBtn" href="#" target="_blank">
@@ -1051,7 +1447,7 @@ function openMob(){document.getElementById('mobMenu').classList.add('open');docu
 function closeMob(){document.getElementById('mobMenu').classList.remove('open');document.getElementById('mobOv').classList.remove('open');document.body.style.overflow=''}
 
 /* ── PAGE DOTS ── */
-const pages=['s1','s2','s3','s4','s5'];
+const pages=['s1','s2','sc','s3','s4','s5'];
 const dots=document.querySelectorAll('.pdot');
 new IntersectionObserver(es=>{
   es.forEach(e=>{if(e.isIntersecting){const i=pages.indexOf(e.target.id);dots.forEach((d,j)=>d.classList.toggle('on',i===j))}});
@@ -1091,10 +1487,15 @@ function selTime(btn,val){
 function adjG(d){
   guestCount=Math.max(1,Math.min(20,guestCount+d));
   const el=document.getElementById('gNum');
-  el.style.transform='scale(1.35)';
-  setTimeout(()=>el.style.transform='scale(1)',200);
+  el.style.transform='scale(1.4)';el.style.opacity='.6';
+  setTimeout(()=>{el.style.transform='scale(1)';el.style.opacity='1'},220);
   el.textContent=guestCount;
-  document.getElementById('gLabel').textContent=guestCount+(guestCount===10?'+ Kişi':' Kişi');
+  const note=document.getElementById('gNote');
+  if(note){
+    if(guestCount>=10)note.textContent='Özel organizasyon — ekibimiz sizinle iletişime geçecek';
+    else if(guestCount===1)note.textContent='Yalnız bir deneyim için hoş geldiniz';
+    else note.textContent=guestCount+' kişilik masanız hazırlanacak';
+  }
 }
 function selK(card,val){
   document.querySelectorAll('.kopt').forEach(k=>k.classList.remove('on'));
