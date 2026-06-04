@@ -63,36 +63,57 @@ body{scrollbar-width:none}
 /* ═══════════════════════════════════════
    NAV
 ═══════════════════════════════════════ */
+/* Apple floating pill nav */
 nav{
-  position:fixed;top:0;left:0;right:0;z-index:500;
-  height:60px;padding:0 20px;
+  position:fixed;
+  top:12px;left:12px;right:12px;
+  z-index:500;height:50px;padding:0 14px;
   display:flex;align-items:center;justify-content:space-between;
-  background:rgba(4,8,15,.6);
-  backdrop-filter:blur(32px) saturate(180%);
-  -webkit-backdrop-filter:blur(32px) saturate(180%);
-  border-bottom:1px solid var(--glassBorder);
+  background:rgba(5,9,15,.78);
+  backdrop-filter:blur(40px) saturate(200%);
+  -webkit-backdrop-filter:blur(40px) saturate(200%);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:16px;
+  box-shadow:0 8px 28px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.05);
 }
-.nl img{height:32px;filter:brightness(0) invert(1);opacity:.82;transition:opacity .3s}
-.nl img:hover{opacity:1}
-.nlinks{display:none}
 @media(min-width:768px){
-  nav{height:64px;padding:0 40px}
-  .nlinks{display:flex;gap:32px;list-style:none}
-  .nlinks a{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--cream);opacity:.6;text-decoration:none;transition:opacity .25s,color .25s}
+  nav{top:14px;left:18px;right:18px;height:54px;padding:0 20px;border-radius:18px}
+}
+.nl img{height:26px;filter:brightness(0) invert(1);opacity:.88;transition:opacity .3s}
+.nl img:hover{opacity:1}
+@media(min-width:768px){.nl img{height:30px}}
+
+.nlinks{display:none}
+@media(min-width:860px){
+  .nlinks{display:flex;gap:22px;list-style:none;align-items:center}
+  .nlinks a{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream);opacity:.58;text-decoration:none;transition:opacity .25s,color .25s}
   .nlinks a:hover{opacity:1;color:var(--amber)}
 }
-.nav-res{
-  display:none;
-  background:var(--glass);border:1px solid rgba(200,169,110,.35);
-  border-radius:100px;padding:8px 20px;
-  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--amber);backdrop-filter:blur(12px);transition:background .25s;
+/* Didi Otel link in nav */
+.nav-didi{
+  display:none;align-items:center;gap:5px;
+  text-decoration:none;padding:5px 10px;
+  border:1px solid rgba(200,169,110,.18);border-radius:100px;
+  transition:all .25s;background:transparent;
 }
-.nav-res:hover{background:rgba(200,169,110,.18)}
-@media(min-width:768px){.nav-res{display:block}}
-.ham{display:flex;flex-direction:column;gap:5px;background:none;border:none;padding:4px}
-.ham span{width:20px;height:1px;background:var(--cream);display:block;transition:all .3s}
-@media(min-width:768px){.ham{display:none}}
+@media(min-width:860px){.nav-didi{display:flex}}
+.nav-didi img{height:16px;opacity:.55;filter:brightness(0) invert(1);transition:opacity .25s}
+.nav-didi span{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(200,169,110,.6);transition:color .25s}
+.nav-didi:hover{border-color:rgba(200,169,110,.4);background:rgba(200,169,110,.08)}
+.nav-didi:hover img,.nav-didi:hover span{opacity:1;color:var(--amber)}
+
+.nav-right{display:flex;align-items:center;gap:8px}
+.nav-res{
+  background:rgba(200,169,110,.14);
+  border:1px solid rgba(200,169,110,.35);
+  border-radius:100px;padding:6px 16px;
+  font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--amber);transition:all .25s;white-space:nowrap;
+}
+.nav-res:hover{background:rgba(200,169,110,.26)}
+.ham{display:flex;flex-direction:column;gap:4px;background:none;border:none;padding:4px;cursor:none}
+.ham span{width:18px;height:1px;background:var(--cream);display:block;opacity:.7;transition:all .3s}
+@media(min-width:860px){.ham{display:none}}
 
 /* MOBILE MENU */
 .mob-ov{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:900;opacity:0;pointer-events:none;transition:opacity .35s;backdrop-filter:blur(4px)}
@@ -292,7 +313,7 @@ nav{
 .menu-wrap{
   width:100%;height:100%;
   display:flex;flex-direction:column;
-  padding:72px 0 0;
+  padding:76px 0 0;
   max-width:1100px;
   margin:0 auto;
 }
@@ -699,150 +720,107 @@ nav{
 /* ═══════════════════════════════════════
    CHEF SECTION — REDESIGN
 ═══════════════════════════════════════ */
-#sc{background:var(--bg);flex-direction:column;justify-content:flex-start;padding-top:60px}
+#sc{background:var(--bg);flex-direction:column;padding-top:74px;padding-bottom:0;justify-content:flex-start}
 
 .sc-inner{
-  width:100%;height:calc(100% - 60px);
+  width:100%;
   display:flex;flex-direction:column;
-  padding:0;overflow-y:auto;scrollbar-width:none;
+  align-items:center;
+  padding:0;
+  gap:0;
+  overflow-y:auto;scrollbar-width:none;
+  flex:1;
 }
 .sc-inner::-webkit-scrollbar{display:none}
 
-/* Top: eyebrow + name */
+/* Top: name */
 .sc-top{
   display:flex;flex-direction:column;align-items:center;
-  padding:20px 20px 14px;text-align:center;flex-shrink:0;
+  padding:10px 20px 8px;text-align:center;flex-shrink:0;width:100%;
 }
-.sc-eyebrow{
-  font-size:8px;letter-spacing:.42em;text-transform:uppercase;
-  color:var(--amber);display:block;margin-bottom:8px;
-}
+.sc-eyebrow{font-size:8px;letter-spacing:.42em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:5px}
 .sc-name{
   font-family:var(--ital);font-weight:300;
-  font-size:clamp(1.9rem,6vw,3.8rem);
-  line-height:.9;color:var(--cream);margin-bottom:4px;
+  font-size:clamp(1.7rem,5.5vw,3.4rem);
+  line-height:.9;color:var(--cream);margin-bottom:3px;
 }
 .sc-name em{font-style:italic;color:var(--amber2)}
-.sc-role{
-  font-size:8px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--muted);display:block;
-}
-
-/* SVG ornament line */
-.sc-ornament{
-  width:100%;max-width:480px;margin:10px auto 0;
-  display:block;overflow:visible;
-}
-.sc-orn-path{
-  stroke:var(--amber);stroke-width:.6;fill:none;
-  stroke-dasharray:400;stroke-dashoffset:400;
-  animation:drawLine 1.8s var(--ease) .4s forwards;
-  opacity:.45;
-}
+.sc-role{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+.sc-ornament{width:100%;max-width:360px;margin:0 auto;display:block;overflow:visible}
+.sc-orn-path{stroke:var(--amber);stroke-width:.6;fill:none;stroke-dasharray:600;stroke-dashoffset:600;animation:drawLine 2s var(--ease) .3s forwards;opacity:.4}
 @keyframes drawLine{to{stroke-dashoffset:0}}
 
 /* 16:9 floating photo */
 .sc-photo-wrap{
-  flex-shrink:0;
-  padding:0 20px;
-  margin-bottom:14px;
+  flex-shrink:0;width:100%;
+  padding:8px 16px;
 }
-@media(min-width:768px){.sc-photo-wrap{padding:0 60px}}
+@media(min-width:768px){.sc-photo-wrap{padding:10px 56px}}
 .sc-photo-frame{
-  position:relative;
-  width:100%;
-  aspect-ratio:16/9;
-  border-radius:14px;
-  overflow:hidden;
-  box-shadow:0 24px 72px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.06),0 0 40px rgba(200,169,110,.04);
+  position:relative;width:100%;aspect-ratio:16/9;
+  border-radius:12px;overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06);
 }
 .sc-photo-frame img{
-  width:100%;height:100%;object-fit:cover;
-  object-position:center 18%;
-  transform:scale(1.04);
-  animation:chefZoom 20s ease-in-out infinite alternate;
-  filter:brightness(.9) saturate(.92);
+  width:100%;height:100%;object-fit:cover;object-position:center 18%;
+  transform:scale(1.04);animation:chefZoom 20s ease-in-out infinite alternate;
+  filter:brightness(.88) saturate(.9);
 }
-@keyframes chefZoom{
-  0%{transform:scale(1.04) translate(0,0)}
-  100%{transform:scale(1.07) translate(.8%,.4%)}
-}
-.sc-photo-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to bottom,transparent 55%,rgba(4,8,15,.75) 100%);
-}
-/* Award badge inside photo */
+@keyframes chefZoom{0%{transform:scale(1.04)}100%{transform:scale(1.07) translate(.6%,.3%)}}
+.sc-photo-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(4,8,15,.7) 100%)}
 .sc-award{
-  position:absolute;bottom:14px;right:14px;
-  background:rgba(4,8,15,.75);
-  backdrop-filter:blur(16px);
-  border:1px solid rgba(200,169,110,.25);
-  border-radius:8px;padding:8px 12px;
-  display:flex;align-items:center;gap:7px;
+  position:absolute;bottom:10px;right:10px;
+  background:rgba(4,8,15,.78);backdrop-filter:blur(16px);
+  border:1px solid rgba(200,169,110,.22);border-radius:8px;padding:6px 10px;
+  display:flex;align-items:center;gap:6px;
 }
-.sc-award svg{flex-shrink:0;opacity:.8}
-.sc-award-text{display:flex;flex-direction:column}
-.sc-award-text span:first-child{font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
-.sc-award-text span:last-child{font-family:var(--ital);font-size:.78rem;color:var(--cream)}
+.sc-award-text span{display:block}
+.sc-award-text span:first-child{font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
+.sc-award-text span:last-child{font-family:var(--ital);font-size:.75rem;color:var(--cream)}
 
-/* Quote rotator */
+/* Rotating quotes */
 .sc-quotes{
-  flex-shrink:0;
-  padding:0 24px;
-  text-align:center;
-  min-height:72px;
-  position:relative;
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:10px;
+  flex-shrink:0;width:100%;
+  padding:6px 24px;text-align:center;
+  height:64px;position:relative;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
 }
-@media(min-width:768px){.sc-quotes{padding:0 80px;min-height:80px}}
+@media(min-width:768px){.sc-quotes{padding:6px 80px;height:72px}}
+.sc-qmark{display:block;margin:0 auto 4px;opacity:.2}
 .sc-quote{
   position:absolute;
   font-family:var(--ital);font-style:italic;font-weight:300;
-  font-size:clamp(.88rem,2.2vw,1.2rem);
-  line-height:1.6;color:var(--cream);opacity:0;
-  transition:opacity .8s ease,transform .8s ease;
-  transform:translateY(8px);
-  text-align:center;
+  font-size:clamp(.82rem,2vw,1.1rem);
+  line-height:1.55;color:var(--cream);opacity:0;
+  transition:opacity .85s ease,transform .85s ease;transform:translateY(6px);
+  text-align:center;padding:0 8px;
 }
-.sc-quote.visible{opacity:.88;transform:translateY(0)}
-/* Quote marks SVG */
-.sc-qmark{
-  display:block;margin:0 auto 6px;
-  opacity:.25;
-}
+.sc-quote.visible{opacity:.86;transform:translateY(0)}
 
-/* Bottom row: stats + Instagram */
+/* Bottom stats + IG */
 .sc-bottom{
-  flex-shrink:0;
-  padding:0 20px calc(16px + var(--sab));
-  display:flex;flex-direction:column;align-items:center;gap:10px;
+  flex-shrink:0;width:100%;
+  padding:6px 16px calc(10px + var(--sab));
+  display:flex;flex-direction:column;align-items:center;gap:8px;
 }
-@media(min-width:768px){.sc-bottom{flex-direction:row;justify-content:center;padding:0 60px calc(20px + var(--sab));gap:0}}
-
+@media(min-width:640px){.sc-bottom{flex-direction:row;justify-content:center;gap:12px;padding:6px 40px calc(12px + var(--sab))}}
 .sc-stats{
-  display:flex;gap:0;
-  background:var(--glass);border:1px solid var(--glassBorder);
-  border-radius:100px;overflow:hidden;
+  display:flex;background:var(--glass);border:1px solid var(--glassBorder);border-radius:100px;overflow:hidden;
 }
 .sc-stat{
-  padding:8px 16px;text-align:center;border-right:1px solid var(--glassBorder);
-  display:flex;flex-direction:column;
+  padding:6px 14px;text-align:center;border-right:1px solid var(--glassBorder);display:flex;flex-direction:column;
 }
 .sc-stat:last-child{border-right:none}
-.sc-stat-n{font-family:var(--ital);font-size:1rem;color:var(--cream);line-height:1}
-.sc-stat-l{font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:2px}
-
+.sc-stat-n{font-family:var(--ital);font-size:.9rem;color:var(--cream);line-height:1}
+.sc-stat-l{font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:2px}
 .sc-ig-link{
-  display:inline-flex;align-items:center;gap:8px;
+  display:inline-flex;align-items:center;gap:7px;
   background:var(--glass);border:1px solid var(--glassBorder);
-  padding:8px 18px;border-radius:100px;
-  text-decoration:none;color:var(--muted);
-  font-size:11px;letter-spacing:.08em;
+  padding:7px 16px;border-radius:100px;text-decoration:none;
+  color:var(--muted);font-size:10px;letter-spacing:.08em;
   transition:all .3s var(--ease);
 }
-@media(min-width:768px){.sc-ig-link{margin-left:12px}}
-.sc-ig-link:hover{background:rgba(200,169,110,.12);border-color:rgba(200,169,110,.35);color:var(--amber)}
+.sc-ig-link:hover{background:rgba(200,169,110,.1);border-color:rgba(200,169,110,.35);color:var(--amber)}
 
 /* ═══════════════════════════════════════
    REZERVASYON — REDESIGN
@@ -1026,17 +1004,23 @@ nav{
 </div>
 
 <nav>
-  <a href="#s1" class="nl"><img src="images/marelogo.svg" alt="Mare Gastro"></a>
+  <a href="#s1" class="nl"><img src="images/marelogo.svg" alt="Mare Gastro" onerror="this.src='images/marelogo.png'"></a>
   <ul class="nlinks">
     <li><a href="#s2">Hikayemiz</a></li>
     <li><a href="#sc">Şefimiz</a></li>
     <li><a href="#s3">Menü</a></li>
     <li><a href="#s5">Konum</a></li>
   </ul>
-  <button class="nav-res" onclick="goTo('#s4')">Rezervasyon</button>
-  <button class="ham" onclick="openMob()" aria-label="Menü">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-right">
+    <a href="https://sapancadidiotel.com/" target="_blank" class="nav-didi">
+      <img src="images/DidiLogo.png" alt="Didi Otel">
+      <span>Didi Otel</span>
+    </a>
+    <button class="nav-res" onclick="goTo('#s4')">Rezervasyon</button>
+    <button class="ham" onclick="openMob()" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <div class="pdots" id="pdots">
@@ -1101,89 +1085,72 @@ nav{
 
 <!-- ═══ SC: ŞEF ═══ -->
 <section class="page" id="sc">
-  <div class="chef-wrap">
-    <!-- Photo -->
-    <div class="chef-photo rv">
-      <img src="images/dogansef.jpg" alt="Şef Doğan Anapa">
-      <div class="chef-photo-ov"></div>
-      <div class="chef-photo-tag">
-        <small>Mare Gastro · Sapanca</small>
-        <strong>Yönetici Şef</strong>
+  <div class="sc-inner">
+
+    <!-- Name top -->
+    <div class="sc-top rv">
+      <span class="sc-eyebrow">Şefimiz</span>
+      <h2 class="sc-name">Doğan <em>Anapa</em></h2>
+      <span class="sc-role">Yönetici Şef · Mare Gastro · Sapanca</span>
+      <!-- SVG ornament -->
+      <svg class="sc-ornament" viewBox="0 0 480 16" height="16" preserveAspectRatio="none">
+        <path class="sc-orn-path" d="M0,8 C40,2 80,14 120,8 C160,2 200,14 240,8 C280,2 320,14 360,8 C400,2 440,14 480,8"/>
+        <circle cx="240" cy="8" r="2.5" fill="rgba(200,169,110,.5)"/>
+        <circle cx="60" cy="8" r="1.5" fill="rgba(200,169,110,.3)"/>
+        <circle cx="420" cy="8" r="1.5" fill="rgba(200,169,110,.3)"/>
+      </svg>
+    </div>
+
+    <!-- 16:9 floating photo -->
+    <div class="sc-photo-wrap rv rv2">
+      <div class="sc-photo-frame">
+        <img src="images/dogansef.jpg" alt="Şef Doğan Anapa">
+        <div class="sc-photo-overlay"></div>
+        <div class="sc-award">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="var(--amber)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <div class="sc-award-text">
+            <span>Gourmand World Cookbook Awards 2023</span>
+            <span>Türkiye Temsilcisi</span>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Content -->
-    <div class="chef-content">
-      <span class="c-eyebrow rv">Şefimiz</span>
-      <h2 class="c-name rv rv2"><em>Doğan</em><br>Anapa</h2>
-      <span class="c-role rv rv2">Yönetici Şef · Mare Gastro</span>
+    <!-- Rotating quotes -->
+    <div class="sc-quotes rv rv2">
+      <svg class="sc-qmark" width="22" height="16" viewBox="0 0 32 24" fill="none">
+        <path d="M0 24V14.4C0 6.4 4.8 1.6 14.4 0l2.4 3.2C12 4.267 9.6 6.933 9.6 11.2H16V24H0zm16 0V14.4C16 6.4 20.8 1.6 30.4 0l1.6 3.2C27.2 4.8 25.6 7.467 25.6 11.2H32V24H16z" fill="rgba(200,169,110,.22)"/>
+      </svg>
+      <div class="sc-quote visible" id="sq0">Yemek yapmak tıpkı film çekmek gibi bir hikâye anlatma biçimi.</div>
+      <div class="sc-quote" id="sq1">Mutfak birleştiricidir, paylaşımcıdır, insan hikâyeleriyle dolu bir alandır.</div>
+      <div class="sc-quote" id="sq2">Hayat hep aynı lezzetleri tatmak için çok kısa.</div>
+      <div class="sc-quote" id="sq3">Tabaklar ruh halimizi yansıtır.</div>
+      <div class="sc-quote" id="sq4">Yereli evrensel olarak sunmaya çalışıyorum.</div>
+      <div class="sc-quote" id="sq5">İnsanları doyurma içgüdüsü, sevginin bir ifade şeklidir.</div>
+    </div>
 
-      <blockquote class="c-quote rv rv2">
-        "Yemek yapmak tıpkı film çekmek gibi<br>bir hikâye anlatma biçimi."
-      </blockquote>
-
-      <div class="c-journey rv rv3">
-        <div class="cj-step">
-          <span>Reklam & Film</span>
-          <p>15 yıl<br><small style="color:var(--muted);font-size:9px">5 yıl yönetmenlik</small></p>
+    <!-- Stats + IG -->
+    <div class="sc-bottom rv rv3">
+      <div class="sc-stats">
+        <div class="sc-stat">
+          <span class="sc-stat-n">15</span>
+          <span class="sc-stat-l">Yıl Film</span>
         </div>
-        <div class="cj-arrow">→</div>
-        <div class="cj-step">
-          <span>Kantin · Şemsa Denizsel</span>
-          <p>Staj &<br>Dönüşüm</p>
+        <div class="sc-stat">
+          <span class="sc-stat-n">Kantin</span>
+          <span class="sc-stat-l">Şemsa Denizsel</span>
         </div>
-        <div class="cj-arrow">→</div>
-        <div class="cj-step">
-          <span>Mare Gastro</span>
-          <p>Mutfak<br>Sanatı</p>
+        <div class="sc-stat">
+          <span class="sc-stat-n">2023</span>
+          <span class="sc-stat-l">Gourmand</span>
         </div>
       </div>
-
-      <!-- Award badge -->
-      <div class="rv rv3" style="display:flex;align-items:center;gap:8px;margin-bottom:20px;padding:10px 14px;background:rgba(200,169,110,.07);border:1px solid rgba(200,169,110,.18);border-radius:10px;width:fit-content">
-        <span style="font-size:1.1rem">🏆</span>
-        <div>
-          <div style="font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber)">Gourmand World Cookbook Awards 2023</div>
-          <div style="font-family:var(--ital);font-size:.82rem;color:var(--cream)">Türkiye Temsilcisi · Mutfak Tarihi Kategorisi</div>
-        </div>
-      </div>
-
-      <div class="c-pillars rv rv3">
-        <div class="cpill">
-          <span class="cpill-icon">🎬</span>
-          <div class="cpill-body">
-            <h4>Film'den Mutfağa</h4>
-            <p>15 yıl reklam & sinema — "Sus", "Ve Gülümser Gökyüzü" filmleri; yaratıcı bakışı mutfağa taşıdı</p>
-          </div>
-        </div>
-        <div class="cpill">
-          <span class="cpill-icon">🌿</span>
-          <div class="cpill-body">
-            <h4>Yereli Evrensele</h4>
-            <p>Sakarya pazarından günlük temin, kendi bostanı — "Topraktan Sofraya Sakarya Mutfağı" kitap katkısı</p>
-          </div>
-        </div>
-        <div class="cpill">
-          <span class="cpill-icon">✦</span>
-          <div class="cpill-body">
-            <h4>Basit Güzeldir</h4>
-            <p>Doğru malzeme, doğru denge — tatlı, tuzlu, acı, ekşi; riski seven, konfor alanı dışı tabaklar</p>
-          </div>
-        </div>
-        <div class="cpill">
-          <span class="cpill-icon">🤝</span>
-          <div class="cpill-body">
-            <h4>Şemsa Denizsel Okulu</h4>
-            <p>Kantin Lokantası'nda staj — Türkiye'nin öncü farm-to-table şefinin yanında yetişti</p>
-          </div>
-        </div>
-      </div>
-
-      <a class="c-ig rv" href="https://www.instagram.com/chefdogananapa/" target="_blank">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        <span class="c-ig-handle">@chefdogananapa</span>
+      <a class="sc-ig-link" href="https://www.instagram.com/chefdogananapa/" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        @chefdogananapa
       </a>
     </div>
+
   </div>
 </section>
 
@@ -1558,6 +1525,18 @@ function gS(n){
   }
   for(let i=1;i<=2;i++)document.getElementById('pl'+i).classList.toggle('done',i<n);
 }
+
+/* ── QUOTE ROTATOR ── */
+(function(){
+  const qs=document.querySelectorAll('.sc-quote');
+  if(!qs.length)return;
+  let idx=0;
+  setInterval(()=>{
+    qs[idx].classList.remove('visible');
+    idx=(idx+1)%qs.length;
+    qs[idx].classList.add('visible');
+  },4200);
+})();
 </script>
 </body>
 </html>
