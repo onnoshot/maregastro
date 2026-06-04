@@ -1,653 +1,720 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Mare Gastro — Yakında</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mare Gastro — Fine Dining · Sapanca</title>
+<meta name="description" content="Sapanca gölü kıyısında, Didi Otel bahçesinde eşsiz fine dining deneyimi. Taze deniz ürünleri, Ege mutfağı, zarif tatlılar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0B1A2E;
+  --navy-mid: #122038;
+  --navy-light: #1C3354;
+  --cream: #F5F0E6;
+  --cream-warm: #EDE6D5;
+  --amber: #C8A96E;
+  --amber-light: #D9BC8A;
+  --amber-dim: rgba(200,169,110,0.12);
+  --muted: rgba(245,240,230,0.52);
+  --white: #FDFAF4;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;background:var(--navy);color:var(--cream);overflow-x:hidden;cursor:none}
 
-        :root { --navy: #0B1A2E; }
+/* CURSOR */
+.cursor{width:7px;height:7px;background:var(--amber);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s}
+.cursor-ring{width:34px;height:34px;border:1px solid rgba(200,169,110,.45);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .35s cubic-bezier(.25,.46,.45,.94),height .35s cubic-bezier(.25,.46,.45,.94),opacity .2s}
+.cursor.hover{width:13px;height:13px;background:var(--amber-light)}
+.cursor-ring.hover{width:54px;height:54px;border-color:var(--amber);opacity:.55}
 
-        html { height: 100%; }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:26px 56px;display:flex;align-items:center;justify-content:space-between;transition:background .5s,padding .4s,backdrop-filter .5s}
+nav.scrolled{background:rgba(11,26,46,.93);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:16px 56px;border-bottom:1px solid rgba(200,169,110,.1)}
+.nav-logo img{height:44px;filter:brightness(0) invert(1);opacity:.88;transition:opacity .3s}
+.nav-logo img:hover{opacity:1}
+.nav-links{display:flex;gap:44px;list-style:none}
+.nav-links a{color:var(--cream);text-decoration:none;font-family:'Jost',sans-serif;font-weight:300;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;opacity:.7;transition:opacity .3s,color .3s}
+.nav-links a:hover{opacity:1;color:var(--amber)}
+.nav-cta{background:transparent;border:1px solid rgba(200,169,110,.55);color:var(--amber);padding:9px 26px;font-family:'Jost',sans-serif;font-weight:300;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;cursor:none;transition:background .3s,color .3s}
+.nav-cta:hover{background:var(--amber);color:var(--navy)}
+.nav-ham{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none}
+.nav-ham span{display:block;width:22px;height:1px;background:var(--cream);transition:all .3s}
 
-        body {
-            background: var(--navy);
-            color: #fff;
-            min-height: 100vh;
-            min-height: 100dvh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Montserrat', sans-serif;
-            overflow: hidden;
-            position: relative;
-        }
+/* HERO */
+#hero{position:relative;height:100vh;min-height:680px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:-8%;background:url('images/header.jpg') center center/cover no-repeat;transform-origin:center center;animation:kburns 22s ease-in-out infinite alternate}
+@keyframes kburns{0%{transform:scale(1.08) translate(0,0)}50%{transform:scale(1.14) translate(-1.5%,-.8%)}100%{transform:scale(1.1) translate(1.2%,.6%)}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,13,26,.72) 0%,rgba(9,22,37,.48) 35%,rgba(11,26,46,.55) 65%,rgba(5,10,20,.82) 100%)}
+.hero-overlay2{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 110%,rgba(200,169,110,.08) 0%,transparent 68%)}
+.hero-glow{position:absolute;inset:0;background:radial-gradient(ellipse 65% 48% at 50% 82%,rgba(200,169,110,.055) 0%,transparent 68%);animation:glow 9s ease-in-out infinite}
+@keyframes glow{0%,100%{opacity:.4;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.12)}}
 
-        /* ── Custom cursor (desktop only) ─────────────────── */
-        @media (pointer: fine) { body { cursor: none; } }
+/* Particles */
+.p{position:absolute;background:var(--amber);border-radius:50%;opacity:0;animation:fp linear infinite}
+@keyframes fp{0%{opacity:0;transform:translateY(0) scale(1)}8%{opacity:.55}92%{opacity:.15}100%{opacity:0;transform:translateY(-85vh) scale(.4)}}
 
-        .cur, .cur-ring {
-            position: fixed;
-            pointer-events: none;
-            border-radius: 50%;
-            z-index: 9999;
-            transform: translate(-50%,-50%);
-        }
+.hero-content{position:relative;z-index:2;max-width:880px;padding:0 28px}
+.hero-eyebrow{font-family:'Jost',sans-serif;font-weight:300;font-size:.66rem;letter-spacing:.38em;text-transform:uppercase;color:var(--amber);margin-bottom:30px;opacity:0;transform:translateY(18px);animation:fup 1s .28s forwards}
+.hero-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(4.2rem,11vw,9rem);line-height:.9;letter-spacing:-.01em;color:var(--cream);margin-bottom:6px;opacity:0;transform:translateY(28px);animation:fup 1.2s .5s forwards}
+.hero-title em{font-style:italic;color:var(--amber-light)}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.05rem,2.4vw,1.45rem);letter-spacing:.1em;color:var(--muted);margin-bottom:54px;opacity:0;transform:translateY(18px);animation:fup 1.1s .78s forwards}
+.hero-actions{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;opacity:0;transform:translateY(18px);animation:fup 1s 1.05s forwards}
+.btn-p{background:var(--amber);color:var(--navy);border:none;padding:15px 42px;font-family:'Jost',sans-serif;font-weight:400;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;cursor:none;text-decoration:none;display:inline-block;transition:background .3s,transform .2s}
+.btn-p:hover{background:var(--amber-light);transform:translateY(-1px)}
+.btn-o{background:transparent;color:var(--cream);border:1px solid rgba(245,240,230,.28);padding:15px 42px;font-family:'Jost',sans-serif;font-weight:300;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;cursor:none;text-decoration:none;display:inline-block;transition:border-color .3s,color .3s}
+.btn-o:hover{border-color:var(--amber);color:var(--amber)}
+.hero-scroll{position:absolute;bottom:38px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:fi 1s 1.9s forwards}
+.hero-scroll span{font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted)}
+.scroll-line{width:1px;height:46px;background:linear-gradient(to bottom,var(--amber),transparent);animation:sp 2.2s ease-in-out infinite}
+@keyframes sp{0%,100%{opacity:.35;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.18)}}
 
-        .cur {
-            width: 7px; height: 7px;
-            background: rgba(255,255,255,0.85);
-            transition: width .3s, height .3s, background .3s;
-        }
+/* ANIMATIONS */
+@keyframes fup{to{opacity:1;transform:translateY(0)}}
+@keyframes fi{to{opacity:1}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .85s ease,transform .85s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.1s}.rd2{transition-delay:.22s}.rd3{transition-delay:.34s}
 
-        .cur-ring {
-            width: 30px; height: 30px;
-            border: 1px solid rgba(255,255,255,0.28);
-            z-index: 9998;
-            transition: width .3s, height .3s;
-        }
+/* WAVE */
+.wdiv{position:relative;overflow:hidden;line-height:0}
+.wdiv svg{display:block;width:100%}
 
-        .cur.on  { width: 12px; height: 12px; background: rgba(255,255,255,.4); }
-        .cur-ring.on { width: 46px; height: 46px; }
+/* SECTION */
+.slabel{font-family:'Jost',sans-serif;font-weight:300;font-size:.62rem;letter-spacing:.38em;text-transform:uppercase;color:var(--amber);margin-bottom:14px;display:block}
+.stitle{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.3rem,5vw,3.9rem);line-height:1.08;color:var(--cream)}
+.stitle em{font-style:italic;color:var(--amber-light)}
+.sbody{font-family:'Jost',sans-serif;font-weight:300;font-size:.92rem;line-height:1.88;color:var(--muted)}
 
-        @media (pointer: coarse) { .cur, .cur-ring { display: none !important; } }
+/* ABOUT */
+#about{background:var(--navy);padding:124px 56px}
+.about-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:center}
+.about-text .sbody{margin-top:26px;max-width:480px}
+.about-quote{margin-top:48px;padding:26px 30px;border-left:2px solid var(--amber);background:rgba(200,169,110,.04)}
+.about-quote p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.12rem;color:var(--cream);line-height:1.72;opacity:.85}
+.about-quote small{display:block;margin-top:10px;font-family:'Jost',sans-serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber)}
+.about-vis{position:relative}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.aimg{overflow:hidden;position:relative}
+.aimg:first-child{margin-top:52px}
+.aimg img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;transition:transform .85s cubic-bezier(.25,.46,.45,.94);filter:brightness(.84) saturate(.88)}
+.aimg:hover img{transform:scale(1.05)}
+.about-line{position:absolute;top:20px;right:-14px;width:2px;height:112px;background:linear-gradient(to bottom,var(--amber),transparent)}
 
-        /* ── Background glow ──────────────────────────────── */
-        .bg {
-            position: fixed; inset: 0;
-            background: radial-gradient(ellipse 60% 52% at 50% 42%, #112244 0%, transparent 68%);
-            animation: breathe 8s ease-in-out infinite;
-            pointer-events: none;
-        }
+/* MENU */
+#menu{background:linear-gradient(180deg,#122038 0%,#0D1C30 100%);padding:120px 56px}
+.menu-in{max-width:1200px;margin:0 auto}
+.menu-hd{text-align:center;margin-bottom:60px}
+.menu-hd .sbody{margin:18px auto 0;text-align:center}
+.tabs{display:flex;justify-content:center;gap:0;margin-bottom:60px;border-bottom:1px solid rgba(200,169,110,.13);overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{background:none;border:none;border-bottom:2px solid transparent;padding:13px 26px;font-family:'Jost',sans-serif;font-weight:300;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);cursor:none;transition:color .3s,border-color .3s;white-space:nowrap;margin-bottom:-1px}
+.tab.active,.tab:hover{color:var(--amber);border-bottom-color:var(--amber)}
+.panel{display:none}.panel.active{display:grid}
+.p2{grid-template-columns:1fr 1fr;gap:48px}
+.dishes{display:flex;flex-direction:column}
+.dish{display:flex;align-items:flex-start;gap:18px;padding:20px 0;border-bottom:1px solid rgba(200,169,110,.07);transition:background .3s}
+.dish:last-child{border-bottom:none}
+.dthumb{width:68px;height:68px;flex-shrink:0;overflow:hidden}
+.dthumb img{width:100%;height:100%;object-fit:cover;transition:transform .55s ease;filter:brightness(.86) saturate(.88)}
+.dish:hover .dthumb img{transform:scale(1.09)}
+.dblank{width:68px;height:68px;flex-shrink:0;background:rgba(200,169,110,.05);border:1px solid rgba(200,169,110,.1);display:flex;align-items:center;justify-content:center}
+.dblank svg{opacity:.22}
+.dinfo{flex:1}
+.dname{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.08rem;color:var(--cream);margin-bottom:3px;line-height:1.3}
+.ddesc{font-family:'Jost',sans-serif;font-weight:300;font-size:.73rem;letter-spacing:.02em;color:var(--muted);line-height:1.6}
+.mnote{margin-top:28px;padding:14px 18px;border:1px solid rgba(200,169,110,.1);background:rgba(200,169,110,.03);text-align:center;grid-column:1/-1}
+.mnote p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.88rem;color:var(--muted)}
 
-        @keyframes breathe {
-            0%,100% { opacity: .4; }
-            50%      { opacity: .95; }
-        }
+/* GALLERY */
+#gallery{background:var(--navy);padding:120px 0;overflow:hidden}
+.gal-hd{text-align:center;padding:0 56px;margin-bottom:60px}
+.gal-strip{display:flex;gap:14px;padding:0 56px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x mandatory;cursor:grab}
+.gal-strip::-webkit-scrollbar{display:none}
+.gal-strip:active{cursor:grabbing}
+.gcard{flex-shrink:0;width:310px;height:410px;overflow:hidden;position:relative;scroll-snap-align:start}
+.gcard img{width:100%;height:100%;object-fit:cover;filter:brightness(.72) saturate(.82);transition:transform .85s cubic-bezier(.25,.46,.45,.94),filter .5s}
+.gcard:hover img{transform:scale(1.07);filter:brightness(.88) saturate(1)}
+.gcard-lbl{position:absolute;bottom:22px;left:22px;right:22px}
+.gcard-lbl h3{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.28rem;color:var(--white);text-shadow:0 2px 14px rgba(0,0,0,.55)}
+.gcard-lbl p{font-family:'Jost',sans-serif;font-weight:300;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-top:4px}
 
-        /* ── Content wrapper ──────────────────────────────── */
-        .wrap {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            width: 100%;
-            max-width: 560px;
-            padding: clamp(1rem, 4vh, 2rem) clamp(1.2rem, 5vw, 2.5rem);
-            will-change: transform;
-        }
+/* REZERVASYON */
+#rezervasyon{background:linear-gradient(180deg,#0D1C30 0%,var(--navy) 100%);padding:120px 56px}
+.rez-in{max-width:780px;margin:0 auto;text-align:center}
+.rez-in .sbody{margin:18px auto 48px;text-align:center}
+.stepind{display:flex;justify-content:center;align-items:center;margin-bottom:48px}
+.sdot{width:30px;height:30px;border-radius:50%;border:1px solid rgba(200,169,110,.3);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:.88rem;color:var(--muted);transition:all .4s}
+.sdot.active{border-color:var(--amber);color:var(--amber);background:rgba(200,169,110,.08)}
+.sdot.done{border-color:var(--amber);background:var(--amber);color:var(--navy)}
+.sline{width:58px;height:1px;background:rgba(200,169,110,.18);transition:background .4s}
+.sline.done{background:var(--amber)}
+.rstep{display:none;text-align:left;animation:sin .4s ease}
+.rstep.active{display:block}
+@keyframes sin{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:translateX(0)}}
+.steptitle{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.75rem;color:var(--cream);margin-bottom:30px;text-align:center}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.fg{display:flex;flex-direction:column;gap:7px}
+.fg label{font-family:'Jost',sans-serif;font-weight:300;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber)}
+.fg input,.fg select{background:rgba(200,169,110,.04);border:1px solid rgba(200,169,110,.18);color:var(--cream);padding:13px 16px;font-family:'Jost',sans-serif;font-weight:300;font-size:.88rem;outline:none;transition:border-color .3s;cursor:none;-webkit-appearance:none;appearance:none}
+.fg input:focus,.fg select:focus{border-color:var(--amber)}
+.fg select option{background:var(--navy-mid);color:var(--cream)}
+.kopts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:30px}
+.kcard{border:1px solid rgba(200,169,110,.18);padding:26px 22px;cursor:none;transition:border-color .3s,background .3s;text-align:center}
+.kcard:hover{border-color:var(--amber);background:rgba(200,169,110,.04)}
+.kcard.sel{border-color:var(--amber);background:rgba(200,169,110,.08)}
+.kcard h4{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.15rem;color:var(--cream);margin-bottom:5px}
+.kcard p{font-family:'Jost',sans-serif;font-weight:300;font-size:.72rem;color:var(--muted)}
+.kcheck{width:22px;height:22px;border:1px solid rgba(200,169,110,.28);border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.kcard.sel .kcheck{background:var(--amber);border-color:var(--amber)}
+.kcard.sel .kcheck::after{content:'';width:7px;height:4px;border-left:1.5px solid var(--navy);border-bottom:1.5px solid var(--navy);transform:rotate(-45deg) translate(1px,-1px);display:block}
+.sacts{display:flex;justify-content:space-between;align-items:center;margin-top:30px;gap:14px}
+.btn-back{background:none;border:1px solid rgba(200,169,110,.18);color:var(--muted);padding:13px 30px;font-family:'Jost',sans-serif;font-weight:300;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;cursor:none;transition:border-color .3s,color .3s}
+.btn-back:hover{border-color:var(--amber);color:var(--amber)}
+.btn-next{flex:1;background:var(--amber);border:none;color:var(--navy);padding:14px 38px;font-family:'Jost',sans-serif;font-weight:400;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;cursor:none;transition:background .3s}
+.btn-next:hover{background:var(--amber-light)}
+.btn-wa{flex:1;background:#25D366;border:none;color:#fff;padding:14px 38px;font-family:'Jost',sans-serif;font-weight:400;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;cursor:none;transition:background .3s;display:flex;align-items:center;justify-content:center;gap:9px;text-decoration:none}
+.btn-wa:hover{background:#1ebe5a}
+.sum{background:rgba(200,169,110,.04);border:1px solid rgba(200,169,110,.13);padding:30px;margin-bottom:30px}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.si label{display:block;font-family:'Jost',sans-serif;font-weight:300;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:3px}
+.si span{font-family:'Cormorant Garamond',serif;font-size:1.12rem;color:var(--cream)}
 
-        /* ── MARE ─────────────────────────────────────────── */
-        .mare {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 700;
-            font-size: clamp(3.8rem, 15vw, 10rem);
-            letter-spacing: 0.18em;
-            line-height: 1;
-            margin-bottom: 0.25rem;
-            opacity: 0;
-            animation: fadeIn 1.6s ease forwards .2s;
-            user-select: none;
-            transition: letter-spacing .7s ease;
-        }
+/* KONUM */
+#konum{background:var(--navy);padding:120px 56px}
+.konum-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:start}
+.konum-text .sbody{margin-top:22px;margin-bottom:38px}
+.kdets{display:flex;flex-direction:column;gap:22px}
+.kdet{display:flex;gap:14px;align-items:flex-start}
+.kicon{width:34px;height:34px;border:1px solid rgba(200,169,110,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.kdet h4{font-family:'Jost',sans-serif;font-weight:400;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);margin-bottom:3px}
+.kdet p{font-family:'Cormorant Garamond',serif;font-size:1.02rem;color:var(--cream);line-height:1.58}
+.kmap{aspect-ratio:4/3;overflow:hidden;border:1px solid rgba(200,169,110,.1);background:var(--navy-mid)}
+.kmap iframe{width:100%;height:100%;border:none;filter:invert(.85) hue-rotate(180deg) brightness(.65) saturate(.75);opacity:.82}
+.socrow{display:flex;gap:14px;margin-top:30px}
+.soclink{width:38px;height:38px;border:1px solid rgba(200,169,110,.18);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;transition:border-color .3s,color .3s,background .3s}
+.soclink:hover{border-color:var(--amber);color:var(--amber);background:rgba(200,169,110,.06)}
 
-        .mare:hover { letter-spacing: 0.26em; }
+/* FOOTER */
+footer{background:#040C17;padding:44px 56px;border-top:1px solid rgba(200,169,110,.07)}
+.foot-in{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.foot-logo img{height:34px;filter:brightness(0) invert(1);opacity:.44}
+.foot-txt{font-family:'Jost',sans-serif;font-weight:300;font-size:.7rem;letter-spacing:.07em;color:rgba(245,240,230,.28);text-align:center}
+.foot-txt a{color:var(--amber);text-decoration:none;opacity:.65}
+.foot-links{display:flex;gap:22px}
+.foot-links a{font-family:'Jost',sans-serif;font-weight:300;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,230,.3);text-decoration:none;transition:color .3s}
+.foot-links a:hover{color:var(--amber)}
 
-        /* ── GASTRO ───────────────────────────────────────── */
-        .gastro {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 200;
-            font-size: clamp(.65rem, 2.3vw, .95rem);
-            letter-spacing: 0.68em;
-            text-transform: uppercase;
-            margin-bottom: clamp(1.6rem, 4vh, 3rem);
-            opacity: 0;
-            animation: fadeIn 1.6s ease forwards .9s;
-            transition: letter-spacing .65s ease;
-            user-select: none;
-        }
+/* MOBILE MENU */
+.mob-ov{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:1050;opacity:0;pointer-events:none;transition:opacity .4s}
+.mob-ov.open{opacity:1;pointer-events:all}
+.mob-menu{position:fixed;top:0;right:-100%;width:80%;max-width:340px;height:100vh;background:var(--navy-mid);z-index:1100;display:flex;flex-direction:column;justify-content:center;padding:48px 40px;gap:30px;transition:right .4s cubic-bezier(.25,.46,.45,.94);border-left:1px solid rgba(200,169,110,.1)}
+.mob-menu.open{right:0}
+.mob-menu a{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;color:var(--cream);text-decoration:none;opacity:.72;transition:opacity .3s,color .3s}
+.mob-menu a:hover{opacity:1;color:var(--amber)}
+.mob-close{position:absolute;top:22px;right:22px;background:none;border:none;color:var(--muted);font-size:1.4rem;cursor:none}
 
-        .gastro:hover { letter-spacing: .95em; }
-
-        /* ── Fish ─────────────────────────────────────────── */
-        .fish-wrap {
-            margin-bottom: clamp(1.6rem, 4vh, 3rem);
-            opacity: 0;
-            animation: fadeIn 1s ease forwards 1.5s;
-        }
-
-        .fish-svg {
-            width: clamp(90px, 20vw, 138px);
-            height: auto;
-            overflow: visible;
-            display: block;
-            transition: filter .5s ease;
-        }
-
-        .fish-wrap:hover .fish-svg {
-            filter: drop-shadow(0 0 18px rgba(255,255,255,.38));
-        }
-
-        .fs {
-            stroke: #fff;
-            stroke-width: 2;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        /* stroke-draw — dasharray set by JS */
-        #fb  { animation: drawPath 2.2s cubic-bezier(.4,0,.2,1) forwards 1.7s; }
-        #ft1 { animation: drawPath .65s ease forwards 3.7s; }
-        #ft2 { animation: drawPath .65s ease forwards 4.1s; }
-
-        @keyframes drawPath { to { stroke-dashoffset: 0; } }
-
-        /* ── Divider ──────────────────────────────────────── */
-        .line {
-            width: 0; height: 1px;
-            background: rgba(255,255,255,.18);
-            margin-bottom: clamp(1.2rem, 3vh, 2rem);
-            animation: expandLine .9s ease forwards 2.2s;
-        }
-
-        @keyframes expandLine { to { width: min(150px, 38vw); } }
-
-        /* ── Label ────────────────────────────────────────── */
-        .label {
-            font-size: clamp(.5rem, 1.4vw, .6rem);
-            font-weight: 300;
-            letter-spacing: .5em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,.38);
-            margin-bottom: .45rem;
-            opacity: 0;
-            animation: fadeIn .8s ease forwards 2.5s;
-        }
-
-        /* ── Location ─────────────────────────────────────── */
-        .location {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-weight: 300;
-            font-size: clamp(.85rem, 2.2vw, 1.1rem);
-            color: rgba(255,255,255,.48);
-            letter-spacing: .05em;
-            margin-bottom: clamp(1.4rem, 3.5vh, 2.5rem);
-            opacity: 0;
-            animation: fadeIn .8s ease forwards 2.8s;
-        }
-
-        /* ── Progress bar ─────────────────────────────────── */
-        .prog-section {
-            width: 100%;
-            max-width: min(300px, 82vw);
-            margin-bottom: clamp(1.4rem, 3.5vh, 2.4rem);
-            opacity: 0;
-            animation: fadeIn .8s ease forwards 3.1s;
-        }
-
-        .prog-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: .55rem;
-        }
-
-        .prog-text {
-            font-size: clamp(.45rem, 1.3vw, .54rem);
-            font-weight: 300;
-            letter-spacing: .42em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,.28);
-        }
-
-        .prog-pct {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: clamp(.7rem, 1.6vw, .78rem);
-            color: rgba(255,255,255,.28);
-        }
-
-        .prog-track {
-            width: 100%;
-            height: 1px;
-            background: rgba(255,255,255,.1);
-            position: relative;
-        }
-
-        .prog-fill {
-            position: absolute;
-            left: 0; top: 0;
-            height: 1px;
-            width: 0;
-            background: rgba(255,255,255,.45);
-            animation: fillBar 3.2s cubic-bezier(.4,0,.2,1) forwards 3.4s;
-        }
-
-        .prog-dot {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 5px; height: 5px;
-            border-radius: 50%;
-            background: #fff;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 8px rgba(255,255,255,.7), 0 0 18px rgba(255,255,255,.3);
-            animation: moveDot 3.2s cubic-bezier(.4,0,.2,1) forwards 3.4s;
-        }
-
-        /* shimmer sweep after fill completes */
-        .prog-shimmer {
-            position: absolute;
-            top: -1px; left: 0;
-            height: 3px; width: 45px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,.7), transparent);
-            animation: shimmer 2s ease-in-out infinite 7s;
-            pointer-events: none;
-        }
-
-        @keyframes fillBar  { to { width: 74%; } }
-        @keyframes moveDot  { to { left: 74%; } }
-        @keyframes shimmer  {
-            0%   { left: 0;   opacity: 0; }
-            10%  { opacity: 1; }
-            100% { left: 74%; opacity: 0; }
-        }
-
-        /* ── Email form ───────────────────────────────────── */
-        .form {
-            display: flex;
-            width: 100%;
-            max-width: min(380px, 90vw);
-            margin-bottom: clamp(1.4rem, 3.5vh, 2.4rem);
-            opacity: 0;
-            animation: fadeIn .8s ease forwards 3.4s;
-        }
-
-        .form input {
-            flex: 1;
-            min-width: 0;
-            background: transparent;
-            border: 1px solid rgba(255,255,255,.18);
-            border-right: none;
-            color: #fff;
-            padding: .85rem 1.2rem;
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(.7rem, 1.8vw, .76rem);
-            font-weight: 300;
-            letter-spacing: .07em;
-            outline: none;
-            -webkit-appearance: none;
-            transition: border-color .3s, background .3s;
-        }
-
-        .form input::placeholder { color: rgba(255,255,255,.2); }
-
-        .form input:hover,
-        .form input:focus {
-            border-color: rgba(255,255,255,.48);
-            background: rgba(255,255,255,.025);
-        }
-
-        .form button {
-            background: transparent;
-            border: 1px solid rgba(255,255,255,.18);
-            color: #fff;
-            padding: .85rem clamp(.9rem, 2vw, 1.4rem);
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(.58rem, 1.5vw, .65rem);
-            font-weight: 300;
-            letter-spacing: .22em;
-            text-transform: uppercase;
-            cursor: pointer;
-            white-space: nowrap;
-            flex-shrink: 0;
-            position: relative;
-            overflow: hidden;
-            transition: border-color .3s;
-        }
-
-        .form button span { position: relative; z-index: 1; }
-
-        .form button::after {
-            content: '';
-            position: absolute; inset: 0;
-            background: rgba(255,255,255,.08);
-            transform: translateX(-101%);
-            transition: transform .42s cubic-bezier(.4,0,.2,1);
-        }
-
-        .form button:hover::after { transform: translateX(0); }
-        .form button:hover { border-color: rgba(255,255,255,.48); }
-
-        /* ── Social icons ─────────────────────────────────── */
-        .socials {
-            display: flex;
-            align-items: center;
-            gap: clamp(.8rem, 2.5vw, 1.5rem);
-            opacity: 0;
-            animation: fadeIn .8s ease forwards 3.7s;
-        }
-
-        .soc {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255,255,255,.38);
-            text-decoration: none;
-            padding: .45rem;
-            min-width: 44px; min-height: 44px; /* touch target */
-            transition: color .35s, filter .35s, transform .35s;
-        }
-
-        .soc svg { width: 18px; height: 18px; display: block; }
-
-        .soc:hover {
-            color: rgba(255,255,255,.9);
-            filter: drop-shadow(0 0 10px rgba(255,255,255,.28));
-            transform: translateY(-3px);
-        }
-
-        .sep { width: 1px; height: 12px; background: rgba(255,255,255,.1); flex-shrink: 0; }
-
-        /* ── Credit ───────────────────────────────────────── */
-        .credit {
-            position: fixed;
-            bottom: max(1.2rem, env(safe-area-inset-bottom));
-            font-size: clamp(.48rem, 1.3vw, .56rem);
-            font-weight: 300;
-            letter-spacing: .35em;
-            color: rgba(255,255,255,.14);
-            text-transform: uppercase;
-            opacity: 0;
-            animation: fadeIn .8s ease forwards 4s;
-            user-select: none;
-            white-space: nowrap;
-            z-index: 2;
-        }
-
-        /* ── Click ripple ─────────────────────────────────── */
-        .ripple {
-            position: fixed;
-            pointer-events: none;
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,.1);
-            transform: translate(-50%,-50%);
-            animation: rippleAnim 1.3s ease-out forwards;
-        }
-
-        @keyframes rippleAnim {
-            from { width: 0; height: 0; opacity: .5; }
-            to   { width: 100px; height: 100px; opacity: 0; }
-        }
-
-        /* ── Bottom waves ─────────────────────────────────── */
-        .waves {
-            position: fixed;
-            bottom: 0; left: 0;
-            width: 100%; height: 70px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* ── Shared ───────────────────────────────────────── */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to   { opacity: 1; }
-        }
-
-        /* ── Responsive: small phones ─────────────────────── */
-        @media (max-width: 400px) {
-            .socials { gap: .5rem; }
-            .sep { display: none; }
-        }
-
-        @media (max-width: 480px) {
-            .form { flex-direction: column; }
-            .form input {
-                border-right: 1px solid rgba(255,255,255,.18);
-                border-bottom: none;
-            }
-            .form input:hover, .form input:focus {
-                border-right-color: rgba(255,255,255,.48);
-            }
-            .form button { padding: .9rem; letter-spacing: .28em; }
-        }
-
-        @media (max-height: 640px) {
-            .wrap { padding-top: .5rem; padding-bottom: .5rem; }
-            .mare { margin-bottom: .15rem; }
-            .gastro { margin-bottom: 1rem; }
-            .fish-wrap { margin-bottom: 1rem; }
-            .line { margin-bottom: .8rem; }
-            .location { margin-bottom: 1rem; }
-            .prog-section { margin-bottom: 1rem; }
-            .form { margin-bottom: 1rem; }
-            .credit { display: none; }
-        }
-    </style>
+/* RESPONSIVE */
+@media(max-width:920px){
+  nav{padding:20px 24px}
+  nav.scrolled{padding:14px 24px}
+  .nav-links,.nav-cta{display:none}
+  .nav-ham{display:flex}
+  #about{padding:84px 24px}
+  .about-in{grid-template-columns:1fr;gap:48px}
+  .about-vis{display:none}
+  #menu{padding:84px 24px}
+  .p2{grid-template-columns:1fr;gap:0}
+  #gallery{padding:84px 0}
+  .gal-hd{padding:0 24px}
+  .gal-strip{padding:0 24px}
+  .gcard{width:256px;height:332px}
+  #rezervasyon{padding:84px 24px}
+  .frow{grid-template-columns:1fr}
+  .kopts{grid-template-columns:1fr}
+  .sacts{flex-direction:column-reverse}
+  .btn-next,.btn-wa{width:100%}
+  .sgrid{grid-template-columns:1fr}
+  #konum{padding:84px 24px}
+  .konum-in{grid-template-columns:1fr;gap:48px}
+  footer{padding:32px 24px}
+  .foot-in{flex-direction:column;text-align:center}
+  .foot-links{flex-wrap:wrap;justify-content:center}
+}
+@media(max-width:480px){
+  .hero-title{font-size:3.4rem}
+  .hero-actions{flex-direction:column;width:100%}
+  .btn-p,.btn-o{width:100%;text-align:center}
+  .tabs{justify-content:flex-start}
+  .tab{padding:11px 14px;font-size:.6rem}
+}
+</style>
 </head>
 <body>
 
-    <!-- Custom cursor (desktop) -->
-    <div class="cur" id="cur"></div>
-    <div class="cur-ring" id="curRing"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cring"></div>
 
-    <!-- Background -->
-    <div class="bg"></div>
+<div class="mob-ov" id="mobOv" onclick="closeMob()"></div>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="closeMob()">✕</button>
+  <a href="#about" onclick="closeMob()">Hakkımızda</a>
+  <a href="#menu" onclick="closeMob()">Menü</a>
+  <a href="#gallery" onclick="closeMob()">Galeri</a>
+  <a href="#konum" onclick="closeMob()">Konum</a>
+  <a href="#rezervasyon" onclick="closeMob()" style="color:var(--amber);opacity:1">Rezervasyon</a>
+</div>
 
-    <!-- Animated waves -->
-    <svg class="waves" viewBox="0 0 1440 70" preserveAspectRatio="none">
-        <path fill="rgba(255,255,255,.042)"
-              d="M0,35 C240,65 480,5 720,35 C960,65 1200,5 1440,35 L1440,70 L0,70 Z">
-            <animateTransform attributeName="transform" type="translate"
-                values="0,0;-360,0;0,0" dur="18s" repeatCount="indefinite"/>
-        </path>
-        <path fill="rgba(255,255,255,.022)"
-              d="M0,48 C300,18 600,60 900,42 C1200,24 1350,58 1440,48 L1440,70 L0,70 Z">
-            <animateTransform attributeName="transform" type="translate"
-                values="0,0;360,0;0,0" dur="24s" repeatCount="indefinite"/>
-        </path>
-    </svg>
+<nav id="nav">
+  <a href="#hero" class="nav-logo"><img src="images/marelogo.png" alt="Mare Gastro"></a>
+  <ul class="nav-links">
+    <li><a href="#about">Hakkımızda</a></li>
+    <li><a href="#menu">Menü</a></li>
+    <li><a href="#gallery">Galeri</a></li>
+    <li><a href="#konum">Konum</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('rezervasyon').scrollIntoView({behavior:'smooth'})">Rezervasyon</button>
+  <button class="nav-ham" onclick="openMob()" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-    <!-- Main content -->
-    <div class="wrap" id="wrap">
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-overlay2"></div>
+  <div class="hero-glow"></div>
+  <div class="p" style="left:12%;width:2px;height:2px;animation-duration:15s;animation-delay:0s"></div>
+  <div class="p" style="left:27%;width:1px;height:1px;animation-duration:19s;animation-delay:3.5s"></div>
+  <div class="p" style="left:48%;width:2px;height:2px;animation-duration:13s;animation-delay:1.2s"></div>
+  <div class="p" style="left:63%;width:1px;height:1px;animation-duration:21s;animation-delay:5s"></div>
+  <div class="p" style="left:78%;width:2px;height:2px;animation-duration:17s;animation-delay:2.4s"></div>
+  <div class="p" style="left:35%;width:3px;height:3px;animation-duration:23s;animation-delay:8s"></div>
+  <div class="p" style="left:55%;width:1px;height:1px;animation-duration:16s;animation-delay:6s"></div>
+  <div class="p" style="left:88%;width:2px;height:2px;animation-duration:20s;animation-delay:4s"></div>
 
-        <!-- MARE -->
-        <h1 class="mare">MARE</h1>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Didi Otel &nbsp;·&nbsp; Sapanca &nbsp;·&nbsp; Fine Dining</span>
+    <h1 class="hero-title">Mare<br><em>Gastro</em></h1>
+    <p class="hero-sub">Gölün kıyısında, doğanın kalbinde</p>
+    <div class="hero-actions">
+      <button class="btn-p" onclick="document.getElementById('rezervasyon').scrollIntoView({behavior:'smooth'})">Rezervasyon Yap</button>
+      <a href="#menu" class="btn-o">Menüyü Gör</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Keşfet</span>
+  </div>
+</section>
 
-        <!-- GASTRO -->
-        <p class="gastro">Gastro</p>
+<!-- wave -->
+<div class="wdiv" style="background:var(--navy)">
+  <svg viewBox="0 0 1440 72" preserveAspectRatio="none" style="height:72px">
+    <path d="M0,36 C240,72 480,0 720,36 C960,72 1200,0 1440,36 L1440,72 L0,72 Z" fill="#0B1A2E"/>
+  </svg>
+</div>
 
-        <!-- Fish icon -->
-        <div class="fish-wrap">
-            <svg class="fish-svg" viewBox="0 0 280 96" xmlns="http://www.w3.org/2000/svg">
-                <!-- Body: elongated, nose left -->
-                <path class="fs" id="fb"
-                      d="M 10,48 C 48,6 196,6 216,48 C 196,90 48,90 10,48 Z"/>
-                <!-- Tail upper -->
-                <path class="fs" id="ft1"
-                      d="M 207,48 C 222,32 248,20 258,10"/>
-                <!-- Tail lower -->
-                <path class="fs" id="ft2"
-                      d="M 207,48 C 222,64 248,76 258,86"/>
-            </svg>
-        </div>
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-in">
+    <div class="about-text reveal">
+      <span class="slabel">Hikayemiz</span>
+      <h2 class="stitle">Sapanca gölünün<br>ruhu, tabakta</h2>
+      <p class="sbody">Mare Gastro, Sapanca gölü kıyısının eşsiz manzarasını arka planına alan, Didi Otel bahçesinde konumlanan bir fine dining deneyimidir. Her tabak, Ege ve Akdeniz mutfağının en saf malzemeleriyle hazırlanır. Deniz kokusunu, zeytinyağını ve taze otları bir arada hissedersiniz.</p>
+      <div class="about-quote">
+        <p>"Mare Gastro, Didi Otel'in doğayla bütünleşen ruhunu mutfak sanatıyla taçlandırıyor. Her misafir için özenle tasarlanmış bir deneyim."</p>
+        <small>Didi Otel &nbsp;·&nbsp; Sapanca</small>
+      </div>
+    </div>
+    <div class="about-vis reveal rd2">
+      <div class="about-line"></div>
+      <div class="about-grid">
+        <div class="aimg"><img src="images/ahtapot-izgara.jpg" alt="Ahtapot Izgara"></div>
+        <div class="aimg" style="margin-top:0"><img src="images/citir-somon.jpg" alt="Çıtır Somon"></div>
+        <div class="aimg"><img src="images/cheesecake.jpg" alt="Mare Tatlı"></div>
+        <div class="aimg"><img src="images/bonfile.jpg" alt="Bonfile"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <!-- Divider -->
-        <div class="line"></div>
+<!-- wave -->
+<div class="wdiv" style="background:var(--navy)">
+  <svg viewBox="0 0 1440 56" preserveAspectRatio="none" style="height:56px">
+    <path d="M0,28 C360,56 720,0 1080,28 C1260,42 1380,18 1440,28 L1440,56 L0,56 Z" fill="#122038"/>
+  </svg>
+</div>
 
-        <!-- Label -->
-        <p class="label">Yakında Açılıyor</p>
-
-        <!-- Location -->
-        <p class="location">Didi Otel &nbsp;·&nbsp; Sapanca &nbsp;·&nbsp; Fine Dining</p>
-
-        <!-- Progress bar -->
-        <div class="prog-section">
-            <div class="prog-head">
-                <span class="prog-text">Hazırlanıyor</span>
-                <span class="prog-pct" id="pct">0%</span>
-            </div>
-            <div class="prog-track">
-                <div class="prog-fill"></div>
-                <div class="prog-dot"></div>
-                <div class="prog-shimmer"></div>
-            </div>
-        </div>
-
-        <!-- Email form -->
-        <form class="form" id="frm" onsubmit="submitForm(event)">
-            <input type="email" id="mail" placeholder="E-posta adresinizi girin" required>
-            <button type="submit" id="btn"><span id="btnTxt">Haberdar Ol</span></button>
-        </form>
-
-        <!-- Social icons -->
-        <div class="socials">
-
-            <a class="soc" href="https://www.instagram.com/maregastrosapanca/" target="_blank" rel="noopener" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5"/>
-                    <circle cx="12" cy="12" r="4.5"/>
-                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-                </svg>
-            </a>
-
-            <div class="sep"></div>
-
-            <a class="soc" href="https://www.tiktok.com/@maregastro" target="_blank" rel="noopener" aria-label="TikTok">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.19 8.19 0 0 0 4.77 1.52V6.77a4.84 4.84 0 0 1-1-.08z"/>
-                </svg>
-            </a>
-
-            <div class="sep"></div>
-
-            <a class="soc" href="https://www.youtube.com/@MareGastro" target="_blank" rel="noopener" aria-label="YouTube">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.95C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20.06 12 20.06 12 20.06s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
-                    <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
-                </svg>
-            </a>
-
-            <div class="sep"></div>
-
-            <a class="soc" href="https://www.linkedin.com/company/mare-gastro/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                    <rect x="2" y="9" width="4" height="12"/>
-                    <circle cx="4" cy="4" r="2"/>
-                </svg>
-            </a>
-
-            <div class="sep"></div>
-
-            <a class="soc" href="mailto:info@maregastro.com" aria-label="E-posta">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                    <polyline points="22,6 12,13 2,6"/>
-                </svg>
-            </a>
-
-        </div>
+<!-- MENU -->
+<section id="menu">
+  <div class="menu-in">
+    <div class="menu-hd reveal">
+      <span class="slabel">Lezzetlerimiz</span>
+      <h2 class="stitle">Menü</h2>
+      <p class="sbody">Taze deniz ürünleri, Ege bölgesinin bereketli topraklarından seçilmiş malzemeler ve ustalıkla hazırlanmış tatlılar.</p>
+    </div>
+    <div class="tabs reveal rd1">
+      <button class="tab active" onclick="switchTab('b',this)">Başlangıçlar</button>
+      <button class="tab" onclick="switchTab('s',this)">Salatalar</button>
+      <button class="tab" onclick="switchTab('a',this)">Ara Sıcaklar</button>
+      <button class="tab" onclick="switchTab('n',this)">Ana Yemekler</button>
+      <button class="tab" onclick="switchTab('t',this)">Tatlılar</button>
+      <button class="tab" onclick="switchTab('c',this)">Çocuk Menüsü</button>
     </div>
 
-    <p class="credit">© 2026 Mare Gastro &nbsp;·&nbsp; Sapanca</p>
+    <!-- Başlangıçlar -->
+    <div class="panel p2 active" id="pb">
+      <div class="dishes">
+        <div class="dish"><div class="dthumb"><img src="images/koz-patlican.jpg" alt="Köz Patlıcan"></div><div class="dinfo"><div class="dname">Köz Patlıcan</div><div class="ddesc">Köz kırmızı biber, yeşil biber, taze soğan</div></div></div>
+        <div class="dish"><div class="dthumb"><img src="images/humus.jpg" alt="Humus"></div><div class="dinfo"><div class="dname">Humus</div><div class="ddesc">İsli et, kornişon turşu, fındık, sızma zeytinyağı</div></div></div>
+        <div class="dish"><div class="dthumb"><img src="images/pilav.jpg" alt="Patlıcanlı Pilav"></div><div class="dinfo"><div class="dname">Patlıcanlı Pilav</div><div class="ddesc">Fıstıklı, üzümlü, baharatlı zeytinyağlı patlıcanlı pilav</div></div></div>
+        <div class="dish"><div class="dthumb"><img src="images/levrek-marin.jpg" alt="Levrek Marin"></div><div class="dinfo"><div class="dname">Levrek Marin</div><div class="ddesc"></div></div></div>
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Girit Ezme, Kavun</div><div class="ddesc">Rakı ile marine edilmiş kavun, girit ezme sızma zeytinyağı</div></div></div>
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Zeytinyağlı Enginar</div><div class="ddesc">2 adet zeytinyağlı enginar, araka püresi, fıstık, nane</div></div></div>
+      </div>
+      <div class="dishes">
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Yoğurtlu Semizotu</div><div class="ddesc">Yeşil elma</div></div></div>
+        <div class="dish"><div class="dthumb"><img src="images/dana-carpaccio.jpg" alt="Dana Carpaccio"></div><div class="dinfo"><div class="dname">Dana Carpaccio</div><div class="ddesc">Roka, parmesan rende, kapari</div></div></div>
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Ahtapot Carpaccio</div><div class="ddesc">Patates salatası, kornişon turşu</div></div></div>
+        <div class="dish"><div class="dthumb"><img src="images/jumbo-karides.jpg" alt="Avakadolu Jumbo Karides Söğüş"></div><div class="dinfo"><div class="dname">Avakadolu Jumbo Karides Söğüş</div><div class="ddesc">Hardallı, portakallı narenciye sos</div></div></div>
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Dilim Kavun / Karpuz</div><div class="ddesc"></div></div></div>
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Dilim Ezine Peyniri</div><div class="ddesc"></div></div></div>
+      </div>
+    </div>
 
-    <script>
-    // ── Fish: real path lengths ──────────────────────────────────────
-    window.addEventListener('load', () => {
-        ['fb','ft1','ft2'].forEach(id => {
-            const el = document.getElementById(id);
-            if (!el) return;
-            const len = el.getTotalLength();
-            el.style.strokeDasharray  = len;
-            el.style.strokeDashoffset = len;
-        });
-    });
+    <!-- Salatalar -->
+    <div class="panel p2" id="ps">
+      <div class="dishes">
+        <div class="dish"><div class="dthumb"><img src="images/semizotu-salata.jpg" alt="Semizotu Salatası"></div><div class="dinfo"><div class="dname">Semizotu Salatası</div><div class="ddesc">Tatlı biber turşusu, çilek, yeşil elma, ceviz, erzincan tulum nar ekşili vinaigrette</div></div></div>
+        <div class="dish"><div class="dthumb"><img src="images/yunan-salata.jpg" alt="Yunan Salata"></div><div class="dinfo"><div class="dname">Yunan Salata</div><div class="ddesc">Domates, salatalık, biber, kırmızı soğan, siyah zeytin, dilim ezine peynir</div></div></div>
+      </div>
+      <div class="dishes">
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Roka Salatası</div><div class="ddesc">Roka yaprakları, kiraz domates, parmesan, sarımsaklı balzamik vinaigrette</div></div></div>
+      </div>
+    </div>
 
-    // ── Progress counter ─────────────────────────────────────────────
-    const pctEl = document.getElementById('pct');
-    let started = false;
-    setTimeout(() => {
-        if (started) return;
-        started = true;
-        const target = 74, duration = 3200;
-        const start = performance.now();
-        function tick(now) {
-            const t = Math.min((now - start) / duration, 1);
-            // ease out cubic
-            const eased = 1 - Math.pow(1 - t, 3);
-            pctEl.textContent = Math.round(eased * target) + '%';
-            if (t < 1) requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-    }, 3400);
+    <!-- Ara Sıcaklar -->
+    <div class="panel p2" id="pa">
+      <div class="dishes">
+        <div class="dish"><div class="dthumb"><img src="images/kalamar-tava.jpg" alt="Kalamar Tava"></div><div class="dinfo"><div class="dname">Kalamar Tava</div><div class="ddesc">Tarator sos</div></div></div>
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Baby Kalamar Izgara</div><div class="ddesc">Muhamara</div></div></div>
+        <div class="dish"><div class="dthumb"><img src="images/ahtapot-izgara.jpg" alt="Ahtapot Izgara"></div><div class="dinfo"><div class="dname">Ahtapot Izgara</div><div class="ddesc">Maydanoz ve sarımsaklı tereyağlı sos</div></div></div>
+        <div class="dish"><div class="dthumb"><img src="images/karides-izgara.jpg" alt="Jumbo Karides Izgara"></div><div class="dinfo"><div class="dname">Jumbo Karides Izgara</div><div class="ddesc">Sarımsaklı maydanozlu tereyağı</div></div></div>
+      </div>
+      <div class="dishes">
+        <div class="dish"><div class="dthumb"><img src="images/tereyagli-karides.jpg" alt="Tereyağlı Karides"></div><div class="dinfo"><div class="dname">Tereyağlı Karides</div><div class="ddesc">Sarımsaklı maydanozlu tereyağı</div></div></div>
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Ege Otları / Karadeniz Otları Kavurma</div><div class="ddesc">Sarımsaklı yoğurt</div></div></div>
+        <div class="dish"><div class="dthumb"><img src="images/muska-boregi.jpg" alt="Muska Böreği"></div><div class="dinfo"><div class="dname">Muska Böreği</div><div class="ddesc">4 adet muska böreği</div></div></div>
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Patates Terin</div><div class="ddesc">Gofret patates, kestane mantar sos, isli et, mantar salsa</div></div></div>
+      </div>
+    </div>
 
-    // ── Custom cursor ────────────────────────────────────────────────
-    const cur     = document.getElementById('cur');
-    const curRing = document.getElementById('curRing');
-    let mx = -200, my = -200, rx = -200, ry = -200;
+    <!-- Ana Yemekler -->
+    <div class="panel p2" id="pn">
+      <div class="dishes">
+        <div class="dish"><div class="dthumb"><img src="images/citir-somon.jpg" alt="Çıtır Somon"></div><div class="dinfo"><div class="dname">Çıtır Somon</div><div class="ddesc">200 gr. kıtır somon fileto, kuşkonmaz, fırın patates, hollandaise sos</div></div></div>
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Günün Izgara Balığı</div><div class="ddesc">250 gr. granyöz, köz kırmızı biber ve köz domatesli özel karışım, bebek patates, beurre blanc sos</div></div></div>
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Fırında Kremalı Levrek</div><div class="ddesc">Domates, biber, kekik ve kremalı fırın levrek, kapari, maydanoz</div></div></div>
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Tekir Tempura</div><div class="ddesc">Tempura tekniği ile kızartılmış tekir balığı, el yapımı otlu kaparili mayonez</div></div></div>
+      </div>
+      <div class="dishes">
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Deniz Mahsülleri Linguine</div><div class="ddesc">Buharda pişmiş kum midyeli linguine makarna, tereyağı ve sarımsak ile maydanozlu</div></div></div>
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Somonlu Kremalı Spagetti</div><div class="ddesc"></div></div></div>
+        <div class="dish"><div class="dthumb"><img src="images/bonfile.jpg" alt="Biber Kremalı Bonfile"></div><div class="dinfo"><div class="dname">Biber Kremalı Bonfile</div><div class="ddesc">200 gr. dana bonfile, kibrit patates, karabiber kremalı özel sos</div></div></div>
+      </div>
+    </div>
 
-    window.addEventListener('mousemove', e => {
-        mx = e.clientX; my = e.clientY;
-        cur.style.left = mx + 'px';
-        cur.style.top  = my + 'px';
-    });
+    <!-- Tatlılar -->
+    <div class="panel p2" id="pt">
+      <div class="dishes">
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Mare Şekerpare</div><div class="ddesc"></div></div></div>
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Ormanda Bir Yürüyüş</div><div class="ddesc">Çikolata mus, çıtır profiterol hamuru, ev yapımı vanilyalı dondurma, çilek</div></div></div>
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Limonlu Tart</div><div class="ddesc"></div></div></div>
+      </div>
+      <div class="dishes">
+        <div class="dish"><div class="dthumb"><img src="images/cheesecake.jpg" alt="Yanık Cheesecake"></div><div class="dinfo"><div class="dname">Yanık Cheesecake</div><div class="ddesc"></div></div></div>
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Meyve Tabağı</div><div class="ddesc"></div></div></div>
+      </div>
+      <div class="mnote"><p>* Tatlılar günlük olarak değişebilir</p></div>
+    </div>
 
-    (function loop() {
-        rx += (mx - rx) * 0.13;
-        ry += (my - ry) * 0.13;
-        curRing.style.left = rx + 'px';
-        curRing.style.top  = ry + 'px';
-        requestAnimationFrame(loop);
-    })();
+    <!-- Çocuk -->
+    <div class="panel" id="pc" style="max-width:460px;margin:0 auto">
+      <div class="dishes">
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Izgara Köfte</div><div class="ddesc">Patates kızartması, acılı sos ya da yoğurt, közlenmiş yeşil biber</div></div></div>
+        <div class="dish"><div class="dblank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div><div class="dinfo"><div class="dname">Domates Soslu Makarna</div><div class="ddesc"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    document.querySelectorAll('a, button, input, .mare, .gastro, .fish-wrap').forEach(el => {
-        el.addEventListener('mouseenter', () => { cur.classList.add('on'); curRing.classList.add('on'); });
-        el.addEventListener('mouseleave', () => { cur.classList.remove('on'); curRing.classList.remove('on'); });
-    });
+<!-- wave -->
+<div class="wdiv" style="background:#122038">
+  <svg viewBox="0 0 1440 56" preserveAspectRatio="none" style="height:56px">
+    <path d="M0,18 C480,56 960,0 1440,28 L1440,56 L0,56 Z" fill="#0B1A2E"/>
+  </svg>
+</div>
 
-    // ── Click ripple ─────────────────────────────────────────────────
-    document.addEventListener('click', e => {
-        const r = document.createElement('div');
-        r.className = 'ripple';
-        r.style.left = e.clientX + 'px';
-        r.style.top  = e.clientY + 'px';
-        document.body.appendChild(r);
-        setTimeout(() => r.remove(), 1300);
-    });
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gal-hd reveal">
+    <span class="slabel">Deneyim</span>
+    <h2 class="stitle">Her tabak<br><em>bir sanat</em></h2>
+  </div>
+  <div class="gal-strip" id="galStrip">
+    <div class="gcard"><img src="images/ahtapot-izgara.jpg" alt="Ahtapot Izgara"><div class="gcard-lbl"><h3>Ahtapot Izgara</h3><p>Ara Sıcaklar</p></div></div>
+    <div class="gcard"><img src="images/citir-somon.jpg" alt="Çıtır Somon"><div class="gcard-lbl"><h3>Çıtır Somon</h3><p>Ana Yemekler</p></div></div>
+    <div class="gcard"><img src="images/dana-carpaccio.jpg" alt="Dana Carpaccio"><div class="gcard-lbl"><h3>Dana Carpaccio</h3><p>Başlangıçlar</p></div></div>
+    <div class="gcard"><img src="images/karides-izgara.jpg" alt="Jumbo Karides"><div class="gcard-lbl"><h3>Jumbo Karides Izgara</h3><p>Ara Sıcaklar</p></div></div>
+    <div class="gcard"><img src="images/bonfile.jpg" alt="Bonfile"><div class="gcard-lbl"><h3>Biber Kremalı Bonfile</h3><p>Ana Yemekler</p></div></div>
+    <div class="gcard"><img src="images/cheesecake.jpg" alt="Cheesecake"><div class="gcard-lbl"><h3>Yanık Cheesecake</h3><p>Tatlılar</p></div></div>
+    <div class="gcard"><img src="images/tereyagli-karides.jpg" alt="Tereyağlı Karides"><div class="gcard-lbl"><h3>Tereyağlı Karides</h3><p>Ara Sıcaklar</p></div></div>
+    <div class="gcard"><img src="images/levrek-marin.jpg" alt="Levrek Marin"><div class="gcard-lbl"><h3>Levrek Marin</h3><p>Başlangıçlar</p></div></div>
+  </div>
+</section>
 
-    // ── Subtle parallax (desktop only) ───────────────────────────────
-    const wrap = document.getElementById('wrap');
-    if (window.matchMedia('(pointer: fine)').matches) {
-        window.addEventListener('mousemove', e => {
-            const x = (e.clientX / window.innerWidth  - 0.5) * 10;
-            const y = (e.clientY / window.innerHeight - 0.5) * 7;
-            wrap.style.transform = `translate(${x}px,${y}px)`;
-        });
-    }
+<!-- wave -->
+<div class="wdiv" style="background:#0B1A2E">
+  <svg viewBox="0 0 1440 56" preserveAspectRatio="none" style="height:56px">
+    <path d="M0,38 C360,0 720,56 1080,18 C1260,4 1380,42 1440,28 L1440,56 L0,56 Z" fill="#0D1C30"/>
+  </svg>
+</div>
 
-    // ── Form submit ───────────────────────────────────────────────────
-    function submitForm(e) {
-        e.preventDefault();
-        const txt  = document.getElementById('btnTxt');
-        const mail = document.getElementById('mail');
-        const btn  = document.getElementById('btn');
-        txt.textContent = 'Kaydedildi ✓';
-        mail.value = '';
-        mail.disabled = btn.disabled = true;
-        setTimeout(() => {
-            txt.textContent = 'Haberdar Ol';
-            mail.disabled = btn.disabled = false;
-        }, 4000);
-    }
-    </script>
+<!-- REZERVASYON -->
+<section id="rezervasyon">
+  <div class="rez-in">
+    <div class="reveal">
+      <span class="slabel">Rezervasyon</span>
+      <h2 class="stitle">Masanızı<br><em>ayırtın</em></h2>
+      <p class="sbody">Sapanca gölü kenarında eşsiz bir akşam deneyimi için rezervasyonunuzu oluşturun. Üç adımda tamamlayın, WhatsApp üzerinden onaylayalım.</p>
+    </div>
+    <div style="height:46px"></div>
+    <div class="stepind">
+      <div class="sdot active" id="sd1">1</div>
+      <div class="sline" id="sl1"></div>
+      <div class="sdot" id="sd2">2</div>
+      <div class="sline" id="sl2"></div>
+      <div class="sdot" id="sd3">3</div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="rstep active" id="rs1">
+      <h3 class="steptitle">Tarih ve Zaman</h3>
+      <div class="frow">
+        <div class="fg"><label>Tarih</label><input type="date" id="rdate"></div>
+        <div class="fg"><label>Saat</label>
+          <select id="rtime">
+            <option value="">Saat seçin</option>
+            <option value="12:00">12:00</option><option value="12:30">12:30</option>
+            <option value="13:00">13:00</option><option value="13:30">13:30</option>
+            <option value="19:00">19:00</option><option value="19:30">19:30</option>
+            <option value="20:00">20:00</option><option value="20:30">20:30</option>
+            <option value="21:00">21:00</option><option value="21:30">21:30</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg" style="margin-bottom:0"><label>Kişi Sayısı</label>
+        <select id="rguests">
+          <option value="">Kişi sayısı seçin</option>
+          <option value="1 Kişi">1 Kişi</option><option value="2 Kişi">2 Kişi</option>
+          <option value="3 Kişi">3 Kişi</option><option value="4 Kişi">4 Kişi</option>
+          <option value="5 Kişi">5 Kişi</option><option value="6 Kişi">6 Kişi</option>
+          <option value="7-10 Kişi">7-10 Kişi</option>
+          <option value="10+ Kişi (Özel Organizasyon)">10+ Kişi (Özel Organizasyon)</option>
+        </select>
+      </div>
+      <div class="sacts"><button class="btn-next" onclick="goStep(2)">Devam Et</button></div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="rstep" id="rs2">
+      <h3 class="steptitle">Didi Otel'de Konaklama</h3>
+      <p style="text-align:center;font-family:'Cormorant Garamond',serif;font-size:1.04rem;color:var(--muted);margin-bottom:28px;line-height:1.7">Sapanca gölü kıyısında unutulmaz bir gece. Didi Otel'in eşsiz konforu ile Mare Gastro deneyimini birleştirin.</p>
+      <div class="kopts">
+        <div class="kcard" onclick="selKon(this,'Evet, konaklama istiyorum')"><div class="kcheck"></div><h4>Evet, konaklamak istiyorum</h4><p>Didi Otel'de geceleme ile tam bir deneyim</p></div>
+        <div class="kcard" onclick="selKon(this,'Hayır, sadece yemek')"><div class="kcheck"></div><h4>Hayır, sadece yemek</h4><p>Yalnızca akşam yemeği rezervasyonu</p></div>
+      </div>
+      <div class="sacts">
+        <button class="btn-back" onclick="goStep(1)">Geri</button>
+        <button class="btn-next" onclick="goStep(3)">Devam Et</button>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="rstep" id="rs3">
+      <h3 class="steptitle">Rezervasyon Özeti</h3>
+      <div class="sum">
+        <div class="sgrid">
+          <div class="si"><label>Tarih</label><span id="sDate">-</span></div>
+          <div class="si"><label>Saat</label><span id="sTime">-</span></div>
+          <div class="si"><label>Kişi Sayısı</label><span id="sGuests">-</span></div>
+          <div class="si"><label>Konaklama</label><span id="sKon">-</span></div>
+        </div>
+      </div>
+      <p style="font-family:'Jost',sans-serif;font-weight:300;font-size:.8rem;color:var(--muted);text-align:center;margin-bottom:22px;line-height:1.72">WhatsApp butonuna tıkladığınızda bilgileriniz otomatik olarak gönderilecek. Ekibimiz en kısa sürede onaylayacak.</p>
+      <div class="sacts">
+        <button class="btn-back" onclick="goStep(2)">Geri</button>
+        <a class="btn-wa" id="waBtn" href="#" target="_blank">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          WhatsApp ile Onayla
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- wave -->
+<div class="wdiv" style="background:#0D1C30">
+  <svg viewBox="0 0 1440 56" preserveAspectRatio="none" style="height:56px">
+    <path d="M0,28 C240,56 480,0 720,28 C960,56 1200,0 1440,28 L1440,56 L0,56 Z" fill="#0B1A2E"/>
+  </svg>
+</div>
+
+<!-- KONUM -->
+<section id="konum">
+  <div class="konum-in">
+    <div class="reveal">
+      <span class="slabel">Bizi Bulun</span>
+      <h2 class="stitle">Konum &<br><em>İletişim</em></h2>
+      <p class="sbody">Sapanca gölü kıyısında, Didi Otel'in eşsiz bahçesinde. İstanbul'a sadece 1.5 saat uzaklıkta.</p>
+      <div class="kdets" style="margin-top:30px">
+        <div class="kdet">
+          <div class="kicon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><h4>Adres</h4><p>Didi Otel, Sapanca<br>Sakarya, Türkiye</p></div>
+        </div>
+        <div class="kdet">
+          <div class="kicon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div>
+          <div><h4>Çalışma Saatleri</h4><p>Salı – Pazar: 12:00 – 23:00<br>Pazartesi: Kapalı</p></div>
+        </div>
+        <div class="kdet">
+          <div class="kicon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><h4>E-posta</h4><p>info@maregastro.com</p></div>
+        </div>
+        <div class="kdet">
+          <div class="kicon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+          <div><h4>Instagram</h4><p>@maregastrosapanca</p></div>
+        </div>
+      </div>
+      <div class="socrow">
+        <a class="soclink" href="https://www.instagram.com/maregastrosapanca/" target="_blank" aria-label="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a class="soclink" href="https://www.instagram.com/didiotel/" target="_blank" aria-label="Didi Otel">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        </a>
+        <a class="soclink" href="mailto:info@maregastro.com" aria-label="E-posta">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="kmap reveal rd2">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96016.68!2d30.2!3d40.68!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cb21be36fb1bed%3A0x8be5e16fb793b71e!2sSapanca%2C%20Sakarya!5e0!3m2!1str!2str!4v1700000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mare Gastro Konum"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-in">
+    <div class="foot-logo"><img src="images/marelogo.png" alt="Mare Gastro"></div>
+    <div class="foot-txt">
+      <p>© 2026 Mare Gastro &nbsp;·&nbsp; <a href="https://www.instagram.com/didiotel/" target="_blank">Didi Otel</a> bünyesinde &nbsp;·&nbsp; Sapanca</p>
+    </div>
+    <div class="foot-links">
+      <a href="#menu">Menü</a>
+      <a href="#rezervasyon">Rezervasyon</a>
+      <a href="https://www.instagram.com/maregastrosapanca/" target="_blank">Instagram</a>
+      <a href="mailto:info@maregastro.com">İletişim</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// CURSOR
+const cur=document.getElementById('cursor'),crng=document.getElementById('cring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+(function tick(){cur.style.left=mx+'px';cur.style.top=my+'px';rx+=(mx-rx)*.11;ry+=(my-ry)*.11;crng.style.left=rx+'px';crng.style.top=ry+'px';requestAnimationFrame(tick)})();
+document.querySelectorAll('a,button,.tab,.dish,.gcard,.kcard,.soclink,.nav-cta').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.classList.add('hover');crng.classList.add('hover')});
+  el.addEventListener('mouseleave',()=>{cur.classList.remove('hover');crng.classList.remove('hover')});
+});
+
+// NAV SCROLL + HERO PARALLAX
+const heroBg=document.getElementById('heroBg');
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',scrollY>55);
+  if(heroBg){const y=scrollY*.38;heroBg.style.transform=`translateY(${y}px) scale(1.1)`}
+});
+
+// MOBILE MENU
+function openMob(){document.getElementById('mobMenu').classList.add('open');document.getElementById('mobOv').classList.add('open');document.body.style.overflow='hidden'}
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');document.getElementById('mobOv').classList.remove('open');document.body.style.overflow=''}
+
+// REVEAL
+const rEls=document.querySelectorAll('.reveal');
+new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');} })},{threshold:.1}).observe && rEls.forEach(el=>new IntersectionObserver((es)=>{if(es[0].isIntersecting){el.classList.add('visible')}},{threshold:.1}).observe(el));
+
+// MENU TABS
+function switchTab(id,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('p'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// GALLERY DRAG
+const gs=document.getElementById('galStrip');
+if(gs){let isD=false,sx,sl;
+  gs.addEventListener('mousedown',e=>{isD=true;sx=e.pageX-gs.offsetLeft;sl=gs.scrollLeft});
+  gs.addEventListener('mouseleave',()=>isD=false);
+  gs.addEventListener('mouseup',()=>isD=false);
+  gs.addEventListener('mousemove',e=>{if(!isD)return;e.preventDefault();gs.scrollLeft=sl-(e.pageX-gs.offsetLeft-sx)*1.6});
+}
+
+// REZERVASYON
+let selKonaklama='';
+document.getElementById('rdate').min=new Date().toISOString().split('T')[0];
+
+function goStep(n){
+  if(n===2){
+    const d=document.getElementById('rdate').value,t=document.getElementById('rtime').value,g=document.getElementById('rguests').value;
+    if(!d||!t||!g){alert('Lütfen tarih, saat ve kişi sayısını seçin.');return}
+  }
+  if(n===3){
+    if(!selKonaklama){alert('Lütfen konaklama tercihini seçin.');return}
+    const d=document.getElementById('rdate').value,t=document.getElementById('rtime').value,g=document.getElementById('rguests').value;
+    const fmt=new Date(d).toLocaleDateString('tr-TR',{day:'numeric',month:'long',year:'numeric'});
+    document.getElementById('sDate').textContent=fmt;
+    document.getElementById('sTime').textContent=t;
+    document.getElementById('sGuests').textContent=g;
+    document.getElementById('sKon').textContent=selKonaklama;
+    // ⚠️ WhatsApp numarasını buraya girin (örn: 905321234567)
+    const phone='905000000000';
+    const msg=`Merhaba, Mare Gastro rezervasyon talebim:\n\nTarih: ${fmt}\nSaat: ${t}\nKişi Sayısı: ${g}\nKonaklama: ${selKonaklama}\n\nOnayınızı bekliyorum.`;
+    document.getElementById('waBtn').href=`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+  }
+  document.querySelectorAll('.rstep').forEach(s=>s.classList.remove('active'));
+  document.getElementById('rs'+n).classList.add('active');
+  // Update indicator
+  for(let i=1;i<=3;i++){
+    const d=document.getElementById('sd'+i);
+    d.classList.remove('active','done');
+    if(i<n)d.classList.add('done');
+    else if(i===n)d.classList.add('active');
+  }
+  for(let i=1;i<=2;i++){document.getElementById('sl'+i).classList.toggle('done',i<n)}
+}
+
+function selKon(card,val){
+  document.querySelectorAll('.kcard').forEach(c=>c.classList.remove('sel'));
+  card.classList.add('sel');
+  selKonaklama=val;
+}
+</script>
 </body>
 </html>
