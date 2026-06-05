@@ -1041,6 +1041,40 @@ nav{
 }
 .s-wa:hover{background:#1dbd5a;transform:translateY(-1px)}
 .s-wa:active{transform:scale(.97)}
+
+/* ═══════════════════════════════════════
+   MOBILE LAYOUT FIX — natural flow, nothing clipped
+   Replaces rigid 100vh + mandatory-snap + inner-scroll
+   model that hid content behind the nav / browser chrome.
+═══════════════════════════════════════ */
+@media(max-width:767px){
+  /* stable viewport height; grow taller when content needs it */
+  .page{height:auto;min-height:100svh}
+  /* looser snap so tall sections don't trap the scroll */
+  body{scroll-snap-type:y proximity}
+
+  /* tall sections: top-align so the top isn't pushed under the nav */
+  #s3{justify-content:flex-start}
+  #s5{flex-direction:column;align-items:stretch;justify-content:flex-start}
+
+  /* drop fixed-height inner scrollers → the page itself scrolls */
+  .menu-wrap,.rez-wrap,.sc-inner{height:auto;overflow:visible}
+
+  /* MENU: absolute/flex panels → normal flow so the grid can grow */
+  .mpanels{position:static;flex:none;overflow:visible;height:auto}
+  .mpanel{position:static;inset:auto;height:auto;overflow:visible;padding-bottom:28px}
+
+  /* RESERVATION: clear nav, give the card room, keep "Devam Et" reachable */
+  .rez-wrap{padding-top:76px}
+  .rez-inner{padding-bottom:40px}
+
+  /* CHEF: let the photo/quotes/stats breathe instead of squeezing */
+  #sc{padding-bottom:24px}
+
+  /* LOCATION: clear nav, footer flows after the content (not pinned) */
+  .konum-wrap{padding-top:90px;padding-bottom:8px}
+  .kfoot{position:static;margin-top:8px}
+}
 </style>
 </head>
 <body>
@@ -1069,7 +1103,7 @@ nav{
   </ul>
   <div class="nav-right">
     <a href="https://sapancadidiotel.com/" target="_blank" class="nav-didi">
-      <img src="images/DidiLogo.png" alt="Didi Otel">
+      <img src="images/DidiLogo1.png" alt="Didi Otel">
       <span>Didi Otel</span>
     </a>
     <button class="nav-res" onclick="goTo('#s4')">Rezervasyon</button>
@@ -1102,7 +1136,7 @@ nav{
   <div class="hc">
     <div class="hero-logo"><img src="images/marelogo1.png" alt="Mare Gastro" onerror="this.onerror=null;this.src='images/marelogo.png'"></div>
     <div class="htag">
-      <img src="images/DidiLogo.png" alt="Didi Otel" style="height:14px;filter:brightness(0) invert(1);opacity:.7;vertical-align:middle">
+      <img src="images/DidiLogo1.png" alt="Didi Otel" style="height:14px;filter:brightness(0) invert(1);opacity:.7;vertical-align:middle">
       &nbsp;·&nbsp; Sapanca &nbsp;·&nbsp; Fine Dining
     </div>
     <h1 class="htitle">Mare<br><em>Gastro</em></h1>
@@ -1464,7 +1498,7 @@ nav{
     <div class="kfoot-t" style="display:flex;align-items:center;gap:8px">
       © 2026 Mare Gastro &nbsp;·&nbsp;
       <a href="https://www.instagram.com/didiotel/" target="_blank" style="display:inline-flex;align-items:center;gap:5px;color:var(--amber);text-decoration:none;opacity:.7">
-        <img src="images/DidiLogo.png" alt="Didi Otel" style="height:16px;filter:brightness(0) invert(1);opacity:.6">
+        <img src="images/DidiLogo1.png" alt="Didi Otel" style="height:16px;filter:brightness(0) invert(1);opacity:.6">
         Didi Otel
       </a>
       bünyesinde
