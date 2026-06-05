@@ -331,21 +331,44 @@ nav{
   line-height:1.05;color:var(--cream);margin-bottom:20px;
 }
 .a-title em{font-style:italic;color:var(--amber2)}
-.a-body{font-size:13px;font-weight:300;line-height:1.9;color:var(--muted);max-width:380px;margin-bottom:24px}
+.a-lead{font-family:var(--ital);font-style:italic;font-weight:300;font-size:clamp(1.06rem,3vw,1.34rem);line-height:1.62;color:var(--cream);opacity:.94;max-width:440px;margin-bottom:18px}
+.a-body{font-size:13px;font-weight:300;line-height:1.95;color:var(--muted);max-width:440px;margin-bottom:14px}
+.a-body em{font-style:normal;color:var(--amber2);font-weight:400}
+.a-rule{height:1px;width:140px;background:linear-gradient(to right,var(--amber),transparent);margin:16px 0 22px}
 
-.didi-card{
-  display:flex;gap:0;
-  background:var(--glass);
-  border:1px solid var(--glassBorder);
-  backdrop-filter:blur(24px);
-  -webkit-backdrop-filter:blur(24px);
-  border-radius:14px;overflow:hidden;
-  max-width:380px;
+/* Kadir Çiçek signature credit */
+.story-sign{
+  display:flex;align-items:center;gap:13px;margin-top:24px;
+  padding:14px 18px;max-width:410px;
+  background:linear-gradient(120deg,rgba(200,169,110,.09),rgba(255,255,255,.02));
+  border:1px solid rgba(200,169,110,.24);border-radius:14px;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
 }
-.didi-bar{width:2px;background:linear-gradient(to bottom,var(--amber),rgba(200,169,110,.2));flex-shrink:0}
-.didi-inner{padding:18px 18px}
-.didi-inner p{font-family:var(--ital);font-style:italic;font-size:.95rem;color:var(--cream);line-height:1.68;opacity:.82}
-.didi-inner small{display:block;margin-top:10px;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber)}
+.story-sign-mark{
+  width:34px;height:34px;flex-shrink:0;border-radius:50%;
+  border:1px solid rgba(200,169,110,.3);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--amber);font-size:.95rem;
+}
+.story-sign-body{display:flex;flex-direction:column;gap:4px}
+.story-sign-name{font-family:var(--ital);font-style:italic;font-size:1.2rem;color:var(--cream);line-height:1}
+.story-sign-role{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);line-height:1.3}
+
+/* Magical reveal + ambient glow for the story */
+#s2{position:relative;overflow:hidden}
+#s2::before{
+  content:'';position:absolute;left:-12%;top:24%;width:62%;height:54%;
+  background:radial-gradient(ellipse at center,rgba(200,169,110,.08),transparent 70%);
+  filter:blur(24px);pointer-events:none;z-index:0;
+  animation:storyGlow 11s ease-in-out infinite alternate;
+}
+@keyframes storyGlow{0%{opacity:.5;transform:translate(0,0)}100%{opacity:1;transform:translate(4%,-3%)}}
+.about-wrap{position:relative;z-index:1}
+#s2 .rv{filter:blur(8px);transition:opacity .95s var(--ease),transform .95s var(--ease),filter .95s var(--ease)}
+#s2 .rv.in{filter:blur(0)}
+.rv4{transition-delay:.36s}
+.rv5{transition-delay:.5s}
+.rv6{transition-delay:.64s}
 
 .about-right{
   display:none;
@@ -842,10 +865,6 @@ nav{
 .sc-award-text span{display:block;line-height:1.15}
 .sc-award-text span:first-child{font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
 .sc-award-text span:last-child{font-family:var(--ital);font-size:.72rem;color:var(--cream)}
-.sc-cap{
-  text-align:center;margin-top:9px;
-  font-size:8px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);
-}
 
 /* Rotating quotes — animated */
 .sc-quotes{
@@ -1094,6 +1113,11 @@ nav{
   /* LOCATION: clear nav, footer flows after the content (not pinned) */
   .konum-wrap{padding-top:90px;padding-bottom:8px}
   .kfoot{position:static;margin-top:8px}
+
+  /* STORY: show the dish gallery on mobile so the section isn't bare */
+  .about-right{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:22px}
+  .aimg:first-child{margin-top:0}
+  .about-wrap{justify-content:flex-start;padding-top:96px}
 }
 </style>
 </head>
@@ -1171,15 +1195,18 @@ nav{
 <!-- ═══ S2: HAKKIMIZDA ═══ -->
 <section class="page" id="s2">
   <div class="about-wrap">
-    <div class="about-left rv">
-      <span class="a-eyebrow">Hikayemiz</span>
-      <h2 class="a-title">Sapanca gölünün<br>ruhu, <em>tabakta</em></h2>
-      <p class="a-body">Mare Gastro, Sapanca gölü kıyısının eşsiz manzarasını arka planına alan, Didi Otel bahçesinde konumlanan bir fine dining deneyimidir. Her tabak, Ege ve Akdeniz mutfağının en saf malzemeleriyle hazırlanır.</p>
-      <div class="didi-card">
-        <div class="didi-bar"></div>
-        <div class="didi-inner">
-          <p>"Didi Otel'in doğayla bütünleşen ruhu, mutfak sanatıyla taçlanıyor."</p>
-          <small>Didi Otel &nbsp;·&nbsp; Sapanca</small>
+    <div class="about-left">
+      <span class="a-eyebrow rv">Hikayemiz</span>
+      <h2 class="a-title rv rv2">Sapanca gölünün<br>ruhu, <em>tabakta</em></h2>
+      <div class="a-rule rv rv2"></div>
+      <p class="a-lead rv rv3">Çamların suya değdiği, sabah sisinin göl üzerinde usulca dağıldığı o eşsiz anda; Didi Otel'in doğayla bütünleşen bahçesinde bir hayal filizlendi.</p>
+      <p class="a-body rv rv4">Mare Gastro'nun her detayı — ışığından masasına, tabağından ruhuna kadar — <em>Didi Otel bünyesinde Kadir Çiçek</em> tarafından tasarlandı, planlandı ve büyük bir titizlikle hayata geçirildi.</p>
+      <p class="a-body rv rv5">Mutfağın başında ise sinema geçmişini lezzete dönüştüren Yönetici Şef <em>Doğan Anapa</em>; Ege ve Akdeniz'in en saf malzemelerini, bir hikâye anlatır gibi tabaklara taşıyor.</p>
+      <div class="story-sign rv rv6">
+        <span class="story-sign-mark">✦</span>
+        <div class="story-sign-body">
+          <span class="story-sign-name">Kadir Çiçek</span>
+          <span class="story-sign-role">Didi Otel · Konsept, Tasarım &amp; Hayata Geçiş</span>
         </div>
       </div>
     </div>
@@ -1223,7 +1250,6 @@ nav{
             </div>
           </div>
         </div>
-        <figcaption class="sc-cap">Doğan Anapa · Mare Gastro Mutfağı</figcaption>
       </figure>
     </div>
 
