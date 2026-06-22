@@ -183,8 +183,8 @@ splash = """<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 __GA__
-<title>Mare Gastro — Sapanca Göl Kıyısında Fine Dining Restoran</title>
-<meta name="description" content="Sapanca gölü kıyısında, Didi Otel bahçesinde ödüllü şef imzalı fine dining. Dilinizi seçin — Select your language.">
+<title>Mare Gastro | Sapanca Göl Manzaralı Fine Dining Restoran</title>
+<meta name="description" content="Sapanca göl manzaralı lüks fine dining restoran. Mare Gastro, Didi Otel bahçesinde. Dilinizi seçin, Select your language.">
 <meta name="theme-color" content="#04080F">
 <link rel="canonical" href="__SITE__/">
 <link rel="icon" type="image/svg+xml" href="/images/mare.svg">
