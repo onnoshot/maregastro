@@ -90,6 +90,7 @@
     { "@type": "MenuSection", "name": "المقبّلات", "hasMenuItem": [
       { "@type": "MenuItem", "name": "باذنجان مشوي على الجمر", "description": "فلفل أحمر وأخضر مشوي على الجمر، بصل أخضر" },
       { "@type": "MenuItem", "name": "حُمّص", "description": "لحم مدخّن، مخلل خيار، بندق، زيت زيتون بكر ممتاز" },
+      { "@type": "MenuItem", "name": "كبد على الطريقة الألبانية", "description": "بصل مكرمل، بقدونس، زبدة متبّلة" },
       { "@type": "MenuItem", "name": "كارباتشيو لحم البقر", "description": "جرجير، بارميزان، كبر" },
       { "@type": "MenuItem", "name": "قاروص مُتبّل", "description": "مُتبّل بالحمضيات، بصل أحمر، شبت، زيت زيتون بكر ممتاز" },
       { "@type": "MenuItem", "name": "خرشوف بزيت الزيتون", "description": "بيوريه البازلاء، فستق، نعناع" }
@@ -104,7 +105,7 @@
       { "@type": "MenuItem", "name": "سلمون مقرمش", "description": "هليون، بطاطس بالفرن، صلصة هولنديز" },
       { "@type": "MenuItem", "name": "سمكة اليوم المشوية", "description": "فلفل مشوي على الجمر، طماطم، بطاطس صغيرة، صلصة بور بلان" },
       { "@type": "MenuItem", "name": "قاروص بالكريمة في الفرن", "description": "طماطم، فلفل، زعتر، كبر" },
-      { "@type": "MenuItem", "name": "سباغيتي بالسلمون والكريمة" },
+      { "@type": "MenuItem", "name": "سباغيتي بالسلمون والكريمة", "description": "صلصة كريمة مع السلمون وبقدونس طازج" },
       { "@type": "MenuItem", "name": "فيليه لحم بصلصة الفلفل والكريمة", "description": "200 غرام لحم بقري، بطاطس مقطّعة رفيعة، صلصة الفلفل الأسود" }
     ]},
     { "@type": "MenuSection", "name": "الحلويات", "hasMenuItem": [
@@ -1376,6 +1377,7 @@ nav{
       <div class="mpanel on" id="mp-b">
         <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/koz-patlican.webp" alt="باذنجان مشوي على الجمر"></div><div class="dc-body"><div class="dc-name">باذنجان مشوي على الجمر</div><div class="dc-desc">فلفل أحمر وأخضر مشوي على الجمر، بصل أخضر</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/humus.webp" alt="حُمّص"></div><div class="dc-body"><div class="dc-name">حُمّص</div><div class="dc-desc">لحم مدخّن، مخلل خيار، بندق، زيت زيتون بكر ممتاز</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/arnavut-cigeri.webp" alt="كبد على الطريقة الألبانية"></div><div class="dc-body"><div class="dc-name">كبد على الطريقة الألبانية</div><div class="dc-desc">بصل مكرمل، بقدونس، زبدة متبّلة</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/pilav.webp" alt="أرز بالباذنجان"></div><div class="dc-body"><div class="dc-name">أرز بالباذنجان</div><div class="dc-desc">بالفستق والزبيب والبهارات وزيت الزيتون</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/levrek-marin.webp" alt="قاروص مُتبّل"></div><div class="dc-body"><div class="dc-name">قاروص مُتبّل</div><div class="dc-desc">مُتبّل بالحمضيات، بصل أحمر، شبت، زيت زيتون بكر ممتاز</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dc-img"><img loading="lazy" decoding="async" src="/images/semizotu.webp" alt="معجون كريتي مع شمّام"></div><div class="dc-body"><div class="dc-name">معجون كريتي مع شمّام</div><div class="dc-desc">شمّام مُتبّل بالراكي، معجون كريتي</div></div><div class="dc-glow"></div></div>
@@ -1411,10 +1413,10 @@ nav{
       <div class="mpanel" id="mp-n">
         <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/citir-somon.webp" alt="سلمون مقرمش"></div><div class="dc-body"><div class="dc-name">سلمون مقرمش</div><div class="dc-desc">هليون، بطاطس بالفرن، صلصة هولنديز</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dc-img"><img loading="lazy" decoding="async" src="/images/balik-izgara.webp" alt="سمكة اليوم المشوية"></div><div class="dc-body"><div class="dc-name">سمكة اليوم المشوية</div><div class="dc-desc">فلفل مشوي على الجمر، طماطم، بطاطس صغيرة، صلصة بور بلان</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">قاروص بالكريمة في الفرن</div><div class="dc-desc">طماطم، فلفل، زعتر، كبر</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/kremali-levrek.webp" alt="قاروص بالكريمة في الفرن"></div><div class="dc-body"><div class="dc-name">قاروص بالكريمة في الفرن</div><div class="dc-desc">طماطم، فلفل، زعتر، كبر</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dc-img"><img loading="lazy" decoding="async" src="/images/tekir-tempura.webp" alt="سمك السلطان إبراهيم تمبورا"></div><div class="dc-body"><div class="dc-name">سمك السلطان إبراهيم تمبورا</div><div class="dc-desc">مايونيز منزلي بالأعشاب والكبر</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">لينغويني بالمأكولات البحرية</div><div class="dc-desc">بلح البحر، زبدة، ثوم، بقدونس</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">سباغيتي بالسلمون والكريمة</div><div class="dc-desc"></div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/somon-spagetti.webp" alt="سباغيتي بالسلمون والكريمة"></div><div class="dc-body"><div class="dc-name">سباغيتي بالسلمون والكريمة</div><div class="dc-desc">صلصة كريمة مع السلمون وبقدونس طازج</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/bonfile.webp" alt="فيليه لحم بصلصة الفلفل والكريمة"></div><div class="dc-body"><div class="dc-name">فيليه لحم بصلصة الفلفل والكريمة</div><div class="dc-desc">200 غرام لحم بقري، بطاطس مقطّعة رفيعة، صلصة الفلفل الأسود</div></div><div class="dc-glow"></div></div>
       </div>
 

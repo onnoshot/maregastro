@@ -90,6 +90,7 @@
     { "@type": "MenuSection", "name": "Başlangıçlar", "hasMenuItem": [
       { "@type": "MenuItem", "name": "Köz Patlıcan", "description": "Köz kırmızı biber, yeşil biber, taze soğan" },
       { "@type": "MenuItem", "name": "Humus", "description": "İsli et, kornişon turşu, fındık, sızma zeytinyağı" },
+      { "@type": "MenuItem", "name": "Arnavut Ciğeri", "description": "Karamelize soğan, maydanoz, baharatlı tereyağı" },
       { "@type": "MenuItem", "name": "Dana Carpaccio", "description": "Roka, parmesan, kapari" },
       { "@type": "MenuItem", "name": "Levrek Marin", "description": "Narenciye ile marine, kırmızı soğan, dereotu, sızma zeytinyağı" },
       { "@type": "MenuItem", "name": "Zeytinyağlı Enginar", "description": "Araka püresi, fıstık, nane" }
@@ -104,7 +105,7 @@
       { "@type": "MenuItem", "name": "Çıtır Somon", "description": "Kuşkonmaz, fırın patates, hollandaise" },
       { "@type": "MenuItem", "name": "Günün Izgara Balığı", "description": "Köz biber, domates, bebek patates, beurre blanc" },
       { "@type": "MenuItem", "name": "Fırında Kremalı Levrek", "description": "Domates, biber, kekik, kapari" },
-      { "@type": "MenuItem", "name": "Somonlu Kremalı Spagetti" },
+      { "@type": "MenuItem", "name": "Somonlu Kremalı Spagetti", "description": "Krema soslu somon, taze maydanoz" },
       { "@type": "MenuItem", "name": "Biber Kremalı Bonfile", "description": "200 gr. dana, kibrit patates, karabiber sos" }
     ]},
     { "@type": "MenuSection", "name": "Tatlılar", "hasMenuItem": [
@@ -1376,6 +1377,7 @@ nav{
       <div class="mpanel on" id="mp-b">
         <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/koz-patlican.webp" alt="Köz Patlıcan"></div><div class="dc-body"><div class="dc-name">Köz Patlıcan</div><div class="dc-desc">Köz kırmızı biber, yeşil biber, taze soğan</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/humus.webp" alt="Humus"></div><div class="dc-body"><div class="dc-name">Humus</div><div class="dc-desc">İsli et, kornişon turşu, fındık, sızma zeytinyağı</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/arnavut-cigeri.webp" alt="Arnavut Ciğeri"></div><div class="dc-body"><div class="dc-name">Arnavut Ciğeri</div><div class="dc-desc">Karamelize soğan, maydanoz, baharatlı tereyağı</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/pilav.webp" alt="Patlıcanlı Pilav"></div><div class="dc-body"><div class="dc-name">Patlıcanlı Pilav</div><div class="dc-desc">Fıstıklı, üzümlü, baharatlı zeytinyağlı</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/levrek-marin.webp" alt="Levrek Marin"></div><div class="dc-body"><div class="dc-name">Levrek Marin</div><div class="dc-desc">Narenciye ile marine, kırmızı soğan, dereotu, sızma zeytinyağı</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dc-img"><img loading="lazy" decoding="async" src="/images/semizotu.webp" alt="Girit Ezme, Kavun"></div><div class="dc-body"><div class="dc-name">Girit Ezme, Kavun</div><div class="dc-desc">Rakı ile marine edilmiş kavun, girit ezme</div></div><div class="dc-glow"></div></div>
@@ -1411,10 +1413,10 @@ nav{
       <div class="mpanel" id="mp-n">
         <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/citir-somon.webp" alt="Çıtır Somon"></div><div class="dc-body"><div class="dc-name">Çıtır Somon</div><div class="dc-desc">Kuşkonmaz, fırın patates, hollandaise</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dc-img"><img loading="lazy" decoding="async" src="/images/balik-izgara.webp" alt="Günün Izgara Balığı"></div><div class="dc-body"><div class="dc-name">Günün Izgara Balığı</div><div class="dc-desc">Köz biber, domates, bebek patates, beurre blanc</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Fırında Kremalı Levrek</div><div class="dc-desc">Domates, biber, kekik, kapari</div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/kremali-levrek.webp" alt="Fırında Kremalı Levrek"></div><div class="dc-body"><div class="dc-name">Fırında Kremalı Levrek</div><div class="dc-desc">Domates, biber, kekik, kapari</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dc-img"><img loading="lazy" decoding="async" src="/images/tekir-tempura.webp" alt="Tekir Tempura"></div><div class="dc-body"><div class="dc-name">Tekir Tempura</div><div class="dc-desc">Otlu kaparili el yapımı mayonez</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Deniz Mahsülleri Linguine</div><div class="dc-desc">Kum midyeli, tereyağı, sarımsak, maydanoz</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Somonlu Kremalı Spagetti</div><div class="dc-desc"></div></div><div class="dc-glow"></div></div>
+        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/somon-spagetti.webp" alt="Somonlu Kremalı Spagetti"></div><div class="dc-body"><div class="dc-name">Somonlu Kremalı Spagetti</div><div class="dc-desc">Krema soslu somon, taze maydanoz</div></div><div class="dc-glow"></div></div>
         <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/bonfile.webp" alt="Biber Kremalı Bonfile"></div><div class="dc-body"><div class="dc-name">Biber Kremalı Bonfile</div><div class="dc-desc">200 gr. dana, kibrit patates, karabiber sos</div></div><div class="dc-glow"></div></div>
       </div>
 

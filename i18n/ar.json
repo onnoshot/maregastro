@@ -157,5 +157,8 @@
   "js_kisi_suffix": " أشخاص",
   "js_wa_msg": "مرحبًا، طلب حجزي في Mare Gastro:\n\nالتاريخ: {fmt}\nالوقت: {saat}\nعدد الأشخاص: {kisi}\nالإقامة: {konaklama}\n\nبانتظار تأكيدكم.",
   "js_wa_default": "مرحبًا، أرغب في إجراء حجز.",
-  "wa_aria": "الحجز عبر WhatsApp"
+  "wa_aria": "الحجز عبر WhatsApp",
+  "d_somonspagetti_d": "صلصة كريمة مع السلمون وبقدونس طازج",
+  "d_arnavutciger": "كبد على الطريقة الألبانية",
+  "d_arnavutciger_d": "بصل مكرمل، بقدونس، زبدة متبّلة"
 }

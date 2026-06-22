@@ -157,5 +157,8 @@
   "js_kisi_suffix": " Guests",
   "js_wa_msg": "Hello, this is my reservation request for Mare Gastro:\n\nDate: {fmt}\nTime: {saat}\nGuests: {kisi}\nStay: {konaklama}\n\nI look forward to your confirmation.",
   "js_wa_default": "Hello, I would like to make a reservation.",
-  "wa_aria": "Reserve via WhatsApp"
+  "wa_aria": "Reserve via WhatsApp",
+  "d_somonspagetti_d": "Cream sauce with salmon, fresh parsley",
+  "d_arnavutciger": "Albanian-Style Liver",
+  "d_arnavutciger_d": "Caramelized onions, parsley, spiced butter"
 }

@@ -157,5 +157,8 @@
   "js_kisi_suffix": " Kişi",
   "js_wa_msg": "Merhaba, Mare Gastro rezervasyon talebim:\n\nTarih: {fmt}\nSaat: {saat}\nKişi Sayısı: {kisi}\nKonaklama: {konaklama}\n\nOnayınızı bekliyorum.",
   "js_wa_default": "Merhaba, rezervasyon yapmak istiyorum.",
-  "wa_aria": "WhatsApp ile rezervasyon"
+  "wa_aria": "WhatsApp ile rezervasyon",
+  "d_somonspagetti_d": "Krema soslu somon, taze maydanoz",
+  "d_arnavutciger": "Arnavut Ciğeri",
+  "d_arnavutciger_d": "Karamelize soğan, maydanoz, baharatlı tereyağı"
 }
