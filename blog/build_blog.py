@@ -11,7 +11,7 @@ MAIL   = "mailto:info@maregastro.com"
 OUT    = os.path.dirname(os.path.abspath(__file__))
 
 # internal homepage anchors
-MENU="%s/#s3"%SITE; REZ="%s/#s4"%SITE; STORY="%s/#s2"%SITE; CHEF="%s/#sc"%SITE; LOC="%s/#s5"%SITE
+MENU="%s/tr/#menu"%SITE; REZ="%s/tr/#reservation"%SITE; STORY="%s/tr/#story"%SITE; CHEF="%s/tr/#chef"%SITE; LOC="%s/tr/#contact"%SITE
 
 def L(url,txt): return '<a href="%s">%s</a>'%(url,txt)
 def post_url(slug): return "%s/blog/%s.html"%(SITE,slug)
@@ -280,7 +280,7 @@ SOCIAL_FOOT = (
 
 def nav_html():
     return ('<nav class="bnav">'
-      '<a class="logo" href="%s/"><img src="../images/marelogo1.png" alt="Mare Gastro"></a>'
+      '<a class="logo" href="%s/tr/"><img src="../images/marelogo1.png" alt="Mare Gastro"></a>'
       '<div class="bnav-links">'
       '<a href="../blog/">Blog</a>'
       '<a href="%s">Menü</a>'
@@ -293,7 +293,7 @@ def footer_html():
       '<div class="bfoot-tag">Fine Dining · Sapanca · Didi Otel Bahçesi</div>'
       + SOCIAL_FOOT +
       '<div class="bfoot-links">'
-      '<a href="%s/">Ana Sayfa</a><a href="../blog/">Blog</a>'
+      '<a href="%s/tr/">Ana Sayfa</a><a href="../blog/">Blog</a>'
       '<a href="%s">Menü</a><a href="%s">Rezervasyon</a><a href="%s">Konum</a>'
       '</div>'
       '<div class="bfoot-copy">© 2026 Mare Gastro · '
@@ -493,10 +493,16 @@ def build_index():
 
 def build_sitemap():
     root=os.path.dirname(OUT)
-    urls=[(SITE+"/","1.0","weekly"),(SITE+"/blog/","0.9","weekly")]
-    for p in POSTS: urls.append((post_url(p["slug"]),"0.8","monthly"))
-    body="".join('<url><loc>%s</loc><changefreq>%s</changefreq><priority>%s</priority></url>'%(u,c,pr) for u,pr,c in urls)
-    xml='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s</urlset>\n'%body
+    langs=["tr","en","ar","ru"]
+    alts="".join('<xhtml:link rel="alternate" hreflang="%s" href="%s/%s/"/>'%(l,SITE,l) for l in langs)
+    alts+='<xhtml:link rel="alternate" hreflang="x-default" href="%s/"/>'%SITE
+    entries=[]
+    # Açılış + dil ana sayfaları (hepsi aynı hreflang alternatif setini paylaşır)
+    for u,pr in [(SITE+"/","1.0")]+[("%s/%s/"%(SITE,l),"0.9") for l in langs]:
+        entries.append('<url><loc>%s</loc>%s<changefreq>weekly</changefreq><priority>%s</priority></url>'%(u,alts,pr))
+    entries.append('<url><loc>%s/blog/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>'%SITE)
+    for p in POSTS: entries.append('<url><loc>%s</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>'%post_url(p["slug"]))
+    xml='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">%s</urlset>\n'%"".join(entries)
     with open(os.path.join(root,"sitemap.xml"),"w",encoding="utf-8") as f: f.write(xml)
     robots="User-agent: *\nAllow: /\n\nSitemap: %s/sitemap.xml\n"%SITE
     with open(os.path.join(root,"robots.txt"),"w",encoding="utf-8") as f: f.write(robots)
