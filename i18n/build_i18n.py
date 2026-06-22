@@ -199,7 +199,7 @@ __HREFLANG__
 :root{--bg:#04080F;--amber:#C8A96E;--amber2:#DFC08A;--cream:#EDE8DC;--muted:rgba(237,232,220,.45);
 --glass:rgba(255,255,255,.045);--glassBorder:rgba(255,255,255,.08);--ease:cubic-bezier(.19,1,.22,1);
 --sf:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',sans-serif;--ital:'Cormorant Garamond',serif}
-html,body{height:100%}
+html,body{height:100%;overflow:hidden;max-width:100%}
 body{background:var(--bg);color:var(--cream);font-family:var(--sf);overflow:hidden;
 display:flex;align-items:center;justify-content:center;min-height:100svh;position:relative}
 /* tek yumuşak nefes alan glow */
@@ -209,7 +209,7 @@ transform:translate(-50%,-50%);animation:breathe 11s ease-in-out infinite}
 @keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.85}50%{transform:translate(-50%,-50%) scale(1.16);opacity:1}}
 .par{position:fixed;bottom:-8px;width:2px;height:2px;background:rgba(200,169,110,.45);border-radius:50%;z-index:1;animation:rise linear infinite}
 @keyframes rise{0%{transform:translateY(0);opacity:0}12%{opacity:.6}100%{transform:translateY(-104vh);opacity:0}}
-.wrap{position:relative;z-index:3;width:100%;max-width:600px;padding:30px 22px;text-align:center}
+.wrap{position:relative;z-index:3;width:100%;max-width:600px;min-width:0;padding:30px 22px;text-align:center}
 .logo{width:172px;max-width:56%;margin:0 auto 22px;display:block;
 animation:logoIn 1.3s var(--ease) both}
 @keyframes logoIn{from{opacity:0;transform:translateY(12px) scale(.94);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
@@ -220,9 +220,9 @@ animation:draw 1.4s var(--ease) .5s forwards}
 margin-bottom:34px;min-height:1.3em;letter-spacing:.01em;transition:opacity .5s var(--ease);
 animation:fadeUp 1.1s var(--ease) .7s both}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-@media(max-width:560px){.cards{grid-template-columns:1fr 1fr;gap:11px}}
-.lc{position:relative;display:flex;flex-direction:column;align-items:center;gap:11px;
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;width:100%;min-width:0}
+@media(max-width:560px){.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.wrap{padding:26px 16px}.lc{padding:20px 8px 16px}}
+.lc{position:relative;min-width:0;display:flex;flex-direction:column;align-items:center;gap:11px;
 text-decoration:none;color:var(--cream);background:var(--glass);border:1px solid var(--glassBorder);
 border-radius:18px;padding:24px 10px 18px;overflow:hidden;
 backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
