@@ -113,8 +113,13 @@ for l in LANGS:
     out = out.replace("@@HREFLANG@@", hreflang)
     out = out.replace("@@LANGSW@@", langsw(l))
     out = out.replace("@@WAMSG@@", WAMSG)
+    # JS tek-tırnak bağlamına giren tokenler (alert / textContent / onclick selK)
+    JS_CTX = {"js_gnote_ozel", "js_gnote_yalniz", "js_gnote_kisilik",
+              "js_alert_tarih", "js_alert_saat", "js_alert_konaklama",
+              "js_kisi_suffix", "rez_kopt1_v", "rez_kopt2_v"}
     for key, val in d.items():
-        out = out.replace("@@%s@@" % key, val)
+        safe = val.replace("\\", "\\\\").replace("'", "\\'") if key in JS_CTX else val
+        out = out.replace("@@%s@@" % key, safe)
     # kalan tokenler? (eksik çeviri tespiti)
     leftover = re.findall(r"@@[\w]+@@", out)
     if leftover:
@@ -136,7 +141,21 @@ for l in LANGS:
 
     os.makedirs(f"{PROJ}/{l}", exist_ok=True)
     open(f"{PROJ}/{l}/index.html", "w", encoding="utf-8").write(out)
-    print("✓ /%s/index.html  (%d bytes)" % (l, len(out)))
+    # JS doğrulama (inline script'ler, ld+json ve src hariç) — node varsa
+    import subprocess
+    bad = 0
+    for sc in re.findall(r'<script(?![^>]*\bsrc=)(?![^>]*ld\+json)[^>]*>(.*?)</script>', out, re.S):
+        if not sc.strip():
+            continue
+        open("/tmp/_chk.js", "w").write(sc)
+        try:
+            if subprocess.run(["node", "--check", "/tmp/_chk.js"], capture_output=True).returncode != 0:
+                bad += 1
+        except FileNotFoundError:
+            bad = -1
+            break
+    flag = "  ⚠️ JS HATASI!" if bad > 0 else ("" if bad == 0 else "  (node yok, JS doğrulanmadı)")
+    print("✓ /%s/index.html  (%d bytes)%s" % (l, len(out), flag))
 
 # ── 9. Kök açılış (dil-seçim) ekranı ── (minimalist + animasyonlu)
 PROMPT = {"tr": "Dilinizi seçin", "en": "Select your language", "ar": "اختر لغتك", "ru": "Выберите язык"}
