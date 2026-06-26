@@ -24,7 +24,7 @@
 <link rel="icon" type="image/svg+xml" href="/images/mare.svg">
 <link rel="icon" type="image/png" href="/images/marelogo.png">
 <link rel="apple-touch-icon" href="/images/marelogo.png">
-<link rel="preload" as="image" href="/images/header.webp" fetchpriority="high">
+<link rel="preload" as="image" href="/images/hero-mare-1.webp" fetchpriority="high">
 
 <!-- Open Graph -->
 <meta property="og:type" content="restaurant">
@@ -51,7 +51,7 @@
   "@context": "https://schema.org",
   "@type": "Restaurant",
   "name": "Mare Gastro",
-  "image": "https://maregastro.com/images/header.jpg",
+  "image": "https://maregastro.com/images/hero-mare-1.jpg",
   "url": "https://maregastro.com/",
   "servesCuisine": ["Ege", "Akdeniz", "Deniz Ürünleri", "Fine Dining"],
   "priceRange": "$$$",
@@ -254,14 +254,17 @@ nav{
 ═══════════════════════════════════════ */
 #home{background:#000}
 
-.hbg{
-  position:absolute;inset:-12%;
-  background:url('/images/header.webp') 73% 26%/cover no-repeat;
-  animation:kb 28s ease-in-out infinite alternate;
-  will-change:transform;
+.hbg{position:absolute;inset:-12%;will-change:transform}
+.hslide{
+  position:absolute;inset:0;
+  background-position:center 34%;background-size:cover;background-repeat:no-repeat;
+  will-change:transform,opacity;
 }
+.hslide.s1{background-image:url('/images/hero-mare-1.webp');animation:kb 34s ease-in-out infinite alternate}
+.hslide.s2{background-image:url('/images/hero-mare-2.webp');opacity:0;animation:kb 34s ease-in-out infinite alternate-reverse,hfade 18s ease-in-out infinite}
+@keyframes hfade{0%,6%{opacity:0}44%,56%{opacity:1}94%,100%{opacity:0}}
 @media(min-width:768px){
-  .hbg{background-position:center center}
+  .hslide{background-position:center center}
 }
 @keyframes kb{
   0%{transform:scale(1.14) translate(0,0)}
@@ -396,21 +399,34 @@ nav{
 
 /* Kadir Çiçek signature credit */
 .story-sign{
-  display:flex;align-items:center;gap:13px;margin-top:24px;
-  padding:14px 18px;max-width:410px;
-  background:linear-gradient(120deg,rgba(200,169,110,.09),rgba(255,255,255,.02));
-  border:1px solid rgba(200,169,110,.24);border-radius:14px;
+  position:relative;display:flex;align-items:center;gap:15px;margin-top:24px;
+  padding:15px 22px 15px 18px;max-width:430px;
+  background:linear-gradient(120deg,rgba(200,169,110,.14),rgba(255,255,255,.02));
+  border:1px solid rgba(200,169,110,.30);border-radius:16px;
+  box-shadow:0 18px 44px -26px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.06);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  overflow:hidden;
 }
+.story-sign::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;
+  background:linear-gradient(105deg,transparent,rgba(223,192,138,.16),transparent);
+  transform:skewX(-16deg);animation:signSheen 7s ease-in-out 1.2s infinite;}
+@keyframes signSheen{0%,72%{left:-60%}100%{left:160%}}
 .story-sign-mark{
-  width:34px;height:34px;flex-shrink:0;border-radius:50%;
-  border:1px solid rgba(200,169,110,.3);
+  position:relative;width:40px;height:40px;flex-shrink:0;border-radius:50%;
+  border:1px solid rgba(200,169,110,.45);
+  background:radial-gradient(circle at 50% 35%,rgba(200,169,110,.18),transparent 70%);
   display:flex;align-items:center;justify-content:center;
-  color:var(--amber);font-size:.95rem;
+  color:var(--amber2);font-size:1rem;
+  box-shadow:0 0 0 4px rgba(200,169,110,.06),inset 0 0 12px rgba(200,169,110,.12);
 }
-.story-sign-body{display:flex;flex-direction:column;gap:4px}
-.story-sign-name{font-family:var(--ital);font-style:italic;font-size:1.2rem;color:var(--cream);line-height:1}
-.story-sign-role{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);line-height:1.3}
+.story-sign-mark::before{content:"";position:absolute;inset:4px;border-radius:50%;border:1px solid rgba(200,169,110,.22)}
+.story-sign-body{display:flex;flex-direction:column;gap:5px}
+.story-sign-name{
+  font-family:var(--ital);font-style:italic;font-size:1.34rem;line-height:1;letter-spacing:.01em;
+  background:linear-gradient(95deg,#F3E7C8,var(--amber2) 55%,var(--amber));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--amber2);
+}
+.story-sign-role{font-size:8.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);line-height:1.3}
 
 /* Magical reveal + ambient glow for the story */
 #story{position:relative;overflow:hidden}
@@ -575,12 +591,15 @@ nav{
    S4 — REZERVASYON
 ═══════════════════════════════════════ */
 #reservation{background:var(--bg);flex-direction:column;justify-content:flex-start;padding-top:0}
+#reservation::before{content:"";position:absolute;inset:0;z-index:0;
+  background:linear-gradient(rgba(4,8,15,.84),rgba(4,8,15,.93)),url('/images/mare-aerial.webp') center/cover no-repeat;}
 
 .rez-wrap{
   width:100%;height:100%;
   display:flex;flex-direction:column;
   padding:72px 0 0;
   overflow-y:auto;scrollbar-width:none;
+  position:relative;z-index:1;
 }
 .rez-wrap::-webkit-scrollbar{display:none}
 
@@ -858,9 +877,12 @@ nav{
    CHEF SECTION — REDESIGN
 ═══════════════════════════════════════ */
 #chef{background:var(--bg);flex-direction:column;padding-top:74px;padding-bottom:0;justify-content:flex-start}
+#chef::before{content:"";position:absolute;inset:0;z-index:0;
+  background:linear-gradient(rgba(4,8,15,.9),rgba(4,8,15,.97)),url('/images/mare-ambiance.webp') center/cover no-repeat;}
 
 .sc-inner{
   width:100%;
+  position:relative;z-index:1;
   display:flex;flex-direction:column;
   align-items:center;
   padding:0;
@@ -1227,7 +1249,7 @@ nav{
 
 <!-- ═══ S1: HERO ═══ -->
 <section class="page" id="home">
-  <div class="hbg" id="hbg"></div>
+  <div class="hbg" id="hbg"><div class="hslide s1"></div><div class="hslide s2"></div></div>
   <div class="hov1"></div><div class="hov2"></div><div class="hshimmer"></div>
   <div class="hpar" style="left:10%;width:2px;height:2px;animation-duration:18s;animation-delay:0s;bottom:0"></div>
   <div class="hpar" style="left:25%;width:1px;height:1px;animation-duration:24s;animation-delay:4s;bottom:0"></div>
@@ -1260,13 +1282,13 @@ nav{
       <h2 class="a-title rv rv2">Sapanca gölünün<br>ruhu, <em>tabakta</em></h2>
       <div class="a-rule rv rv2"></div>
       <p class="a-lead rv rv3">Çamların suya değdiği, sabah sisinin göl üzerinde usulca dağıldığı o eşsiz anda, Didi Otel'in doğayla bütünleşen bahçesinde bir hayal filizlendi.</p>
-      <p class="a-body rv rv4">Işığından masasına, tabağından ruhuna kadar Mare Gastro'nun her detayı, <em>Didi Otel bünyesinde Kadir Çiçek</em> tarafından tasarlandı, planlandı ve büyük bir titizlikle hayata geçirildi.</p>
+      <p class="a-body rv rv4">Işığından masasına, tabağından ruhuna kadar Mare Gastro'nun her detayı, <em>Didi Otel Yönetim Kurulu Başkanı Kadir Çiçek</em> tarafından tasarlandı, planlandı ve büyük bir titizlikle hayata geçirildi.</p>
       <p class="a-body rv rv5">Mutfağın başında, sinema geçmişini lezzete dönüştüren Yönetici Şef <em>Doğan Anapa</em> var. Ege ve Akdeniz'in en saf malzemelerini, bir hikâye anlatır gibi tabaklara taşıyor.</p>
       <div class="story-sign rv rv6">
         <span class="story-sign-mark">✦</span>
         <div class="story-sign-body">
           <span class="story-sign-name">Kadir Çiçek</span>
-          <span class="story-sign-role">Didi Otel · Konsept, Tasarım &amp; Hayata Geçiş</span>
+          <span class="story-sign-role">Didi Otel · Yönetim Kurulu Başkanı</span>
         </div>
       </div>
     </div>
