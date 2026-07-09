@@ -4,7 +4,7 @@ Tek kaynak: ../index.html (Türkçe template) + i18n/{tr,en,ar,ru}.json
 Üretir: /tr /en /ar /ru index.html  +  kök / dil-seçim açılış ekranı.
 Idempotent: her çalıştırmada sıfırdan üretir.
 """
-import json, re, os
+import json, re, os, urllib.request
 
 ROOT = os.path.dirname(os.path.abspath(__file__))      # .../i18n
 PROJ = os.path.dirname(ROOT)                            # proje kökü
@@ -37,6 +37,48 @@ src = src.replace(WAMSG, "@@WAMSG@@")
 m2 = re.search(r"const MENU_I18N = \{.*?\n\};", src, re.S)
 MENUI18N = m2.group(0)
 src = src.replace(MENUI18N, "@@MENUI18N@@")
+
+# ── 2c. Menu JSON-LD şeması — canlı /api/menu'den (yoksa yerel seed'ten) üretilir.
+#         @@MENUSCHEMA@@ zaten source.html'de literal placeholder; tokenizer'dan
+#         etkilenmemesi için içerik tokenizasyondan SONRA (WAMSG ile aynı yerde) basılır. ──
+def load_menu_data():
+    try:
+        with urllib.request.urlopen(SITE + "/api/menu", timeout=6) as r:
+            j = json.loads(r.read().decode("utf-8"))
+            if j.get("data") and j["data"].get("items"):
+                return j["data"]
+    except Exception as e:
+        print("ℹ️  Canlı /api/menu alınamadı (%s), yerel seed kullanılıyor." % e)
+    return json.load(open(f"{PROJ}/data/menu-data.seed.json", encoding="utf-8"))
+
+def build_menu_schema():
+    menu = load_menu_data()
+    cats_by_id = {c["id"]: c for c in menu["categories"]}
+    sections = []
+    for c in menu["categories"]:
+        items = [it for it in menu["items"] if it["cat"] == c["id"]]
+        if not items:
+            continue
+        menu_items = []
+        for it in items:
+            mi = {"@type": "MenuItem", "name": it["name"]}
+            if it.get("desc"):
+                mi["description"] = it["desc"]
+            if it.get("price"):
+                mi["offers"] = {"@type": "Offer", "price": str(it["price"]), "priceCurrency": "TRY"}
+            menu_items.append(mi)
+        sections.append({"@type": "MenuSection", "name": c.get("name_tr", c["id"]), "hasMenuItem": menu_items})
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "Menu",
+        "name": "Mare Gastro Menü",
+        "inLanguage": "tr",
+        "url": SITE + "/#menu",
+        "hasMenuSection": sections,
+    }
+    return json.dumps(schema, ensure_ascii=False, indent=1)
+
+MENUSCHEMA = build_menu_schema()
 
 # ── 3. hreflang + dil değiştirici işaretçileri ──
 src = re.sub(r'(<link rel="canonical"[^>]*>)', r"\1\n@@HREFLANG@@", src, count=1)
@@ -120,6 +162,7 @@ for l in LANGS:
     out = out.replace("@@LANGSW@@", langsw(l))
     out = out.replace("@@WAMSG@@", WAMSG)
     out = out.replace("@@MENUI18N@@", MENUI18N)
+    out = out.replace("@@MENUSCHEMA@@", MENUSCHEMA)
     # JS tek-tırnak bağlamına giren tokenler (alert / textContent / onclick selK)
     JS_CTX = {"js_gnote_ozel", "js_gnote_yalniz", "js_gnote_kisilik",
               "js_alert_tarih", "js_alert_saat", "js_alert_konaklama",
@@ -142,7 +185,8 @@ for l in LANGS:
     out = out.replace('content="%s/"' % SITE, 'content="%s/%s/"' % (SITE, l))      # og:url
     out = out.replace('content="tr_TR"', 'content="%s"' % LOCALE[l])
     out = out.replace("'tr-TR'", "'%s'" % JSLOCALE[l])
-    out = out.replace('"inLanguage": "tr"', '"inLanguage": "%s"' % l)
+    # NOT: Menu şemasının "inLanguage" alanı kasıtlı olarak "tr" kalır —
+    # yemek içerikleri (isim/açıklama) tüm site dillerinde SADECE Türkçe.
     # mobil dil linkleri (mobil menü açılışına ekle)
     out = re.sub(r'(<div class="mob-menu"[^>]*>)', lambda m: m.group(1) + mob_langs(l), out, count=1)
 

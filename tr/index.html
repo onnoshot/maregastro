@@ -78,41 +78,1785 @@
   "sameAs": ["https://www.instagram.com/maregastrosapanca/", "https://maps.google.com/?cid=7177941338358519695"]
 }
 </script>
-<!-- Menu structured data -->
+<!-- Menu structured data (build_i18n.py tarafından data/menu-data.seed.json'dan/canlı API'den üretilir) -->
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "Menu",
-  "name": "Mare Gastro Menü",
-  "inLanguage": "tr",
-  "url": "https://maregastro.com/#menu",
-  "hasMenuSection": [
-    { "@type": "MenuSection", "name": "Başlangıçlar", "hasMenuItem": [
-      { "@type": "MenuItem", "name": "Köz Patlıcan", "description": "Köz kırmızı biber, yeşil biber, taze soğan" },
-      { "@type": "MenuItem", "name": "Humus", "description": "İsli et, kornişon turşu, fındık, sızma zeytinyağı" },
-      { "@type": "MenuItem", "name": "Arnavut Ciğeri", "description": "Karamelize soğan, maydanoz, baharatlı tereyağı" },
-      { "@type": "MenuItem", "name": "Dana Carpaccio", "description": "Roka, parmesan, kapari" },
-      { "@type": "MenuItem", "name": "Levrek Marin", "description": "Narenciye ile marine, kırmızı soğan, dereotu, sızma zeytinyağı" },
-      { "@type": "MenuItem", "name": "Zeytinyağlı Enginar", "description": "Araka püresi, fıstık, nane" }
-    ]},
-    { "@type": "MenuSection", "name": "Ara Sıcaklar", "hasMenuItem": [
-      { "@type": "MenuItem", "name": "Kalamar Tava", "description": "Tarator sos" },
-      { "@type": "MenuItem", "name": "Ahtapot Izgara", "description": "Sarımsaklı tereyağlı sos" },
-      { "@type": "MenuItem", "name": "Jumbo Karides Izgara", "description": "Sarımsaklı maydanozlu tereyağı" },
-      { "@type": "MenuItem", "name": "Patates Terin", "description": "Kestane mantar sos, isli et, mantar salsa" }
-    ]},
-    { "@type": "MenuSection", "name": "Ana Yemekler", "hasMenuItem": [
-      { "@type": "MenuItem", "name": "Çıtır Somon", "description": "Kuşkonmaz, fırın patates, hollandaise" },
-      { "@type": "MenuItem", "name": "Günün Izgara Balığı", "description": "Köz biber, domates, bebek patates, beurre blanc" },
-      { "@type": "MenuItem", "name": "Fırında Kremalı Levrek", "description": "Domates, biber, kekik, kapari" },
-      { "@type": "MenuItem", "name": "Somonlu Kremalı Spagetti", "description": "Krema soslu somon, taze maydanoz" },
-      { "@type": "MenuItem", "name": "Biber Kremalı Bonfile", "description": "200 gr. dana, kibrit patates, karabiber sos" }
-    ]},
-    { "@type": "MenuSection", "name": "Tatlılar", "hasMenuItem": [
-      { "@type": "MenuItem", "name": "Yanık Cheesecake" },
-      { "@type": "MenuItem", "name": "Ormanda Bir Yürüyüş", "description": "Çikolata mus, profiterol, vanilyalı dondurma" }
-    ]}
-  ]
+ "@context": "https://schema.org",
+ "@type": "Menu",
+ "name": "Mare Gastro Menü",
+ "inLanguage": "tr",
+ "url": "https://maregastro.com/#menu",
+ "hasMenuSection": [
+  {
+   "@type": "MenuSection",
+   "name": "Başlangıçlar",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Levrek Marin",
+     "offers": {
+      "@type": "Offer",
+      "price": "750",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Yoğurtlu Semizotu",
+     "description": "Semizotunun ferahlığı yoğurtla buluşması",
+     "offers": {
+      "@type": "Offer",
+      "price": "380",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Humus",
+     "description": "Haşlanmış nohut, tahin, elma sirkesi, limon suyu, zeytinyağı, toz şeker , tuz sarımsak ,  kimyon, köz kırmızı biber, kornişon turşu. fındık, sızma zeytinyağı, zeytin",
+     "offers": {
+      "@type": "Offer",
+      "price": "400",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Köz Patlıcan",
+     "description": "Köz patlıcan, köz kırmızı biber, köz yeşil biber, sarımsak, mayonez, taze soğan, sızma zeytinyağı, tuz",
+     "offers": {
+      "@type": "Offer",
+      "price": "400",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Girit Ezme,kavun",
+     "description": "Erzincan tulum, lor peynırı, ezıne peynırı, dereotu, maydonoz, fesleğen ,ceviz, Rakı ile marine edilmiş kavun, sızma zeytinyağı",
+     "offers": {
+      "@type": "Offer",
+      "price": "550",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Zeytinyağı Enginar",
+     "description": "Enginar, zeytınyağı, soğan, dere otu, bezelye(araka), antep fıstık, zeytinyağı, limon, taze nane",
+     "offers": {
+      "@type": "Offer",
+      "price": "350",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Patlıcanlı Pilav",
+     "description": "Baldo pirinç pilavı, dolmalık fıstık, üzüm, dereotu, patlıcan, zeytinyağı, tuz, şeker",
+     "offers": {
+      "@type": "Offer",
+      "price": "450",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Avokadolu Jumbo Karides Söğüş",
+     "description": "Avakado, hardal, portakal suyu, limon suyu, bal, jumbo karides, zeytinyağı, tuz, karabiber",
+     "offers": {
+      "@type": "Offer",
+      "price": "1350",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Dana Carpaccıo",
+     "description": "Bonfile, kapari, roka, parmesan, zeytinyağı, elma sirkesi, tuz, sarımsak, limon suyu, nar ekşisi",
+     "offers": {
+      "@type": "Offer",
+      "price": "1400",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Salatalar",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Semizotu Salatası",
+     "description": "Semizotu, tatlı biber turşusu, çilek, yeşil elma, ceviz, erzincan tulum nar ekşili vinaigrette",
+     "offers": {
+      "@type": "Offer",
+      "price": "600",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Roka Salatası",
+     "description": "Roka yaprakları, küp domates, rende parmesan peyniri, sarımsaklı balzamik sos",
+     "offers": {
+      "@type": "Offer",
+      "price": "600",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Komşu Salata",
+     "description": "Domates, salatalık, yeşil biber, kırmızı soğan, siyah zeytin, dilim ezine peynir, limon ve sirkeli sos",
+     "offers": {
+      "@type": "Offer",
+      "price": "600",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Ara Sıcaklar",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Mare Spesiyal Ahtapot Güveç",
+     "description": "Özel marine edilmiş ahtapot güveç,sarımsaklı tereyağ vr baharat",
+     "offers": {
+      "@type": "Offer",
+      "price": "1750",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Yaprak Ciğer",
+     "description": "200 gr. Yaprak ciğer",
+     "offers": {
+      "@type": "Offer",
+      "price": "1100",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "3'lü Deniz Mahsülü Lezzeti",
+     "description": "Mare ıslama kalamar/kalamar tava + Tereyağlı karides + Ahtapot güveç",
+     "offers": {
+      "@type": "Offer",
+      "price": "3350",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Mare Spesiyal Islama Kalamar",
+     "description": "2 adet baby kalamar ızgara,naneli hardallı sos",
+     "offers": {
+      "@type": "Offer",
+      "price": "1100",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Kalamar Tava",
+     "description": "Kalamar, un, mısır nişastası, soda, bira. Sos: ekmek kırıntısı, ceviz, turşu, sarımsak, uzum sirkesi, zeytinyağı, mayonez, yoğurt, tuz",
+     "offers": {
+      "@type": "Offer",
+      "price": "1000",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Tereyağlı Karides",
+     "description": "Jumbo karides, tereyağı, zeytinyağı, paprika, sarımsak, maydonoz, tuz",
+     "offers": {
+      "@type": "Offer",
+      "price": "1000",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Patates Terin",
+     "description": "Patates, tereyağı, kestane mantarı, soğan, füme et, yeşil soğan, muskat, kekik, krema, un, tuz",
+     "offers": {
+      "@type": "Offer",
+      "price": "850",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Ana Yemekler",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Deniz Mahsülleri Buğday Risotto",
+     "description": "Buharda pişmiş kum midyeli linguine makarna, tereyağ ve sarımsak ve maydanozlu",
+     "offers": {
+      "@type": "Offer",
+      "price": "850",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Kuzu Kokoreç",
+     "description": "Karpuzlu çoban salata vr köz biber sos eşliğinde",
+     "offers": {
+      "@type": "Offer",
+      "price": "950",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Fırında Kremalı Levrek",
+     "description": "Fırın levrek, domates, soğan, biber, limon, krema, balık suyu, sarımsak, tuz, kekik ve kremalı levrek, kapar maydanoz",
+     "offers": {
+      "@type": "Offer",
+      "price": "1550",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Çıtır Somon",
+     "description": "200 gr kıtır somon fileto, kuşkonmaz, fırın patates, hollandaise sos (yumurta, erimiş tereyağı, limon suyu)",
+     "offers": {
+      "@type": "Offer",
+      "price": "1300",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Mare Spesiyal Granyöz",
+     "description": "200 gr Granyöz, baby patates, köz yeşil biber sos, köz domates, kuşkonmaz, beurre blanc sos",
+     "offers": {
+      "@type": "Offer",
+      "price": "1600",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Somonlu Kremalı Spagettı",
+     "description": "150gr somon, spagetti, domates, soğan, biber, limon, krema, balık suyu, sarımsak, tuz, kekik, maydonoz",
+     "offers": {
+      "@type": "Offer",
+      "price": "850",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Biber Kremalı Bonfile",
+     "description": "200gr dana bonfile, kibrit patetes, soğan,karabiber,tuz,et suyu, krema, viski",
+     "offers": {
+      "@type": "Offer",
+      "price": "1900",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "İncik Rüyası",
+     "description": "Keşkek yatağında yavaş pişmiş incik,nane yağı",
+     "offers": {
+      "@type": "Offer",
+      "price": "2100",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Kahvaltılar",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Brioche Benedict",
+     "description": "Poşe yumurta, füme et, sote kuşkonmaz,hollandaise sos",
+     "offers": {
+      "@type": "Offer",
+      "price": "960",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Serpme Kahvaltı",
+     "description": "Siyah zeytin, ızgara yeşil zeytin, tarçınlı elma reçeli, çilek reçeli, acuka, çiçek balı, kaymak, tereyağı,domates soslu patlıcan biber kızartma, ezine peyniri, taze kaşar, çeçil peynir, söğüş tabağı, gözleme, pişi, patates kızartması, sahanda sucuk, omlet/menemen, muska böreği, güveçte eritme peynir, mevsim meyvesi, çay",
+     "offers": {
+      "@type": "Offer",
+      "price": "1200",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Tatlılar",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Limonlu Tart",
+     "offers": {
+      "@type": "Offer",
+      "price": "500",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Meyve Tabağı",
+     "offers": {
+      "@type": "Offer",
+      "price": "850",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "San Sebastıan Cheesecake",
+     "offers": {
+      "@type": "Offer",
+      "price": "475",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Mare Şekerpare",
+     "description": "Un, irmik, yumurta, şeker, fındık, limon suyu, tereyağ",
+     "offers": {
+      "@type": "Offer",
+      "price": "400",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Ormanda Bir Yürüyüş",
+     "description": "Çikolata, yumurta sarısı, yumurta beyazı, süt, toz şeker, krema, çıtır profiterol hamuru, ev yapımı vanilyalı dondurma, çilek",
+     "offers": {
+      "@type": "Offer",
+      "price": "550",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Çocuk Menüsü",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Domates Soslu Makarna",
+     "offers": {
+      "@type": "Offer",
+      "price": "550",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Izgara Köfte",
+     "description": "Patates kızartması,acılı sos yada yoğurtlu közlenmiş yeşil biber",
+     "offers": {
+      "@type": "Offer",
+      "price": "900",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Extralar",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Yoğurt",
+     "offers": {
+      "@type": "Offer",
+      "price": "150",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Dilim Kavun",
+     "description": "1 dilim doğranmış kavun",
+     "offers": {
+      "@type": "Offer",
+      "price": "250",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Dilim Karpuz",
+     "description": "1 dilim doğranmış karpuz",
+     "offers": {
+      "@type": "Offer",
+      "price": "250",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Dilim Ezine Peynir",
+     "description": "1 dilim ezine peyniri",
+     "offers": {
+      "@type": "Offer",
+      "price": "150",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Patates Kızartması",
+     "description": "Çıtır patates",
+     "offers": {
+      "@type": "Offer",
+      "price": "250",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Çerez",
+     "description": "Fındık,badem,antep fıstığı",
+     "offers": {
+      "@type": "Offer",
+      "price": "400",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Peynir Tabağı",
+     "description": "Ezine peynir,kaşar peynir,eski kaşar peyniri,isli peynir,abaza peyniri",
+     "offers": {
+      "@type": "Offer",
+      "price": "750",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Şaraplar",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Baron De Lastac 2019 Kırmızı",
+     "offers": {
+      "@type": "Offer",
+      "price": "3100",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Baron De Lastac 2020 Beyaz",
+     "offers": {
+      "@type": "Offer",
+      "price": "3100",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Egeo Cabarnet Sauvignon 2016",
+     "offers": {
+      "@type": "Offer",
+      "price": "6250",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Egeo Chardonay 2016",
+     "offers": {
+      "@type": "Offer",
+      "price": "6250",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Egeo Füme Blanc 2020",
+     "offers": {
+      "@type": "Offer",
+      "price": "6250",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Egeo Roze 2019",
+     "offers": {
+      "@type": "Offer",
+      "price": "6250",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Egeo Sauvignon Blanc",
+     "offers": {
+      "@type": "Offer",
+      "price": "6250",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Jordab Chameleon Chenin Blanc",
+     "offers": {
+      "@type": "Offer",
+      "price": "5500",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Maison Chateaux La Croix Larti",
+     "offers": {
+      "@type": "Offer",
+      "price": "12450",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Pendore Öküzgözü 2015",
+     "offers": {
+      "@type": "Offer",
+      "price": "8100",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Pendore Syrah 2013",
+     "offers": {
+      "@type": "Offer",
+      "price": "8100",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Prinz V Hessen Reisling Trevis",
+     "offers": {
+      "@type": "Offer",
+      "price": "6750",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Sartori Blush",
+     "offers": {
+      "@type": "Offer",
+      "price": "3900",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Sartori Merlot",
+     "offers": {
+      "@type": "Offer",
+      "price": "3900",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Sartori Pine Grigio",
+     "offers": {
+      "@type": "Offer",
+      "price": "3900",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Urla Boğazkere",
+     "offers": {
+      "@type": "Offer",
+      "price": "6100",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Urla Cabarnet Sauvignon",
+     "offers": {
+      "@type": "Offer",
+      "price": "6100",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Urla Chardonay",
+     "offers": {
+      "@type": "Offer",
+      "price": "6100",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Urla Tempus",
+     "offers": {
+      "@type": "Offer",
+      "price": "8450",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Alkollü Kokteyller",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Espresso Martini",
+     "description": "Votka,kahve likörü,espresso,şeker şurubu",
+     "offers": {
+      "@type": "Offer",
+      "price": "980",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Sex On The Beach",
+     "description": "votka,şeftali likörü,portakal suyu,nar şurubu,",
+     "offers": {
+      "@type": "Offer",
+      "price": "980",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Mojito",
+     "description": "Lime,şeker şurubu,rom,soda",
+     "offers": {
+      "@type": "Offer",
+      "price": "980",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Kuzu Kulağı Sour",
+     "description": "Kuzu kulağı,şeker şurubu,limon suyu,yeşil elma,cin,yumurta akı",
+     "offers": {
+      "@type": "Offer",
+      "price": "980",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Aperol Enegy",
+     "description": "Aperol,triple sec,redbull",
+     "offers": {
+      "@type": "Offer",
+      "price": "1050",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Whisky Sour",
+     "description": "Bourbone visky,limon suyu,şeker şurubu,yumurta akı",
+     "offers": {
+      "@type": "Offer",
+      "price": "1050",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "R.r",
+     "description": "Rakı,roka,limon suyuu,şeker şurubu",
+     "offers": {
+      "@type": "Offer",
+      "price": "980",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Margarita",
+     "description": "Tekila,limon suyu,portakal likörü",
+     "offers": {
+      "@type": "Offer",
+      "price": "980",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Long Island",
+     "description": "Tekila,votka,cin,rom,portakal likörü,kola",
+     "offers": {
+      "@type": "Offer",
+      "price": "1150",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Alkolsüz Kokteyller",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Mojito Strawbery",
+     "description": "Lime,şeker şurubu,taze nane,çilek,soda",
+     "offers": {
+      "@type": "Offer",
+      "price": "450",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Pina Colado",
+     "description": "Süt,ananas suyu,hindistan cevizi kreması",
+     "offers": {
+      "@type": "Offer",
+      "price": "450",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Pink Lady",
+     "offers": {
+      "@type": "Offer",
+      "price": "450",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Meyve Kokteyli",
+     "description": "Portakal ananas elma turunç şurubu",
+     "offers": {
+      "@type": "Offer",
+      "price": "450",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Rakılar",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Tekirdağ Göbek 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "5220",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Tekirdağ Göbek 35 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "3000",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Efe Yaş Üzüm 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "3920",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Efe Yaş Üzüm 35 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "2250",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Sarı Zeybek 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "5400",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Sarı Zeybek 35 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "3220",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Sarı Zeybek 20 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "2450",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Efe Gold 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "4440",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Efe Gold 35 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "2450",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Efe Göbek 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "5150",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Efe Göbek 35 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "2850",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Yeni Rakı Yeni Seri 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "4740",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Yeni Rakı Yeni Seri 35 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "2640",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Mercan Rakı 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "5700",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Mercan Rakı 35 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "3500",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Giz Rakı 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "9900",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Efe Aok Barrel 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "11520",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Double Rakı",
+     "offers": {
+      "@type": "Offer",
+      "price": "750",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Tek Rakı",
+     "offers": {
+      "@type": "Offer",
+      "price": "500",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Beylerbeyi Göbek 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "5550",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Beylerbeyi Göbek 50 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "3950",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Beylerbeyi Göbek 35 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "3480",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Prototip Rakı",
+     "description": "70 cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "7000",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Tekirdağ Altınseri",
+     "description": "35 CL",
+     "offers": {
+      "@type": "Offer",
+      "price": "2550",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Yeni Rakı",
+     "description": "70 CL",
+     "offers": {
+      "@type": "Offer",
+      "price": "4050",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Tekirdağ Altınseri",
+     "description": "50CL",
+     "offers": {
+      "@type": "Offer",
+      "price": "3550",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Tekirdağ Altınseri",
+     "description": "70CL",
+     "offers": {
+      "@type": "Offer",
+      "price": "4150",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Sarı Zeybek 50 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "4500",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Viskiler",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Viski Duble",
+     "offers": {
+      "@type": "Offer",
+      "price": "1000",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Hibiki 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "25000",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Dimple Golden Selection 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "6000",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Singleton 18 Years 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "14500",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Singleton 12 Years 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "8500",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Johnnie Walker Black Label 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "10000",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Johnnie Walker Black Label 50 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "8500",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Duble Viski ( Hibiki )",
+     "offers": {
+      "@type": "Offer",
+      "price": "3000",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Johnie Walker Black Label 35 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "5500",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Taliscal 10 Years",
+     "description": "70 CL",
+     "offers": {
+      "@type": "Offer",
+      "price": "12000",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Taliscal Sky",
+     "description": "70 CL",
+     "offers": {
+      "@type": "Offer",
+      "price": "12000",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Votkalar",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Finlandiya 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "7500",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Smirnoff 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "6250",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Smirnoff 35 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "4000",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Double Votka",
+     "offers": {
+      "@type": "Offer",
+      "price": "950",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Onagin",
+     "offers": {
+      "@type": "Offer",
+      "price": "15000",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Grey Gross",
+     "description": "70 CL",
+     "offers": {
+      "@type": "Offer",
+      "price": "14000",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Cinler",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Tanqueray No:ten 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "8750",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Gordons Premium Pink 70cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "5500",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Hendricks 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "10250",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Ruko Graft",
+     "description": "70 CL",
+     "offers": {
+      "@type": "Offer",
+      "price": "9600",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Premium Duble Cin",
+     "description": "8 CL",
+     "offers": {
+      "@type": "Offer",
+      "price": "1350",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Tekilalar",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Olmega 70cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "7500",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Don Julio Blanco 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "9500",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Don Julio Classic 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "12000",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Patron",
+     "description": "70CL",
+     "offers": {
+      "@type": "Offer",
+      "price": "14250",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Romlar",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Bacardi 70 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "6500",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Captain Morgan",
+     "offers": {
+      "@type": "Offer",
+      "price": "7000",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Likörler",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Campari Shot",
+     "offers": {
+      "@type": "Offer",
+      "price": "500",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Jager Meister Shot 6 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "600",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Baileys Shot 6 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "600",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Malibu Shot 6 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "600",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Kahlua Shot 6 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "600",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Aperol Shot 6 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "600",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Amarula Shot 6 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "600",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Schvartslog 6 Cl",
+     "offers": {
+      "@type": "Offer",
+      "price": "600",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Biralar",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Tuborg Gold",
+     "offers": {
+      "@type": "Offer",
+      "price": "350",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Carlsberg",
+     "offers": {
+      "@type": "Offer",
+      "price": "415",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Corona",
+     "offers": {
+      "@type": "Offer",
+      "price": "495",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Miller",
+     "offers": {
+      "@type": "Offer",
+      "price": "410",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Heineken",
+     "offers": {
+      "@type": "Offer",
+      "price": "500",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Soğuk Kahveler",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "İce Latte",
+     "description": "Süt,buz,expresso",
+     "offers": {
+      "@type": "Offer",
+      "price": "280",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "İce Mocha",
+     "description": "Süt,buz,çikokata,espresso",
+     "offers": {
+      "@type": "Offer",
+      "price": "280",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "İce White Chocolate Mocha",
+     "description": "Süt,buz,beyaz çikolata,espresso",
+     "offers": {
+      "@type": "Offer",
+      "price": "280",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "İce Americano",
+     "description": "Su,buz,espresso",
+     "offers": {
+      "@type": "Offer",
+      "price": "280",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Soğuk İçecekler",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Coca Cola",
+     "offers": {
+      "@type": "Offer",
+      "price": "200",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Coca Cola Zero",
+     "offers": {
+      "@type": "Offer",
+      "price": "200",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Fanta",
+     "offers": {
+      "@type": "Offer",
+      "price": "200",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Sprite",
+     "offers": {
+      "@type": "Offer",
+      "price": "200",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Fucetea",
+     "offers": {
+      "@type": "Offer",
+      "price": "200",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Sade Soda",
+     "offers": {
+      "@type": "Offer",
+      "price": "100",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Meyveli Soda",
+     "offers": {
+      "@type": "Offer",
+      "price": "130",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Limonata",
+     "offers": {
+      "@type": "Offer",
+      "price": "100",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Naneli Limonata",
+     "description": "Limonata,nane",
+     "offers": {
+      "@type": "Offer",
+      "price": "130",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Çilekli Limonata",
+     "description": "Limonata,çilek",
+     "offers": {
+      "@type": "Offer",
+      "price": "130",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Ayran",
+     "offers": {
+      "@type": "Offer",
+      "price": "100",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Naneli Ayran",
+     "description": "Ayran,taze nane",
+     "offers": {
+      "@type": "Offer",
+      "price": "130",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Milkshakeler",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Karpuz Milkshake",
+     "offers": {
+      "@type": "Offer",
+      "price": "400",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Çilek Milkshake",
+     "offers": {
+      "@type": "Offer",
+      "price": "400",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Çarkıfelek Milkshake",
+     "offers": {
+      "@type": "Offer",
+      "price": "400",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Çikolata Milkshake",
+     "offers": {
+      "@type": "Offer",
+      "price": "400",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Karamel Milkshake",
+     "offers": {
+      "@type": "Offer",
+      "price": "400",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Frozenler",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Çilek Frozen",
+     "offers": {
+      "@type": "Offer",
+      "price": "350",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Karpuz Frozen",
+     "offers": {
+      "@type": "Offer",
+      "price": "350",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Çarkıfelek Frozen",
+     "offers": {
+      "@type": "Offer",
+      "price": "350",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Limon Nane Froze",
+     "offers": {
+      "@type": "Offer",
+      "price": "350",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "Taze Sıkımlar",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Portakal Suyu",
+     "offers": {
+      "@type": "Offer",
+      "price": "400",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Elma Suyu",
+     "offers": {
+      "@type": "Offer",
+      "price": "400",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Havuç Suyu",
+     "offers": {
+      "@type": "Offer",
+      "price": "400",
+      "priceCurrency": "TRY"
+     }
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Didi Atom",
+     "description": "PORTAKAL,ELMA,HAVUÇ,LİMON,BAL",
+     "offers": {
+      "@type": "Offer",
+      "price": "500",
+      "priceCurrency": "TRY"
+     }
+    }
+   ]
+  }
+ ]
 }
 </script>
 
