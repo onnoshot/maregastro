@@ -3257,6 +3257,12 @@ nav{
             <button class="gcnt-btn" onclick="adjG(1)">+</button>
           </div>
           <div class="gcnt-note" id="gNote">For private events, select 10+ guests</div>
+          <label class="field-label">Full Name</label>
+          <input type="text" class="date-field" id="rName" placeholder="Your full name" autocomplete="name">
+          <label class="field-label">Phone Number</label>
+          <input type="tel" class="date-field" id="rPhone" placeholder="05XX XXX XX XX" autocomplete="tel">
+          <label class="field-label">Email</label>
+          <input type="email" class="date-field" id="rEmail" placeholder="you@email.com" autocomplete="email">
           <div class="sacts"><button class="s-next" onclick="gS(2)">Continue →</button></div>
         </div>
 
@@ -3294,12 +3300,6 @@ nav{
             <p>Everything is ready, please confirm</p>
             <small>Review your details</small>
           </div>
-          <label class="field-label">Full Name</label>
-          <input type="text" class="date-field" id="rName" placeholder="Your full name" autocomplete="name">
-          <label class="field-label">Phone Number</label>
-          <input type="tel" class="date-field" id="rPhone" placeholder="05XX XXX XX XX" autocomplete="tel">
-          <label class="field-label">Email</label>
-          <input type="email" class="date-field" id="rEmail" placeholder="you@email.com" autocomplete="email">
           <div class="sum-card">
             <div class="sum-row">
               <div class="sum-item"><label>Date</label><span id="sD">—</span></div>
@@ -3531,6 +3531,8 @@ function gS(n){
   if(n===2){
     if(!document.getElementById('rdate').value){alert('Please select a date.');return}
     if(!selTime_val){alert('Please select a time.');return}
+    if(!document.getElementById('rName').value.trim()){alert('Lütfen ad soyad girin.');return}
+    if(!document.getElementById('rPhone').value.trim()){alert('Lütfen telefon numaranızı girin.');return}
   }
   if(n===3){
     if(!selKon_val){alert('Please choose your stay preference.');return}

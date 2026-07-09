@@ -3257,6 +3257,12 @@ nav{
             <button class="gcnt-btn" onclick="adjG(1)">+</button>
           </div>
           <div class="gcnt-note" id="gNote">اختر 10 أشخاص أو أكثر للمناسبات الخاصة</div>
+          <label class="field-label">الاسم الكامل</label>
+          <input type="text" class="date-field" id="rName" placeholder="اسمك الكامل" autocomplete="name">
+          <label class="field-label">رقم الهاتف</label>
+          <input type="tel" class="date-field" id="rPhone" placeholder="05XX XXX XX XX" autocomplete="tel">
+          <label class="field-label">البريد الإلكتروني</label>
+          <input type="email" class="date-field" id="rEmail" placeholder="you@email.com" autocomplete="email">
           <div class="sacts"><button class="s-next" onclick="gS(2)">متابعة →</button></div>
         </div>
 
@@ -3294,12 +3300,6 @@ nav{
             <p>كل شيء جاهز، أكّد الحجز</p>
             <small>تحقّق من معلوماتك</small>
           </div>
-          <label class="field-label">الاسم الكامل</label>
-          <input type="text" class="date-field" id="rName" placeholder="اسمك الكامل" autocomplete="name">
-          <label class="field-label">رقم الهاتف</label>
-          <input type="tel" class="date-field" id="rPhone" placeholder="05XX XXX XX XX" autocomplete="tel">
-          <label class="field-label">البريد الإلكتروني</label>
-          <input type="email" class="date-field" id="rEmail" placeholder="you@email.com" autocomplete="email">
           <div class="sum-card">
             <div class="sum-row">
               <div class="sum-item"><label>التاريخ</label><span id="sD">—</span></div>
@@ -3531,6 +3531,8 @@ function gS(n){
   if(n===2){
     if(!document.getElementById('rdate').value){alert('يُرجى اختيار تاريخ.');return}
     if(!selTime_val){alert('يُرجى اختيار وقت.');return}
+    if(!document.getElementById('rName').value.trim()){alert('Lütfen ad soyad girin.');return}
+    if(!document.getElementById('rPhone').value.trim()){alert('Lütfen telefon numaranızı girin.');return}
   }
   if(n===3){
     if(!selKon_val){alert('يُرجى اختيار تفضيل الإقامة.');return}

@@ -3257,6 +3257,12 @@ nav{
             <button class="gcnt-btn" onclick="adjG(1)">+</button>
           </div>
           <div class="gcnt-note" id="gNote">Özel organizasyon için 10+ kişi seçin</div>
+          <label class="field-label">Ad Soyad</label>
+          <input type="text" class="date-field" id="rName" placeholder="Adınız Soyadınız" autocomplete="name">
+          <label class="field-label">Telefon Numarası</label>
+          <input type="tel" class="date-field" id="rPhone" placeholder="05XX XXX XX XX" autocomplete="tel">
+          <label class="field-label">E-posta</label>
+          <input type="email" class="date-field" id="rEmail" placeholder="ornek@eposta.com" autocomplete="email">
           <div class="sacts"><button class="s-next" onclick="gS(2)">Devam Et →</button></div>
         </div>
 
@@ -3294,12 +3300,6 @@ nav{
             <p>Her şey hazır, onaylayın</p>
             <small>Bilgilerinizi kontrol edin</small>
           </div>
-          <label class="field-label">Ad Soyad</label>
-          <input type="text" class="date-field" id="rName" placeholder="Adınız Soyadınız" autocomplete="name">
-          <label class="field-label">Telefon Numarası</label>
-          <input type="tel" class="date-field" id="rPhone" placeholder="05XX XXX XX XX" autocomplete="tel">
-          <label class="field-label">E-posta</label>
-          <input type="email" class="date-field" id="rEmail" placeholder="ornek@eposta.com" autocomplete="email">
           <div class="sum-card">
             <div class="sum-row">
               <div class="sum-item"><label>Tarih</label><span id="sD">—</span></div>
@@ -3531,6 +3531,8 @@ function gS(n){
   if(n===2){
     if(!document.getElementById('rdate').value){alert('Lütfen bir tarih seçin.');return}
     if(!selTime_val){alert('Lütfen bir saat seçin.');return}
+    if(!document.getElementById('rName').value.trim()){alert('Lütfen ad soyad girin.');return}
+    if(!document.getElementById('rPhone').value.trim()){alert('Lütfen telefon numaranızı girin.');return}
   }
   if(n===3){
     if(!selKon_val){alert('Lütfen konaklama tercihini seçin.');return}
