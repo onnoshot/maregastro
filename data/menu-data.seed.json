@@ -189,7 +189,7 @@
    "img": "levrek-marin.webp"
   },
   {
-   "id": "yo-urtlu-semizotu",
+   "id": "yogurtlu-semizotu",
    "cat": "b",
    "name": "Yoğurtlu Semizotu",
    "desc": "Semizotunun ferahlığı yoğurtla buluşması",
@@ -205,7 +205,7 @@
    "img": "humus.webp"
   },
   {
-   "id": "k-z-patl-can",
+   "id": "koz-patlican",
    "cat": "b",
    "name": "Köz Patlıcan",
    "desc": "Köz patlıcan, köz kırmızı biber, köz yeşil biber, sarımsak, mayonez, taze soğan, sızma zeytinyağı, tuz",
@@ -221,7 +221,7 @@
    "img": "semizotu.webp"
   },
   {
-   "id": "zeytinya-enginar",
+   "id": "zeytinyagi-enginar",
    "cat": "b",
    "name": "Zeytinyağı Enginar",
    "desc": "Enginar, zeytınyağı, soğan, dere otu, bezelye(araka), antep fıstık, zeytinyağı, limon, taze nane",
@@ -229,7 +229,7 @@
    "img": "enginar.webp"
   },
   {
-   "id": "patl-canl-pilav",
+   "id": "patlicanli-pilav",
    "cat": "b",
    "name": "Patlıcanlı Pilav",
    "desc": "Baldo pirinç pilavı, dolmalık fıstık, üzüm, dereotu, patlıcan, zeytinyağı, tuz, şeker",
@@ -237,7 +237,7 @@
    "img": "pilav.webp"
   },
   {
-   "id": "avokadolu-jumbo-karides-s",
+   "id": "avokadolu-jumbo-karides-sogus",
    "cat": "b",
    "name": "Avokadolu Jumbo Karides Söğüş",
    "desc": "Avakado, hardal, portakal suyu, limon suyu, bal, jumbo karides, zeytinyağı, tuz, karabiber",
@@ -245,7 +245,7 @@
    "img": "karides-sos.webp"
   },
   {
-   "id": "dana-carpacc-o",
+   "id": "dana-carpaccio",
    "cat": "b",
    "name": "Dana Carpaccıo",
    "desc": "Bonfile, kapari, roka, parmesan, zeytinyağı, elma sirkesi, tuz, sarımsak, limon suyu, nar ekşisi",
@@ -253,7 +253,7 @@
    "img": "dana-carpaccio.webp"
   },
   {
-   "id": "semizotu-salatas",
+   "id": "semizotu-salatasi",
    "cat": "s",
    "name": "Semizotu Salatası",
    "desc": "Semizotu, tatlı biber turşusu, çilek, yeşil elma, ceviz, erzincan tulum nar ekşili vinaigrette",
@@ -261,7 +261,7 @@
    "img": "semizotu-salata.webp"
   },
   {
-   "id": "roka-salatas",
+   "id": "roka-salatasi",
    "cat": "s",
    "name": "Roka Salatası",
    "desc": "Roka yaprakları, küp domates, rende parmesan peyniri, sarımsaklı balzamik sos",
@@ -269,7 +269,7 @@
    "img": null
   },
   {
-   "id": "kom-u-salata",
+   "id": "komsu-salata",
    "cat": "s",
    "name": "Komşu Salata",
    "desc": "Domates, salatalık, yeşil biber, kırmızı soğan, siyah zeytin, dilim ezine peynir, limon ve sirkeli sos",
@@ -277,7 +277,7 @@
    "img": "yunan-salata.webp"
   },
   {
-   "id": "mare-spesiyal-ahtapot-g-ve",
+   "id": "mare-spesiyal-ahtapot-guvec",
    "cat": "a",
    "name": "Mare Spesiyal Ahtapot Güveç",
    "desc": "Özel marine edilmiş ahtapot güveç,sarımsaklı tereyağ vr baharat",
@@ -285,7 +285,7 @@
    "img": null
   },
   {
-   "id": "yaprak-ci-er",
+   "id": "yaprak-ciger",
    "cat": "a",
    "name": "Yaprak Ciğer",
    "desc": "200 gr. Yaprak ciğer",
@@ -293,7 +293,7 @@
    "img": null
   },
   {
-   "id": "3-l-deniz-mahs-l-lezzeti",
+   "id": "3-lu-deniz-mahsulu-lezzeti",
    "cat": "a",
    "name": "3'lü Deniz Mahsülü Lezzeti",
    "desc": "Mare ıslama kalamar/kalamar tava + Tereyağlı karides + Ahtapot güveç",
@@ -301,7 +301,7 @@
    "img": null
   },
   {
-   "id": "mare-spesiyal-slama-kalamar",
+   "id": "mare-spesiyal-islama-kalamar",
    "cat": "a",
    "name": "Mare Spesiyal Islama Kalamar",
    "desc": "2 adet baby kalamar ızgara,naneli hardallı sos",
@@ -317,7 +317,7 @@
    "img": "kalamar-tava.webp"
   },
   {
-   "id": "tereya-l-karides",
+   "id": "tereyagli-karides",
    "cat": "a",
    "name": "Tereyağlı Karides",
    "desc": "Jumbo karides, tereyağı, zeytinyağı, paprika, sarımsak, maydonoz, tuz",
@@ -333,7 +333,7 @@
    "img": "patates-terin2.webp"
   },
   {
-   "id": "deniz-mahs-lleri-bu-day-r-sotto",
+   "id": "deniz-mahsulleri-bugday-risotto",
    "cat": "n",
    "name": "Deniz Mahsülleri Buğday Risotto",
    "desc": "Buharda pişmiş kum midyeli linguine makarna, tereyağ ve sarımsak ve maydanozlu",
@@ -341,7 +341,7 @@
    "img": null
   },
   {
-   "id": "kuzu-kokore",
+   "id": "kuzu-kokorec",
    "cat": "n",
    "name": "Kuzu Kokoreç",
    "desc": "Karpuzlu çoban salata vr köz biber sos eşliğinde",
@@ -349,7 +349,7 @@
    "img": null
   },
   {
-   "id": "f-r-nda-kremal-levrek",
+   "id": "firinda-kremali-levrek",
    "cat": "n",
    "name": "Fırında Kremalı Levrek",
    "desc": "Fırın levrek, domates, soğan, biber, limon, krema, balık suyu, sarımsak, tuz, kekik ve kremalı levrek, kapar maydanoz",
@@ -357,7 +357,7 @@
    "img": "kremali-levrek.webp"
   },
   {
-   "id": "t-r-somon",
+   "id": "citir-somon",
    "cat": "n",
    "name": "Çıtır Somon",
    "desc": "200 gr kıtır somon fileto, kuşkonmaz, fırın patates, hollandaise sos (yumurta, erimiş tereyağı, limon suyu)",
@@ -365,7 +365,7 @@
    "img": "citir-somon.webp"
   },
   {
-   "id": "mare-spesiyal-grany-z",
+   "id": "mare-spesiyal-granyoz",
    "cat": "n",
    "name": "Mare Spesiyal Granyöz",
    "desc": "200 gr Granyöz, baby patates, köz yeşil biber sos, köz domates, kuşkonmaz, beurre blanc sos",
@@ -373,7 +373,7 @@
    "img": "balik-izgara.webp"
   },
   {
-   "id": "somonlu-kremal-spagett",
+   "id": "somonlu-kremali-spagetti",
    "cat": "n",
    "name": "Somonlu Kremalı Spagettı",
    "desc": "150gr somon, spagetti, domates, soğan, biber, limon, krema, balık suyu, sarımsak, tuz, kekik, maydonoz",
@@ -381,7 +381,7 @@
    "img": "somon-spagetti.webp"
   },
   {
-   "id": "biber-kremal-bonfile",
+   "id": "biber-kremali-bonfile",
    "cat": "n",
    "name": "Biber Kremalı Bonfile",
    "desc": "200gr dana bonfile, kibrit patetes, soğan,karabiber,tuz,et suyu, krema, viski",
@@ -389,7 +389,7 @@
    "img": "bonfile.webp"
   },
   {
-   "id": "incik-r-yas",
+   "id": "incik-ruyasi",
    "cat": "n",
    "name": "İncik Rüyası",
    "desc": "Keşkek yatağında yavaş pişmiş incik,nane yağı",
@@ -397,7 +397,7 @@
    "img": null
   },
   {
-   "id": "br-oche-bened-ct",
+   "id": "brioche-benedict",
    "cat": "kahvalti",
    "name": "Brioche Benedict",
    "desc": "Poşe yumurta, füme et, sote kuşkonmaz,hollandaise sos",
@@ -405,7 +405,7 @@
    "img": null
   },
   {
-   "id": "serpme-kahvalt",
+   "id": "serpme-kahvalti",
    "cat": "kahvalti",
    "name": "Serpme Kahvaltı",
    "desc": "Siyah zeytin, ızgara yeşil zeytin, tarçınlı elma reçeli, çilek reçeli, acuka, çiçek balı, kaymak, tereyağı,domates soslu patlıcan biber kızartma, ezine peyniri, taze kaşar, çeçil peynir, söğüş tabağı, gözleme, pişi, patates kızartması, sahanda sucuk, omlet/menemen, muska böreği, güveçte eritme peynir, mevsim meyvesi, çay",
@@ -421,7 +421,7 @@
    "img": null
   },
   {
-   "id": "meyve-taba",
+   "id": "meyve-tabagi",
    "cat": "t",
    "name": "Meyve Tabağı",
    "desc": "",
@@ -429,7 +429,7 @@
    "img": null
   },
   {
-   "id": "san-sebast-an-cheesecake",
+   "id": "san-sebastian-cheesecake",
    "cat": "t",
    "name": "San Sebastıan Cheesecake",
    "desc": "",
@@ -437,7 +437,7 @@
    "img": "cheesecake.webp"
   },
   {
-   "id": "mare-ekerpare",
+   "id": "mare-sekerpare",
    "cat": "t",
    "name": "Mare Şekerpare",
    "desc": "Un, irmik, yumurta, şeker, fındık, limon suyu, tereyağ",
@@ -445,7 +445,7 @@
    "img": null
   },
   {
-   "id": "ormanda-bir-y-r-y",
+   "id": "ormanda-bir-yuruyus",
    "cat": "t",
    "name": "Ormanda Bir Yürüyüş",
    "desc": "Çikolata, yumurta sarısı, yumurta beyazı, süt, toz şeker, krema, çıtır profiterol hamuru, ev yapımı vanilyalı dondurma, çilek",
@@ -461,7 +461,7 @@
    "img": null
   },
   {
-   "id": "zgara-k-fte",
+   "id": "izgara-kofte",
    "cat": "c",
    "name": "Izgara Köfte",
    "desc": "Patates kızartması,acılı sos yada yoğurtlu közlenmiş yeşil biber",
@@ -469,7 +469,7 @@
    "img": "izgara-kofte.webp"
   },
   {
-   "id": "yo-urt",
+   "id": "yogurt",
    "cat": "extra",
    "name": "Yoğurt",
    "desc": "",
@@ -501,7 +501,7 @@
    "img": null
   },
   {
-   "id": "patates-k-zartmas",
+   "id": "patates-kizartmasi",
    "cat": "extra",
    "name": "Patates Kızartması",
    "desc": "Çıtır patates",
@@ -509,7 +509,7 @@
    "img": null
   },
   {
-   "id": "erez",
+   "id": "cerez",
    "cat": "extra",
    "name": "Çerez",
    "desc": "Fındık,badem,antep fıstığı",
@@ -517,7 +517,7 @@
    "img": null
   },
   {
-   "id": "peynir-taba",
+   "id": "peynir-tabagi",
    "cat": "extra",
    "name": "Peynir Tabağı",
    "desc": "Ezine peynir,kaşar peynir,eski kaşar peyniri,isli peynir,abaza peyniri",
@@ -525,7 +525,7 @@
    "img": null
   },
   {
-   "id": "baron-de-lastac-2019-k-rm-z",
+   "id": "baron-de-lastac-2019-kirmizi",
    "cat": "sarap",
    "name": "Baron De Lastac 2019 Kırmızı",
    "desc": "",
@@ -557,7 +557,7 @@
    "img": null
   },
   {
-   "id": "egeo-f-me-blanc-2020",
+   "id": "egeo-fume-blanc-2020",
    "cat": "sarap",
    "name": "Egeo Füme Blanc 2020",
    "desc": "",
@@ -597,7 +597,7 @@
    "img": null
   },
   {
-   "id": "pendore-k-zg-z-2015",
+   "id": "pendore-okuzgozu-2015",
    "cat": "sarap",
    "name": "Pendore Öküzgözü 2015",
    "desc": "",
@@ -645,7 +645,7 @@
    "img": null
   },
   {
-   "id": "urla-bo-azkere",
+   "id": "urla-bogazkere",
    "cat": "sarap",
    "name": "Urla Boğazkere",
    "desc": "",
@@ -701,7 +701,7 @@
    "img": null
   },
   {
-   "id": "kuzu-kula-sour",
+   "id": "kuzu-kulagi-sour",
    "cat": "kokteyl-al",
    "name": "Kuzu Kulağı Sour",
    "desc": "Kuzu kulağı,şeker şurubu,limon suyu,yeşil elma,cin,yumurta akı",
@@ -741,7 +741,7 @@
    "img": null
   },
   {
-   "id": "long-sland",
+   "id": "long-island",
    "cat": "kokteyl-al",
    "name": "Long Island",
    "desc": "Tekila,votka,cin,rom,portakal likörü,kola",
@@ -781,7 +781,7 @@
    "img": null
   },
   {
-   "id": "tekirda-g-bek-70-cl",
+   "id": "tekirdag-gobek-70-cl",
    "cat": "raki",
    "name": "Tekirdağ Göbek 70 Cl",
    "desc": "",
@@ -789,7 +789,7 @@
    "img": null
   },
   {
-   "id": "tekirda-g-bek-35-cl",
+   "id": "tekirdag-gobek-35-cl",
    "cat": "raki",
    "name": "Tekirdağ Göbek 35 Cl",
    "desc": "",
@@ -797,7 +797,7 @@
    "img": null
   },
   {
-   "id": "efe-ya-z-m-70-cl",
+   "id": "efe-yas-uzum-70-cl",
    "cat": "raki",
    "name": "Efe Yaş Üzüm 70 Cl",
    "desc": "",
@@ -805,7 +805,7 @@
    "img": null
   },
   {
-   "id": "efe-ya-z-m-35-cl",
+   "id": "efe-yas-uzum-35-cl",
    "cat": "raki",
    "name": "Efe Yaş Üzüm 35 Cl",
    "desc": "",
@@ -813,7 +813,7 @@
    "img": null
   },
   {
-   "id": "sar-zeybek-70-cl",
+   "id": "sari-zeybek-70-cl",
    "cat": "raki",
    "name": "Sarı Zeybek 70 Cl",
    "desc": "",
@@ -821,7 +821,7 @@
    "img": null
   },
   {
-   "id": "sar-zeybek-35-cl",
+   "id": "sari-zeybek-35-cl",
    "cat": "raki",
    "name": "Sarı Zeybek 35 Cl",
    "desc": "",
@@ -829,7 +829,7 @@
    "img": null
   },
   {
-   "id": "sar-zeybek-20-cl",
+   "id": "sari-zeybek-20-cl",
    "cat": "raki",
    "name": "Sarı Zeybek 20 Cl",
    "desc": "",
@@ -853,7 +853,7 @@
    "img": null
   },
   {
-   "id": "efe-g-bek-70-cl",
+   "id": "efe-gobek-70-cl",
    "cat": "raki",
    "name": "Efe Göbek 70 Cl",
    "desc": "",
@@ -861,7 +861,7 @@
    "img": null
   },
   {
-   "id": "efe-g-bek-35-cl",
+   "id": "efe-gobek-35-cl",
    "cat": "raki",
    "name": "Efe Göbek 35 Cl",
    "desc": "",
@@ -869,7 +869,7 @@
    "img": null
   },
   {
-   "id": "yeni-rak-yeni-seri-70-cl",
+   "id": "yeni-raki-yeni-seri-70-cl",
    "cat": "raki",
    "name": "Yeni Rakı Yeni Seri 70 Cl",
    "desc": "",
@@ -877,7 +877,7 @@
    "img": null
   },
   {
-   "id": "yeni-rak-yeni-seri-35-cl",
+   "id": "yeni-raki-yeni-seri-35-cl",
    "cat": "raki",
    "name": "Yeni Rakı Yeni Seri 35 Cl",
    "desc": "",
@@ -885,7 +885,7 @@
    "img": null
   },
   {
-   "id": "mercan-rak-70-cl",
+   "id": "mercan-raki-70-cl",
    "cat": "raki",
    "name": "Mercan Rakı 70 Cl",
    "desc": "",
@@ -893,7 +893,7 @@
    "img": null
   },
   {
-   "id": "mercan-rak-35-cl",
+   "id": "mercan-raki-35-cl",
    "cat": "raki",
    "name": "Mercan Rakı 35 Cl",
    "desc": "",
@@ -901,7 +901,7 @@
    "img": null
   },
   {
-   "id": "giz-rak-70-cl",
+   "id": "giz-raki-70-cl",
    "cat": "raki",
    "name": "Giz Rakı 70 Cl",
    "desc": "",
@@ -917,7 +917,7 @@
    "img": null
   },
   {
-   "id": "double-rak",
+   "id": "double-raki",
    "cat": "raki",
    "name": "Double Rakı",
    "desc": "",
@@ -925,7 +925,7 @@
    "img": null
   },
   {
-   "id": "tek-rak",
+   "id": "tek-raki",
    "cat": "raki",
    "name": "Tek Rakı",
    "desc": "",
@@ -933,7 +933,7 @@
    "img": null
   },
   {
-   "id": "beylerbeyi-g-bek-70-cl",
+   "id": "beylerbeyi-gobek-70-cl",
    "cat": "raki",
    "name": "Beylerbeyi Göbek 70 Cl",
    "desc": "",
@@ -941,7 +941,7 @@
    "img": null
   },
   {
-   "id": "beylerbeyi-g-bek-50-cl",
+   "id": "beylerbeyi-gobek-50-cl",
    "cat": "raki",
    "name": "Beylerbeyi Göbek 50 Cl",
    "desc": "",
@@ -949,7 +949,7 @@
    "img": null
   },
   {
-   "id": "beylerbeyi-g-bek-35-cl",
+   "id": "beylerbeyi-gobek-35-cl",
    "cat": "raki",
    "name": "Beylerbeyi Göbek 35 Cl",
    "desc": "",
@@ -957,7 +957,7 @@
    "img": null
   },
   {
-   "id": "prototip-rak",
+   "id": "prototip-raki",
    "cat": "raki",
    "name": "Prototip Rakı",
    "desc": "70 cl",
@@ -965,7 +965,7 @@
    "img": null
   },
   {
-   "id": "tekirda-alt-nseri",
+   "id": "tekirdag-altinseri",
    "cat": "raki",
    "name": "Tekirdağ Altınseri",
    "desc": "35 CL",
@@ -973,7 +973,7 @@
    "img": null
   },
   {
-   "id": "yeni-rak",
+   "id": "yeni-raki",
    "cat": "raki",
    "name": "Yeni Rakı",
    "desc": "70 CL",
@@ -981,7 +981,7 @@
    "img": null
   },
   {
-   "id": "tekirda-alt-nseri-2",
+   "id": "tekirdag-altinseri-2",
    "cat": "raki",
    "name": "Tekirdağ Altınseri",
    "desc": "50CL",
@@ -989,7 +989,7 @@
    "img": null
   },
   {
-   "id": "tekirda-alt-nseri-3",
+   "id": "tekirdag-altinseri-3",
    "cat": "raki",
    "name": "Tekirdağ Altınseri",
    "desc": "70CL",
@@ -997,7 +997,7 @@
    "img": null
   },
   {
-   "id": "sar-zeybek-50-cl",
+   "id": "sari-zeybek-50-cl",
    "cat": "raki",
    "name": "Sarı Zeybek 50 Cl",
    "desc": "",
@@ -1437,7 +1437,7 @@
    "img": null
   },
   {
-   "id": "ilekli-limonata",
+   "id": "cilekli-limonata",
    "cat": "soguk-icecek",
    "name": "Çilekli Limonata",
    "desc": "Limonata,çilek",
@@ -1469,7 +1469,7 @@
    "img": null
   },
   {
-   "id": "ilek-milkshake",
+   "id": "cilek-milkshake",
    "cat": "milkshake",
    "name": "Çilek Milkshake",
    "desc": "",
@@ -1477,7 +1477,7 @@
    "img": null
   },
   {
-   "id": "ark-felek-milkshake",
+   "id": "carkifelek-milkshake",
    "cat": "milkshake",
    "name": "Çarkıfelek Milkshake",
    "desc": "",
@@ -1485,7 +1485,7 @@
    "img": null
   },
   {
-   "id": "ikolata-milkshake",
+   "id": "cikolata-milkshake",
    "cat": "milkshake",
    "name": "Çikolata Milkshake",
    "desc": "",
@@ -1501,7 +1501,7 @@
    "img": null
   },
   {
-   "id": "ilek-frozen",
+   "id": "cilek-frozen",
    "cat": "frozen",
    "name": "Çilek Frozen",
    "desc": "",
@@ -1517,7 +1517,7 @@
    "img": null
   },
   {
-   "id": "ark-felek-frozen",
+   "id": "carkifelek-frozen",
    "cat": "frozen",
    "name": "Çarkıfelek Frozen",
    "desc": "",
@@ -1549,7 +1549,7 @@
    "img": null
   },
   {
-   "id": "havu-suyu",
+   "id": "havuc-suyu",
    "cat": "taze-sikim",
    "name": "Havuç Suyu",
    "desc": "",
