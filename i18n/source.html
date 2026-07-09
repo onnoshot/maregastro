@@ -548,6 +548,8 @@ nav{
 .mpanel.solo{grid-template-columns:1fr 1fr;max-width:420px}
 @media(min-width:768px){.mpanel.solo{grid-template-columns:repeat(2,1fr)}}
 
+.mloading{padding:40px 20px;text-align:center;color:var(--muted);font-size:12px;letter-spacing:.04em;width:100%}
+
 /* Fiyat rozeti (kart) */
 .dc-price{
   position:absolute;top:8px;right:8px;z-index:3;
@@ -1433,7 +1435,7 @@ nav{
 
     <div class="mgroup-view" id="mGroupView">
       <div class="mtabs" id="mTabs"></div>
-      <div class="mpanels" id="mPanels"></div>
+      <div class="mpanels" id="mPanels"><div class="mloading" id="mLoading">Menü yükleniyor…</div></div>
     </div>
   </div>
 </section>
@@ -1672,10 +1674,10 @@ rvEls.forEach(el=>rvObs.observe(el));
 
 /* ── MENU (canlı, /api/menu'den) ── */
 const MENU_I18N = {
-tr:{food:"Yemekler",drink:"İçecekler",b:"Başlangıçlar",s:"Salatalar",a:"Ara Sıcaklar",n:"Ana Yemekler",kahvalti:"Kahvaltılar",t:"Tatlılar",c:"Çocuk",extra:"Extralar",sarap:"Şaraplar","kokteyl-al":"Alkollü Kokteyller","kokteyl-sz":"Alkolsüz Kokteyller",raki:"Rakılar",viski:"Viskiler",votka:"Votkalar",cin:"Cinler",tekila:"Tekilalar",rom:"Romlar",likor:"Likörler",bira:"Biralar","soguk-kahve":"Soğuk Kahveler","soguk-icecek":"Soğuk İçecekler",milkshake:"Milkshakeler",frozen:"Frozenlar","taze-sikim":"Taze Sıkımlar"},
-en:{food:"Food",drink:"Drinks",b:"Starters",s:"Salads",a:"Small Plates",n:"Main Courses",kahvalti:"Breakfast",t:"Desserts",c:"Kids",extra:"Extras",sarap:"Wines","kokteyl-al":"Cocktails","kokteyl-sz":"Non-Alcoholic Cocktails",raki:"Rakı",viski:"Whisky",votka:"Vodka",cin:"Gin",tekila:"Tequila",rom:"Rum",likor:"Liqueurs",bira:"Beer","soguk-kahve":"Iced Coffee","soguk-icecek":"Cold Drinks",milkshake:"Milkshakes",frozen:"Frozen","taze-sikim":"Fresh Juice"},
-ar:{food:"الطعام",drink:"المشروبات",b:"المقبلات",s:"السلطات",a:"أطباق صغيرة",n:"الأطباق الرئيسية",kahvalti:"الإفطار",t:"الحلويات",c:"الأطفال",extra:"إضافات",sarap:"النبيذ","kokteyl-al":"كوكتيلات","kokteyl-sz":"كوكتيلات بدون كحول",raki:"راكي",viski:"ويسكي",votka:"فودكا",cin:"جين",tekila:"تيكيلا",rom:"روم",likor:"ليكور",bira:"بيرة","soguk-kahve":"قهوة مثلجة","soguk-icecek":"مشروبات بارده",milkshake:"ميلك شيك",frozen:"فروزن","taze-sikim":"عصير طازج"},
-ru:{food:"Еда",drink:"Напитки",b:"Закуски",s:"Салаты",a:"Горячие закуски",n:"Основные блюда",kahvalti:"Завтрак",t:"Десерты",c:"Детское меню",extra:"Дополнения",sarap:"Вина","kokteyl-al":"Коктейли","kokteyl-sz":"Безалкогольные коктейли",raki:"Раки",viski:"Виски",votka:"Водка",cin:"Джин",tekila:"Текила",rom:"Ром",likor:"Ликёры",bira:"Пиво","soguk-kahve":"Холодный кофе","soguk-icecek":"Холодные напитки",milkshake:"Милкшейки",frozen:"Фрозен","taze-sikim":"Свежевыжатые соки"}
+tr:{yemek:"Yemekler",icecek:"İçecekler",b:"Başlangıçlar",s:"Salatalar",a:"Ara Sıcaklar",n:"Ana Yemekler",kahvalti:"Kahvaltılar",t:"Tatlılar",c:"Çocuk",extra:"Extralar",sarap:"Şaraplar","kokteyl-al":"Alkollü Kokteyller","kokteyl-sz":"Alkolsüz Kokteyller",raki:"Rakılar",viski:"Viskiler",votka:"Votkalar",cin:"Cinler",tekila:"Tekilalar",rom:"Romlar",likor:"Likörler",bira:"Biralar","soguk-kahve":"Soğuk Kahveler","soguk-icecek":"Soğuk İçecekler",milkshake:"Milkshakeler",frozen:"Frozenlar","taze-sikim":"Taze Sıkımlar"},
+en:{yemek:"Food",icecek:"Drinks",b:"Starters",s:"Salads",a:"Small Plates",n:"Main Courses",kahvalti:"Breakfast",t:"Desserts",c:"Kids",extra:"Extras",sarap:"Wines","kokteyl-al":"Cocktails","kokteyl-sz":"Non-Alcoholic Cocktails",raki:"Rakı",viski:"Whisky",votka:"Vodka",cin:"Gin",tekila:"Tequila",rom:"Rum",likor:"Liqueurs",bira:"Beer","soguk-kahve":"Iced Coffee","soguk-icecek":"Cold Drinks",milkshake:"Milkshakes",frozen:"Frozen","taze-sikim":"Fresh Juice"},
+ar:{yemek:"الطعام",icecek:"المشروبات",b:"المقبلات",s:"السلطات",a:"أطباق صغيرة",n:"الأطباق الرئيسية",kahvalti:"الإفطار",t:"الحلويات",c:"الأطفال",extra:"إضافات",sarap:"النبيذ","kokteyl-al":"كوكتيلات","kokteyl-sz":"كوكتيلات بدون كحول",raki:"راكي",viski:"ويسكي",votka:"فودكا",cin:"جين",tekila:"تيكيلا",rom:"روم",likor:"ليكور",bira:"بيرة","soguk-kahve":"قهوة مثلجة","soguk-icecek":"مشروبات بارده",milkshake:"ميلك شيك",frozen:"فروزن","taze-sikim":"عصير طازج"},
+ru:{yemek:"Еда",icecek:"Напитки",b:"Закуски",s:"Салаты",a:"Горячие закуски",n:"Основные блюда",kahvalti:"Завтрак",t:"Десерты",c:"Детское меню",extra:"Дополнения",sarap:"Вина","kokteyl-al":"Коктейли","kokteyl-sz":"Безалкогольные коктейли",raki:"Раки",viski:"Виски",votka:"Водка",cin:"Джин",tekila:"Текила",rom:"Ром",likor:"Ликёры",bira:"Пиво","soguk-kahve":"Холодный кофе","soguk-icecek":"Холодные напитки",milkshake:"Милкшейки",frozen:"Фрозен","taze-sikim":"Свежевыжатые соки"}
 };
 let MENU_DATA=null,curGroup=null,curCat=null;
 function mLabel(id){const cl=document.documentElement.lang||'tr';const L=MENU_I18N[cl]||MENU_I18N.tr;return L[id]||id}
@@ -1741,8 +1743,11 @@ function switchCat(cid){
   document.getElementById('mp-'+cid).classList.add('on');
 }
 fetch('/api/menu',{cache:'no-store'}).then(r=>r.json()).then(res=>{
-  if(res&&res.data)renderMenu(res.data);
-}).catch(()=>{});
+  if(res&&res.data&&res.data.items&&res.data.items.length)renderMenu(res.data);
+  else document.getElementById('mPanels').innerHTML='<div class="mloading">Menü şu anda yüklenemedi, lütfen sayfayı yenileyin.</div>';
+}).catch(()=>{
+  document.getElementById('mPanels').innerHTML='<div class="mloading">Menü şu anda yüklenemedi, lütfen sayfayı yenileyin.</div>';
+});
 
 /* ── REZERVASYON ── */
 let selTime_val='',guestCount=2,selKon_val='';
