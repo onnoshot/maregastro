@@ -2249,7 +2249,10 @@ nav{
 @media(max-width:767px){.mgroup-btn{font-size:.88rem;padding:12px 8px}}
 
 /* Grup içeriği — kategori geçişinde blur/scale ile "sayfa değişimi" hissi */
-.mgroup-view{transition:opacity .48s var(--ease),filter .48s var(--ease),transform .48s var(--ease)}
+.mgroup-view{
+  display:flex;flex-direction:column;flex:1;min-height:0;min-width:0;
+  transition:opacity .48s var(--ease),filter .48s var(--ease),transform .48s var(--ease);
+}
 .mgroup-view.tswap{opacity:0;filter:blur(16px);transform:scale(.965)}
 
 /* Category tabs — scrollable pills */
@@ -2975,6 +2978,7 @@ nav{
   .menu-wrap,.rez-wrap,.sc-inner{height:auto;overflow:visible}
 
   /* MENU: absolute/flex panels → normal flow so the grid can grow */
+  .mgroup-view{flex:none;min-height:0}
   .mpanels{position:static;flex:none;overflow:visible;height:auto}
   .mpanel{position:static;inset:auto;height:auto;overflow:visible;padding-bottom:28px}
 
