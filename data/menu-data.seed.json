@@ -1,0 +1,1568 @@
+{
+ "groups": [
+  {
+   "id": "yemek",
+   "labelKey": "menu_group_food"
+  },
+  {
+   "id": "icecek",
+   "labelKey": "menu_group_drink"
+  }
+ ],
+ "categories": [
+  {
+   "id": "b",
+   "group": "yemek",
+   "labelKey": "menu_tab_b",
+   "display": "card",
+   "name_tr": "Başlangıçlar"
+  },
+  {
+   "id": "s",
+   "group": "yemek",
+   "labelKey": "menu_tab_s",
+   "display": "card",
+   "name_tr": "Salatalar"
+  },
+  {
+   "id": "a",
+   "group": "yemek",
+   "labelKey": "menu_tab_a",
+   "display": "card",
+   "name_tr": "Ara Sıcaklar"
+  },
+  {
+   "id": "n",
+   "group": "yemek",
+   "labelKey": "menu_tab_n",
+   "display": "card",
+   "name_tr": "Ana Yemekler"
+  },
+  {
+   "id": "kahvalti",
+   "group": "yemek",
+   "labelKey": "menu_tab_kahvalti",
+   "display": "card",
+   "name_tr": "Kahvaltılar"
+  },
+  {
+   "id": "t",
+   "group": "yemek",
+   "labelKey": "menu_tab_t",
+   "display": "card",
+   "name_tr": "Tatlılar"
+  },
+  {
+   "id": "c",
+   "group": "yemek",
+   "labelKey": "menu_tab_c",
+   "display": "card",
+   "name_tr": "Çocuk Menüsü"
+  },
+  {
+   "id": "extra",
+   "group": "yemek",
+   "labelKey": "menu_tab_extra",
+   "display": "list",
+   "name_tr": "Extralar"
+  },
+  {
+   "id": "sarap",
+   "group": "icecek",
+   "labelKey": "menu_tab_sarap",
+   "display": "list",
+   "name_tr": "Şaraplar"
+  },
+  {
+   "id": "kokteyl-al",
+   "group": "icecek",
+   "labelKey": "menu_tab_kokteyl_al",
+   "display": "list",
+   "name_tr": "Alkollü Kokteyller"
+  },
+  {
+   "id": "kokteyl-sz",
+   "group": "icecek",
+   "labelKey": "menu_tab_kokteyl_sz",
+   "display": "list",
+   "name_tr": "Alkolsüz Kokteyller"
+  },
+  {
+   "id": "raki",
+   "group": "icecek",
+   "labelKey": "menu_tab_raki",
+   "display": "list",
+   "name_tr": "Rakılar"
+  },
+  {
+   "id": "viski",
+   "group": "icecek",
+   "labelKey": "menu_tab_viski",
+   "display": "list",
+   "name_tr": "Viskiler"
+  },
+  {
+   "id": "votka",
+   "group": "icecek",
+   "labelKey": "menu_tab_votka",
+   "display": "list",
+   "name_tr": "Votkalar"
+  },
+  {
+   "id": "cin",
+   "group": "icecek",
+   "labelKey": "menu_tab_cin",
+   "display": "list",
+   "name_tr": "Cinler"
+  },
+  {
+   "id": "tekila",
+   "group": "icecek",
+   "labelKey": "menu_tab_tekila",
+   "display": "list",
+   "name_tr": "Tekilalar"
+  },
+  {
+   "id": "rom",
+   "group": "icecek",
+   "labelKey": "menu_tab_rom",
+   "display": "list",
+   "name_tr": "Romlar"
+  },
+  {
+   "id": "likor",
+   "group": "icecek",
+   "labelKey": "menu_tab_likor",
+   "display": "list",
+   "name_tr": "Likörler"
+  },
+  {
+   "id": "bira",
+   "group": "icecek",
+   "labelKey": "menu_tab_bira",
+   "display": "list",
+   "name_tr": "Biralar"
+  },
+  {
+   "id": "soguk-kahve",
+   "group": "icecek",
+   "labelKey": "menu_tab_soguk_kahve",
+   "display": "list",
+   "name_tr": "Soğuk Kahveler"
+  },
+  {
+   "id": "soguk-icecek",
+   "group": "icecek",
+   "labelKey": "menu_tab_soguk_icecek",
+   "display": "list",
+   "name_tr": "Soğuk İçecekler"
+  },
+  {
+   "id": "milkshake",
+   "group": "icecek",
+   "labelKey": "menu_tab_milkshake",
+   "display": "list",
+   "name_tr": "Milkshakeler"
+  },
+  {
+   "id": "frozen",
+   "group": "icecek",
+   "labelKey": "menu_tab_frozen",
+   "display": "list",
+   "name_tr": "Frozenler"
+  },
+  {
+   "id": "taze-sikim",
+   "group": "icecek",
+   "labelKey": "menu_tab_taze_sikim",
+   "display": "list",
+   "name_tr": "Taze Sıkımlar"
+  }
+ ],
+ "items": [
+  {
+   "id": "levrek-marin",
+   "cat": "b",
+   "name": "Levrek Marin",
+   "desc": "",
+   "price": 750,
+   "img": "levrek-marin.webp"
+  },
+  {
+   "id": "yo-urtlu-semizotu",
+   "cat": "b",
+   "name": "Yoğurtlu Semizotu",
+   "desc": "Semizotunun ferahlığı yoğurtla buluşması",
+   "price": 380,
+   "img": null
+  },
+  {
+   "id": "humus",
+   "cat": "b",
+   "name": "Humus",
+   "desc": "Haşlanmış nohut, tahin, elma sirkesi, limon suyu, zeytinyağı, toz şeker , tuz sarımsak ,  kimyon, köz kırmızı biber, kornişon turşu. fındık, sızma zeytinyağı, zeytin",
+   "price": 400,
+   "img": "humus.webp"
+  },
+  {
+   "id": "k-z-patl-can",
+   "cat": "b",
+   "name": "Köz Patlıcan",
+   "desc": "Köz patlıcan, köz kırmızı biber, köz yeşil biber, sarımsak, mayonez, taze soğan, sızma zeytinyağı, tuz",
+   "price": 400,
+   "img": "koz-patlican.webp"
+  },
+  {
+   "id": "girit-ezme-kavun",
+   "cat": "b",
+   "name": "Girit Ezme,kavun",
+   "desc": "Erzincan tulum, lor peynırı, ezıne peynırı, dereotu, maydonoz, fesleğen ,ceviz, Rakı ile marine edilmiş kavun, sızma zeytinyağı",
+   "price": 550,
+   "img": "semizotu.webp"
+  },
+  {
+   "id": "zeytinya-enginar",
+   "cat": "b",
+   "name": "Zeytinyağı Enginar",
+   "desc": "Enginar, zeytınyağı, soğan, dere otu, bezelye(araka), antep fıstık, zeytinyağı, limon, taze nane",
+   "price": 350,
+   "img": "enginar.webp"
+  },
+  {
+   "id": "patl-canl-pilav",
+   "cat": "b",
+   "name": "Patlıcanlı Pilav",
+   "desc": "Baldo pirinç pilavı, dolmalık fıstık, üzüm, dereotu, patlıcan, zeytinyağı, tuz, şeker",
+   "price": 450,
+   "img": "pilav.webp"
+  },
+  {
+   "id": "avokadolu-jumbo-karides-s",
+   "cat": "b",
+   "name": "Avokadolu Jumbo Karides Söğüş",
+   "desc": "Avakado, hardal, portakal suyu, limon suyu, bal, jumbo karides, zeytinyağı, tuz, karabiber",
+   "price": 1350,
+   "img": "karides-sos.webp"
+  },
+  {
+   "id": "dana-carpacc-o",
+   "cat": "b",
+   "name": "Dana Carpaccıo",
+   "desc": "Bonfile, kapari, roka, parmesan, zeytinyağı, elma sirkesi, tuz, sarımsak, limon suyu, nar ekşisi",
+   "price": 1400,
+   "img": "dana-carpaccio.webp"
+  },
+  {
+   "id": "semizotu-salatas",
+   "cat": "s",
+   "name": "Semizotu Salatası",
+   "desc": "Semizotu, tatlı biber turşusu, çilek, yeşil elma, ceviz, erzincan tulum nar ekşili vinaigrette",
+   "price": 600,
+   "img": "semizotu-salata.webp"
+  },
+  {
+   "id": "roka-salatas",
+   "cat": "s",
+   "name": "Roka Salatası",
+   "desc": "Roka yaprakları, küp domates, rende parmesan peyniri, sarımsaklı balzamik sos",
+   "price": 600,
+   "img": null
+  },
+  {
+   "id": "kom-u-salata",
+   "cat": "s",
+   "name": "Komşu Salata",
+   "desc": "Domates, salatalık, yeşil biber, kırmızı soğan, siyah zeytin, dilim ezine peynir, limon ve sirkeli sos",
+   "price": 600,
+   "img": "yunan-salata.webp"
+  },
+  {
+   "id": "mare-spesiyal-ahtapot-g-ve",
+   "cat": "a",
+   "name": "Mare Spesiyal Ahtapot Güveç",
+   "desc": "Özel marine edilmiş ahtapot güveç,sarımsaklı tereyağ vr baharat",
+   "price": 1750,
+   "img": null
+  },
+  {
+   "id": "yaprak-ci-er",
+   "cat": "a",
+   "name": "Yaprak Ciğer",
+   "desc": "200 gr. Yaprak ciğer",
+   "price": 1100,
+   "img": null
+  },
+  {
+   "id": "3-l-deniz-mahs-l-lezzeti",
+   "cat": "a",
+   "name": "3'lü Deniz Mahsülü Lezzeti",
+   "desc": "Mare ıslama kalamar/kalamar tava + Tereyağlı karides + Ahtapot güveç",
+   "price": 3350,
+   "img": null
+  },
+  {
+   "id": "mare-spesiyal-slama-kalamar",
+   "cat": "a",
+   "name": "Mare Spesiyal Islama Kalamar",
+   "desc": "2 adet baby kalamar ızgara,naneli hardallı sos",
+   "price": 1100,
+   "img": "baby-kalamar.webp"
+  },
+  {
+   "id": "kalamar-tava",
+   "cat": "a",
+   "name": "Kalamar Tava",
+   "desc": "Kalamar, un, mısır nişastası, soda, bira. Sos: ekmek kırıntısı, ceviz, turşu, sarımsak, uzum sirkesi, zeytinyağı, mayonez, yoğurt, tuz",
+   "price": 1000,
+   "img": "kalamar-tava.webp"
+  },
+  {
+   "id": "tereya-l-karides",
+   "cat": "a",
+   "name": "Tereyağlı Karides",
+   "desc": "Jumbo karides, tereyağı, zeytinyağı, paprika, sarımsak, maydonoz, tuz",
+   "price": 1000,
+   "img": "tereyagli-karides.webp"
+  },
+  {
+   "id": "patates-terin",
+   "cat": "a",
+   "name": "Patates Terin",
+   "desc": "Patates, tereyağı, kestane mantarı, soğan, füme et, yeşil soğan, muskat, kekik, krema, un, tuz",
+   "price": 850,
+   "img": "patates-terin2.webp"
+  },
+  {
+   "id": "deniz-mahs-lleri-bu-day-r-sotto",
+   "cat": "n",
+   "name": "Deniz Mahsülleri Buğday Risotto",
+   "desc": "Buharda pişmiş kum midyeli linguine makarna, tereyağ ve sarımsak ve maydanozlu",
+   "price": 850,
+   "img": null
+  },
+  {
+   "id": "kuzu-kokore",
+   "cat": "n",
+   "name": "Kuzu Kokoreç",
+   "desc": "Karpuzlu çoban salata vr köz biber sos eşliğinde",
+   "price": 950,
+   "img": null
+  },
+  {
+   "id": "f-r-nda-kremal-levrek",
+   "cat": "n",
+   "name": "Fırında Kremalı Levrek",
+   "desc": "Fırın levrek, domates, soğan, biber, limon, krema, balık suyu, sarımsak, tuz, kekik ve kremalı levrek, kapar maydanoz",
+   "price": 1550,
+   "img": "kremali-levrek.webp"
+  },
+  {
+   "id": "t-r-somon",
+   "cat": "n",
+   "name": "Çıtır Somon",
+   "desc": "200 gr kıtır somon fileto, kuşkonmaz, fırın patates, hollandaise sos (yumurta, erimiş tereyağı, limon suyu)",
+   "price": 1300,
+   "img": "citir-somon.webp"
+  },
+  {
+   "id": "mare-spesiyal-grany-z",
+   "cat": "n",
+   "name": "Mare Spesiyal Granyöz",
+   "desc": "200 gr Granyöz, baby patates, köz yeşil biber sos, köz domates, kuşkonmaz, beurre blanc sos",
+   "price": 1600,
+   "img": "balik-izgara.webp"
+  },
+  {
+   "id": "somonlu-kremal-spagett",
+   "cat": "n",
+   "name": "Somonlu Kremalı Spagettı",
+   "desc": "150gr somon, spagetti, domates, soğan, biber, limon, krema, balık suyu, sarımsak, tuz, kekik, maydonoz",
+   "price": 850,
+   "img": "somon-spagetti.webp"
+  },
+  {
+   "id": "biber-kremal-bonfile",
+   "cat": "n",
+   "name": "Biber Kremalı Bonfile",
+   "desc": "200gr dana bonfile, kibrit patetes, soğan,karabiber,tuz,et suyu, krema, viski",
+   "price": 1900,
+   "img": "bonfile.webp"
+  },
+  {
+   "id": "incik-r-yas",
+   "cat": "n",
+   "name": "İncik Rüyası",
+   "desc": "Keşkek yatağında yavaş pişmiş incik,nane yağı",
+   "price": 2100,
+   "img": null
+  },
+  {
+   "id": "br-oche-bened-ct",
+   "cat": "kahvalti",
+   "name": "Brioche Benedict",
+   "desc": "Poşe yumurta, füme et, sote kuşkonmaz,hollandaise sos",
+   "price": 960,
+   "img": null
+  },
+  {
+   "id": "serpme-kahvalt",
+   "cat": "kahvalti",
+   "name": "Serpme Kahvaltı",
+   "desc": "Siyah zeytin, ızgara yeşil zeytin, tarçınlı elma reçeli, çilek reçeli, acuka, çiçek balı, kaymak, tereyağı,domates soslu patlıcan biber kızartma, ezine peyniri, taze kaşar, çeçil peynir, söğüş tabağı, gözleme, pişi, patates kızartması, sahanda sucuk, omlet/menemen, muska böreği, güveçte eritme peynir, mevsim meyvesi, çay",
+   "price": 1200,
+   "img": null
+  },
+  {
+   "id": "limonlu-tart",
+   "cat": "t",
+   "name": "Limonlu Tart",
+   "desc": "",
+   "price": 500,
+   "img": null
+  },
+  {
+   "id": "meyve-taba",
+   "cat": "t",
+   "name": "Meyve Tabağı",
+   "desc": "",
+   "price": 850,
+   "img": null
+  },
+  {
+   "id": "san-sebast-an-cheesecake",
+   "cat": "t",
+   "name": "San Sebastıan Cheesecake",
+   "desc": "",
+   "price": 475,
+   "img": "cheesecake.webp"
+  },
+  {
+   "id": "mare-ekerpare",
+   "cat": "t",
+   "name": "Mare Şekerpare",
+   "desc": "Un, irmik, yumurta, şeker, fındık, limon suyu, tereyağ",
+   "price": 400,
+   "img": null
+  },
+  {
+   "id": "ormanda-bir-y-r-y",
+   "cat": "t",
+   "name": "Ormanda Bir Yürüyüş",
+   "desc": "Çikolata, yumurta sarısı, yumurta beyazı, süt, toz şeker, krema, çıtır profiterol hamuru, ev yapımı vanilyalı dondurma, çilek",
+   "price": 550,
+   "img": null
+  },
+  {
+   "id": "domates-soslu-makarna",
+   "cat": "c",
+   "name": "Domates Soslu Makarna",
+   "desc": "",
+   "price": 550,
+   "img": null
+  },
+  {
+   "id": "zgara-k-fte",
+   "cat": "c",
+   "name": "Izgara Köfte",
+   "desc": "Patates kızartması,acılı sos yada yoğurtlu közlenmiş yeşil biber",
+   "price": 900,
+   "img": "izgara-kofte.webp"
+  },
+  {
+   "id": "yo-urt",
+   "cat": "extra",
+   "name": "Yoğurt",
+   "desc": "",
+   "price": 150,
+   "img": null
+  },
+  {
+   "id": "dilim-kavun",
+   "cat": "extra",
+   "name": "Dilim Kavun",
+   "desc": "1 dilim doğranmış kavun",
+   "price": 250,
+   "img": null
+  },
+  {
+   "id": "dilim-karpuz",
+   "cat": "extra",
+   "name": "Dilim Karpuz",
+   "desc": "1 dilim doğranmış karpuz",
+   "price": 250,
+   "img": null
+  },
+  {
+   "id": "dilim-ezine-peynir",
+   "cat": "extra",
+   "name": "Dilim Ezine Peynir",
+   "desc": "1 dilim ezine peyniri",
+   "price": 150,
+   "img": null
+  },
+  {
+   "id": "patates-k-zartmas",
+   "cat": "extra",
+   "name": "Patates Kızartması",
+   "desc": "Çıtır patates",
+   "price": 250,
+   "img": null
+  },
+  {
+   "id": "erez",
+   "cat": "extra",
+   "name": "Çerez",
+   "desc": "Fındık,badem,antep fıstığı",
+   "price": 400,
+   "img": null
+  },
+  {
+   "id": "peynir-taba",
+   "cat": "extra",
+   "name": "Peynir Tabağı",
+   "desc": "Ezine peynir,kaşar peynir,eski kaşar peyniri,isli peynir,abaza peyniri",
+   "price": 750,
+   "img": null
+  },
+  {
+   "id": "baron-de-lastac-2019-k-rm-z",
+   "cat": "sarap",
+   "name": "Baron De Lastac 2019 Kırmızı",
+   "desc": "",
+   "price": 3100,
+   "img": null
+  },
+  {
+   "id": "baron-de-lastac-2020-beyaz",
+   "cat": "sarap",
+   "name": "Baron De Lastac 2020 Beyaz",
+   "desc": "",
+   "price": 3100,
+   "img": null
+  },
+  {
+   "id": "egeo-cabarnet-sauvignon-2016",
+   "cat": "sarap",
+   "name": "Egeo Cabarnet Sauvignon 2016",
+   "desc": "",
+   "price": 6250,
+   "img": null
+  },
+  {
+   "id": "egeo-chardonay-2016",
+   "cat": "sarap",
+   "name": "Egeo Chardonay 2016",
+   "desc": "",
+   "price": 6250,
+   "img": null
+  },
+  {
+   "id": "egeo-f-me-blanc-2020",
+   "cat": "sarap",
+   "name": "Egeo Füme Blanc 2020",
+   "desc": "",
+   "price": 6250,
+   "img": null
+  },
+  {
+   "id": "egeo-roze-2019",
+   "cat": "sarap",
+   "name": "Egeo Roze 2019",
+   "desc": "",
+   "price": 6250,
+   "img": null
+  },
+  {
+   "id": "egeo-sauvignon-blanc",
+   "cat": "sarap",
+   "name": "Egeo Sauvignon Blanc",
+   "desc": "",
+   "price": 6250,
+   "img": null
+  },
+  {
+   "id": "jordab-chameleon-chenin-blanc",
+   "cat": "sarap",
+   "name": "Jordab Chameleon Chenin Blanc",
+   "desc": "",
+   "price": 5500,
+   "img": null
+  },
+  {
+   "id": "maison-chateaux-la-croix-larti",
+   "cat": "sarap",
+   "name": "Maison Chateaux La Croix Larti",
+   "desc": "",
+   "price": 12450,
+   "img": null
+  },
+  {
+   "id": "pendore-k-zg-z-2015",
+   "cat": "sarap",
+   "name": "Pendore Öküzgözü 2015",
+   "desc": "",
+   "price": 8100,
+   "img": null
+  },
+  {
+   "id": "pendore-syrah-2013",
+   "cat": "sarap",
+   "name": "Pendore Syrah 2013",
+   "desc": "",
+   "price": 8100,
+   "img": null
+  },
+  {
+   "id": "prinz-v-hessen-reisling-trevis",
+   "cat": "sarap",
+   "name": "Prinz V Hessen Reisling Trevis",
+   "desc": "",
+   "price": 6750,
+   "img": null
+  },
+  {
+   "id": "sartori-blush",
+   "cat": "sarap",
+   "name": "Sartori Blush",
+   "desc": "",
+   "price": 3900,
+   "img": null
+  },
+  {
+   "id": "sartori-merlot",
+   "cat": "sarap",
+   "name": "Sartori Merlot",
+   "desc": "",
+   "price": 3900,
+   "img": null
+  },
+  {
+   "id": "sartori-pine-grigio",
+   "cat": "sarap",
+   "name": "Sartori Pine Grigio",
+   "desc": "",
+   "price": 3900,
+   "img": null
+  },
+  {
+   "id": "urla-bo-azkere",
+   "cat": "sarap",
+   "name": "Urla Boğazkere",
+   "desc": "",
+   "price": 6100,
+   "img": null
+  },
+  {
+   "id": "urla-cabarnet-sauvignon",
+   "cat": "sarap",
+   "name": "Urla Cabarnet Sauvignon",
+   "desc": "",
+   "price": 6100,
+   "img": null
+  },
+  {
+   "id": "urla-chardonay",
+   "cat": "sarap",
+   "name": "Urla Chardonay",
+   "desc": "",
+   "price": 6100,
+   "img": null
+  },
+  {
+   "id": "urla-tempus",
+   "cat": "sarap",
+   "name": "Urla Tempus",
+   "desc": "",
+   "price": 8450,
+   "img": null
+  },
+  {
+   "id": "espresso-martini",
+   "cat": "kokteyl-al",
+   "name": "Espresso Martini",
+   "desc": "Votka,kahve likörü,espresso,şeker şurubu",
+   "price": 980,
+   "img": null
+  },
+  {
+   "id": "sex-on-the-beach",
+   "cat": "kokteyl-al",
+   "name": "Sex On The Beach",
+   "desc": "votka,şeftali likörü,portakal suyu,nar şurubu,",
+   "price": 980,
+   "img": null
+  },
+  {
+   "id": "mojito",
+   "cat": "kokteyl-al",
+   "name": "Mojito",
+   "desc": "Lime,şeker şurubu,rom,soda",
+   "price": 980,
+   "img": null
+  },
+  {
+   "id": "kuzu-kula-sour",
+   "cat": "kokteyl-al",
+   "name": "Kuzu Kulağı Sour",
+   "desc": "Kuzu kulağı,şeker şurubu,limon suyu,yeşil elma,cin,yumurta akı",
+   "price": 980,
+   "img": null
+  },
+  {
+   "id": "aperol-enegy",
+   "cat": "kokteyl-al",
+   "name": "Aperol Enegy",
+   "desc": "Aperol,triple sec,redbull",
+   "price": 1050,
+   "img": null
+  },
+  {
+   "id": "whisky-sour",
+   "cat": "kokteyl-al",
+   "name": "Whisky Sour",
+   "desc": "Bourbone visky,limon suyu,şeker şurubu,yumurta akı",
+   "price": 1050,
+   "img": null
+  },
+  {
+   "id": "r-r",
+   "cat": "kokteyl-al",
+   "name": "R.r",
+   "desc": "Rakı,roka,limon suyuu,şeker şurubu",
+   "price": 980,
+   "img": null
+  },
+  {
+   "id": "margarita",
+   "cat": "kokteyl-al",
+   "name": "Margarita",
+   "desc": "Tekila,limon suyu,portakal likörü",
+   "price": 980,
+   "img": null
+  },
+  {
+   "id": "long-sland",
+   "cat": "kokteyl-al",
+   "name": "Long Island",
+   "desc": "Tekila,votka,cin,rom,portakal likörü,kola",
+   "price": 1150,
+   "img": null
+  },
+  {
+   "id": "mojito-strawbery",
+   "cat": "kokteyl-sz",
+   "name": "Mojito Strawbery",
+   "desc": "Lime,şeker şurubu,taze nane,çilek,soda",
+   "price": 450,
+   "img": null
+  },
+  {
+   "id": "pina-colado",
+   "cat": "kokteyl-sz",
+   "name": "Pina Colado",
+   "desc": "Süt,ananas suyu,hindistan cevizi kreması",
+   "price": 450,
+   "img": null
+  },
+  {
+   "id": "pink-lady",
+   "cat": "kokteyl-sz",
+   "name": "Pink Lady",
+   "desc": "",
+   "price": 450,
+   "img": null
+  },
+  {
+   "id": "meyve-kokteyli",
+   "cat": "kokteyl-sz",
+   "name": "Meyve Kokteyli",
+   "desc": "Portakal ananas elma turunç şurubu",
+   "price": 450,
+   "img": null
+  },
+  {
+   "id": "tekirda-g-bek-70-cl",
+   "cat": "raki",
+   "name": "Tekirdağ Göbek 70 Cl",
+   "desc": "",
+   "price": 5220,
+   "img": null
+  },
+  {
+   "id": "tekirda-g-bek-35-cl",
+   "cat": "raki",
+   "name": "Tekirdağ Göbek 35 Cl",
+   "desc": "",
+   "price": 3000,
+   "img": null
+  },
+  {
+   "id": "efe-ya-z-m-70-cl",
+   "cat": "raki",
+   "name": "Efe Yaş Üzüm 70 Cl",
+   "desc": "",
+   "price": 3920,
+   "img": null
+  },
+  {
+   "id": "efe-ya-z-m-35-cl",
+   "cat": "raki",
+   "name": "Efe Yaş Üzüm 35 Cl",
+   "desc": "",
+   "price": 2250,
+   "img": null
+  },
+  {
+   "id": "sar-zeybek-70-cl",
+   "cat": "raki",
+   "name": "Sarı Zeybek 70 Cl",
+   "desc": "",
+   "price": 5400,
+   "img": null
+  },
+  {
+   "id": "sar-zeybek-35-cl",
+   "cat": "raki",
+   "name": "Sarı Zeybek 35 Cl",
+   "desc": "",
+   "price": 3220,
+   "img": null
+  },
+  {
+   "id": "sar-zeybek-20-cl",
+   "cat": "raki",
+   "name": "Sarı Zeybek 20 Cl",
+   "desc": "",
+   "price": 2450,
+   "img": null
+  },
+  {
+   "id": "efe-gold-70-cl",
+   "cat": "raki",
+   "name": "Efe Gold 70 Cl",
+   "desc": "",
+   "price": 4440,
+   "img": null
+  },
+  {
+   "id": "efe-gold-35-cl",
+   "cat": "raki",
+   "name": "Efe Gold 35 Cl",
+   "desc": "",
+   "price": 2450,
+   "img": null
+  },
+  {
+   "id": "efe-g-bek-70-cl",
+   "cat": "raki",
+   "name": "Efe Göbek 70 Cl",
+   "desc": "",
+   "price": 5150,
+   "img": null
+  },
+  {
+   "id": "efe-g-bek-35-cl",
+   "cat": "raki",
+   "name": "Efe Göbek 35 Cl",
+   "desc": "",
+   "price": 2850,
+   "img": null
+  },
+  {
+   "id": "yeni-rak-yeni-seri-70-cl",
+   "cat": "raki",
+   "name": "Yeni Rakı Yeni Seri 70 Cl",
+   "desc": "",
+   "price": 4740,
+   "img": null
+  },
+  {
+   "id": "yeni-rak-yeni-seri-35-cl",
+   "cat": "raki",
+   "name": "Yeni Rakı Yeni Seri 35 Cl",
+   "desc": "",
+   "price": 2640,
+   "img": null
+  },
+  {
+   "id": "mercan-rak-70-cl",
+   "cat": "raki",
+   "name": "Mercan Rakı 70 Cl",
+   "desc": "",
+   "price": 5700,
+   "img": null
+  },
+  {
+   "id": "mercan-rak-35-cl",
+   "cat": "raki",
+   "name": "Mercan Rakı 35 Cl",
+   "desc": "",
+   "price": 3500,
+   "img": null
+  },
+  {
+   "id": "giz-rak-70-cl",
+   "cat": "raki",
+   "name": "Giz Rakı 70 Cl",
+   "desc": "",
+   "price": 9900,
+   "img": null
+  },
+  {
+   "id": "efe-aok-barrel-70-cl",
+   "cat": "raki",
+   "name": "Efe Aok Barrel 70 Cl",
+   "desc": "",
+   "price": 11520,
+   "img": null
+  },
+  {
+   "id": "double-rak",
+   "cat": "raki",
+   "name": "Double Rakı",
+   "desc": "",
+   "price": 750,
+   "img": null
+  },
+  {
+   "id": "tek-rak",
+   "cat": "raki",
+   "name": "Tek Rakı",
+   "desc": "",
+   "price": 500,
+   "img": null
+  },
+  {
+   "id": "beylerbeyi-g-bek-70-cl",
+   "cat": "raki",
+   "name": "Beylerbeyi Göbek 70 Cl",
+   "desc": "",
+   "price": 5550,
+   "img": null
+  },
+  {
+   "id": "beylerbeyi-g-bek-50-cl",
+   "cat": "raki",
+   "name": "Beylerbeyi Göbek 50 Cl",
+   "desc": "",
+   "price": 3950,
+   "img": null
+  },
+  {
+   "id": "beylerbeyi-g-bek-35-cl",
+   "cat": "raki",
+   "name": "Beylerbeyi Göbek 35 Cl",
+   "desc": "",
+   "price": 3480,
+   "img": null
+  },
+  {
+   "id": "prototip-rak",
+   "cat": "raki",
+   "name": "Prototip Rakı",
+   "desc": "70 cl",
+   "price": 7000,
+   "img": null
+  },
+  {
+   "id": "tekirda-alt-nseri",
+   "cat": "raki",
+   "name": "Tekirdağ Altınseri",
+   "desc": "35 CL",
+   "price": 2550,
+   "img": null
+  },
+  {
+   "id": "yeni-rak",
+   "cat": "raki",
+   "name": "Yeni Rakı",
+   "desc": "70 CL",
+   "price": 4050,
+   "img": null
+  },
+  {
+   "id": "tekirda-alt-nseri-2",
+   "cat": "raki",
+   "name": "Tekirdağ Altınseri",
+   "desc": "50CL",
+   "price": 3550,
+   "img": null
+  },
+  {
+   "id": "tekirda-alt-nseri-3",
+   "cat": "raki",
+   "name": "Tekirdağ Altınseri",
+   "desc": "70CL",
+   "price": 4150,
+   "img": null
+  },
+  {
+   "id": "sar-zeybek-50-cl",
+   "cat": "raki",
+   "name": "Sarı Zeybek 50 Cl",
+   "desc": "",
+   "price": 4500,
+   "img": null
+  },
+  {
+   "id": "viski-duble",
+   "cat": "viski",
+   "name": "Viski Duble",
+   "desc": "",
+   "price": 1000,
+   "img": null
+  },
+  {
+   "id": "hibiki-70-cl",
+   "cat": "viski",
+   "name": "Hibiki 70 Cl",
+   "desc": "",
+   "price": 25000,
+   "img": null
+  },
+  {
+   "id": "dimple-golden-selection-70-cl",
+   "cat": "viski",
+   "name": "Dimple Golden Selection 70 Cl",
+   "desc": "",
+   "price": 6000,
+   "img": null
+  },
+  {
+   "id": "singleton-18-years-70-cl",
+   "cat": "viski",
+   "name": "Singleton 18 Years 70 Cl",
+   "desc": "",
+   "price": 14500,
+   "img": null
+  },
+  {
+   "id": "singleton-12-years-70-cl",
+   "cat": "viski",
+   "name": "Singleton 12 Years 70 Cl",
+   "desc": "",
+   "price": 8500,
+   "img": null
+  },
+  {
+   "id": "johnnie-walker-black-label-70-cl",
+   "cat": "viski",
+   "name": "Johnnie Walker Black Label 70 Cl",
+   "desc": "",
+   "price": 10000,
+   "img": null
+  },
+  {
+   "id": "johnnie-walker-black-label-50-cl",
+   "cat": "viski",
+   "name": "Johnnie Walker Black Label 50 Cl",
+   "desc": "",
+   "price": 8500,
+   "img": null
+  },
+  {
+   "id": "duble-viski-hibiki",
+   "cat": "viski",
+   "name": "Duble Viski ( Hibiki )",
+   "desc": "",
+   "price": 3000,
+   "img": null
+  },
+  {
+   "id": "johnie-walker-black-label-35-cl",
+   "cat": "viski",
+   "name": "Johnie Walker Black Label 35 Cl",
+   "desc": "",
+   "price": 5500,
+   "img": null
+  },
+  {
+   "id": "taliscal-10-years",
+   "cat": "viski",
+   "name": "Taliscal 10 Years",
+   "desc": "70 CL",
+   "price": 12000,
+   "img": null
+  },
+  {
+   "id": "taliscal-sky",
+   "cat": "viski",
+   "name": "Taliscal Sky",
+   "desc": "70 CL",
+   "price": 12000,
+   "img": null
+  },
+  {
+   "id": "finlandiya-70-cl",
+   "cat": "votka",
+   "name": "Finlandiya 70 Cl",
+   "desc": "",
+   "price": 7500,
+   "img": null
+  },
+  {
+   "id": "smirnoff-70-cl",
+   "cat": "votka",
+   "name": "Smirnoff 70 Cl",
+   "desc": "",
+   "price": 6250,
+   "img": null
+  },
+  {
+   "id": "smirnoff-35-cl",
+   "cat": "votka",
+   "name": "Smirnoff 35 Cl",
+   "desc": "",
+   "price": 4000,
+   "img": null
+  },
+  {
+   "id": "double-votka",
+   "cat": "votka",
+   "name": "Double Votka",
+   "desc": "",
+   "price": 950,
+   "img": null
+  },
+  {
+   "id": "onagin",
+   "cat": "votka",
+   "name": "Onagin",
+   "desc": "",
+   "price": 15000,
+   "img": null
+  },
+  {
+   "id": "grey-gross",
+   "cat": "votka",
+   "name": "Grey Gross",
+   "desc": "70 CL",
+   "price": 14000,
+   "img": null
+  },
+  {
+   "id": "tanqueray-no-ten-70-cl",
+   "cat": "cin",
+   "name": "Tanqueray No:ten 70 Cl",
+   "desc": "",
+   "price": 8750,
+   "img": null
+  },
+  {
+   "id": "gordons-premium-pink-70cl",
+   "cat": "cin",
+   "name": "Gordons Premium Pink 70cl",
+   "desc": "",
+   "price": 5500,
+   "img": null
+  },
+  {
+   "id": "hendricks-70-cl",
+   "cat": "cin",
+   "name": "Hendricks 70 Cl",
+   "desc": "",
+   "price": 10250,
+   "img": null
+  },
+  {
+   "id": "ruko-graft",
+   "cat": "cin",
+   "name": "Ruko Graft",
+   "desc": "70 CL",
+   "price": 9600,
+   "img": null
+  },
+  {
+   "id": "premium-duble-cin",
+   "cat": "cin",
+   "name": "Premium Duble Cin",
+   "desc": "8 CL",
+   "price": 1350,
+   "img": null
+  },
+  {
+   "id": "olmega-70cl",
+   "cat": "tekila",
+   "name": "Olmega 70cl",
+   "desc": "",
+   "price": 7500,
+   "img": null
+  },
+  {
+   "id": "don-julio-blanco-70-cl",
+   "cat": "tekila",
+   "name": "Don Julio Blanco 70 Cl",
+   "desc": "",
+   "price": 9500,
+   "img": null
+  },
+  {
+   "id": "don-julio-classic-70-cl",
+   "cat": "tekila",
+   "name": "Don Julio Classic 70 Cl",
+   "desc": "",
+   "price": 12000,
+   "img": null
+  },
+  {
+   "id": "patron",
+   "cat": "tekila",
+   "name": "Patron",
+   "desc": "70CL",
+   "price": 14250,
+   "img": null
+  },
+  {
+   "id": "bacardi-70-cl",
+   "cat": "rom",
+   "name": "Bacardi 70 Cl",
+   "desc": "",
+   "price": 6500,
+   "img": null
+  },
+  {
+   "id": "captain-morgan",
+   "cat": "rom",
+   "name": "Captain Morgan",
+   "desc": "",
+   "price": 7000,
+   "img": null
+  },
+  {
+   "id": "campari-shot",
+   "cat": "likor",
+   "name": "Campari Shot",
+   "desc": "",
+   "price": 500,
+   "img": null
+  },
+  {
+   "id": "jager-meister-shot-6-cl",
+   "cat": "likor",
+   "name": "Jager Meister Shot 6 Cl",
+   "desc": "",
+   "price": 600,
+   "img": null
+  },
+  {
+   "id": "baileys-shot-6-cl",
+   "cat": "likor",
+   "name": "Baileys Shot 6 Cl",
+   "desc": "",
+   "price": 600,
+   "img": null
+  },
+  {
+   "id": "malibu-shot-6-cl",
+   "cat": "likor",
+   "name": "Malibu Shot 6 Cl",
+   "desc": "",
+   "price": 600,
+   "img": null
+  },
+  {
+   "id": "kahlua-shot-6-cl",
+   "cat": "likor",
+   "name": "Kahlua Shot 6 Cl",
+   "desc": "",
+   "price": 600,
+   "img": null
+  },
+  {
+   "id": "aperol-shot-6-cl",
+   "cat": "likor",
+   "name": "Aperol Shot 6 Cl",
+   "desc": "",
+   "price": 600,
+   "img": null
+  },
+  {
+   "id": "amarula-shot-6-cl",
+   "cat": "likor",
+   "name": "Amarula Shot 6 Cl",
+   "desc": "",
+   "price": 600,
+   "img": null
+  },
+  {
+   "id": "schvartslog-6-cl",
+   "cat": "likor",
+   "name": "Schvartslog 6 Cl",
+   "desc": "",
+   "price": 600,
+   "img": null
+  },
+  {
+   "id": "tuborg-gold",
+   "cat": "bira",
+   "name": "Tuborg Gold",
+   "desc": "",
+   "price": 350,
+   "img": null
+  },
+  {
+   "id": "carlsberg",
+   "cat": "bira",
+   "name": "Carlsberg",
+   "desc": "",
+   "price": 415,
+   "img": null
+  },
+  {
+   "id": "corona",
+   "cat": "bira",
+   "name": "Corona",
+   "desc": "",
+   "price": 495,
+   "img": null
+  },
+  {
+   "id": "miller",
+   "cat": "bira",
+   "name": "Miller",
+   "desc": "",
+   "price": 410,
+   "img": null
+  },
+  {
+   "id": "heineken",
+   "cat": "bira",
+   "name": "Heineken",
+   "desc": "",
+   "price": 500,
+   "img": null
+  },
+  {
+   "id": "ice-latte",
+   "cat": "soguk-kahve",
+   "name": "İce Latte",
+   "desc": "Süt,buz,expresso",
+   "price": 280,
+   "img": null
+  },
+  {
+   "id": "ice-mocha",
+   "cat": "soguk-kahve",
+   "name": "İce Mocha",
+   "desc": "Süt,buz,çikokata,espresso",
+   "price": 280,
+   "img": null
+  },
+  {
+   "id": "ice-white-chocolate-mocha",
+   "cat": "soguk-kahve",
+   "name": "İce White Chocolate Mocha",
+   "desc": "Süt,buz,beyaz çikolata,espresso",
+   "price": 280,
+   "img": null
+  },
+  {
+   "id": "ice-americano",
+   "cat": "soguk-kahve",
+   "name": "İce Americano",
+   "desc": "Su,buz,espresso",
+   "price": 280,
+   "img": null
+  },
+  {
+   "id": "coca-cola",
+   "cat": "soguk-icecek",
+   "name": "Coca Cola",
+   "desc": "",
+   "price": 200,
+   "img": null
+  },
+  {
+   "id": "coca-cola-zero",
+   "cat": "soguk-icecek",
+   "name": "Coca Cola Zero",
+   "desc": "",
+   "price": 200,
+   "img": null
+  },
+  {
+   "id": "fanta",
+   "cat": "soguk-icecek",
+   "name": "Fanta",
+   "desc": "",
+   "price": 200,
+   "img": null
+  },
+  {
+   "id": "sprite",
+   "cat": "soguk-icecek",
+   "name": "Sprite",
+   "desc": "",
+   "price": 200,
+   "img": null
+  },
+  {
+   "id": "fucetea",
+   "cat": "soguk-icecek",
+   "name": "Fucetea",
+   "desc": "",
+   "price": 200,
+   "img": null
+  },
+  {
+   "id": "sade-soda",
+   "cat": "soguk-icecek",
+   "name": "Sade Soda",
+   "desc": "",
+   "price": 100,
+   "img": null
+  },
+  {
+   "id": "meyveli-soda",
+   "cat": "soguk-icecek",
+   "name": "Meyveli Soda",
+   "desc": "",
+   "price": 130,
+   "img": null
+  },
+  {
+   "id": "limonata",
+   "cat": "soguk-icecek",
+   "name": "Limonata",
+   "desc": "",
+   "price": 100,
+   "img": null
+  },
+  {
+   "id": "naneli-limonata",
+   "cat": "soguk-icecek",
+   "name": "Naneli Limonata",
+   "desc": "Limonata,nane",
+   "price": 130,
+   "img": null
+  },
+  {
+   "id": "ilekli-limonata",
+   "cat": "soguk-icecek",
+   "name": "Çilekli Limonata",
+   "desc": "Limonata,çilek",
+   "price": 130,
+   "img": null
+  },
+  {
+   "id": "ayran",
+   "cat": "soguk-icecek",
+   "name": "Ayran",
+   "desc": "",
+   "price": 100,
+   "img": null
+  },
+  {
+   "id": "naneli-ayran",
+   "cat": "soguk-icecek",
+   "name": "Naneli Ayran",
+   "desc": "Ayran,taze nane",
+   "price": 130,
+   "img": null
+  },
+  {
+   "id": "karpuz-milkshake",
+   "cat": "milkshake",
+   "name": "Karpuz Milkshake",
+   "desc": "",
+   "price": 400,
+   "img": null
+  },
+  {
+   "id": "ilek-milkshake",
+   "cat": "milkshake",
+   "name": "Çilek Milkshake",
+   "desc": "",
+   "price": 400,
+   "img": null
+  },
+  {
+   "id": "ark-felek-milkshake",
+   "cat": "milkshake",
+   "name": "Çarkıfelek Milkshake",
+   "desc": "",
+   "price": 400,
+   "img": null
+  },
+  {
+   "id": "ikolata-milkshake",
+   "cat": "milkshake",
+   "name": "Çikolata Milkshake",
+   "desc": "",
+   "price": 400,
+   "img": null
+  },
+  {
+   "id": "karamel-milkshake",
+   "cat": "milkshake",
+   "name": "Karamel Milkshake",
+   "desc": "",
+   "price": 400,
+   "img": null
+  },
+  {
+   "id": "ilek-frozen",
+   "cat": "frozen",
+   "name": "Çilek Frozen",
+   "desc": "",
+   "price": 350,
+   "img": null
+  },
+  {
+   "id": "karpuz-frozen",
+   "cat": "frozen",
+   "name": "Karpuz Frozen",
+   "desc": "",
+   "price": 350,
+   "img": null
+  },
+  {
+   "id": "ark-felek-frozen",
+   "cat": "frozen",
+   "name": "Çarkıfelek Frozen",
+   "desc": "",
+   "price": 350,
+   "img": null
+  },
+  {
+   "id": "limon-nane-froze",
+   "cat": "frozen",
+   "name": "Limon Nane Froze",
+   "desc": "",
+   "price": 350,
+   "img": null
+  },
+  {
+   "id": "portakal-suyu",
+   "cat": "taze-sikim",
+   "name": "Portakal Suyu",
+   "desc": "",
+   "price": 400,
+   "img": null
+  },
+  {
+   "id": "elma-suyu",
+   "cat": "taze-sikim",
+   "name": "Elma Suyu",
+   "desc": "",
+   "price": 400,
+   "img": null
+  },
+  {
+   "id": "havu-suyu",
+   "cat": "taze-sikim",
+   "name": "Havuç Suyu",
+   "desc": "",
+   "price": 400,
+   "img": null
+  },
+  {
+   "id": "didi-atom",
+   "cat": "taze-sikim",
+   "name": "Didi Atom",
+   "desc": "PORTAKAL,ELMA,HAVUÇ,LİMON,BAL",
+   "price": 500,
+   "img": null
+  }
+ ]
+}

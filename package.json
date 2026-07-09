@@ -1,0 +1,9 @@
+{
+  "name": "mare-gastro-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mare Gastro web sitesi + menu/reservation API fonksiyonlari (Vercel)",
+  "dependencies": {
+    "@vercel/blob": "^2.5.0"
+  }
+}

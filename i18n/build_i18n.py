@@ -32,6 +32,12 @@ m = re.search(r"const msg=`[^`]*`;", src)
 WAMSG = m.group(0)
 src = src.replace(WAMSG, "@@WAMSG@@")
 
+# ── 2b. MENU_I18N JS objesini koru (4 dili kendi içinde barındırır,
+#         tokenizer'ın "Başlangıçlar" gibi metinleri yanlış dille değiştirmesini önler) ──
+m2 = re.search(r"const MENU_I18N = \{.*?\n\};", src, re.S)
+MENUI18N = m2.group(0)
+src = src.replace(MENUI18N, "@@MENUI18N@@")
+
 # ── 3. hreflang + dil değiştirici işaretçileri ──
 src = re.sub(r'(<link rel="canonical"[^>]*>)', r"\1\n@@HREFLANG@@", src, count=1)
 src = src.replace('<div class="nav-right">', '<div class="nav-right">@@LANGSW@@', 1)
@@ -113,6 +119,7 @@ for l in LANGS:
     out = out.replace("@@HREFLANG@@", hreflang)
     out = out.replace("@@LANGSW@@", langsw(l))
     out = out.replace("@@WAMSG@@", WAMSG)
+    out = out.replace("@@MENUI18N@@", MENUI18N)
     # JS tek-tırnak bağlamına giren tokenler (alert / textContent / onclick selK)
     JS_CTX = {"js_gnote_ozel", "js_gnote_yalniz", "js_gnote_kisilik",
               "js_alert_tarih", "js_alert_saat", "js_alert_konaklama",

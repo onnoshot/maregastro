@@ -481,6 +481,33 @@ nav{
 .m-hint{font-size:10px;letter-spacing:.06em;color:var(--muted);margin-top:4px}
 @media(min-width:768px){.m-hint{margin-top:0}}
 
+/* Big group toggle — Yemekler / İçecekler (sayfa değiştirir gibi) */
+.mgroups{
+  display:flex;gap:8px;padding:0 20px 16px;flex-shrink:0;
+}
+@media(min-width:768px){.mgroups{padding:0 40px 20px;max-width:420px}}
+.mgroup-btn{
+  position:relative;flex:1;overflow:hidden;
+  background:var(--glass);border:1px solid var(--glassBorder);
+  backdrop-filter:blur(12px);border-radius:14px;
+  padding:14px 10px;text-align:center;cursor:none;
+  font-family:var(--ital);font-size:1rem;letter-spacing:.01em;color:var(--muted);
+  transition:color .5s var(--ease),border-color .5s var(--ease),box-shadow .5s var(--ease),transform .3s var(--ease);
+}
+.mgroup-btn::before{
+  content:'';position:absolute;inset:0;border-radius:14px;
+  background:linear-gradient(135deg,rgba(200,169,110,.24),rgba(200,169,110,.05));
+  opacity:0;transition:opacity .5s var(--ease);
+}
+.mgroup-btn.on{color:var(--amber2);border-color:rgba(200,169,110,.5);box-shadow:0 8px 30px rgba(200,169,110,.14)}
+.mgroup-btn.on::before{opacity:1}
+.mgroup-btn:active{transform:scale(.97)}
+@media(max-width:767px){.mgroup-btn{font-size:.88rem;padding:12px 8px}}
+
+/* Grup içeriği — kategori geçişinde blur/scale ile "sayfa değişimi" hissi */
+.mgroup-view{transition:opacity .48s var(--ease),filter .48s var(--ease),transform .48s var(--ease)}
+.mgroup-view.tswap{opacity:0;filter:blur(16px);transform:scale(.965)}
+
 /* Category tabs — scrollable pills */
 .mtabs{
   display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;
@@ -493,7 +520,7 @@ nav{
   border:1px solid var(--glassBorder);
   backdrop-filter:blur(12px);
   border-radius:100px;
-  padding:8px 18px;white-space:nowrap;
+  padding:8px 18px;white-space:nowrap;cursor:none;
   font-size:10px;letter-spacing:.14em;text-transform:uppercase;
   color:var(--muted);transition:all .3s var(--ease);flex-shrink:0;
 }
@@ -502,6 +529,7 @@ nav{
   border-color:rgba(200,169,110,.55);
   color:var(--amber);
   box-shadow:0 0 20px rgba(200,169,110,.12);
+  transform:scale(1.04);
 }
 
 /* Dish grid */
@@ -518,10 +546,31 @@ nav{
 @media(min-width:600px){.mpanel{grid-template-columns:repeat(3,1fr)}}
 @media(min-width:900px){.mpanel{grid-template-columns:repeat(4,1fr)}}
 .mpanel::-webkit-scrollbar{display:none}
-.mpanel.on{display:grid;animation:panelIn .4s var(--ease)}
-@keyframes panelIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.mpanel.on{display:grid}
+.mpanel.on.list{display:flex;flex-direction:column;gap:0}
+.mpanel .dc,.mpanel .dlist-row{animation:panelIn .5s var(--ease) both;animation-delay:var(--d,0ms)}
+@keyframes panelIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .mpanel.solo{grid-template-columns:1fr 1fr;max-width:420px}
 @media(min-width:768px){.mpanel.solo{grid-template-columns:repeat(2,1fr)}}
+
+/* Fiyat rozeti (kart) */
+.dc-price{
+  position:absolute;top:8px;right:8px;z-index:3;
+  background:rgba(10,10,11,.6);backdrop-filter:blur(6px);
+  border:1px solid rgba(200,169,110,.4);border-radius:100px;
+  padding:3px 10px;font-size:10px;font-weight:600;letter-spacing:.03em;color:var(--amber2);
+  white-space:nowrap;
+}
+
+/* Liste görünümü — içecekler / extralar (foto yok) */
+.dlist-row{
+  display:flex;align-items:baseline;justify-content:space-between;gap:14px;
+  padding:13px 4px;border-bottom:1px solid rgba(255,255,255,.07);
+}
+.dlist-main{display:flex;flex-direction:column;gap:3px;min-width:0}
+.dlist-name{font-family:var(--ital);font-size:.95rem;color:var(--cream);line-height:1.25}
+.dlist-desc{font-size:10px;font-weight:300;color:var(--muted);line-height:1.4}
+.dlist-price{flex-shrink:0;font-size:.85rem;font-weight:600;color:var(--amber2);white-space:nowrap}
 
 /* Dish CARD — liquid glass */
 .dc{
@@ -1385,78 +1434,11 @@ nav{
       <p class="m-hint">Tap a category</p>
     </div>
 
-    <div class="mtabs rv rv2">
-      <button class="mtab on" onclick="mTab('b',this)">Starters</button>
-      <button class="mtab" onclick="mTab('s',this)">Salads</button>
-      <button class="mtab" onclick="mTab('a',this)">Small Plates</button>
-      <button class="mtab" onclick="mTab('n',this)">Mains</button>
-      <button class="mtab" onclick="mTab('t',this)">Desserts</button>
-      <button class="mtab" onclick="mTab('c',this)">Children</button>
-    </div>
+    <div class="mgroups rv rv2" id="mGroups"></div>
 
-    <div class="mpanels">
-      <!-- Starters -->
-      <div class="mpanel on" id="mp-b">
-        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/koz-patlican.webp" alt="Smoked Eggplant"></div><div class="dc-body"><div class="dc-name">Smoked Eggplant</div><div class="dc-desc">Charred red pepper, green pepper, spring onion</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/humus.webp" alt="Hummus"></div><div class="dc-body"><div class="dc-name">Hummus</div><div class="dc-desc">Smoked beef, cornichon pickles, hazelnut, extra virgin olive oil</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/arnavut-cigeri.webp" alt="Albanian-Style Liver"></div><div class="dc-body"><div class="dc-name">Albanian-Style Liver</div><div class="dc-desc">Caramelized onions, parsley, spiced butter</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/pilav.webp" alt="Eggplant Pilaf"></div><div class="dc-body"><div class="dc-name">Eggplant Pilaf</div><div class="dc-desc">Pine nuts, currants, spiced olive oil</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/levrek-marin.webp" alt="Marinated Sea Bass"></div><div class="dc-body"><div class="dc-name">Marinated Sea Bass</div><div class="dc-desc">Citrus-cured, red onion, dill, extra virgin olive oil</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-img"><img loading="lazy" decoding="async" src="/images/semizotu.webp" alt="Cretan Mezze, Melon"></div><div class="dc-body"><div class="dc-name">Cretan Mezze, Melon</div><div class="dc-desc">Rakı-marinated melon, Cretan herb mezze</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-img"><img loading="lazy" decoding="async" src="/images/enginar.webp" alt="Artichokes in Olive Oil"></div><div class="dc-body"><div class="dc-name">Artichokes in Olive Oil</div><div class="dc-desc">Pea purée, pine nuts, mint</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Purslane with Yoghurt</div><div class="dc-desc">Green apple</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/dana-carpaccio.webp" alt="Beef Carpaccio"></div><div class="dc-body"><div class="dc-name">Beef Carpaccio</div><div class="dc-desc">Rocket, parmesan, capers</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-img"><img loading="lazy" decoding="async" src="/images/karides-sogus.webp" alt="Octopus Carpaccio"></div><div class="dc-body"><div class="dc-name">Octopus Carpaccio</div><div class="dc-desc">Potato salad, cornichon pickles</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/karides-sos.webp" alt="Jumbo Prawns with Avocado"></div><div class="dc-body"><div class="dc-name">Jumbo Prawns with Avocado</div><div class="dc-desc">Mustard and orange citrus dressing</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Sliced Melon / Watermelon</div><div class="dc-desc"></div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Sliced Ezine Cheese</div><div class="dc-desc"></div></div><div class="dc-glow"></div></div>
-      </div>
-
-      <!-- Salads -->
-      <div class="mpanel" id="mp-s">
-        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/semizotu-salata.webp" alt="Purslane Salad"></div><div class="dc-body"><div class="dc-name">Purslane Salad</div><div class="dc-desc">Strawberry, green apple, walnut, pomegranate vinaigrette</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/yunan-salata.webp" alt="Greek Salad"></div><div class="dc-body"><div class="dc-name">Greek Salad</div><div class="dc-desc">Tomato, cucumber, pepper, black olives, Ezine cheese</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Rocket Salad</div><div class="dc-desc">Cherry tomato, parmesan, garlic balsamic</div></div><div class="dc-glow"></div></div>
-      </div>
-
-      <!-- Small Plates -->
-      <div class="mpanel" id="mp-a">
-        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/kalamar-tava.webp" alt="Fried Calamari"></div><div class="dc-body"><div class="dc-name">Fried Calamari</div><div class="dc-desc">Tarator sauce</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-img"><img loading="lazy" decoding="async" src="/images/baby-kalamar.webp" alt="Grilled Baby Calamari"></div><div class="dc-body"><div class="dc-name">Grilled Baby Calamari</div><div class="dc-desc">Muhammara</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/ahtapot-izgara.webp" alt="Grilled Octopus"></div><div class="dc-body"><div class="dc-name">Grilled Octopus</div><div class="dc-desc">Garlic butter sauce</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/karides-izgara.webp" alt="Grilled Jumbo Prawns"></div><div class="dc-body"><div class="dc-name">Grilled Jumbo Prawns</div><div class="dc-desc">Garlic and parsley butter</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/tereyagli-karides.webp" alt="Butter Shrimp"></div><div class="dc-body"><div class="dc-name">Butter Shrimp</div><div class="dc-desc">Garlic and parsley butter</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-img"><img loading="lazy" decoding="async" src="/images/ege-otlari.webp" alt="Sautéed Aegean / Black Sea Greens"></div><div class="dc-body"><div class="dc-name">Sautéed Aegean / Black Sea Greens</div><div class="dc-desc">Garlic yoghurt</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/muska-boregi.webp" alt="Muska Börek"></div><div class="dc-body"><div class="dc-name">Muska Börek</div><div class="dc-desc">4 pieces</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-img"><img loading="lazy" decoding="async" src="/images/patates-terin2.webp" alt="Potato Terrine"></div><div class="dc-body"><div class="dc-name">Potato Terrine</div><div class="dc-desc">Chestnut mushroom sauce, smoked beef, mushroom salsa</div></div><div class="dc-glow"></div></div>
-      </div>
-
-      <!-- Mains -->
-      <div class="mpanel" id="mp-n">
-        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/citir-somon.webp" alt="Crispy Salmon"></div><div class="dc-body"><div class="dc-name">Crispy Salmon</div><div class="dc-desc">Asparagus, roasted potatoes, hollandaise</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-img"><img loading="lazy" decoding="async" src="/images/balik-izgara.webp" alt="Grilled Catch of the Day"></div><div class="dc-body"><div class="dc-name">Grilled Catch of the Day</div><div class="dc-desc">Charred peppers, tomato, baby potatoes, beurre blanc</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/kremali-levrek.webp" alt="Baked Sea Bass in Cream"></div><div class="dc-body"><div class="dc-name">Baked Sea Bass in Cream</div><div class="dc-desc">Tomato, pepper, thyme, capers</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-img"><img loading="lazy" decoding="async" src="/images/tekir-tempura.webp" alt="Red Mullet Tempura"></div><div class="dc-body"><div class="dc-name">Red Mullet Tempura</div><div class="dc-desc">House-made mayonnaise with herbs and capers</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Seafood Linguine</div><div class="dc-desc">Clams, butter, garlic, parsley</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/somon-spagetti.webp" alt="Creamy Salmon Spaghetti"></div><div class="dc-body"><div class="dc-name">Creamy Salmon Spaghetti</div><div class="dc-desc">Cream sauce with salmon, fresh parsley</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/bonfile.webp" alt="Tenderloin in Pepper Cream"></div><div class="dc-body"><div class="dc-name">Tenderloin in Pepper Cream</div><div class="dc-desc">200 g beef, matchstick potatoes, black pepper sauce</div></div><div class="dc-glow"></div></div>
-      </div>
-
-      <!-- Desserts -->
-      <div class="mpanel" id="mp-t">
-        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Mare Şekerpare</div><div class="dc-desc"></div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">A Walk in the Forest</div><div class="dc-desc">Chocolate mousse, profiteroles, vanilla ice cream</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dthumb"><img loading="lazy" decoding="async" src="/images/cheesecake.webp" alt="Burnt Basque Cheesecake"></div><div class="dc-body"><div class="dc-name">Burnt Basque Cheesecake</div><div class="dc-desc"></div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Lemon Tart</div><div class="dc-desc"></div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Fruit Plate</div><div class="dc-desc"></div></div><div class="dc-glow"></div></div>
-        <div class="menu-note">* Desserts may vary daily</div>
-      </div>
-
-      <!-- Children -->
-      <div class="mpanel solo" id="mp-c">
-        <div class="dc"><div class="dc-img"><img loading="lazy" decoding="async" src="/images/izgara-kofte.webp" alt="Grilled Meatballs"></div><div class="dc-body"><div class="dc-name">Grilled Meatballs</div><div class="dc-desc">French fries, spicy sauce or yoghurt</div></div><div class="dc-glow"></div></div>
-        <div class="dc"><div class="dc-noimg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dc-body"><div class="dc-name">Pasta in Tomato Sauce</div><div class="dc-desc"></div></div><div class="dc-glow"></div></div>
-      </div>
+    <div class="mgroup-view" id="mGroupView">
+      <div class="mtabs" id="mTabs"></div>
+      <div class="mpanels" id="mPanels"></div>
     </div>
   </div>
 </section>
@@ -1562,6 +1544,12 @@ nav{
             <p>Everything is ready, please confirm</p>
             <small>Review your details</small>
           </div>
+          <label class="field-label">Ad Soyad</label>
+          <input type="text" class="date-field" id="rName" placeholder="Ad Soyad" autocomplete="name">
+          <label class="field-label">Telefon Numarası</label>
+          <input type="tel" class="date-field" id="rPhone" placeholder="05XX XXX XX XX" autocomplete="tel">
+          <label class="field-label">E-posta</label>
+          <input type="email" class="date-field" id="rEmail" placeholder="ornek@eposta.com" autocomplete="email">
           <div class="sum-card">
             <div class="sum-row">
               <div class="sum-item"><label>Date</label><span id="sD">—</span></div>
@@ -1576,7 +1564,7 @@ nav{
           </div>
           <div class="sacts">
             <button class="s-back" onclick="gS(2)">← Back</button>
-            <a class="s-wa" id="waBtn" href="#" target="_blank">
+            <a class="s-wa" id="waBtn" href="#" target="_blank" onclick="return submitReservation(this)">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
               Confirm via WhatsApp
             </a>
@@ -1685,16 +1673,79 @@ const rvEls=document.querySelectorAll('.rv');
 const rvObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.1});
 rvEls.forEach(el=>rvObs.observe(el));
 
-/* ── MENU TABS ── */
-function mTab(id,btn){
-  document.querySelectorAll('.mpanel').forEach(p=>p.classList.remove('on'));
-  document.querySelectorAll('.mtab').forEach(b=>b.classList.remove('on'));
-  document.getElementById('mp-'+id).classList.add('on');
-  btn.classList.add('on');
+/* ── MENU (canlı, /api/menu'den) ── */
+const MENU_I18N = {
+tr:{food:"Yemekler",drink:"İçecekler",b:"Başlangıçlar",s:"Salatalar",a:"Ara Sıcaklar",n:"Ana Yemekler",kahvalti:"Kahvaltılar",t:"Tatlılar",c:"Çocuk",extra:"Extralar",sarap:"Şaraplar","kokteyl-al":"Alkollü Kokteyller","kokteyl-sz":"Alkolsüz Kokteyller",raki:"Rakılar",viski:"Viskiler",votka:"Votkalar",cin:"Cinler",tekila:"Tekilalar",rom:"Romlar",likor:"Likörler",bira:"Biralar","soguk-kahve":"Soğuk Kahveler","soguk-icecek":"Soğuk İçecekler",milkshake:"Milkshakeler",frozen:"Frozenlar","taze-sikim":"Taze Sıkımlar"},
+en:{food:"Food",drink:"Drinks",b:"Starters",s:"Salads",a:"Small Plates",n:"Main Courses",kahvalti:"Breakfast",t:"Desserts",c:"Kids",extra:"Extras",sarap:"Wines","kokteyl-al":"Cocktails","kokteyl-sz":"Non-Alcoholic Cocktails",raki:"Rakı",viski:"Whisky",votka:"Vodka",cin:"Gin",tekila:"Tequila",rom:"Rum",likor:"Liqueurs",bira:"Beer","soguk-kahve":"Iced Coffee","soguk-icecek":"Cold Drinks",milkshake:"Milkshakes",frozen:"Frozen","taze-sikim":"Fresh Juice"},
+ar:{food:"الطعام",drink:"المشروبات",b:"المقبلات",s:"السلطات",a:"أطباق صغيرة",n:"الأطباق الرئيسية",kahvalti:"الإفطار",t:"الحلويات",c:"الأطفال",extra:"إضافات",sarap:"النبيذ","kokteyl-al":"كوكتيلات","kokteyl-sz":"كوكتيلات بدون كحول",raki:"راكي",viski:"ويسكي",votka:"فودكا",cin:"جين",tekila:"تيكيلا",rom:"روم",likor:"ليكور",bira:"بيرة","soguk-kahve":"قهوة مثلجة","soguk-icecek":"مشروبات بارده",milkshake:"ميلك شيك",frozen:"فروزن","taze-sikim":"عصير طازج"},
+ru:{food:"Еда",drink:"Напитки",b:"Закуски",s:"Салаты",a:"Горячие закуски",n:"Основные блюда",kahvalti:"Завтрак",t:"Десерты",c:"Детское меню",extra:"Дополнения",sarap:"Вина","kokteyl-al":"Коктейли","kokteyl-sz":"Безалкогольные коктейли",raki:"Раки",viski:"Виски",votka:"Водка",cin:"Джин",tekila:"Текила",rom:"Ром",likor:"Ликёры",bira:"Пиво","soguk-kahve":"Холодный кофе","soguk-icecek":"Холодные напитки",milkshake:"Милкшейки",frozen:"Фрозен","taze-sikim":"Свежевыжатые соки"}
+};
+let MENU_DATA=null,curGroup=null,curCat=null;
+function mLabel(id){const cl=document.documentElement.lang||'tr';const L=MENU_I18N[cl]||MENU_I18N.tr;return L[id]||id}
+function mPrice(n){if(n==null)return'';return Number(n).toLocaleString('en-US')+' ₺'}
+function noimgSvg(){return'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>'}
+function cardHTML(it,i){
+  const img=it.img?'<div class="dc-img"><img loading="lazy" decoding="async" src="/images/'+it.img+'" alt="'+escHtml(it.name)+'"></div>':'<div class="dc-noimg">'+noimgSvg()+'</div>';
+  return '<div class="dc" style="--d:'+(i*45)+'ms">'+img+
+    '<div class="dc-price">'+mPrice(it.price)+'</div>'+
+    '<div class="dc-body"><div class="dc-name">'+escHtml(it.name)+'</div><div class="dc-desc">'+escHtml(it.desc||'')+'</div></div>'+
+    '<div class="dc-glow"></div></div>';
 }
-
-/* fix dthumb references */
-document.querySelectorAll('.dthumb').forEach(el=>{el.classList.add('dc-img')});
+function rowHTML(it,i){
+  return '<div class="dlist-row" style="--d:'+(i*30)+'ms">'+
+    '<div class="dlist-main"><div class="dlist-name">'+escHtml(it.name)+'</div>'+
+    (it.desc?'<div class="dlist-desc">'+escHtml(it.desc)+'</div>':'')+'</div>'+
+    '<div class="dlist-price">'+mPrice(it.price)+'</div></div>';
+}
+function escHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function renderMenu(data){
+  MENU_DATA=data;
+  const gWrap=document.getElementById('mGroups');
+  gWrap.innerHTML=data.groups.map((g,i)=>'<button class="mgroup-btn'+(i===0?' on':'')+'" data-g="'+g.id+'" onclick="switchGroup(\''+g.id+'\')">'+mLabel(g.id)+'</button>').join('');
+  const pWrap=document.getElementById('mPanels');
+  pWrap.innerHTML=data.categories.map(c=>{
+    const items=data.items.filter(it=>it.cat===c.id);
+    const isList=c.display==='list';
+    const solo=!isList&&items.length<=2?' solo':'';
+    const body=isList?items.map(rowHTML).join(''):items.map(cardHTML).join('');
+    return '<div class="mpanel'+(isList?' list':'')+solo+'" id="mp-'+c.id+'" data-group="'+c.group+'">'+body+'</div>';
+  }).join('');
+  curGroup=data.groups[0].id;
+  const firstCat=data.categories.find(c=>c.group===curGroup);
+  curCat=firstCat?firstCat.id:null;
+  renderTabs(curGroup);
+  if(curCat)document.getElementById('mp-'+curCat).classList.add('on');
+}
+function renderTabs(groupId){
+  const tWrap=document.getElementById('mTabs');
+  const cats=MENU_DATA.categories.filter(c=>c.group===groupId);
+  tWrap.innerHTML=cats.map((c,i)=>'<button class="mtab'+(c.id===curCat?' on':'')+'" data-c="'+c.id+'" onclick="switchCat(\''+c.id+'\')">'+mLabel(c.id)+'</button>').join('');
+}
+function switchGroup(gid){
+  if(gid===curGroup)return;
+  const view=document.getElementById('mGroupView');
+  document.querySelectorAll('.mgroup-btn').forEach(b=>b.classList.toggle('on',b.dataset.g===gid));
+  view.classList.add('tswap');
+  setTimeout(()=>{
+    curGroup=gid;
+    const firstCat=MENU_DATA.categories.find(c=>c.group===gid);
+    document.querySelectorAll('.mpanel').forEach(p=>p.classList.remove('on'));
+    curCat=firstCat?firstCat.id:null;
+    renderTabs(gid);
+    if(curCat)document.getElementById('mp-'+curCat).classList.add('on');
+    view.classList.remove('tswap');
+  },260);
+}
+function switchCat(cid){
+  if(cid===curCat)return;
+  curCat=cid;
+  document.querySelectorAll('.mpanel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.mtab').forEach(b=>b.classList.toggle('on',b.dataset.c===cid));
+  document.getElementById('mp-'+cid).classList.add('on');
+}
+fetch('/api/menu',{cache:'no-store'}).then(r=>r.json()).then(res=>{
+  if(res&&res.data)renderMenu(res.data);
+}).catch(()=>{});
 
 /* ── REZERVASYON ── */
 let selTime_val='',guestCount=2,selKon_val='';
@@ -1734,8 +1785,6 @@ function gS(n){
     document.getElementById('sT').textContent=selTime_val;
     document.getElementById('sG').textContent=guestCount+' Guests';
     document.getElementById('sK').textContent=selKon_val;
-    const msg=`Merhaba, Mare Gastro rezervasyon talebim:\n\nTarih: ${fmt}\nSaat: ${selTime_val}\nKişi Sayısı: ${guestCount}\nKonaklama: ${selKon_val}\n\nOnayınızı bekliyorum.`;
-    document.getElementById('waBtn').href=`https://wa.me/905323540888?text=${encodeURIComponent(msg)}`;
   }
   document.querySelectorAll('.rstep').forEach(s=>s.classList.remove('on'));
   document.getElementById('rs'+n).classList.add('on');
@@ -1747,6 +1796,20 @@ function gS(n){
     else{document.getElementById('ps'+i).classList.remove('cur')}
   }
   for(let i=1;i<=2;i++)document.getElementById('pl'+i).classList.toggle('done',i<n);
+}
+function submitReservation(a){
+  const name=document.getElementById('rName').value.trim();
+  const phone=document.getElementById('rPhone').value.trim();
+  const email=document.getElementById('rEmail').value.trim();
+  if(!name){alert('Lütfen ad soyad girin.');return false}
+  if(!phone){alert('Lütfen telefon numaranızı girin.');return false}
+  const d=document.getElementById('rdate').value;
+  const fmt=new Date(d).toLocaleDateString('en-US',{day:'numeric',month:'long',year:'numeric'});
+  const msg=`Merhaba, Mare Gastro rezervasyon talebim:\n\nAd Soyad: ${name}\nTelefon: ${phone}${email?'\nE-posta: '+email:''}\n\nTarih: ${fmt}\nSaat: ${selTime_val}\nKişi Sayısı: ${guestCount}\nKonaklama: ${selKon_val}\n\nOnayınızı bekliyorum.`;
+  a.href=`https://wa.me/905323540888?text=${encodeURIComponent(msg)}`;
+  fetch('/api/reservation',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({name,phone,email,date:fmt,time:selTime_val,guests:guestCount,konaklama:selKon_val})}).catch(()=>{});
+  return true;
 }
 
 /* ── QUOTE ROTATOR ── */
