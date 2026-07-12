@@ -2225,6 +2225,18 @@ nav{
 .m-hint{font-size:10px;letter-spacing:.06em;color:var(--muted);margin-top:4px}
 @media(min-width:768px){.m-hint{margin-top:0}}
 
+.m-top-right{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+@media(min-width:768px){.m-top-right{align-items:flex-end;margin-top:0}}
+.m-dergi-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--amber);color:var(--bg);
+  padding:12px 22px;border-radius:100px;
+  font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  text-decoration:none;white-space:nowrap;width:fit-content;
+  transition:background .25s,transform .2s;
+}
+.m-dergi-btn:hover{background:var(--amber2);transform:translateY(-1px)}
+
 /* Big group toggle — Yemekler / İçecekler (sayfa değiştirir gibi) */
 .mgroups{
   display:flex;gap:8px;padding:0 20px 16px;flex-shrink:0;
@@ -2302,12 +2314,12 @@ nav{
 
 .mloading{padding:40px 20px;text-align:center;color:var(--muted);font-size:12px;letter-spacing:.04em;width:100%}
 
-/* Fiyat rozeti (kart) */
+/* Fiyat — isim satırında klasik noktalı çizgi */
+.dc-name-row{display:flex;align-items:baseline;gap:6px;margin-bottom:4px}
+.dc-name-row .dc-name{margin-bottom:0;flex:none}
+.dc-leader{flex:1 1 auto;min-width:8px;border-bottom:1px dotted rgba(200,169,110,.4);position:relative;top:-3px}
 .dc-price{
-  position:absolute;top:8px;right:8px;z-index:3;
-  background:rgba(10,10,11,.6);backdrop-filter:blur(6px);
-  border:1px solid rgba(200,169,110,.4);border-radius:100px;
-  padding:3px 10px;font-size:10px;font-weight:600;letter-spacing:.03em;color:var(--amber2);
+  flex:none;font-size:.78rem;font-weight:600;letter-spacing:.03em;color:var(--amber2);
   white-space:nowrap;
 }
 
@@ -2369,6 +2381,7 @@ nav{
 .dc-name{
   font-family:var(--ital);font-weight:400;
   font-size:.9rem;color:var(--cream);line-height:1.2;margin-bottom:4px;
+  font-style:italic;
 }
 .dc-desc{font-size:10px;font-weight:300;color:var(--muted);line-height:1.5}
 /* Glow edge */
@@ -3181,7 +3194,12 @@ nav{
         <span class="m-eyebrow">Our Flavours</span>
         <h2 class="m-title">Menu</h2>
       </div>
-      <p class="m-hint">Tap a category</p>
+      <div class="m-top-right">
+        <p class="m-hint">Tap a category</p>
+        <a href="https://mare-gastro-dergi.vercel.app" target="_blank" rel="noopener" class="m-dergi-btn">
+          <span>Dijital Menuyü Aç</span>
+        </a>
+      </div>
     </div>
 
     <div class="mgroups rv rv2" id="mGroups"></div>
@@ -3439,8 +3457,7 @@ function noimgSvg(){return'<svg width="22" height="22" viewBox="0 0 24 24" fill=
 function cardHTML(it,i){
   const img=it.img?'<div class="dc-img"><img loading="lazy" decoding="async" src="/images/'+it.img+'" alt="'+escHtml(it.name)+'"></div>':'<div class="dc-noimg">'+noimgSvg()+'</div>';
   return '<div class="dc" style="--d:'+(i*45)+'ms">'+img+
-    '<div class="dc-price">'+mPrice(it.price)+'</div>'+
-    '<div class="dc-body"><div class="dc-name">'+escHtml(it.name)+'</div><div class="dc-desc">'+escHtml(it.desc||'')+'</div></div>'+
+    '<div class="dc-body"><div class="dc-name-row"><span class="dc-name">'+escHtml(it.name)+'</span><span class="dc-leader"></span><span class="dc-price">'+mPrice(it.price)+'</span></div><div class="dc-desc">'+escHtml(it.desc||'')+'</div></div>'+
     '<div class="dc-glow"></div></div>';
 }
 function rowHTML(it,i){
