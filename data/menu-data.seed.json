@@ -266,7 +266,7 @@
    "name": "Roka Salatası",
    "desc": "Roka yaprakları, küp domates, rende parmesan peyniri, sarımsaklı balzamik sos",
    "price": 600,
-   "img": null
+   "img": "roka-salata.webp"
   },
   {
    "id": "komsu-salata",
@@ -298,7 +298,7 @@
    "name": "3'lü Deniz Mahsülü Lezzeti",
    "desc": "Mare ıslama kalamar/kalamar tava + Tereyağlı karides + Ahtapot güveç",
    "price": 3350,
-   "img": null
+   "img": "3lu-deniz-mahsulu.webp"
   },
   {
    "id": "mare-spesiyal-islama-kalamar",
@@ -450,7 +450,7 @@
    "name": "Ormanda Bir Yürüyüş",
    "desc": "Çikolata, yumurta sarısı, yumurta beyazı, süt, toz şeker, krema, çıtır profiterol hamuru, ev yapımı vanilyalı dondurma, çilek",
    "price": 550,
-   "img": null
+   "img": "ormanda-yuruyus.webp"
   },
   {
    "id": "domates-soslu-makarna",
@@ -506,7 +506,7 @@
    "name": "Patates Kızartması",
    "desc": "Çıtır patates",
    "price": 250,
-   "img": null
+   "img": "patates-kizartma.webp"
   },
   {
    "id": "cerez",
