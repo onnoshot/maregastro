@@ -17,6 +17,9 @@ MENU="%s/tr/#menu"%SITE; REZ="%s/tr/#reservation"%SITE; STORY="%s/tr/#story"%SIT
 
 def L(url,txt): return '<a href="%s">%s</a>'%(url,txt)
 def post_url(slug): return "%s/blog/%s.html"%(SITE,slug)
+def bfig(img,alt,caption):
+    return ('<figure class="bbody-fig"><img src="../images/%s" alt="%s" loading="lazy">'
+            '<figcaption>%s</figcaption></figure>'%(img,html.escape(alt),html.escape(caption)))
 
 # ── SVG social icons ──
 IC_IG  ='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>'
@@ -750,6 +753,7 @@ POSTS = [
     "<ul><li><strong>Atmosfer ve manzara</strong> — göl kıyısında mı, doğayla iç içe mi?</li><li><strong>Kapasite</strong> — ikili bir kutlamaya da, kalabalık bir gruba da uygun mu?</li><li><strong>Pasta ve süsleme desteği</strong> — özel taleplere açık mı?</li><li><strong>Ulaşım ve otopark</strong> — İstanbul'a yakın mı, geniş otopark var mı?</li><li><strong>Güvenilirlik</strong> — kurumsal, bilinen bir işletme mi yoksa amatör bir organizasyon mu?</li><li><strong>Atmosfer detayı</strong> — canlı müzik gibi kutlamayı taçlandıran unsurlar var mı?</li></ul>"]),
   ("Mare Gastro: Sapanca'da Doğum Günü İçin Eksiksiz Bir Adres",
    ["Mare Gastro, Sapanca Gölü kıyısındaki Didi Otel'in bahçesinde konumlanan bir fine dining restoranı. Çam ağaçları, gölün sakinliği ve özenli bir servis anlayışı, doğum günü kutlamalarını sıradan bir akşam yemeğinden çok daha fazlasına dönüştürüyor.",
+    bfig("mare-bahce-manzarasi.webp","Mare Gastro'nun Didi Otel bahçesindeki manzarası — Sapanca","Didi Otel bahçesinden Mare Gastro'nun genel görünümü"),
     "%s bu deneyimin nasıl tasarlandığını daha yakından okuyabilirsiniz."%L(STORY,"Hikâyemizi")]),
   ("Ulaşım, Otopark ve Didi Otel Güvencesi",
    ["İstanbul'dan yaklaşık 1,5 saat mesafede olan Sapanca, doğum günü kutlaması için hem kolay ulaşılabilir hem de şehrin kalabalığından uzak bir seçenek. Mare Gastro'nun konumu, geniş otopark imkânıyla kalabalık gruplar için bile pratik bir çözüm sunuyor.",
@@ -792,7 +796,8 @@ POSTS = [
  "body":[
   ("Sürpriz Doğum Günü İçin Neden Sapanca?",
    ["Sapanca, İstanbul'dan kolay ulaşılabilen ama şehrin telaşından uzak bir konumda olduğu için sürpriz organizasyonlar için ideal. Kutlanacak kişiyi şehir dışına \"bir gezi\" bahanesiyle çıkarmak, sürprizin en doğal yollarından biri.",
-    "Didi Otel'in bahçesindeki Mare Gastro, göl manzarası ve sakin atmosferiyle sürprizin etkisini bir kat daha artırıyor."]),
+    "Didi Otel'in bahçesindeki Mare Gastro, göl manzarası ve sakin atmosferiyle sürprizin etkisini bir kat daha artırıyor.",
+    bfig("mare-kutlama-kadeh.webp","Mare Gastro'da kadeh kaldırarak kutlama anı — Sapanca doğum günü sürprizi","Mare Gastro'da bir kutlama anı")]),
   ("Mare Gastro'da Sürpriz Nasıl Planlanır?",
    ["Sürpriz detaylarınızı %s paylaştığınızda, ekibimiz kutlanacak kişi masaya gelene kadar her şeyi sizin adınıza hazırlar: özel masa düzeni, süsleme ve zamanlama."%L(REZ,"rezervasyon sırasında"),
     "Grup büyüklüğü, sürpriz anının şekli (pasta getirilmesi, mumların söndürülmesi, kısa bir kutlama konuşması gibi) rezervasyon sırasında netleştirilirse, o an kusursuz akar."]),
@@ -827,7 +832,8 @@ POSTS = [
    ["Kapalı, sıradan bir mekânda geçen bir doğum günü ile gölün üzerine düşen ışığa karşı kutlanan bir doğum günü arasındaki fark, fotoğraflardan çok anının kendisinde hissedilir. <strong>Sapanca'da göl manzaralı doğum günü</strong> arayanlar, bu farkı fark ediyor.",
     "Mare Gastro, tam olarak bu deneyimi sunmak için Didi Otel'in göl kıyısındaki bahçesinde konumlandı."]),
   ("Didi Otel Bahçesinden Sapanca Gölü Manzarası",
-   ["Çam ağaçlarının gölgesinde, gölün serinliğine açılan masalarda kutlanan bir doğum günü, doğanın kendisini davetli listenize eklemiş gibi hissettirir. %s bu atmosferin nasıl tasarlandığını okuyabilirsiniz."%L(STORY,"Hikâyemizden")]),
+   ["Çam ağaçlarının gölgesinde, gölün serinliğine açılan masalarda kutlanan bir doğum günü, doğanın kendisini davetli listenize eklemiş gibi hissettirir. %s bu atmosferin nasıl tasarlandığını okuyabilirsiniz."%L(STORY,"Hikâyemizden"),
+    bfig("mare-bahce-havuz-yolu.webp","Didi Otel bahçesinden yürüyüş yolu — Sapanca göl manzaralı doğum günü mekanı","Didi Otel bahçesinde bir yürüyüş yolu")]),
   ("Gün Batımı mı, Gece mi? Hangi Saat Daha Etkileyici?",
    ["Gün batımı saatlerinde gölün üzerine düşen altın ışık, fotoğraf karelerine yansıyan en etkileyici anlardan biri. Gece saatlerinde ise ışıklandırma ve genellikle eşlik eden canlı müzik, aynı manzarayı daha samimi bir atmosfere dönüştürüyor.",
     "Hangi saati tercih ederseniz edin, %s göz atarak konumumuzu netleştirebilirsiniz."%L(LOC,"konumumuza")]),
@@ -855,7 +861,8 @@ POSTS = [
   ("Kalabalık Gruplar İçin Mekan Seçerken Nelere Dikkat Edilmeli?",
    ["Kalabalık bir <strong>Sapanca doğum günü</strong> kutlamasında mekanın kapasitesi, oturma düzeni esnekliği, otopark imkânı ve grup menüsü seçenekleri kritik önem taşır. Bu detaylar önceden netleşmezse, organizasyon günün kendisinden daha stresli hale gelebilir."]),
   ("Mare Gastro'da Grup Masaları Nasıl Düzenlenir?",
-   ["Grup büyüklüğünüzü %s paylaştığınızda, ekibimiz Didi Otel bahçesinde en uygun oturma düzenini sizin için hazırlar. İkili kutlamalardan geniş arkadaş gruplarına kadar farklı ölçekte masalar ağırlanır."%L(WA,"WhatsApp üzerinden")]),
+   ["Grup büyüklüğünüzü %s paylaştığınızda, ekibimiz Didi Otel bahçesinde en uygun oturma düzenini sizin için hazırlar. İkili kutlamalardan geniş arkadaş gruplarına kadar farklı ölçekte masalar ağırlanır."%L(WA,"WhatsApp üzerinden"),
+    bfig("mare-grup-sofra.webp","Paylaşımlık mezelerle donatılmış grup sofrası — Sapanca kalabalık doğum günü","Mare Gastro'da bir grup sofrası")]),
   ("Paylaşımlık Tabaklar ve Grup Menüsü",
    ["Deniz ürünleri ağırlıklı paylaşımlık tabaklar, kalabalık bir masada herkesin farklı lezzetleri tadabilmesine imkân tanır. %s grup için uygun seçenekleri önceden inceleyebilirsiniz."%L(MENU,"Menümüzden")]),
   ("Otopark ve Ulaşım: Kalabalık Gruplar İçin Pratik Bilgiler",
@@ -883,7 +890,8 @@ POSTS = [
   ("Romantik Bir Doğum Günü Yemeği İçin Sapanca Neden İdeal?",
    ["Şehrin gürültüsünden uzak, gölün sakinliğine karşı geçirilen bir akşam; eşinize ya da sevgilinize doğum gününde vermek isteyeceğiniz en anlamlı hediyelerden biri olabilir. <strong>Sapanca'da romantik doğum günü yemeği</strong> arayan çiftler için Mare Gastro, bu atmosferi eksiksiz sunuyor."]),
   ("Mum Işığında İkili Bir Masa",
-   ["Didi Otel bahçesinde, göl manzarasına açılan ikili bir masa; mum ışığı ve özenli servisle doğum gününü sade ama unutulmaz bir akşama dönüştürür. %s isterseniz, size özel bir masa düzeni hazırlarız."%L(REZ,"Rezervasyon sırasında belirttiğinizde")]),
+   ["Didi Otel bahçesinde, göl manzarasına açılan ikili bir masa; mum ışığı ve özenli servisle doğum gününü sade ama unutulmaz bir akşama dönüştürür. %s isterseniz, size özel bir masa düzeni hazırlarız."%L(REZ,"Rezervasyon sırasında belirttiğinizde"),
+    bfig("mare-romantik-kadeh.webp","İkili kadeh kaldırma anı — Sapanca'da eşe özel romantik doğum günü yemeği","Mare Gastro'da romantik bir kadeh anı")]),
   ("İmza Tatlı ile Kutlamayı Taçlandırmak",
    ["Akşamın sonunda paylaşılan bir imza tatlı, kutlamanın en tatlı anına dönüşür. %s eşinize sürpriz yapabileceğiniz seçenekleri inceleyebilirsiniz."%L(MENU,"Menümüzden")]),
   ("Canlı Müzik Eşliğinde Romantik Bir Akşam",
@@ -908,7 +916,8 @@ POSTS = [
  "lead":"Bir doğum günü kutlamasının en özel anı, mumların üflendiği o saniyedir. Sapanca'da bu anı hazırlayan bir restoran seçmek, kutlamanın kalitesini belirler.",
  "body":[
   ("Mare Gastro'da Doğum Günü Pastası ve Süsleme Nasıl Ayarlanır?",
-   ["Özel bir pasta, masaya küçük bir süsleme ya da mumlar; rezervasyon sırasında talebinizi paylaştığınızda ekibimiz tarafından özenle hazırlanır. %s detayları netleştirebilirsiniz."%L(REZ,"Rezervasyon formundan veya WhatsApp üzerinden")]),
+   ["Özel bir pasta, masaya küçük bir süsleme ya da mumlar; rezervasyon sırasında talebinizi paylaştığınızda ekibimiz tarafından özenle hazırlanır. %s detayları netleştirebilirsiniz."%L(REZ,"Rezervasyon formundan veya WhatsApp üzerinden"),
+    bfig("mare-kabana-oturma.webp","Özenle hazırlanmış oturma köşesi — Sapanca doğum günü pastası ve süsleme","Mare Gastro'da özel hazırlanmış bir köşe")]),
   ("Kendi Pastanızı Getirebilir misiniz?",
    ["Kendi pastanızı getirmek isterseniz, bu talebinizi rezervasyon sırasında iletmeniz servis ekibimizin hazırlıklı olmasını sağlar; pastanın saklanması ve servis zamanlaması buna göre planlanır.",
     "Detaylar için %s ekibimizle iletişime geçebilirsiniz."%L(WA,"WhatsApp üzerinden")]),
@@ -938,7 +947,8 @@ POSTS = [
   ("Sapanca'da Gece Doğum Günü Kutlamak Mümkün mü?",
    ["Evet. <strong>Sapanca'da gece doğum günü</strong> kutlamak isteyenler için Mare Gastro, hafta sonu boyunca hizmet veriyor; iş çıkışı geç bir kutlama ya da gece yarısına uzayan bir sofra mümkün."]),
   ("Cuma, Cumartesi, Pazar: 24 Saat Açık Ayrıcalığı",
-   ["Mare Gastro Cuma, Cumartesi ve Pazar günleri 24 saat açıktır; Pazartesi–Perşembe kapalıdır. Bu esneklik, Sapanca'da doğum günü planlayan misafirlere saat kaygısı olmadan kutlama imkânı tanır."]),
+   ["Mare Gastro Cuma, Cumartesi ve Pazar günleri 24 saat açıktır; Pazartesi–Perşembe kapalıdır. Bu esneklik, Sapanca'da doğum günü planlayan misafirlere saat kaygısı olmadan kutlama imkânı tanır.",
+    bfig("mare-teras-misafir.webp","Didi Otel terasında bir misafir — Sapanca'da gece doğum günü kutlaması","Mare Gastro terasından bir kare")]),
   ("Gece Atmosferi: Işıklar, Müzik ve Göl",
    ["Gece saatlerinde ışıklandırılan bahçe, gölün karanlıkta yansıyan ışıkları ve genellikle eşlik eden canlı müzik; Mare Gastro'yu Sapanca'da gece kutlamaları için eşsiz bir adrese dönüştürüyor."]),
   ("Gece Rezervasyonunda Dikkat Edilmesi Gerekenler",
@@ -965,7 +975,8 @@ POSTS = [
   ("Yuvarlak Yaş Kutlamaları Neden Farklı Planlanmalı?",
    ["<strong>Sapanca'da 30 yaş doğum günü</strong> ya da 40, 50 yaş gibi bir dönüm noktasını kutlamak, sıradan bir akşam yemeğinden daha fazla özen ister. Mekanın atmosferi, kutlamanın ağırlığıyla eşleşmeli."]),
   ("Mare Gastro'da Milestone Bir Doğum Günü",
-   ["Didi Otel bahçesindeki göl manzaralı sofra, kurumsal ve güvenilir bir işletmenin sunduğu özenli servisle birleşince; yuvarlak yaş kutlamaları için aranan ciddiyeti ve zarafeti bir arada sunuyor. %s bu deneyimin arkasındaki anlayışı okuyabilirsiniz."%L(STORY,"Hikâyemizden")]),
+   ["Didi Otel bahçesindeki göl manzaralı sofra, kurumsal ve güvenilir bir işletmenin sunduğu özenli servisle birleşince; yuvarlak yaş kutlamaları için aranan ciddiyeti ve zarafeti bir arada sunuyor. %s bu deneyimin arkasındaki anlayışı okuyabilirsiniz."%L(STORY,"Hikâyemizden"),
+    bfig("mare-teras-misafir2.webp","Didi Otel terasında zarif bir an — Sapanca'da yuvarlak yaş doğum günü kutlaması","Mare Gastro terasında bir misafir")]),
   ("Kalabalık mı, Özel mi? Kutlama Şeklinizi Belirleyin",
    ["Bazı yuvarlak yaş kutlamaları geniş bir davetli listesiyle, bazıları ise sadece en yakınlarla kutlanmak ister. Mare Gastro her iki formatı da esnek masa düzenleriyle karşılıyor; %s tercihinizi paylaşmanız yeterli."%L(WA,"WhatsApp üzerinden")]),
   ("Anıyı Kalıcı Kılmak: Fotoğraf, Müzik ve Detaylar",
@@ -994,7 +1005,8 @@ POSTS = [
   ("Neden Bir Günlük Kaçamak İçin Sapanca?",
    ["Göl manzarası, doğanın sessizliği ve İstanbul'un telaşından uzak bir atmosfer; bir günlük bir kaçamağı doğum günü kutlamasına dönüştürmek için ideal bir zemin sunuyor. Mare Gastro, bu kaçamağın merkezinde yer alıyor."]),
   ("İsterseniz Kalın: Didi Otel'de Konaklama Seçeneği",
-   ["Akşam yemeğinin ardından İstanbul'a dönmek yerine gecelemek isteyenler için, Mare Gastro'nun bulunduğu Didi Otel bünyesinde konaklama seçeneği mevcut; böylece kaçamağınızı bir güne sığdırmak zorunda kalmazsınız."]),
+   ["Akşam yemeğinin ardından İstanbul'a dönmek yerine gecelemek isteyenler için, Mare Gastro'nun bulunduğu Didi Otel bünyesinde konaklama seçeneği mevcut; böylece kaçamağınızı bir güne sığdırmak zorunda kalmazsınız.",
+    bfig("mare-havuz-sezlong.webp","Didi Otel havuz başı şezlongları — İstanbul'dan Sapanca'ya doğum günü kaçamağı","Didi Otel havuz alanı")]),
   ("Otopark ve Pratik Bilgiler",
    ["Kendi aracınızla gelmeyi planlıyorsanız, Didi Otel'in geniş otopark imkânı ekstra bir planlama derdi bırakmıyor. %s güncel yol tarifi ve konum bilgisine ulaşabilirsiniz."%L(LOC,"Konum sayfamızdan")]),
  ],
@@ -1021,6 +1033,7 @@ POSTS = [
     "En net bilgiyi %s planınızı paylaştığınızda alabilirsiniz."%L(REZ,"rezervasyon sırasında ekibimizle görüşerek")]),
   ("Kişi Başı Ücrete Neler Dahildir?",
    ["Bir doğum günü sofrası; başlangıç, ana yemek ve tatlıdan oluşan bir akış, göl manzaralı bir masa ve özenli servisi kapsar. Özel pasta veya süsleme talep ederseniz, bu detay rezervasyon sırasında bütçenize göre netleştirilir.",
+    bfig("mare-sofra-detay.webp","Özenle hazırlanmış sofra detayı — Sapanca doğum günü menü ve fiyat rehberi","Mare Gastro'da bir sofra detayı"),
     "%s hangi tabakların bütçenize uygun olduğunu önceden görebilirsiniz."%L(MENU,"Güncel menümüzü inceleyerek")]),
   ("Fiyat/Performans Açısından Nelere Dikkat Etmeli?",
    ["Bir doğum günü kutlamasında fiyatı belirleyen tek unsur porsiyon değildir; malzemenin tazeliği, göl manzarası, Didi Otel'in kurumsal güvencesi ve hafta sonu canlı müzik atmosferi de deneyime eklenen değerler arasındadır."]),
@@ -1104,7 +1117,7 @@ def body_html(sections):
     for h2,paras in sections:
         out.append("<h2>%s</h2>"%h2)
         for para in paras:
-            if para.strip().startswith("<ul") or para.strip().startswith("<ol"):
+            if para.strip().startswith("<ul") or para.strip().startswith("<ol") or para.strip().startswith("<figure"):
                 out.append(para)
             else:
                 out.append("<p>%s</p>"%para)
