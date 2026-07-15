@@ -6,6 +6,8 @@ SITE   = "https://maregastro.com"
 IG     = "https://www.instagram.com/maregastrosapanca/"
 IGCHEF = "https://www.instagram.com/chefdogananapa/"
 DIDI   = "https://www.instagram.com/didiotel/"
+TT     = "https://www.tiktok.com/@maregastro"
+YT     = "https://www.youtube.com/@maregastro"
 WA     = "https://wa.me/905323540888"
 MAIL   = "mailto:info@maregastro.com"
 OUT    = os.path.dirname(os.path.abspath(__file__))
@@ -20,6 +22,8 @@ def post_url(slug): return "%s/blog/%s.html"%(SITE,slug)
 IC_IG  ='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>'
 IC_WA  ='<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.78h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26C2.16 6.89 6.6 2.46 12.05 2.46c2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 012.89 6.99c0 5.45-4.43 9.43-9.88 9.43M20.46 3.49A11.82 11.82 0 0012.05.06C5.5.06.16 5.4.16 11.95c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.42"/></svg>'
 IC_MAIL='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>'
+IC_TT  ='<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82A4.28 4.28 0 0115.54 3h-3.09v12.4a2.59 2.59 0 01-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 004.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>'
+IC_YT  ='<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3.02 3.02 0 00-2.12-2.14C19.51 3.5 12 3.5 12 3.5s-7.51 0-9.38.56A3.02 3.02 0 00.5 6.2 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.8 3.02 3.02 0 002.12 2.14C4.49 20.5 12 20.5 12 20.5s7.51 0 9.38-.56a3.02 3.02 0 002.12-2.14A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.8zM9.75 15.5v-7l6 3.5-6 3.5z"/></svg>'
 
 CATS = {
  "luks":"Lüks Restoran","deniz":"Deniz Ürünleri","finedining":"Fine Dining",
@@ -28,6 +32,7 @@ CATS = {
  "kahvalti":"Kahvaltı","mevsim":"Mevsim","kutlama":"Kutlama",
  "raki":"Rakı-Balık","gece":"Gece Açık","manzara":"Göl Manzarası",
  "kurumsal":"Kurumsal Etkinlik","vejetaryen":"Özel Diyet",
+ "dogumgunu":"Doğum Günü",
 }
 
 POSTS = [
@@ -324,7 +329,7 @@ POSTS = [
   ("Mare Gastro hangi günler açık?","Mare Gastro Cuma, Cumartesi ve Pazar günleri 24 saat açıktır; Pazartesi–Perşembe kapalıdır."),
   ("Yıldönümü akşamı konaklama mümkün mü?","Mare Gastro Didi Otel bünyesindedir; göl kenarında konaklayarak akşamınızı uzatabilirsiniz. Konaklama tercihinizi rezervasyon formunda belirtebilirsiniz."),
  ],
- "rel":["sapanca-evlilik-teklifi","sapanca-romantik-aksam-yemegi","sapanca-ozel-gun-kutlama"],
+ "rel":["sapanca-ozel-gun-kutlama","sapanca-dogum-gunu-nerede-kutlanir","sapanca-romantik-aksam-yemegi"],
 },
 {
  "slug":"sapanca-gol-manzarali-kahvalti",
@@ -573,7 +578,7 @@ POSTS = [
   ("Kaç kişilik gruplar ağırlanıyor?","Mare Gastro ikili kutlamalardan kalabalık aile ve arkadaş gruplarına kadar farklı büyüklükte masaları ağırlar. Grup büyüklüğünüzü önceden paylaşmanız önerilir."),
   ("Kutlama için ne kadar önceden rezervasyon gerekir?","Sürpriz ve süsleme içeren kutlamalar için en az birkaç gün önceden rezervasyon önerilir; hafta sonu masaları hızlı dolar."),
  ],
- "rel":["sapanca-yildonumu-yemegi","sapanca-evlilik-teklifi","sapanca-romantik-aksam-yemegi"],
+ "rel":["sapanca-dogum-gunu-nerede-kutlanir","sapanca-yildonumu-yemegi","sapanca-evlilik-teklifi"],
 },
 {
  "slug":"sef-dogan-anapa-kimdir",
@@ -730,6 +735,306 @@ POSTS = [
  ],
  "rel":["sapanca-deniz-urunleri","sapanca-fine-dining-nedir","sapanca-luks-restoran"],
 },
+{
+ "slug":"sapanca-dogum-gunu-nerede-kutlanir",
+ "cat":"dogumgunu","date":"2026-07-15","read":"7 dk",
+ "img":"hero-mare-1.webp","alt":"Didi Otel bahçesinde akşam ışıkları — Sapanca'da doğum günü kutlama mekanı Mare Gastro",
+ "h1":"Sapanca'da <em>Doğum Günü</em> Nerede Kutlanır? 2026 Rehberi",
+ "title":"Sapanca'da Doğum Günü Nerede Kutlanır? | Mare Gastro Rehberi",
+ "desc":"Sapanca'da doğum günü kutlamak için en iyi mekan hangisi? Göl manzarası, canlı müzik, pasta süslemesi ve Didi Otel güvencesiyle Mare Gastro'yu keşfedin.",
+ "kw":"sapanca doğum günü nerede kutlanır, sapanca doğum günü mekanları, sapanca doğum günü restoranı, sapanca doğum günü yeri, sapanca doğum günü kutlama mekanı",
+ "lead":"Sapanca'da bir doğum günü kutlamak için doğru mekanı seçmek, günün nasıl hatırlanacağını belirler. Bu rehberde Sapanca'da doğum günü mekanı ararken nelere dikkat etmeniz gerektiğini ve Mare Gastro'nun bu listeyi neden eksiksiz karşıladığını anlatıyoruz.",
+ "body":[
+  ("Sapanca'da Doğum Günü Mekanı Seçerken Nelere Dikkat Edilmeli?",
+   ["<strong>Sapanca'da doğum günü</strong> kutlayacak bir mekan ararken göz önünde bulundurmanız gereken birkaç kriter var; bu kriterler günün akışını ve anının kalitesini doğrudan etkiler.",
+    "<ul><li><strong>Atmosfer ve manzara</strong> — göl kıyısında mı, doğayla iç içe mi?</li><li><strong>Kapasite</strong> — ikili bir kutlamaya da, kalabalık bir gruba da uygun mu?</li><li><strong>Pasta ve süsleme desteği</strong> — özel taleplere açık mı?</li><li><strong>Ulaşım ve otopark</strong> — İstanbul'a yakın mı, geniş otopark var mı?</li><li><strong>Güvenilirlik</strong> — kurumsal, bilinen bir işletme mi yoksa amatör bir organizasyon mu?</li><li><strong>Atmosfer detayı</strong> — canlı müzik gibi kutlamayı taçlandıran unsurlar var mı?</li></ul>"]),
+  ("Mare Gastro: Sapanca'da Doğum Günü İçin Eksiksiz Bir Adres",
+   ["Mare Gastro, Sapanca Gölü kıyısındaki Didi Otel'in bahçesinde konumlanan bir fine dining restoranı. Çam ağaçları, gölün sakinliği ve özenli bir servis anlayışı, doğum günü kutlamalarını sıradan bir akşam yemeğinden çok daha fazlasına dönüştürüyor.",
+    "%s bu deneyimin nasıl tasarlandığını daha yakından okuyabilirsiniz."%L(STORY,"Hikâyemizi")]),
+  ("Ulaşım, Otopark ve Didi Otel Güvencesi",
+   ["İstanbul'dan yaklaşık 1,5 saat mesafede olan Sapanca, doğum günü kutlaması için hem kolay ulaşılabilir hem de şehrin kalabalığından uzak bir seçenek. Mare Gastro'nun konumu, geniş otopark imkânıyla kalabalık gruplar için bile pratik bir çözüm sunuyor.",
+    "Mare Gastro, Sapanca'da kurulu, bilinen ve güvenilir bir otel işletmesi olan Didi Otel bünyesinde faaliyet gösteriyor; bu da organizasyonunuzu amatör bir mekâna değil, kurumsal bir adrese emanet etmeniz anlamına geliyor. İsteyen misafirler, kutlama sonrası %s da imkân buluyor."%L(SITE+"/tr/","Didi Otel'de konaklama yapma")]),
+  ("Canlı Müzik Eşliğinde Bir Doğum Günü Sofrası",
+   ["Mare Gastro'da hafta sonu akşamları genellikle canlı müzik atmosferi eşlik ediyor; bu detay, Sapanca'da pek çok mekânda bulamayacağınız, kutlamayı gerçek bir deneyime dönüştüren bir unsur.",
+    "Doğa, göl manzarası, mutfak ve müziğin bir araya geldiği bu atmosfer, Mare Gastro'yu Sapanca'da eşsiz kılan detaylardan biri."]),
+  ("Kutlama Türünüze Göre Öneriler",
+   ["Her doğum günü kutlaması farklıdır. Planladığınız kutlama türüne göre hazırladığımız detaylı rehberlere göz atabilirsiniz:",
+    "<ul><li>%s</li><li>%s</li><li>%s</li><li>%s</li><li>%s</li><li>%s</li><li>%s</li><li>%s</li><li>%s</li></ul>"%(
+      L(post_url("sapanca-suprizli-dogum-gunu-organizasyonu"),"Sürpriz doğum günü organizasyonu"),
+      L(post_url("sapanca-gol-manzarali-dogum-gunu-mekanlari"),"Göl manzaralı doğum günü mekanları"),
+      L(post_url("sapanca-kalabalik-arkadas-grubu-dogum-gunu"),"Kalabalık arkadaş grubuyla kutlama"),
+      L(post_url("sapanca-romantik-es-dogum-gunu-yemegi"),"Eşe özel romantik doğum günü yemeği"),
+      L(post_url("sapanca-dogum-gunu-pastasi-suslemeli-mekan"),"Doğum günü pastası ve masa süslemesi"),
+      L(post_url("sapanca-gece-dogum-gunu-kutlamasi-hafta-sonu"),"Gece kutlaması ve hafta sonu saatleri"),
+      L(post_url("sapanca-30-40-yas-dogum-gunu-kutlamasi"),"30, 40, 50 yaş kutlamaları"),
+      L(post_url("sapanca-istanbuldan-dogum-gunu-kacamagi"),"İstanbul'dan doğum günü kaçamağı"),
+      L(post_url("sapanca-dogum-gunu-fiyatlari-ve-menu-secenekleri"),"Fiyatlar ve menü seçenekleri"))]),
+  ("Rezervasyon Nasıl Yapılır?",
+   ["Üç adımlı %s tarih, saat ve kişi sayısını seçerek WhatsApp üzerinden hızlıca yerinizi ayırtabilirsiniz. Pasta, süsleme veya oturma düzeniyle ilgili özel taleplerinizi de bu aşamada iletebilirsiniz."%L(REZ,"rezervasyon formundan")]),
+ ],
+ "faq":[
+  ("Sapanca'da doğum günü nerede kutlanır?","Sapanca Gölü kıyısındaki Didi Otel bahçesinde yer alan Mare Gastro, göl manzarası, canlı müzik atmosferi ve pasta/süsleme desteğiyle Sapanca'da doğum günü kutlamak için öne çıkan bir adrestir."),
+  ("Mare Gastro doğum günü kutlamaları için uygun mu?","Evet. İkili kutlamalardan kalabalık gruplara kadar farklı büyüklükte masalar ağırlanır; özel pasta, süsleme ve hafta sonu canlı müzik atmosferi sunulur."),
+  ("Sapanca'da doğum günü mekanına ulaşım kolay mı?","Evet. Sapanca, İstanbul'a yaklaşık 1,5 saat mesafededir ve Mare Gastro'nun bulunduğu Didi Otel'de geniş otopark imkânı vardır."),
+  ("Kutlama sonrası Sapanca'da konaklanabilir mi?","Evet. Mare Gastro'nun bulunduğu Didi Otel bünyesinde isteyen misafirler için konaklama seçeneği mevcuttur."),
+ ],
+ "rel":["sapanca-ozel-gun-kutlama","sapanca-suprizli-dogum-gunu-organizasyonu","sapanca-gol-manzarali-dogum-gunu-mekanlari"],
+},
+{
+ "slug":"sapanca-suprizli-dogum-gunu-organizasyonu",
+ "cat":"dogumgunu","date":"2026-07-16","read":"6 dk",
+ "img":"patates-terin.webp","alt":"Zarif sunulan bir başlangıç tabağı — Sapanca'da sürpriz doğum günü organizasyonu Mare Gastro",
+ "h1":"Sapanca'da <em>Sürpriz Doğum Günü</em> Organizasyonu Nasıl Yapılır?",
+ "title":"Sapanca'da Sürpriz Doğum Günü Organizasyonu | Mare Gastro",
+ "desc":"Sapanca'da sürpriz doğum günü mü planlıyorsunuz? Mare Gastro'da özel masa, pasta süslemesi ve canlı müzik eşliğinde unutulmaz bir sürpriz nasıl organize edilir?",
+ "kw":"sapanca sürpriz doğum günü, sapanca doğum günü sürprizi, sapanca sürpriz organizasyon mekanı, sapanca sürpriz parti restoran",
+ "lead":"Bir sürpriz doğum günü, doğru mekan ve doğru planlamayla unutulmaz bir anıya dönüşür. Sapanca'da Mare Gastro, sürpriz organizasyonların her adımında misafirlerine eşlik ediyor.",
+ "body":[
+  ("Sürpriz Doğum Günü İçin Neden Sapanca?",
+   ["Sapanca, İstanbul'dan kolay ulaşılabilen ama şehrin telaşından uzak bir konumda olduğu için sürpriz organizasyonlar için ideal. Kutlanacak kişiyi şehir dışına \"bir gezi\" bahanesiyle çıkarmak, sürprizin en doğal yollarından biri.",
+    "Didi Otel'in bahçesindeki Mare Gastro, göl manzarası ve sakin atmosferiyle sürprizin etkisini bir kat daha artırıyor."]),
+  ("Mare Gastro'da Sürpriz Nasıl Planlanır?",
+   ["Sürpriz detaylarınızı %s paylaştığınızda, ekibimiz kutlanacak kişi masaya gelene kadar her şeyi sizin adınıza hazırlar: özel masa düzeni, süsleme ve zamanlama."%L(REZ,"rezervasyon sırasında"),
+    "Grup büyüklüğü, sürpriz anının şekli (pasta getirilmesi, mumların söndürülmesi, kısa bir kutlama konuşması gibi) rezervasyon sırasında netleştirilirse, o an kusursuz akar."]),
+  ("Pasta, Süsleme ve Küçük Detaylar",
+   ["Masaya küçük bir süsleme, özel bir pasta ya da imza bir tatlı; sürprizi taçlandıran en güzel detaylardandır. Bu taleplerinizi önceden paylaşırsanız, günü sizin için özenle hazırlarız.",
+    "İmza tatlılarımız için %s göz atabilirsiniz."%L(MENU,"menümüze")]),
+  ("Sürprizi Taçlandıran Canlı Müzik Atmosferi",
+   ["Mare Gastro'da hafta sonu akşamları genellikle eşlik eden canlı müzik, sürpriz anının hemen ardından oluşan o sıcak atmosferi güçlendiriyor. Sapanca'da pek çok mekânda rastlayamayacağınız bu detay, günü gerçek bir kutlamaya dönüştürüyor."]),
+  ("Ne Zaman Rezervasyon Yapmalısınız?",
+   ["Sürpriz içeren kutlamalar için en az birkaç gün önceden rezervasyon öneririz; böylece hazırlık için yeterli zaman oluşur. Hafta sonu masaları hızlı dolduğundan erken planlama avantaj sağlar.",
+    "%s tarih, saat ve kişi sayısını seçerek WhatsApp üzerinden yerinizi ayırtabilirsiniz."%L(REZ,"Üç adımlı rezervasyon formundan")]),
+ ],
+ "faq":[
+  ("Sapanca'da sürpriz doğum günü nerede organize edilir?","Didi Otel bahçesindeki Mare Gastro, göl manzarası, özel masa düzeni ve pasta/süsleme desteğiyle sürpriz doğum günü organizasyonları için uygun bir adrestir."),
+  ("Mare Gastro sürpriz pasta ve süsleme ayarlıyor mu?","Evet. Rezervasyon sırasında talebinizi paylaştığınızda, ekibimiz özel pasta ve masa süslemesini sizin için hazırlar."),
+  ("Sürpriz için kutlanacak kişiye nasıl gizli kalınır?","Detayları önceden ekibimizle paylaşırsanız, kutlanacak kişi masaya gelene kadar tüm hazırlıklar sizin adınıza gizlice tamamlanır."),
+  ("Sürpriz organizasyon için kaç gün önceden rezervasyon gerekir?","Süsleme ve pasta içeren sürprizler için en az birkaç gün önceden rezervasyon yapılması önerilir."),
+ ],
+ "rel":["sapanca-dogum-gunu-nerede-kutlanir","sapanca-dogum-gunu-pastasi-suslemeli-mekan","sapanca-ozel-gun-kutlama"],
+},
+{
+ "slug":"sapanca-gol-manzarali-dogum-gunu-mekanlari",
+ "cat":"dogumgunu","date":"2026-07-17","read":"6 dk",
+ "img":"mare-aerial.webp","alt":"Kuş bakışı göl manzarası — Sapanca'da göl manzaralı doğum günü kutlama mekanı Mare Gastro",
+ "h1":"Sapanca'da <em>Göl Manzaralı</em> Doğum Günü Kutlama Mekanları",
+ "title":"Sapanca Göl Manzaralı Doğum Günü Mekanı | Mare Gastro",
+ "desc":"Sapanca Gölü manzarasına karşı doğum günü kutlamak isteyenler için Mare Gastro: Didi Otel bahçesinde göl kıyısında fine dining bir kutlama deneyimi.",
+ "kw":"sapanca göl manzaralı doğum günü, sapanca gölü kenarında doğum günü, sapanca manzaralı kutlama mekanı, sapanca göl kıyısı restoran doğum günü",
+ "lead":"Sapanca Gölü'nün suları, günün her saatinde farklı bir ışık oyunu sunar. Bir doğum günü kutlamasını bu manzaraya karşı yaşamak, anıyı bambaşka bir seviyeye taşır.",
+ "body":[
+  ("Neden Göl Manzaralı Bir Doğum Günü?",
+   ["Kapalı, sıradan bir mekânda geçen bir doğum günü ile gölün üzerine düşen ışığa karşı kutlanan bir doğum günü arasındaki fark, fotoğraflardan çok anının kendisinde hissedilir. <strong>Sapanca'da göl manzaralı doğum günü</strong> arayanlar, bu farkı fark ediyor.",
+    "Mare Gastro, tam olarak bu deneyimi sunmak için Didi Otel'in göl kıyısındaki bahçesinde konumlandı."]),
+  ("Didi Otel Bahçesinden Sapanca Gölü Manzarası",
+   ["Çam ağaçlarının gölgesinde, gölün serinliğine açılan masalarda kutlanan bir doğum günü, doğanın kendisini davetli listenize eklemiş gibi hissettirir. %s bu atmosferin nasıl tasarlandığını okuyabilirsiniz."%L(STORY,"Hikâyemizden")]),
+  ("Gün Batımı mı, Gece mi? Hangi Saat Daha Etkileyici?",
+   ["Gün batımı saatlerinde gölün üzerine düşen altın ışık, fotoğraf karelerine yansıyan en etkileyici anlardan biri. Gece saatlerinde ise ışıklandırma ve genellikle eşlik eden canlı müzik, aynı manzarayı daha samimi bir atmosfere dönüştürüyor.",
+    "Hangi saati tercih ederseniz edin, %s göz atarak konumumuzu netleştirebilirsiniz."%L(LOC,"konumumuza")]),
+  ("Manzaralı Masalarda Rezervasyon Önerileri",
+   ["Göl manzaralı masalar, özellikle hafta sonu akşamlarında hızlı dolduğundan erken rezervasyon öneriyoruz. %s manzara tercihinizi belirtirseniz, size en uygun masayı ayırırız."%L(REZ,"Rezervasyon sırasında")]),
+ ],
+ "faq":[
+  ("Sapanca'da göl manzaralı doğum günü mekanı var mı?","Evet. Mare Gastro, Sapanca Gölü kıyısındaki Didi Otel bahçesinde yer alır ve doğum günü kutlamaları için göl manzaralı masalar sunar."),
+  ("Gün batımı saatinde masa ayırtabilir miyim?","Evet, rezervasyon sırasında gün batımı saatine denk gelecek bir masa talep edebilirsiniz."),
+  ("Gece manzaralı bir kutlama mümkün mü?","Evet. Mare Gastro hafta sonu 24 saat açık olup gece saatlerinde ışıklandırma ve genellikle canlı müzik eşliğinde göl manzaralı bir kutlama sunar."),
+  ("Manzaralı masalar için ne kadar önceden rezervasyon gerekir?","Özellikle hafta sonları için birkaç gün önceden rezervasyon yapmanızı öneririz."),
+ ],
+ "rel":["sapanca-dogum-gunu-nerede-kutlanir","sapanca-gun-batimi-restoran","sapanca-romantik-es-dogum-gunu-yemegi"],
+},
+{
+ "slug":"sapanca-kalabalik-arkadas-grubu-dogum-gunu",
+ "cat":"dogumgunu","date":"2026-07-18","read":"6 dk",
+ "img":"3lu-deniz-mahsulu.webp","alt":"Paylaşımlık deniz ürünleri tabağı — Sapanca'da kalabalık grup doğum günü kutlaması Mare Gastro",
+ "h1":"Sapanca'da <em>Kalabalık Arkadaş Grubuyla</em> Doğum Günü Kutlama Mekanları",
+ "title":"Sapanca'da Kalabalık Doğum Günü Mekanı | Mare Gastro",
+ "desc":"Sapanca'da kalabalık bir arkadaş grubuyla doğum günü kutlamak için Mare Gastro: geniş masa düzeni, paylaşımlık tabaklar ve göl manzarası.",
+ "kw":"sapanca kalabalık doğum günü, sapanca grup rezervasyonu restoran, sapanca arkadaş grubu mekan, sapanca kalabalık masa restoran",
+ "lead":"Kalabalık bir arkadaş grubuyla doğum günü kutlamak, doğru mekan seçilmediğinde organizasyonu zorlaştırabilir. Mare Gastro, farklı büyüklükte grupları aynı özenle ağırlayacak şekilde tasarlandı.",
+ "body":[
+  ("Kalabalık Gruplar İçin Mekan Seçerken Nelere Dikkat Edilmeli?",
+   ["Kalabalık bir <strong>Sapanca doğum günü</strong> kutlamasında mekanın kapasitesi, oturma düzeni esnekliği, otopark imkânı ve grup menüsü seçenekleri kritik önem taşır. Bu detaylar önceden netleşmezse, organizasyon günün kendisinden daha stresli hale gelebilir."]),
+  ("Mare Gastro'da Grup Masaları Nasıl Düzenlenir?",
+   ["Grup büyüklüğünüzü %s paylaştığınızda, ekibimiz Didi Otel bahçesinde en uygun oturma düzenini sizin için hazırlar. İkili kutlamalardan geniş arkadaş gruplarına kadar farklı ölçekte masalar ağırlanır."%L(WA,"WhatsApp üzerinden")]),
+  ("Paylaşımlık Tabaklar ve Grup Menüsü",
+   ["Deniz ürünleri ağırlıklı paylaşımlık tabaklar, kalabalık bir masada herkesin farklı lezzetleri tadabilmesine imkân tanır. %s grup için uygun seçenekleri önceden inceleyebilirsiniz."%L(MENU,"Menümüzden")]),
+  ("Otopark ve Ulaşım: Kalabalık Gruplar İçin Pratik Bilgiler",
+   ["Farklı araçlarla gelen kalabalık bir grup için otopark, göz ardı edilmemesi gereken bir detay. Didi Otel bünyesindeki geniş otopark imkânı, bu konuda ekstra bir planlama yapmanıza gerek bırakmıyor.",
+    "Sapanca'nın İstanbul'a yaklaşık 1,5 saat mesafede olması da grubun farklı noktalardan kolayca buluşabilmesini sağlıyor."]),
+ ],
+ "faq":[
+  ("Sapanca'da kalabalık bir grupla doğum günü kutlanabilir mi?","Evet. Mare Gastro, Didi Otel bahçesinde farklı büyüklükte grupları ağırlayacak esnek masa düzenleri sunar."),
+  ("Grup rezervasyonu nasıl yapılır?","Grup büyüklüğünüzü ve özel taleplerinizi WhatsApp üzerinden veya rezervasyon formundan paylaşarak en uygun düzeni ayarlayabilirsiniz."),
+  ("Kalabalık gruplar için otopark yeterli mi?","Evet, Didi Otel bünyesinde geniş otopark imkânı bulunur."),
+  ("Grup için paylaşımlık menü seçeneği var mı?","Evet, deniz ürünleri ağırlıklı paylaşımlık tabaklar grup kutlamaları için uygun seçenekler arasındadır."),
+ ],
+ "rel":["sapanca-dogum-gunu-nerede-kutlanir","sapanca-istanbuldan-dogum-gunu-kacamagi","sapanca-is-yemegi-kurumsal-davet"],
+},
+{
+ "slug":"sapanca-romantik-es-dogum-gunu-yemegi",
+ "cat":"dogumgunu","date":"2026-07-19","read":"6 dk",
+ "img":"dana-carpaccio2.webp","alt":"Şık fine dining tabağı — Sapanca'da eşe özel romantik doğum günü yemeği Mare Gastro",
+ "h1":"Sapanca'da Eşinizin <em>Doğum Günü</em> İçin Romantik Bir Akşam Yemeği",
+ "title":"Sapanca'da Eşe Özel Doğum Günü Yemeği | Mare Gastro",
+ "desc":"Eşinizin doğum gününü Sapanca'da romantik bir akşam yemeğiyle kutlamak için Mare Gastro: göl manzarası, mum ışığı ve imza tatlılarla özel bir sofra.",
+ "kw":"sapanca eş doğum günü, sapanca romantik doğum günü yemeği, sapanca sevgiliye doğum günü sürprizi, sapanca çift doğum günü mekanı",
+ "lead":"Eşinizin ya da sevgilinizin doğum gününü kutlamak için Sapanca'da romantik bir akşam yemeği arıyorsanız, doğru atmosfer her şeyi değiştirir.",
+ "body":[
+  ("Romantik Bir Doğum Günü Yemeği İçin Sapanca Neden İdeal?",
+   ["Şehrin gürültüsünden uzak, gölün sakinliğine karşı geçirilen bir akşam; eşinize ya da sevgilinize doğum gününde vermek isteyeceğiniz en anlamlı hediyelerden biri olabilir. <strong>Sapanca'da romantik doğum günü yemeği</strong> arayan çiftler için Mare Gastro, bu atmosferi eksiksiz sunuyor."]),
+  ("Mum Işığında İkili Bir Masa",
+   ["Didi Otel bahçesinde, göl manzarasına açılan ikili bir masa; mum ışığı ve özenli servisle doğum gününü sade ama unutulmaz bir akşama dönüştürür. %s isterseniz, size özel bir masa düzeni hazırlarız."%L(REZ,"Rezervasyon sırasında belirttiğinizde")]),
+  ("İmza Tatlı ile Kutlamayı Taçlandırmak",
+   ["Akşamın sonunda paylaşılan bir imza tatlı, kutlamanın en tatlı anına dönüşür. %s eşinize sürpriz yapabileceğiniz seçenekleri inceleyebilirsiniz."%L(MENU,"Menümüzden")]),
+  ("Canlı Müzik Eşliğinde Romantik Bir Akşam",
+   ["Mare Gastro'da hafta sonu akşamlarına genellikle eşlik eden canlı müzik, romantik bir doğum günü yemeğini Sapanca'da eşsiz kılan detaylardan biri. Göl, mum ışığı ve müziğin birleştiği bu atmosfer, kelimelerden daha fazlasını anlatıyor."]),
+ ],
+ "faq":[
+  ("Sapanca'da eşime romantik bir doğum günü yemeği nerede ayarlayabilirim?","Didi Otel bahçesindeki Mare Gastro, göl manzarası, mum ışığı ve imza tatlılarla romantik bir doğum günü yemeği için uygun bir adrestir."),
+  ("İkili masalar için özel bir düzen ayarlanıyor mu?","Evet, rezervasyon sırasında talebinizi belirttiğinizde göl manzaralı ikili bir masa düzeni hazırlanır."),
+  ("Romantik kutlama için canlı müzik oluyor mu?","Mare Gastro'da hafta sonu akşamlarına genellikle canlı müzik eşlik eder."),
+  ("Sürpriz bir tatlı ayarlanabilir mi?","Evet, imza tatlılarımız ve sürpriz detaylar için rezervasyon sırasında talebinizi paylaşabilirsiniz."),
+ ],
+ "rel":["sapanca-dogum-gunu-nerede-kutlanir","sapanca-romantik-aksam-yemegi","sapanca-evlilik-teklifi"],
+},
+{
+ "slug":"sapanca-dogum-gunu-pastasi-suslemeli-mekan",
+ "cat":"dogumgunu","date":"2026-07-20","read":"6 dk",
+ "img":"cheesecake.webp","alt":"İmza tatlı ve mum ışığı — Sapanca'da doğum günü pastası ve masa süslemesi Mare Gastro",
+ "h1":"Sapanca'da <em>Doğum Günü Pastası</em> ve Masa Süslemesi Yapan Restoranlar",
+ "title":"Sapanca'da Doğum Günü Pastası Ayarlayan Restoran | Mare Gastro",
+ "desc":"Sapanca'da doğum günü pastası ve masa süslemesi hizmeti sunan restoran mı arıyorsunuz? Mare Gastro'da rezervasyon sırasında talep ederek özel bir sofra hazırlatabilirsiniz.",
+ "kw":"sapanca doğum günü pastası, sapanca masa süsleme restoran, sapanca pasta getirme kuralları restoran, sapanca doğum günü süslemesi",
+ "lead":"Bir doğum günü kutlamasının en özel anı, mumların üflendiği o saniyedir. Sapanca'da bu anı hazırlayan bir restoran seçmek, kutlamanın kalitesini belirler.",
+ "body":[
+  ("Mare Gastro'da Doğum Günü Pastası ve Süsleme Nasıl Ayarlanır?",
+   ["Özel bir pasta, masaya küçük bir süsleme ya da mumlar; rezervasyon sırasında talebinizi paylaştığınızda ekibimiz tarafından özenle hazırlanır. %s detayları netleştirebilirsiniz."%L(REZ,"Rezervasyon formundan veya WhatsApp üzerinden")]),
+  ("Kendi Pastanızı Getirebilir misiniz?",
+   ["Kendi pastanızı getirmek isterseniz, bu talebinizi rezervasyon sırasında iletmeniz servis ekibimizin hazırlıklı olmasını sağlar; pastanın saklanması ve servis zamanlaması buna göre planlanır.",
+    "Detaylar için %s ekibimizle iletişime geçebilirsiniz."%L(WA,"WhatsApp üzerinden")]),
+  ("İmza Tatlılarımızla Pastasız Bir Kutlama",
+   ["Klasik bir doğum günü pastası yerine, Mare Gastro'nun imza tatlılarıyla da unutulmaz bir kutlama yapmak mümkün. %s mevsime göre değişen tatlı seçeneklerini keşfedebilirsiniz."%L(MENU,"Menümüzden")]),
+  ("Süsleme ve Sürpriz Detaylar İçin Zamanlama",
+   ["Süsleme ve pasta içeren kutlamalar için en az birkaç gün önceden rezervasyon yapmanızı öneririz; böylece hazırlık için yeterli zaman oluşur ve gün, hayal ettiğiniz gibi akar."]),
+ ],
+ "faq":[
+  ("Mare Gastro'da doğum günü pastası ayarlanabilir mi?","Evet, rezervasyon sırasında talebinizi paylaştığınızda özel pasta ve masa süslemesi ekibimiz tarafından hazırlanır."),
+  ("Kendi pastamı restorana getirebilir miyim?","Evet, ancak bu talebinizi rezervasyon sırasında önceden bildirmeniz servis ekibinin hazırlıklı olmasını sağlar."),
+  ("Pasta istemiyorum, alternatif tatlı var mı?","Evet, cheesecake gibi imza tatlılarımız pastasız bir kutlama için de özel bir seçenek sunar."),
+  ("Süsleme için ne kadar önceden haber vermeliyim?","En az birkaç gün önceden rezervasyon ve talep bildirmenizi öneririz."),
+ ],
+ "rel":["sapanca-suprizli-dogum-gunu-organizasyonu","sapanca-dogum-gunu-nerede-kutlanir","sapanca-yildonumu-yemegi"],
+},
+{
+ "slug":"sapanca-gece-dogum-gunu-kutlamasi-hafta-sonu",
+ "cat":"dogumgunu","date":"2026-07-21","read":"6 dk",
+ "img":"kalamar-tava.webp","alt":"Akşam servisi ve mumlu masalar — Sapanca'da gece doğum günü kutlaması Mare Gastro",
+ "h1":"Sapanca'da <em>Gece Doğum Günü</em> Kutlaması: Hafta Sonu 24 Saat Açık",
+ "title":"Sapanca'da Gece Açık Doğum Günü Mekanı | Mare Gastro",
+ "desc":"Sapanca'da gece doğum günü kutlamak isteyenler için Mare Gastro Cuma, Cumartesi ve Pazar günleri 24 saat açık; geç saatlerde bile sıcak bir kutlama mümkün.",
+ "kw":"sapanca gece açık doğum günü, sapanca hafta sonu doğum günü, sapanca gece yemek mekanı, sapanca 24 saat açık restoran doğum günü",
+ "lead":"Herkesin takvimi gündüz saatlerine uymayabilir. Sapanca'da gece geç saatlerde bir doğum günü kutlamak isteyenler için Mare Gastro'nun hafta sonu 24 saat açık olması büyük bir avantaj.",
+ "body":[
+  ("Sapanca'da Gece Doğum Günü Kutlamak Mümkün mü?",
+   ["Evet. <strong>Sapanca'da gece doğum günü</strong> kutlamak isteyenler için Mare Gastro, hafta sonu boyunca hizmet veriyor; iş çıkışı geç bir kutlama ya da gece yarısına uzayan bir sofra mümkün."]),
+  ("Cuma, Cumartesi, Pazar: 24 Saat Açık Ayrıcalığı",
+   ["Mare Gastro Cuma, Cumartesi ve Pazar günleri 24 saat açıktır; Pazartesi–Perşembe kapalıdır. Bu esneklik, Sapanca'da doğum günü planlayan misafirlere saat kaygısı olmadan kutlama imkânı tanır."]),
+  ("Gece Atmosferi: Işıklar, Müzik ve Göl",
+   ["Gece saatlerinde ışıklandırılan bahçe, gölün karanlıkta yansıyan ışıkları ve genellikle eşlik eden canlı müzik; Mare Gastro'yu Sapanca'da gece kutlamaları için eşsiz bir adrese dönüştürüyor."]),
+  ("Gece Rezervasyonunda Dikkat Edilmesi Gerekenler",
+   ["Geç saat rezervasyonlarında masa ve otopark planlamasının netleşmesi için %s tercih ettiğiniz saati önceden belirtmenizi öneririz."%L(REZ,"rezervasyon formunda")]),
+ ],
+ "faq":[
+  ("Sapanca'da gece doğum günü kutlanabilir mi?","Evet. Mare Gastro Cuma, Cumartesi ve Pazar günleri 24 saat açık olduğu için gece geç saatlerde de doğum günü kutlaması yapılabilir."),
+  ("Mare Gastro hangi günler 24 saat açık?","Cuma, Cumartesi ve Pazar günleri 24 saat açıktır; Pazartesi–Perşembe kapalıdır."),
+  ("Gece kutlamalarında canlı müzik oluyor mu?","Hafta sonu akşamlarına genellikle canlı müzik atmosferi eşlik eder."),
+  ("Gece için otopark sorun olur mu?","Hayır, Didi Otel bünyesinde geniş otopark imkânı geceleri de kullanılabilir."),
+ ],
+ "rel":["sapanca-gece-acik-restoran","sapanca-dogum-gunu-nerede-kutlanir","sapanca-gol-manzarali-dogum-gunu-mekanlari"],
+},
+{
+ "slug":"sapanca-30-40-yas-dogum-gunu-kutlamasi",
+ "cat":"dogumgunu","date":"2026-07-22","read":"6 dk",
+ "img":"izgara-kofte.webp","alt":"Zarif ana yemek sunumu — Sapanca'da 30 ve 40 yaş doğum günü kutlaması Mare Gastro",
+ "h1":"Sapanca'da <em>30, 40, 50 Yaş</em> Doğum Günü Kutlamaları İçin En İyi Mekan",
+ "title":"Sapanca'da Yuvarlak Yaş Doğum Günü Kutlaması | Mare Gastro",
+ "desc":"30, 40 veya 50 yaş gibi yuvarlak yaş doğum günlerini Sapanca'da kutlamak için Mare Gastro: göl manzarası, canlı müzik ve zarif bir sofra.",
+ "kw":"sapanca 30 yaş doğum günü, sapanca 40 yaş kutlama, sapanca yuvarlak yaş kutlaması mekan, sapanca 50 yaş doğum günü restoran",
+ "lead":"30, 40 ya da 50 yaş gibi yuvarlak yaş günleri, hayatın özel dönüm noktalarıdır ve hak ettikleri kutlamayı bulmalıdır. Sapanca'da bu anlamlı günleri kutlamak için Mare Gastro'nun sunduğu atmosfer tam da bu ağırlığa uygun.",
+ "body":[
+  ("Yuvarlak Yaş Kutlamaları Neden Farklı Planlanmalı?",
+   ["<strong>Sapanca'da 30 yaş doğum günü</strong> ya da 40, 50 yaş gibi bir dönüm noktasını kutlamak, sıradan bir akşam yemeğinden daha fazla özen ister. Mekanın atmosferi, kutlamanın ağırlığıyla eşleşmeli."]),
+  ("Mare Gastro'da Milestone Bir Doğum Günü",
+   ["Didi Otel bahçesindeki göl manzaralı sofra, kurumsal ve güvenilir bir işletmenin sunduğu özenli servisle birleşince; yuvarlak yaş kutlamaları için aranan ciddiyeti ve zarafeti bir arada sunuyor. %s bu deneyimin arkasındaki anlayışı okuyabilirsiniz."%L(STORY,"Hikâyemizden")]),
+  ("Kalabalık mı, Özel mi? Kutlama Şeklinizi Belirleyin",
+   ["Bazı yuvarlak yaş kutlamaları geniş bir davetli listesiyle, bazıları ise sadece en yakınlarla kutlanmak ister. Mare Gastro her iki formatı da esnek masa düzenleriyle karşılıyor; %s tercihinizi paylaşmanız yeterli."%L(WA,"WhatsApp üzerinden")]),
+  ("Anıyı Kalıcı Kılmak: Fotoğraf, Müzik ve Detaylar",
+   ["Gün batımı ışığı, hafta sonu eşlik eden canlı müzik ve özel pasta/süsleme detayları; bu özel yaş gününü yıllarca hatırlanacak bir anıya dönüştürüyor."]),
+ ],
+ "faq":[
+  ("Sapanca'da 30 veya 40 yaş doğum günü nerede kutlanır?","Didi Otel bahçesindeki Mare Gastro, göl manzarası ve özenli servisiyle yuvarlak yaş doğum günü kutlamaları için uygun bir adrestir."),
+  ("Yuvarlak yaş kutlamaları için özel bir hazırlık yapılıyor mu?","Evet, talebinize göre özel pasta, süsleme ve masa düzeni rezervasyon sırasında hazırlanır."),
+  ("Kalabalık bir davetli listesiyle kutlama yapılabilir mi?","Evet, Mare Gastro farklı büyüklükte grupları ağırlayacak esnek masa düzenleri sunar."),
+  ("Bu tür kutlamalar için ne kadar önceden rezervasyon gerekir?","Özellikle hafta sonları için birkaç gün önceden rezervasyon yapmanızı öneririz."),
+ ],
+ "rel":["sapanca-dogum-gunu-nerede-kutlanir","sapanca-kalabalik-arkadas-grubu-dogum-gunu","sapanca-dogum-gunu-pastasi-suslemeli-mekan"],
+},
+{
+ "slug":"sapanca-istanbuldan-dogum-gunu-kacamagi",
+ "cat":"dogumgunu","date":"2026-07-23","read":"6 dk",
+ "img":"hero-mare-2.webp","alt":"Bahçede akşam atmosferi — İstanbul'dan Sapanca'ya doğum günü kaçamağı Mare Gastro",
+ "h1":"İstanbul'dan <em>Sapanca'ya Doğum Günü Kaçamağı</em>: Nereye Gidilir?",
+ "title":"İstanbul'dan Sapanca'ya Doğum Günü Kaçamağı | Mare Gastro",
+ "desc":"İstanbul'dan yaklaşık 1,5 saat mesafedeki Sapanca'da doğum günü kaçamağı planlıyorsanız Mare Gastro, kolay ulaşım ve isteyenler için konaklama seçeneğiyle ideal bir adres.",
+ "kw":"istanbuldan sapanca doğum günü, sapanca doğum günü kaçamağı, istanbula yakın doğum günü mekanı, istanbuldan bir günlük sapanca gezisi doğum günü",
+ "lead":"İstanbul'un kalabalığından uzaklaşıp doğum gününü doğayla iç içe kutlamak isteyenler için Sapanca, ulaşımı kolay bir kaçamak noktası.",
+ "body":[
+  ("İstanbul'dan Sapanca'ya Ulaşım Ne Kadar Sürer?",
+   ["Sapanca, İstanbul'a yaklaşık 1,5 saat mesafede; bu da <strong>İstanbul'dan doğum günü kaçamağı</strong> planlayanlar için Sapanca'yı pratik bir seçenek haline getiriyor. Yol boyunca trafik kaygısı yaşamadan, akşama yetişecek şekilde yola çıkabilirsiniz."]),
+  ("Neden Bir Günlük Kaçamak İçin Sapanca?",
+   ["Göl manzarası, doğanın sessizliği ve İstanbul'un telaşından uzak bir atmosfer; bir günlük bir kaçamağı doğum günü kutlamasına dönüştürmek için ideal bir zemin sunuyor. Mare Gastro, bu kaçamağın merkezinde yer alıyor."]),
+  ("İsterseniz Kalın: Didi Otel'de Konaklama Seçeneği",
+   ["Akşam yemeğinin ardından İstanbul'a dönmek yerine gecelemek isteyenler için, Mare Gastro'nun bulunduğu Didi Otel bünyesinde konaklama seçeneği mevcut; böylece kaçamağınızı bir güne sığdırmak zorunda kalmazsınız."]),
+  ("Otopark ve Pratik Bilgiler",
+   ["Kendi aracınızla gelmeyi planlıyorsanız, Didi Otel'in geniş otopark imkânı ekstra bir planlama derdi bırakmıyor. %s güncel yol tarifi ve konum bilgisine ulaşabilirsiniz."%L(LOC,"Konum sayfamızdan")]),
+ ],
+ "faq":[
+  ("İstanbul'dan Sapanca'ya ulaşım ne kadar sürer?","Sapanca, İstanbul'a yaklaşık 1,5 saat mesafededir."),
+  ("Sapanca'da doğum günü kaçamağı için nereye gidilmeli?","Didi Otel bahçesindeki Mare Gastro, göl manzarası ve kolay ulaşımıyla İstanbul'dan doğum günü kaçamağı için uygun bir adrestir."),
+  ("Akşam yemeğinden sonra Sapanca'da konaklanabilir mi?","Evet, Mare Gastro'nun bulunduğu Didi Otel bünyesinde isteyen misafirler için konaklama seçeneği mevcuttur."),
+  ("Otopark imkânı var mı?","Evet, Didi Otel bünyesinde geniş otopark imkânı bulunur."),
+ ],
+ "rel":["sapanca-dogum-gunu-nerede-kutlanir","istanbula-yakin-luks-restoran","sapanca-hafta-sonu-rotasi"],
+},
+{
+ "slug":"sapanca-dogum-gunu-fiyatlari-ve-menu-secenekleri",
+ "cat":"dogumgunu","date":"2026-07-24","read":"6 dk",
+ "img":"dana-carpaccio.webp","alt":"Dana carpaccio — Sapanca'da doğum günü kutlama menüsü fiyat rehberi Mare Gastro",
+ "h1":"Sapanca'da <em>Doğum Günü</em> Kutlama Fiyatları ve Menü Seçenekleri",
+ "title":"Sapanca'da Doğum Günü Fiyatları ve Menü | Mare Gastro",
+ "desc":"Sapanca'da doğum günü kutlamanın bütçesi ne kadar tutar? Mare Gastro'nun menü yapısı, imza tatlıları ve rezervasyon sürecini bu rehberde bulabilirsiniz.",
+ "kw":"sapanca doğum günü fiyatları, sapanca doğum günü kutlama ücreti, sapanca doğum günü menü fiyat, sapanca fine dining doğum günü bütçe",
+ "lead":"Sapanca'da doğum günü kutlamak için bütçe planlaması yaparken, mekanın sunduğu deneyimin kalitesiyle fiyatını birlikte değerlendirmek gerekir.",
+ "body":[
+  ("Sapanca'da Doğum Günü Kutlaması Fiyatı Neye Göre Değişir?",
+   ["<strong>Sapanca'da doğum günü fiyatları</strong>, seçilen tabaklara, kişi sayısına, mevsime ve varsa pasta/süsleme taleplerine göre değişir. Mare Gastro'da sabit bir menü fiyatı yerine à la carte bir yapı benimseniyor.",
+    "En net bilgiyi %s planınızı paylaştığınızda alabilirsiniz."%L(REZ,"rezervasyon sırasında ekibimizle görüşerek")]),
+  ("Kişi Başı Ücrete Neler Dahildir?",
+   ["Bir doğum günü sofrası; başlangıç, ana yemek ve tatlıdan oluşan bir akış, göl manzaralı bir masa ve özenli servisi kapsar. Özel pasta veya süsleme talep ederseniz, bu detay rezervasyon sırasında bütçenize göre netleştirilir.",
+    "%s hangi tabakların bütçenize uygun olduğunu önceden görebilirsiniz."%L(MENU,"Güncel menümüzü inceleyerek")]),
+  ("Fiyat/Performans Açısından Nelere Dikkat Etmeli?",
+   ["Bir doğum günü kutlamasında fiyatı belirleyen tek unsur porsiyon değildir; malzemenin tazeliği, göl manzarası, Didi Otel'in kurumsal güvencesi ve hafta sonu canlı müzik atmosferi de deneyime eklenen değerler arasındadır."]),
+  ("Güncel Fiyat Bilgisini Nereden Öğrenebilirim?",
+   ["Mare Gastro sitede sabit bir fiyat listesi yayınlamaz; menü mevsimsel olarak güncellenir. %s veya WhatsApp üzerinden birkaç dakika içinde güncel bilgi alabilirsiniz."%L(REZ,"Rezervasyon formu")]),
+ ],
+ "faq":[
+  ("Sapanca'da doğum günü kutlamasının sabit bir fiyatı var mı?","Hayır. Menü mevsimsel olarak güncellendiği için sabit bir fiyat listesi yerine, güncel bilgi rezervasyon sırasında paylaşılır."),
+  ("Pasta ve süsleme fiyata dahil mi?","Pasta ve süsleme talepleri rezervasyon sırasında ayrıca değerlendirilir ve netleştirilir."),
+  ("İçecekler fiyata dahil mi?","İçecekler à la carte olarak menüden ayrıca seçilir ve fiyata dahil değildir."),
+  ("Güncel fiyat bilgisini nasıl öğrenebilirim?","Rezervasyon formunu doldurarak ya da WhatsApp üzerinden ekibimizle iletişime geçerek güncel bilgi alabilirsiniz."),
+ ],
+ "rel":["sapanca-dogum-gunu-nerede-kutlanir","sapanca-fine-dining-fiyat-rehberi","sapanca-30-40-yas-dogum-gunu-kutlamasi"],
+},
 ]
 
 BY_SLUG = {p["slug"]:p for p in POSTS}
@@ -743,9 +1048,11 @@ SOCIAL_FOOT = (
  '<div class="bfoot-soc">'
  '<a href="%s" target="_blank" rel="noopener" aria-label="Instagram">%s</a>'
  '<a href="%s" target="_blank" rel="noopener" aria-label="Şef Instagram">%s</a>'
+ '<a href="%s" target="_blank" rel="noopener" aria-label="TikTok">%s</a>'
+ '<a href="%s" target="_blank" rel="noopener" aria-label="YouTube">%s</a>'
  '<a href="%s" target="_blank" rel="noopener" aria-label="WhatsApp">%s</a>'
  '<a href="%s" aria-label="E-posta">%s</a>'
- '</div>'%(IG,IC_IG,IGCHEF,IC_IG,WA,IC_WA,MAIL,IC_MAIL))
+ '</div>'%(IG,IC_IG,IGCHEF,IC_IG,TT,IC_TT,YT,IC_YT,WA,IC_WA,MAIL,IC_MAIL))
 
 def nav_html():
     return ('<nav class="bnav">'
