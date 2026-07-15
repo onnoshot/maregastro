@@ -2334,6 +2334,32 @@ nav{
 
 .mloading{padding:40px 20px;text-align:center;color:var(--muted);font-size:12px;letter-spacing:.04em;width:100%}
 
+/* Menu bottom - social follow strip */
+.menu-follow{
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;gap:14px;
+  padding:14px 20px calc(14px + var(--sab));
+  border-top:1px solid rgba(255,255,255,.06);
+}
+@media(min-width:768px){.menu-follow{padding:16px 40px calc(16px + var(--sab))}}
+.mf-label{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.mf-links{display:flex;gap:10px}
+.mf-link{
+  position:relative;width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--glass);border:1px solid var(--glassBorder);
+  color:var(--muted);text-decoration:none;cursor:none;
+  transition:color .3s var(--ease),border-color .3s var(--ease),background .3s var(--ease),transform .3s var(--ease);
+}
+.mf-link svg{position:relative;z-index:1}
+.mf-ring{position:absolute;inset:-1px;border-radius:50%;border:1px solid rgba(200,169,110,.5);opacity:0;animation:mfPulse 2.6s var(--ease) infinite}
+.mf-link:nth-child(1) .mf-ring{animation-delay:0s}
+.mf-link:nth-child(2) .mf-ring{animation-delay:.6s}
+.mf-link:nth-child(3) .mf-ring{animation-delay:1.2s}
+@keyframes mfPulse{0%{transform:scale(1);opacity:.55}70%{transform:scale(1.55);opacity:0}100%{opacity:0}}
+@media(hover:hover){.mf-link:hover{color:var(--amber);border-color:rgba(200,169,110,.5);background:rgba(200,169,110,.1);transform:translateY(-3px)}}
+.mf-link:active{transform:scale(.94)}
+@media(prefers-reduced-motion:reduce){.mf-ring{animation:none}}
+
 /* Fiyat — isim satırında klasik noktalı çizgi */
 .dc-name-row{display:flex;align-items:baseline;gap:6px;margin-bottom:4px}
 .dc-name-row .dc-name{margin-bottom:0;flex:none}
@@ -3227,6 +3253,24 @@ nav{
     <div class="mgroup-view" id="mGroupView">
       <div class="mtabs" id="mTabs"></div>
       <div class="mpanels" id="mPanels"><div class="mloading" id="mLoading">القائمة yükleniyor…</div></div>
+    </div>
+
+    <div class="menu-follow rv rv3">
+      <span class="mf-label">تابعونا</span>
+      <div class="mf-links">
+        <a class="mf-link" href="https://www.instagram.com/maregastrosapanca/" target="_blank" rel="noopener" aria-label="Instagram">
+          <span class="mf-ring"></span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a class="mf-link" href="https://www.tiktok.com/@maregastro" target="_blank" rel="noopener" aria-label="TikTok">
+          <span class="mf-ring"></span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0115.54 3h-3.09v12.4a2.592 2.592 0 01-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 004.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>
+        </a>
+        <a class="mf-link" href="https://www.youtube.com/@maregastro" target="_blank" rel="noopener" aria-label="YouTube">
+          <span class="mf-ring"></span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3.02 3.02 0 00-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.56A3.02 3.02 0 00.5 6.2 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.8 3.02 3.02 0 002.12 2.14c1.88.56 9.38.56 9.38.56s7.5 0 9.38-.56a3.02 3.02 0 002.12-2.14A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.8zM9.6 15.6V8.4L15.8 12z"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 </section>
