@@ -80,6 +80,45 @@ def build_menu_schema():
 
 MENUSCHEMA = build_menu_schema()
 
+def build_restaurant_schema(lang):
+    d = strings[lang]
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Mare Gastro",
+        "image": "%s/images/hero-mare-1.webp" % SITE,
+        "url": "%s/%s/" % (SITE, lang),
+        "servesCuisine": [d["cuisine_aegean"], d["cuisine_mediterranean"], d["cuisine_seafood"], d["hero_tag2"]],
+        "priceRange": "$$$",
+        "telephone": "+905323540888",
+        "email": "info@maregastro.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Didi Otel",
+            "addressLocality": "Sapanca",
+            "addressRegion": "Sakarya",
+            "addressCountry": "TR",
+        },
+        "geo": {"@type": "GeoCoordinates", "latitude": 40.7002438, "longitude": 30.222254},
+        "openingHoursSpecification": [{
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Friday", "Saturday", "Sunday"],
+            "opens": "00:00",
+            "closes": "23:59",
+        }],
+        "acceptsReservations": "True",
+        "hasMenu": "%s/#menu" % SITE,
+        "hasMap": "https://maps.google.com/?cid=7177941338358519695",
+        "currenciesAccepted": "TRY",
+        "sameAs": [
+            "https://www.instagram.com/maregastrosapanca/",
+            "https://www.tiktok.com/@maregastro",
+            "https://www.youtube.com/@maregastro",
+            "https://maps.google.com/?cid=7177941338358519695",
+        ],
+    }
+    return json.dumps(schema, ensure_ascii=False, indent=1)
+
 # ── 3. hreflang + dil değiştirici işaretçileri ──
 src = re.sub(r'(<link rel="canonical"[^>]*>)', r"\1\n@@HREFLANG@@", src, count=1)
 src = src.replace('<div class="nav-right">', '<div class="nav-right">@@LANGSW@@', 1)
@@ -163,6 +202,7 @@ for l in LANGS:
     out = out.replace("@@WAMSG@@", WAMSG)
     out = out.replace("@@MENUI18N@@", MENUI18N)
     out = out.replace("@@MENUSCHEMA@@", MENUSCHEMA)
+    out = out.replace("@@RESTAURANTSCHEMA@@", build_restaurant_schema(l))
     # JS tek-tırnak bağlamına giren tokenler (alert / textContent / onclick selK)
     JS_CTX = {"js_gnote_ozel", "js_gnote_yalniz", "js_gnote_kisilik",
               "js_alert_tarih", "js_alert_saat", "js_alert_konaklama",

@@ -48,34 +48,54 @@
 <!-- Restaurant structured data -->
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "Restaurant",
-  "name": "Mare Gastro",
-  "image": "https://maregastro.com/images/hero-mare-1.jpg",
-  "url": "https://maregastro.com/",
-  "servesCuisine": ["Ege", "Akdeniz", "Deniz Ürünleri", "مطعم فاخر"],
-  "priceRange": "$$$",
-  "telephone": "+905323540888",
-  "email": "info@maregastro.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Didi Otel",
-    "addressLocality": "سپانجا",
-    "addressRegion": "Sakarya",
-    "addressCountry": "TR"
-  },
-  "geo": { "@type": "GeoCoordinates", "latitude": 40.7002438, "longitude": 30.222254 },
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Friday", "Saturday", "Sunday"],
-    "opens": "00:00",
-    "closes": "23:59"
-  }],
-  "acceptsReservations": "True",
-  "hasMenu": "https://maregastro.com/#menu",
-  "hasMap": "https://maps.google.com/?cid=7177941338358519695",
-  "currenciesAccepted": "TRY",
-  "sameAs": ["https://www.instagram.com/maregastrosapanca/", "https://maps.google.com/?cid=7177941338358519695"]
+ "@context": "https://schema.org",
+ "@type": "Restaurant",
+ "name": "Mare Gastro",
+ "image": "https://maregastro.com/images/hero-mare-1.webp",
+ "url": "https://maregastro.com/ar/",
+ "servesCuisine": [
+  "إيجي",
+  "متوسطي",
+  "مأكولات بحرية",
+  "مطعم فاخر"
+ ],
+ "priceRange": "$$$",
+ "telephone": "+905323540888",
+ "email": "info@maregastro.com",
+ "address": {
+  "@type": "PostalAddress",
+  "streetAddress": "Didi Otel",
+  "addressLocality": "Sapanca",
+  "addressRegion": "Sakarya",
+  "addressCountry": "TR"
+ },
+ "geo": {
+  "@type": "GeoCoordinates",
+  "latitude": 40.7002438,
+  "longitude": 30.222254
+ },
+ "openingHoursSpecification": [
+  {
+   "@type": "OpeningHoursSpecification",
+   "dayOfWeek": [
+    "Friday",
+    "Saturday",
+    "Sunday"
+   ],
+   "opens": "00:00",
+   "closes": "23:59"
+  }
+ ],
+ "acceptsReservations": "True",
+ "hasMenu": "https://maregastro.com/#menu",
+ "hasMap": "https://maps.google.com/?cid=7177941338358519695",
+ "currenciesAccepted": "TRY",
+ "sameAs": [
+  "https://www.instagram.com/maregastrosapanca/",
+  "https://www.tiktok.com/@maregastro",
+  "https://www.youtube.com/@maregastro",
+  "https://maps.google.com/?cid=7177941338358519695"
+ ]
 }
 </script>
 <!-- Menu structured data (build_i18n.py tarafından data/menu-data.seed.json'dan/canlı API'den üretilir) -->

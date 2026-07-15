@@ -1294,10 +1294,46 @@ def build_sitemap():
     for p in POSTS: entries.append('<url><loc>%s</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>'%post_url(p["slug"]))
     xml='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">%s</urlset>\n'%"".join(entries)
     with open(os.path.join(root,"sitemap.xml"),"w",encoding="utf-8") as f: f.write(xml)
-    robots="User-agent: *\nAllow: /\n\nSitemap: %s/sitemap.xml\n"%SITE
+    ai_bots = ["GPTBot","ChatGPT-User","OAI-SearchBot","ClaudeBot","anthropic-ai",
+               "PerplexityBot","Google-Extended","Applebot-Extended","CCBot","Bytespider"]
+    robots = ("User-agent: *\nAllow: /\n\n"
+              + "".join("User-agent: %s\nAllow: /\n\n" % b for b in ai_bots)
+              + "Sitemap: %s/sitemap.xml\n" % SITE)
     with open(os.path.join(root,"robots.txt"),"w",encoding="utf-8") as f: f.write(robots)
+
+def build_llms_txt():
+    root = os.path.dirname(OUT)
+    lines = [
+        "# Mare Gastro",
+        "",
+        "> Sapanca Gölü'nün hemen yanında, Didi Otel bahçesinde bir fine dining restoranı. "
+        "Ege ve Akdeniz mutfağı, taze deniz ürünleri, Yönetici Şef Doğan Anapa imzasıyla. "
+        "Cuma, Cumartesi ve Pazar günleri 24 saat açık.",
+        "",
+        "## Temel Bilgiler",
+        "- Konum: Didi Otel bahçesi, Sapanca, Sakarya, Türkiye — gölün hemen yanında",
+        "- Açılış saatleri: Cuma-Cumartesi-Pazar 24 saat açık, Pazartesi-Perşembe kapalı",
+        "- Rezervasyon: %s (üç adımlı form, WhatsApp onaylı)" % REZ,
+        "- WhatsApp: %s" % WA,
+        "- Menü: %s" % MENU,
+        "- Instagram: %s" % IG,
+        "- TikTok: %s" % TT,
+        "- YouTube: %s" % YT,
+        "",
+        "## Diller",
+        "- Türkçe: %s/tr/" % SITE,
+        "- English: %s/en/" % SITE,
+        "- العربية: %s/ar/" % SITE,
+        "- Русский: %s/ru/" % SITE,
+        "",
+        "## Blog — Sapanca Rehberi (%d yazı)" % len(POSTS),
+    ]
+    for p in POSTS:
+        lines.append("- [%s](%s): %s" % (strip_tags(p["h1"]), post_url(p["slug"]), p["desc"]))
+    lines.append("")
+    open(os.path.join(root, "llms.txt"), "w", encoding="utf-8").write("\n".join(lines))
 
 if __name__=="__main__":
     for p in POSTS: build_post(p)
-    build_index(); build_sitemap()
+    build_index(); build_sitemap(); build_llms_txt()
     print("Built %d posts + index + sitemap + robots"%len(POSTS))

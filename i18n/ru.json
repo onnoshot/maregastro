@@ -166,5 +166,8 @@
  "wa_aria": "Бронирование через WhatsApp",
  "d_somonspagetti_d": "Сливочный соус с лососем и свежей петрушкой",
  "d_arnavutciger": "Печень по-албански",
- "d_arnavutciger_d": "Карамелизированный лук, петрушка, пряное масло"
+ "d_arnavutciger_d": "Карамелизированный лук, петрушка, пряное масло",
+ "cuisine_aegean": "Эгейская",
+ "cuisine_mediterranean": "Средиземноморская",
+ "cuisine_seafood": "Морепродукты"
 }
