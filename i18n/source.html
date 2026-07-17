@@ -860,13 +860,17 @@ nav{
   border-top:1px solid var(--glassBorder);
   background:rgba(4,8,15,.5);backdrop-filter:blur(12px);
 }
-@media(min-width:768px){.kfoot{padding:14px 48px}}
+@media(min-width:768px){.kfoot{padding:14px 96px 14px 48px}}
 .kfoot img{height:22px;filter:brightness(0) invert(1);opacity:.3}
 .kfoot-t{font-size:10px;color:rgba(237,232,220,.25);letter-spacing:.05em}
 .kfoot-t a{color:var(--amber);text-decoration:none;opacity:.6}
-.kfoot-links{display:flex;gap:16px}
+.kfoot-links{display:flex;flex-wrap:wrap;gap:8px 16px;max-width:100%}
+@media(max-width:767px){.kfoot-links{padding-right:64px}}
 .kfoot-links a{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(237,232,220,.25);text-decoration:none;transition:color .25s}
 .kfoot-links a:hover{color:var(--amber)}
+.kfoot-credit{display:flex;align-items:center;gap:6px;font-size:9px;letter-spacing:.05em;color:rgba(237,232,220,.22);text-decoration:none;transition:color .25s,opacity .25s;opacity:.85}
+.kfoot-credit:hover{color:var(--amber);opacity:1}
+.kfoot-credit img{height:11px!important;width:auto;filter:brightness(0) invert(1);opacity:.55}
 
 /* REVEAL */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
@@ -1588,6 +1592,10 @@ nav{
       <a href="blog/">Blog</a>
       <a href="#reservation">Rezervasyon</a>
       <a href="https://www.instagram.com/maregastrosapanca/" target="_blank">Instagram</a>
+      <a class="kfoot-credit" href="https://www.uniqbee.com/?utm_source=maregastro&utm_medium=referral&utm_campaign=footer_credit" target="_blank" rel="noopener">
+        <img src="images/uniqbee-logo.svg" alt="UniqBee">
+        <span>@@footer_credit@@</span>
+      </a>
     </div>
   </div>
 </section>
