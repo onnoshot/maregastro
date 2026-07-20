@@ -94,9 +94,10 @@ def build_restaurant_schema(lang):
         "email": "info@maregastro.com",
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Didi Otel",
+            "streetAddress": "Kırkpınar Soğuksu, İstasyon 3 Cad. No:55",
             "addressLocality": "Sapanca",
             "addressRegion": "Sakarya",
+            "postalCode": "54600",
             "addressCountry": "TR",
         },
         "geo": {"@type": "GeoCoordinates", "latitude": 40.7002438, "longitude": 30.222254},
