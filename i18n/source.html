@@ -1655,7 +1655,7 @@ function noimgSvg(){return'<svg width="22" height="22" viewBox="0 0 24 24" fill=
 function cardHTML(it,i){
   const img=it.img?'<div class="dc-img"><img loading="lazy" decoding="async" src="/images/'+it.img+'" alt="'+escHtml(it.name)+'"></div>':'<div class="dc-noimg">'+noimgSvg()+'</div>';
   return '<div class="dc" style="--d:'+(i*45)+'ms">'+img+
-    '<div class="dc-body"><div class="dc-name-row"><span class="dc-name">'+escHtml(it.name)+'</span>'+(SHOW_PRICES?'<span class="dc-leader"></span><span class="dc-price">'+mPrice(it.price)+'</span>':'')+'</div><div class="dc-desc">'+escHtml(it.desc||'')+'</div></div>'+
+    '<div class="dc-body"><div class="dc-name-row"><span class="dc-name">'+escHtml(it.name)+'</span></div><div class="dc-desc">'+escHtml(it.desc||'')+'</div></div>'+
     '<div class="dc-glow"></div></div>';
 }
 function rowHTML(it,i){
