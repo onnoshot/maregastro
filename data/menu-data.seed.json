@@ -337,7 +337,7 @@
    "cat": "n",
    "name": "Deniz Mahsülleri Buğday Risotto",
    "desc": "Buharda pişmiş kum midyeli linguine makarna, tereyağ ve sarımsak ve maydanozlu",
-   "price": 850,
+   "price": 1200,
    "img": null
   },
   {
@@ -671,9 +671,9 @@
   {
    "id": "urla-tempus",
    "cat": "sarap",
-   "name": "Urla Tempus",
+   "name": "Urla Nexus",
    "desc": "",
-   "price": 8450,
+   "price": 5500,
    "img": null
   },
   {
@@ -961,7 +961,7 @@
    "cat": "raki",
    "name": "Prototip Rakı",
    "desc": "70 cl",
-   "price": 7000,
+   "price": 5500,
    "img": null
   },
   {
