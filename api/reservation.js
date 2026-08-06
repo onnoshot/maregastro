@@ -61,6 +61,9 @@ export default async function handler(req, res) {
       name: String(b.name).trim(), phone: String(b.phone).trim(), email: String(b.email || '').trim(),
       date: String(b.date).trim(), time: String(b.time).trim(),
       guests: Number(b.guests) || null, konaklama: String(b.konaklama || '').trim(),
+      channel: String(b.channel || 'Doğrudan').trim().slice(0, 40),
+      referrer: String(b.referrer || '').trim().slice(0, 300),
+      utm: String(b.utm || '').trim().slice(0, 60),
     };
     try {
       await put(PREFIX + rec.id + '.json', JSON.stringify(rec), {

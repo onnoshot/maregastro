@@ -3590,6 +3590,25 @@ function gS(n){
   }
   for(let i=1;i<=2;i++)document.getElementById('pl'+i).classList.toggle('done',i<n);
 }
+// ── ZİYARETÇİ KANALI (rezervasyon kaynağı: Instagram/Google/Doğrudan...) ──
+function deriveChannel(){
+  try{
+    var p=new URLSearchParams(location.search);
+    var us=(p.get('utm_source')||'').toLowerCase();
+    var m={instagram:'Instagram',ig:'Instagram',facebook:'Facebook',fb:'Facebook',meta:'Facebook',google:'Google',
+      youtube:'YouTube',yt:'YouTube',tiktok:'TikTok',pinterest:'Pinterest',twitter:'X',x:'X',linkedin:'LinkedIn',
+      whatsapp:'WhatsApp',wa:'WhatsApp',email:'البريد الإلكتروني',newsletter:'البريد الإلكتروني',mail:'البريد الإلكتروني'};
+    if(us)return m[us]||(us.charAt(0).toUpperCase()+us.slice(1));
+    var ref=document.referrer||'',h='';try{h=new URL(ref).hostname.replace(/^www\./,'').toLowerCase();}catch(e){}
+    if(!ref||h===location.hostname.replace(/^www\./,''))return 'Doğrudan';
+    var hm=[['instagram','Instagram'],['google','Google'],['bing','Bing'],['facebook','Facebook'],['fb.','Facebook'],
+      ['youtube','YouTube'],['t.co','X'],['twitter','X'],['x.com','X'],['tiktok','TikTok'],['pinterest','Pinterest'],
+      ['linkedin','LinkedIn'],['whatsapp','WhatsApp'],['wa.me','WhatsApp'],['yandex','Yandex'],['duckduckgo','DuckDuckGo']];
+    for(var i=0;i<hm.length;i++)if(h.indexOf(hm[i][0])>=0)return hm[i][1];
+    return 'Yönlendirme';
+  }catch(e){return 'Doğrudan';}
+}
+var MARE_CHANNEL=(function(){try{var s=sessionStorage.getItem('mare_ch');if(s)return s;var c=deriveChannel();sessionStorage.setItem('mare_ch',c);return c;}catch(e){return deriveChannel();}})();
 function submitReservation(a){
   const name=document.getElementById('rName').value.trim();
   const phone=document.getElementById('rPhone').value.trim();
@@ -3601,7 +3620,8 @@ function submitReservation(a){
   const msg=`Merhaba, Mare Gastro rezervasyon talebim:\n\nAd Soyad: ${name}\nTelefon: ${phone}${email?'\nE-posta: '+email:''}\n\nTarih: ${fmt}\nSaat: ${selTime_val}\nKişi Sayısı: ${guestCount}\nKonaklama: ${selKon_val}\n\nOnayınızı bekliyorum.`;
   a.href=`https://wa.me/905323540888?text=${encodeURIComponent(msg)}`;
   fetch('/api/reservation',{method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({name,phone,email,date:fmt,time:selTime_val,guests:guestCount,konaklama:selKon_val})}).catch(()=>{});
+    body:JSON.stringify({name,phone,email,date:fmt,time:selTime_val,guests:guestCount,konaklama:selKon_val,
+      channel:MARE_CHANNEL,referrer:(document.referrer||''),utm:((new URLSearchParams(location.search)).get('utm_source')||'')})}).catch(()=>{});
   return true;
 }
 
