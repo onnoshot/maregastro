@@ -156,17 +156,48 @@ a{color:inherit}
 
 /* ── Stats page ── */
 .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px}
-.stat-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:15px;box-shadow:var(--shadow-sm)}
-.stat-card .n{font-size:1.55rem;font-weight:800;color:var(--ink)}
+.stat-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:15px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:8px}
+.stat-card .ic{width:26px;height:26px;border-radius:9px;background:var(--gold-bg);color:var(--gold-deep);display:flex;align-items:center;justify-content:center}
+.stat-card .ic svg{width:14px;height:14px}
+.stat-card .ic.warn{background:var(--red-bg);color:var(--red)}
+.stat-card .n{font-size:1.55rem;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums}
 .stat-card .n.warn{color:var(--red)}
-.stat-card .l{font-size:10.5px;color:var(--ink2);letter-spacing:.02em;margin-top:4px;font-weight:600}
-.chart-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 14px 12px;margin-bottom:12px;box-shadow:var(--shadow-sm)}
+.stat-card .l{font-size:10.5px;color:var(--ink2);letter-spacing:.02em;font-weight:600}
+.chart-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 14px 14px;margin-bottom:12px;box-shadow:var(--shadow-sm)}
+.chart-card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:10px}
 .chart-card h3{font-size:.82rem;color:var(--ink);letter-spacing:.01em;margin-bottom:2px;font-weight:700}
-.chart-card .sub{font-size:11px;color:var(--ink2);margin-bottom:10px}
+.chart-card .sub{font-size:11px;color:var(--ink2)}
 .chart-legend{display:flex;gap:14px;font-size:10.5px;color:var(--ink2);margin-bottom:8px;font-weight:600}
 .chart-legend span{display:inline-flex;align-items:center;gap:5px}
 .chart-legend i{width:8px;height:8px;border-radius:2px;display:inline-block}
 .chart-empty{color:var(--ink2);font-size:12px;padding:20px 0;text-align:center}
+.seg.sm button{padding:5px 10px;font-size:10.5px}
+
+/* Floating chart tooltip */
+#chartTip{position:fixed;z-index:200;pointer-events:none;background:var(--ink);color:#EEF2F8;font-size:11.5px;font-weight:700;padding:7px 11px;border-radius:9px;box-shadow:var(--shadow-md);opacity:0;transform:translateY(4px) scale(.96);transition:opacity .12s,transform .12s;max-width:220px;letter-spacing:.01em}
+#chartTip.on{opacity:1;transform:translateY(0) scale(1)}
+
+/* Animated bars */
+.bar-grow{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);transition:transform .65s cubic-bezier(.22,1,.36,1)}
+.bar-grow.on{transform:scaleY(1)}
+.hbar-grow{transform-box:fill-box;transform-origin:0% 50%;transform:scaleX(0);transition:transform .65s cubic-bezier(.22,1,.36,1)}
+.hbar-grow.on{transform:scaleX(1)}
+[data-tip]{cursor:pointer}
+
+/* Donut chart */
+.donut-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.donut-wrap{position:relative;flex:none;width:132px;height:132px}
+.donut-wrap svg{width:100%;height:100%}
+.donut-seg{transition:stroke-dasharray .8s cubic-bezier(.22,1,.36,1)}
+.donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+.donut-center .dc-n{font-size:1.35rem;font-weight:800;color:var(--ink)}
+.donut-center .dc-l{font-size:9px;color:var(--ink2);font-weight:600;letter-spacing:.02em;text-transform:uppercase}
+.donut-legend{flex:1;min-width:140px;display:flex;flex-direction:column;gap:7px}
+.donut-legend-row{display:flex;align-items:center;gap:8px;font-size:11.5px;padding:4px 0}
+.donut-legend-row i{width:9px;height:9px;border-radius:3px;flex:none}
+.donut-legend-row .ll{flex:1;color:var(--ink);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.donut-legend-row .lv{color:var(--ink2);font-weight:700;font-variant-numeric:tabular-nums}
+.donut-legend-row .lp{color:var(--ink3);font-weight:600;min-width:30px;text-align:right;font-variant-numeric:tabular-nums}
 
 /* ── Calendar ── */
 .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
@@ -438,6 +469,7 @@ a{color:inherit}
 </div>
 
 <div class="toast" id="toast"></div>
+<div id="chartTip"></div>
 
 <script>
 const API_MENU = '/api/menu';
@@ -884,6 +916,34 @@ function renderDayPanel(byDate){
 
 /* ───────── SVG grafikler (açık tema) ───────── */
 function truncLabel(s, max=17){ s=String(s); return s.length>max ? s.slice(0,max-1)+'…' : s; }
+
+/* ── Floating chart tooltip ── */
+function positionTip(e){
+  const tip = document.getElementById('chartTip');
+  const x = e.clientX, y = e.clientY, pad = 14;
+  const tw = tip.offsetWidth, th = tip.offsetHeight;
+  let left = x+pad, top = y-th-pad;
+  if(left+tw > window.innerWidth-8) left = x-tw-pad;
+  if(top < 8) top = y+pad;
+  tip.style.left = left+'px'; tip.style.top = top+'px';
+}
+function showTip(e, html){ const tip=document.getElementById('chartTip'); tip.innerHTML=html; tip.classList.add('on'); positionTip(e); }
+let tipHideTimer=null;
+function bindTipEvents(){
+  document.addEventListener('pointerover', e=>{ const t=e.target.closest('[data-tip]'); if(t) showTip(e, t.getAttribute('data-tip')); });
+  document.addEventListener('pointermove', e=>{ const t=e.target.closest('[data-tip]'); if(t) positionTip(e); });
+  document.addEventListener('pointerout', e=>{ const t=e.target.closest('[data-tip]'); if(t) document.getElementById('chartTip').classList.remove('on'); });
+  document.addEventListener('pointerdown', e=>{ const t=e.target.closest('[data-tip]'); if(t){ showTip(e, t.getAttribute('data-tip')); clearTimeout(tipHideTimer); tipHideTimer=setTimeout(()=>document.getElementById('chartTip').classList.remove('on'), 1800); } });
+}
+function animateCharts(root){
+  const bars = root.querySelectorAll('.bar-grow,.hbar-grow');
+  const donuts = root.querySelectorAll('.donut-seg');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    bars.forEach(el=>el.classList.add('on'));
+    donuts.forEach(el=>{ el.style.strokeDasharray = el.dataset.final; });
+  }));
+}
+
 function svgBarChart(points, opts={}){
   const w = 520, h = opts.h || 170, padL = 26, padR = 8, padT = 16, padB = opts.padB || 30;
   const innerW = w-padL-padR, innerH = h-padT-padB;
@@ -897,7 +957,8 @@ function svgBarChart(points, opts={}){
     const bh = (p.value/max)*innerH;
     const x = padL + i*slot + (slot-barW)/2;
     const y = padT + innerH - bh;
-    bars += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${Math.max(bh,1).toFixed(1)}" rx="3" fill="url(#barGrad)"><title>${p.label}: ${p.value}</title></rect>`;
+    const tip = escAttr(p.label+': '+p.value);
+    bars += `<rect class="bar-grow" data-tip="${tip}" style="transition-delay:${(i*18).toFixed(0)}ms" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${Math.max(bh,1).toFixed(1)}" rx="3" fill="url(#barGrad)"></rect>`;
     if(p.value>0) bars += `<text x="${(x+barW/2).toFixed(1)}" y="${(y-4).toFixed(1)}" text-anchor="middle" font-size="9" fill="#16294A" font-weight="700">${p.value}</text>`;
     const ly = h-10;
     const lx = (x+barW/2).toFixed(1);
@@ -924,8 +985,9 @@ function svgGroupedChart(points, opts={}){
     const ah = (p.a/max)*innerH, bh = (p.b/max)*innerH;
     const ax = cx-gap/2-barW, ay = padT+innerH-ah;
     const bx = cx+gap/2, by = padT+innerH-bh;
-    bars += `<rect x="${ax.toFixed(1)}" y="${ay.toFixed(1)}" width="${barW}" height="${Math.max(ah,1).toFixed(1)}" rx="2.5" fill="#2E4C81"><title>${p.label} · Talep: ${p.a}</title></rect>`;
-    bars += `<rect x="${bx.toFixed(1)}" y="${by.toFixed(1)}" width="${barW}" height="${Math.max(bh,1).toFixed(1)}" rx="2.5" fill="#2E7D5B"><title>${p.label} · Kişi: ${p.b}</title></rect>`;
+    const delay = (i*18).toFixed(0)+'ms';
+    bars += `<rect class="bar-grow" data-tip="${escAttr(p.label+' · Talep: '+p.a)}" style="transition-delay:${delay}" x="${ax.toFixed(1)}" y="${ay.toFixed(1)}" width="${barW}" height="${Math.max(ah,1).toFixed(1)}" rx="2.5" fill="#2E4C81"></rect>`;
+    bars += `<rect class="bar-grow" data-tip="${escAttr(p.label+' · Kişi: '+p.b)}" style="transition-delay:${delay}" x="${bx.toFixed(1)}" y="${by.toFixed(1)}" width="${barW}" height="${Math.max(bh,1).toFixed(1)}" rx="2.5" fill="#2E7D5B"></rect>`;
     const ly = h-10;
     labels += `<text x="${cx.toFixed(1)}" y="${ly}" text-anchor="${rotate?'end':'middle'}" font-size="8.5" fill="#7C8698" transform="${rotate?`rotate(-45 ${cx.toFixed(1)} ${ly})`:''}">${p.label}</text>`;
   });
@@ -943,8 +1005,9 @@ function svgHBarChart(points, opts={}){
   points.forEach((p,i)=>{
     const y = i*rowH + 6;
     const bw = (p.value/max)*innerW;
-    rows += `<text x="${labelW-8}" y="${y+13}" text-anchor="end" font-size="10" fill="#4B5566" font-weight="600"><title>${p.label}</title>${truncLabel(p.label)}</text>`;
-    rows += `<rect x="${labelW}" y="${y}" width="${Math.max(bw,2).toFixed(1)}" height="16" rx="4" fill="url(#hbarGrad)"><title>${p.label}: ${p.value}</title></rect>`;
+    const tip = escAttr(p.label+': '+p.value);
+    rows += `<text x="${labelW-8}" y="${y+13}" text-anchor="end" font-size="10" fill="#4B5566" font-weight="600">${truncLabel(p.label)}</text>`;
+    rows += `<rect class="hbar-grow" data-tip="${tip}" style="transition-delay:${(i*30).toFixed(0)}ms" x="${labelW}" y="${y}" width="${Math.max(bw,2).toFixed(1)}" height="16" rx="4" fill="url(#hbarGrad)"></rect>`;
     rows += `<text x="${labelW+bw+6}" y="${y+13}" font-size="10" fill="#16294A" font-weight="700">${p.value}</text>`;
   });
   return `<svg viewBox="0 0 ${w} ${h}" width="100%" height="${h}">
@@ -952,8 +1015,101 @@ function svgHBarChart(points, opts={}){
     ${rows}
   </svg>`;
 }
+const DONUT_COLORS = ['#2E4C81','#2E7D5B','#C1443A','#B07A17','#7C97C4','#8891A0','#5C4A8A'];
+function svgDonutChart(points, opts={}){
+  const size = 128, stroke = 20, r = (size-stroke)/2, cx = size/2, cy = size/2;
+  const circ = 2*Math.PI*r;
+  const total = points.reduce((s,p)=>s+p.value,0) || 1;
+  let offset = 0, segs = '';
+  points.forEach((p,i)=>{
+    const frac = p.value/total, len = frac*circ, gapLen = circ-len;
+    const color = DONUT_COLORS[i%DONUT_COLORS.length];
+    const pct = Math.round(frac*100);
+    const tip = escAttr(p.label+': '+p.value+' (%'+pct+')');
+    segs += `<circle class="donut-seg" data-tip="${tip}" data-final="${len.toFixed(1)} ${gapLen.toFixed(1)}" style="transition-delay:${(i*90).toFixed(0)}ms" cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${color}" stroke-width="${stroke}" stroke-dasharray="0 ${circ.toFixed(1)}" stroke-dashoffset="${(-offset).toFixed(1)}" transform="rotate(-90 ${cx} ${cy})"></circle>`;
+    offset += len;
+  });
+  const legend = points.map((p,i)=>{
+    const pct = Math.round(p.value/total*100);
+    const color = DONUT_COLORS[i%DONUT_COLORS.length];
+    const tip = escAttr(p.label+': '+p.value+' (%'+pct+')');
+    return `<div class="donut-legend-row" data-tip="${tip}"><i style="background:${color}"></i><span class="ll">${escAttr(truncLabel(p.label,22))}</span><span class="lv">${p.value}</span><span class="lp">%${pct}</span></div>`;
+  }).join('');
+  return `<div class="donut-row">
+    <div class="donut-wrap"><svg viewBox="0 0 ${size} ${size}">
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="rgba(15,25,45,.07)" stroke-width="${stroke}"/>
+      ${segs}
+    </svg><div class="donut-center"><div class="dc-n">${total}</div><div class="dc-l">Toplam</div></div></div>
+    <div class="donut-legend">${legend}</div>
+  </div>`;
+}
 
 /* ───────── İSTATİSTİKLER ───────── */
+function animateNumber(el, target, decimals){
+  const t0 = performance.now(), dur = 700;
+  function step(t){
+    const p = Math.min(1,(t-t0)/dur);
+    const eased = 1-Math.pow(1-p,3);
+    const val = target*eased;
+    el.textContent = decimals ? val.toFixed(decimals) : Math.round(val).toLocaleString('tr-TR');
+    if(p<1) requestAnimationFrame(step);
+    else el.textContent = decimals ? target.toFixed(decimals) : target.toLocaleString('tr-TR');
+  }
+  requestAnimationFrame(step);
+}
+const STAT_ICONS = {
+  total:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="14" y2="17"/></svg>',
+  clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 3.5"/></svg>',
+  calendar:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="3"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>',
+  warn:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 9v4"/><circle cx="12" cy="16.2" r=".3" fill="currentColor" stroke="none"/><path d="M10.3 4.5L2.7 18a1.6 1.6 0 001.4 2.4h16a1.6 1.6 0 001.4-2.4L13.7 4.5a1.6 1.6 0 00-2.8 0z"/></svg>',
+  users:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="9" r="2.4"/><path d="M15.8 14.2c2.6.3 4.7 2.5 4.7 5.3"/></svg>',
+  avg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V9M12 19V5M20 19v-7"/></svg>',
+};
+function statCardHTML(id, iconKey, label, value, decimals, warn){
+  return `<div class="stat-card"><div class="ic${warn?' warn':''}">${STAT_ICONS[iconKey]}</div><div class="n${warn?' warn':''}" id="${id}">0</div><div class="l">${label}</div></div>`;
+}
+
+let trendGranularity = 'day';
+function aggregateTrend(items, granularity){
+  const now = new Date();
+  const map = {}, order = [];
+  if(granularity==='day'){
+    for(let i=29;i>=0;i--){ const d=new Date(now.getFullYear(),now.getMonth(),now.getDate()-i); const k=dKey(d); map[k]={label:dLabel(d),a:0,b:0}; order.push(k); }
+    items.forEach(it=>{ const d=it.createdAt?new Date(it.createdAt):null; if(!d||isNaN(d))return; const k=dKey(new Date(d.getFullYear(),d.getMonth(),d.getDate())); if(map[k]){ map[k].a++; map[k].b+=Number(it.guests)||0; } });
+  } else if(granularity==='week'){
+    for(let i=11;i>=0;i--){
+      const ref = new Date(now.getTime()-i*7*86400000);
+      const dow = (ref.getDay()+6)%7;
+      const monday = new Date(ref.getFullYear(),ref.getMonth(),ref.getDate()-dow);
+      const k = dKey(monday);
+      if(!map[k]){ map[k]={label:dLabel(monday),a:0,b:0}; order.push(k); }
+    }
+    items.forEach(it=>{ const d=it.createdAt?new Date(it.createdAt):null; if(!d||isNaN(d))return; const dow=(d.getDay()+6)%7; const monday=new Date(d.getFullYear(),d.getMonth(),d.getDate()-dow); const k=dKey(monday); if(map[k]){ map[k].a++; map[k].b+=Number(it.guests)||0; } });
+  } else {
+    for(let i=11;i>=0;i--){
+      const d = new Date(now.getFullYear(),now.getMonth()-i,1);
+      const k = d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');
+      map[k] = { label: TR_MONTHS_LONG[d.getMonth()].slice(0,3), a:0, b:0 }; order.push(k);
+    }
+    items.forEach(it=>{ const d=it.createdAt?new Date(it.createdAt):null; if(!d||isNaN(d))return; const k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); if(map[k]){ map[k].a++; map[k].b+=Number(it.guests)||0; } });
+  }
+  return order.map(k=>map[k]);
+}
+function setTrendGranularity(g){
+  trendGranularity = g;
+  document.querySelectorAll('#trendSeg button').forEach(b=>b.classList.toggle('on', b.dataset.g===g));
+  renderTrendChart();
+}
+function renderTrendChart(){
+  const wrap = document.getElementById('trendChartWrap');
+  if(!wrap) return;
+  const points = aggregateTrend(RESERVATIONS, trendGranularity);
+  const subLabel = trendGranularity==='day' ? 'Son 30 gün · gönderim tarihine göre' : trendGranularity==='week' ? 'Son 12 hafta · gönderim tarihine göre' : 'Son 12 ay · gönderim tarihine göre';
+  document.getElementById('trendSub').textContent = subLabel;
+  wrap.innerHTML = `<div class="chart-legend"><span><i style="background:#2E4C81"></i>Talep</span><span><i style="background:#2E7D5B"></i>Kişi</span></div>${svgGroupedChart(points,{h:180})}`;
+  animateCharts(wrap);
+}
+
 function renderStats(){
   const items = RESERVATIONS;
   const now = new Date();
@@ -966,22 +1122,22 @@ function renderStats(){
   const avgGuests = withGuests ? (totalGuests/withGuests) : 0;
   const pendingCount = items.filter(it=>(it.status||'Beklemede')==='Beklemede').length;
 
-  document.getElementById('statGrid').innerHTML = `
-    <div class="stat-card"><div class="n">${items.length}</div><div class="l">Toplam Talep</div></div>
-    <div class="stat-card"><div class="n">${talep7}</div><div class="l">Son 7 Gün</div></div>
-    <div class="stat-card"><div class="n">${talep30}</div><div class="l">Son 30 Gün</div></div>
-    <div class="stat-card"><div class="n ${pendingCount?'warn':''}">${pendingCount}</div><div class="l">Bekleyen Onay</div></div>
-    <div class="stat-card"><div class="n">${totalGuests}</div><div class="l">Toplam Kişi</div></div>
-    <div class="stat-card"><div class="n">${avgGuests.toFixed(1)}</div><div class="l">Ort. Kişi / Talep</div></div>
-  `;
+  document.getElementById('statGrid').innerHTML =
+    statCardHTML('stTotal','total','Toplam Talep') +
+    statCardHTML('stWeek','clock','Son 7 Gün') +
+    statCardHTML('stMonth','calendar','Son 30 Gün') +
+    statCardHTML('stPending','warn','Bekleyen Onay',0,pendingCount>0) +
+    statCardHTML('stGuests','users','Toplam Kişi') +
+    statCardHTML('stAvg','avg','Ort. Kişi / Talep');
+  animateNumber(document.getElementById('stTotal'), items.length);
+  animateNumber(document.getElementById('stWeek'), talep7);
+  animateNumber(document.getElementById('stMonth'), talep30);
+  animateNumber(document.getElementById('stPending'), pendingCount);
+  animateNumber(document.getElementById('stGuests'), totalGuests);
+  animateNumber(document.getElementById('stAvg'), avgGuests, 1);
 
   const grid = document.getElementById('statCharts');
   if(!items.length){ grid.innerHTML = '<div class="chart-card"><div class="chart-empty">Grafikler için henüz veri yok.</div></div>'; return; }
-
-  const trendMap = {};
-  for(let i=29;i>=0;i--){ const d=new Date(now.getFullYear(),now.getMonth(),now.getDate()-i); trendMap[dKey(d)]={label:dLabel(d),value:0}; }
-  items.forEach(it=>{ const d=it.createdAt?new Date(it.createdAt):null; if(!d||isNaN(d))return; const k=dKey(new Date(d.getFullYear(),d.getMonth(),d.getDate())); if(trendMap[k]) trendMap[k].value++; });
-  const trendPoints = Object.values(trendMap);
 
   const byDate = {};
   items.forEach(it=>{ const d=parseTRDate(it.date); const label=d?dLabel(d):(it.date||'—'); const key=d?dKey(d):('x:'+label); if(!byDate[key]) byDate[key]={label,sortD:d,a:0,b:0}; byDate[key].a++; byDate[key].b+=Number(it.guests)||0; });
@@ -1005,18 +1161,31 @@ function renderStats(){
   const hrPoints = Object.entries(hrMap).map(([label,value])=>({label,value})).sort((a,b)=>a.label.localeCompare(b.label));
 
   grid.innerHTML = `
-    <div class="chart-card"><h3>Talep Trendi</h3><div class="sub">Son 30 gün · gönderim tarihine göre</div>${svgBarChart(trendPoints)}</div>
+    <div class="chart-card">
+      <div class="chart-card-head">
+        <div><h3>Talep Trendi</h3><div class="sub" id="trendSub"></div></div>
+        <div class="seg sm" id="trendSeg">
+          <button class="on" data-g="day" onclick="setTrendGranularity('day')">Gün</button>
+          <button data-g="week" onclick="setTrendGranularity('week')">Hafta</button>
+          <button data-g="month" onclick="setTrendGranularity('month')">Ay</button>
+        </div>
+      </div>
+      <div id="trendChartWrap"></div>
+    </div>
     <div class="chart-card"><h3>Rezervasyon Tarihine Göre Talep &amp; Kişi</h3><div class="sub">Müşterinin seçtiği tarihe göre gruplanmış</div>
       <div class="chart-legend"><span><i style="background:#2E4C81"></i>Talep</span><span><i style="background:#2E7D5B"></i>Kişi</span></div>${svgGroupedChart(datePoints)}</div>
-    <div class="chart-card"><h3>Kaynak Dağılımı</h3><div class="sub">Otel müşterisi, Instagram, telefon, walk-in</div>${svgHBarChart(chPoints)}</div>
-    <div class="chart-card"><h3>Konaklama Tercihi</h3><div class="sub">Tüm taleplerdeki oran</div>${svgHBarChart(konPoints)}</div>
-    <div class="chart-card"><h3>Durum Dağılımı</h3><div class="sub">Beklemede / onaylandı / tamamlandı / iptal</div>${svgHBarChart(stPoints)}</div>
+    <div class="chart-card"><h3>Kaynak Dağılımı</h3><div class="sub">Otel müşterisi, Instagram, telefon, walk-in</div>${svgDonutChart(chPoints)}</div>
+    <div class="chart-card"><h3>Konaklama Tercihi</h3><div class="sub">Tüm taleplerdeki oran</div>${svgDonutChart(konPoints)}</div>
+    <div class="chart-card"><h3>Durum Dağılımı</h3><div class="sub">Beklemede / onaylandı / tamamlandı / iptal</div>${svgDonutChart(stPoints)}</div>
     <div class="chart-card"><h3>Saat Dağılımı</h3><div class="sub">En çok tercih edilen rezervasyon saatleri</div>${svgHBarChart(hrPoints)}</div>
   `;
+  renderTrendChart();
+  animateCharts(grid);
 }
 
 /* ───────── boot ───────── */
 setPageSub();
+bindTipEvents();
 if(ADMIN_KEY){
   document.getElementById('login').style.display='none';
   document.getElementById('app').style.display='block';
