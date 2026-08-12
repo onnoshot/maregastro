@@ -176,22 +176,22 @@ a{color:inherit}
 .cal-dow-row{display:grid;grid-template-columns:repeat(7,1fr);margin-bottom:6px}
 .cal-dow{font-size:10px;color:var(--ink3);text-align:center;font-weight:700;letter-spacing:.02em}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
-.cal-cell{position:relative;aspect-ratio:1/1;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:none;border:none;color:var(--ink)}
-.cal-cell.off{color:var(--ink3);opacity:.4}
+.cal-cell{position:relative;aspect-ratio:1/1;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;background:none;border:none;color:var(--ink);transition:background .15s}
+.cal-cell.off{color:var(--ink3);opacity:.35}
 .cal-cell .dnum{font-size:12.5px;font-weight:600}
+.cal-cell.load-1{background:rgba(46,76,129,.07)}
+.cal-cell.load-2{background:rgba(46,76,129,.15)}
+.cal-cell.load-3{background:rgba(46,76,129,.25)}
+.cal-cell.load-4{background:rgba(46,76,129,.38)}
+.cal-count{font-size:8.5px;font-weight:800;color:var(--gold-deep);opacity:.8;letter-spacing:-.01em}
+.cal-cell.off .cal-count{display:none}
 .cal-cell.today .dnum{color:var(--gold-deep);font-weight:800}
 .cal-cell.today::after{content:'';position:absolute;inset:1px;border:1.5px solid var(--gold-soft);border-radius:12px}
 .cal-cell.sel{background:linear-gradient(135deg,var(--gold-soft),var(--gold));box-shadow:var(--shadow-sm)}
 .cal-cell.sel .dnum{color:#FFFFFF;font-weight:800}
-.cal-dots{display:flex;gap:2px;height:5px}
-.cal-dot{width:4.5px;height:4.5px;border-radius:50%}
-.cal-dot.st-pending{background:var(--gold-deep)}
-.cal-dot.st-confirmed{background:var(--sage)}
-.cal-dot.st-cancelled{background:var(--red)}
-.cal-dot.st-done{background:var(--ink3)}
-.cal-cell.sel .cal-dot{background:#FFFFFF !important;opacity:.65}
-.cal-more{font-size:7px;font-weight:800;color:var(--ink3)}
-.cal-cell.sel .cal-more{color:#FFFFFF}
+.cal-cell.sel .cal-count{color:#FFFFFF;opacity:.85}
+.cal-legend{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:12px;font-size:9.5px;color:var(--ink3);font-weight:600}
+.cal-legend .sw{width:12px;height:12px;border-radius:4px;display:inline-block}
 
 .daypanel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
 .daypanel-head h3{font-size:.95rem;font-weight:700}
@@ -315,6 +315,14 @@ a{color:inherit}
         </div>
         <div class="cal-dow-row" id="calDowRow"></div>
         <div class="cal-grid" id="calGrid"></div>
+        <div class="cal-legend">
+          <span>Az</span>
+          <i class="sw" style="background:rgba(46,76,129,.07)"></i>
+          <i class="sw" style="background:rgba(46,76,129,.15)"></i>
+          <i class="sw" style="background:rgba(46,76,129,.25)"></i>
+          <i class="sw" style="background:rgba(46,76,129,.38)"></i>
+          <span>Yoğun</span>
+        </div>
       </div>
       <div class="daypanel-head">
         <h3 id="dayPanelTitle"></h3>
@@ -709,7 +717,7 @@ function renderRezList(){
   });
   items = items.slice().sort((a,b)=>{
     const da=parseTRDate(a.date), db=parseTRDate(b.date);
-    if(da&&db){ const diff=da-db; if(diff!==0) return diff; return (a.time||'').localeCompare(b.time||''); }
+    if(da&&db){ const diff=db-da; if(diff!==0) return diff; return (a.time||'').localeCompare(b.time||''); }
     if(da) return -1; if(db) return 1;
     return (b.createdAt||'').localeCompare(a.createdAt||'');
   });
@@ -828,20 +836,28 @@ function renderCalendar(){
     byDate[k].push(it);
   });
 
+  // Yoğunluk: iptal hariç toplam kişi sayısına göre, ay içindeki en yoğun güne göre bağıl ölçek
+  let maxGuests = 0;
+  Object.values(byDate).forEach(list=>{
+    const g = list.filter(it=>it.status!=='İptal Edildi').reduce((s,it)=>s+(Number(it.guests)||0),0);
+    if(g>maxGuests) maxGuests = g;
+  });
+
   let cellsHtml = '';
   const totalCells = Math.ceil((startOffset+daysInMonth)/7)*7;
   for(let i=0;i<totalCells;i++){
     const d = new Date(gridStart.getFullYear(),gridStart.getMonth(),gridStart.getDate()+i);
     const k = dKey(d);
     const list = byDate[k]||[];
+    const active = list.filter(it=>it.status!=='İptal Edildi');
+    const guests = active.reduce((s,it)=>s+(Number(it.guests)||0),0);
+    const level = guests && maxGuests ? Math.min(4, Math.max(1, Math.ceil(guests/maxGuests*4))) : 0;
     const inMonth = d.getMonth()===calMonth;
     const isToday = sameDay(d, today0);
     const isSel = calSelDate && sameDay(d, calSelDate);
-    const dots = list.slice(0,3).map(it=>`<span class="cal-dot ${statusClass(it.status)}"></span>`).join('');
-    const more = list.length>3 ? `<span class="cal-more">+${list.length-3}</span>` : '';
-    cellsHtml += `<button class="cal-cell ${inMonth?'':'off'} ${isToday?'today':''} ${isSel?'sel':''}" onclick="selectCalDay('${k}')">
+    cellsHtml += `<button class="cal-cell ${inMonth?'':'off'} ${isToday?'today':''} ${isSel?'sel':''} load-${level}" onclick="selectCalDay('${k}')">
       <div class="dnum">${d.getDate()}</div>
-      <div class="cal-dots">${dots}${more}</div>
+      ${active.length?`<div class="cal-count">${active.length}</div>`:''}
     </button>`;
   }
   document.getElementById('calGrid').innerHTML = cellsHtml;
