@@ -1,16 +1,19 @@
 // Mare Gastro - Rezervasyon API (Node.js serverless, Vercel Blob)
-// POST (public): site formundan gelen rezervasyon talebini kaydeder.
-// GET (token):   tum talepleri listeler (dashboard "Rezervasyonlar" sekmesi).
+// POST (public):   site formundan veya dashboard'dan gelen rezervasyon talebini kaydeder.
+// GET (token):      tum talepleri listeler (dashboard okur).
+// PATCH (token):    var olan bir talebi gunceller (durum, kisi, not, vb).
+// DELETE (token):   bir talebi siler.
 //
 // Gerekli env: BLOB_READ_WRITE_TOKEN (Vercel Blob otomatik saglar), MARE_ADMIN_KEY
-import { put, list } from '@vercel/blob';
+import { put, list, del } from '@vercel/blob';
 import crypto from 'node:crypto';
 
 const PREFIX = 'reservation/';
+const STATUSES = ['Beklemede', 'Onaylandı', 'İptal Edildi', 'Tamamlandı'];
 
 function cors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, x-admin-key');
 }
 function send(res, status, body) {
@@ -36,6 +39,12 @@ async function readJson(req) {
 }
 function bust(url) { return url + (url.includes('?') ? '&' : '?') + '_cb=' + Date.now(); }
 
+async function findBlob(id) {
+  const path = PREFIX + id + '.json';
+  const r = await list({ prefix: path, limit: 1 });
+  return r.blobs.find((b) => b.pathname === path) || null;
+}
+
 async function tgSend(text) {
   const token = process.env.TG_BOT_TOKEN, chatId = process.env.TG_CHAT_ID;
   if (!token || !chatId) return;
@@ -56,12 +65,17 @@ export default async function handler(req, res) {
     for (const k of ['name', 'phone', 'date', 'time']) {
       if (!b[k] || !String(b[k]).trim()) return send(res, 400, { error: 'Eksik alan: ' + k });
     }
+    const isManual = authed(req) && !!req.headers['x-admin-key'];
+    const status = STATUSES.includes(b.status) ? b.status : (isManual ? 'Onaylandı' : 'Beklemede');
     const rec = {
       id: makeId(), createdAt: new Date().toISOString(),
       name: String(b.name).trim(), phone: String(b.phone).trim(), email: String(b.email || '').trim(),
       date: String(b.date).trim(), time: String(b.time).trim(),
       guests: Number(b.guests) || null, konaklama: String(b.konaklama || '').trim(),
       channel: String(b.channel || 'Doğrudan').trim().slice(0, 40),
+      note: String(b.note || '').trim().slice(0, 500),
+      status,
+      source: isManual ? 'manual' : 'site',
       referrer: String(b.referrer || '').trim().slice(0, 300),
       utm: String(b.utm || '').trim().slice(0, 60),
     };
@@ -73,15 +87,19 @@ export default async function handler(req, res) {
     } catch (e) {
       return send(res, 500, { error: 'Kayit yazilamadi: ' + (e.message || e) });
     }
-    await tgSend(
-      '<b>Yeni Rezervasyon Talebi</b>\n' +
-      'Ad Soyad: ' + rec.name + '\n' +
-      'Telefon: ' + rec.phone + '\n' +
-      (rec.email ? 'E-posta: ' + rec.email + '\n' : '') +
-      'Tarih: ' + rec.date + '  Saat: ' + rec.time + '\n' +
-      'Kisi: ' + (rec.guests || '-') + '  Konaklama: ' + (rec.konaklama || '-')
-    );
-    return send(res, 200, { ok: true, id: rec.id });
+    if (!isManual) {
+      await tgSend(
+        '<b>Yeni Rezervasyon Talebi</b>\n' +
+        'Ad Soyad: ' + rec.name + '\n' +
+        'Telefon: ' + rec.phone + '\n' +
+        (rec.email ? 'E-posta: ' + rec.email + '\n' : '') +
+        'Tarih: ' + rec.date + '  Saat: ' + rec.time + '\n' +
+        'Kisi: ' + (rec.guests || '-') + '  Konaklama: ' + (rec.konaklama || '-') + '\n' +
+        'Kaynak: ' + rec.channel +
+        (rec.note ? '\nNot: ' + rec.note : '')
+      );
+    }
+    return send(res, 200, { ok: true, id: rec.id, item: rec });
   }
 
   if (req.method === 'GET') {
@@ -102,6 +120,53 @@ export default async function handler(req, res) {
       return send(res, 200, { ok: true, count: out.length, items: out });
     } catch (e) {
       return send(res, 500, { error: 'Liste alinamadi: ' + (e.message || e) });
+    }
+  }
+
+  if (req.method === 'PATCH') {
+    if (!authed(req)) return send(res, 401, { error: 'Yetkisiz' });
+    let b;
+    try { b = await readJson(req); } catch (e) { return send(res, 400, { error: 'Gecersiz istek' }); }
+    const id = String(b.id || '').trim();
+    if (!id) return send(res, 400, { error: 'id gerekli' });
+    try {
+      const blob = await findBlob(id);
+      if (!blob) return send(res, 404, { error: 'Kayit bulunamadi' });
+      const r = await fetch(bust(blob.url), { cache: 'no-store' });
+      if (!r.ok) return send(res, 500, { error: 'Kayit okunamadi' });
+      const cur = await r.json();
+      const editable = ['name', 'phone', 'email', 'date', 'time', 'guests', 'konaklama', 'channel', 'note', 'status'];
+      const next = { ...cur };
+      for (const k of editable) {
+        if (b[k] === undefined) continue;
+        if (k === 'guests') next.guests = Number(b.guests) || null;
+        else if (k === 'status') next.status = STATUSES.includes(b.status) ? b.status : cur.status;
+        else next[k] = String(b[k]).trim();
+      }
+      next.updatedAt = new Date().toISOString();
+      await put(PREFIX + id + '.json', JSON.stringify(next), {
+        access: 'public', contentType: 'application/json', addRandomSuffix: false,
+        allowOverwrite: true, cacheControlMaxAge: 0,
+      });
+      return send(res, 200, { ok: true, item: next });
+    } catch (e) {
+      return send(res, 500, { error: 'Guncellenemedi: ' + (e.message || e) });
+    }
+  }
+
+  if (req.method === 'DELETE') {
+    if (!authed(req)) return send(res, 401, { error: 'Yetkisiz' });
+    let id = req.query && req.query.id;
+    if (!id) { try { const b = await readJson(req); id = b.id; } catch (e) { /* yok say */ } }
+    id = String(id || '').trim();
+    if (!id) return send(res, 400, { error: 'id gerekli' });
+    try {
+      const blob = await findBlob(id);
+      if (!blob) return send(res, 404, { error: 'Kayit bulunamadi' });
+      await del(blob.url);
+      return send(res, 200, { ok: true });
+    } catch (e) {
+      return send(res, 500, { error: 'Silinemedi: ' + (e.message || e) });
     }
   }
 
