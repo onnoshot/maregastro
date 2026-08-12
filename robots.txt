@@ -1,34 +1,45 @@
 User-agent: *
 Allow: /
+Disallow: /admingiris/
 
 User-agent: GPTBot
 Allow: /
+Disallow: /admingiris/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /admingiris/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /admingiris/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /admingiris/
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /admingiris/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /admingiris/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /admingiris/
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /admingiris/
 
 User-agent: CCBot
 Allow: /
+Disallow: /admingiris/
 
 User-agent: Bytespider
 Allow: /
+Disallow: /admingiris/
 
 Sitemap: https://maregastro.com/sitemap.xml

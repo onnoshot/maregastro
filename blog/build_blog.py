@@ -1296,8 +1296,8 @@ def build_sitemap():
     with open(os.path.join(root,"sitemap.xml"),"w",encoding="utf-8") as f: f.write(xml)
     ai_bots = ["GPTBot","ChatGPT-User","OAI-SearchBot","ClaudeBot","anthropic-ai",
                "PerplexityBot","Google-Extended","Applebot-Extended","CCBot","Bytespider"]
-    robots = ("User-agent: *\nAllow: /\n\n"
-              + "".join("User-agent: %s\nAllow: /\n\n" % b for b in ai_bots)
+    robots = ("User-agent: *\nAllow: /\nDisallow: /admingiris/\n\n"
+              + "".join("User-agent: %s\nAllow: /\nDisallow: /admingiris/\n\n" % b for b in ai_bots)
               + "Sitemap: %s/sitemap.xml\n" % SITE)
     with open(os.path.join(root,"robots.txt"),"w",encoding="utf-8") as f: f.write(robots)
 
