@@ -2926,22 +2926,27 @@ button.mc-daynum:active{transform:scale(.86)}
 .mc-day.sel .mc-daynum.mc-pop{animation:mcPop .4s var(--ease)}
 @keyframes mcPop{0%{transform:scale(.55);box-shadow:0 0 0 rgba(200,169,110,0)}55%{transform:scale(1.14)}100%{transform:scale(1)}}
 .mc-day.disabled .mc-daynum{color:rgba(237,232,220,.12);cursor:default}
-.mc-day-icons{display:flex;gap:2px;justify-content:center;flex-wrap:wrap}
-.mc-ev-icon{width:13px;height:13px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#04080F;transition:transform .2s var(--ease)}
-.mc-ev-icon svg{width:7.5px;height:7.5px}
-.mc-ev-icon:hover{transform:scale(1.25)}
+.mc-day-dots{display:flex;gap:3px;justify-content:center;margin-top:1px}
+.mc-day-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
 .mc-event-detail{
-  display:none;align-items:flex-start;gap:12px;margin-top:12px;padding:14px;
+  display:none;flex-direction:column;gap:12px;margin-top:12px;padding:14px;
   background:rgba(255,255,255,.04);border:1px solid var(--glassBorder);border-radius:12px;
   position:relative;
 }
 .mc-event-detail.show{display:flex;animation:fadeUp .35s var(--ease)}
-.mc-detail-close{position:absolute;top:8px;right:10px;background:none;border:none;color:var(--muted);font-size:16px;line-height:1;cursor:pointer}
+.mc-detail-close{position:absolute;top:8px;right:10px;background:none;border:none;color:var(--muted);font-size:16px;line-height:1;cursor:pointer;z-index:1}
+.mc-detail-switcher{display:none;gap:6px}
+.mc-detail-switcher.show{display:flex}
+.mc-switch-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;opacity:.4;transition:all .2s var(--ease)}
+.mc-switch-dot.on{opacity:1;transform:scale(1.25)}
+.mc-detail-main{display:flex;align-items:flex-start;gap:12px}
 .mc-detail-icon{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .mc-detail-icon svg{width:16px;height:16px}
 .mc-detail-date{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber2);margin-bottom:3px}
 .mc-detail-title{font-family:var(--ital);font-size:1.05rem;color:var(--cream);margin-bottom:3px}
 .mc-detail-desc{font-size:11px;color:var(--muted);line-height:1.6}
+.mc-detail-ig{display:none;max-width:280px;margin:0 auto;border-radius:12px;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,.4)}
+.mc-detail-ig.show{display:block}
 
 /* Saat açılır listesi */
 .time-dd-wrap{position:relative;margin-bottom:14px}
@@ -3410,12 +3415,16 @@ button.mc-daynum:active{transform:scale(.86)}
             <div class="mc-grid" id="mcGrid"></div>
             <div class="mc-event-detail" id="mcEventDetail">
               <button type="button" class="mc-detail-close" onclick="closeMcDetail()" aria-label="Close">×</button>
-              <div class="mc-detail-icon" id="mcDetailIcon"></div>
-              <div class="mc-detail-body">
-                <div class="mc-detail-date" id="mcDetailDate"></div>
-                <div class="mc-detail-title" id="mcDetailTitle"></div>
-                <div class="mc-detail-desc" id="mcDetailDesc"></div>
+              <div class="mc-detail-switcher" id="mcDetailSwitcher"></div>
+              <div class="mc-detail-main">
+                <div class="mc-detail-icon" id="mcDetailIcon"></div>
+                <div class="mc-detail-body">
+                  <div class="mc-detail-date" id="mcDetailDate"></div>
+                  <div class="mc-detail-title" id="mcDetailTitle"></div>
+                  <div class="mc-detail-desc" id="mcDetailDesc"></div>
+                </div>
               </div>
+              <div class="mc-detail-ig" id="mcDetailIg"></div>
             </div>
           </div>
                     <div class="rez-err" id="err1"></div>
@@ -3774,13 +3783,25 @@ function renderMiniCal(){
     if(d.getTime()===mcToday0.getTime())cls.push('today');
     if(selVal===iso)cls.push('sel');
     const dayEvents=byDate[iso]||[];
-    const iconsHtml=dayEvents.length?`<div class="mc-day-icons">${dayEvents.slice(0,3).map((e,idx)=>
-      `<span class="mc-ev-icon" style="background:${e.color||'#C8A96E'}" onclick="event.stopPropagation();mcShowDetail('${iso}',${idx})">${iconSvg(e.icon||'star',2.2)}</span>`
+    const dotsHtml=dayEvents.length?`<div class="mc-day-dots">${dayEvents.slice(0,3).map(e=>
+      `<span class="mc-day-dot" style="background:${e.color||'#C8A96E'}"></span>`
     ).join('')}</div>`:'';
-    if(d<mcToday0){cls.push('disabled');html+=`<div class="${cls.join(' ')}"><span class="mc-daynum">${d.getDate()}</span>${iconsHtml}</div>`;}
-    else html+=`<div class="${cls.join(' ')}"><button type="button" class="mc-daynum" data-iso="${iso}" onclick="mcSelectDay('${iso}')">${d.getDate()}</button>${iconsHtml}</div>`;
+    if(d<mcToday0){cls.push('disabled');html+=`<div class="${cls.join(' ')}"><span class="mc-daynum">${d.getDate()}</span>${dotsHtml}</div>`;}
+    else html+=`<div class="${cls.join(' ')}"><button type="button" class="mc-daynum" data-iso="${iso}" onclick="mcSelectDay('${iso}')">${d.getDate()}</button>${dotsHtml}</div>`;
   }
   document.getElementById('mcGrid').innerHTML=html;
+}
+let igEmbedPromise=null;
+function loadInstagramEmbed(){
+  if(window.instgrm)return Promise.resolve();
+  if(igEmbedPromise)return igEmbedPromise;
+  igEmbedPromise=new Promise((resolve)=>{
+    const s=document.createElement('script');
+    s.async=true;s.src='https://www.instagram.com/embed.js';
+    s.onload=()=>resolve();s.onerror=()=>resolve();
+    document.body.appendChild(s);
+  });
+  return igEmbedPromise;
 }
 function mcShowDetail(iso,idx){
   const list=(EVENTS_CACHE||[]).filter(e=>e.date===iso);
@@ -3797,6 +3818,21 @@ function mcShowDetail(iso,idx){
   const descEl=document.getElementById('mcDetailDesc');
   descEl.textContent=ev.description||'';
   descEl.style.display=ev.description?'block':'none';
+
+  const switcher=document.getElementById('mcDetailSwitcher');
+  if(list.length>1){
+    switcher.innerHTML=list.map((e,i)=>`<button type="button" class="mc-switch-dot ${i===idx?'on':''}" style="background:${e.color||'#C8A96E'}" onclick="mcShowDetail('${iso}',${i})" aria-label="${escHtml(e.title)}"></button>`).join('');
+    switcher.classList.add('show');
+  } else switcher.classList.remove('show');
+
+  const igEl=document.getElementById('mcDetailIg');
+  if(ev.instagram_url){
+    igEl.innerHTML=`<blockquote class="instagram-media" data-instgrm-permalink="${ev.instagram_url}" data-instgrm-version="14" style="margin:0;width:100%"></blockquote>`;
+    igEl.classList.add('show');
+    loadInstagramEmbed().then(()=>{ if(window.instgrm)window.instgrm.Embeds.process(); });
+  } else {
+    igEl.innerHTML='';igEl.classList.remove('show');
+  }
   document.getElementById('mcEventDetail').classList.add('show');
 }
 function closeMcDetail(){ document.getElementById('mcEventDetail').classList.remove('show'); }
@@ -3809,6 +3845,9 @@ function mcSelectDay(iso){
     btn.closest('.mc-day').classList.add('sel');
     btn.classList.remove('mc-pop');void btn.offsetWidth;btn.classList.add('mc-pop');
   }
+  const dayEvents=(EVENTS_CACHE||[]).filter(e=>e.date===iso);
+  if(dayEvents.length)mcShowDetail(iso,0);
+  else closeMcDetail();
 }
 renderMiniCal();
 

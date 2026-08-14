@@ -67,6 +67,7 @@ export default async function handler(req, res) {
       icon: ICONS.includes(b.icon) ? b.icon : 'star',
       color: sanitizeColor(b.color, '#C8A96E'),
       description: String(b.description || '').trim().slice(0, 300),
+      instagram_url: /^https:\/\//.test(b.instagram_url || '') ? String(b.instagram_url).trim().slice(0, 300) : '',
     };
     try {
       await put(PREFIX + rec.id + '.json', JSON.stringify(rec), {
@@ -111,7 +112,7 @@ export default async function handler(req, res) {
       const r = await fetch(bust(blob.url), { cache: 'no-store' });
       if (!r.ok) return send(res, 500, { error: 'Kayit okunamadi' });
       const cur = await r.json();
-      const editable = ['title', 'date', 'time', 'category', 'icon', 'color', 'description'];
+      const editable = ['title', 'date', 'time', 'category', 'icon', 'color', 'description', 'instagram_url'];
       const next = { ...cur };
       for (const k of editable) {
         if (b[k] === undefined) continue;
@@ -120,6 +121,7 @@ export default async function handler(req, res) {
         else if (k === 'color') next.color = sanitizeColor(b.color, cur.color);
         else if (k === 'title') next.title = String(b.title).trim().slice(0, 120);
         else if (k === 'description') next.description = String(b.description).trim().slice(0, 300);
+        else if (k === 'instagram_url') next.instagram_url = /^https:\/\//.test(b.instagram_url || '') ? String(b.instagram_url).trim().slice(0, 300) : '';
         else next[k] = String(b[k]).trim();
       }
       next.updatedAt = new Date().toISOString();
