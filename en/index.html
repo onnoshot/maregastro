@@ -2435,13 +2435,38 @@ nav{
 @media(min-width:768px){
   .rez-inner{flex-direction:row;padding:40px 48px;align-items:flex-start;gap:64px}
 }
-.rez-left{flex-shrink:0}
+.rez-left{flex-shrink:0;position:relative}
 @media(min-width:768px){.rez-left{width:220px;padding-top:8px}}
 .r-eyebrow{font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:14px}
 .r-title{font-family:var(--ital);font-weight:300;font-size:clamp(1.9rem,5vw,3rem);line-height:1.05;color:var(--cream);margin-bottom:14px}
 .r-title em{font-style:italic;color:var(--amber2)}
 .r-body{font-size:12px;font-weight:300;line-height:1.85;color:var(--muted)}
 @media(max-width:767px){.r-body{display:none}}
+
+/* Etkinlik bilgi ikonu */
+.ev-info-btn{
+  display:inline-flex;align-items:center;gap:7px;margin-top:18px;
+  background:var(--glass);border:1px solid var(--glassBorder);
+  border-radius:100px;padding:8px 16px;
+  font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--amber2);cursor:pointer;transition:all .25s var(--ease);
+}
+.ev-info-btn:hover{border-color:rgba(200,169,110,.4);background:rgba(200,169,110,.08)}
+.ev-popover{
+  display:none;position:absolute;z-index:20;margin-top:10px;width:min(320px,86vw);
+  background:rgba(10,15,20,.97);backdrop-filter:blur(20px);
+  border:1px solid var(--glassBorder);border-radius:16px;padding:16px;
+  box-shadow:0 20px 50px rgba(0,0,0,.4);
+}
+.ev-popover.show{display:block;animation:fadeUp .35s var(--ease)}
+.ev-pop-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+.ev-pop-close{background:none;border:none;color:var(--muted);font-size:18px;line-height:1;cursor:pointer;padding:0 2px}
+.ev-pop-list{display:flex;flex-direction:column;gap:12px;max-height:280px;overflow-y:auto}
+.ev-pop-item{padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.06)}
+.ev-pop-item:last-child{border-bottom:none;padding-bottom:0}
+.ev-pop-date{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber2);margin-bottom:4px}
+.ev-pop-title{font-family:var(--ital);font-size:1rem;color:var(--cream);margin-bottom:3px}
+.ev-pop-desc{font-size:11px;color:var(--muted);line-height:1.6}
 
 /* Form card */
 .rez-card{
@@ -2863,8 +2888,91 @@ nav{
   box-shadow:0 0 0 3px rgba(200,169,110,.07);
 }
 
-/* Time pills — wider, more visual */
-.time-grid{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+/* Custom mini takvim (tarih seçici) — öne çıkan, her zaman açık */
+.mini-cal{
+  position:relative;width:100%;margin-bottom:16px;
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--glassBorder);border-radius:18px;padding:16px;
+}
+.mc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.mc-head span{font-family:var(--ital);font-size:1.2rem;font-weight:500;color:var(--cream);letter-spacing:.01em;transition:opacity .2s}
+.mc-nav{width:30px;height:30px;border-radius:50%;background:var(--glass);border:1px solid var(--glassBorder);color:var(--amber2);font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s var(--ease)}
+.mc-nav:hover{background:rgba(200,169,110,.16);border-color:rgba(200,169,110,.45)}
+.mc-nav:active{transform:scale(.86)}
+.mc-dow{display:grid;grid-template-columns:repeat(7,1fr);margin-bottom:6px}
+.mc-dow span{font-size:9.5px;font-weight:600;text-align:center;color:var(--muted);letter-spacing:.08em;display:block}
+.mc-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;overflow:hidden}
+.mc-day{
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:3px;
+  min-height:48px;padding-top:3px;border-radius:10px;
+  animation:mcCellIn .32s var(--ease) backwards;
+}
+.mc-grid.back .mc-day{animation:mcCellInBack .32s var(--ease) backwards}
+@keyframes mcCellIn{from{opacity:0;transform:translateX(9px)}to{opacity:1;transform:translateX(0)}}
+@keyframes mcCellInBack{from{opacity:0;transform:translateX(-9px)}to{opacity:1;transform:translateX(0)}}
+.mc-daynum{
+  width:30px;height:30px;display:flex;align-items:center;justify-content:center;
+  border-radius:50%;font-size:13px;font-weight:500;color:var(--cream);background:none;border:none;
+  transition:all .2s var(--ease);
+}
+button.mc-daynum:hover{background:rgba(200,169,110,.14);color:var(--amber)}
+button.mc-daynum:active{transform:scale(.86)}
+.mc-day.off .mc-daynum{color:rgba(237,232,220,.16)}
+.mc-day.today .mc-daynum{color:var(--amber);font-weight:700}
+.mc-day.sel .mc-daynum{
+  background:var(--amber);color:var(--bg);font-weight:700;
+  box-shadow:0 4px 16px rgba(200,169,110,.45),0 0 0 1px rgba(200,169,110,.15);
+}
+.mc-day.sel .mc-daynum.mc-pop{animation:mcPop .4s var(--ease)}
+@keyframes mcPop{0%{transform:scale(.55);box-shadow:0 0 0 rgba(200,169,110,0)}55%{transform:scale(1.14)}100%{transform:scale(1)}}
+.mc-day.disabled .mc-daynum{color:rgba(237,232,220,.12);cursor:default}
+.mc-day-icons{display:flex;gap:2px;justify-content:center;flex-wrap:wrap}
+.mc-ev-icon{width:13px;height:13px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#04080F;transition:transform .2s var(--ease)}
+.mc-ev-icon svg{width:7.5px;height:7.5px}
+.mc-ev-icon:hover{transform:scale(1.25)}
+.mc-event-detail{
+  display:none;align-items:flex-start;gap:12px;margin-top:12px;padding:14px;
+  background:rgba(255,255,255,.04);border:1px solid var(--glassBorder);border-radius:12px;
+  position:relative;
+}
+.mc-event-detail.show{display:flex;animation:fadeUp .35s var(--ease)}
+.mc-detail-close{position:absolute;top:8px;right:10px;background:none;border:none;color:var(--muted);font-size:16px;line-height:1;cursor:pointer}
+.mc-detail-icon{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mc-detail-icon svg{width:16px;height:16px}
+.mc-detail-date{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber2);margin-bottom:3px}
+.mc-detail-title{font-family:var(--ital);font-size:1.05rem;color:var(--cream);margin-bottom:3px}
+.mc-detail-desc{font-size:11px;color:var(--muted);line-height:1.6}
+
+/* Saat açılır listesi */
+.time-dd-wrap{position:relative;margin-bottom:14px}
+.time-dd-trigger{
+  display:flex;align-items:center;gap:10px;width:100%;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;padding:11px 14px;
+  font-family:var(--sf);font-size:14px;color:var(--muted);
+  transition:border-color .3s,background .3s;text-align:left;
+}
+.time-dd-trigger span.picked{color:var(--cream)}
+.time-dd-trigger:hover{border-color:rgba(200,169,110,.35)}
+.time-dd-chevron{margin-left:auto;flex-shrink:0;transition:transform .25s var(--ease)}
+.time-dd-trigger.open .time-dd-chevron{transform:rotate(180deg)}
+.time-list{
+  display:none;position:absolute;z-index:12;top:calc(100% + 8px);left:0;width:100%;
+  flex-direction:column;gap:5px;max-height:230px;overflow-y:auto;padding:10px;padding-right:8px;scrollbar-width:thin;
+  background:rgba(10,15,20,.98);backdrop-filter:blur(20px);
+  border:1px solid var(--glassBorder);border-radius:14px;
+  box-shadow:0 20px 50px rgba(0,0,0,.45);
+}
+.time-list.show{display:flex;animation:fadeUp .3s var(--ease)}
+.time-list::-webkit-scrollbar{width:4px}
+.time-list::-webkit-scrollbar-thumb{background:rgba(200,169,110,.25);border-radius:4px}
+.time-list .tpill{
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  min-width:auto;text-align:left;flex-shrink:0;padding:10px 14px;
+}
+.time-list .tpill::after{content:'';width:14px;height:14px;border-radius:50%;border:1.5px solid rgba(255,255,255,.15);flex-shrink:0;transition:all .2s var(--ease)}
+.time-list .tpill.on::after{border-color:var(--amber);background:var(--amber)}
+
 .tpill{
   background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.08);
@@ -3253,6 +3361,17 @@ nav{
         <span class="r-eyebrow">Reservations</span>
         <h2 class="r-title">Reserve<br>your <em>table</em></h2>
         <p class="r-body">Create your reservation for an exceptional evening on the shores of Lake Sapanca. Complete it in three steps, and we will confirm via WhatsApp.</p>
+            <button type="button" class="ev-info-btn" id="evInfoBtn" style="display:none" onclick="toggleEvPopover()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9.5"/><line x1="12" y1="11" x2="12" y2="16.5"/><circle cx="12" cy="7.7" r="1" fill="currentColor" stroke="none"/></svg>
+        Upcoming Events
+      </button>
+      <div class="ev-popover" id="evPopover">
+        <div class="ev-pop-head">
+          <span>Upcoming Events</span>
+          <button type="button" class="ev-pop-close" onclick="toggleEvPopover(false)" aria-label="Close">×</button>
+        </div>
+        <div class="ev-pop-list" id="evPopList"></div>
+      </div>
       </div>
 
       <div class="rez-card rv rv2">
@@ -3260,12 +3379,12 @@ nav{
         <div class="prog-bar" id="progBar">
           <div class="pstep curstep" id="ps1">
             <div class="pstep-dot active" id="pd1">1</div>
-            <div class="pstep-label">Time</div>
+            <div class="pstep-label">Date</div>
           </div>
           <div class="pline" id="pl1"></div>
           <div class="pstep" id="ps2">
             <div class="pstep-dot" id="pd2">2</div>
-            <div class="pstep-label">Stay</div>
+            <div class="pstep-label">Info</div>
           </div>
           <div class="pline" id="pl2"></div>
           <div class="pstep" id="ps3">
@@ -3278,28 +3397,47 @@ nav{
         <div class="rstep on" id="rs1">
           <div class="rez-step-header">
             <p>When would you like to join us?</p>
-            <small>Choose your date, time and number of guests</small>
+            <small>Choose your reservation date</small>
           </div>
-          <input type="date" class="date-field" id="rdate" placeholder="Select a date">
+          <input type="date" id="rdate" style="display:none">
+          <div class="mini-cal" id="miniCal">
+            <div class="mc-head">
+              <button type="button" class="mc-nav" onclick="mcShift(-1)" aria-label="Prev">‹</button>
+              <span id="mcLabel"></span>
+              <button type="button" class="mc-nav" onclick="mcShift(1)" aria-label="Next">›</button>
+            </div>
+            <div class="mc-dow"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
+            <div class="mc-grid" id="mcGrid"></div>
+            <div class="mc-event-detail" id="mcEventDetail">
+              <button type="button" class="mc-detail-close" onclick="closeMcDetail()" aria-label="Close">×</button>
+              <div class="mc-detail-icon" id="mcDetailIcon"></div>
+              <div class="mc-detail-body">
+                <div class="mc-detail-date" id="mcDetailDate"></div>
+                <div class="mc-detail-title" id="mcDetailTitle"></div>
+                <div class="mc-detail-desc" id="mcDetailDesc"></div>
+              </div>
+            </div>
+          </div>
+                    <div class="rez-err" id="err1"></div>
+          <div class="sacts"><button class="s-next" onclick="gS(2)">Continue →</button></div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="rstep" id="rs2">
+          <div class="rez-step-header">
+            <p>Enter your details</p>
+            <small>Time, guest count and contact information</small>
+          </div>
           <label class="field-label">Time</label>
-          <div class="time-grid" id="timeGrid">
-            <button class="tpill" onclick="selTime(this,'12:00')">12:00</button>
-            <button class="tpill" onclick="selTime(this,'12:30')">12:30</button>
-            <button class="tpill" onclick="selTime(this,'13:00')">13:00</button>
-            <button class="tpill" onclick="selTime(this,'13:30')">13:30</button>
-            <button class="tpill" onclick="selTime(this,'19:00')">19:00</button>
-            <button class="tpill" onclick="selTime(this,'19:30')">19:30</button>
-            <button class="tpill" onclick="selTime(this,'20:00')">20:00</button>
-            <button class="tpill" onclick="selTime(this,'20:30')">20:30</button>
-            <button class="tpill" onclick="selTime(this,'21:00')">21:00</button>
-            <button class="tpill" onclick="selTime(this,'21:30')">21:30</button>
-            <button class="tpill" onclick="selTime(this,'22:00')">22:00</button>
-            <button class="tpill" onclick="selTime(this,'22:30')">22:30</button>
-            <button class="tpill" onclick="selTime(this,'23:00')">23:00</button>
-            <button class="tpill" onclick="selTime(this,'23:30')">23:30</button>
-            <button class="tpill" onclick="selTime(this,'00:00')">00:00</button>
+          <div class="time-dd-wrap">
+            <button type="button" class="time-dd-trigger" id="timeDdTrigger" onclick="toggleTimeDd()">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><polyline points="12,7 12,12 15.5,14"/></svg>
+              <span id="timeDdText">Select a time</span>
+              <svg class="time-dd-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
+            </button>
+            <div class="time-list" id="timeList"></div>
           </div>
-          <label class="field-label">Number of Guests</label>
+                    <label class="field-label">Number of Guests</label>
           <div class="guest-wrap">
             <button class="gcnt-btn" onclick="adjG(-1)">−</button>
             <div class="gcnt-center">
@@ -3308,24 +3446,14 @@ nav{
             </div>
             <button class="gcnt-btn" onclick="adjG(1)">+</button>
           </div>
-          <div class="gcnt-note" id="gNote">For private events, select 10+ guests</div>
-          <label class="field-label">Full Name</label>
+                    <div class="gcnt-note" id="gNote">For private events, select 10+ guests</div>
+                    <label class="field-label">Full Name</label>
           <input type="text" class="date-field" id="rName" placeholder="Your full name" autocomplete="name">
-          <label class="field-label">Phone Number</label>
+                    <label class="field-label">Phone Number</label>
           <input type="tel" class="date-field" id="rPhone" placeholder="05XX XXX XX XX" autocomplete="tel">
-          <label class="field-label">Email</label>
+                    <label class="field-label">Email</label>
           <input type="email" class="date-field" id="rEmail" placeholder="you@email.com" autocomplete="email">
-          <div class="rez-err" id="err1"></div>
-          <div class="sacts"><button class="s-next" onclick="gS(2)">Continue →</button></div>
-        </div>
-
-        <!-- STEP 2 -->
-        <div class="rstep" id="rs2">
-          <div class="rez-step-header">
-            <p>Would you like to stay at Didi Otel?</p>
-            <small>Complete your experience with an overnight stay</small>
-          </div>
-          <div class="kon-grid">
+                    <div class="kon-grid">
             <div class="kopt" onclick="selK(this,'Yes, I\'d like to stay')">
               <div class="kopt-check"></div>
               <div class="kopt-glow"></div>
@@ -3341,12 +3469,12 @@ nav{
               <p>Dinner<br>reservation</p>
             </div>
           </div>
-          <div class="rez-err" id="err2"></div>
+                    <div class="rez-err" id="err2"></div>
           <div class="sacts">
             <button class="s-back" onclick="gS(1)">← Back</button>
             <button class="s-next" onclick="gS(3)">Continue →</button>
           </div>
-        </div>
+                </div>
 
         <!-- STEP 3 -->
         <div class="rstep" id="rs3">
@@ -3568,14 +3696,148 @@ fetch('/api/menu',{cache:'no-store'}).then(r=>r.json()).then(res=>{
   document.getElementById('mPanels').innerHTML='<div class="mloading">Menu şu anda yüklenemedi, lütfen sayfayı yenileyin.</div>';
 });
 
+/* ── ETKİNLİK BİLGİ İKONU ── */
+let EVENTS_CACHE=[];
+async function loadUpcomingEvents(){
+  try{
+    const r=await fetch('/api/events',{cache:'no-store'});
+    const j=await r.json();
+    const todayIso=new Date().toISOString().slice(0,10);
+    EVENTS_CACHE=(j.items||[]).filter(e=>e.date>=todayIso)
+      .sort((a,b)=>a.date.localeCompare(b.date)||(a.time||'').localeCompare(b.time||''));
+    if(EVENTS_CACHE.length){
+      document.getElementById('evInfoBtn').style.display='inline-flex';
+      renderEvPopover();
+    }
+    if(typeof renderMiniCal==='function')renderMiniCal();
+  }catch(e){}
+}
+function renderEvPopover(){
+  document.getElementById('evPopList').innerHTML=EVENTS_CACHE.map(e=>{
+    const d=new Date(e.date+'T00:00:00');
+    const dateFmt=d.toLocaleDateString('en-US',{day:'numeric',month:'long'});
+    return `<div class="ev-pop-item">
+      <div class="ev-pop-date">${dateFmt}${e.time?' · '+escHtml(e.time):''}</div>
+      <div class="ev-pop-title">${escHtml(e.title)}</div>
+      ${e.description?`<div class="ev-pop-desc">${escHtml(e.description)}</div>`:''}
+    </div>`;
+  }).join('');
+}
+function toggleEvPopover(force){
+  const pop=document.getElementById('evPopover');
+  pop.classList.toggle('show', force!==undefined?force:!pop.classList.contains('show'));
+}
+document.addEventListener('click',(e)=>{
+  const btn=document.getElementById('evInfoBtn'), pop=document.getElementById('evPopover');
+  if(!btn||!pop)return;
+  if(!btn.contains(e.target)&&!pop.contains(e.target))pop.classList.remove('show');
+});
+loadUpcomingEvents();
+
+/* ── MİNİ TAKVİM (tarih seçici) ── */
+const MC_MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const mcToday0=(()=>{const d=new Date();d.setHours(0,0,0,0);return d})();
+let mcYear=mcToday0.getFullYear(), mcMonth=mcToday0.getMonth();
+const ICON_SVGS={
+  star:'<path d="M12 2.5l2.2 5.3 5.7.5-4.3 3.8 1.3 5.6-4.9-3-4.9 3 1.3-5.6-4.3-3.8 5.7-.5z"/>',
+  sparkle:'<path d="M12 3l1.3 4.7L18 9l-4.7 1.3L12 15l-1.3-4.7L6 9l4.7-1.3z"/>',
+  music:'<path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>',
+  headphones:'<path d="M3 14v-2a9 9 0 0118 0v2"/><rect x="1.5" y="13" width="4.5" height="8" rx="2"/><rect x="18" y="13" width="4.5" height="8" rx="2"/>',
+  wine:'<path d="M7 3h10l-1 9a4 4 0 01-8 0z"/><line x1="12" y1="12" x2="12" y2="20"/><line x1="8" y1="21" x2="16" y2="21"/>',
+  utensils:'<path d="M6 2v8a2 2 0 002 2v10"/><path d="M6 2v6"/><path d="M10 2v6"/><path d="M17 2c-2.5 0-3.5 2.5-3.5 6 0 2.5 1 4 3.5 4v10"/>',
+  gift:'<rect x="3" y="9" width="18" height="4" rx="1"/><rect x="4" y="13" width="16" height="8" rx="1"/><line x1="12" y1="9" x2="12" y2="21"/><path d="M12 9c-1-2.5-4-3-4.5-1S9 9 12 9zM12 9c1-2.5 4-3 4.5-1S15 9 12 9z"/>',
+};
+function iconSvg(key,sw){return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw||1.6}" stroke-linecap="round" stroke-linejoin="round">${ICON_SVGS[key]||ICON_SVGS.star}</svg>`;}
+function mcIso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function mcShift(n){
+  mcMonth+=n;if(mcMonth<0){mcMonth=11;mcYear--}if(mcMonth>11){mcMonth=0;mcYear++}
+  closeMcDetail();
+  document.getElementById('mcGrid').classList.toggle('back',n<0);
+  renderMiniCal();
+}
+function renderMiniCal(){
+  document.getElementById('mcLabel').textContent=MC_MONTHS[mcMonth]+' '+mcYear;
+  const first=new Date(mcYear,mcMonth,1);
+  const startOffset=(first.getDay()+6)%7;
+  const daysInMonth=new Date(mcYear,mcMonth+1,0).getDate();
+  const gridStart=new Date(mcYear,mcMonth,1-startOffset);
+  const selVal=document.getElementById('rdate').value;
+  const byDate={};
+  (EVENTS_CACHE||[]).forEach(e=>{ if(!byDate[e.date])byDate[e.date]=[]; byDate[e.date].push(e); });
+  const totalCells=Math.ceil((startOffset+daysInMonth)/7)*7;
+  let html='';
+  for(let i=0;i<totalCells;i++){
+    const d=new Date(gridStart.getFullYear(),gridStart.getMonth(),gridStart.getDate()+i);
+    const iso=mcIso(d);
+    const cls=['mc-day'];
+    if(d.getMonth()!==mcMonth)cls.push('off');
+    if(d.getTime()===mcToday0.getTime())cls.push('today');
+    if(selVal===iso)cls.push('sel');
+    const dayEvents=byDate[iso]||[];
+    const iconsHtml=dayEvents.length?`<div class="mc-day-icons">${dayEvents.slice(0,3).map((e,idx)=>
+      `<span class="mc-ev-icon" style="background:${e.color||'#C8A96E'}" onclick="event.stopPropagation();mcShowDetail('${iso}',${idx})">${iconSvg(e.icon||'star',2.2)}</span>`
+    ).join('')}</div>`:'';
+    if(d<mcToday0){cls.push('disabled');html+=`<div class="${cls.join(' ')}"><span class="mc-daynum">${d.getDate()}</span>${iconsHtml}</div>`;}
+    else html+=`<div class="${cls.join(' ')}"><button type="button" class="mc-daynum" data-iso="${iso}" onclick="mcSelectDay('${iso}')">${d.getDate()}</button>${iconsHtml}</div>`;
+  }
+  document.getElementById('mcGrid').innerHTML=html;
+}
+function mcShowDetail(iso,idx){
+  const list=(EVENTS_CACHE||[]).filter(e=>e.date===iso);
+  const ev=list[idx];
+  if(!ev)return;
+  const color=ev.color||'#C8A96E';
+  const iconEl=document.getElementById('mcDetailIcon');
+  iconEl.innerHTML=iconSvg(ev.icon||'star');
+  iconEl.style.background=color+'26';
+  iconEl.style.color=color;
+  const d=new Date(iso+'T00:00:00');
+  document.getElementById('mcDetailDate').textContent=d.toLocaleDateString('en-US',{day:'numeric',month:'long'})+(ev.time?' · '+ev.time:'');
+  document.getElementById('mcDetailTitle').textContent=ev.title;
+  const descEl=document.getElementById('mcDetailDesc');
+  descEl.textContent=ev.description||'';
+  descEl.style.display=ev.description?'block':'none';
+  document.getElementById('mcEventDetail').classList.add('show');
+}
+function closeMcDetail(){ document.getElementById('mcEventDetail').classList.remove('show'); }
+function mcSelectDay(iso){
+  document.getElementById('rdate').value=iso;
+  clearErr('err1');
+  document.querySelectorAll('.mc-day.sel').forEach(el=>el.classList.remove('sel'));
+  const btn=document.querySelector(`.mc-daynum[data-iso="${iso}"]`);
+  if(btn){
+    btn.closest('.mc-day').classList.add('sel');
+    btn.classList.remove('mc-pop');void btn.offsetWidth;btn.classList.add('mc-pop');
+  }
+}
+renderMiniCal();
+
+/* ── SAAT LİSTESİ (09:00–00:00) ── */
+const TIME_SLOTS=(()=>{const out=[];for(let h=9;h<24;h++){out.push(String(h).padStart(2,'0')+':00');out.push(String(h).padStart(2,'0')+':30');}out.push('00:00');return out;})();
+document.getElementById('timeList').innerHTML=TIME_SLOTS.map(t=>`<button type="button" class="tpill" onclick="selTime(this,'${t}')">${t}</button>`).join('');
+(()=>{const def=document.querySelector('.time-list .tpill[onclick*="19:00"]');if(def)def.scrollIntoView({block:'nearest'});})();
+
 /* ── REZERVASYON ── */
 let selTime_val='',guestCount=2,selKon_val='',curStep=1;
-document.getElementById('rdate').min=new Date().toISOString().split('T')[0];
 
 function selTime(btn,val){
-  document.querySelectorAll('.tpill').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.time-list .tpill').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');selTime_val=val;
+  const label=document.getElementById('timeDdText');
+  label.textContent=val;label.classList.add('picked');
+  toggleTimeDd(false);
 }
+function toggleTimeDd(force){
+  const list=document.getElementById('timeList'), trig=document.getElementById('timeDdTrigger');
+  const show=force!==undefined?force:!list.classList.contains('show');
+  list.classList.toggle('show',show);
+  trig.classList.toggle('open',show);
+}
+document.addEventListener('click',(e)=>{
+  const trig=document.getElementById('timeDdTrigger'), list=document.getElementById('timeList');
+  if(!trig||!list)return;
+  if(!trig.contains(e.target)&&!list.contains(e.target)){list.classList.remove('show');trig.classList.remove('open');}
+});
 function adjG(d){
   guestCount=Math.max(1,Math.min(20,guestCount+d));
   const el=document.getElementById('gNum');
@@ -3604,14 +3866,14 @@ function gS(n){
   if(n===2){
     clearErr('err1');
     if(!document.getElementById('rdate').value){showErr('err1','Please select a date.');return}
-    if(!selTime_val){showErr('err1','Please select a time.');return}
-    if(!document.getElementById('rName').value.trim()){showErr('err1','Please enter your full name.');return}
-    const phoneVal=document.getElementById('rPhone').value.trim();
-    if(!phoneVal){showErr('err1','Please enter your phone number.');return}
-    if(!PHONE_RE.test(phoneVal.replace(/[\s()-]/g,''))){showErr('err1','Please enter a valid phone number.');return}
   }
   if(n===3){
     clearErr('err2');
+    if(!selTime_val){showErr('err2','Please select a time.');return}
+    if(!document.getElementById('rName').value.trim()){showErr('err2','Please enter your full name.');return}
+    const phoneVal=document.getElementById('rPhone').value.trim();
+    if(!phoneVal){showErr('err2','Please enter your phone number.');return}
+    if(!PHONE_RE.test(phoneVal.replace(/[\s()-]/g,''))){showErr('err2','Please enter a valid phone number.');return}
     if(!selKon_val){showErr('err2','Please choose your stay preference.');return}
     const d=document.getElementById('rdate').value;
     const fmt=new Date(d).toLocaleDateString('en-US',{day:'numeric',month:'long',year:'numeric'});
