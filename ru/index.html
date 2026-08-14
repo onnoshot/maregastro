@@ -3707,14 +3707,35 @@ fetch('/api/menu',{cache:'no-store'}).then(r=>r.json()).then(res=>{
 
 /* ── ETKİNLİK BİLGİ İKONU ── */
 let EVENTS_CACHE=[];
+let UPCOMING_CACHE=[];
+function eventOccursOnDate(ev,iso){
+  if(ev.date===iso)return true;
+  if(!ev.recurring||!Array.isArray(ev.recurDays)||!ev.recurDays.length)return false;
+  if(iso<ev.date)return false;
+  const d=new Date(iso+'T00:00:00');
+  return ev.recurDays.includes(d.getDay());
+}
+function nextOccurrenceIso(ev,fromIso){
+  if(!ev.recurring||!Array.isArray(ev.recurDays)||!ev.recurDays.length)return ev.date>=fromIso?ev.date:null;
+  const startIso=ev.date>fromIso?ev.date:fromIso;
+  const d0=new Date(startIso+'T00:00:00');
+  for(let i=0;i<14;i++){
+    const d=new Date(d0.getFullYear(),d0.getMonth(),d0.getDate()+i);
+    if(ev.recurDays.includes(d.getDay()))return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  }
+  return null;
+}
 async function loadUpcomingEvents(){
   try{
     const r=await fetch('/api/events',{cache:'no-store'});
     const j=await r.json();
     const todayIso=new Date().toISOString().slice(0,10);
-    EVENTS_CACHE=(j.items||[]).filter(e=>e.date>=todayIso)
-      .sort((a,b)=>a.date.localeCompare(b.date)||(a.time||'').localeCompare(b.time||''));
-    if(EVENTS_CACHE.length){
+    EVENTS_CACHE=(j.items||[]).filter(e=>e.recurring||e.date>=todayIso);
+    UPCOMING_CACHE=EVENTS_CACHE.map(e=>{
+      const occ=nextOccurrenceIso(e,todayIso);
+      return occ?{...e,date:occ}:null;
+    }).filter(Boolean).sort((a,b)=>a.date.localeCompare(b.date)||(a.time||'').localeCompare(b.time||''));
+    if(UPCOMING_CACHE.length){
       document.getElementById('evInfoBtn').style.display='inline-flex';
       renderEvPopover();
     }
@@ -3722,7 +3743,7 @@ async function loadUpcomingEvents(){
   }catch(e){}
 }
 function renderEvPopover(){
-  document.getElementById('evPopList').innerHTML=EVENTS_CACHE.map(e=>{
+  document.getElementById('evPopList').innerHTML=UPCOMING_CACHE.map(e=>{
     const d=new Date(e.date+'T00:00:00');
     const dateFmt=d.toLocaleDateString('ru-RU',{day:'numeric',month:'long'});
     return `<div class="ev-pop-item">
@@ -3771,8 +3792,6 @@ function renderMiniCal(){
   const daysInMonth=new Date(mcYear,mcMonth+1,0).getDate();
   const gridStart=new Date(mcYear,mcMonth,1-startOffset);
   const selVal=document.getElementById('rdate').value;
-  const byDate={};
-  (EVENTS_CACHE||[]).forEach(e=>{ if(!byDate[e.date])byDate[e.date]=[]; byDate[e.date].push(e); });
   const totalCells=Math.ceil((startOffset+daysInMonth)/7)*7;
   let html='';
   for(let i=0;i<totalCells;i++){
@@ -3782,7 +3801,7 @@ function renderMiniCal(){
     if(d.getMonth()!==mcMonth)cls.push('off');
     if(d.getTime()===mcToday0.getTime())cls.push('today');
     if(selVal===iso)cls.push('sel');
-    const dayEvents=byDate[iso]||[];
+    const dayEvents=(EVENTS_CACHE||[]).filter(e=>eventOccursOnDate(e,iso));
     const dotsHtml=dayEvents.length?`<div class="mc-day-dots">${dayEvents.slice(0,3).map(e=>
       `<span class="mc-day-dot" style="background:${e.color||'#C8A96E'}"></span>`
     ).join('')}</div>`:'';
@@ -3805,7 +3824,7 @@ function loadInstagramEmbed(){
   return igEmbedPromise;
 }
 function mcShowDetail(iso,idx){
-  const list=(EVENTS_CACHE||[]).filter(e=>e.date===iso);
+  const list=(EVENTS_CACHE||[]).filter(e=>eventOccursOnDate(e,iso));
   const ev=list[idx];
   if(!ev)return;
   const color=ev.color||'#C8A96E';
@@ -3846,7 +3865,7 @@ function mcSelectDay(iso){
     btn.closest('.mc-day').classList.add('sel');
     btn.classList.remove('mc-pop');void btn.offsetWidth;btn.classList.add('mc-pop');
   }
-  const dayEvents=(EVENTS_CACHE||[]).filter(e=>e.date===iso);
+  const dayEvents=(EVENTS_CACHE||[]).filter(e=>eventOccursOnDate(e,iso));
   if(dayEvents.length)mcShowDetail(iso,0);
   else closeMcDetail();
 }

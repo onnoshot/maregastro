@@ -13,6 +13,10 @@ const CATEGORIES = ['ozel-gun', 'kampanya', 'etkinlik'];
 const ICONS = ['star', 'sparkle', 'music', 'headphones', 'wine', 'utensils', 'gift'];
 const HEX_RE = /^#[0-9a-fA-F]{6}$/;
 function sanitizeColor(v, fallback) { return HEX_RE.test(v || '') ? v : fallback; }
+function sanitizeRecurDays(v) {
+  if (!Array.isArray(v)) return [];
+  return [...new Set(v.map(Number).filter((n) => Number.isInteger(n) && n >= 0 && n <= 6))];
+}
 
 function cors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -68,6 +72,8 @@ export default async function handler(req, res) {
       color: sanitizeColor(b.color, '#C8A96E'),
       description: String(b.description || '').trim().slice(0, 300),
       instagram_url: /^https:\/\//.test(b.instagram_url || '') ? String(b.instagram_url).trim().slice(0, 300) : '',
+      recurring: !!b.recurring,
+      recurDays: b.recurring ? sanitizeRecurDays(b.recurDays) : [],
     };
     try {
       await put(PREFIX + rec.id + '.json', JSON.stringify(rec), {
@@ -112,7 +118,7 @@ export default async function handler(req, res) {
       const r = await fetch(bust(blob.url), { cache: 'no-store' });
       if (!r.ok) return send(res, 500, { error: 'Kayit okunamadi' });
       const cur = await r.json();
-      const editable = ['title', 'date', 'time', 'category', 'icon', 'color', 'description', 'instagram_url'];
+      const editable = ['title', 'date', 'time', 'category', 'icon', 'color', 'description', 'instagram_url', 'recurring', 'recurDays'];
       const next = { ...cur };
       for (const k of editable) {
         if (b[k] === undefined) continue;
@@ -122,8 +128,11 @@ export default async function handler(req, res) {
         else if (k === 'title') next.title = String(b.title).trim().slice(0, 120);
         else if (k === 'description') next.description = String(b.description).trim().slice(0, 300);
         else if (k === 'instagram_url') next.instagram_url = /^https:\/\//.test(b.instagram_url || '') ? String(b.instagram_url).trim().slice(0, 300) : '';
+        else if (k === 'recurring') next.recurring = !!b.recurring;
+        else if (k === 'recurDays') next.recurDays = sanitizeRecurDays(b.recurDays);
         else next[k] = String(b[k]).trim();
       }
+      if (!next.recurring) next.recurDays = [];
       next.updatedAt = new Date().toISOString();
       await put(PREFIX + id + '.json', JSON.stringify(next), {
         access: 'public', contentType: 'application/json', addRandomSuffix: false,
