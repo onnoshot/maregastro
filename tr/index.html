@@ -3791,7 +3791,8 @@ function renderMiniCal(){
     const dotsHtml=dayEvents.length?`<div class="mc-day-dots">${dayEvents.slice(0,3).map(e=>
       `<span class="mc-day-dot" style="background:${e.color||'#C8A96E'}"></span>`
     ).join('')}</div>`:'';
-    if(d<mcToday0){cls.push('disabled');html+=`<div class="${cls.join(' ')}"><span class="mc-daynum">${d.getDate()}</span>${dotsHtml}</div>`;}
+    const isClosedDay=d.getDay()===1;
+    if(d<mcToday0||isClosedDay){cls.push('disabled');html+=`<div class="${cls.join(' ')}"${isClosedDay?' title="Pazartesi günleri kapalıyız"':''}><span class="mc-daynum">${d.getDate()}</span>${dotsHtml}</div>`;}
     else html+=`<div class="${cls.join(' ')}"><button type="button" class="mc-daynum" data-iso="${iso}" onclick="mcSelectDay('${iso}')">${d.getDate()}</button>${dotsHtml}</div>`;
   }
   document.getElementById('mcGrid').innerHTML=html;
@@ -3910,6 +3911,8 @@ function gS(n){
   if(n===2){
     clearErr('err1');
     if(!document.getElementById('rdate').value){showErr('err1','Lütfen bir tarih seçin.');return}
+    const selD=new Date(document.getElementById('rdate').value+'T00:00:00');
+    if(selD.getDay()===1){showErr('err1','Pazartesi günleri kapalıyız, lütfen başka bir tarih seçin.');return}
   }
   if(n===3){
     clearErr('err2');
