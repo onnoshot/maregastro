@@ -4,6 +4,7 @@
   "private": true,
   "description": "Mare Gastro web sitesi + menu/reservation API fonksiyonlari (Vercel)",
   "dependencies": {
-    "@vercel/blob": "^2.5.0"
+    "@vercel/blob": "^2.5.0",
+    "google-auth-library": "^9.14.1"
   }
 }
