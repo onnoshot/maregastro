@@ -17,6 +17,11 @@ function sanitizeRecurDays(v) {
   if (!Array.isArray(v)) return [];
   return [...new Set(v.map(Number).filter((n) => Number.isInteger(n) && n >= 0 && n <= 6))];
 }
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+function sanitizeEndDate(v, date) {
+  const s = String(v || '').trim();
+  return DATE_RE.test(s) && s >= date ? s : '';
+}
 
 function cors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -67,6 +72,7 @@ export default async function handler(req, res) {
       title: String(b.title).trim().slice(0, 120),
       date: String(b.date).trim(),
       time: String(b.time || '').trim(),
+      endDate: sanitizeEndDate(b.endDate, String(b.date).trim()),
       category: CATEGORIES.includes(b.category) ? b.category : 'etkinlik',
       icon: ICONS.includes(b.icon) ? b.icon : 'star',
       color: sanitizeColor(b.color, '#C8A96E'),
@@ -118,7 +124,7 @@ export default async function handler(req, res) {
       const r = await fetch(bust(blob.url), { cache: 'no-store' });
       if (!r.ok) return send(res, 500, { error: 'Kayit okunamadi' });
       const cur = await r.json();
-      const editable = ['title', 'date', 'time', 'category', 'icon', 'color', 'description', 'instagram_url', 'recurring', 'recurDays'];
+      const editable = ['title', 'date', 'time', 'endDate', 'category', 'icon', 'color', 'description', 'instagram_url', 'recurring', 'recurDays'];
       const next = { ...cur };
       for (const k of editable) {
         if (b[k] === undefined) continue;
@@ -130,8 +136,10 @@ export default async function handler(req, res) {
         else if (k === 'instagram_url') next.instagram_url = /^https:\/\//.test(b.instagram_url || '') ? String(b.instagram_url).trim().slice(0, 300) : '';
         else if (k === 'recurring') next.recurring = !!b.recurring;
         else if (k === 'recurDays') next.recurDays = sanitizeRecurDays(b.recurDays);
+        else if (k === 'endDate') continue; // below, after date is finalized
         else next[k] = String(b[k]).trim();
       }
+      next.endDate = sanitizeEndDate(b.endDate !== undefined ? b.endDate : next.endDate, next.date);
       if (!next.recurring) next.recurDays = [];
       next.updatedAt = new Date().toISOString();
       await put(PREFIX + id + '.json', JSON.stringify(next), {

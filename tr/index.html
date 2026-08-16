@@ -3727,28 +3727,51 @@ fetch('/api/menu',{cache:'no-store'}).then(r=>r.json()).then(res=>{
 let EVENTS_CACHE=[];
 let UPCOMING_CACHE=[];
 function eventOccursOnDate(ev,iso){
-  if(ev.date===iso)return true;
-  if(!ev.recurring||!Array.isArray(ev.recurDays)||!ev.recurDays.length)return false;
-  if(iso<ev.date)return false;
-  const d=new Date(iso+'T00:00:00');
-  return ev.recurDays.includes(d.getDay());
+  if(ev.recurring&&Array.isArray(ev.recurDays)&&ev.recurDays.length){
+    if(iso<ev.date)return false;
+    if(ev.endDate&&iso>ev.endDate)return false;
+    const d=new Date(iso+'T00:00:00');
+    return ev.recurDays.includes(d.getDay());
+  }
+  if(ev.endDate){
+    if(iso<ev.date||iso>ev.endDate)return false;
+    return new Date(iso+'T00:00:00').getDay()!==1;
+  }
+  return ev.date===iso;
 }
 function nextOccurrenceIso(ev,fromIso){
-  if(!ev.recurring||!Array.isArray(ev.recurDays)||!ev.recurDays.length)return ev.date>=fromIso?ev.date:null;
-  const startIso=ev.date>fromIso?ev.date:fromIso;
-  const d0=new Date(startIso+'T00:00:00');
-  for(let i=0;i<14;i++){
-    const d=new Date(d0.getFullYear(),d0.getMonth(),d0.getDate()+i);
-    if(ev.recurDays.includes(d.getDay()))return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  if(ev.recurring&&Array.isArray(ev.recurDays)&&ev.recurDays.length){
+    const startIso=ev.date>fromIso?ev.date:fromIso;
+    if(ev.endDate&&startIso>ev.endDate)return null;
+    const d0=new Date(startIso+'T00:00:00');
+    for(let i=0;i<14;i++){
+      const d=new Date(d0.getFullYear(),d0.getMonth(),d0.getDate()+i);
+      const iso=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+      if(ev.endDate&&iso>ev.endDate)return null;
+      if(ev.recurDays.includes(d.getDay()))return iso;
+    }
+    return null;
   }
-  return null;
+  if(ev.endDate){
+    const startIso=ev.date>fromIso?ev.date:fromIso;
+    if(startIso>ev.endDate)return null;
+    const d0=new Date(startIso+'T00:00:00');
+    for(let i=0;i<8;i++){
+      const d=new Date(d0.getFullYear(),d0.getMonth(),d0.getDate()+i);
+      const iso=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+      if(iso>ev.endDate)return null;
+      if(d.getDay()!==1)return iso;
+    }
+    return null;
+  }
+  return ev.date>=fromIso?ev.date:null;
 }
 async function loadUpcomingEvents(){
   try{
     const r=await fetch('/api/events',{cache:'no-store'});
     const j=await r.json();
     const todayIso=new Date().toISOString().slice(0,10);
-    EVENTS_CACHE=(j.items||[]).filter(e=>e.recurring||e.date>=todayIso);
+    EVENTS_CACHE=(j.items||[]).filter(e=>e.recurring||(e.endDate?e.endDate>=todayIso:e.date>=todayIso));
     UPCOMING_CACHE=EVENTS_CACHE.map(e=>{
       const occ=nextOccurrenceIso(e,todayIso);
       return occ?{...e,date:occ}:null;
@@ -3819,7 +3842,7 @@ function renderMiniCal(){
     if(d.getMonth()!==mcMonth)cls.push('off');
     if(d.getTime()===mcToday0.getTime())cls.push('today');
     if(selVal===iso)cls.push('sel');
-    const dayEvents=(EVENTS_CACHE||[]).filter(e=>eventOccursOnDate(e,iso));
+    const dayEvents=(EVENTS_CACHE||[]).filter(e=>eventOccursOnDate(e,iso)).sort((a,b)=>(a.recurring?1:0)-(b.recurring?1:0));
     const dotsHtml=dayEvents.length?`<div class="mc-day-dots">${dayEvents.slice(0,3).map(e=>
       `<span class="mc-day-dot" style="background:${e.color||'#C8A96E'}"></span>`
     ).join('')}</div>`:'';
@@ -3842,7 +3865,7 @@ function loadInstagramEmbed(){
   return igEmbedPromise;
 }
 function mcShowDetail(iso,idx){
-  const list=(EVENTS_CACHE||[]).filter(e=>eventOccursOnDate(e,iso));
+  const list=(EVENTS_CACHE||[]).filter(e=>eventOccursOnDate(e,iso)).sort((a,b)=>(a.recurring?1:0)-(b.recurring?1:0));
   const ev=list[idx];
   if(!ev)return;
   const color=ev.color||'#C8A96E';
@@ -3883,7 +3906,7 @@ function mcSelectDay(iso){
     btn.closest('.mc-day').classList.add('sel');
     btn.classList.remove('mc-pop');void btn.offsetWidth;btn.classList.add('mc-pop');
   }
-  const dayEvents=(EVENTS_CACHE||[]).filter(e=>eventOccursOnDate(e,iso));
+  const dayEvents=(EVENTS_CACHE||[]).filter(e=>eventOccursOnDate(e,iso)).sort((a,b)=>(a.recurring?1:0)-(b.recurring?1:0));
   if(dayEvents.length)mcShowDetail(iso,0);
   else closeMcDetail();
 }
