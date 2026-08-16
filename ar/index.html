@@ -3722,6 +3722,7 @@ fetch('/api/menu',{cache:'no-store'}).then(r=>r.json()).then(res=>{
 let EVENTS_CACHE=[];
 let UPCOMING_CACHE=[];
 function eventOccursOnDate(ev,iso){
+  if(Array.isArray(ev.excludedDates)&&ev.excludedDates.includes(iso))return false;
   if(ev.recurring&&Array.isArray(ev.recurDays)&&ev.recurDays.length){
     if(iso<ev.date)return false;
     if(ev.endDate&&iso>ev.endDate)return false;
@@ -3735,6 +3736,7 @@ function eventOccursOnDate(ev,iso){
   return ev.date===iso;
 }
 function nextOccurrenceIso(ev,fromIso){
+  const excluded=iso=>Array.isArray(ev.excludedDates)&&ev.excludedDates.includes(iso);
   if(ev.recurring&&Array.isArray(ev.recurDays)&&ev.recurDays.length){
     const startIso=ev.date>fromIso?ev.date:fromIso;
     if(ev.endDate&&startIso>ev.endDate)return null;
@@ -3743,7 +3745,7 @@ function nextOccurrenceIso(ev,fromIso){
       const d=new Date(d0.getFullYear(),d0.getMonth(),d0.getDate()+i);
       const iso=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
       if(ev.endDate&&iso>ev.endDate)return null;
-      if(ev.recurDays.includes(d.getDay()))return iso;
+      if(ev.recurDays.includes(d.getDay())&&!excluded(iso))return iso;
     }
     return null;
   }
@@ -3755,11 +3757,11 @@ function nextOccurrenceIso(ev,fromIso){
       const d=new Date(d0.getFullYear(),d0.getMonth(),d0.getDate()+i);
       const iso=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
       if(iso>ev.endDate)return null;
-      if(d.getDay()!==1)return iso;
+      if(d.getDay()!==1&&!excluded(iso))return iso;
     }
     return null;
   }
-  return ev.date>=fromIso?ev.date:null;
+  return (ev.date>=fromIso&&!excluded(ev.date))?ev.date:null;
 }
 async function loadUpcomingEvents(){
   try{
