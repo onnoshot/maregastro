@@ -1,11 +1,17 @@
 // Mare Gastro - Site trafik/ziyaretci istatistikleri (GA4 Data API)
-// GET (token): dashboard'un Genel Bakis sayfasi icin ziyaretci sayisi + trafik kaynagi verisi.
+// GET (token): dashboard'un Genel Bakis sayfasi icin ziyaretci sayisi, trafik kaynagi,
+// donusum event'leri (whatsapp_click/phone_click/availability_check/menu_click),
+// en cok ziyaret edilen sayfalar ve cihaz dagilimi.
+//
+// Performans: tum raporlar tek bir batchRunReports cagrisinda toplanir (6 rapor / 1 istek),
+// erisim token'i sicak lambda calistirmalari arasinda modul kapsaminda onbelleklenir.
 //
 // Gerekli env: GA_SA_JSON (Google servis hesabi JSON anahtari, analytics.readonly yetkili,
 // bu GA4 property'de Goruntuleyici olarak eklenmis olmali), MARE_ADMIN_KEY
 import { JWT } from 'google-auth-library';
 
 const PROPERTY_ID = '542527885';
+const CONVERSION_EVENTS = ['whatsapp_click', 'phone_click', 'availability_check', 'menu_click', 'reservation_submit_click'];
 
 function cors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -24,14 +30,27 @@ function authed(req) {
   return req.headers['x-admin-key'] === need;
 }
 
-async function ga(token, body) {
-  const r = await fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${PROPERTY_ID}:runReport`, {
+// Sicak lambda calistirmalari arasinda paylasilan modul-kapsamli token onbellegi.
+let cachedToken = null;
+let cachedTokenExpiry = 0;
+async function getToken(sa) {
+  if (cachedToken && Date.now() < cachedTokenExpiry) return cachedToken;
+  const client = new JWT({ email: sa.client_email, key: sa.private_key, scopes: ['https://www.googleapis.com/auth/analytics.readonly'] });
+  const { token } = await client.getAccessToken();
+  cachedToken = token;
+  cachedTokenExpiry = Date.now() + 50 * 60 * 1000; // Google token'lari ~1 saat gecerli, 50dk sonra yenile
+  return token;
+}
+
+async function gaBatch(token, requests) {
+  const r = await fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${PROPERTY_ID}:batchRunReports`, {
     method: 'POST',
     headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
+    body: JSON.stringify({ requests }),
   });
-  if (!r.ok) throw new Error('ga4 ' + r.status + ' ' + (await r.text()).slice(0, 200));
-  return r.json();
+  if (!r.ok) throw new Error('ga4 ' + r.status + ' ' + (await r.text()).slice(0, 300));
+  const j = await r.json();
+  return j.reports || [];
 }
 
 export default async function handler(req, res) {
@@ -42,37 +61,62 @@ export default async function handler(req, res) {
 
   try {
     const sa = JSON.parse(process.env.GA_SA_JSON);
-    const client = new JWT({ email: sa.client_email, key: sa.private_key, scopes: ['https://www.googleapis.com/auth/analytics.readonly'] });
-    const { token } = await client.getAccessToken();
+    const token = await getToken(sa);
 
-    const dailyR = await ga(token, {
-      dateRanges: [{ startDate: '29daysAgo', endDate: 'today' }],
-      dimensions: [{ name: 'date' }], metrics: [{ name: 'activeUsers' }],
-      orderBys: [{ dimension: { dimensionName: 'date' } }],
-    });
+    const [dailyR, totR, chR, evR, pageR, devR] = await gaBatch(token, [
+      { // 0: gunluk ziyaretci trendi
+        dateRanges: [{ startDate: '29daysAgo', endDate: 'today' }],
+        dimensions: [{ name: 'date' }], metrics: [{ name: 'activeUsers' }],
+        orderBys: [{ dimension: { dimensionName: 'date' } }],
+      },
+      { // 1: bugun / 7 gun / 30 gun toplamlari
+        dateRanges: [
+          { startDate: 'today', endDate: 'today', name: 'today' },
+          { startDate: '6daysAgo', endDate: 'today', name: 'd7' },
+          { startDate: '29daysAgo', endDate: 'today', name: 'd30' },
+        ], metrics: [{ name: 'activeUsers' }],
+      },
+      { // 2: trafik kaynaklari
+        dateRanges: [{ startDate: '29daysAgo', endDate: 'today' }],
+        dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'sessions' }],
+        orderBys: [{ metric: { metricName: 'sessions' }, desc: true }], limit: 8,
+      },
+      { // 3: donusum event'leri
+        dateRanges: [{ startDate: '29daysAgo', endDate: 'today' }],
+        dimensions: [{ name: 'eventName' }], metrics: [{ name: 'eventCount' }],
+        dimensionFilter: { filter: { fieldName: 'eventName', inListFilter: { values: CONVERSION_EVENTS } } },
+      },
+      { // 4: en cok ziyaret edilen sayfalar
+        dateRanges: [{ startDate: '29daysAgo', endDate: 'today' }],
+        dimensions: [{ name: 'pagePath' }], metrics: [{ name: 'screenPageViews' }],
+        orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }], limit: 10,
+      },
+      { // 5: cihaz dagilimi
+        dateRanges: [{ startDate: '29daysAgo', endDate: 'today' }],
+        dimensions: [{ name: 'deviceCategory' }], metrics: [{ name: 'activeUsers' }],
+        orderBys: [{ metric: { metricName: 'activeUsers' }, desc: true }],
+      },
+    ]);
+
     const daily = (dailyR.rows || []).map((row) => {
       const d = row.dimensionValues[0].value;
       return { date: `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}`, users: parseInt(row.metricValues[0].value, 10) };
     });
 
-    const totR = await ga(token, {
-      dateRanges: [
-        { startDate: 'today', endDate: 'today', name: 'today' },
-        { startDate: '6daysAgo', endDate: 'today', name: 'd7' },
-        { startDate: '29daysAgo', endDate: 'today', name: 'd30' },
-      ], metrics: [{ name: 'activeUsers' }],
-    });
     const totals = { today: 0, d7: 0, d30: 0 };
     (totR.rows || []).forEach((row) => { totals[row.dimensionValues[0].value] = parseInt(row.metricValues[0].value, 10); });
 
-    const chR = await ga(token, {
-      dateRanges: [{ startDate: '29daysAgo', endDate: 'today' }],
-      dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'sessions' }],
-      orderBys: [{ metric: { metricName: 'sessions' }, desc: true }], limit: 8,
-    });
     const channels = (chR.rows || []).map((row) => ({ name: row.dimensionValues[0].value, sessions: parseInt(row.metricValues[0].value, 10) }));
 
-    return send(res, 200, { ok: true, updatedAt: new Date().toISOString(), totals, daily, channels });
+    const eventCounts = {};
+    (evR.rows || []).forEach((row) => { eventCounts[row.dimensionValues[0].value] = parseInt(row.metricValues[0].value, 10); });
+    const events = CONVERSION_EVENTS.map((name) => ({ name, count: eventCounts[name] || 0 }));
+
+    const pages = (pageR.rows || []).map((row) => ({ path: row.dimensionValues[0].value, views: parseInt(row.metricValues[0].value, 10) }));
+
+    const devices = (devR.rows || []).map((row) => ({ name: row.dimensionValues[0].value, users: parseInt(row.metricValues[0].value, 10) }));
+
+    return send(res, 200, { ok: true, updatedAt: new Date().toISOString(), totals, daily, channels, events, pages, devices });
   } catch (e) {
     return send(res, 500, { error: 'GA4 verisi alinamadi: ' + (e.message || e) });
   }
