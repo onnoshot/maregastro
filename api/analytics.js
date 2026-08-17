@@ -63,39 +63,45 @@ export default async function handler(req, res) {
     const sa = JSON.parse(process.env.GA_SA_JSON);
     const token = await getToken(sa);
 
-    const [dailyR, totR, chR, evR, pageR, devR] = await gaBatch(token, [
-      { // 0: gunluk ziyaretci trendi
-        dateRanges: [{ startDate: '29daysAgo', endDate: 'today' }],
-        dimensions: [{ name: 'date' }], metrics: [{ name: 'activeUsers' }],
-        orderBys: [{ dimension: { dimensionName: 'date' } }],
-      },
-      { // 1: bugun / 7 gun / 30 gun toplamlari
-        dateRanges: [
-          { startDate: 'today', endDate: 'today', name: 'today' },
-          { startDate: '6daysAgo', endDate: 'today', name: 'd7' },
-          { startDate: '29daysAgo', endDate: 'today', name: 'd30' },
-        ], metrics: [{ name: 'activeUsers' }],
-      },
-      { // 2: trafik kaynaklari
-        dateRanges: [{ startDate: '29daysAgo', endDate: 'today' }],
-        dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'sessions' }],
-        orderBys: [{ metric: { metricName: 'sessions' }, desc: true }], limit: 8,
-      },
-      { // 3: donusum event'leri
-        dateRanges: [{ startDate: '29daysAgo', endDate: 'today' }],
-        dimensions: [{ name: 'eventName' }], metrics: [{ name: 'eventCount' }],
-        dimensionFilter: { filter: { fieldName: 'eventName', inListFilter: { values: CONVERSION_EVENTS } } },
-      },
-      { // 4: en cok ziyaret edilen sayfalar
-        dateRanges: [{ startDate: '29daysAgo', endDate: 'today' }],
-        dimensions: [{ name: 'pagePath' }], metrics: [{ name: 'screenPageViews' }],
-        orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }], limit: 10,
-      },
-      { // 5: cihaz dagilimi
-        dateRanges: [{ startDate: '29daysAgo', endDate: 'today' }],
-        dimensions: [{ name: 'deviceCategory' }], metrics: [{ name: 'activeUsers' }],
-        orderBys: [{ metric: { metricName: 'activeUsers' }, desc: true }],
-      },
+    // GA4 batchRunReports istek basina en fazla 5 rapor kabul ediyor; 6 raporu
+    // iki gruba bolup PARALEL (Promise.all) cagiriyoruz — sirali olsaydi 2x yavas olurdu.
+    const [[dailyR, totR, chR], [evR, pageR, devR]] = await Promise.all([
+      gaBatch(token, [
+        { // 0: gunluk ziyaretci trendi
+          dateRanges: [{ startDate: '29daysAgo', endDate: 'today' }],
+          dimensions: [{ name: 'date' }], metrics: [{ name: 'activeUsers' }],
+          orderBys: [{ dimension: { dimensionName: 'date' } }],
+        },
+        { // 1: bugun / 7 gun / 30 gun toplamlari
+          dateRanges: [
+            { startDate: 'today', endDate: 'today', name: 'today' },
+            { startDate: '6daysAgo', endDate: 'today', name: 'd7' },
+            { startDate: '29daysAgo', endDate: 'today', name: 'd30' },
+          ], metrics: [{ name: 'activeUsers' }],
+        },
+        { // 2: trafik kaynaklari
+          dateRanges: [{ startDate: '29daysAgo', endDate: 'today' }],
+          dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'sessions' }],
+          orderBys: [{ metric: { metricName: 'sessions' }, desc: true }], limit: 8,
+        },
+      ]),
+      gaBatch(token, [
+        { // 3: donusum event'leri
+          dateRanges: [{ startDate: '29daysAgo', endDate: 'today' }],
+          dimensions: [{ name: 'eventName' }], metrics: [{ name: 'eventCount' }],
+          dimensionFilter: { filter: { fieldName: 'eventName', inListFilter: { values: CONVERSION_EVENTS } } },
+        },
+        { // 4: en cok ziyaret edilen sayfalar
+          dateRanges: [{ startDate: '29daysAgo', endDate: 'today' }],
+          dimensions: [{ name: 'pagePath' }], metrics: [{ name: 'screenPageViews' }],
+          orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }], limit: 10,
+        },
+        { // 5: cihaz dagilimi
+          dateRanges: [{ startDate: '29daysAgo', endDate: 'today' }],
+          dimensions: [{ name: 'deviceCategory' }], metrics: [{ name: 'activeUsers' }],
+          orderBys: [{ metric: { metricName: 'activeUsers' }, desc: true }],
+        },
+      ]),
     ]);
 
     const daily = (dailyR.rows || []).map((row) => {
