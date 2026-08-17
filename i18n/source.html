@@ -11,13 +11,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LMZ66PTR0T"></script>
+<!-- dataLayer event helper (GTM) -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-LMZ66PTR0T');
+function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:name},params||{}));}catch(e){}}
 </script>
 <title>Mare Gastro | Sapanca'da Gölün Hemen Yanında Fine Dining Restoran</title>
 <meta name="description" content="Sapanca gölünün hemen yanında, Didi Otel bahçesinde lüks fine dining restoran. Ödüllü Şef Doğan Anapa imzasıyla taze deniz ürünleri, Ege ve Akdeniz mutfağı.">
