@@ -2,6 +2,23 @@
 """Mare Gastro blog generator — builds SEO-optimized luxury posts + index + sitemap."""
 import json, os, re, html
 
+GTM_HEAD = """<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TVJ7R3TT');</script>
+<!-- End Google Tag Manager -->
+<!-- dataLayer event helper (GTM) -->
+<script>
+function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:name},params||{}));}catch(e){}}
+</script>"""
+
+GTM_BODY = """<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVJ7R3TT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->"""
+
 SITE   = "https://maregastro.com"
 IG     = "https://www.instagram.com/maregastrosapanca/"
 IGCHEF = "https://www.instagram.com/chefdogananapa/"
@@ -35,7 +52,7 @@ CATS = {
  "kahvalti":"Kahvaltı","mevsim":"Mevsim","kutlama":"Kutlama",
  "raki":"Rakı-Balık","gece":"Gece Açık","manzara":"Göl Kenarı",
  "kurumsal":"Kurumsal Etkinlik","vejetaryen":"Özel Diyet",
- "dogumgunu":"Doğum Günü",
+ "dogumgunu":"Doğum Günü","sosyal":"Arkadaş Buluşması",
 }
 
 POSTS = [
@@ -1048,6 +1065,109 @@ POSTS = [
  ],
  "rel":["sapanca-dogum-gunu-nerede-kutlanir","sapanca-fine-dining-fiyat-rehberi","sapanca-30-40-yas-dogum-gunu-kutlamasi"],
 },
+{
+ "slug":"sapanca-en-iyi-dogum-gunu-mekanlari",
+ "cat":"dogumgunu","date":"2026-08-17","read":"7 dk",
+ "img":"mare-kutlama-kadeh.webp","alt":"Kutlama kadehleri — Sapanca'da doğum günü için en iyi mekanlar karşılaştırması",
+ "h1":"Sapanca'da Doğum Günü İçin <em>En İyi 5 Mekan</em>",
+ "title":"Sapanca'da Doğum Günü İçin En İyi 5 Mekan | Mare Gastro",
+ "desc":"Sapanca'da doğum günü kutlamak için en iyi 5 mekanı karşılaştırdık: göl manzarası, atmosfer ve kutlamaya uygunluk açısından Mare Gastro, Sasa Sapanca, Menzara, Green Blue ve Natürköy.",
+ "kw":"sapanca en iyi doğum günü mekanları, sapanca doğum günü nerede kutlanır, sapanca göl kenarı restoran karşılaştırma, sapanca kutlama mekanları",
+ "lead":"Sapanca'da doğum günü kutlayacağınız mekanı seçerken manzara, atmosfer, mutfak ve kutlamaya ne kadar uygun olduğu birlikte değerlendirilmeli. Bölgenin öne çıkan 5 adresini bu kriterlere göre karşılaştırdık.",
+ "body":[
+  ("Sapanca'da Doğum Günü Mekanı Seçerken Nelere Bakılmalı?",
+   ["Sapanca Gölü çevresinde onlarca restoran var, ama her biri her kutlamaya uygun değil. Bir <strong>doğum günü mekanı</strong> seçerken dört şey öne çıkar: göl manzarası olup olmadığı, atmosferin kutlamaya (mum, pasta, sürpriz) izin verip vermediği, grup büyüklüğüne uygunluk ve mutfağın kalitesi.",
+    "Aşağıdaki liste, bu kriterlere göre Sapanca'nın bilinen adreslerinden beşini karşılaştırıyor — sıralama Mare Gastro'nun kendi blogunda hazırlanmış olsa da, her mekanın gerçek ve doğrulanabilir özelliklerine dayanıyor."]),
+  ("1. Mare Gastro — Gölün Hemen Yanında Fine Dining Kutlama",
+   ["Didi Otel bahçesinde, gölün hemen kıyısında konumlanan Mare Gastro; doğum günlerine özel <strong>pasta ve masa süslemesi</strong> desteği sunan, Yönetici Şef Doğan Anapa imzalı Ege-Akdeniz mutfağıyla fine dining bir deneyim sunuyor. Cuma-Cumartesi-Pazar 24 saat açık olması, gece geç saatte planlanan kutlamalar için de esneklik sağlıyor.",
+    bfig("mare-grup-sofra.webp","Gölün hemen yanında hazırlanmış bir grup sofrası — Mare Gastro doğum günü kutlaması","Mare Gastro'da bir kutlama sofrası"),
+    "Öne çıkanlar: göl manzarası, %s, canlı müzik (hafta sonu), imza tatlılar."%L(MENU,"à la carte menü")]),
+  ("2. Sasa Sapanca — Canlı Müzik Eşliğinde Göl Kıyısında",
+   ["Göl kıyısında konumlanan Sasa Sapanca, dünya mutfağından geniş bir menü (mezeler, burger, taco, kırmızı et, balık) ve canlı müzik eşliğinde romantik bir akşam yemeği atmosferi sunuyor. Geniş menü yelpazesi, farklı damak tatlarına sahip kalabalık bir grubu ağırlamak isteyenler için pratik bir seçenek."]),
+  ("3. Menzara — Karadeniz Mutfağı ve Balkon Manzarası",
+   ["2010'dan beri hizmet veren Menzara, göl manzaralı balkonu ve Karadeniz ağırlıklı mutfağıyla (taş fırın ekmek, balık, ızgara) öne çıkıyor. Daha samimi, ev sıcaklığında bir kutlama atmosferi arayanlar için tercih edilen adreslerden."]),
+  ("4. Green Blue — Aile ve Çocuklu Kutlamalar İçin Geniş Bahçe",
+   ["Deniz ürünleri ağırlıklı menüsü ve geniş bahçesiyle Green Blue, özellikle çocuklu aile kutlamalarında pratik bir seçim. Bahçedeki çocuk oyun alanı, küçük yaş grubu doğum günlerinde ebeveynlere rahat bir alan sağlıyor."]),
+  ("5. Natürköy — Doğa İçinde Aktiviteli Bir Kutlama",
+   ["Vadi içinde, dere üzerine kurulu ahşap kulübeleriyle Natürköy, fine dining'den çok doğa temalı bir deneyim sunuyor. At binme ve zipline gibi aktivitelerle desteklenen bir kutlama isteyenler, özellikle gençlik grupları için bu adresi değerlendirebilir."]),
+  ("Hangi Mekanı Seçmelisiniz?",
+   ["Romantik ya da zarif bir fine dining kutlaması için göl manzarası ve mutfak kalitesi öne çıkan %s; canlı müzikli kalabalık bir akşam için Sasa Sapanca; samimi bir aile sofrası için Menzara; çocuklu kutlama için Green Blue; aktiviteli bir gün için Natürköy tercih edilebilir."%L(REZ,"Mare Gastro")]),
+ ],
+ "faq":[
+  ("Sapanca'da doğum günü için en iyi mekan hangisi?","Bu, aradığınız deneyime göre değişir. Gölün hemen yanında fine dining bir kutlama için Mare Gastro, canlı müzikli kalabalık bir akşam için Sasa Sapanca, çocuklu aile kutlaması için Green Blue öne çıkan seçeneklerdir."),
+  ("Mare Gastro doğum günü için pasta veya süsleme ayarlıyor mu?","Evet. Rezervasyon sırasında talebinizi ilettiğinizde pasta ve masa süslemesi detayları birlikte planlanır."),
+  ("Sapanca'da göl manzaralı doğum günü mekanı hangileri?","Mare Gastro, Sasa Sapanca ve Menzara göl kıyısında veya göl manzaralı; Green Blue ve Natürköy daha çok bahçe/doğa odaklı bir atmosfer sunar."),
+  ("Kalabalık bir arkadaş grubuyla doğum günü için hangi mekan uygun?","Geniş menü seçenekleri ve canlı müzik atmosferiyle Sasa Sapanca, ya da özel bir sofra için Mare Gastro değerlendirilebilir."),
+ ],
+ "rel":["sapanca-dogum-gunu-nerede-kutlanir","sapanca-gol-manzarali-dogum-gunu-mekanlari","sapanca-kalabalik-arkadas-grubu-dogum-gunu"],
+},
+{
+ "slug":"sapanca-arkadaslarla-bulusma-mekani",
+ "cat":"sosyal","date":"2026-08-17","read":"6 dk",
+ "img":"mare-grup-sofra.webp","alt":"Arkadaş grubu sofrası — Sapanca'da arkadaşlarla buluşma ve keyifli akşam mekanı Mare Gastro",
+ "h1":"Sapanca'da <em>Arkadaşlarla Buluşmak</em> İçin En İyi Mekan Önerisi",
+ "title":"Sapanca'da Arkadaşlarla Buluşma Mekanı | Mare Gastro",
+ "desc":"Vesilesiz, sadece keyifli bir akşam için Sapanca'da arkadaşlarla buluşulacak en iyi mekan nasıl seçilir? Göl manzarası, uzun sofra ve canlı müzik kriterleriyle bir rehber.",
+ "kw":"sapanca arkadaşlarla buluşma mekanı, sapanca arkadaşlarla eğlenmek, sapanca akşam yemeği arkadaş grubu, sapanca göl kenarı akşam",
+ "lead":"Özel bir vesile olmadan, sadece arkadaşlarla bir araya gelip keyifli bir akşam geçirmek için Sapanca'da doğru mekanı seçmek; göl manzarası, uzun bir sofraya imkan tanıyan düzen ve rahat bir atmosfer gerektirir.",
+ "body":[
+  ("Arkadaş Buluşması İçin Mekan Seçerken Nelere Dikkat Edilir?",
+   ["Bir doğum günü ya da yıldönümü gibi özel bir tarih olmadan, sadece <strong>arkadaşlarla buluşmak</strong> için gidilecek mekan farklı kriterlere göre seçilir: uzun sohbetlere izin veren bir oturma düzeni, grubun tamamının rahat edeceği geniş bir menü ve gecenin ilerleyen saatlerine kadar açık kalabilen bir atmosfer.",
+    "Sapanca'da bu ölçütlere uyan mekanlardan biri, gölün hemen kıyısındaki Mare Gastro."]),
+  ("Neden Gölün Hemen Yanında Bir Sofra?",
+   ["Sapanca Gölü'nün manzarası, kalabalık bir arkadaş sofrasına kendiliğinden bir atmosfer katıyor. Didi Otel bahçesinde kurulan masalar, hem sohbetin rahat aktığı hem de gün batımının eşlik ettiği bir ortam sunuyor.",
+    bfig("mare-teras-misafir2.webp","Gölün hemen yanında teras sofrası — Sapanca'da arkadaşlarla akşam yemeği","Mare Gastro terasında bir akşam")]),
+  ("Geniş Bir Grup İçin Menü Nasıl Planlanır?",
+   ["Farklı damak zevklerine sahip bir arkadaş grubunu ağırlarken, à la carte bir menünün esnekliği önemlidir. %s deniz ürünlerinden ızgaraya, mezelerden imza tatlılara kadar geniş bir yelpaze sunuyor; grubun her üyesi kendi tercihini yapabiliyor."%L(MENU,"Mare Gastro'nun menüsü")]),
+  ("Gece Geç Saate Kadar Sürecek Bir Buluşma İçin",
+   ["Sohbetin uzadığı akşamlarda mekanın kapanış saati önemli bir detaydır. Mare Gastro, Cuma-Cumartesi-Pazar günleri 24 saat açık olduğu için, arkadaş buluşmasının ne zaman biteceğine dair bir kaygı taşımadan planlama yapılabilir. Hafta sonu canlı müzik de atmosfere eşlik ediyor."]),
+  ("Rezervasyon Nasıl Yapılır?",
+   ["Kalabalık bir grup için masa ayırtmak, %s üzerinden birkaç dakika sürer. Kişi sayısını belirttiğinizde, ekibimiz size en uygun düzeni hazırlar."%L(REZ,"üç adımlı rezervasyon formu")]),
+ ],
+ "faq":[
+  ("Sapanca'da arkadaşlarla buluşmak için en iyi mekan neresi?","Göl manzarası, geniş menü seçenekleri ve gece geç saate kadar açık olma özelliğiyle Mare Gastro, arkadaş grubu buluşmaları için uygun bir adres."),
+  ("Kalabalık bir arkadaş grubu için rezervasyon yapılabilir mi?","Evet, rezervasyon formunda kişi sayısını belirterek grubunuza uygun bir masa düzeni talep edebilirsiniz."),
+  ("Sapanca'da gece geç saate kadar açık restoran var mı?","Mare Gastro, Cuma-Cumartesi-Pazar günleri 24 saat açık; hafta içi ise 18:00-00:00 arası hizmet veriyor."),
+  ("Arkadaş buluşmasında canlı müzik oluyor mu?","Hafta sonu akşamlarında canlı müzik atmosfere eşlik ediyor."),
+ ],
+ "rel":["sapanca-kalabalik-arkadas-grubu-dogum-gunu","sapanca-gece-acik-restoran","sapanca-hafta-sonu-rotasi"],
+},
+{
+ "slug":"sapancanin-en-iyi-restorani",
+ "cat":"rehber","date":"2026-08-17","read":"7 dk",
+ "img":"mare-aerial.jpg","alt":"Havadan görünüm — Sapanca'nın en iyi restoranları karşılaştırması Mare Gastro",
+ "h1":"Sapanca'nın <em>En İyi Restoranı</em> Hangisi? Karşılaştırmalı Rehber",
+ "title":"Sapanca'nın En İyi Restoranı Hangisi? | Mare Gastro",
+ "desc":"Sapanca'nın en iyi restoranını ararken göl manzarası, mutfak kalitesi ve atmosfer neye göre karşılaştırılır? Mare Gastro, Sasa Sapanca, Menzara, Green Blue ve Natürköy'ü inceledik.",
+ "kw":"sapanca en iyi restoran, sapanca en iyi restoranlar, sapanca gölü restoran, sapanca fine dining restoran",
+ "lead":"\"Sapanca'nın en iyi restoranı hangisi?\" sorusunun tek bir cevabı yok — aranan deneyime göre değişiyor. Bölgenin öne çıkan adreslerini mutfak, konum ve atmosfer açısından karşılaştırdık.",
+ "body":[
+  ("Sapanca'da \"En İyi Restoran\" Neye Göre Belirlenir?",
+   ["Sapanca'nın restoran haritası oldukça geniş: göl kıyısı kahvaltı mekanlarından fine dining adreslere kadar farklı segmentler bir arada. \"En iyi\" tanımı da buna göre değişir — bazıları için bu, mutfağın kalitesi; bazıları için manzara, bazıları için ise atmosfer ve hizmet anlamına gelir.",
+    "Bu rehberde, bölgenin tekrar tekrar öne çıkan adreslerini bu üç eksende karşılaştırdık."]),
+  ("Fine Dining Arayanlar İçin: Mare Gastro",
+   ["Didi Otel bahçesinde, gölün hemen kıyısında yer alan Mare Gastro; Yönetici Şef Doğan Anapa imzasıyla Ege ve Akdeniz mutfağını fine dining bir sunumla buluşturuyor. Bölgede gerçek anlamda <strong>fine dining</strong> iddiası taşıyan az sayıdaki adresten biri.",
+    bfig("hero-mare-1.jpg","Gölün hemen yanında fine dining sofrası — Sapanca'nın en iyi restoranı karşılaştırması","Mare Gastro'da bir akşam sofrası"),
+    "%s ve gölü karşınıza alan bir masa, deneyimin iki temel unsuru."%L(MENU,"Mevsimsel à la carte menü")]),
+  ("Dünya Mutfağı ve Canlı Müzik Arayanlar İçin: Sasa Sapanca",
+   ["Göl kıyısındaki Sasa Sapanca, mezelerden burger ve tacoya kadar geniş bir dünya mutfağı menüsü ve hafta sonu canlı müzik eşliğinde bir atmosfer sunuyor. Farklı damak tatlarını bir arada ağırlamak isteyenler için pratik bir seçenek."]),
+  ("Yöresel Lezzet Arayanlar İçin: Menzara",
+   ["2010'dan beri hizmet veren Menzara, Karadeniz mutfağı ağırlıklı menüsü ve göl manzaralı balkonuyla daha samimi, ev sıcaklığında bir deneyim sunuyor."]),
+  ("Aile ve Geniş Bahçe Arayanlar İçin: Green Blue",
+   ["Deniz ürünleri ağırlıklı menüsü ve çocuk oyun alanlı geniş bahçesiyle Green Blue, aile ziyaretleri için tercih edilen adreslerden."]),
+  ("Doğa ve Aktivite Arayanlar İçin: Natürköy",
+   ["Vadi içinde, dere üzerine kurulu ahşap kulübeleriyle Natürköy, fine dining'den çok doğa temalı bir deneyim sunuyor; at binme ve zipline gibi aktivitelerle destekleniyor."]),
+  ("Sonuç: Hangi Restoran Sizin İçin Doğru?",
+   ["Gölün hemen yanında fine dining bir akşam için %s, geniş menü ve canlı müzik için Sasa Sapanca, yöresel lezzet için Menzara, aile ziyareti için Green Blue, doğa deneyimi için Natürköy öne çıkıyor. Sapanca'nın \"en iyisi\", aslında aradığınız deneyimle birlikte tanımlanıyor."%L(REZ,"Mare Gastro")]),
+ ],
+ "faq":[
+  ("Sapanca'nın en iyi restoranı hangisi?","Bu, aranan deneyime bağlı. Fine dining ve göl manzarası için Mare Gastro, geniş dünya mutfağı ve canlı müzik için Sasa Sapanca, yöresel lezzet için Menzara öne çıkan adreslerdir."),
+  ("Sapanca'da fine dining restoran var mı?","Evet. Mare Gastro, Didi Otel bahçesinde gölün hemen yanında, Şef Doğan Anapa imzasıyla fine dining bir deneyim sunuyor."),
+  ("Sapanca'da göl manzaralı restoranlar hangileri?","Mare Gastro, Sasa Sapanca ve Menzara göl kıyısında veya göl manzaralı konumdadır."),
+  ("Sapanca'da restoran seçerken nelere dikkat etmeli?","Aradığınız deneyime göre mutfak tipi (fine dining, dünya mutfağı, yöresel), konum (göl manzarası) ve atmosfer (canlı müzik, aile dostu, doğa) birlikte değerlendirilmeli."),
+ ],
+ "rel":["sapanca-luks-restoran","sapanca-fine-dining-nedir","sapancada-ne-yenir"],
+},
 ]
 
 BY_SLUG = {p["slug"]:p for p in POSTS}
@@ -1063,17 +1183,17 @@ SOCIAL_FOOT = (
  '<a href="%s" target="_blank" rel="noopener" aria-label="Şef Instagram">%s</a>'
  '<a href="%s" target="_blank" rel="noopener" aria-label="TikTok">%s</a>'
  '<a href="%s" target="_blank" rel="noopener" aria-label="YouTube">%s</a>'
- '<a href="%s" target="_blank" rel="noopener" aria-label="WhatsApp">%s</a>'
+ '<a href="%s" target="_blank" rel="noopener" aria-label="WhatsApp" onclick="trackEvent(\'whatsapp_click\',{event_label:\'footer\'})">%s</a>'
  '<a href="%s" aria-label="E-posta">%s</a>'
  '</div>'%(IG,IC_IG,IGCHEF,IC_IG,TT,IC_TT,YT,IC_YT,WA,IC_WA,MAIL,IC_MAIL))
 
 def nav_html():
     return ('<nav class="bnav">'
-      '<a class="logo" href="%s/tr/"><img src="../images/marelogo1.png" alt="Mare Gastro"></a>'
+      '<a class="logo" href="%s/tr/" onclick="trackEvent(\'menu_click\',{event_label:\'header\',element:\'home\'})"><img src="../images/marelogo1.png" alt="Mare Gastro"></a>'
       '<div class="bnav-links">'
-      '<a href="../blog/">Blog</a>'
-      '<a href="%s">Menü</a>'
-      '<a href="%s" class="bnav-res">Rezervasyon</a>'
+      '<a href="../blog/" onclick="trackEvent(\'menu_click\',{event_label:\'header\',element:\'blog\'})">Blog</a>'
+      '<a href="%s" onclick="trackEvent(\'menu_click\',{event_label:\'header\',element:\'menu\'})">Menü</a>'
+      '<a href="%s" class="bnav-res" onclick="trackEvent(\'menu_click\',{event_label:\'header\',element:\'reservation\'})">Rezervasyon</a>'
       '</div></nav>'%(SITE,MENU,REZ))
 
 def footer_html():
@@ -1082,8 +1202,8 @@ def footer_html():
       '<div class="bfoot-tag">Fine Dining · Sapanca · Didi Otel Bahçesi</div>'
       + SOCIAL_FOOT +
       '<div class="bfoot-links">'
-      '<a href="%s/tr/">Ana Sayfa</a><a href="../blog/">Blog</a>'
-      '<a href="%s">Menü</a><a href="%s">Rezervasyon</a><a href="%s">Konum</a>'
+      '<a href="%s/tr/" onclick="trackEvent(\'menu_click\',{event_label:\'footer\',element:\'home\'})">Ana Sayfa</a><a href="../blog/" onclick="trackEvent(\'menu_click\',{event_label:\'footer\',element:\'blog\'})">Blog</a>'
+      '<a href="%s" onclick="trackEvent(\'menu_click\',{event_label:\'footer\',element:\'menu\'})">Menü</a><a href="%s" onclick="trackEvent(\'menu_click\',{event_label:\'footer\',element:\'reservation\'})">Rezervasyon</a><a href="%s" onclick="trackEvent(\'menu_click\',{event_label:\'footer\',element:\'location\'})">Konum</a>'
       '</div>'
       '<div class="bfoot-copy">© 2026 Mare Gastro · '
       '<a href="%s" target="_blank" rel="noopener">Didi Otel</a> bünyesinde</div>'
@@ -1095,7 +1215,7 @@ def cta_html():
       '<p>Sapanca Gölü kıyısında, Didi Otel bahçesinde unutulmaz bir akşam için rezervasyonunuzu oluşturun.</p>'
       '<div class="bcta-btns">'
       '<a class="btn-gold" href="%s">Rezervasyon Yap</a>'
-      '<a class="btn-wa" href="%s" target="_blank" rel="noopener">%s WhatsApp</a>'
+      '<a class="btn-wa" href="%s" target="_blank" rel="noopener" onclick="trackEvent(\'whatsapp_click\',{event_label:\'blog_cta\'})">%s WhatsApp</a>'
       '<a class="btn-line" href="%s">Menüyü Gör</a>'
       '</div></div></section>'%(REZ,WA,IC_WA,MENU))
 
@@ -1152,6 +1272,7 @@ def schema_graph(p):
 PAGE = """<!DOCTYPE html>
 <html lang="tr">
 <head>
+{gtm_head}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>{title}</title>
@@ -1183,6 +1304,7 @@ PAGE = """<!DOCTYPE html>
 </script>
 </head>
 <body>
+{gtm_body}
 {nav}
 <header class="bhero">
   <nav class="bcrumb" aria-label="breadcrumb"><a href="{site}/">Ana Sayfa</a> · <a href="../blog/">Blog</a> · {cat}</nav>
@@ -1215,12 +1337,13 @@ def build_post(p):
       site=SITE,h1=p["h1"],lead=p["lead"],
       body=body_html(p["body"]),faq=faq_accordion(p["faq"]),cta=cta_html(),
       related=related_html(p["rel"]),footer=footer_html(),nav=nav_html(),
-      schema=schema_graph(p))
+      schema=schema_graph(p),gtm_head=GTM_HEAD,gtm_body=GTM_BODY)
     with open(os.path.join(OUT,"%s.html"%p["slug"]),"w",encoding="utf-8") as f: f.write(h)
 
 INDEX = """<!DOCTYPE html>
 <html lang="tr">
 <head>
+{gtm_head}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Blog | Mare Gastro — Sapanca Fine Dining Rehberi</title>
@@ -1248,6 +1371,7 @@ INDEX = """<!DOCTYPE html>
 </script>
 </head>
 <body>
+{gtm_body}
 {nav}
 <header class="bidx-hero">
   <span class="beyebrow">Mare Gastro Günlüğü</span>
@@ -1278,7 +1402,7 @@ def build_index():
         {"@type":"ListItem","position":i+1,"url":post_url(p["slug"]),"name":strip_tags(p["h1"])}
         for i,p in enumerate(POSTS)]}}
     h=INDEX.format(site=SITE,nav=nav_html(),footer=footer_html(),cards="\n".join(cards),
-      schema=json.dumps(itemlist,ensure_ascii=False,indent=1))
+      schema=json.dumps(itemlist,ensure_ascii=False,indent=1),gtm_head=GTM_HEAD,gtm_body=GTM_BODY)
     with open(os.path.join(OUT,"index.html"),"w",encoding="utf-8") as f: f.write(h)
 
 def build_sitemap():
