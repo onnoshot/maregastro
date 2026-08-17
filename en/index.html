@@ -2715,7 +2715,7 @@ nav{
   background:rgba(4,8,15,.5);backdrop-filter:blur(12px);
 }
 .kfoot-main{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;width:100%}
-.kfoot-credit-row{width:100%;display:flex;justify-content:center;padding-top:8px;border-top:1px solid rgba(255,255,255,.05)}
+.kfoot-bottom{width:100%;display:flex;flex-direction:column;align-items:center;gap:9px;padding-top:10px;border-top:1px solid rgba(255,255,255,.05)}
 @media(min-width:768px){.kfoot{padding:14px 96px 14px 48px}}
 .kfoot img{height:22px;filter:brightness(0) invert(1);opacity:.3}
 .kfoot-t{font-size:10px;color:rgba(237,232,220,.25);letter-spacing:.05em}
@@ -2727,6 +2727,13 @@ nav{
 .kfoot-credit{display:flex;align-items:center;gap:6px;font-size:9px;letter-spacing:.05em;color:rgba(237,232,220,.22);text-decoration:none;transition:color .25s,opacity .25s;opacity:.85}
 .kfoot-credit:hover{color:var(--amber);opacity:1}
 .kfoot-credit img{height:11px!important;width:auto;filter:brightness(0) invert(1);opacity:.55}
+.kfoot-ta{display:flex;justify-content:center;filter:grayscale(1) brightness(1.7) contrast(.85);opacity:.5;transition:opacity .25s,filter .25s;transform:scale(.82);transform-origin:center}
+.kfoot-ta:hover{opacity:1;filter:none}
+@media(max-width:767px){
+  .kfoot-main{flex-direction:column;text-align:center}
+  .kfoot-t{justify-content:center;flex-wrap:wrap}
+  .kfoot-links{justify-content:center;padding-right:0}
+}
 
 /* REVEAL */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
@@ -3588,12 +3595,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="/blog/" onclick="trackEvent('menu_click',{event_label:'footer',element:'blog'})">Blog</a>
       <a href="#reservation" onclick="trackEvent('menu_click',{event_label:'footer',element:'reservation'})">Reservations</a>
       <a href="https://www.instagram.com/maregastrosapanca/" target="_blank">Instagram</a>
+    </div>
+    <div class="kfoot-bottom">
       <a class="kfoot-credit" href="https://www.uniqbee.com/?utm_source=maregastro&utm_medium=referral&utm_campaign=footer_credit" target="_blank" rel="noopener">
         <img src="/images/uniqbee-logo.svg" alt="UniqBee">
         <span>Crafted by UniqBee Agency</span>
       </a>
+      <div class="kfoot-ta"><div id="TA_rated68" class="TA_rated"><ul id="arekzl" class="TA_links OgU1Ub97v3"><li id="uzAGa9Vy" class="JATRJk"><a target="_blank" href="https://www.tripadvisor.com.tr/Restaurant_Review-g612463-d34599931-Reviews-Mare_Gastro-Sapanca_Sakarya_Province.html"><img src="https://www.tripadvisor.com.tr/img/cdsi/img2/badges/ollie-11424-2.gif" alt="TripAdvisor"/></a></li></ul></div><script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=68&amp;locationId=34599931&amp;lang=tr&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script></div>
     </div>
-    <div id="TA_rated68" class="TA_rated"><ul id="arekzl" class="TA_links OgU1Ub97v3"><li id="uzAGa9Vy" class="JATRJk"><a target="_blank" href="https://www.tripadvisor.com.tr/Restaurant_Review-g612463-d34599931-Reviews-Mare_Gastro-Sapanca_Sakarya_Province.html"><img src="https://www.tripadvisor.com.tr/img/cdsi/img2/badges/ollie-11424-2.gif" alt="TripAdvisor"/></a></li></ul></div><script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=68&amp;locationId=34599931&amp;lang=tr&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script>
   </div>
 </section>
 
