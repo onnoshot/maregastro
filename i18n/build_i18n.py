@@ -112,7 +112,7 @@ def build_restaurant_schema(lang):
         "hasMap": "https://maps.google.com/?cid=7177941338358519695",
         "currenciesAccepted": "TRY",
         "sameAs": [
-            "https://www.instagram.com/maregastrosapanca/",
+            "https://www.instagram.com/maregastro/",
             "https://www.tiktok.com/@maregastro",
             "https://www.youtube.com/@maregastro",
             "https://maps.google.com/?cid=7177941338358519695",
@@ -348,7 +348,7 @@ animation:fadeUp 1.1s var(--ease) 1.5s both}
 <div class="cards">
 __CARDS__
 </div>
-<div class="foot">Sapanca · Didi Otel · <a href="https://www.instagram.com/maregastrosapanca/" target="_blank" rel="noopener">Instagram</a></div>
+<div class="foot">Sapanca · Didi Otel · <a href="https://www.instagram.com/maregastro/" target="_blank" rel="noopener">Instagram</a></div>
 </div>
 <script>
 (function(){var n=window.innerWidth<600?9:16,b=document.body;for(var i=0;i<n;i++){var p=document.createElement('div');p.className='par';var s=1+Math.random()*2;p.style.left=Math.random()*100+'vw';p.style.width=p.style.height=s+'px';p.style.animationDuration=(15+Math.random()*15)+'s';p.style.animationDelay=(-Math.random()*22)+'s';p.style.opacity=.25+Math.random()*.45;b.appendChild(p)}})();

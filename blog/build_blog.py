@@ -20,7 +20,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->"""
 
 SITE   = "https://maregastro.com"
-IG     = "https://www.instagram.com/maregastrosapanca/"
+IG     = "https://www.instagram.com/maregastro/"
 IGCHEF = "https://www.instagram.com/chefdogananapa/"
 DIDI   = "https://www.instagram.com/didiotel/"
 TT     = "https://www.tiktok.com/@maregastro"
