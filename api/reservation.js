@@ -87,9 +87,9 @@ export default async function handler(req, res) {
     } catch (e) {
       return send(res, 500, { error: 'Kayit yazilamadi: ' + (e.message || e) });
     }
-    if (!isManual) {
+    {
       await tgSend(
-        '<b>Yeni Rezervasyon Talebi</b>\n' +
+        '<b>Yeni Rezervasyon Talebi</b>' + (isManual ? ' (dashboard\'dan elle eklendi)' : ' (siteden)') + '\n' +
         'Ad Soyad: ' + rec.name + '\n' +
         'Telefon: ' + rec.phone + '\n' +
         (rec.email ? 'E-posta: ' + rec.email + '\n' : '') +
