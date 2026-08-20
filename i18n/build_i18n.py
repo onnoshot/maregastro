@@ -64,8 +64,6 @@ def build_menu_schema():
             mi = {"@type": "MenuItem", "name": it["name"]}
             if it.get("desc"):
                 mi["description"] = it["desc"]
-            if it.get("price"):
-                mi["offers"] = {"@type": "Offer", "price": str(it["price"]), "priceCurrency": "TRY"}
             menu_items.append(mi)
         sections.append({"@type": "MenuSection", "name": c.get("name_tr", c["id"]), "hasMenuItem": menu_items})
     schema = {

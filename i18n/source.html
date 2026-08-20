@@ -1398,9 +1398,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="m-top-right">
         <p class="m-hint">Bir kategoriye dokunun</p>
-        <a href="https://mare-gastro-dergi.vercel.app" target="_blank" rel="noopener" class="m-dergi-btn">
-          <span>Dijital Menüyü Aç</span>
-        </a>
       </div>
     </div>
 
@@ -1657,7 +1654,7 @@ ar:{yemek:"الطعام",icecek:"المشروبات",b:"المقبلات",s:"ا�
 ru:{yemek:"Еда",icecek:"Напитки",b:"Закуски",s:"Салаты",a:"Горячие закуски",n:"Основные блюда",kahvalti:"Завтрак",t:"Десерты",c:"Детское меню",extra:"Дополнения",sarap:"Вина","kokteyl-al":"Коктейли","kokteyl-sz":"Безалкогольные коктейли",raki:"Раки",viski:"Виски",votka:"Водка",cin:"Джин",tekila:"Текила",rom:"Ром",likor:"Ликёры",bira:"Пиво","soguk-kahve":"Холодный кофе","soguk-icecek":"Холодные напитки",milkshake:"Милкшейки",frozen:"Фрозен","taze-sikim":"Свежевыжатые соки"}
 };
 let MENU_DATA=null,curGroup=null,curCat=null;
-const SHOW_PRICES=true;
+const SHOW_PRICES=false;
 function mLabel(id){const cl=document.documentElement.lang||'tr';const L=MENU_I18N[cl]||MENU_I18N.tr;return L[id]||id}
 function mPrice(n){if(n==null)return'';return Number(n).toLocaleString('tr-TR')+' ₺'}
 function noimgSvg(){return'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>'}
