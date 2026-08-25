@@ -1338,7 +1338,7 @@ POSTS = [
 {
  "slug":"sapanca-istanbula-yakin-evlilik-teklifi-mekanlari",
  "cat":"romantik","date":"2026-08-26","read":"8 dk",
- "img":"mare-sofra-detay.webp","alt":"Zarif bir masa detayı — İstanbul'a yakın evlilik teklifi mekanı Mare Gastro",
+ "img":"ai-golde-teklif-sofrasi.jpg","alt":"Gölün hemen yanında gün batımında evlilik teklifi sofrası — İstanbul'a yakın evlilik teklifi mekanı Mare Gastro",
  "h1":"İstanbul'a Yakın <em>Evlilik Teklifi</em> İçin En İyi 5 Mekan",
  "title":"İstanbul'a Yakın Evlilik Teklifi İçin En İyi 5 Mekan | Mare Gastro",
  "desc":"İstanbul'a yakın, unutulmaz bir evlilik teklifi için en iyi 5 mekanı karşılaştırdık: mahremiyet, göl manzarası, sürpriz organizasyonu ve Google yorumları açısından Mare Gastro, Sasa Sapanca, Menzara, Green Blue ve Natürköy.",
@@ -1382,7 +1382,7 @@ POSTS = [
 {
  "slug":"sapanca-istanbula-yakin-luks-dogum-gunu-mekanlari",
  "cat":"dogumgunu","date":"2026-08-26","read":"8 dk",
- "img":"mare-teras-misafir.webp","alt":"Teras sofrası akşam atmosferi — İstanbul'a yakın lüks doğum günü mekanı Mare Gastro",
+ "img":"ai-luks-dogum-gunu-terasi.jpg","alt":"Gölün hemen yanında akşam ışıklarıyla süslü doğum günü sofrası — İstanbul'a yakın lüks doğum günü mekanı Mare Gastro",
  "h1":"İstanbul'a Yakın Doğum Günü İçin En İyi 5 <em>Lüks Mekan</em>",
  "title":"İstanbul'a Yakın Doğum Günü İçin En İyi 5 Lüks Mekan | Mare Gastro",
  "desc":"İstanbul'a yakın, lüks bir doğum günü kutlaması için en iyi 5 mekanı karşılaştırdık: ulaşım, fine dining seviyesi, kutlama hizmeti ve Google yorumları açısından Mare Gastro, Sasa Sapanca, Menzara, Green Blue ve Natürköy.",
@@ -1426,7 +1426,7 @@ POSTS = [
 {
  "slug":"sapanca-dogum-gunu-luks-mekan-onerileri",
  "cat":"dogumgunu","date":"2026-08-26","read":"8 dk",
- "img":"mare-kabana-oturma.webp","alt":"Kabana oturma alanı — Sapanca'da doğum günü için lüks mekan önerisi Mare Gastro",
+ "img":"ai-luks-kabana-lounge.jpg","alt":"Gölün hemen yanında lüks kabana oturma alanı — Sapanca'da doğum günü için lüks mekan önerisi Mare Gastro",
  "h1":"Sapanca'da Doğum Günü İçin <em>Lüks Mekan</em> Önerileri",
  "title":"Sapanca'da Doğum Günü İçin Lüks Mekan Önerileri | Mare Gastro",
  "desc":"Sapanca'da doğum gününüzü lüks bir mekanda kutlamak istiyorsanız işte öne çıkan öneriler: fine dining standardı, servis kalitesi, atmosfer ve Google yorumları açısından Mare Gastro, Sasa Sapanca, Menzara, Green Blue ve Natürköy.",
@@ -1470,7 +1470,7 @@ POSTS = [
 {
  "slug":"sapanca-yildonumu-icin-en-iyi-mekan",
  "cat":"kutlama","date":"2026-08-26","read":"8 dk",
- "img":"mare-bahce-manzarasi.webp","alt":"Bahçeden göl manzarası — Sapanca'da yıldönümü kutlamak için en iyi mekan Mare Gastro",
+ "img":"ai-yildonumu-gunbatimi-sofrasi.jpg","alt":"Gün batımında göl manzaralı yıldönümü sofrası — Sapanca'da yıldönümü kutlamak için en iyi mekan Mare Gastro",
  "h1":"Yıldönümü Kutlamak İçin Sapanca'daki <em>En İyi 5 Mekan</em>",
  "title":"Yıldönümü Kutlamak İçin Sapanca'daki En İyi 5 Mekan | Mare Gastro",
  "desc":"Sapanca'da yıldönümü kutlamak için en iyi 5 mekanı karşılaştırdık: göl manzarası, romantik atmosfer, sürpriz organizasyonu ve Google yorumları açısından Mare Gastro, Sasa Sapanca, Menzara, Green Blue ve Natürköy.",
