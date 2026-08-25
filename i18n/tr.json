@@ -170,5 +170,8 @@
  "cuisine_aegean": "Ege",
  "cuisine_mediterranean": "Akdeniz",
  "cuisine_seafood": "Deniz Ürünleri",
- "footer_credit": "UniqBee Ajans ile hazırlanmıştır"
+ "footer_credit": "UniqBee Ajans ile hazırlanmıştır",
+ "menu_dijital_ac": "Dijital Menüyü Aç",
+ "menu_loading": "Menü yükleniyor…",
+ "menu_load_error": "Menü şu anda yüklenemedi, lütfen sayfayı yenileyin."
 }

@@ -205,7 +205,7 @@ for l in LANGS:
     # JS tek-tırnak bağlamına giren tokenler (alert / textContent / onclick selK)
     JS_CTX = {"js_gnote_ozel", "js_gnote_yalniz", "js_gnote_kisilik",
               "js_alert_tarih", "js_alert_saat", "js_alert_konaklama",
-              "js_kisi_suffix", "rez_kopt1_v", "rez_kopt2_v"}
+              "js_kisi_suffix", "rez_kopt1_v", "rez_kopt2_v", "menu_load_error"}
     for key, val in d.items():
         safe = val.replace("\\", "\\\\").replace("'", "\\'") if key in JS_CTX else val
         out = out.replace("@@%s@@" % key, safe)

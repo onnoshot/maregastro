@@ -170,5 +170,8 @@
  "cuisine_aegean": "Эгейская",
  "cuisine_mediterranean": "Средиземноморская",
  "cuisine_seafood": "Морепродукты",
- "footer_credit": "Разработано агентством UniqBee"
+ "footer_credit": "Разработано агентством UniqBee",
+ "menu_dijital_ac": "Открыть цифровое меню",
+ "menu_loading": "Загрузка меню…",
+ "menu_load_error": "Не удалось загрузить меню, обновите страницу."
 }

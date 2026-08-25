@@ -170,5 +170,8 @@
  "cuisine_aegean": "Aegean",
  "cuisine_mediterranean": "Mediterranean",
  "cuisine_seafood": "Seafood",
- "footer_credit": "Crafted by UniqBee Agency"
+ "footer_credit": "Crafted by UniqBee Agency",
+ "menu_dijital_ac": "Open Digital Menu",
+ "menu_loading": "Loading menu…",
+ "menu_load_error": "The menu could not be loaded right now, please refresh the page."
 }

@@ -170,5 +170,8 @@
  "cuisine_aegean": "إيجي",
  "cuisine_mediterranean": "متوسطي",
  "cuisine_seafood": "مأكولات بحرية",
- "footer_credit": "تم التصميم بواسطة وكالة يونيك بي"
+ "footer_credit": "تم التصميم بواسطة وكالة يونيك بي",
+ "menu_dijital_ac": "افتح القائمة الرقمية",
+ "menu_loading": "جارٍ تحميل القائمة…",
+ "menu_load_error": "تعذّر تحميل القائمة حالياً، يرجى تحديث الصفحة."
 }

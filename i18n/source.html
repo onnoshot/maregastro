@@ -1399,7 +1399,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="m-top-right">
         <p class="m-hint">Bir kategoriye dokunun</p>
         <a href="/dijitalmenu" target="_blank" rel="noopener" class="m-dergi-btn">
-          <span>Dijital Menüyü Aç</span>
+          <span>@@menu_dijital_ac@@</span>
         </a>
       </div>
     </div>
@@ -1408,7 +1408,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="mgroup-view" id="mGroupView">
       <div class="mtabs" id="mTabs"></div>
-      <div class="mpanels" id="mPanels"><div class="mloading" id="mLoading">Menü yükleniyor…</div></div>
+      <div class="mpanels" id="mPanels"><div class="mloading" id="mLoading">@@menu_loading@@</div></div>
     </div>
   </div>
 </section>
@@ -1722,9 +1722,9 @@ function switchCat(cid){
 }
 fetch('/api/menu',{cache:'no-store'}).then(r=>r.json()).then(res=>{
   if(res&&res.data&&res.data.items&&res.data.items.length)renderMenu(res.data);
-  else document.getElementById('mPanels').innerHTML='<div class="mloading">Menü şu anda yüklenemedi, lütfen sayfayı yenileyin.</div>';
+  else document.getElementById('mPanels').innerHTML='<div class="mloading">@@menu_load_error@@</div>';
 }).catch(()=>{
-  document.getElementById('mPanels').innerHTML='<div class="mloading">Menü şu anda yüklenemedi, lütfen sayfayı yenileyin.</div>';
+  document.getElementById('mPanels').innerHTML='<div class="mloading">@@menu_load_error@@</div>';
 });
 
 /* ── REZERVASYON ── */
