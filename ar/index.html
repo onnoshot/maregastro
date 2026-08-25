@@ -2797,18 +2797,21 @@ let MENU_DATA=null,curGroup=null,curCat=null;
 const SHOW_PRICES=false;
 function mLabel(id){const cl=document.documentElement.lang||'tr';const L=MENU_I18N[cl]||MENU_I18N.tr;return L[id]||id}
 function mPrice(n){if(n==null)return'';return Number(n).toLocaleString('ar-SA')+' ₺'}
+function mText(it,field){const cl=document.documentElement.lang||'tr';if(cl!=='tr'){const v=it[field+'_'+cl];if(v)return v}return it[field]||''}
 function noimgSvg(){return'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>'}
 function cardHTML(it,i){
-  const img=it.img?'<div class="dc-img"><img loading="lazy" decoding="async" src="/images/'+it.img+'" alt="'+escHtml(it.name)+'"></div>':'<div class="dc-noimg">'+noimgSvg()+'</div>';
+  const nm=mText(it,'name'),ds=mText(it,'desc');
+  const img=it.img?'<div class="dc-img"><img loading="lazy" decoding="async" src="/images/'+it.img+'" alt="'+escHtml(nm)+'"></div>':'<div class="dc-noimg">'+noimgSvg()+'</div>';
   return '<div class="dc" style="--d:'+(i*45)+'ms">'+img+
-    '<div class="dc-body"><div class="dc-name-row"><span class="dc-name">'+escHtml(it.name)+'</span></div><div class="dc-desc">'+escHtml(it.desc||'')+'</div></div>'+
+    '<div class="dc-body"><div class="dc-name-row"><span class="dc-name">'+escHtml(nm)+'</span></div><div class="dc-desc">'+escHtml(ds)+'</div></div>'+
     '<div class="dc-glow"></div></div>';
 }
 function rowHTML(it,i,group){
   const showPrice=SHOW_PRICES&&group!=='icecek';
+  const nm=mText(it,'name'),ds=mText(it,'desc');
   return '<div class="dlist-row" style="--d:'+(i*30)+'ms">'+
-    '<div class="dlist-main"><div class="dlist-name">'+escHtml(it.name)+'</div>'+
-    (it.desc?'<div class="dlist-desc">'+escHtml(it.desc)+'</div>':'')+'</div>'+
+    '<div class="dlist-main"><div class="dlist-name">'+escHtml(nm)+'</div>'+
+    (ds?'<div class="dlist-desc">'+escHtml(ds)+'</div>':'')+'</div>'+
     (showPrice?'<div class="dlist-price">'+mPrice(it.price)+'</div>':'')+'</div>';
 }
 function escHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
