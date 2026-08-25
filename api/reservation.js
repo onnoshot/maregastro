@@ -10,6 +10,37 @@ import crypto from 'node:crypto';
 
 const PREFIX = 'reservation/';
 const STATUSES = ['Beklemede', 'Onaylandı', 'İptal Edildi', 'Tamamlandı'];
+const DEDUP_WINDOW_MS = 10 * 60 * 1000;
+
+// Ayni kisi/tarih/saat icin kisa sure icinde (cift tikla, retry, coklu sekme)
+// tekrar POST gelirse yeni kayit acmak yerine mevcut kaydi dondur.
+async function findRecentDuplicate(rec) {
+  try {
+    const now = Date.now();
+    const candidates = [];
+    let cursor;
+    do {
+      const page = await list({ prefix: PREFIX, cursor, limit: 1000 });
+      for (const b of page.blobs) {
+        if (b.pathname.endsWith('.json') && now - new Date(b.uploadedAt).getTime() <= DEDUP_WINDOW_MS) candidates.push(b);
+      }
+      cursor = page.cursor;
+    } while (cursor);
+
+    for (const b of candidates) {
+      try {
+        const r = await fetch(bust(b.url), { cache: 'no-store' });
+        if (!r.ok) continue;
+        const j = await r.json();
+        if (j.name === rec.name && j.phone === rec.phone && j.date === rec.date &&
+            j.time === rec.time && j.guests === rec.guests && j.konaklama === rec.konaklama) {
+          return j;
+        }
+      } catch { /* bozuk kayit atla */ }
+    }
+  } catch { /* dedup basarisiz olursa normal akisa devam */ }
+  return null;
+}
 
 function cors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -79,6 +110,10 @@ export default async function handler(req, res) {
       referrer: String(b.referrer || '').trim().slice(0, 300),
       utm: String(b.utm || '').trim().slice(0, 60),
     };
+    if (!isManual) {
+      const dup = await findRecentDuplicate(rec);
+      if (dup) return send(res, 200, { ok: true, id: dup.id, item: dup, dedup: true });
+    }
     try {
       await put(PREFIX + rec.id + '.json', JSON.stringify(rec), {
         access: 'public', contentType: 'application/json', addRandomSuffix: false,
