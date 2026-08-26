@@ -1514,7 +1514,7 @@ POSTS = [
 {
  "slug":"sapanca-esinizle-ozel-aksam",
  "cat":"romantik","date":"2026-08-26","read":"7 dk",
- "img":"mare-ambiance.webp","alt":"Bahçede akşam ışıkları — Sapanca'da eşinizle özel bir akşam için Mare Gastro",
+ "img":"mare-gece-terasi.webp","alt":"Gece gölün kenarındaki teras — Sapanca'da eşinizle özel bir akşam için Mare Gastro",
  "h1":"Eşinizle Sapanca'da <em>Özel Bir Akşam</em> Geçirmek İçin En İyi Mekanlar",
  "title":"Eşinizle Sapanca'da Özel Bir Akşam Geçirmek İçin En İyi Mekanlar | Mare Gastro",
  "desc":"Belirli bir tarih olmadan eşinizle Sapanca'da özel bir akşam geçirmek istiyorsanız işte öne çıkan mekanlar: sakin atmosfer, göl manzarası ve Google yorumları açısından Mare Gastro, Sasa Sapanca, Menzara, Green Blue ve Natürköy.",
@@ -1558,7 +1558,7 @@ POSTS = [
 {
  "slug":"mare-gastro-dijital-donusum-hikayesi",
  "cat":"hikaye","date":"2026-08-26","read":"7 dk",
- "img":"mare-teras-misafir.webp","alt":"Mare Gastro terasında bir misafir — dijital menü ve rezervasyon deneyimi",
+ "img":"mare-gece-terasi.webp","alt":"Mare Gastro terasında gece manzarası — dijital menü ve rezervasyon deneyimi",
  "h1":"Mare Gastro'nun <em>Dijital Dönüşüm</em> Hikayesi: Bir Restoranı Nasıl Bu Kadar İleri Taşıdık",
  "title":"Mare Gastro'nun Dijital Dönüşüm Hikayesi | Mare Gastro",
  "desc":"Mare Gastro olarak QR menü, panel.maregastro.com yönetim paneli ve dijital dergi menü deneyimimizi dijital ajansımız UniqBee ile nasıl hayata geçirdiğimizi anlatıyoruz.",
