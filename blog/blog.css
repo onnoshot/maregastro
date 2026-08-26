@@ -197,6 +197,36 @@ a:hover{color:var(--amber)}
 .bfoot-copy{font-size:10px;color:rgba(237,232,220,.3);letter-spacing:.05em}
 .bfoot-copy a{color:rgba(200,169,110,.7)}
 
+/* ── GOOGLE REVIEWS SHOWCASE ── */
+.brev{max-width:1100px;margin:44px auto 0;padding:0}
+.brev-head{max-width:740px;margin:0 auto 26px;padding:0 22px;text-align:center}
+.brev-badge{display:inline-flex;align-items:center;gap:7px;background:var(--glass);border:1px solid var(--glassBorder);border-radius:100px;padding:6px 14px 6px 10px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.brev-badge svg{width:14px;height:14px;flex:none}
+.brev-badge b{color:var(--amber2);font-weight:600}
+.brev-stars-row{display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:6px}
+.brev-stars-row .stars{color:var(--amber);font-size:15px;letter-spacing:2px}
+.brev-stars-row span{font-size:11px;letter-spacing:.06em;color:var(--muted)}
+.brev-track{overflow:hidden;padding:6px 0;-webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)}
+.brev-row{display:flex;gap:14px;width:max-content;will-change:transform;animation:brevScrollL 64s linear infinite}
+.brev-row.brev-r{animation-name:brevScrollR;animation-duration:74s}
+.brev-track:hover .brev-row{animation-play-state:paused}
+@keyframes brevScrollL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes brevScrollR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.brev-card{flex:0 0 300px;background:var(--glass);border:1px solid var(--glassBorder);border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:12px;transition:border-color .3s}
+.brev-card:hover{border-color:rgba(200,169,110,.35)}
+.brev-card-top{display:flex;align-items:center;justify-content:space-between}
+.brev-card-stars{color:var(--amber);font-size:13px;letter-spacing:2px}
+.brev-card-q{font-size:13.5px;line-height:1.65;color:rgba(237,232,220,.85);flex:1}
+.brev-card-who{display:flex;align-items:center;gap:9px}
+.brev-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,rgba(200,169,110,.35),rgba(200,169,110,.1));display:flex;align-items:center;justify-content:center;font-family:var(--ital);font-size:13px;color:var(--amber2);flex:none}
+.brev-card-name{font-size:11.5px;color:var(--cream);font-weight:600;letter-spacing:.01em}
+.brev-card-tag{font-size:9.5px;color:var(--muted);letter-spacing:.04em}
+.brev-cta{max-width:740px;margin:30px auto 0;padding:0 22px;text-align:center}
+.brev-cta a{display:inline-flex;align-items:center;gap:8px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+.brev-cta a:hover{color:var(--amber2)}
+@media(prefers-reduced-motion:reduce){.brev-row{animation:none}}
+@media(max-width:640px){.brev-card{flex-basis:260px}}
+
 /* ── BLOG INDEX ── */
 .bidx-hero{padding:120px 22px 10px;text-align:center;max-width:780px;margin:0 auto}
 .bidx-hero h1{font-family:var(--ital);font-weight:400;font-size:clamp(2.4rem,7vw,4rem);line-height:1.05;color:var(--cream);margin-bottom:16px}
