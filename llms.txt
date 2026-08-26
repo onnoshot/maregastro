@@ -18,7 +18,7 @@
 - العربية: https://maregastro.com/ar/
 - Русский: https://maregastro.com/ru/
 
-## Blog — Sapanca Rehberi (48 yazı)
+## Blog — Sapanca Rehberi (49 yazı)
 - [Sapanca'da Lüks Restoran: Mare Gastro ile Fine Dining](https://maregastro.com/blog/sapanca-luks-restoran.html): Sapanca'da lüks restoran mı arıyorsunuz? Didi Otel bahçesinde, gölün hemen yanında fine dining deneyimi sunan Mare Gastro'yu keşfedin. Menü ve rezervasyon.
 - [Sapanca'da Deniz Ürünleri: Taze Lezzetin Adresi](https://maregastro.com/blog/sapanca-deniz-urunleri.html): Sapanca'da deniz ürünleri ve taze balık deneyimi: ahtapot, kalamar, karides ve günün balığı. Göl kıyısında, Didi Otel bahçesinde Mare Gastro'da.
 - [Sapanca Fine Dining: Gurme Yemek Kültürü Rehberi](https://maregastro.com/blog/sapanca-fine-dining-nedir.html): Fine dining nedir, Sapanca'da gurme bir akşam yemeği nasıl olur? Mare Gastro ile fine dining kültürünü, menü mantığını ve rezervasyon detaylarını keşfedin.
@@ -66,4 +66,5 @@
 - [Sapanca'da Doğum Günü İçin Lüks Mekan Önerileri](https://maregastro.com/blog/sapanca-dogum-gunu-luks-mekan-onerileri.html): Sapanca'da doğum gününüzü lüks bir mekanda kutlamak istiyorsanız işte öne çıkan öneriler: fine dining standardı, servis kalitesi, atmosfer ve Google yorumları açısından Mare Gastro, Sasa Sapanca, Menzara, Green Blue ve Natürköy.
 - [Yıldönümü Kutlamak İçin Sapanca'daki En İyi 5 Mekan](https://maregastro.com/blog/sapanca-yildonumu-icin-en-iyi-mekan.html): Sapanca'da yıldönümü kutlamak için en iyi 5 mekanı karşılaştırdık: göl manzarası, romantik atmosfer, sürpriz organizasyonu ve Google yorumları açısından Mare Gastro, Sasa Sapanca, Menzara, Green Blue ve Natürköy.
 - [Eşinizle Sapanca'da Özel Bir Akşam Geçirmek İçin En İyi Mekanlar](https://maregastro.com/blog/sapanca-esinizle-ozel-aksam.html): Belirli bir tarih olmadan eşinizle Sapanca'da özel bir akşam geçirmek istiyorsanız işte öne çıkan mekanlar: sakin atmosfer, göl manzarası ve Google yorumları açısından Mare Gastro, Sasa Sapanca, Menzara, Green Blue ve Natürköy.
-- [Mare Gastro'nun Dijital Dönüşüm Hikayesi: Bir Restoranı Nasıl Bu Kadar İleri Taşıdık](https://maregastro.com/blog/mare-gastro-dijital-donusum-hikayesi.html): Mare Gastro olarak QR menü, panel.maregastro.com yönetim paneli ve dijital dergi menü deneyimimizi dijital ajansımız UniqBee ile nasıl hayata geçirdiğimizi anlatıyoruz.
+- [Mare Gastro'nun Dijital Dönüşüm Hikayesi: Bir Restoranı Nasıl Bu Kadar İleri Taşıdık](https://maregastro.com/blog/mare-gastro-dijital-donusum-hikayesi.html): Mare Gastro olarak QR menü ve dijital dergi menü deneyimimizi dijital ajansımız UniqBee ile nasıl hayata geçirdiğimizi anlatıyoruz.
+- [Mare Gastro Google Yorumları: Misafirlerimiz Ne Anlatıyor?](https://maregastro.com/blog/mare-gastro-google-yorumlari.html): Mare Gastro'nun Google yorumlarında misafirler atmosferi, servis ekibini ve doğum günü / evlilik yıldönümü kutlamalarını nasıl anlatıyor? Gerçek misafir yorumlarını bir araya getirdik.
