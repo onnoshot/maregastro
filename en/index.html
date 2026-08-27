@@ -3164,6 +3164,11 @@ function deriveChannel(){
 }
 var MARE_CHANNEL=(function(){try{var s=sessionStorage.getItem('mare_ch');if(s)return s;var c=deriveChannel();sessionStorage.setItem('mare_ch',c);return c;}catch(e){return deriveChannel();}})();
 let rezSending=false;
+// Rezervasyon tarihi hangi dil sayfasindan gonderilirse gonderilsin HER ZAMAN
+// Turkce bicimde kaydedilmeli -- panel.maregastro.com'daki takvim/rapor ayristiricisi
+// sadece Turkce ay adlarini taniyor. Intl'den bagimsiz, elle bicimlendirme kullaniliyor.
+const MARE_TR_AYLAR=['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+function mareTrDateFmt(iso){const p=iso.split('-');const y=+p[0],m=+p[1],dd=+p[2];return dd+' '+MARE_TR_AYLAR[m-1]+' '+y;}
 function submitReservation(a){
   if(rezSending)return false;
   const name=document.getElementById('rName').value.trim();
@@ -3172,7 +3177,7 @@ function submitReservation(a){
   if(!name){showErr('err2','Please enter your full name.');return false}
   if(!phone){showErr('err2','Please enter your phone number.');return false}
   const d=document.getElementById('rdate').value;
-  const fmt=new Date(d).toLocaleDateString('en-US',{day:'numeric',month:'long',year:'numeric'});
+  const fmt=mareTrDateFmt(d);
   const msg=`Merhaba, Mare Gastro rezervasyon talebim:\n\nAd Soyad: ${name}\nTelefon: ${phone}${email?'\nE-posta: '+email:''}\n\nTarih: ${fmt}\nSaat: ${selTime_val}\nKişi Sayısı: ${guestCount}\nKonaklama: ${selKon_val}\n\nOnayınızı bekliyorum.`;
   a.href=`https://wa.me/905323540888?text=${encodeURIComponent(msg)}`;
   rezSending=true;
