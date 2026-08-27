@@ -224,6 +224,8 @@ for l in LANGS:
     out = out.replace('content="%s/"' % SITE, 'content="%s/%s/"' % (SITE, l))      # og:url
     out = out.replace('content="tr_TR"', 'content="%s"' % LOCALE[l])
     out = out.replace("'tr-TR'", "'%s'" % JSLOCALE[l])
+    # dijital menü (mare-gastro-dergi) sitenin hangi dilinde açıldıysa o dilde başlasın
+    out = out.replace('href="/dijitalmenu"', 'href="/dijitalmenu?lang=%s"' % l)
     # NOT: Menu şemasının "inLanguage" alanı kasıtlı olarak "tr" kalır —
     # yemek içerikleri (isim/açıklama) tüm site dillerinde SADECE Türkçe.
     # mobil dil linkleri (mobil menü açılışına ekle)
