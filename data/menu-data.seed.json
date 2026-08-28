@@ -192,7 +192,7 @@
       "cat": "b",
       "name": "Levrek Marin",
       "desc": "",
-      "price": 750,
+      "price": 800,
       "img": "levrek-marin.webp",
       "name_en": "Sea Bass Marin",
       "name_ar": "سمك القاروس المتبل",
@@ -259,7 +259,7 @@
       "cat": "b",
       "name": "Patlıcanlı Pilav",
       "desc": "Baldo pirinç pilavı, dolmalık fıstık, üzüm, dereotu, patlıcan, zeytinyağı, tuz, şeker",
-      "price": 450,
+      "price": 400,
       "img": "pilav.webp",
       "name_en": "Eggplant Rice Pilaf",
       "desc_en": "Baldo rice pilaf, pine nuts, currants, dill, eggplant, olive oil, salt, sugar",
@@ -530,7 +530,7 @@
       "cat": "a",
       "name": "Mare Spesiyal Islama Kalamar",
       "desc": "2 adet baby kalamar ızgara,naneli hardallı sos",
-      "price": 1100,
+      "price": 1350,
       "img": "baby-kalamar.webp",
       "name_en": "Mare Special Grilled Baby Calamari",
       "desc_en": "2 pieces grilled baby calamari, mint-mustard sauce",
@@ -650,7 +650,7 @@
       "cat": "extra",
       "name": "Dilim Ezine Peynir",
       "desc": "1 dilim ezine peyniri",
-      "price": 150,
+      "price": 170,
       "img": null,
       "name_en": "Sliced Ezine Cheese",
       "desc_en": "1 slice of ezine cheese",
@@ -664,7 +664,7 @@
       "cat": "extra",
       "name": "Çerez",
       "desc": "Fındık,badem,antep fıstığı",
-      "price": 400,
+      "price": 350,
       "img": null,
       "name_en": "Nuts",
       "desc_en": "Hazelnut, almond, pistachio",
@@ -678,7 +678,7 @@
       "cat": "extra",
       "name": "Patates Kızartması",
       "desc": "Çıtır patates",
-      "price": 300,
+      "price": 250,
       "img": "patates-kizartma.webp",
       "name_en": "French Fries",
       "desc_en": "Crispy potatoes",
@@ -1277,7 +1277,7 @@
       "cat": "sarap",
       "name": "Egeo Cabarnet Sauvignon 2016",
       "desc": "",
-      "price": 6250,
+      "price": 5000,
       "img": null
     },
     {
@@ -1285,7 +1285,7 @@
       "cat": "sarap",
       "name": "Egeo Chardonay 2016",
       "desc": "",
-      "price": 6250,
+      "price": 5000,
       "img": null
     },
     {
@@ -1293,7 +1293,7 @@
       "cat": "sarap",
       "name": "Egeo Füme Blanc 2020",
       "desc": "",
-      "price": 6250,
+      "price": 5000,
       "img": null
     },
     {
@@ -1301,7 +1301,7 @@
       "cat": "sarap",
       "name": "Egeo Roze 2019",
       "desc": "",
-      "price": 6250,
+      "price": 5000,
       "img": null,
       "name_en": "Egeo Rosé 2019"
     },
@@ -1310,7 +1310,7 @@
       "cat": "sarap",
       "name": "Egeo Sauvignon Blanc",
       "desc": "",
-      "price": 6250,
+      "price": 5000,
       "img": null
     },
     {
@@ -1382,7 +1382,7 @@
       "cat": "sarap",
       "name": "Urla Boğazkere",
       "desc": "",
-      "price": 6100,
+      "price": 5500,
       "img": null
     },
     {
@@ -1390,7 +1390,7 @@
       "cat": "sarap",
       "name": "Urla Cabarnet Sauvignon",
       "desc": "",
-      "price": 6100,
+      "price": 5500,
       "img": null
     },
     {
@@ -1398,7 +1398,7 @@
       "cat": "sarap",
       "name": "Urla Chardonay",
       "desc": "",
-      "price": 6100,
+      "price": 5500,
       "img": null
     },
     {
@@ -1406,7 +1406,7 @@
       "cat": "sarap",
       "name": "Urla Nexus",
       "desc": "",
-      "price": 5500,
+      "price": 6500,
       "img": null
     },
     {
@@ -1705,7 +1705,7 @@
       "cat": "milkshake",
       "name": "Karpuz Milkshake",
       "desc": "",
-      "price": 400,
+      "price": 450,
       "img": null,
       "name_en": "Watermelon Milkshake",
       "name_ar": "ميلك شيك البطيخ",
@@ -1822,7 +1822,7 @@
       "cat": "soguk-icecek",
       "name": "Limonata",
       "desc": "",
-      "price": 100,
+      "price": 200,
       "img": null,
       "name_en": "Lemonade",
       "name_ar": "ليموناضة",
@@ -2033,7 +2033,7 @@
       "cat": "a",
       "name": "Patates Terin",
       "desc": "Mabtar sos ile",
-      "price": 850,
+      "price": 900,
       "img": "patates-terin.webp",
       "name_en": "Potato Terrine",
       "desc_en": "Served with mabtar sauce",
@@ -2047,7 +2047,7 @@
       "cat": "extra",
       "name": "Fix",
       "desc": "",
-      "price": 1800,
+      "price": 2000,
       "img": null
     },
     {
