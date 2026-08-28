@@ -1357,8 +1357,8 @@ nav{
 }
 .aimg{overflow:hidden;border-radius:10px}
 .aimg:first-child{margin-top:40px}
-.aimg img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:brightness(.8) saturate(.85);transition:transform .9s var(--ease),filter .5s}
-.aimg:hover img{transform:scale(1.06);filter:brightness(.9) saturate(1)}
+.aimg img,.aimg video{width:100%;aspect-ratio:3/4;object-fit:cover;filter:brightness(.8) saturate(.85);transition:transform .9s var(--ease),filter .5s;display:block;background:#0c1420}
+.aimg:hover img,.aimg:hover video{transform:scale(1.06);filter:brightness(.9) saturate(1)}
 
 /* ═══════════════════════════════════════
    S3 — MENÜ
@@ -2421,10 +2421,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div class="about-right rv rv2">
-      <div class="aimg"><img loading="lazy" decoding="async" src="/images/ahtapot-izgara.webp" alt="Осьминог на гриле"></div>
-      <div class="aimg"><img loading="lazy" decoding="async" src="/images/citir-somon.webp" alt="Хрустящий лосось"></div>
-      <div class="aimg"><img loading="lazy" decoding="async" src="/images/dana-carpaccio.webp" alt="Карпаччо из говядины"></div>
-      <div class="aimg"><img loading="lazy" decoding="async" src="/images/cheesecake.webp" alt="Баскский чизкейк"></div>
+      <div class="aimg"><video class="alazy" muted loop playsinline preload="none" poster="/images/video/gallery-maregastroreels-poster.jpg" aria-label="Из кухни Mare Gastro"><source data-src="/images/video/gallery-maregastroreels.mp4" type="video/mp4"></video></div>
+      <div class="aimg"><video class="alazy" muted loop playsinline preload="none" poster="/images/video/hero-MareGastro111-poster.jpg" aria-label="С террасы Mare Gastro"><source data-src="/images/video/hero-MareGastro111.mp4" type="video/mp4"></video></div>
+      <div class="aimg"><video class="alazy" muted loop playsinline preload="none" poster="/images/video/hero-MareYeniVideo-poster.jpg" aria-label="С террасы Mare Gastro на закате"><source data-src="/images/video/hero-MareYeniVideo.mp4" type="video/mp4"></video></div>
+      <div class="aimg"><video class="alazy" muted loop playsinline preload="none" poster="/images/video/gallery-genelreels-poster.jpg" aria-label="Атмосфера Mare Gastro"><source data-src="/images/video/gallery-genelreels.mp4" type="video/mp4"></video></div>
     </div>
   </div>
 </section>
@@ -3122,6 +3122,23 @@ function toggleHeroSound(){
   if(!v.muted)v.play().catch(()=>{});
   btn.classList.toggle('on',!v.muted);
 }
+(function(){
+  const vids=document.querySelectorAll('.about-right video.alazy');
+  if(!vids.length)return;
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      const v=en.target;
+      if(en.isIntersecting){
+        const s=v.querySelector('source');
+        if(s&&s.dataset.src){s.src=s.dataset.src;delete s.dataset.src;v.load();}
+        v.play().catch(()=>{});
+      }else{
+        v.pause();
+      }
+    });
+  },{rootMargin:'200px 0px',threshold:.1});
+  vids.forEach(v=>io.observe(v));
+})();
 function showErr(id,msg){
   const el=document.getElementById(id);
   el.textContent=msg;el.classList.add('show');

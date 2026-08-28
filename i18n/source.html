@@ -395,8 +395,8 @@ nav{
 }
 .aimg{overflow:hidden;border-radius:10px}
 .aimg:first-child{margin-top:40px}
-.aimg img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:brightness(.8) saturate(.85);transition:transform .9s var(--ease),filter .5s}
-.aimg:hover img{transform:scale(1.06);filter:brightness(.9) saturate(1)}
+.aimg img,.aimg video{width:100%;aspect-ratio:3/4;object-fit:cover;filter:brightness(.8) saturate(.85);transition:transform .9s var(--ease),filter .5s;display:block;background:#0c1420}
+.aimg:hover img,.aimg:hover video{transform:scale(1.06);filter:brightness(.9) saturate(1)}
 
 /* ═══════════════════════════════════════
    S3 — MENÜ
@@ -1320,10 +1320,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div class="about-right rv rv2">
-      <div class="aimg"><img loading="lazy" decoding="async" src="images/ahtapot-izgara.webp" alt="Ahtapot Izgara"></div>
-      <div class="aimg"><img loading="lazy" decoding="async" src="images/citir-somon.webp" alt="Çıtır Somon"></div>
-      <div class="aimg"><img loading="lazy" decoding="async" src="images/dana-carpaccio.webp" alt="Dana Carpaccio"></div>
-      <div class="aimg"><img loading="lazy" decoding="async" src="images/cheesecake.webp" alt="Yanık Cheesecake"></div>
+      <div class="aimg"><video class="alazy" muted loop playsinline preload="none" poster="images/video/gallery-maregastroreels-poster.jpg" aria-label="Mare Gastro mutfağından"><source data-src="images/video/gallery-maregastroreels.mp4" type="video/mp4"></video></div>
+      <div class="aimg"><video class="alazy" muted loop playsinline preload="none" poster="images/video/hero-MareGastro111-poster.jpg" aria-label="Mare Gastro terasından"><source data-src="images/video/hero-MareGastro111.mp4" type="video/mp4"></video></div>
+      <div class="aimg"><video class="alazy" muted loop playsinline preload="none" poster="images/video/hero-MareYeniVideo-poster.jpg" aria-label="Mare Gastro gün batımından"><source data-src="images/video/hero-MareYeniVideo.mp4" type="video/mp4"></video></div>
+      <div class="aimg"><video class="alazy" muted loop playsinline preload="none" poster="images/video/gallery-genelreels-poster.jpg" aria-label="Mare Gastro atmosferinden"><source data-src="images/video/gallery-genelreels.mp4" type="video/mp4"></video></div>
     </div>
   </div>
 </section>
@@ -1774,6 +1774,25 @@ function toggleHeroSound(){
   if(!v.muted)v.play().catch(()=>{});
   btn.classList.toggle('on',!v.muted);
 }
+// ── HİKAYE galerisi: video kutucukları sadece göründüğünde yüklenip otomatik oynasın,
+// ekrandan çıkınca dursun (sayfa yüklenişini yavaşlatmasın) ──
+(function(){
+  const vids=document.querySelectorAll('.about-right video.alazy');
+  if(!vids.length)return;
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      const v=en.target;
+      if(en.isIntersecting){
+        const s=v.querySelector('source');
+        if(s&&s.dataset.src){s.src=s.dataset.src;delete s.dataset.src;v.load();}
+        v.play().catch(()=>{});
+      }else{
+        v.pause();
+      }
+    });
+  },{rootMargin:'200px 0px',threshold:.1});
+  vids.forEach(v=>io.observe(v));
+})();
 function gS(n){
   if(n===2){
     if(!document.getElementById('rdate').value){alert('Lütfen bir tarih seçin.');return}
