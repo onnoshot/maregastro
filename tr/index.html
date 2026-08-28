@@ -1156,21 +1156,27 @@ nav{
 .hbg{position:absolute;inset:-12%;will-change:transform}
 .hslide{
   position:absolute;inset:0;
-  background-position:center 34%;background-size:cover;background-repeat:no-repeat;
-  will-change:transform,opacity;
+  width:100%;height:100%;object-fit:cover;object-position:center 34%;
+  will-change:opacity;background:#04080f;
 }
-.hslide.s1{background-image:url('/images/hero-mare-1.webp');animation:kb 34s ease-in-out infinite alternate}
-.hslide.s2{background-image:url('/images/hero-mare-2.webp');opacity:0;animation:kb 34s ease-in-out infinite alternate-reverse,hfade 18s ease-in-out infinite}
+.hslide.s1{opacity:1}
+.hslide.s2{opacity:0;animation:hfade 18s ease-in-out infinite}
 @keyframes hfade{0%,6%{opacity:0}44%,56%{opacity:1}94%,100%{opacity:0}}
 @media(min-width:768px){
-  .hslide{background-position:center center}
+  .hslide{object-position:center center}
 }
-@keyframes kb{
-  0%{transform:scale(1.14) translate(0,0)}
-  33%{transform:scale(1.18) translate(-1.4%,-.7%)}
-  66%{transform:scale(1.15) translate(.8%,.5%)}
-  100%{transform:scale(1.12) translate(1.2%,-.3%)}
-}
+@media(prefers-reduced-motion:reduce){.hslide.s2{animation:none;opacity:0}}
+.hsound{position:absolute;right:20px;bottom:96px;z-index:5;width:42px;height:42px;border-radius:50%;
+  background:rgba(4,8,15,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.25);color:#fff;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:background .2s,transform .2s}
+.hsound:hover{background:rgba(4,8,15,.65)}
+.hsound:active{transform:scale(.92)}
+.hsound svg{width:18px;height:18px;flex:none}
+.hsound .ic-on{display:none}
+.hsound.on .ic-off{display:none}
+.hsound.on .ic-on{display:block}
+@media(max-width:767px){.hsound{right:14px;bottom:104px;width:38px;height:38px}.hsound svg{width:16px;height:16px}}
 .hov1{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,8,15,.82) 0%,rgba(4,8,15,.25) 38%,rgba(4,8,15,.45) 68%,rgba(4,8,15,.92) 100%)}
 .hov2{position:absolute;inset:0;background:radial-gradient(ellipse 80% 55% at 50% 110%,rgba(200,169,110,.06) 0%,transparent 65%)}
 /* shimmer light sweep */
@@ -2364,7 +2370,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ═══ S1: HERO ═══ -->
 <section class="page" id="home">
-  <div class="hbg" id="hbg"><div class="hslide s1"></div><div class="hslide s2"></div></div>
+  <div class="hbg" id="hbg">
+    <video class="hslide s1" autoplay muted loop playsinline preload="auto" poster="/images/video/hero-MareGastro111-poster.jpg"><source src="/images/video/hero-MareGastro111.mp4" type="video/mp4"></video>
+    <video class="hslide s2" autoplay muted loop playsinline preload="auto" poster="/images/video/hero-MareYeniVideo-poster.jpg"><source src="/images/video/hero-MareYeniVideo.mp4" type="video/mp4"></video>
+  </div>
+  <button class="hsound" id="hsound" onclick="toggleHeroSound()" aria-label="Sesi aç/kapat">
+    <svg class="ic-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+    <svg class="ic-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>
+  </button>
   <div class="hov1"></div><div class="hov2"></div><div class="hshimmer"></div>
   <div class="hpar" style="left:10%;width:2px;height:2px;animation-duration:18s;animation-delay:0s;bottom:0"></div>
   <div class="hpar" style="left:25%;width:1px;height:1px;animation-duration:24s;animation-delay:4s;bottom:0"></div>
@@ -3103,6 +3116,14 @@ function adjG(d){
 function selK(card,val){
   document.querySelectorAll('.kopt').forEach(k=>k.classList.remove('on'));
   card.classList.add('on');selKon_val=val;
+}
+function toggleHeroSound(){
+  const btn=document.getElementById('hsound');
+  const v=document.querySelector('#hbg video.s1');
+  if(!v||!btn)return;
+  v.muted=!v.muted;
+  if(!v.muted)v.play().catch(()=>{});
+  btn.classList.toggle('on',!v.muted);
 }
 function showErr(id,msg){
   const el=document.getElementById(id);
