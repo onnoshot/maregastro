@@ -31,6 +31,7 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
 <link rel="icon" type="image/png" href="/images/marelogo.png">
 <link rel="apple-touch-icon" href="/images/marelogo.png">
 <link rel="preload" as="image" href="/images/hero-mare-1.webp" fetchpriority="high">
+<link rel="preload" as="image" href="/images/video/hero-mareheader-poster.jpg" fetchpriority="high">
 
 <!-- Open Graph -->
 <meta property="og:type" content="restaurant">
@@ -1161,6 +1162,9 @@ nav{
 }
 .hslide.s1{background-image:url('/images/hero-mare-3.webp');animation:kb 34s ease-in-out infinite alternate}
 .hslide.s2{background-image:url('/images/hero-mare-2.webp');opacity:0;animation:kb 34s ease-in-out infinite alternate-reverse,hfade 18s ease-in-out infinite}
+.hvideo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 34%;opacity:.68}
+@media(min-width:768px){.hvideo{object-position:center center}}
+@media(prefers-reduced-motion:reduce){.hvideo{display:none}}
 @keyframes hfade{0%,6%{opacity:0}44%,56%{opacity:1}94%,100%{opacity:0}}
 @media(min-width:768px){
   .hslide{background-position:center center}
@@ -2382,6 +2386,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ═══ S1: HERO ═══ -->
 <section class="page" id="home">
   <div class="hbg" id="hbg"><div class="hslide s1"></div><div class="hslide s2"></div></div>
+<video class="hvideo" autoplay muted loop playsinline preload="auto" poster="/images/video/hero-mareheader-poster.jpg" aria-hidden="true"><source src="/images/video/hero-mareheader.mp4" type="video/mp4"></video>
   <div class="hov1"></div><div class="hov2"></div><div class="hshimmer"></div>
   <div class="hpar" style="left:10%;width:2px;height:2px;animation-duration:18s;animation-delay:0s;bottom:0"></div>
   <div class="hpar" style="left:25%;width:1px;height:1px;animation-duration:24s;animation-delay:4s;bottom:0"></div>
