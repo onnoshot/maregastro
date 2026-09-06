@@ -193,26 +193,10 @@ nav{
 #home{background:#000}
 
 .hbg{position:absolute;inset:-12%;will-change:transform}
-.hslide{
-  position:absolute;inset:0;
-  background-position:center 34%;background-size:cover;background-repeat:no-repeat;
-  will-change:transform,opacity;
-}
-.hslide.s1{background-image:url('images/hero-mare-3.webp');animation:kb 34s ease-in-out infinite alternate}
-.hslide.s2{background-image:url('images/hero-mare-2.webp');opacity:0;animation:kb 34s ease-in-out infinite alternate-reverse,hfade 18s ease-in-out infinite}
-.hvideo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 34%;opacity:.68}
-@media(min-width:768px){.hvideo{object-position:center center}}
-@media(prefers-reduced-motion:reduce){.hvideo{display:none}}
-@keyframes hfade{0%,6%{opacity:0}44%,56%{opacity:1}94%,100%{opacity:0}}
-@media(min-width:768px){
-  .hslide{background-position:center center}
-}
-@keyframes kb{
-  0%{transform:scale(1.14) translate(0,0)}
-  33%{transform:scale(1.18) translate(-1.4%,-.7%)}
-  66%{transform:scale(1.15) translate(.8%,.5%)}
-  100%{transform:scale(1.12) translate(1.2%,-.3%)}
-}
+.hvideo,.hvideo-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 34%;filter:brightness(.62)}
+.hvideo-fallback{display:none}
+@media(min-width:768px){.hvideo,.hvideo-fallback{object-position:center center}}
+@media(prefers-reduced-motion:reduce){.hvideo{display:none}.hvideo-fallback{display:block}}
 .hov1{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,8,15,.82) 0%,rgba(4,8,15,.25) 38%,rgba(4,8,15,.45) 68%,rgba(4,8,15,.92) 100%)}
 .hov2{position:absolute;inset:0;background:radial-gradient(ellipse 80% 55% at 50% 110%,rgba(200,169,110,.06) 0%,transparent 65%)}
 /* shimmer light sweep */
@@ -1284,8 +1268,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ═══ S1: HERO ═══ -->
 <section class="page" id="home">
-  <div class="hbg" id="hbg"><div class="hslide s1"></div><div class="hslide s2"></div></div>
-<video class="hvideo" autoplay muted loop playsinline preload="auto" poster="images/video/hero-mareheader-poster.jpg" aria-hidden="true"><source src="images/video/hero-mareheader.mp4" type="video/mp4"></video>
+  <div class="hbg" id="hbg"><video class="hvideo" autoplay muted loop playsinline preload="auto" poster="images/video/hero-mareheader-poster.jpg" aria-hidden="true"><source src="images/video/hero-mareheader.mp4" type="video/mp4"></video><img class="hvideo-fallback" src="images/video/hero-mareheader-poster.jpg" alt="" aria-hidden="true"></div>
   <div class="hov1"></div><div class="hov2"></div><div class="hshimmer"></div>
   <div class="hpar" style="left:10%;width:2px;height:2px;animation-duration:18s;animation-delay:0s;bottom:0"></div>
   <div class="hpar" style="left:25%;width:1px;height:1px;animation-duration:24s;animation-delay:4s;bottom:0"></div>
