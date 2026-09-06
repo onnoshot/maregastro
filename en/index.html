@@ -1155,9 +1155,9 @@ nav{
 #home{background:#000}
 
 .hbg{position:absolute;inset:-12%;will-change:transform}
-.hvideo,.hvideo-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 34%;filter:brightness(.62)}
+.hvideo,.hvideo-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;filter:brightness(.62)}
 .hvideo-fallback{display:none}
-@media(min-width:768px){.hvideo,.hvideo-fallback{object-position:center center}}
+@media(min-width:768px){.hvideo,.hvideo-fallback{object-position:center 34%}}
 @media(prefers-reduced-motion:reduce){.hvideo{display:none}.hvideo-fallback{display:block}}
 .hov1{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,8,15,.82) 0%,rgba(4,8,15,.25) 38%,rgba(4,8,15,.45) 68%,rgba(4,8,15,.92) 100%)}
 .hov2{position:absolute;inset:0;background:radial-gradient(ellipse 80% 55% at 50% 110%,rgba(200,169,110,.06) 0%,transparent 65%)}
@@ -2369,7 +2369,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ═══ S1: HERO ═══ -->
 <section class="page" id="home">
-  <div class="hbg" id="hbg"><video class="hvideo" autoplay muted loop playsinline preload="auto" poster="/images/video/hero-mareheader-poster.jpg" aria-hidden="true"><source src="/images/video/hero-mareheader.mp4" type="video/mp4"></video><img class="hvideo-fallback" src="/images/video/hero-mareheader-poster.jpg" alt="" aria-hidden="true"></div>
+  <div class="hbg" id="hbg"><video class="hvideo" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="/images/video/hero-mareheader-poster.jpg" aria-hidden="true"><source src="/images/video/hero-marereels.mp4" type="video/mp4" media="(max-width: 767px)"><source src="/images/video/hero-mareheader.mp4" type="video/mp4"></video><img class="hvideo-fallback" src="/images/video/hero-mareheader-poster.jpg" alt="" aria-hidden="true"><script>if(window.matchMedia('(max-width: 767px)').matches){document.getElementById('heroVideo').poster='/images/video/hero-marereels-poster.jpg';}</script></div>
   <div class="hov1"></div><div class="hov2"></div><div class="hshimmer"></div>
   <div class="hpar" style="left:10%;width:2px;height:2px;animation-duration:18s;animation-delay:0s;bottom:0"></div>
   <div class="hpar" style="left:25%;width:1px;height:1px;animation-duration:24s;animation-delay:4s;bottom:0"></div>
