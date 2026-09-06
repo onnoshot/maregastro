@@ -3,3 +3,5 @@
 !.env.example
 .env*.local
 node_modules
+__pycache__/
+.DS_Store
