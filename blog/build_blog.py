@@ -1986,8 +1986,9 @@ INDEX = """<!DOCTYPE html>
 """
 
 def build_index():
+    ordered = sorted(POSTS, key=lambda p: p["date"], reverse=True)
     cards=[]
-    for p in POSTS:
+    for p in ordered:
         cards.append(
           '<a class="bidx-card" href="%s.html">'
           '<div class="bidx-card-img"><img src="../images/%s" alt="%s" loading="lazy"></div>'
@@ -1999,7 +2000,7 @@ def build_index():
       "name":"Mare Gastro Blog","url":SITE+"/blog/",
       "mainEntity":{"@type":"ItemList","itemListElement":[
         {"@type":"ListItem","position":i+1,"url":post_url(p["slug"]),"name":strip_tags(p["h1"])}
-        for i,p in enumerate(POSTS)]}}
+        for i,p in enumerate(ordered)]}}
     h=INDEX.format(site=SITE,nav=nav_html(),footer=footer_html(),cards="\n".join(cards),
       schema=json.dumps(itemlist,ensure_ascii=False,indent=1),gtm_head=GTM_HEAD,gtm_body=GTM_BODY)
     with open(os.path.join(OUT,"index.html"),"w",encoding="utf-8") as f: f.write(h)
