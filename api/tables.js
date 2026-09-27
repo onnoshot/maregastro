@@ -3,6 +3,9 @@
 // PUT  ?resource=layout               (token): masa yerlesim planini tumuyle degistirir.
 // GET  ?resource=plan&date=YYYY-MM-DD (token): o gune ait masa atamalarini doner.
 // PUT  ?resource=plan&date=YYYY-MM-DD (token): o gune ait masa atamalarini tumuyle degistirir.
+// GET  ?resource=plans&month=YYYY-MM   (token): o ayin TUM gunleri icin gunluk ozet
+//      ([{date, tables, guests}]) doner. Dashboard'un Aylik Rapor sayfasindaki
+//      "Ayin Rekorlari" karti kullaniyor — 30 ayri istek atmak yerine tek cagri.
 //
 // Gerekli env: BLOB_READ_WRITE_TOKEN (Vercel Blob otomatik saglar), MARE_ADMIN_KEY
 import { put, list } from '@vercel/blob';
@@ -108,6 +111,34 @@ export default async function handler(req, res) {
       }
     }
     return send(res, 405, { error: 'Method Not Allowed' });
+  }
+
+  // Bir ayin tum gunluk planlarinin ozeti. Blob'lar 'tables/plan/YYYY-MM-DD.json'
+  // olarak yazildigi icin ay onekiyle tek list() cagrisi yetiyor; gunluk dosyalar
+  // sonra paralel cekiliyor. Sadece sayilari donuyoruz — isim/telefon disari cikmasin.
+  if (resource === 'plans') {
+    if (req.method !== 'GET') return send(res, 405, { error: 'Method Not Allowed' });
+    const month = String((req.query && req.query.month) || '').trim();
+    if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(month)) return send(res, 400, { error: 'Gecersiz ay (YYYY-MM gerekli)' });
+    try {
+      const prefix = PLAN_PREFIX + month + '-';
+      const res1 = await list({ prefix, limit: 1000 });
+      const blobs = res1.blobs.filter((x) => /\d{4}-\d{2}-\d{2}\.json$/.test(x.pathname));
+      const days = await Promise.all(blobs.map(async (b) => {
+        const date = b.pathname.slice(PLAN_PREFIX.length, -'.json'.length);
+        try {
+          const r = await fetch(bust(b.url), { cache: 'no-store' });
+          if (!r.ok) return null;
+          const doc = await r.json();
+          const a = (doc && doc.assignments) || {};
+          const entries = Object.values(a).filter(Boolean);
+          return { date, tables: entries.length, guests: entries.reduce((sum, x) => sum + (Number(x && x.guests) || 0), 0) };
+        } catch (e) { return null; }
+      }));
+      return send(res, 200, { ok: true, month, days: days.filter(Boolean).sort((x, y) => x.date < y.date ? -1 : 1) });
+    } catch (e) {
+      return send(res, 500, { error: 'Aylik planlar alinamadi: ' + (e.message || e) });
+    }
   }
 
   return send(res, 400, { error: 'Bilinmeyen resource' });
