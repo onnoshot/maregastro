@@ -63,6 +63,34 @@ export default async function handler(req, res) {
     const sa = JSON.parse(process.env.GA_SA_JSON);
     const token = await getToken(sa);
 
+    // ── ?month=YYYY-MM → sadece o ayin trafik kaynagi kirilimi ──
+    // Dashboard'un Aylik Rapor sayfasindaki "Ucretli / Ucretsiz Dagilimi" tablosu
+    // bunu kullaniyor. Tek rapor doner, 30 gunluk genel bakis sorgularini calistirmaz.
+    const monthParam = String((req.query && req.query.month) || '').trim();
+    if (monthParam) {
+      const m = monthParam.match(/^(\d{4})-(0[1-9]|1[0-2])$/);
+      if (!m) return send(res, 400, { error: 'Gecersiz month (YYYY-MM bekleniyor)' });
+      const y = Number(m[1]), mo = Number(m[2]);
+      const startDate = `${m[1]}-${m[2]}-01`;
+      // Ayin son gunu = bir sonraki ayin 0. gunu. Icinde bulundugumuz ay (veya ileri
+      // bir ay) sorulursa GA4 gelecek tarihli endDate'i reddedebiliyor, o yuzden
+      // bugune kirpiyoruz.
+      const lastDay = new Date(Date.UTC(y, mo, 0)).getUTCDate();
+      const monthEnd = `${m[1]}-${m[2]}-${String(lastDay).padStart(2, '0')}`;
+      const todayIso = new Date().toISOString().slice(0, 10);
+      const endDate = monthEnd > todayIso ? todayIso : monthEnd;
+      if (endDate < startDate) return send(res, 200, { ok: true, month: monthParam, startDate, endDate: startDate, channels: [] });
+      const [chOnlyR] = await gaBatch(token, [{
+        dateRanges: [{ startDate, endDate }],
+        dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'sessions' }],
+        orderBys: [{ metric: { metricName: 'sessions' }, desc: true }], limit: 25,
+      }]);
+      const monthChannels = (chOnlyR.rows || []).map((row) => ({
+        name: row.dimensionValues[0].value, sessions: parseInt(row.metricValues[0].value, 10),
+      }));
+      return send(res, 200, { ok: true, month: monthParam, startDate, endDate, channels: monthChannels });
+    }
+
     // GA4 batchRunReports istek basina en fazla 5 rapor kabul ediyor; 6 raporu
     // iki gruba bolup PARALEL (Promise.all) cagiriyoruz — sirali olsaydi 2x yavas olurdu.
     const [[dailyR, totR, chR], [evR, pageR, devR]] = await Promise.all([

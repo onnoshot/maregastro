@@ -109,6 +109,11 @@ export default async function handler(req, res) {
       source: isManual ? 'manual' : 'site',
       referrer: String(b.referrer || '').trim().slice(0, 300),
       utm: String(b.utm || '').trim().slice(0, 60),
+      utmMedium: String(b.utmMedium || '').trim().slice(0, 60),
+      // 'paid' = reklamdan geldi, 'organic' = ucretsiz, '' = belirlenemedi.
+      // Siteden gelen kayitlarda reklam click-id'leri / utm_medium'dan tureltilir,
+      // dashboard'dan elle eklenende kullanici secer. Uydurma deger uretmiyoruz.
+      adPaid: ['paid', 'organic'].includes(String(b.adPaid || '')) ? String(b.adPaid) : '',
     };
     if (!isManual) {
       const dup = await findRecentDuplicate(rec);
@@ -170,12 +175,13 @@ export default async function handler(req, res) {
       const r = await fetch(bust(blob.url), { cache: 'no-store' });
       if (!r.ok) return send(res, 500, { error: 'Kayit okunamadi' });
       const cur = await r.json();
-      const editable = ['name', 'phone', 'email', 'date', 'time', 'guests', 'konaklama', 'channel', 'note', 'status'];
+      const editable = ['name', 'phone', 'email', 'date', 'time', 'guests', 'konaklama', 'channel', 'adPaid', 'note', 'status'];
       const next = { ...cur };
       for (const k of editable) {
         if (b[k] === undefined) continue;
         if (k === 'guests') next.guests = Number(b.guests) || null;
         else if (k === 'status') next.status = STATUSES.includes(b.status) ? b.status : cur.status;
+        else if (k === 'adPaid') next.adPaid = ['paid', 'organic'].includes(String(b.adPaid || '')) ? String(b.adPaid) : '';
         else next[k] = String(b[k]).trim();
       }
       next.updatedAt = new Date().toISOString();

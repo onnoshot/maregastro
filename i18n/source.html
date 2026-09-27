@@ -1829,6 +1829,25 @@ function deriveChannel(){
   }catch(e){return 'Doğrudan';}
 }
 var MARE_CHANNEL=(function(){try{var s=sessionStorage.getItem('mare_ch');if(s)return s;var c=deriveChannel();sessionStorage.setItem('mare_ch',c);return c;}catch(e){return deriveChannel();}})();
+// ── UCRETLI (REKLAM) / UCRETSIZ (ORGANIK) ──
+// 'paid' = reklamdan geldi, 'organic' = ucretsiz. Sadece guvenilir reklam sinyallerine
+// bakariz: reklam platformlarinin click-id'leri ve utm_medium. fbclid BILINCLI olarak
+// listede DEGIL — Facebook/Instagram onu organik gonderi linklerine de ekliyor, paid
+// sanip yanlis sayardik. Reklam linklerine utm_medium (cpc / paid_social vb.) eklenmezse
+// o ziyaret organik sayilir.
+function derivePaidClass(){
+  try{
+    var p=new URLSearchParams(location.search);
+    var ids=['gclid','gbraid','wbraid','dclid','msclkid','ttclid','twclid'];
+    for(var i=0;i<ids.length;i++)if(p.get(ids[i]))return 'paid';
+    var med=(p.get('utm_medium')||'').toLowerCase().replace(/[^a-z]/g,'');
+    var paid=['cpc','ppc','paid','paidsocial','paidsearch','paidmedia','cpm','cpv','cpa','display','banner','retargeting','remarketing','ads','ad','adwords','sponsored'];
+    if(med&&paid.indexOf(med)>=0)return 'paid';
+    return 'organic';
+  }catch(e){return 'organic';}
+}
+var MARE_PAID=(function(){try{var s=sessionStorage.getItem('mare_paid');if(s==='paid'||s==='organic')return s;var v=derivePaidClass();sessionStorage.setItem('mare_paid',v);return v;}catch(e){return derivePaidClass();}})();
+var MARE_UTM_MEDIUM=(function(){try{return (new URLSearchParams(location.search)).get('utm_medium')||'';}catch(e){return '';}})();
 // Rezervasyon tarihi hangi dil sayfasından gönderilirse gönderilsin HER ZAMAN
 // Türkçe biçimde kaydedilmeli — panel.maregastro.com'daki takvim/rapor
 // ayrıştırıcısı sadece Türkçe ay adlarını (Ocak..Aralık) tanıyor. toLocaleDateString
@@ -1851,7 +1870,7 @@ function submitReservation(a){
   a.href=`https://wa.me/905323540888?text=${encodeURIComponent(msg)}`;
   fetch('/api/reservation',{method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify({name,phone,email,date:fmt,time:selTime_val,guests:guestCount,konaklama:selKon_val,
-      channel:MARE_CHANNEL,referrer:(document.referrer||''),utm:((new URLSearchParams(location.search)).get('utm_source')||'')})}).catch(()=>{});
+      channel:MARE_CHANNEL,adPaid:MARE_PAID,utmMedium:MARE_UTM_MEDIUM,referrer:(document.referrer||''),utm:((new URLSearchParams(location.search)).get('utm_source')||'')})}).catch(()=>{});
   return true;
 }
 
