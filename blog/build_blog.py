@@ -40,6 +40,33 @@ def bfig(img,alt,caption):
     return ('<figure class="bbody-fig"><img src="../images/%s" alt="%s" loading="lazy">'
             '<figcaption>%s</figcaption></figure>'%(img,html.escape(alt),html.escape(caption)))
 
+# YouTube kanalındaki gerçek videolar (@maregastro) — id: (başlık, açıklama, yükleme tarihi, süre sn)
+VIDEOS = {
+ "aOAyrgTBcos":("Sapanca'da Saklı Fine Dining Deneyimi: Mare Gastro","Sapanca'da doğa ile iç içe, müzik ve lezzetin uyumu: Mare Gastro'da fine dining deneyimi.","2026-08-12T16:14:38-07:00",19),
+ "zseYjYW3uFk":("Lezzetli Karidesin Sırrı Kabuğunda Gizli! Şef Doğan Anapa & Kadir Çiçek | Mare Gastro Sapanca","Şef Doğan Anapa ve Kadir Çiçek, Mare Gastro mutfağında kabuklu ızgara karidesin hazırlık aşamalarını ve püf noktalarını anlatıyor.","2026-08-28T13:22:20-07:00",107),
+ "rhSfnoAOCIg":("Karasu Kuşkonmazı ve Kaya Levreği: Şefin İmza Tabağı Nasıl Hazırlanıyor?","Yönetici Şef Doğan Anapa, fırında kızaran kaya levreğini köz biber, sarımsak ve rezeneli sos ile Karasu kuşkonmazıyla buluşturuyor.","2026-07-15T01:00:06-07:00",162),
+ "YAbVQG4u7LI":("Balık Suyuyla Islatılmış Ekmek ve Bebek Kalamar: Şef Doğan Anapa | Mare Gastro","Adapazarı'nın ıslama köfte geleneğinden ilham alan tabak: balık suyuyla ıslatılmış ekmek üzerinde ızgara bebek kalamar.","2026-07-12T12:38:20-07:00",89),
+ "Asn8FZ0nFX0":("Şef Doğan Anapa'nın Sunumuyla: Mare Gastro'da İmza Tabak Kuzu İncik ve Keşkek","180 derece fırında 3 saat pişen kuzu incik, keşkek, şefin kendi et suyu ve nane yağıyla.","2026-07-18T07:30:05-07:00",197),
+ "GiwkPYUSVyY":("Eda Acar ve Orkestrası Mare Gastro sahnesinde! | Sapanca Canlı Müzik","Sapanca'da açık havada, canlı müzik eşliğinde bir Mare Gastro akşamı.","2026-07-17T07:00:06-07:00",100),
+}
+def bvid(vid,caption):
+    return ('<figure class="bvideo"><div class="bvideo-frame"><iframe src="https://www.youtube-nocookie.com/embed/%s" '
+            'title="%s" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
+            '<figcaption>%s · <a href="https://www.youtube.com/watch?v=%s" target="_blank" rel="noopener">YouTube\'da izle</a></figcaption></figure>'
+            %(vid,html.escape(VIDEOS[vid][0]),html.escape(caption),vid))
+def video_schema(vid):
+    t,d,up,sec=VIDEOS[vid]
+    return {"@type":"VideoObject","name":t,"description":d,"uploadDate":up,
+      "duration":"PT%dM%dS"%(sec//60,sec%60),
+      "thumbnailUrl":"https://i.ytimg.com/vi/%s/hqdefault.jpg"%vid,
+      "embedUrl":"https://www.youtube.com/embed/%s"%vid,
+      "contentUrl":"https://www.youtube.com/watch?v=%s"%vid,
+      "publisher":{"@type":"Organization","name":"Mare Gastro","url":SITE}}
+def btable(head,rows):
+    th="".join("<th>%s</th>"%h for h in head)
+    tr="".join("<tr>%s</tr>"%"".join("<td>%s</td>"%c for c in r) for r in rows)
+    return '<div class="btable"><table><thead><tr>%s</tr></thead><tbody>%s</tbody></table></div>'%(th,tr)
+
 # ── SVG social icons ──
 IC_IG  ='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>'
 IC_WA  ='<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.78h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.26C2.16 6.89 6.6 2.46 12.05 2.46c2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 012.89 6.99c0 5.45-4.43 9.43-9.88 9.43M20.46 3.49A11.82 11.82 0 0012.05.06C5.5.06.16 5.4.16 11.95c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 005.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.42"/></svg>'
@@ -55,6 +82,7 @@ CATS = {
  "raki":"Rakı-Balık","gece":"Gece Açık","manzara":"Göl Kenarı",
  "kurumsal":"Kurumsal Etkinlik","vejetaryen":"Özel Diyet",
  "dogumgunu":"Doğum Günü","sosyal":"Arkadaş Buluşması","hikaye":"Hikayemiz",
+ "date":"Date & Buluşma",
 }
 
 POSTS = [
@@ -204,7 +232,7 @@ POSTS = [
   ("Konaklama imkânı var mı?","Mare Gastro Didi Otel bünyesindedir; göl kenarında konaklayarak akşamınızı uzatabilirsiniz. Rezervasyon formunda konaklama tercihinizi belirtebilirsiniz."),
   ("Romantik bir akşam için en iyi saat hangisi?","Gün batımı saatleri Sapanca'da en büyülü andır ve romantik akşam yemekleri için en çok önerilen zamandır."),
  ],
- "rel":["sapanca-luks-restoran","didi-otel-restoran","sapanca-fine-dining-nedir"],
+ "rel":["sevgiliyle-gidilecek-mekanlar-sapanca","didi-otel-restoran","sapanca-fine-dining-nedir"],
 },
 {
  "slug":"sapancada-ne-yenir",
@@ -289,7 +317,7 @@ POSTS = [
   ("Tek günde gidip dönülür mü?","Evet. Sapanca tek günlük bir kaçamağa uygundur; gündüz doğa, akşam Mare Gastro'da gurme bir sofra ile keyifli bir gün geçirilebilir."),
   ("Konaklamalı bir plan mümkün mü?","Mare Gastro Didi Otel bünyesindedir; göl kenarında konaklayarak hafta sonunuzu uzatabilirsiniz. Rezervasyon formunda konaklama tercihinizi belirtin."),
  ],
- "rel":["sapanca-luks-restoran","sapancada-ne-yenir","didi-otel-restoran"],
+ "rel":["istanbula-yakin-date-mekani","sapancada-ne-yenir","didi-otel-restoran"],
 },
 {
  "slug":"sapanca-evlilik-teklifi",
@@ -1769,6 +1797,273 @@ POSTS = [
 },
 ]
 
+# ── 2026-10-24: Date / ilk buluşma / sevgili kümesi (5 yazı) ──
+# Google puanı 2026-10-24'te Google Haritalar'dan okundu: Mare Gastro 4,9; "fine dining sapanca" aramasında ilk organik restoran.
+GPUAN = L(MAPS,"Google Haritalar'da 4,9 puan")
+# Alıntılar blog/mare-gastro-google-yorumlari.html'deki gerçek Google yorumlarından birebir alındı.
+def bquote(txt,who):
+    return '<blockquote><p>"%s"</p><p><strong>%s</strong> · %s</p></blockquote>'%(txt,who,L(MAPS,"Google yorumu"))
+ADRES = "Kırkpınar Soğuksu, İstasyon 3 Cad. No:55, Sapanca/Sakarya (Didi Otel bahçesi)"
+POSTS += [
+{
+ "slug":"istanbula-yakin-date-mekani",
+ "cat":"date","date":"2026-10-24","read":"6 dk",
+ "img":"mare-romantik-kadeh.webp","alt":"Gölün yanında kadeh tokuşturan çift — İstanbul'a yakın date mekanı Mare Gastro Sapanca",
+ "videos":["aOAyrgTBcos","GiwkPYUSVyY"],
+ "h1":"İstanbul'a Yakın <em>Date Mekanı</em>: Sapanca'da Fine Dining Bir Akşam",
+ "title":"İstanbul'a Yakın Date Mekanı: Sapanca | Mare Gastro",
+ "desc":"İstanbul'a yakın date mekanı: 1,5 saat mesafede, Google'da 4,9 puanlı, açık ve kapalı alanlı Mare Gastro ile Sapanca'da fine dining bir date planı.",
+ "kw":"istanbula yakın date mekanı, istanbul dışı date mekanı, şehir dışı date, istanbula yakın romantik restoran, sapanca date mekanı, sapanca fine dining",
+ "lead":"İstanbul'a yakın bir date mekanı arıyorsanız kısa cevap şu: Sapanca, şehirden yaklaşık 1,5 saat uzakta ve gölün hemen yanındaki Mare Gastro, bölgede fine dining konseptiyle hizmet veren tek restoran. Google Haritalar'da 4,9 puanı, açık bahçesi, kapalı salonu ve Didi Otel'de konaklama imkanıyla date'i tek bir akşamdan tam bir kaçamağa çevirebiliyorsunuz.",
+ "body":[
+  ("İstanbul'a Yakın En İyi Date Mekanı Neresi?",
+   ["İstanbul'a yakın, şehrin kalabalığından gerçekten uzaklaştıran ama gidiş-dönüşü yormayan bir date için Sapanca öne çıkıyor. Bölgedeki seçenekler arasında Mare Gastro; Didi Otel bahçesindeki konumu, Yönetici Şef Doğan Anapa imzalı Ege-Akdeniz mutfağı ve %s ile fine dining arayan çiftlerin ilk adresi."%GPUAN,
+    "Ekim 2026 itibarıyla Google Haritalar'da \"fine dining Sapanca\" araması yapıldığında Mare Gastro ilk sıradaki restoran olarak çıkıyor. Bu, mekanın kendi iddiası değil; misafirlerin bıraktığı puanların ve yorumların sonucu."]),
+  ("İyi Bir Date Mekanında Neler Olmalı?",
+   ["İyi bir date mekanı dört şeyi aynı anda sunar: konuşmayı bastırmayan bir ortam, akılda kalan bir manzara ya da hikaye, güvenilir bir mutfak ve özenli bir servis. Bunlardan biri eksik olduğunda akşamın hatırlanan kısmı yemek değil, eksik kalan o detay olur.",
+    "Misafir yorumları en çok bu dört noktaya odaklanıyor. Mare Gastro'ya ilk kez gelen bir misafirin Google'a yazdıkları, iyi bir date akşamının tarifine çok yakın:",
+    bquote("Karşılamadan başlayıp son ana kadar size kendinizi özel hissettiren, hem görsel hem lezzet şöleniyle geceyi taçlandıran bir yer olmuş.","Yasemin Babadağ"),
+    "Servis tarafında da benzer bir tablo var; yorumlarda misafirlerin garsonları adlarıyla anarak teşekkür ettiğini görüyorsunuz. Daha fazla örnek için %s bakabilirsiniz."%L(post_url("mare-gastro-google-yorumlari"),"Google yorumları derlememize")]),
+  ("Date İçin Neden İstanbul Dışına Çıkmalı?",
+   ["İstanbul'da bir date çoğu zaman trafik, park sorunu ve gürültülü bir salonla geçer. Şehir dışı bir date ise yolculuğun kendisini de deneyime katar: yol boyunca sohbet, göl kıyısında gün batımı ve acele etmeden yenen bir akşam yemeği.",
+    btable(["Kriter","İstanbul içinde date","Sapanca'da Mare Gastro'da date"],[
+     ["Ulaşım","Trafik ve otopark derdi","Yaklaşık 1,5 saat, Didi Otel'de geniş otopark"],
+     ["Atmosfer","Kalabalık, gürültülü salonlar","Gölün hemen yanında, çamlar arasında bahçe"],
+     ["Mutfak","Seçenek çok, fine dining pahalı ve kalabalık","Sapanca'nın tek fine dining restoranı, şef imzalı tabaklar"],
+     ["Hava koşulu","Kapalı mekana mahkum","Yazın açık bahçe, serin akşamlar ve kışın kapalı salon"],
+     ["Akşamın sonu","Eve dönüş trafiği","Aynı bahçedeki Didi Otel'de konaklama seçeneği"],
+    ])]),
+  ("İstanbul'dan Sapanca'ya Date İçin Ne Kadar Sürer?",
+   ["İstanbul'un Anadolu yakasından Sapanca'ya TEM ya da Kuzey Marmara Otoyolu üzerinden ortalama 1,5 saatte ulaşılır; süre trafiğe ve çıkış noktanıza göre değişir. Hafta sonu öğleden sonra yola çıkıp gün batımına yetişmek, date'in en keyifli planı.",
+    "Ulaşım seçeneklerinin tamamını %s anlattık. Mare Gastro'nun adresi: %s."%(L(post_url("sapancaya-nasil-gidilir"),"Sapanca'ya nasıl gidilir rehberimizde"),ADRES)]),
+  ("Mare Gastro'da Bir Date Akşamı Nasıl Geçer?",
+   ["Bir date akşamı Mare Gastro'da genellikle başlangıçlar ve paylaşmalık ara sıcaklarla açılır, şefin deniz ürünleri ya da et tabaklarıyla devam eder ve imza tatlılarla kapanır. Paylaşmalık tabaklar sohbeti doğal olarak başlatır; ilk kez gelen çiftler için bu küçük bir buz kırıcıdır.",
+    bvid("aOAyrgTBcos","Mare Gastro'da bir akşamdan kısa bir kesit"),
+    "Güncel tabakları %s inceleyebilirsiniz; menü mevsime ve günün en taze ürününe göre değişir."%L(MENU,"menümüzden"),
+    "Hafta sonu akşamlarında çoğu zaman canlı müzik eşlik ediyor. Daha sakin bir date istiyorsanız rezervasyon sırasında bunu belirtmeniz yeterli; ekibimiz size daha sessiz bir köşe ayarlar."]),
+  ("Açık mı Kapalı mı? Her Mevsim Date İçin Uygun mu?",
+   ["Evet. Mare Gastro'nun hem açık bahçesi hem de kapalı salonu var. Yazın çam ağaçlarının altında, gölün serinliğinde açık havada; serin ve yağışlı günlerde ise kapalı alanda aynı mutfakla ağırlanırsınız. Bu sayede date planınız hava durumuna takılmaz.",
+    bvid("GiwkPYUSVyY","Yaz akşamlarında açık bahçede canlı müzik: Eda Acar ve Orkestrası")]),
+  ("Mutfağın Arkasındaki İsim: Şef Doğan Anapa",
+   ["Mare Gastro'nun mutfağını Yönetici Şef Doğan Anapa yönetiyor. Sinema geçmişinden gelen şef, her menüyü bir hikaye gibi kurguluyor ve bölgenin ürünlerini (Karasu kuşkonmazı, Sakarya'nın ıslama geleneği gibi) Ege-Akdeniz tekniğiyle yorumluyor. Konseptin tamamı Didi Otel bünyesinde Kadir Çiçek tarafından tasarlandı.",
+    "Şefi daha yakından tanımak için %s okuyabilir, tariflerini %s izleyebilirsiniz."%(L(post_url("sef-dogan-anapa-kimdir"),"Şef Doğan Anapa kimdir yazımızı"),L(YT,"YouTube kanalımızdan"))]),
+  ("Date'i Uzatmak İsterseniz: Didi Otel'de Konaklama",
+   ["Mare Gastro, %s bahçesinde yer alıyor. Akşam yemeğinden sonra İstanbul'a dönmek yerine aynı bahçedeki otelde kalıp ertesi sabah göl manzarasıyla güne başlayabilirsiniz. Konaklama tercihinizi rezervasyon formunda belirtebilirsiniz."%L(DIDIWEB,"Didi Otel'in"),
+    "Yemek ve konaklamayı birlikte nasıl planlayacağınızı %s adım adım anlattık."%L(post_url("sapanca-sevgiliyle-yemek-ve-konaklama"),"sevgiliyle Sapanca'da bir gece rehberimizde")]),
+  ("Hafta İçi mi Hafta Sonu mu Date?",
+   ["İkisinin de ayrı bir keyfi var. Hafta içi akşamlar daha sakindir; baş başa uzun bir sohbet istiyorsanız iyi bir seçimdir. Hafta sonları ise atmosfer daha canlıdır ve çoğu zaman canlı müzik eşlik eder. İlk date için sakinliği, kutlama havasında bir akşam için hafta sonunu öneriyoruz. Güncel çalışma saatlerini %s ya da %s teyit edebilirsiniz."%(L(MAPS,"Google Haritalar profilimizden"),L(WA,"WhatsApp hattımızdan"))]),
+  ("İstanbul'a Yakın Date İçin Kısa Kontrol Listesi",
+   ["<ul><li><strong>Rezervasyon:</strong> Hafta sonları için önceden %s yapın.</li><li><strong>Saat:</strong> Gün batımına yetişecek şekilde yola çıkın.</li><li><strong>Tercih:</strong> Açık bahçe mi kapalı salon mu, sakin köşe mi canlı müzik mi; rezervasyonda belirtin.</li><li><strong>Kutlama:</strong> Özel bir gün varsa ekibimize önceden haber verin.</li><li><strong>Dönüş:</strong> Uzun yolu göze almak istemiyorsanız Didi Otel'de konaklamayı değerlendirin.</li></ul>"%L(REZ,"rezervasyon")]),
+ ],
+ "faq":[
+  ("İstanbul'a yakın date mekanı nerede?","Sapanca, İstanbul'a yaklaşık 1,5 saat mesafede. Gölün hemen yanında, Didi Otel bahçesindeki Mare Gastro; Google Haritalar'da 4,9 puanı ve fine dining konseptiyle İstanbul'a yakın date için öne çıkan restoranlardan biri."),
+  ("Sapanca'da fine dining restoran var mı?","Evet. Mare Gastro, Sapanca'da fine dining konseptiyle hizmet veren tek restoran. Mutfağı Yönetici Şef Doğan Anapa yönetiyor; Ege ve Akdeniz mutfağını bölgenin ürünleriyle yorumluyor."),
+  ("Mare Gastro'nun açık ve kapalı alanı var mı?","Evet. Yazın çam ağaçları altındaki açık bahçede, serin ve yağışlı günlerde kapalı salonda hizmet veriliyor. Tercihinizi rezervasyon sırasında belirtebilirsiniz."),
+  ("Date sonrası Sapanca'da konaklamak mümkün mü?","Mare Gastro, Didi Otel'in bahçesinde yer alıyor. Akşam yemeğinden sonra aynı bahçedeki otelde konaklayabilirsiniz; konaklama tercihinizi rezervasyon formunda belirtmeniz yeterli."),
+  ("Mare Gastro'da rezervasyon nasıl yapılır?","maregastro.com üzerindeki üç adımlı form ile tarih, saat ve kişi sayısını seçip WhatsApp üzerinden onaylayabilirsiniz. Hafta sonları için önceden rezervasyon öneriyoruz."),
+ ],
+ "rel":["ilk-bulusma-icin-mekan-onerisi","sevgiliyle-gidilecek-mekanlar-sapanca","istanbula-yakin-luks-restoran"],
+},
+{
+ "slug":"ilk-bulusma-icin-mekan-onerisi",
+ "cat":"date","date":"2026-10-24","read":"6 dk",
+ "img":"mare-teras-misafir.webp","alt":"Terasta akşam yemeği yiyen misafirler — ilk buluşma için mekan önerisi Mare Gastro Sapanca",
+ "videos":["zseYjYW3uFk"],
+ "h1":"İlk Buluşma İçin <em>Mekan Önerisi</em>: Doğru Yeri Seçmenin 6 Kriteri",
+ "title":"İlk Buluşma İçin Mekan Önerisi: 6 Kriter | Mare Gastro",
+ "desc":"İlk buluşma için mekan önerisi: sohbete izin veren, gergin hissettirmeyen bir yer nasıl seçilir? 6 kriter ve Sapanca'dan bir öneri: Mare Gastro.",
+ "kw":"ilk buluşma için mekan önerisi, ilk buluşma mekanı, ilk date nereye gidilir, ilk buluşma restoran, sapanca ilk buluşma, ilk buluşmada nereye gidilir",
+ "lead":"İlk buluşma için iyi bir mekan; sohbeti bastırmayan bir ses seviyesi, gerginliği azaltan bir atmosfer ve konuşacak bir şey yaratan detaylar sunar. Aşağıda doğru mekanı seçmenin 6 kriterini sıraladık ve bu kriterlerin hepsini karşılayan bir öneri paylaştık: Sapanca'da, gölün hemen yanındaki Mare Gastro.",
+ "body":[
+  ("İlk Buluşma İçin Nasıl Bir Mekan Seçilmeli?",
+   ["İlk buluşma için en doğru mekan, iki kişinin birbirini rahatça duyabildiği, masaların birbirine çok yakın olmadığı, menüsü paylaşmaya uygun ve atmosferi doğal bir sohbet konusu yaratan yerdir. Çok resmi bir ortam gerginlik yaratır, çok gürültülü bir ortam ise sohbeti öldürür; aranan şey ikisinin arasındaki dengedir."]),
+  ("İlk Buluşma Mekanı Seçmenin 6 Kriteri",
+   ["<ol><li><strong>Ses seviyesi:</strong> Bağırmadan konuşabilmelisiniz. Canlı müzik varsa sahneden uzak bir masa isteyin.</li><li><strong>Masa düzeni:</strong> Yan masayla aranızda mesafe olması rahatlatır.</li><li><strong>Paylaşmalık menü:</strong> Ortaya söylenen tabaklar \"bunu denedin mi?\" sohbetini kendiliğinden başlatır.</li><li><strong>Atmosfer:</strong> Manzara, bahçe ya da ilginç bir mutfak hikayesi, sessizlik anlarını doldurur.</li><li><strong>Ulaşım ve park:</strong> İlk buluşmada kimse yer aramakla vakit kaybetmek istemez.</li><li><strong>Güven:</strong> Yorumları güçlü bir mekan, akşamın kötü geçme riskini düşürür.</li></ol>"]),
+  ("Mare Gastro Bu Kriterleri Nasıl Karşılıyor?",
+   [btable(["Kriter","Mare Gastro'da karşılığı"],[
+     ["Ses seviyesi","Hafta içi sakin; hafta sonu canlı müzikte sahneden uzak masa istenebilir"],
+     ["Masa düzeni","Geniş bahçede aralıklı masalar, kapalı salonda sakin köşeler"],
+     ["Paylaşmalık menü","Başlangıçlar, ara sıcaklar ve deniz ürünleri ortaya söylenmeye uygun"],
+     ["Atmosfer","Gölün hemen yanında, çamlar arasında; Sapanca'nın tek fine dining restoranı"],
+     ["Ulaşım ve park","İstanbul'a yaklaşık 1,5 saat, Didi Otel'de geniş otopark"],
+     ["Güven","%s (Ekim 2026)"%GPUAN],
+    ]),
+    "Kısacası, ilk buluşmayı sıradan bir kahveden daha özel, ama ağır bir resmiyete kaçmadan yaşamak isteyenler için Mare Gastro dengeli bir seçim.",
+    "İlk kez gelen misafirlerin ortak gözlemi, atmosferin ilk dakikadan rahatlatması. Bir misafirin Google yorumundan:",
+    bquote("İlk gidişimize rağmen atmosfere hayran kaldık. Ortam, sunum, hizmet, müzik dört dörtlüktü. Yemek sanata dönüşmüş halde önünüze geliyor.","Büşra Canbazoğlu")]),
+  ("İlk Buluşma İçin Kahve mi, Akşam Yemeği mi?",
+   ["Kahve kısa ve risksizdir; akşam yemeği ise daha fazla zaman ve daha derin bir sohbet demektir. İlk mesajlaşmalar iyi gittiyse ve birbirinizi tanımaya gerçekten zaman ayırmak istiyorsanız akşam yemeği daha doğru bir seçim. Sapanca gibi şehir dışı bir yer seçmek ise ilk buluşmayı kendiliğinden bir \"etkinliğe\" dönüştürür: yol, manzara ve yemek, konuşacak üç ayrı konu yaratır.",
+    "Daha kısa bir plan istiyorsanız gün batımına yakın gelip başlangıçlar ve tatlıyla akşamı hafif tutabilirsiniz."]),
+  ("İlk Buluşmada Mekan Açısından Kaçınılması Gerekenler",
+   ["<ul><li><strong>Çok gürültülü yerler:</strong> Birbirinizi duymak için eğilmek, sohbetin akışını bozar.</li><li><strong>Uzun bekleme:</strong> Rezervasyonsuz gidip kapıda beklemek ilk izlenimi gölgeler; hafta sonu mutlaka %s yapın.</li><li><strong>Karmaşık menüler:</strong> Yemesi zor tabaklar gerginlik yaratabilir; paylaşmalık başlangıçlar daha rahat.</li><li><strong>Park sorunu:</strong> Otopark derdi olan yerler buluşmayı kötü başlatır. Didi Otel'de geniş otopark var.</li><li><strong>Plansız bir sonrası:</strong> Akşam uzarsa ne yapacağınızı bilmek rahatlatır; Didi Otel'de konaklama ya da göl kıyısında yürüyüş iyi seçenekler.</li></ul>"%L(REZ,"rezervasyon")]),
+  ("İlk Buluşmada Ne Sipariş Edilir?",
+   ["İlk buluşmada yemesi kolay, paylaşılabilen ve sohbeti bölmeyen tabaklar idealdir. Mare Gastro'da başlangıçlar ve deniz ürünlü ara sıcaklarla başlamak, sonra her biriniz için bir ana yemek seçmek iyi bir plan. Güncel tabakları %s görebilirsiniz."%L(MENU,"menüde"),
+    "Konuşacak bir konu arıyorsanız tabakların hikayesi yardımcı olur. Örneğin menünün en sevilen tabaklarından kabuklu ızgara karidesin neden kabuğuyla piştiğini Şef Doğan Anapa ve Kadir Çiçek şu videoda anlatıyor:",
+    bvid("zseYjYW3uFk","Şef Doğan Anapa ve Kadir Çiçek: kabuklu ızgara karidesin sırrı")]),
+  ("İlk Buluşma İçin Açık Alan mı Kapalı Alan mı?",
+   ["Hava güzelse açık alan ilk buluşmada büyük avantajdır: doğa ve manzara sessiz anları doldurur, ortam daha rahat hissettirir. Mare Gastro'da yazın bahçede, serin ya da yağışlı akşamlarda ise kapalı salonda oturabilirsiniz. Rezervasyonda tercihinizi yazmanız yeterli; hava değişirse ekip yerinizi uyarlar."]),
+  ("Şefin Masası: İlk Buluşmayı Akılda Kalıcı Yapan Detay",
+   ["İlk buluşmanın akılda kalmasını sağlayan şey çoğu zaman küçük bir hikayedir. Mare Gastro'da tabakların arkasında Yönetici Şef Doğan Anapa'nın hikayesi var: sinemadan mutfağa geçen bir şef, Sakarya'nın ıslama köfte geleneğini balık suyuyla ıslatılmış ekmek ve bebek kalamarla yeniden yorumlayan bir mutfak. %s"%L(post_url("sef-dogan-anapa"),"Şefin hikayesini buradan okuyabilirsiniz.")]),
+  ("Buluşma Güzel Geçerse: İkinci Date İçin Fikirler",
+   ["İlk buluşma iyi geçtiyse ikinci date için daha uzun bir plan yapabilirsiniz: gün batımında göl kıyısı, ardından akşam yemeği ve Didi Otel'de bir gece. Fikirler için %s ve %s göz atın."%(L(post_url("istanbula-yakin-date-mekani"),"İstanbul'a yakın date mekanı rehberimize"),L(post_url("sevgiliyle-gidilecek-mekanlar-sapanca"),"sevgiliyle gidilecek mekanlar yazımıza"))]),
+ ],
+ "faq":[
+  ("İlk buluşma için nasıl bir mekan seçilmeli?","Rahat konuşulabilen bir ses seviyesi, aralıklı masalar, paylaşmalık tabaklar, sohbet konusu yaratan bir atmosfer, kolay ulaşım ve güçlü yorumlar. Bu altı kriteri karşılayan bir mekan ilk buluşmanın gerginliğini azaltır."),
+  ("İlk buluşma için Sapanca'da mekan önerisi var mı?","Gölün hemen yanında, Didi Otel bahçesindeki Mare Gastro; Google Haritalar'da 4,9 puanı, açık bahçesi, kapalı salonu ve paylaşmaya uygun menüsüyle ilk buluşma için öne çıkan bir seçenek."),
+  ("İlk buluşmada canlı müzikli mekan uygun mu?","Sohbet etmek istiyorsanız sahneden uzak bir masa en iyisi. Mare Gastro'da hafta sonu canlı müzik olabiliyor; rezervasyon sırasında sakin bir masa isteyebilirsiniz."),
+  ("İlk buluşmada ne sipariş edilir?","Yemesi kolay ve paylaşılabilen tabaklar: başlangıçlar, ara sıcaklar ve deniz ürünleri. Ardından herkes kendi ana yemeğini seçebilir. Mare Gastro'nun güncel menüsü maregastro.com'da."),
+  ("Mare Gastro'ya İstanbul'dan gelmek ne kadar sürer?","Sapanca, İstanbul'a yaklaşık 1,5 saat mesafede; süre trafiğe ve çıkış noktasına göre değişir. Didi Otel'de geniş otopark bulunuyor."),
+ ],
+ "rel":["istanbula-yakin-date-mekani","sevgiliyle-gidilecek-mekanlar-sapanca","sef-dogan-anapa-kimdir"],
+},
+{
+ "slug":"sevgiliyle-gidilecek-mekanlar-sapanca",
+ "cat":"romantik","date":"2026-10-24","read":"6 dk",
+ "img":"mare-bahce-manzarasi.webp","alt":"Didi Otel bahçesinden göl manzarası — sevgiliyle gidilecek mekanlar Sapanca Mare Gastro",
+ "videos":["rhSfnoAOCIg"],
+ "h1":"Sevgiliyle Gidilecek <em>Mekanlar</em>: Sapanca'da Çiftler İçin Rehber",
+ "title":"Sevgiliyle Gidilecek Mekanlar: Sapanca Rehberi | Mare Gastro",
+ "desc":"Sevgiliyle gidilecek mekanlar: Sapanca'da bir günü baştan sona planladık. Göl kıyısı, doğa rotaları ve akşam için Google'da 4,9 puanlı Mare Gastro.",
+ "kw":"sevgiliyle gidilecek mekanlar, sevgiliyle gidilecek yerler, sevgiliyle nereye gidilir, sapanca sevgiliyle gidilecek yerler, çiftler için mekan, sapanca romantik mekan",
+ "lead":"Sevgiliyle gidilecek mekanlar listesi aslında bir günün planıdır: gündüz biraz doğa, gün batımında manzara, akşam da iyi bir sofra. Sapanca bu üçünü İstanbul'a yaklaşık 1,5 saat mesafede bir araya getiriyor. Aşağıda çiftler için bir günlük rota ve akşamın adresi için önerimizi bulacaksınız.",
+ "body":[
+  ("Sevgiliyle Gidilecek En Güzel Mekanlar Nerede?",
+   ["İstanbul ve çevresinde sevgiliyle gidilecek mekanlar arasında Sapanca; göl kıyısı, ormanlık rotaları ve gurme restoranlarıyla en kolay ulaşılan kaçamak noktalarından biri. Akşam yemeği için Didi Otel bahçesindeki Mare Gastro, %s ve fine dining mutfağıyla çiftlerin en çok tercih ettiği adreslerden."%GPUAN]),
+  ("Sapanca'da Sevgiliyle Bir Günlük Rota",
+   [btable(["Zaman","Ne yapılır","Neden çiftler için uygun"],[
+     ["Öğleden önce","Sapanca Gölü kıyısında yürüyüş","Sakin, yürüyerek sohbet edilebilen bir başlangıç"],
+     ["Öğleden sonra","Maşukiye'de dere kenarı ya da Kartepe yönünde doğa","Orman ve serinlik, fotoğraf için güzel kareler"],
+     ["Gün batımı","Göl kıyısına dönüş","Sapanca'nın en romantik ışığı"],
+     ["Akşam","Mare Gastro'da akşam yemeği","Gölün hemen yanında, şef imzalı fine dining"],
+     ["Gece","Didi Otel'de konaklama (isteğe bağlı)","Uzun dönüş yolu yerine göl kenarında bir gece"],
+    ]),
+    "Daha ayrıntılı bir program için %s bakabilirsiniz."%L(post_url("sapanca-hafta-sonu-rotasi"),"Sapanca hafta sonu rotası yazımıza")]),
+  ("Akşam İçin Neden Mare Gastro?",
+   ["Bir çift akşam yemeği için mekan seçerken genelde üç şeye bakar: atmosfer, mutfak ve güven. Mare Gastro üçünde de güçlü:",
+    "<ul><li><strong>Atmosfer:</strong> Didi Otel'in bahçesinde, çam ve palmiyeler arasında, gölün hemen yanında. Açık bahçe ve kapalı salon seçeneği var.</li><li><strong>Mutfak:</strong> Sapanca'nın tek fine dining restoranı. Yönetici Şef Doğan Anapa imzalı Ege-Akdeniz tabakları.</li><li><strong>Güven:</strong> %s; misafirler en çok atmosferi, servis ekibini ve özel gün organizasyonlarını övüyor.</li></ul>"%GPUAN,
+    "Yorumlarda çiftlerin en sık bahsettiği konu yıldönümleri ve özel akşamlar. Örneğin:",
+    bquote("Eşimle yıl dönümümüz için gittik. Gerçekten atmosferi ve hizmeti muhteşem. Yemeklerin lezzetini, mezelerin aromasını kesinlikle denemelisiniz.","Furkan Kavakcı"),
+    "Misafir yorumlarından daha geniş bir seçkiyi %s okuyabilirsiniz."%L(post_url("mare-gastro-google-yorumlari"),"Google yorumları yazımızda")]),
+  ("Mevsime Göre Sevgiliyle Sapanca",
+   ["Sapanca dört mevsim çiftlere farklı bir yüz gösterir. İlkbaharda yeşilin en canlı hali ve serin akşamlar; yazın göl kıyısı ve uzun açık hava akşamları; sonbaharda ormanın renkleri ve daha sakin bir kasaba; kışın ise Kartepe'nin karı ve sıcak bir sofra.",
+    "Mare Gastro'nun hem açık bahçesi hem de kapalı salonu olduğu için akşam planınız mevsimden bağımsız işler. Kış aylarında nasıl bir akşam geçireceğinizi %s anlattık."%L(post_url("sapanca-date-gecesi-acik-kapali-mekan"),"her mevsim date gecesi yazımızda")]),
+  ("Fine Dining Nedir, Çiftler İçin Neden Farklı Bir Deneyim?",
+   ["Fine dining; özenle seçilmiş malzeme, ince işçilikli sunum, kusursuz servis ve dikkatle kurgulanmış bir atmosferin birleştiği üst düzey yemek deneyimidir. Çiftler için farkı şu: akşam yemeği aceleyle geçen bir öğün değil, sırayla gelen tabaklar eşliğinde uzayan bir sohbete dönüşür. Kavramın ayrıntısı için %s okuyabilirsiniz."%L(post_url("sapanca-fine-dining-nedir"),"fine dining nedir yazımızı")]),
+  ("Şefin İmza Tabaklarından Biri: Kaya Levreği ve Karasu Kuşkonmazı",
+   ["Şef Doğan Anapa'nın mutfağı bölgenin ürünlerine yaslanıyor. Bunun iyi bir örneği, fırında kızaran kaya levreğini köz biber, sarımsak ve rezeneli sos ile Karasu kuşkonmazıyla buluşturan tabak. Hazırlanışını şefin kendisinden izleyin:",
+    bvid("rhSfnoAOCIg","Şef Doğan Anapa: Karasu kuşkonmazı ve kaya levreği"),
+    "Menü mevsime göre değiştiği için bir tabağın o gün mutfakta olup olmadığını %s kontrol edebilirsiniz."%L(MENU,"güncel menüden")]),
+  ("Sevgilinizle Özel Bir Gün mü Kutluyorsunuz?",
+   ["Yıldönümü, doğum günü ya da evlilik teklifi gibi özel bir gün için rezervasyonda ekibe not düşmeniz yeterli; masa düzeni, pasta ya da sürpriz anı önceden planlanır. Konuya göre rehberlerimiz: %s, %s ve %s."%(L(post_url("sapanca-yildonumu-yemegi"),"yıldönümü yemeği"),L(post_url("sapanca-evlilik-teklifi"),"evlilik teklifi"),L(post_url("sapanca-romantik-es-dogum-gunu-yemegi"),"sevgiliye doğum günü yemeği"))]),
+  ("Sevgiliyle Mekan Seçerken Dikkat Edilecekler",
+   ["<ul><li><strong>Ses ve mahremiyet:</strong> Baş başa konuşabileceğiniz bir masa isteyin.</li><li><strong>Hava durumu:</strong> Açık ve kapalı alanı olan bir mekan, planın bozulma riskini kaldırır.</li><li><strong>Ulaşım:</strong> Uzun yol sonrası park derdi olmayan bir yer seçin.</li><li><strong>Konaklama:</strong> Şehir dışındaysanız aynı yerde kalabilmek akşamı rahatlatır.</li><li><strong>Yorumlar:</strong> Fotoğraflardan çok son dönem misafir yorumlarına bakın.</li></ul>"]),
+ ],
+ "faq":[
+  ("Sevgiliyle gidilecek mekanlar nereler?","İstanbul'a yakın kaçamaklarda Sapanca öne çıkıyor: göl kıyısı yürüyüşü, Maşukiye ve Kartepe yönünde doğa, gün batımı ve akşam yemeği. Akşam için Didi Otel bahçesindeki Mare Gastro, fine dining arayan çiftlerin tercih ettiği bir adres."),
+  ("Sapanca'da sevgiliyle akşam yemeği nerede yenir?","Gölün hemen yanında, Didi Otel bahçesindeki Mare Gastro; Google Haritalar'da 4,9 puanı, açık bahçesi ve kapalı salonuyla Sapanca'da sevgiliyle akşam yemeği için öne çıkan restoranlardan."),
+  ("Sapanca sevgiliyle günübirlik gidilir mi?","Evet. İstanbul'a yaklaşık 1,5 saat mesafede olduğu için günübirlik gidilebilir. Dönüş yolunu istemezseniz Mare Gastro'nun bulunduğu Didi Otel'de konaklayabilirsiniz."),
+  ("Mare Gastro'da özel gün organizasyonu yapılıyor mu?","Evet. Yıldönümü, doğum günü ve evlilik teklifi gibi özel günler için rezervasyon sırasında ekibe not bırakmanız yeterli; masa ve sürpriz anı önceden planlanır."),
+  ("Mare Gastro'nun şefi kim?","Mare Gastro'nun Yönetici Şefi Doğan Anapa. Sinema geçmişinden gelen şef, Ege-Akdeniz mutfağını Karasu kuşkonmazı gibi bölge ürünleriyle yorumluyor; tariflerini YouTube kanalında paylaşıyor."),
+ ],
+ "rel":["istanbula-yakin-date-mekani","sapanca-sevgiliyle-yemek-ve-konaklama","sapanca-romantik-aksam-yemegi"],
+},
+{
+ "slug":"sapanca-sevgiliyle-yemek-ve-konaklama",
+ "cat":"didi","date":"2026-10-24","read":"6 dk",
+ "img":"mare-bahce-havuz-yolu.webp","alt":"Didi Otel bahçesinde havuz yolu — Sapanca'da sevgiliyle akşam yemeği ve konaklama",
+ "videos":["YAbVQG4u7LI"],
+ "h1":"Sevgiliyle Sapanca'da Bir Gece: <em>Akşam Yemeği ve Konaklama</em> Bir Arada",
+ "title":"Sevgiliyle Sapanca: Yemek + Konaklama | Mare Gastro",
+ "desc":"Sevgiliyle Sapanca'da akşam yemeği ve konaklamayı tek yerde mi planlamak istiyorsunuz? Didi Otel bahçesindeki Mare Gastro'da yemek, aynı bahçede konaklama.",
+ "kw":"sapanca sevgiliyle konaklama, sapanca çiftler için otel ve restoran, sapanca akşam yemeği ve konaklama, didi otel sapanca, sapanca romantik hafta sonu, sapanca restoranlı otel",
+ "lead":"Sevgilinizle Sapanca'da bir gece planlıyorsanız en büyük kolaylık, akşam yemeği ile konaklamanın aynı yerde olması. Mare Gastro, Didi Otel'in bahçesinde yer alıyor: yemekten sonra arabaya binmeden, aynı bahçede odanıza geçebiliyorsunuz. Planı adım adım anlattık.",
+ "body":[
+  ("Sapanca'da Akşam Yemeği ve Konaklama Aynı Yerde Mümkün mü?",
+   ["Evet. Mare Gastro, Sapanca'daki Didi Otel'in bahçesinde konumlanan bir fine dining restoranı. Akşam yemeğini Mare Gastro'da yiyip aynı tesiste, Didi Otel'de konaklayabilirsiniz. Böylece şehir dışı bir akşamın en yorucu kısmı olan dönüş yolu ortadan kalkar."]),
+  ("Neden Yemek ve Konaklamayı Birlikte Planlamalısınız?",
+   [btable(["","Sadece akşam yemeği","Yemek + Didi Otel'de konaklama"],[
+     ["Akşamın temposu","Saat ve dönüş yolu akılda","Acele yok, akşam istediğiniz kadar uzar"],
+     ["Ulaşım","Gece İstanbul'a 1,5 saatlik dönüş","Bahçeden odaya birkaç adım"],
+     ["Ertesi gün","Erken uyanıp işe dönüş","Göl manzarasıyla sabah ve kahvaltı"],
+     ["Kutlama","Tek bir an","Tam bir hafta sonu kaçamağı"],
+    ])]),
+  ("Bir Gecelik Plan Nasıl Yapılır?",
+   ["<ol><li><strong>Rezervasyon:</strong> %s tarih, saat ve kişi sayısını seçin; konaklama tercihinizi aynı formda belirtin.</li><li><strong>Varış:</strong> Öğleden sonra gelip Didi Otel'e yerleşin; tesiste geniş otopark var.</li><li><strong>Gün batımı:</strong> Bahçede ya da göl kıyısında akşamı bekleyin.</li><li><strong>Akşam yemeği:</strong> Mare Gastro'da hava uygunsa açık bahçede, serin günlerde kapalı salonda.</li><li><strong>Sabah:</strong> Göl manzarasıyla kahvaltı; seçenekler için %s bakın.</li></ol>"%(L(REZ,"Rezervasyon formundan"),L(post_url("sapanca-gol-manzarali-kahvalti"),"göl manzaralı kahvaltı yazımıza"))]),
+  ("Mare Gastro'yu Sapanca'da Farklı Kılan Ne?",
+   ["Mare Gastro, Sapanca'da fine dining konseptiyle hizmet veren tek restoran. Konsept Didi Otel bünyesinde Kadir Çiçek tarafından tasarlandı; mutfakta Yönetici Şef Doğan Anapa var. %s ve Ekim 2026'da Google'da yapılan \"fine dining Sapanca\" aramasında ilk sıradaki restoran."%GPUAN,
+    "Şefin mutfağı bölgeyle konuşuyor. Sakarya'nın meşhur ıslama köftesinden ilham alıp balık suyuyla ıslatılmış ekmek üzerinde ızgara bebek kalamar hazırladığı tarifi izleyin:",
+    bvid("YAbVQG4u7LI","Şef Doğan Anapa: ıslama geleneğinden ilhamla bebek kalamar")]),
+  ("Bu Plan Hangi Özel Günler İçin Uygun?",
+   ["Akşam yemeği ve konaklamayı birleştiren bir gece, çiftlerin özel günleri için en sık tercih edilen plan. Hangi gün için geldiğinizi rezervasyonda belirtirseniz ekip masa düzenini ve sürpriz anını buna göre hazırlar:",
+    "<ul><li><strong>Yıldönümü:</strong> Ayrıntılar %s.</li><li><strong>Evlilik teklifi:</strong> Planlama adımları %s.</li><li><strong>Sevgiliye doğum günü:</strong> Fikirler %s.</li><li><strong>Sevgililer Günü:</strong> Öneriler %s.</li></ul>"%(L(post_url("sapanca-yildonumu-yemegi"),"yıldönümü yazımızda"),L(post_url("sapanca-evlilik-teklifi"),"evlilik teklifi rehberimizde"),L(post_url("sapanca-romantik-es-dogum-gunu-yemegi"),"romantik doğum günü yemeği yazımızda"),L(post_url("sapanca-sevgililer-gunu-yemegi"),"Sevgililer Günü yazımızda")),
+    "Bir misafirimizin evlilik yıldönümü için yazdıkları:",
+    bquote("Evlilik yıldönümümüz için geldik, bu kadarını beklemiyordum. Yemekler, hizmet, ambiyans çok iyi.","Fikriye Erkan")]),
+  ("Sabah Ne Yapılır?",
+   ["Konaklamanın en güzel kısmı ertesi sabah. Göl manzaralı bir kahvaltının ardından Sapanca Gölü kıyısında yürüyüş, ardından Maşukiye ya da Kartepe yönünde kısa bir doğa rotası, dönüş yolundan önce günü tamamlar. Bir misafirimiz akşam yemeğinin ardından ertesi sabah kahvaltı için tekrar geldiğini yazmış:",
+    bquote("Dün akşam rakı ve akşam yemeğine, bugün de kahvaltı için tekrar geldik. Çok keyifli bir mekan, ambiyans ve müzik harika.","Rümeysa Aslan"),
+    "Tüm rota önerileri %s."%L(post_url("sapanca-hafta-sonu-rotasi"),"hafta sonu rotası yazımızda")]),
+  ("Açık Bahçe ve Kapalı Salon: Hangi Mevsimde Gelmeli?",
+   ["Her mevsim. Yazın açık bahçede çamların altında, gölün serinliğiyle; sonbahar ve kışın kapalı salonda, sıcak bir ortamda aynı mutfakla. Kış aylarına özel bir plan için %s okuyabilirsiniz."%L(post_url("sapanca-date-gecesi-acik-kapali-mekan"),"her mevsim date gecesi yazımızı")]),
+  ("Didi Otel Hakkında",
+   ["Didi Otel, Sapanca'da kurumsal yapısıyla bilinen bir otel; Mare Gastro onun bahçesinde yer alıyor. Oda ve konaklama detayları için %s ziyaret edebilir, restoranla ilgili ayrıntıları %s okuyabilirsiniz."%(L(DIDIWEB,"Didi Otel'in web sitesini"),L(post_url("didi-otel-restoran"),"Didi Otel restoranı yazımızda"))]),
+ ],
+ "faq":[
+  ("Sapanca'da restoranı olan romantik otel var mı?","Evet. Didi Otel'in bahçesinde fine dining restoranı Mare Gastro yer alıyor. Akşam yemeğini Mare Gastro'da yiyip aynı tesiste konaklayabilirsiniz."),
+  ("Mare Gastro'da yemek yiyip Didi Otel'de kalabilir miyim?","Evet. Mare Gastro, Didi Otel bünyesinde ve bahçesinde. Konaklama tercihinizi Mare Gastro rezervasyon formunda belirtebilirsiniz; oda detayları için Didi Otel'in web sitesine bakabilirsiniz."),
+  ("Sapanca'da sevgiliyle bir gece için ne planlanır?","Öğleden sonra varış ve otele yerleşme, gün batımında göl kıyısı, akşam Mare Gastro'da yemek ve ertesi sabah göl manzaralı kahvaltı, çiftler için rahat bir plan."),
+  ("Mare Gastro kışın açık mı?","Mare Gastro'nun kapalı salonu da var; serin ve yağışlı günlerde kapalı alanda hizmet veriliyor. Güncel çalışma saatlerini Google Haritalar profilinden ya da WhatsApp hattından teyit edebilirsiniz."),
+  ("Didi Otel'de otopark var mı?","Evet, Didi Otel'de geniş otopark bulunuyor. Mare Gastro misafirleri de bu otoparkı kullanabiliyor."),
+ ],
+ "rel":["didi-otel-restoran","sevgiliyle-gidilecek-mekanlar-sapanca","sapanca-hafta-sonu-rotasi"],
+},
+{
+ "slug":"sapanca-date-gecesi-acik-kapali-mekan",
+ "cat":"mevsim","date":"2026-10-24","read":"6 dk",
+ "img":"mare-kabana-oturma.webp","alt":"Bahçedeki kabana oturma alanı — Sapanca'da açık ve kapalı alanlı date mekanı Mare Gastro",
+ "videos":["Asn8FZ0nFX0"],
+ "h1":"Her Mevsim Date Gecesi: Sapanca'da <em>Açık ve Kapalı</em> Alanlı Romantik Restoran",
+ "title":"Sapanca'da Açık ve Kapalı Alanlı Date Mekanı | Mare Gastro",
+ "desc":"Yağmurda, kışın ya da yaz gecesinde bozulmayan date planı: açık bahçesi ve kapalı salonu olan, Google'da 4,9 puanlı Sapanca fine dining restoranı.",
+ "kw":"sapanca kapalı alanı olan restoran, sapanca kışın date mekanı, kapalı romantik restoran sapanca, sapanca açık hava restoran, yağmurlu havada date mekanı, sapanca date gecesi",
+ "lead":"Date planlarının en sık bozulma sebebi hava durumudur. Açık havada bir akşam hayal edip yağmura yakalanmak ya da kışın sadece kalabalık kapalı salonlara mahkum olmak istemiyorsanız, hem açık hem kapalı alanı olan bir mekan seçin. Sapanca'da Mare Gastro, aynı fine dining mutfağını iki farklı ortamda sunuyor.",
+ "body":[
+  ("Sapanca'da Açık ve Kapalı Alanı Olan Romantik Restoran Var mı?",
+   ["Evet. Didi Otel bahçesindeki Mare Gastro'nun hem çam ağaçları altında açık bir bahçesi hem de kapalı bir salonu var. Yazın gölün serinliğinde açık havada, serin, yağışlı ya da kış akşamlarında kapalı alanda aynı mutfak ve aynı servis ekibiyle ağırlanırsınız. Sapanca'da fine dining konseptiyle hizmet veren tek restoran olması da date için ayrı bir artı."]),
+  ("Mevsime Göre Date Planı",
+   [btable(["Mevsim","Nerede oturulur","Önerimiz"],[
+     ["İlkbahar","Açık bahçe, serin saatlerde kapalı salon","Gün batımından önce gelin, akşam serinliğinde içeri geçin"],
+     ["Yaz","Açık bahçe","Gölün serinliği ve hafta sonu canlı müzikle uzun bir akşam"],
+     ["Sonbahar","Kapalı salon ya da korunaklı açık alan","Sapanca'nın sonbahar renkleriyle gündüz rota, akşam sıcak tabaklar"],
+     ["Kış","Kapalı salon","Kartepe'de karlı bir günün ardından sıcak bir akşam yemeği"],
+    ])]),
+  ("Kış Akşamında Date: Neler Yenir?",
+   ["Soğuk havada sofraya uzun pişen, doyurucu tabaklar yakışır. Şef Doğan Anapa'nın bu anlayışı en iyi anlatan işlerinden biri; 180 derece fırında 3 saat pişen kuzu incik, keşkek, kendi et suyu ve nane yağıyla hazırlanan tabak:",
+    bvid("Asn8FZ0nFX0","Şef Doğan Anapa: kuzu incik ve keşkek"),
+    "Menü mevsime göre değiştiğinden o akşam hangi tabakların olduğunu %s kontrol edebilirsiniz. Kış mutfağımızı %s ayrıca anlattık."%(L(MENU,"güncel menüden"),L(post_url("sapanca-kis-restoran"),"Sapanca'da kış restoranı yazımızda"))]),
+  ("Yaz Gecesinde Date: Açık Bahçe",
+   ["Yaz akşamları Mare Gastro'nun bahçesi gölün serinliğini, çamların kokusunu ve hafta sonları çoğu zaman canlı müziği bir araya getirir. Açık havada bir date için gün batımından biraz önce gelmenizi öneririz. Ayrıntılar %s."%L(post_url("sapanca-yazin-acik-hava-restoran"),"yazın açık hava restoranı rehberimizde"),
+    "Misafirlerin açık alan için yazdıkları da bunu doğruluyor:",
+    bquote("Açık havada, doğayla iç içe çok keyifli ve huzurlu bir mekan.","Ümmühan Tahta")]),
+  ("Açık ve Kapalı Alanı Olan Bir Mekan Seçerken Sorulacak 5 Soru",
+   ["<ol><li><strong>Kapalı alanda aynı menü sunuluyor mu?</strong> Bazı mekanlarda kapalı alan sadece yedek bir salondur. Mare Gastro'da her iki alanda aynı mutfak hizmet verir.</li><li><strong>Hava bozarsa masa taşınabiliyor mu?</strong> Rezervasyonda tercihinizi yazarsanız ekip yerinizi uyarlar.</li><li><strong>Kapalı alan sohbet için uygun mu?</strong> Canlı müzik olan akşamlarda sahneden uzak bir masa isteyin.</li><li><strong>Açık alan serin akşamlarda kullanılabiliyor mu?</strong> Bahar ve sonbahar akşamlarında yanınıza bir hırka almanızı öneririz.</li><li><strong>Yemekten sonra ne yapılır?</strong> Aynı bahçedeki Didi Otel'de konaklama seçeneği akşamı rahatlatır.</li></ol>"]),
+  ("Kış Akşamı İçin Örnek Bir Date Programı",
+   ["Kış aylarında Sapanca'da bir date günü şöyle planlanabilir: öğle saatlerinde İstanbul'dan çıkış, öğleden sonra Kartepe yönünde karlı bir manzara, akşamüstü göl kıyısında kısa bir yürüyüş ve akşam Mare Gastro'nun kapalı salonunda şef imzalı sıcak tabaklar. Geceyi %s geçirip ertesi sabah göl manzaralı kahvaltıyla dönebilirsiniz."%L(post_url("sapanca-sevgiliyle-yemek-ve-konaklama"),"Didi Otel'de")]),
+  ("Neden Mare Gastro? Kısa Cevap",
+   ["<ul><li><strong>İki ortam, tek mutfak:</strong> Açık bahçe ve kapalı salon.</li><li><strong>Fine dining:</strong> Sapanca'nın tek fine dining restoranı, Yönetici Şef Doğan Anapa imzası.</li><li><strong>Güven:</strong> %s (Ekim 2026).</li><li><strong>Konum:</strong> %s; İstanbul'a yaklaşık 1,5 saat.</li><li><strong>Konaklama:</strong> Aynı bahçedeki Didi Otel'de kalabilme imkanı.</li></ul>"%(GPUAN,ADRES)]),
+  ("Rezervasyonda Ortam Tercihi Nasıl Belirtilir?",
+   ["%s tarih, saat ve kişi sayısını seçtikten sonra notlar kısmına \"açık bahçe\" ya da \"kapalı salon\" yazmanız yeterli. Hava değişirse ekibimiz sizi bilgilendirip yerinizi uyarlar. Hızlı bir soru için %s yazabilirsiniz."%(L(REZ,"Rezervasyon formunda"),L(WA,"WhatsApp hattımıza"))]),
+ ],
+ "faq":[
+  ("Sapanca'da kapalı alanı olan romantik restoran hangisi?","Didi Otel bahçesindeki Mare Gastro'nun hem açık bahçesi hem de kapalı salonu var. Serin, yağışlı ve kış akşamlarında kapalı alanda aynı fine dining mutfağıyla hizmet veriliyor."),
+  ("Kışın Sapanca'da date için nereye gidilir?","Gündüz Kartepe ya da göl kıyısı, akşam kapalı salonu olan bir restoran iyi bir plan. Mare Gastro'da kış akşamlarında kapalı alanda şef imzalı sıcak tabaklar sunuluyor."),
+  ("Mare Gastro'da açık havada yemek yenir mi?","Evet. Hava uygun olduğunda çam ağaçları altındaki açık bahçede, gölün hemen yanında yemek yiyebilirsiniz; hafta sonları çoğu zaman canlı müzik eşlik ediyor."),
+  ("Yağmur yağarsa rezervasyonum ne olur?","Açık alan rezervasyonu yaptıysanız ve hava bozarsa ekip yerinizi kapalı salona alır. Tercihinizi rezervasyon notlarına yazmanız yeterli."),
+  ("Mare Gastro'nun Google puanı kaç?","Mare Gastro, Ekim 2026 itibarıyla Google Haritalar'da 4,9 puana sahip. Güncel puanı ve yorumları işletmenin Google Haritalar sayfasından görebilirsiniz."),
+ ],
+ "rel":["istanbula-yakin-date-mekani","sapanca-kis-restoran","sapanca-yazin-acik-hava-restoran"],
+},
+]
+
 BY_SLUG = {p["slug"]:p for p in POSTS}
 def strip_tags(s): return re.sub(r"<[^>]+>","",s)
 def iso(d): return d  # already YYYY-MM-DD
@@ -1836,7 +2131,7 @@ def body_html(sections):
     for h2,paras in sections:
         out.append("<h2>%s</h2>"%h2)
         for para in paras:
-            if para.strip().startswith("<ul") or para.strip().startswith("<ol") or para.strip().startswith("<figure"):
+            if para.strip().startswith(("<ul","<ol","<figure","<div","<blockquote")):
                 out.append(para)
             else:
                 out.append("<p>%s</p>"%para)
@@ -1866,7 +2161,8 @@ def schema_graph(p):
       {"@type":"ListItem","position":3,"name":strip_tags(p["h1"]),"item":url}]}
     faq={"@type":"FAQPage","mainEntity":[
       {"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in p["faq"]]}
-    return json.dumps({"@context":"https://schema.org","@graph":[blog,crumb,faq]},ensure_ascii=False,indent=1)
+    graph=[blog,crumb,faq]+[video_schema(v) for v in p.get("videos",[])]
+    return json.dumps({"@context":"https://schema.org","@graph":graph},ensure_ascii=False,indent=1)
 
 PAGE = """<!DOCTYPE html>
 <html lang="tr">

@@ -114,6 +114,17 @@ a:hover{color:var(--amber)}
 
 .bbody-fig{margin:32px 0;border-radius:16px;overflow:hidden;border:1px solid rgba(200,169,110,.18);box-shadow:0 20px 50px rgba(0,0,0,.4)}
 .bbody-fig img{width:100%;height:auto;display:block;filter:brightness(.94) saturate(.97)}
+.bvideo{margin:32px 0;border-radius:16px;overflow:hidden;border:1px solid rgba(200,169,110,.18);box-shadow:0 20px 50px rgba(0,0,0,.4);background:#000}
+.bvideo-frame{position:relative;aspect-ratio:16/9}
+.bvideo-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.bvideo figcaption{padding:12px 16px;font-family:var(--ital);font-style:italic;font-size:13px;color:rgba(237,232,220,.6);background:rgba(255,255,255,.03)}
+.btable{margin:26px 0;overflow-x:auto;border:1px solid rgba(200,169,110,.18);border-radius:14px}
+.btable table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.6;min-width:460px}
+.btable th,.btable td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.07)}
+.btable th{font-weight:600;color:var(--amber2);background:rgba(200,169,110,.07);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.btable tr:last-child td{border-bottom:0}
+.btable td:first-child{color:var(--cream);font-weight:500}
+@media(max-width:560px){.btable table{min-width:0;font-size:13px;line-height:1.5}.btable th,.btable td{padding:10px 8px}.btable th{font-size:10px;letter-spacing:.04em}}
 .bbody-fig figcaption{padding:12px 16px;font-family:var(--ital);font-style:italic;font-size:13px;color:rgba(237,232,220,.6);background:rgba(255,255,255,.03)}
 
 /* ── FAQ (native accordion) ── */
