@@ -5050,3 +5050,9 @@ POSTS["sapanca-dogum-gunu-fiyatlari-ve-menu-secenekleri"] = {
  ],
 },
 }
+
+# 2026-10-24 GEO/AEO refresh of the 5 highest-traffic posts (blog/posts_refresh_{en,ar,ru}.py)
+import posts_refresh_en, posts_refresh_ar, posts_refresh_ru
+for _mod in (posts_refresh_en, posts_refresh_ar, posts_refresh_ru):
+    for _slug, _data in _mod.REFRESH.items():
+        POSTS[_slug][_mod.LANG].update(_data)

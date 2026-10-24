@@ -78,6 +78,7 @@ NAV_LABELS = {
 }
 
 HTML_LANG = {"en":"en", "ar":"ar", "ru":"ru"}
+UPDATED_LABEL = {"en":"Updated", "ar":"آخر تحديث", "ru":"Обновлено"}
 LOCALE = {"en":"en_US", "ar":"ar_AR", "ru":"ru_RU"}
 DIR_ATTR = {"en":"", "ar":' dir="rtl"', "ru":""}
 
@@ -157,7 +158,7 @@ def body_html(sections):
     for h2, paras in sections:
         out.append("<h2>%s</h2>" % h2)
         for para in paras:
-            if para.strip().startswith("<ul") or para.strip().startswith("<ol") or para.strip().startswith("<figure"):
+            if para.strip().startswith(("<ul", "<ol", "<figure", "<div", "<blockquote")):
                 out.append(para)
             else:
                 out.append("<p>%s</p>" % para)
@@ -176,7 +177,7 @@ def schema_graph(lang, p, slug):
     img = "%s/images/%s" % (SITE, p["img"])
     blog = {"@type":"BlogPosting","@id":url+"#article","headline":strip_tags(p["h1"]),
       "name":p["title"],"description":p["desc"],"image":img,"url":url,
-      "datePublished":p["date"],"dateModified":p["date"],"inLanguage":lang,
+      "datePublished":p["date"],"dateModified":p.get("updated", p["date"]),"inLanguage":lang,
       "articleSection":CATS[p["cat"]][lang],"keywords":p["kw"],
       "mainEntityOfPage":{"@type":"WebPage","@id":url},
       "author":{"@type":"Person","name":"Doğan Anapa","jobTitle":"Executive Chef","url":"%s/%s/#chef"%(SITE,lang),
@@ -262,7 +263,7 @@ def build_post(lang, slug, p, posts_by_slug):
       htmllang=HTML_LANG[lang], dir=DIR_ATTR[lang],
       title=html.escape(p["title"]), desc=html.escape(p["desc"]), kw=html.escape(p["kw"]),
       url=url, img=img, imgfile=p["img"], alt=html.escape(p["alt"]),
-      date=p["date"], date_tr=p["date"], read=p["read"], cat=CATS[p["cat"]][lang],
+      date=p["date"], date_tr=(UPDATED_LABEL[lang] + " " + p["updated"]) if p.get("updated") else p["date"], read=p["read"], cat=CATS[p["cat"]][lang],
       site=SITE, lang=lang, home=NAV_LABELS[lang]["breadcrumb_home"], blogword=NAV_LABELS[lang]["blog"],
       h1=p["h1"], lead=p["lead"],
       body=body_html(p["body"]), faq=faq_accordion(lang, p["faq"]), cta=cta_html(lang),

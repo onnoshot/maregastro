@@ -259,3 +259,4 @@ a:hover{color:var(--amber)}
 .bidx-card-t{font-family:var(--ital);font-size:1.4rem;line-height:1.22;color:var(--cream);margin-bottom:9px}
 .bidx-card-d{font-size:13px;color:var(--muted);line-height:1.65}
 .bidx-card-more{display:inline-block;margin-top:14px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber)}
+[dir="rtl"] .btable th,[dir="rtl"] .btable td{text-align:right}

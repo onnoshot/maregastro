@@ -2065,6 +2065,10 @@ POSTS += [
 ]
 
 BY_SLUG = {p["slug"]:p for p in POSTS}
+# 2026-10-24 GEO/AEO yenilemesi: en çok trafik alan 5 yazının güncel içeriği (blog/posts_refresh.py)
+from posts_refresh import REFRESH_TR
+for _r in REFRESH_TR:
+    BY_SLUG[_r["slug"]].update(_r)
 def strip_tags(s): return re.sub(r"<[^>]+>","",s)
 def iso(d): return d  # already YYYY-MM-DD
 def tr_date(d):
@@ -2148,7 +2152,7 @@ def schema_graph(p):
     url=post_url(p["slug"]); img="%s/images/%s"%(SITE,p["img"])
     blog={"@type":"BlogPosting","@id":url+"#article","headline":strip_tags(p["h1"]),
       "name":p["title"],"description":p["desc"],"image":img,"url":url,
-      "datePublished":p["date"],"dateModified":p["date"],"inLanguage":"tr-TR",
+      "datePublished":p["date"],"dateModified":p.get("updated",p["date"]),"inLanguage":"tr-TR",
       "articleSection":CATS[p["cat"]],"keywords":p["kw"],
       "mainEntityOfPage":{"@type":"WebPage","@id":url},
       "author":{"@type":"Person","name":"Doğan Anapa","jobTitle":"Yönetici Şef","url":CHEF,
@@ -2228,7 +2232,7 @@ def build_post(p):
     h=PAGE.format(
       title=html.escape(p["title"]),desc=html.escape(p["desc"]),kw=html.escape(p["kw"]),
       url=url,img=img,imgfile=p["img"],alt=html.escape(p["alt"]),
-      date=p["date"],date_tr=tr_date(p["date"]),read=p["read"],cat=CATS[p["cat"]],
+      date=p["date"],date_tr=("Son güncelleme: "+tr_date(p["updated"])) if p.get("updated") else tr_date(p["date"]),read=p["read"],cat=CATS[p["cat"]],
       site=SITE,h1=p["h1"],lead=p["lead"],
       body=body_html(p["body"]),faq=faq_accordion(p["faq"]),cta=cta_html(),
       related=related_html(p["rel"]),footer=footer_html(),nav=nav_html(),
