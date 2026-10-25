@@ -13,7 +13,7 @@ import html
 
 SITE = "https://maregastro.com"
 MAPS = "https://maps.google.com/?cid=7177941338358519695"
-DIJITAL = SITE + "/dijitalmenu/"
+DIJITAL = SITE + "/dijitalmenu"
 UPDATED = "2026-10-24"
 SLUGS = ["sapanca-en-iyi-dogum-gunu-mekanlari", "sapanca-yildonumu-icin-en-iyi-mekan",
          "sapanca-fine-dining-fiyat-rehberi", "sapanca-dogum-gunu-fiyatlari-ve-menu-secenekleri",
