@@ -109,7 +109,7 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
  ]
 }
 </script>
-<!-- Menu structured data (build_i18n.py tarafından data/menu-data.seed.json'dan/canlı API'den üretilir) -->
+<!-- Menu structured data (canlı /api/menu verisinden üretildi, 2026-10-25) -->
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -117,6 +117,7 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
  "name": "قائمة Mare Gastro",
  "inLanguage": "ar",
  "url": "https://maregastro.com/ar/#menu",
+ "dateModified": "2026-10-24",
  "hasMenuSection": [
   {
    "@type": "MenuSection",
@@ -124,47 +125,77 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
    "hasMenuItem": [
     {
      "@type": "MenuItem",
-     "name": "Levrek Marin"
+     "name": "جمبري جامبو بارد مع بوريه الكرفس",
+     "description": "بوريه الكرفس بالبرتقال، جمبري جامبو، تفاح أخضر",
+     "image": "https://maregastro.com/images/karides-sos.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Yoğurtlu Semizotu",
-     "description": "Semizotunun ferahlığı yoğurtla buluşması"
+     "name": "كارباتشو لحم البقر",
+     "description": "أوراق جرجير، بارميزان مبشور، دبس الرمان، كبر",
+     "image": "https://maregastro.com/images/dana-carpaccio.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Humus",
-     "description": "Haşlanmış nohut, tahin, elma sirkesi, limon suyu, zeytinyağı, toz şeker , tuz sarımsak ,  kimyon, köz kırmızı biber, kornişon turşu. fındık, sızma zeytinyağı, zeytin"
+     "name": "شريحة جبن أزينة",
+     "description": "شريحة واحدة من جبن أزينة"
     },
     {
      "@type": "MenuItem",
-     "name": "Köz Patlıcan",
-     "description": "Köz patlıcan, köz kırmızı biber, köz yeşil biber, sarımsak, mayonez, taze soğan, sızma zeytinyağı, tuz"
+     "name": "معجون جبن على الطريقة الكريتية مع الشمندر والبرتقال",
+     "description": "صلصة برتقال مركزة وكارباتشو الشمندر",
+     "image": "https://maregastro.com/images/girit-ezme-pancar-portakal.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Zeytinyağı Enginar",
-     "description": "Enginar, zeytınyağı, soğan, dere otu, bezelye(araka), antep fıstık, zeytinyağı, limon, taze nane"
+     "name": "خرشوف اليوم بزيت الزيتون",
+     "description": "حبة خرشوف بزيت الزيتون، فافا الفول الأخضر، بصل أحمر، شبت",
+     "image": "https://maregastro.com/images/enginar.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Patlıcanlı Pilav",
-     "description": "Baldo pirinç pilavı, dolmalık fıstık, üzüm, dereotu, patlıcan, zeytinyağı, tuz, şeker"
+     "name": "حمص",
+     "description": "مخلل خيار، فلفل أحمر مشوي، بندق، زيتون أسود، زيت زيتون بكر ممتاز",
+     "image": "https://maregastro.com/images/humus.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Avokadolu Jumbo Karides Söğüş",
-     "description": "Avakado, hardal, portakal suyu, limon suyu, bal, jumbo karides, zeytinyağı, tuz, karabiber"
+     "name": "باذنجان وفلفل مقلي بصلصة الطماطم",
+     "image": "https://maregastro.com/images/patlican-biber-kizartmasi.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Dana Carpaccıo",
-     "description": "Bonfile, kapari, roka, parmesan, zeytinyağı, elma sirkesi, tuz, sarımsak, limon suyu, nar ekşisi"
+     "name": "طبق جبن",
+     "description": "جبن أزينة، جبن كاشار، كاشار معتق، جبن مدخن، جبن أبازا",
+     "image": "https://maregastro.com/images/peynir-tabagi.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Girit Ezme,kavun",
-     "description": "Erzincan tulum, lor peynırı, ezıne peynırı, dereotu, maydonoz, fesleğen ,ceviz, Rakı ile marine edilmiş kavun, sızma zeytinyağı"
+     "name": "مقبلات أتوم الحارة مع رقائق البطاطا",
+     "image": "https://maregastro.com/images/acili-atom.webp"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "تارتار السلمون",
+     "description": "مكعبات سلمون متبلة بالخردل والكبر والبصل"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "بوراني الشمندر",
+     "description": "صلصة الزيتون والتفاح والكبر",
+     "image": "https://maregastro.com/images/pancar-borani.webp"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "طراطور الجزر",
+     "description": "بوريه الجزر",
+     "image": "https://maregastro.com/images/havuc-tarator.webp"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "كارباتشو سمك البالاموت",
+     "description": "فينيغريت بالثوم، بصل أحمر، بصل أخضر، كبر، بقدونس، شبت",
+     "image": "https://maregastro.com/images/palamut-carpaccio.webp"
     }
    ]
   },
@@ -174,18 +205,21 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
    "hasMenuItem": [
     {
      "@type": "MenuItem",
-     "name": "Semizotu Salatası",
-     "description": "Semizotu, tatlı biber turşusu, çilek, yeşil elma, ceviz, erzincan tulum nar ekşili vinaigrette"
+     "name": "سلطة الجرجير",
+     "description": "أوراق جرجير، طماطم مكعبات، بارميزان مبشور، صلصة الثوم ودبس الرمان",
+     "image": "https://maregastro.com/images/roka-salata.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Roka Salatası",
-     "description": "Roka yaprakları, küp domates, rende parmesan peyniri, sarımsaklı balzamik sos"
+     "name": "سلطة البقلة",
+     "description": "مخلل فلفل حلو، فراولة، جوز، جبن تولوم أرزنجان، صلصة دبس الرمان",
+     "image": "https://maregastro.com/images/semizotu-salata.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Komşu Salata",
-     "description": "Domates, salatalık, yeşil biber, kırmızı soğan, siyah zeytin, dilim ezine peynir, limon ve sirkeli sos"
+     "name": "سلطة الجيران",
+     "description": "طماطم، خيار، فلفل، بصل أحمر، زيتون أسود، شرائح جبن أزينة، صلصة الثوم وزيت الزيتون والليمون",
+     "image": "https://maregastro.com/images/yunan-salata.webp"
     }
    ]
   },
@@ -195,33 +229,50 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
    "hasMenuItem": [
     {
      "@type": "MenuItem",
-     "name": "Mare Spesiyal Ahtapot Güveç",
-     "description": "Özel marine edilmiş ahtapot güveç,sarımsaklı tereyağ vr baharat"
+     "name": "ثلاثية المأكولات البحرية",
+     "description": "كاليماري ماري المشوي/المقلي + جمبري بالزبدة + طاجن الأخطبوط",
+     "image": "https://maregastro.com/images/3lu-deniz-mahsulu.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Yaprak Ciğer",
-     "description": "200 gr. Yaprak ciğer"
+     "name": "طاجن الأخطبوط الخاص بماري",
+     "description": "طاجن أخطبوط متبل خصيصًا، زبدة بالثوم وتوابل",
+     "image": "https://maregastro.com/images/mare-spesiyal-ahtapot-guvec.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Mare Spesiyal Islama Kalamar",
-     "description": "2 adet baby kalamar ızgara,naneli hardallı sos"
+     "name": "كاليماري ماري الخاص المشوي",
+     "description": "٣ حبات كاليماري صغير مشوي، صلصة النعناع والخردل، طماطم مكعبات",
+     "image": "https://maregastro.com/images/baby-kalamar.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Kalamar Tava",
-     "description": "Kalamar, un, mısır nişastası, soda, bira. Sos: ekmek kırıntısı, ceviz, turşu, sarımsak, uzum sirkesi, zeytinyağı, mayonez, yoğurt, tuz"
+     "name": "جمبري جامبو مشوي",
+     "description": "حبتان من جمبري جامبو، زبدة بالثوم والبقدونس"
     },
     {
      "@type": "MenuItem",
-     "name": "Tereyağlı Karides",
-     "description": "Jumbo karides, tereyağı, zeytinyağı, paprika, sarımsak, maydonoz, tuz"
+     "name": "كاليماري مقلي",
+     "description": "صلصة الطراطور",
+     "image": "https://maregastro.com/images/kalamar-tava.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "3'lü Deniz Mahsülü Lezzeti",
-     "description": "Mare ıslama kalamar/kalamar tava + Tereyağlı karides + Ahtapot güveç"
+     "name": "كبدة مقطعة",
+     "description": "٢٠٠ غرام كبدة مقطعة رقيقة",
+     "image": "https://maregastro.com/images/yaprak-ciger.webp"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "تيرين البطاطس",
+     "description": "تيرين بطاطا بطبقات رقيقة، صلصة فطر الكستناء، لحم مدخن، صلصة الفطر",
+     "image": "https://maregastro.com/images/patates-terin.webp"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "جمبري بالزبدة",
+     "description": "زبدة بالثوم والبقدونس",
+     "image": "https://maregastro.com/images/tereyagli-karides.webp"
     }
    ]
   },
@@ -231,38 +282,51 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
    "hasMenuItem": [
     {
      "@type": "MenuItem",
-     "name": "Deniz Mahsülleri Buğday Risotto",
-     "description": "Buharda pişmiş kum midyeli linguine makarna, tereyağ ve sarımsak ve maydanozlu"
+     "name": "فيليه لحم بصلصة الفلفل والكريمة",
+     "description": "٢٠٠ غرام فيليه لحم بقري، صلصة خاصة بالكريمة والفلفل الأسود، بطاطا أعواد",
+     "image": "https://maregastro.com/images/bonfile.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Fırında Kremalı Levrek",
-     "description": "Fırın levrek, domates, soğan, biber, limon, krema, balık suyu, sarımsak, tuz, kekik ve kremalı levrek, kapar maydanoz"
+     "name": "سلمون مقرمش",
+     "description": "٢٠٠ غرام فيليه سلمون، بطاطا بالفرن، سلطة صغيرة، صلصة هولندايز",
+     "image": "https://maregastro.com/images/citir-somon.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Çıtır Somon",
-     "description": "200 gr kıtır somon fileto, kuşkonmaz, fırın patates, hollandaise sos (yumurta, erimiş tereyağı, limon suyu)"
+     "name": "ريزوتو القمح بالمأكولات البحرية",
+     "description": "جمبري جامبو ومحار مقلي بزبدة الثوم، جبن قشقوان تراقيا المعتق المبشور",
+     "image": "https://maregastro.com/images/deniz-mahsulleri-bugday-risotto.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Mare Spesiyal Granyöz",
-     "description": "200 gr Granyöz, baby patates, köz yeşil biber sos, köz domates, kuşkonmaz, beurre blanc sos"
+     "name": "سمك القاروس المخبوز بالكريمة",
+     "description": "قاروس مخبوز بكريمة الطماطم والفلفل والريحان، كبر، بقدونس",
+     "image": "https://maregastro.com/images/kremali-levrek.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Somonlu Kremalı Spagettı",
-     "description": "150gr somon, spagetti, domates, soğan, biber, limon, krema, balık suyu, sarımsak, tuz, kekik, maydonoz"
+     "name": "سمك كرنق ماري الخاص",
+     "description": "٢٠٠ غرام سمك كرنق، بطاطا صغيرة بالفرن، صلصة الفلفل الأخضر المشوي، طماطم مشوية، صلصة بور بلانك",
+     "image": "https://maregastro.com/images/balik-izgara.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Biber Kremalı Bonfile",
-     "description": "200gr dana bonfile, kibrit patetes, soğan,karabiber,tuz,et suyu, krema, viski"
+     "name": "ريش الخروف",
+     "description": "بيغندي (بوريه الباذنجان المدخن)، بطاطا أعواد، فلفل أخضر طويل",
+     "image": "https://maregastro.com/images/kuzu-pirzola.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "İncik Rüyası",
-     "description": "Keşkek yatağında yavaş pişmiş incik,nane yağı"
+     "name": "معكرونة محشوة بالكستناء مع صلصة اليقطين",
+     "description": "لحم مدخن، صلصة فطر الكستناء",
+     "image": "https://maregastro.com/images/balkabagi-kestane-makarna.webp"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "كفتة سمك البالاموت المشوية",
+     "description": "بطاطا مهروسة بالزبدة",
+     "image": "https://maregastro.com/images/palamut-izgara-kofte.webp"
     }
    ]
   },
@@ -272,13 +336,23 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
    "hasMenuItem": [
     {
      "@type": "MenuItem",
-     "name": "Brioche Benedict",
-     "description": "Poşe yumurta, füme et, sote kuşkonmaz,hollandaise sos"
+     "name": "بريوش بنديكت",
+     "description": "بيضة مسلوقة (بوشيه)، لحم مدخن، هليون سوتيه، صلصة هولندايز",
+     "image": "https://maregastro.com/images/brioche-benedict.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Serpme Kahvaltı",
-     "description": "Siyah zeytin, ızgara yeşil zeytin, tarçınlı elma reçeli, çilek reçeli, acuka, çiçek balı, kaymak, tereyağı,domates soslu patlıcan biber kızartma, ezine peyniri, taze kaşar, çeçil peynir, söğüş tabağı, gözleme, pişi, patates kızartması, sahanda sucuk, omlet/menemen, muska böreği, güveçte eritme peynir, mevsim meyvesi, çay"
+     "name": "كويماك (فوندو الجبن ودقيق الذرة)"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "فطور تركي متنوع",
+     "description": "زيتون أسود، زيتون أخضر مشوي، مربى التفاح بالقرفة، مربى الفراولة، أجوكا (معجون الجوز الحار)، عسل الزهور، قيمر، زبدة، باذنجان وفلفل مقلي بصلصة الطماطم، جبن أزينة، كاشار طازج، جبن تشيتشيل، طبق لحوم باردة، غوزلمة، بيشي (عجين مقلي)، بطاطا مقلية، سجق مقلي، أومليت/منمن، بوريك موسكا، جبن ذائب في الفخار، فواكه موسمية، شاي",
+     "image": "https://maregastro.com/images/serpme-kahvalti.webp"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "طبق الإفطار"
     }
    ]
   },
@@ -288,35 +362,142 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
    "hasMenuItem": [
     {
      "@type": "MenuItem",
-     "name": "Limonlu Tart"
+     "name": "شكرباره ماري",
+     "description": "دقيق، سميد، بيض، سكر، بندق، عصير ليمون، زبدة — حلوى تركية مغموسة بالشراب",
+     "image": "https://maregastro.com/images/mare-sekerpare.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Meyve Tabağı"
+     "name": "طبق فواكه",
+     "description": "Mevsim meyveleri",
+     "image": "https://maregastro.com/images/meyve-tabagi.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Mare Şekerpare",
-     "description": "Un, irmik, yumurta, şeker, fındık, limon suyu, tereyağ"
+     "name": "نزهة في الغابة",
+     "description": "موس الشوكولاتة، عجينة بروفيترول مقرمشة، آيس كريم الفانيليا من صنع ماري، فراولة",
+     "image": "https://maregastro.com/images/ormanda-bir-yuruyus.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "San Sebastıan Cheesecake"
+     "name": "تشيز كيك بالجبن الشركسي",
+     "description": "Çerkez peyniri, bisküvi taban",
+     "image": "https://maregastro.com/images/cerkez-peynirli-cheesecake.webp"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "حلوى اليقطين المقرمشة",
+     "description": "قشطة، طحينة",
+     "image": "https://maregastro.com/images/citir-kabak-tatlisi.webp"
     }
    ]
   },
   {
    "@type": "MenuSection",
-   "name": "قائمة الأطفال",
+   "name": "الأطفال",
    "hasMenuItem": [
     {
      "@type": "MenuItem",
-     "name": "Domates Soslu Makarna"
+     "name": "معكرونة بصلصة الطماطم",
+     "description": "Küçük boy domates soslu makarna",
+     "image": "https://maregastro.com/images/domates-soslu-makarna.webp"
     },
     {
      "@type": "MenuItem",
-     "name": "Izgara Köfte",
-     "description": "Patates kızartması,acılı sos yada yoğurtlu közlenmiş yeşil biber"
+     "name": "كفتة مشوية",
+     "description": "بطاطا مقلية، صلصة حارة، فلفل أخضر مشوي",
+     "image": "https://maregastro.com/images/izgara-kofte.webp"
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "وجبات خفيفة",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "طبق كومبو"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Didi Cheeseburger"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Hamburger"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "توست مشكل"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "بطاطا مقلية"
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "قائمة المسبح",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Brioche Benedict"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Cheesecake"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "طبق مقليات كومبو"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Didi Hamburger"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Didi Cheeseburger"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "آيس كريم منزلي",
+     "image": "https://maregastro.com/images/dondurma-topu.webp"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Fettuccini Alfredo"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "حلوى اليوم"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "توست مشكل"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "توست بالجبن"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "طبق فواكه"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "بطاطا مقلية",
+     "description": "بطاطا مقرمشة",
+     "image": "https://maregastro.com/images/patates-kizartma.webp"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "لفائف البوريك بالجبن"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "سباغيتي بصلصة الطماطم"
     }
    ]
   },
@@ -326,37 +507,17 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
    "hasMenuItem": [
     {
      "@type": "MenuItem",
-     "name": "Yoğurt"
+     "name": "لبن",
+     "description": "Süzme yoğurt"
     },
     {
      "@type": "MenuItem",
-     "name": "Dilim Kavun",
-     "description": "1 dilim doğranmış kavun"
+     "name": "مكسرات",
+     "description": "بندق، لوز، فستق حلبي"
     },
     {
      "@type": "MenuItem",
-     "name": "Dilim Karpuz",
-     "description": "1 dilim doğranmış karpuz"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "Dilim Ezine Peynir",
-     "description": "1 dilim ezine peyniri"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "Çerez",
-     "description": "Fındık,badem,antep fıstığı"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "Patates Kızartması",
-     "description": "Çıtır patates"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "Peynir Tabağı",
-     "description": "Ezine peynir,kaşar peynir,eski kaşar peyniri,isli peynir,abaza peyniri"
+     "name": "كيك"
     }
    ]
   },
@@ -366,19 +527,23 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
    "hasMenuItem": [
     {
      "@type": "MenuItem",
-     "name": "Baron De Lastac 2019 Kırmızı"
+     "name": "1929 Kavaklıdere Cabernet"
     },
     {
      "@type": "MenuItem",
-     "name": "Baron De Lastac 2020 Beyaz"
+     "name": "Baron De Lastac 2019 أحمر"
     },
     {
      "@type": "MenuItem",
-     "name": "Egeo Cabarnet Sauvignon 2016"
+     "name": "Baron De Lastac 2020 أبيض"
     },
     {
      "@type": "MenuItem",
-     "name": "Egeo Chardonay 2016"
+     "name": "Egeo Cabernet Sauvignon 2016"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Egeo Chardonnay 2019"
     },
     {
      "@type": "MenuItem",
@@ -390,11 +555,7 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
     },
     {
      "@type": "MenuItem",
-     "name": "Egeo Sauvignon Blanc"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "Jordab Chameleon Chenin Blanc"
+     "name": "Egeo Sauvignon Blanc 2024"
     },
     {
      "@type": "MenuItem",
@@ -410,11 +571,11 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
     },
     {
      "@type": "MenuItem",
-     "name": "Prinz V Hessen Reisling Trevis"
+     "name": "Prinz V Hessen Riesling Trevis"
     },
     {
      "@type": "MenuItem",
-     "name": "Sartori Blush"
+     "name": "Sarafin Beyaz"
     },
     {
      "@type": "MenuItem",
@@ -422,33 +583,55 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
     },
     {
      "@type": "MenuItem",
-     "name": "Sartori Pine Grigio"
-    },
-    {
-     "@type": "MenuItem",
      "name": "Urla Boğazkere"
     },
     {
      "@type": "MenuItem",
-     "name": "Urla Cabarnet Sauvignon"
+     "name": "Urla Cabernet Sauvignon"
     },
     {
      "@type": "MenuItem",
-     "name": "Urla Chardonay"
+     "name": "Ancyra"
     },
     {
      "@type": "MenuItem",
-     "name": "Urla Nexus"
+     "name": "Tursan Riesling"
     },
     {
      "@type": "MenuItem",
-     "name": "Kadeh Kırmızı Şarap",
+     "name": "Côtes d'Avanos Sauvignon Blanc"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "كأس نبيذ أحمر",
      "description": "ANGORA"
     },
     {
      "@type": "MenuItem",
-     "name": "Kadeh Beyaz Şarap",
+     "name": "كأس نبيذ أبيض",
      "description": "Angora"
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "الشمبانيا",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "Chandon Rosé Sparkling"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Martini Brut Spumante"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Bottega White Gold"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Moët Chandon"
     }
    ]
   },
@@ -458,48 +641,55 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
    "hasMenuItem": [
     {
      "@type": "MenuItem",
-     "name": "Espresso Martini",
-     "description": "Votka,kahve likörü,espresso,şeker şurubu"
+     "name": "سكس أون ذا بيتش",
+     "description": "فودكا، ليكيور الخوخ، عصير برتقال، شراب الرمان"
     },
     {
      "@type": "MenuItem",
-     "name": "Sex On The Beach",
-     "description": "votka,şeftali likörü,portakal suyu,nar şurubu,"
+     "name": "موهيتو",
+     "description": "ليمون أخضر، شراب السكر، رَم، صودا"
     },
     {
      "@type": "MenuItem",
-     "name": "Mojito",
-     "description": "Lime,şeker şurubu,rom,soda"
+     "name": "سور الحميض",
+     "description": "الحميض، شراب السكر، عصير ليمون، تفاح أخضر، جين، بياض بيض"
     },
     {
      "@type": "MenuItem",
-     "name": "Kuzu Kulağı Sour",
-     "description": "Kuzu kulağı,şeker şurubu,limon suyu,yeşil elma,cin,yumurta akı"
+     "name": "Aperol Energy",
+     "description": "أبيرول، تريبل سيك، ريد بُل"
     },
     {
      "@type": "MenuItem",
-     "name": "Aperol Enegy",
-     "description": "Aperol,triple sec,redbull"
+     "name": "ويسكي ساور",
+     "description": "ويسكي بوربون، عصير ليمون، شراب السكر، بياض بيض"
     },
     {
      "@type": "MenuItem",
-     "name": "Whisky Sour",
-     "description": "Bourbone visky,limon suyu,şeker şurubu,yumurta akı"
+     "name": "R.R.",
+     "description": "راكي، جرجير، عصير ليمون، شراب السكر"
     },
     {
      "@type": "MenuItem",
-     "name": "R.r",
-     "description": "Rakı,roka,limon suyuu,şeker şurubu"
+     "name": "مارغريتا",
+     "description": "تيكيلا، عصير ليمون، ليكيور برتقال"
     },
     {
      "@type": "MenuItem",
-     "name": "Margarita",
-     "description": "Tekila,limon suyu,portakal likörü"
+     "name": "لونغ آيلاند",
+     "description": "تيكيلا، فودكا، جين، رَم، ليكيور برتقال، كولا"
     },
     {
      "@type": "MenuItem",
-     "name": "Long Island",
-     "description": "Tekila,votka,cin,rom,portakal likörü,kola"
+     "name": "Plum Sour"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "جين فيز"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "كوكتيل فواكه كحولي"
     }
    ]
   },
@@ -509,22 +699,8 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
    "hasMenuItem": [
     {
      "@type": "MenuItem",
-     "name": "Mojito Strawbery",
-     "description": "Lime,şeker şurubu,taze nane,çilek,soda"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "Pina Colado",
-     "description": "Süt,ananas suyu,hindistan cevizi kreması"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "Pink Lady"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "Meyve Kokteyli",
-     "description": "Portakal ananas elma turunç şurubu"
+     "name": "كوكتيل فواكه",
+     "description": "برتقال، أناناس، تفاح، شراب النارنج"
     }
    ]
   },
@@ -594,7 +770,7 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
     },
     {
      "@type": "MenuItem",
-     "name": "Giz Rakı 70 Cl"
+     "name": "Giz Rakı 50 Cl"
     },
     {
      "@type": "MenuItem",
@@ -607,6 +783,10 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
     {
      "@type": "MenuItem",
      "name": "Prototip Rakı 70 Cl"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Saki Rakı"
     },
     {
      "@type": "MenuItem",
@@ -642,11 +822,11 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
     },
     {
      "@type": "MenuItem",
-     "name": "Tek Rakı"
+     "name": "راكي مفرد"
     },
     {
      "@type": "MenuItem",
-     "name": "Double Rakı"
+     "name": "راكي دبل"
     }
    ]
   },
@@ -660,11 +840,11 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
     },
     {
      "@type": "MenuItem",
-     "name": "Duble Viski ( Hibiki )"
+     "name": "ويسكي دبل (هيبيكي)"
     },
     {
      "@type": "MenuItem",
-     "name": "Johnie Walker Black Label 35 Cl"
+     "name": "Johnnie Walker Black Label 35 Cl"
     },
     {
      "@type": "MenuItem",
@@ -676,6 +856,14 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
     },
     {
      "@type": "MenuItem",
+     "name": "Double Viski (Black Label)"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "J.W. Double Black 70 Cl"
+    },
+    {
+     "@type": "MenuItem",
      "name": "Singleton 12 Years 70 Cl"
     },
     {
@@ -684,17 +872,19 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
     },
     {
      "@type": "MenuItem",
-     "name": "Taliscal 10 Years",
-     "description": "70 CL"
+     "name": "Chivas Regal 18 Years"
     },
     {
      "@type": "MenuItem",
-     "name": "Taliscal Sky",
-     "description": "70 CL"
+     "name": "Chivas Regal 18 Years (Double)"
     },
     {
      "@type": "MenuItem",
-     "name": "Viski Duble"
+     "name": "Double Viski (Jim Beam)"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "ويسكي دبل"
     }
    ]
   },
@@ -704,7 +894,7 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
    "hasMenuItem": [
     {
      "@type": "MenuItem",
-     "name": "Finlandiya 70 Cl"
+     "name": "Finlandia 70 Cl"
     },
     {
      "@type": "MenuItem",
@@ -720,12 +910,12 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
     },
     {
      "@type": "MenuItem",
-     "name": "Grey Gross",
+     "name": "Grey Goose 70 Cl",
      "description": "70 CL"
     },
     {
      "@type": "MenuItem",
-     "name": "Double Votka"
+     "name": "فودكا دبل"
     }
    ]
   },
@@ -747,13 +937,25 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
     },
     {
      "@type": "MenuItem",
-     "name": "Ruko Graft",
+     "name": "Roku Craft Gin",
      "description": "70 CL"
     },
     {
      "@type": "MenuItem",
-     "name": "Premium Duble Cin",
+     "name": "Bombay Sapphire"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "جين بريميوم"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "جين دبل بريميوم 8 سل",
      "description": "8 CL"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "جين دبل"
     }
    ]
   },
@@ -763,7 +965,7 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
    "hasMenuItem": [
     {
      "@type": "MenuItem",
-     "name": "Olmega 70cl"
+     "name": "Olmeca 70 Cl"
     },
     {
      "@type": "MenuItem",
@@ -771,12 +973,16 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
     },
     {
      "@type": "MenuItem",
-     "name": "Don Julio Classic 70 Cl"
+     "name": "Don Julio Añejo 70 Cl"
     },
     {
      "@type": "MenuItem",
-     "name": "Patron",
+     "name": "Patron Silver 70 Cl",
      "description": "70CL"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "شوت تيكيلا"
     }
    ]
   },
@@ -824,11 +1030,19 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
     },
     {
      "@type": "MenuItem",
-     "name": "Schvartslog 6 Cl"
+     "name": "Schwartzhog 6 Cl"
     },
     {
      "@type": "MenuItem",
      "name": "Campari Shot"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "ليكور النعناع"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "أبيرول (زجاجة)"
     }
    ]
   },
@@ -838,23 +1052,61 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
    "hasMenuItem": [
     {
      "@type": "MenuItem",
-     "name": "Tuborg Gold"
+     "name": "Tuborg Gold 33 Cl"
     },
     {
      "@type": "MenuItem",
-     "name": "Carlsberg"
+     "name": "Carlsberg 33 Cl"
     },
     {
      "@type": "MenuItem",
-     "name": "Corona"
+     "name": "Corona 33 Cl"
     },
     {
      "@type": "MenuItem",
-     "name": "Heineken"
+     "name": "Heineken 33 Cl"
     },
     {
      "@type": "MenuItem",
-     "name": "Miller"
+     "name": "Miller 33 Cl"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Efes Pilsen 33 Cl"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Budweiser"
+    }
+   ]
+  },
+  {
+   "@type": "MenuSection",
+   "name": "مشروبات ساخنة",
+   "hasMenuItem": [
+    {
+     "@type": "MenuItem",
+     "name": "قهوة تركية"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Espresso"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Americano"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Latte"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "Cappuccino"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "شاي"
     }
    ]
   },
@@ -864,23 +1116,12 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
    "hasMenuItem": [
     {
      "@type": "MenuItem",
-     "name": "İce Latte",
-     "description": "Süt,buz,expresso"
+     "name": "آيس أمريكانو",
+     "description": "ماء، ثلج، إسبريسو"
     },
     {
      "@type": "MenuItem",
-     "name": "İce Mocha",
-     "description": "Süt,buz,çikokata,espresso"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "İce White Chocolate Mocha",
-     "description": "Süt,buz,beyaz çikolata,espresso"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "İce Americano",
-     "description": "Su,buz,espresso"
+     "name": "آيس لاتيه بالكراميل"
     }
    ]
   },
@@ -894,10 +1135,6 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
     },
     {
      "@type": "MenuItem",
-     "name": "Coca Cola Zero"
-    },
-    {
-     "@type": "MenuItem",
      "name": "Fanta"
     },
     {
@@ -906,38 +1143,39 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
     },
     {
      "@type": "MenuItem",
-     "name": "Fucetea"
+     "name": "Fuse Tea"
     },
     {
      "@type": "MenuItem",
-     "name": "Sade Soda"
+     "name": "Red Bull"
     },
     {
      "@type": "MenuItem",
-     "name": "Meyveli Soda"
+     "name": "صودا سادة"
     },
     {
      "@type": "MenuItem",
-     "name": "Limonata"
+     "name": "ليموناضة"
     },
     {
      "@type": "MenuItem",
-     "name": "Naneli Limonata",
-     "description": "Limonata,nane"
+     "name": "عصير فواكه"
     },
     {
      "@type": "MenuItem",
-     "name": "Çilekli Limonata",
-     "description": "Limonata,çilek"
+     "name": "عيران"
     },
     {
      "@type": "MenuItem",
-     "name": "Ayran"
+     "name": "عصير اللفت المخمر (شلغم)"
     },
     {
      "@type": "MenuItem",
-     "name": "Naneli Ayran",
-     "description": "Ayran,taze nane"
+     "name": "ماء (صغير)"
+    },
+    {
+     "@type": "MenuItem",
+     "name": "ماء (كبير)"
     }
    ]
   },
@@ -947,23 +1185,7 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
    "hasMenuItem": [
     {
      "@type": "MenuItem",
-     "name": "Karpuz Milkshake"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "Çilek Milkshake"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "Çarkıfelek Milkshake"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "Çikolata Milkshake"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "Karamel Milkshake"
+     "name": "Milkshake"
     }
    ]
   },
@@ -973,42 +1195,7 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
    "hasMenuItem": [
     {
      "@type": "MenuItem",
-     "name": "Çilek Frozen"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "Karpuz Frozen"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "Çarkıfelek Frozen"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "Limon Nane Froze"
-    }
-   ]
-  },
-  {
-   "@type": "MenuSection",
-   "name": "عصير طازج",
-   "hasMenuItem": [
-    {
-     "@type": "MenuItem",
-     "name": "Portakal Suyu"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "Elma Suyu"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "Havuç Suyu"
-    },
-    {
-     "@type": "MenuItem",
-     "name": "Didi Atom",
-     "description": "PORTAKAL,ELMA,HAVUÇ,LİMON,BAL"
+     "name": "فروزن النعناع والليمون"
     }
    ]
   }
