@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Rebuild ONLY the refreshed posts (posts_refresh*.py) in TR/EN/AR/RU.
+"""Rebuild ONLY selected posts in TR/EN/AR/RU.
+
+Usage: python3 -I blog/refresh_build.py            -> the refreshed posts (posts_refresh*.py)
+       python3 -I blog/refresh_build.py slug ...   -> only the given slugs (TR + any existing translations)
 
 Never run build_blog.py's full __main__ for this: it drops the hreflang links and the
 multilingual sitemap/llms.txt entries that were added in a separate step.
@@ -17,7 +20,9 @@ from posts_refresh import SLUGS
 
 HREF_RE = re.compile(r'(?:<link rel="alternate" hreflang="[^"]+" href="[^"]+">\n?)+')
 
-for slug in SLUGS:
+TARGETS = sys.argv[1:] or SLUGS
+
+for slug in TARGETS:
     path = os.path.join(B.OUT, slug + ".html")
     old = open(path, encoding="utf-8").read()
     m = HREF_RE.search(old)
@@ -29,10 +34,12 @@ for slug in SLUGS:
             open(path, "w", encoding="utf-8").write(new)
 
 I.SLUGS = set(P.POSTS.keys())
-for slug in SLUGS:
+for slug in TARGETS:
+    if slug not in P.POSTS:
+        continue
     for lang in ("en", "ar", "ru"):
         data = P.POSTS[slug][lang]
         data["rel"] = I.REL_MAP[slug]
         I.build_post(lang, slug, data, P.POSTS)
 
-print("Rebuilt %d posts x 4 languages" % len(SLUGS))
+print("Rebuilt %d posts (TR + translations where available)" % len(TARGETS))
