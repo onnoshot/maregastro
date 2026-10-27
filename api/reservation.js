@@ -7,6 +7,7 @@
 // Gerekli env: BLOB_READ_WRITE_TOKEN (Vercel Blob otomatik saglar), MARE_ADMIN_KEY
 import { put, list, del } from '@vercel/blob';
 import crypto from 'node:crypto';
+import { loadClosedDays } from './closed-days.js';
 
 const PREFIX = 'reservation/';
 const STATUSES = ['Beklemede', 'Onaylandı', 'İptal Edildi', 'Tamamlandı'];
@@ -40,6 +41,16 @@ async function findRecentDuplicate(rec) {
     }
   } catch { /* dedup basarisiz olursa normal akisa devam */ }
   return null;
+}
+
+// Site tarihi her dilde Turkce bicimde gonderir: "3 Kasım 2026".
+const TR_AYLAR = ['ocak', 'şubat', 'mart', 'nisan', 'mayıs', 'haziran', 'temmuz', 'ağustos', 'eylül', 'ekim', 'kasım', 'aralık'];
+function trDateToIso(s) {
+  const m = String(s || '').trim().match(/^(\d{1,2})\s+(\S+)\s+(\d{4})$/);
+  if (!m) return '';
+  const mi = TR_AYLAR.indexOf(m[2].toLocaleLowerCase('tr-TR'));
+  if (mi < 0) return '';
+  return m[3] + '-' + String(mi + 1).padStart(2, '0') + '-' + m[1].padStart(2, '0');
 }
 
 function cors(res) {
@@ -116,6 +127,15 @@ export default async function handler(req, res) {
       adPaid: ['paid', 'organic'].includes(String(b.adPaid || '')) ? String(b.adPaid) : '',
     };
     if (!isManual) {
+      // Panelden kapatilan gunlere siteden talep alinmaz (tum masalar dolu).
+      const iso = trDateToIso(rec.date);
+      if (iso) {
+        try {
+          if ((await loadClosedDays()).includes(iso)) {
+            return send(res, 409, { error: 'Bu tarihte tum masalar dolu', closed: true });
+          }
+        } catch { /* kapali gun listesi okunamazsa talebi kaybetme */ }
+      }
       const dup = await findRecentDuplicate(rec);
       if (dup) return send(res, 200, { ok: true, id: dup.id, item: dup, dedup: true });
     }
