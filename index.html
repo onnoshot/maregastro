@@ -104,6 +104,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 (function(){var n=window.innerWidth<600?9:16,b=document.body;for(var i=0;i<n;i++){var p=document.createElement('div');p.className='par';var s=1+Math.random()*2;p.style.left=Math.random()*100+'vw';p.style.width=p.style.height=s+'px';p.style.animationDuration=(15+Math.random()*15)+'s';p.style.animationDelay=(-Math.random()*22)+'s';p.style.opacity=.25+Math.random()*.45;b.appendChild(p)}})();
 (function(){var P=["Dilinizi seçin", "Select your language", "اختر لغتك", "Выберите язык"],i=0,el=document.getElementById('prompt');setInterval(function(){i=(i+1)%P.length;el.style.opacity=0;setTimeout(function(){el.textContent=P[i];el.style.opacity=1},480)},2800)})();
+// Dil secimi reklam ve kaynak bilgisini dusurmesin: sorgu ve ilk yonlendiren tasinir.
+(function(){try{var r=document.referrer||'';if(r&&r.indexOf(location.hostname)<0)sessionStorage.setItem('mare_ref',r);}catch(e){}if(location.search){var a=document.querySelectorAll('a.lc');for(var i=0;i<a.length;i++)a[i].href=a[i].getAttribute('href')+location.search;}})();
 </script>
 </body>
 </html>

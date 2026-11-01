@@ -11,7 +11,7 @@ import crypto from 'node:crypto';
 import { loadClosedDays } from './closed-days.js';
 
 const PREFIX = 'reservation/';
-const STATUSES = ['Beklemede', 'Onaylandı', 'İptal Edildi', 'Tamamlandı'];
+const STATUSES = ['Beklemede', 'Onaylandı', 'İptal Edildi', 'Tamamlandı', 'Gelmedi'];
 const DEDUP_WINDOW_MS = 10 * 60 * 1000;
 const READ_CONCURRENCY = 16;
 const READ_ATTEMPTS = 3;
@@ -172,6 +172,11 @@ export default async function handler(req, res) {
       referrer: String(b.referrer || '').trim().slice(0, 300),
       utm: String(b.utm || '').trim().slice(0, 60),
       utmMedium: String(b.utmMedium || '').trim().slice(0, 60),
+      campaign: String(b.campaign || '').trim().slice(0, 80),
+      term: String(b.term || '').trim().slice(0, 80),
+      landing: String(b.landing || '').trim().slice(0, 120),
+      click: String(b.click || '').trim().slice(0, 12),
+      bill: Number(b.bill) > 0 ? Number(b.bill) : null,
       // 'paid' = reklamdan geldi, 'organic' = ucretsiz, '' = belirlenemedi.
       // Siteden gelen kayitlarda reklam click-id'leri / utm_medium'dan tureltilir,
       // dashboard'dan elle eklenende kullanici secer. Uydurma deger uretmiyoruz.
@@ -242,16 +247,19 @@ export default async function handler(req, res) {
       const r = await fetch(bust(blob.url), { cache: 'no-store' });
       if (!r.ok) return send(res, 500, { error: 'Kayit okunamadi' });
       const cur = await r.json();
-      const editable = ['name', 'phone', 'email', 'date', 'time', 'guests', 'konaklama', 'channel', 'adPaid', 'note', 'status'];
+      const editable = ['name', 'phone', 'email', 'date', 'time', 'guests', 'konaklama', 'channel', 'adPaid', 'note', 'status', 'bill'];
       const next = { ...cur };
       for (const k of editable) {
         if (b[k] === undefined) continue;
         if (k === 'guests') next.guests = Number(b.guests) || null;
+        else if (k === 'bill') next.bill = Number(b.bill) > 0 ? Number(b.bill) : null;
         else if (k === 'status') next.status = STATUSES.includes(b.status) ? b.status : cur.status;
         else if (k === 'adPaid') next.adPaid = ['paid', 'organic'].includes(String(b.adPaid || '')) ? String(b.adPaid) : '';
         else next[k] = String(b[k]).trim();
       }
       next.updatedAt = new Date().toISOString();
+      // Ilk durum degisikligi, talebe donus suresini olcer.
+      if (!next.respondedAt && (cur.status || 'Beklemede') === 'Beklemede' && next.status !== 'Beklemede') next.respondedAt = next.updatedAt;
       await put(PREFIX + id + '.json', JSON.stringify(next), {
         access: 'public', contentType: 'application/json', addRandomSuffix: false,
         allowOverwrite: true, cacheControlMaxAge: 0,

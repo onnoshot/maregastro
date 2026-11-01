@@ -13,6 +13,9 @@ import { JWT } from 'google-auth-library';
 const PROPERTY_ID = '542527885';
 const CONVERSION_EVENTS = ['whatsapp_click', 'phone_click', 'availability_check', 'menu_click', 'reservation_submit_click'];
 
+const INSIGHT_EVENTS = [...CONVERSION_EVENTS, 'form_start', 'form_details_start', 'form_error'];
+const SEARCH_SITES = ['sc-domain:maregastro.com', 'https://maregastro.com/', 'https://www.maregastro.com/'];
+
 function cors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
@@ -35,6 +38,8 @@ let cachedToken = null;
 let cachedTokenExpiry = 0;
 let insightsCache = null;
 let insightsCacheExpiry = 0;
+let searchCache = null;
+let searchCacheExpiry = 0;
 async function getToken(sa) {
   if (cachedToken && Date.now() < cachedTokenExpiry) return cachedToken;
   const client = new JWT({ email: sa.client_email, key: sa.private_key, scopes: ['https://www.googleapis.com/auth/analytics.readonly'] });
@@ -42,6 +47,32 @@ async function getToken(sa) {
   cachedToken = token;
   cachedTokenExpiry = Date.now() + 50 * 60 * 1000; // Google token'lari ~1 saat gecerli, 50dk sonra yenile
   return token;
+}
+
+// Search Console: ayni servis hesabi, sitede kullanici olarak eklenmisse calisir.
+async function searchReport(sa) {
+  const client = new JWT({ email: sa.client_email, key: sa.private_key, scopes: ['https://www.googleapis.com/auth/webmasters.readonly'] });
+  const { token } = await client.getAccessToken();
+  const day = (n) => new Date(Date.now() - n * 864e5).toISOString().slice(0, 10);
+  const query = async (site, body) => {
+    const r = await fetch(`https://www.googleapis.com/webmasters/v3/sites/${encodeURIComponent(site)}/searchAnalytics/query`, {
+      method: 'POST', headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' }, body: JSON.stringify(body),
+    });
+    return { status: r.status, json: await r.json().catch(() => ({})) };
+  };
+  // Veri 2-3 gun gecikmeli gelir, pencere buna gore kaydirilir.
+  const cur = { startDate: day(31), endDate: day(3) }, prev = { startDate: day(59), endDate: day(32) };
+  for (const site of SEARCH_SITES) {
+    const q = await query(site, { ...cur, dimensions: ['query'], rowLimit: 12 });
+    if (q.status !== 200) continue;
+    const [totals, before] = await Promise.all([query(site, cur), query(site, prev)]);
+    return {
+      ok: true, site, startDate: cur.startDate, endDate: cur.endDate,
+      queries: (q.json.rows || []).map((x) => ({ query: x.keys[0], clicks: x.clicks, impressions: x.impressions, position: x.position })),
+      totals: (totals.json.rows || [])[0] || {}, previous: (before.json.rows || [])[0] || {},
+    };
+  }
+  return { ok: false, needsAccess: true };
 }
 
 async function gaBatch(token, requests) {
@@ -93,6 +124,13 @@ export default async function handler(req, res) {
       return send(res, 200, { ok: true, month: monthParam, startDate, endDate, channels: monthChannels });
     }
 
+    if (String((req.query && req.query.search) || '') === '1') {
+      if (searchCache && Date.now() < searchCacheExpiry) return send(res, 200, searchCache);
+      searchCache = await searchReport(sa);
+      searchCacheExpiry = Date.now() + 30 * 60 * 1000;
+      return send(res, 200, searchCache);
+    }
+
     // ── ?insights=1 → Analiz sekmesi: saat/gun deseni, sehir, dil, giris sayfasi,
     // yeni-geri donen ayrimi ve onceki 30 gune gore karsilastirma. Sekme acilinca
     // istenir, dashboard ilk acilisini yavaslatmaz; 5 dk onbelleklenir.
@@ -104,7 +142,7 @@ export default async function handler(req, res) {
         dateRanges: [d30], dimensions: [{ name: dim }], metrics: [{ name: metric }],
         orderBys: [{ metric: { metricName: metric }, desc: true }], limit,
       });
-      const [[hourR, dowR, cityR, langR, nvrR], [landR, srcR, sumR, evCmpR, evDayR]] = await Promise.all([
+      const [[hourR, dowR, cityR, langR, nvrR], [landR, srcR, sumR, evCmpR, evDayR], [menuR]] = await Promise.all([
         gaBatch(token, [
           top('hour', 'activeUsers', 24), top('dayOfWeek', 'activeUsers', 7),
           top('city', 'sessions', 10), top('language', 'sessions', 6), top('newVsReturning', 'activeUsers', 3),
@@ -115,7 +153,7 @@ export default async function handler(req, res) {
           { dateRanges: compare, metrics: ['sessions', 'activeUsers', 'engagedSessions', 'averageSessionDuration', 'screenPageViewsPerSession'].map((name) => ({ name })) },
           {
             dateRanges: compare, dimensions: [{ name: 'eventName' }], metrics: [{ name: 'eventCount' }],
-            dimensionFilter: { filter: { fieldName: 'eventName', inListFilter: { values: CONVERSION_EVENTS } } },
+            dimensionFilter: { filter: { fieldName: 'eventName', inListFilter: { values: INSIGHT_EVENTS } } },
           },
           {
             dateRanges: [d30], dimensions: [{ name: 'date' }, { name: 'eventName' }], metrics: [{ name: 'eventCount' }],
@@ -123,6 +161,11 @@ export default async function handler(req, res) {
             orderBys: [{ dimension: { dimensionName: 'date' } }], limit: 200,
           },
         ]),
+        gaBatch(token, [{
+          dateRanges: [d30], dimensions: [{ name: 'pageTitle' }], metrics: [{ name: 'eventCount' }],
+          dimensionFilter: { filter: { fieldName: 'eventName', stringFilter: { value: 'menu_section_view' } } },
+          orderBys: [{ metric: { metricName: 'eventCount' }, desc: true }], limit: 14,
+        }]),
       ]);
       const pairs = (rep) => (rep.rows || []).map((row) => ({ name: row.dimensionValues[0].value, value: Number(row.metricValues[0].value) }));
       const summary = { cur: {}, prev: {} };
@@ -145,7 +188,7 @@ export default async function handler(req, res) {
         ok: true, updatedAt: new Date().toISOString(),
         hours: pairs(hourR), weekdays: pairs(dowR), cities: pairs(cityR), languages: pairs(langR), audience: pairs(nvrR),
         landings: (landR.rows || []).map((row) => ({ path: row.dimensionValues[0].value, sessions: Number(row.metricValues[0].value), engagement: Number(row.metricValues[1].value) })),
-        sources: pairs(srcR), summary, eventCompare, eventDaily,
+        sources: pairs(srcR), summary, eventCompare, eventDaily, menuSections: pairs(menuR),
       };
       insightsCacheExpiry = Date.now() + 5 * 60 * 1000;
       return send(res, 200, insightsCache);

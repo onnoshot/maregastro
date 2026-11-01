@@ -13,7 +13,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- dataLayer event helper (GTM) -->
 <script>
-function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:name},params||{}));}catch(e){}}
+// GTM'de etiketi olmayan olaylar Google etiketi uzerinden dogrudan GA4'e gider.
+var MARE_DIRECT_EVENTS=['reservation_submit_click','form_start','form_details_start','form_error'];
+function gtag(){window.dataLayer.push(arguments);}
+function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:name},params||{}));if(MARE_DIRECT_EVENTS.indexOf(name)>=0)gtag('event',name,Object.assign({send_to:'G-LMZ66PTR0T'},params||{}));}catch(e){}}
 </script>
 <!-- Metricool -->
 <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"a9b79986564317dc3a4287a11241bf7"})});</script>
@@ -3339,6 +3342,7 @@ function selK(card,val){
   vids.forEach(v=>io.observe(v));
 })();
 function showErr(id,msg){
+  trackEvent('form_error',{event_label:id});
   const el=document.getElementById(id);
   el.textContent=msg;el.classList.add('show');
   el.classList.remove('shk');void el.offsetWidth;el.classList.add('shk');
@@ -3383,6 +3387,7 @@ function gS(n){
   for(let i=1;i<=2;i++)document.getElementById('pl'+i).classList.toggle('done',i<n);
 }
 // ── ZİYARETÇİ KANALI (rezervasyon kaynağı: Instagram/Google/Doğrudan...) ──
+function mareRef(){try{return sessionStorage.getItem('mare_ref')||document.referrer||'';}catch(e){return document.referrer||'';}}
 function deriveChannel(){
   try{
     var p=new URLSearchParams(location.search);
@@ -3391,7 +3396,8 @@ function deriveChannel(){
       youtube:'YouTube',yt:'YouTube',tiktok:'TikTok',pinterest:'Pinterest',twitter:'X',x:'X',linkedin:'LinkedIn',
       whatsapp:'WhatsApp',wa:'WhatsApp',email:'Email',newsletter:'Email',mail:'Email'};
     if(us)return m[us]||(us.charAt(0).toUpperCase()+us.slice(1));
-    var ref=document.referrer||'',h='';try{h=new URL(ref).hostname.replace(/^www\./,'').toLowerCase();}catch(e){}
+    if(p.get('gclid')||p.get('gbraid')||p.get('wbraid')||p.get('gad_source'))return 'Google';
+    var ref=mareRef(),h='';try{h=new URL(ref).hostname.replace(/^www\./,'').toLowerCase();}catch(e){}
     if(!ref||h===location.hostname.replace(/^www\./,''))return 'Doğrudan';
     var hm=[['instagram','Instagram'],['google','Google'],['bing','Bing'],['facebook','Facebook'],['fb.','Facebook'],
       ['youtube','YouTube'],['t.co','X'],['twitter','X'],['x.com','X'],['tiktok','TikTok'],['pinterest','Pinterest'],
@@ -3420,6 +3426,9 @@ function derivePaidClass(){
 }
 var MARE_PAID=(function(){try{var s=sessionStorage.getItem('mare_paid');if(s==='paid'||s==='organic')return s;var v=derivePaidClass();sessionStorage.setItem('mare_paid',v);return v;}catch(e){return derivePaidClass();}})();
 var MARE_UTM_MEDIUM=(function(){try{return (new URLSearchParams(location.search)).get('utm_medium')||'';}catch(e){return '';}})();
+// Ilk gelis bilgisi: ziyaretci sayfa degistirse de reklam ve kampanya kaynagi kaybolmasin.
+var MARE_FT=(function(){var empty={source:'',medium:'',campaign:'',term:'',landing:'',click:'',ref:''};try{var s=sessionStorage.getItem('mare_ft');if(s)return JSON.parse(s);var p=new URLSearchParams(location.search),ids=['gclid','gbraid','wbraid','dclid','msclkid','ttclid','twclid','fbclid'],click='';for(var i=0;i<ids.length;i++)if(p.get(ids[i])){click=ids[i];break}var v={source:p.get('utm_source')||'',medium:p.get('utm_medium')||'',campaign:p.get('utm_campaign')||p.get('gad_campaignid')||'',term:p.get('utm_term')||'',landing:location.pathname,click:click,ref:mareRef().indexOf(location.hostname)<0?mareRef():''};sessionStorage.setItem('mare_ft',JSON.stringify(v));return v;}catch(e){return empty;}})();
+(function(){var seen={};function once(n){if(seen[n])return;seen[n]=1;trackEvent(n);}var d=document.getElementById('rdate');if(d&&d.parentElement)d.parentElement.addEventListener('click',function(){once('form_start');});document.addEventListener('focusin',function(e){if(e.target&&e.target.id==='rName')once('form_details_start');});})();
 let rezSending=false;
 // Rezervasyon tarihi hangi dil sayfasindan gonderilirse gonderilsin HER ZAMAN
 // Turkce bicimde kaydedilmeli -- panel.maregastro.com'daki takvim/rapor ayristiricisi
@@ -3443,7 +3452,7 @@ function submitReservation(a){
   trackEvent('whatsapp_click',{event_label:'reservation_confirm'});
   fetch('/api/reservation',{method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify({name,phone,email,date:fmt,time:selTime_val,guests:guestCount,konaklama:selKon_val,
-      channel:MARE_CHANNEL,adPaid:MARE_PAID,utmMedium:MARE_UTM_MEDIUM,referrer:(document.referrer||''),utm:((new URLSearchParams(location.search)).get('utm_source')||'')})}).catch(()=>{});
+      channel:MARE_CHANNEL,adPaid:MARE_PAID,utmMedium:MARE_FT.medium,referrer:(MARE_FT.ref||document.referrer||''),utm:MARE_FT.source,campaign:MARE_FT.campaign,term:MARE_FT.term,landing:MARE_FT.landing,click:MARE_FT.click})}).catch(()=>{});
   const suc=document.getElementById('rezSuccess');if(suc)suc.classList.add('show');
   setTimeout(()=>{rezSending=false;a.classList.remove('sending')},2500);
   return true;
