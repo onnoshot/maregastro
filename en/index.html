@@ -3348,7 +3348,6 @@ function showErr(id,msg){
   el.classList.remove('shk');void el.offsetWidth;el.classList.add('shk');
 }
 function clearErr(id){document.getElementById(id).classList.remove('show')}
-const PHONE_RE=/^\+?[\d\s()-]{7,20}$/;
 function gS(n){
   if(n===2){
     clearErr('err1');
@@ -3363,7 +3362,7 @@ function gS(n){
     if(!document.getElementById('rName').value.trim()){showErr('err2','Please enter your full name.');return}
     const phoneVal=document.getElementById('rPhone').value.trim();
     if(!phoneVal){showErr('err2','Please enter your phone number.');return}
-    if(!PHONE_RE.test(phoneVal.replace(/[\s()-]/g,''))){showErr('err2','Please enter a valid phone number.');return}
+    if(!MarePhone.valid(document.getElementById('rPhone'))){showErr('err2','Please enter a valid phone number.');return}
     if(!selKon_val){showErr('err2','Please choose your stay preference.');return}
     const d=document.getElementById('rdate').value;
     const fmt=new Date(d).toLocaleDateString('en-US',{day:'numeric',month:'long',year:'numeric'});
@@ -3438,7 +3437,7 @@ function mareTrDateFmt(iso){const p=iso.split('-');const y=+p[0],m=+p[1],dd=+p[2
 function submitReservation(a){
   if(rezSending)return false;
   const name=document.getElementById('rName').value.trim();
-  const phone=document.getElementById('rPhone').value.trim();
+  const phone=MarePhone.value(document.getElementById('rPhone'));
   const email=document.getElementById('rEmail').value.trim();
   if(!name){showErr('err2','Please enter your full name.');return false}
   if(!phone){showErr('err2','Please enter your phone number.');return false}
@@ -3487,5 +3486,7 @@ function submitReservation(a){
 @media(hover:hover){.wa-fab{cursor:none}}
 @media(max-width:767px){.wa-fab{width:50px;height:50px;right:14px;bottom:calc(14px + var(--sab))}}
 </style>
+<script src="/phone-input.js"></script>
+<script>window.MarePhone=window.MarePhone||{mount:function(){},valid:function(e){return e.value.replace(/\D/g,'').length>=7},value:function(e){return e.value.trim()}};MarePhone.mount(document.getElementById('rPhone'),{ccClass:'date-field'});</script>
 </body>
 </html>

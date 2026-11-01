@@ -1792,6 +1792,7 @@ function gS(n){
     if(!selTime_val){alert('Lütfen bir saat seçin.');return}
     if(!document.getElementById('rName').value.trim()){alert('Lütfen ad soyad girin.');return}
     if(!document.getElementById('rPhone').value.trim()){alert('Lütfen telefon numaranızı girin.');return}
+    if(!MarePhone.valid(document.getElementById('rPhone'))){alert('Lütfen geçerli bir telefon numarası girin.');return}
   }
   if(n===3){
     if(!selKon_val){alert('Lütfen konaklama tercihini seçin.');return}
@@ -1868,7 +1869,7 @@ function mareTrDateFmt(iso){
 }
 function submitReservation(a){
   const name=document.getElementById('rName').value.trim();
-  const phone=document.getElementById('rPhone').value.trim();
+  const phone=MarePhone.value(document.getElementById('rPhone'));
   const email=document.getElementById('rEmail').value.trim();
   if(!name){alert('Lütfen ad soyad girin.');return false}
   if(!phone){alert('Lütfen telefon numaranızı girin.');return false}
@@ -1911,5 +1912,7 @@ function submitReservation(a){
 @media(hover:hover){.wa-fab{cursor:none}}
 @media(max-width:767px){.wa-fab{width:50px;height:50px;right:14px;bottom:calc(14px + var(--sab))}}
 </style>
+<script src="/phone-input.js"></script>
+<script>window.MarePhone=window.MarePhone||{mount:function(){},valid:function(e){return e.value.replace(/\D/g,'').length>=7},value:function(e){return e.value.trim()}};MarePhone.mount(document.getElementById('rPhone'),{ccClass:'date-field'});</script>
 </body>
 </html>

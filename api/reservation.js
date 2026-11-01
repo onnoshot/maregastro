@@ -9,6 +9,7 @@
 import { put, list, del } from '@vercel/blob';
 import crypto from 'node:crypto';
 import { loadClosedDays } from './closed-days.js';
+import { normalizePhone, withPhone } from './_lib/phone.js';
 
 const PREFIX = 'reservation/';
 const STATUSES = ['Beklemede', 'Onaylandı', 'İptal Edildi', 'Tamamlandı', 'Gelmedi'];
@@ -36,7 +37,7 @@ async function findRecentDuplicate(rec) {
         const r = await fetch(bust(b.url), { cache: 'no-store' });
         if (!r.ok) continue;
         const j = await r.json();
-        if (j.name === rec.name && j.phone === rec.phone && j.date === rec.date &&
+        if (j.name === rec.name && normalizePhone(j.phone).phone === rec.phone && j.date === rec.date &&
             j.time === rec.time && j.guests === rec.guests && j.konaklama === rec.konaklama) {
           return j;
         }
@@ -162,7 +163,7 @@ export default async function handler(req, res) {
     const status = STATUSES.includes(b.status) ? b.status : (isManual ? 'Onaylandı' : 'Beklemede');
     const rec = {
       id: makeId(), createdAt: new Date().toISOString(),
-      name: String(b.name).trim(), phone: String(b.phone).trim(), email: String(b.email || '').trim(),
+      name: String(b.name).trim(), phone: normalizePhone(b.phone).phone, email: String(b.email || '').trim(),
       date: String(b.date).trim(), time: String(b.time).trim(),
       guests: Number(b.guests) || null, konaklama: String(b.konaklama || '').trim(),
       channel: String(b.channel || 'Doğrudan').trim().slice(0, 40),
@@ -193,7 +194,7 @@ export default async function handler(req, res) {
         } catch { /* kapali gun listesi okunamazsa talebi kaybetme */ }
       }
       const dup = await findRecentDuplicate(rec);
-      if (dup) return send(res, 200, { ok: true, id: dup.id, item: dup, dedup: true });
+      if (dup) return send(res, 200, { ok: true, id: dup.id, item: withPhone(dup), dedup: true });
     }
     try {
       await put(PREFIX + rec.id + '.json', JSON.stringify(rec), {
@@ -207,7 +208,7 @@ export default async function handler(req, res) {
       await tgSend(
         '<b>Yeni Rezervasyon Talebi</b>' + (isManual ? ' (dashboard\'dan elle eklendi)' : ' (siteden)') + '\n' +
         'Ad Soyad: ' + rec.name + '\n' +
-        'Telefon: ' + rec.phone + '\n' +
+        'Telefon: ' + normalizePhone(rec.phone).phoneDisplay + '\n' +
         (rec.email ? 'E-posta: ' + rec.email + '\n' : '') +
         'Tarih: ' + rec.date + '  Saat: ' + rec.time + '\n' +
         'Kisi: ' + (rec.guests || '-') + '  Konaklama: ' + (rec.konaklama || '-') + '\n' +
@@ -215,7 +216,7 @@ export default async function handler(req, res) {
         (rec.note ? '\nNot: ' + rec.note : '')
       );
     }
-    return send(res, 200, { ok: true, id: rec.id, item: rec });
+    return send(res, 200, { ok: true, id: rec.id, item: withPhone(rec) });
   }
 
   if (req.method === 'GET') {
@@ -225,7 +226,7 @@ export default async function handler(req, res) {
       const sig = signature(blobs);
       if (req.query && req.query.meta) return send(res, 200, { ok: true, count: blobs.length, sig });
       const results = await readRecords(blobs);
-      const out = results.filter((x) => x.item).map((x) => x.item);
+      const out = results.filter((x) => x.item).map((x) => withPhone(x.item));
       const failed = results.filter((x) => x.failed).length;
       if (failed) console.error('Okunamayan kayit sayisi:', failed, '/', blobs.length);
       out.sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
@@ -254,6 +255,7 @@ export default async function handler(req, res) {
         if (k === 'guests') next.guests = Number(b.guests) || null;
         else if (k === 'bill') next.bill = Number(b.bill) > 0 ? Number(b.bill) : null;
         else if (k === 'status') next.status = STATUSES.includes(b.status) ? b.status : cur.status;
+        else if (k === 'phone') next.phone = normalizePhone(b.phone).phone;
         else if (k === 'adPaid') next.adPaid = ['paid', 'organic'].includes(String(b.adPaid || '')) ? String(b.adPaid) : '';
         else next[k] = String(b[k]).trim();
       }
@@ -264,7 +266,7 @@ export default async function handler(req, res) {
         access: 'public', contentType: 'application/json', addRandomSuffix: false,
         allowOverwrite: true, cacheControlMaxAge: 0,
       });
-      return send(res, 200, { ok: true, item: next });
+      return send(res, 200, { ok: true, item: withPhone(next) });
     } catch (e) {
       return send(res, 500, { error: 'Guncellenemedi: ' + (e.message || e) });
     }
