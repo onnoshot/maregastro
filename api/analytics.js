@@ -33,6 +33,8 @@ function authed(req) {
 // Sicak lambda calistirmalari arasinda paylasilan modul-kapsamli token onbellegi.
 let cachedToken = null;
 let cachedTokenExpiry = 0;
+let insightsCache = null;
+let insightsCacheExpiry = 0;
 async function getToken(sa) {
   if (cachedToken && Date.now() < cachedTokenExpiry) return cachedToken;
   const client = new JWT({ email: sa.client_email, key: sa.private_key, scopes: ['https://www.googleapis.com/auth/analytics.readonly'] });
@@ -89,6 +91,64 @@ export default async function handler(req, res) {
         name: row.dimensionValues[0].value, sessions: parseInt(row.metricValues[0].value, 10),
       }));
       return send(res, 200, { ok: true, month: monthParam, startDate, endDate, channels: monthChannels });
+    }
+
+    // ── ?insights=1 → Analiz sekmesi: saat/gun deseni, sehir, dil, giris sayfasi,
+    // yeni-geri donen ayrimi ve onceki 30 gune gore karsilastirma. Sekme acilinca
+    // istenir, dashboard ilk acilisini yavaslatmaz; 5 dk onbelleklenir.
+    if (String((req.query && req.query.insights) || '') === '1') {
+      if (insightsCache && Date.now() < insightsCacheExpiry) return send(res, 200, insightsCache);
+      const d30 = { startDate: '29daysAgo', endDate: 'today' };
+      const compare = [{ ...d30, name: 'cur' }, { startDate: '59daysAgo', endDate: '30daysAgo', name: 'prev' }];
+      const top = (dim, metric, limit) => ({
+        dateRanges: [d30], dimensions: [{ name: dim }], metrics: [{ name: metric }],
+        orderBys: [{ metric: { metricName: metric }, desc: true }], limit,
+      });
+      const [[hourR, dowR, cityR, langR, nvrR], [landR, srcR, sumR, evCmpR, evDayR]] = await Promise.all([
+        gaBatch(token, [
+          top('hour', 'activeUsers', 24), top('dayOfWeek', 'activeUsers', 7),
+          top('city', 'sessions', 10), top('language', 'sessions', 6), top('newVsReturning', 'activeUsers', 3),
+        ]),
+        gaBatch(token, [
+          { ...top('landingPage', 'sessions', 8), metrics: [{ name: 'sessions' }, { name: 'engagementRate' }] },
+          top('sessionSourceMedium', 'sessions', 10),
+          { dateRanges: compare, metrics: ['sessions', 'activeUsers', 'engagedSessions', 'averageSessionDuration', 'screenPageViewsPerSession'].map((name) => ({ name })) },
+          {
+            dateRanges: compare, dimensions: [{ name: 'eventName' }], metrics: [{ name: 'eventCount' }],
+            dimensionFilter: { filter: { fieldName: 'eventName', inListFilter: { values: CONVERSION_EVENTS } } },
+          },
+          {
+            dateRanges: [d30], dimensions: [{ name: 'date' }, { name: 'eventName' }], metrics: [{ name: 'eventCount' }],
+            dimensionFilter: { filter: { fieldName: 'eventName', inListFilter: { values: CONVERSION_EVENTS } } },
+            orderBys: [{ dimension: { dimensionName: 'date' } }], limit: 200,
+          },
+        ]),
+      ]);
+      const pairs = (rep) => (rep.rows || []).map((row) => ({ name: row.dimensionValues[0].value, value: Number(row.metricValues[0].value) }));
+      const summary = { cur: {}, prev: {} };
+      (sumR.rows || []).forEach((row) => {
+        const metrics = {};
+        (sumR.metricHeaders || []).forEach((m, i) => { metrics[m.name] = Number(row.metricValues[i].value); });
+        summary[row.dimensionValues[0].value] = metrics;
+      });
+      const eventCompare = {};
+      (evCmpR.rows || []).forEach((row) => {
+        const name = row.dimensionValues[0].value;
+        eventCompare[name] = eventCompare[name] || { cur: 0, prev: 0 };
+        eventCompare[name][row.dimensionValues[1].value] = Number(row.metricValues[0].value);
+      });
+      const eventDaily = (evDayR.rows || []).map((row) => {
+        const d = row.dimensionValues[0].value;
+        return { date: `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}`, name: row.dimensionValues[1].value, count: Number(row.metricValues[0].value) };
+      });
+      insightsCache = {
+        ok: true, updatedAt: new Date().toISOString(),
+        hours: pairs(hourR), weekdays: pairs(dowR), cities: pairs(cityR), languages: pairs(langR), audience: pairs(nvrR),
+        landings: (landR.rows || []).map((row) => ({ path: row.dimensionValues[0].value, sessions: Number(row.metricValues[0].value), engagement: Number(row.metricValues[1].value) })),
+        sources: pairs(srcR), summary, eventCompare, eventDaily,
+      };
+      insightsCacheExpiry = Date.now() + 5 * 60 * 1000;
+      return send(res, 200, insightsCache);
     }
 
     // GA4 batchRunReports istek basina en fazla 5 rapor kabul ediyor; 6 raporu
