@@ -61,7 +61,7 @@ async function searchReport(sa) {
     return { status: r.status, json: await r.json().catch(() => ({})) };
   };
   // Veri 2-3 gun gecikmeli gelir, pencere buna gore kaydirilir.
-  const cur = { startDate: day(31), endDate: day(3) }, prev = { startDate: day(59), endDate: day(32) };
+  const cur = { startDate: day(31), endDate: day(3) }, prev = { startDate: day(60), endDate: day(32) };
   for (const site of SEARCH_SITES) {
     const q = await query(site, { ...cur, dimensions: ['query'], rowLimit: 12 });
     if (q.status !== 200) continue;
