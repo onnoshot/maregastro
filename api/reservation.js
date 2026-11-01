@@ -1,6 +1,7 @@
 // Mare Gastro - Rezervasyon API (Node.js serverless, Vercel Blob)
 // POST (public):   site formundan veya dashboard'dan gelen rezervasyon talebini kaydeder.
 // GET (token):      tum talepleri listeler (dashboard okur).
+// GET ?meta=1 (token): kayitlari okumadan sadece sayi + degisiklik imzasi doner (hafif kontrol).
 // PATCH (token):    var olan bir talebi gunceller (durum, kisi, not, vb).
 // DELETE (token):   bir talebi siler.
 //
@@ -12,6 +13,8 @@ import { loadClosedDays } from './closed-days.js';
 const PREFIX = 'reservation/';
 const STATUSES = ['Beklemede', 'Onaylandı', 'İptal Edildi', 'Tamamlandı'];
 const DEDUP_WINDOW_MS = 10 * 60 * 1000;
+const READ_CONCURRENCY = 16;
+const READ_ATTEMPTS = 3;
 
 // Ayni kisi/tarih/saat icin kisa sure icinde (cift tikla, retry, coklu sekme)
 // tekrar POST gelirse yeni kayit acmak yerine mevcut kaydi dondur.
@@ -85,6 +88,54 @@ async function findBlob(id) {
   const path = PREFIX + id + '.json';
   const r = await list({ prefix: path, limit: 1 });
   return r.blobs.find((b) => b.pathname === path) || null;
+}
+
+async function listRecords() {
+  const blobs = [];
+  let cursor;
+  do {
+    const r = await list({ prefix: PREFIX, cursor, limit: 1000 });
+    for (const b of r.blobs) if (b.pathname.endsWith('.json')) blobs.push(b);
+    cursor = r.hasMore ? r.cursor : undefined;
+  } while (cursor);
+  return blobs;
+}
+
+// Eklenen, duzenlenen veya silinen her kayitta degisir.
+function signature(blobs) {
+  const parts = blobs.map((b) => b.pathname + ':' + new Date(b.uploadedAt).getTime()).sort();
+  return crypto.createHash('sha1').update(parts.join('\n')).digest('hex');
+}
+
+// Gecici ag/sunucu hatalarinda yeniden dener. Liste ile okuma arasinda silinen (404)
+// ve bozuk kayit icin { skip: true }, tum denemeler basarisizsa { failed: true } doner.
+async function readRecord(blob) {
+  for (let attempt = 1; attempt <= READ_ATTEMPTS; attempt++) {
+    try {
+      const r = await fetch(bust(blob.url), { cache: 'no-store' });
+      if (r.status === 404) return { skip: true };
+      if (r.ok) {
+        const text = await r.text();
+        try { return { item: JSON.parse(text) }; }
+        catch (e) { console.error('Bozuk kayit:', blob.pathname); return { skip: true }; }
+      }
+    } catch (e) { /* yeniden dene */ }
+    if (attempt < READ_ATTEMPTS) await new Promise((done) => setTimeout(done, 150 * attempt));
+  }
+  return { failed: true };
+}
+
+async function readRecords(blobs) {
+  const results = new Array(blobs.length);
+  let next = 0;
+  async function worker() {
+    while (next < blobs.length) {
+      const i = next++;
+      results[i] = await readRecord(blobs[i]);
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(READ_CONCURRENCY, blobs.length) }, worker));
+  return results;
 }
 
 async function tgSend(text) {
@@ -165,19 +216,15 @@ export default async function handler(req, res) {
   if (req.method === 'GET') {
     if (!authed(req)) return send(res, 401, { error: 'Yetkisiz' });
     try {
-      const out = [];
-      let cursor;
-      do {
-        const r = await list({ prefix: PREFIX, cursor, limit: 1000 });
-        for (const it of r.blobs) {
-          if (!it.pathname.endsWith('.json')) continue;
-          try { const j = await fetch(bust(it.url), { cache: 'no-store' }); if (j.ok) out.push(await j.json()); }
-          catch (e) { /* bozuk kayit atla */ }
-        }
-        cursor = r.cursor;
-      } while (cursor);
+      const blobs = await listRecords();
+      const sig = signature(blobs);
+      if (req.query && req.query.meta) return send(res, 200, { ok: true, count: blobs.length, sig });
+      const results = await readRecords(blobs);
+      const out = results.filter((x) => x.item).map((x) => x.item);
+      const failed = results.filter((x) => x.failed).length;
+      if (failed) console.error('Okunamayan kayit sayisi:', failed, '/', blobs.length);
       out.sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
-      return send(res, 200, { ok: true, count: out.length, items: out });
+      return send(res, 200, { ok: true, count: out.length, items: out, sig, partial: failed > 0, failed });
     } catch (e) {
       return send(res, 500, { error: 'Liste alinamadi: ' + (e.message || e) });
     }
