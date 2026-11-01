@@ -126,9 +126,9 @@ export default async function handler(req, res) {
 
     if (String((req.query && req.query.search) || '') === '1') {
       if (searchCache && Date.now() < searchCacheExpiry) return send(res, 200, searchCache);
-      searchCache = await searchReport(sa);
-      searchCacheExpiry = Date.now() + 30 * 60 * 1000;
-      return send(res, 200, searchCache);
+      const report = await searchReport(sa);
+      if (report.ok) { searchCache = report; searchCacheExpiry = Date.now() + 30 * 60 * 1000; }
+      return send(res, 200, report);
     }
 
     // ── ?insights=1 → Analiz sekmesi: saat/gun deseni, sehir, dil, giris sayfasi,
