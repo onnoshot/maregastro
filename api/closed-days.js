@@ -1,6 +1,7 @@
 // Mare Gastro - Kapali Gunler API (Node.js serverless, Vercel Blob)
 // GET (public): kapatilmis gunlerin listesini doner (site takvimi okur).
-// PUT (token):  { date: 'YYYY-MM-DD', closed: true|false } ile bir gunu kapatir / acar.
+// PUT (token):  { date: 'YYYY-MM-DD', closed: true|false, guests?: n } ile bir gunu kapatir / acar.
+//               guests: kapatilan gunun kisi sayisi (panel istatistikleri icin); ?all=1 ile doner.
 //
 // Kapali gunlerde site takvimi o gunu "tum masalar dolu" olarak pasif gosterir,
 // /api/reservation da siteden gelen talepleri reddeder.
@@ -37,14 +38,21 @@ async function readJson(req) {
 }
 function bust(url) { return url + (url.includes('?') ? '&' : '?') + '_cb=' + Date.now(); }
 
-export async function loadClosedDays() {
+async function loadClosedData() {
   const r = await list({ prefix: CLOSED_PATH, limit: 1 });
   const hit = r.blobs.find((x) => x.pathname === CLOSED_PATH);
-  if (!hit) return [];
+  if (!hit) return { days: [], guests: {} };
   const j = await fetch(bust(hit.url), { cache: 'no-store' });
-  if (!j.ok) return [];
+  if (!j.ok) return { days: [], guests: {} };
   const data = await j.json();
-  return Array.isArray(data.days) ? data.days.filter((d) => DATE_RE.test(d)) : [];
+  const days = Array.isArray(data.days) ? data.days.filter((d) => DATE_RE.test(d)) : [];
+  const guests = {};
+  const raw = data.guests && typeof data.guests === 'object' ? data.guests : {};
+  for (const d of days) if (Number(raw[d]) > 0) guests[d] = Number(raw[d]);
+  return { days, guests };
+}
+export async function loadClosedDays() {
+  return (await loadClosedData()).days;
 }
 
 export default async function handler(req, res) {
@@ -53,10 +61,10 @@ export default async function handler(req, res) {
   if (req.method === 'GET') {
     try {
       const todayIso = new Date().toISOString().slice(0, 10);
-      const all = await loadClosedDays();
-      // Site icin gecmis gunler gereksiz; panel ?all=1 ile hepsini alir.
-      const days = req.query && req.query.all ? all : all.filter((d) => d >= todayIso);
-      return send(res, 200, { ok: true, days });
+      const { days: all, guests } = await loadClosedData();
+      // Site icin gecmis gunler ve kisi sayilari gereksiz; panel ?all=1 ile hepsini alir.
+      if (req.query && req.query.all) return send(res, 200, { ok: true, days: all, guests });
+      return send(res, 200, { ok: true, days: all.filter((d) => d >= todayIso) });
     } catch (e) {
       return send(res, 500, { error: 'Kapali gunler alinamadi: ' + (e.message || e) });
     }
@@ -68,15 +76,25 @@ export default async function handler(req, res) {
     try { b = await readJson(req); } catch (e) { return send(res, 400, { error: 'Gecersiz istek' }); }
     const date = String((b && b.date) || '').trim();
     if (!DATE_RE.test(date)) return send(res, 400, { error: 'Gecersiz tarih (YYYY-MM-DD gerekli)' });
+    let n = null;
+    if (b.closed && b.guests != null && b.guests !== '') {
+      n = Number(b.guests);
+      if (!Number.isInteger(n) || n < 0 || n > 5000) return send(res, 400, { error: 'Gecersiz kisi sayisi (0-5000)' });
+    }
     try {
-      const set = new Set(await loadClosedDays());
+      const cur = await loadClosedData();
+      const set = new Set(cur.days);
+      const guests = cur.guests;
       if (b.closed) set.add(date); else set.delete(date);
+      // Kisi sayisi gonderilmezse mevcut deger korunur; 0 gelirse silinir.
+      if (!b.closed || n === 0) delete guests[date];
+      else if (n) guests[date] = n;
       const days = [...set].sort();
-      await put(CLOSED_PATH, JSON.stringify({ days, updatedAt: new Date().toISOString() }), {
+      await put(CLOSED_PATH, JSON.stringify({ days, guests, updatedAt: new Date().toISOString() }), {
         access: 'public', contentType: 'application/json', addRandomSuffix: false,
         allowOverwrite: true, cacheControlMaxAge: 0,
       });
-      return send(res, 200, { ok: true, days });
+      return send(res, 200, { ok: true, days, guests });
     } catch (e) {
       return send(res, 500, { error: 'Kaydedilemedi: ' + (e.message || e) });
     }
