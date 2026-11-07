@@ -183,6 +183,8 @@ export default async function handler(req, res) {
       // Siteden gelen kayitlarda reklam click-id'leri / utm_medium'dan tureltilir,
       // dashboard'dan elle eklenende kullanici secer. Uydurma deger uretmiyoruz.
       adPaid: ['paid', 'organic'].includes(String(b.adPaid || '')) ? String(b.adPaid) : '',
+      // Panelden isaretlenir: true = kahvalti, yoksa aksam yemegi.
+      breakfast: isManual && b.breakfast === true,
     };
     if (!isManual) {
       // Panelden kapatilan gunlere siteden talep alinmaz (tum masalar dolu).
@@ -249,11 +251,12 @@ export default async function handler(req, res) {
       const r = await fetch(bust(blob.url), { cache: 'no-store' });
       if (!r.ok) return send(res, 500, { error: 'Kayit okunamadi' });
       const cur = await r.json();
-      const editable = ['name', 'phone', 'email', 'date', 'time', 'guests', 'konaklama', 'channel', 'adPaid', 'note', 'status', 'bill'];
+      const editable = ['name', 'phone', 'email', 'date', 'time', 'guests', 'konaklama', 'channel', 'adPaid', 'note', 'status', 'bill', 'breakfast'];
       const next = { ...cur };
       for (const k of editable) {
         if (b[k] === undefined) continue;
         if (k === 'guests') next.guests = Number(b.guests) || null;
+        else if (k === 'breakfast') next.breakfast = b.breakfast === true;
         else if (k === 'bill') next.bill = Number(b.bill) > 0 ? Number(b.bill) : null;
         else if (k === 'status') next.status = STATUSES.includes(b.status) ? b.status : cur.status;
         else if (k === 'phone') next.phone = normalizePhone(b.phone).phone;
