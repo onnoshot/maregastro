@@ -14,6 +14,22 @@ const PROPERTY_ID = '542527885';
 const CONVERSION_EVENTS = ['whatsapp_click', 'phone_click', 'availability_check', 'menu_click', 'reservation_submit_click'];
 
 const INSIGHT_EVENTS = [...CONVERSION_EVENTS, 'form_start', 'form_details_start', 'form_error'];
+// Ziyaretci yolculugu (2026-11-07'den itibaren): her adim ayri olay adi oldugu icin
+// GA4'te ozel boyut tanimlamadan raporlanabilir.
+const JOURNEY_STEPS = [
+  ['view_story', 'Hikayeyi gördü'], ['view_chef', 'Şefi gördü'], ['view_signature', 'İmza tabaklara geldi'],
+  ['view_menu', 'Menüye ulaştı'], ['menu_category_click', 'Menüde kategori açtı'], ['view_reviews', 'Yorumlara geldi'],
+  ['view_occasions', 'Özel anlara geldi'], ['view_reservation', 'Rezervasyona ulaştı'], ['rez_date_select', 'Tarih seçti'],
+  ['rez_step_2', 'Bilgi adımına geçti'], ['rez_step_3', 'Onay adımına geçti'], ['reservation_submit_click', 'WhatsApp ile onayladı'],
+];
+const JOURNEY_EXTRA = ['view_contact', 'menu_group_click', 'digital_menu_open', 'signature_dish_click', 'signature_all_menu_click',
+  'occasion_click', 'reviews_more_click', 'events_info_open', 'rez_time_select', 'rez_guests_change', 'rez_stay_select',
+  'language_switch', 'instagram_click', 'email_click', 'tripadvisor_click', 'didi_hotel_click', 'directions_click', 'blog_click',
+  'whatsapp_click', 'phone_click', 'menu_click', 'availability_check', 'form_start', 'form_details_start', 'form_error',
+  'engaged_30s', 'engaged_90s', 'engaged_180s', 'engaged_300s'];
+const JOURNEY_EVENTS = [...JOURNEY_STEPS.map((x) => x[0]), ...JOURNEY_EXTRA];
+let journeyCache = null;
+let journeyCacheExpiry = 0;
 const SEARCH_SITES = ['sc-domain:maregastro.com', 'https://maregastro.com/', 'https://www.maregastro.com/'];
 
 function cors(res) {
@@ -122,6 +138,71 @@ export default async function handler(req, res) {
         name: row.dimensionValues[0].value, sessions: parseInt(row.metricValues[0].value, 10),
       }));
       return send(res, 200, { ok: true, month: monthParam, startDate, endDate, channels: monthChannels });
+    }
+
+    // ── ?realtime=1 → son 30 dakika: su an sitede olanlar ve yaptiklari ──
+    if (String((req.query && req.query.realtime) || '') === '1') {
+      const rt = async (body) => {
+        const r = await fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${PROPERTY_ID}:runRealtimeReport`, {
+          method: 'POST', headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' }, body: JSON.stringify(body),
+        });
+        if (!r.ok) throw new Error('ga4 realtime ' + r.status + ' ' + (await r.text()).slice(0, 200));
+        return r.json();
+      };
+      const [tot, dev, geo, evs, pages] = await Promise.all([
+        rt({ metrics: [{ name: 'activeUsers' }] }),
+        rt({ dimensions: [{ name: 'deviceCategory' }], metrics: [{ name: 'activeUsers' }] }),
+        rt({ dimensions: [{ name: 'city' }], metrics: [{ name: 'activeUsers' }], limit: 8 }),
+        rt({ dimensions: [{ name: 'minutesAgo' }, { name: 'eventName' }], metrics: [{ name: 'eventCount' }], limit: 400 }),
+        rt({ dimensions: [{ name: 'unifiedScreenName' }], metrics: [{ name: 'activeUsers' }], limit: 8 }),
+      ]);
+      const pairs = (rep) => (rep.rows || []).map((row) => ({ name: row.dimensionValues[0].value, value: Number(row.metricValues[0].value) }));
+      const stream = (evs.rows || []).map((row) => ({ minutesAgo: Number(row.dimensionValues[0].value), name: row.dimensionValues[1].value, count: Number(row.metricValues[0].value) }))
+        .filter((e) => !['session_start', 'first_visit', 'user_engagement', 'scroll', 'click'].includes(e.name))
+        .sort((x, y) => x.minutesAgo - y.minutesAgo);
+      const activeUsers = tot.rows && tot.rows[0] ? Number(tot.rows[0].metricValues[0].value) : 0;
+      return send(res, 200, { ok: true, updatedAt: new Date().toISOString(), activeUsers, devices: pairs(dev), cities: pairs(geo), pages: pairs(pages), stream });
+    }
+
+    // ── ?journey=1 → Ziyaretci Yolculugu: adim adim huni, bolum erisimi, dil kirilimi, kalma suresi ──
+    if (String((req.query && req.query.journey) || '') === '1') {
+      if (journeyCache && Date.now() < journeyCacheExpiry) return send(res, 200, journeyCache);
+      const d30 = { startDate: '29daysAgo', endDate: 'today' };
+      const compare = [{ ...d30, name: 'cur' }, { startDate: '59daysAgo', endDate: '30daysAgo', name: 'prev' }];
+      const inList = { filter: { fieldName: 'eventName', inListFilter: { values: JOURNEY_EVENTS } } };
+      const [evR, langR, baseR, dayR] = await gaBatch(token, [
+        { dateRanges: compare, dimensions: [{ name: 'eventName' }], metrics: [{ name: 'totalUsers' }, { name: 'eventCount' }], dimensionFilter: inList, limit: 200 },
+        { dateRanges: [d30], dimensions: [{ name: 'eventName' }, { name: 'pagePath' }], metrics: [{ name: 'totalUsers' }],
+          dimensionFilter: { andGroup: { expressions: [
+            { filter: { fieldName: 'eventName', inListFilter: { values: [...JOURNEY_STEPS.map((x) => x[0]), 'page_view'] } } },
+            { filter: { fieldName: 'pagePath', inListFilter: { values: ['/tr/', '/en/', '/ar/', '/ru/'] } } },
+          ] } }, limit: 500 },
+        { dateRanges: compare, metrics: [{ name: 'totalUsers' }],
+          dimensionFilter: { filter: { fieldName: 'pagePath', inListFilter: { values: ['/tr/', '/en/', '/ar/', '/ru/'] } } } },
+        { dateRanges: [d30], dimensions: [{ name: 'date' }, { name: 'eventName' }], metrics: [{ name: 'totalUsers' }],
+          dimensionFilter: { filter: { fieldName: 'eventName', inListFilter: { values: ['view_menu', 'view_reservation', 'rez_step_3', 'reservation_submit_click'] } } },
+          orderBys: [{ dimension: { dimensionName: 'date' } }], limit: 400 },
+      ]);
+      const events = {};
+      (evR.rows || []).forEach((row) => {
+        const n = row.dimensionValues[0].value, period = row.dimensionValues[1].value;
+        const o = events[n] = events[n] || { users: { cur: 0, prev: 0 }, count: { cur: 0, prev: 0 } };
+        o.users[period] = Number(row.metricValues[0].value); o.count[period] = Number(row.metricValues[1].value);
+      });
+      const base = { cur: 0, prev: 0 };
+      (baseR.rows || []).forEach((row) => { base[row.dimensionValues[0].value] = Number(row.metricValues[0].value); });
+      const byLang = {};
+      (langR.rows || []).forEach((row) => {
+        const n = row.dimensionValues[0].value, lang = row.dimensionValues[1].value.replace(/\//g, '');
+        (byLang[lang] = byLang[lang] || {})[n] = Number(row.metricValues[0].value);
+      });
+      const daily = (dayR.rows || []).map((row) => {
+        const d = row.dimensionValues[0].value;
+        return { date: `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}`, name: row.dimensionValues[1].value, users: Number(row.metricValues[0].value) };
+      });
+      journeyCache = { ok: true, updatedAt: new Date().toISOString(), since: '2026-11-07', steps: JOURNEY_STEPS, base, events, byLang, daily };
+      journeyCacheExpiry = Date.now() + 5 * 60 * 1000;
+      return send(res, 200, journeyCache);
     }
 
     if (String((req.query && req.query.search) || '') === '1') {

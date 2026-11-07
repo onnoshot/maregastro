@@ -74,6 +74,60 @@
     rvObs.observe(el);
   });
 
+  /* ── Visitor journey tracking (distinct event names → readable in GA4 without custom dimensions) ── */
+  var T = function (n, p) { try { if (typeof trackEvent === 'function') trackEvent(n, p || {}); } catch (e) {} };
+  var SECTION_EVENTS = { story: 'view_story', chef: 'view_chef', signature: 'view_signature', menu: 'view_menu',
+    reviews: 'view_reviews', occasions: 'view_occasions', reservation: 'view_reservation', contact: 'view_contact' };
+  var seenSec = {};
+  var secObs = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      var id = e.target.id; if (seenSec[id] || !e.isIntersecting) return;
+      var need = Math.min(e.boundingClientRect.height * 0.35, window.innerHeight * 0.4);
+      if (e.intersectionRect.height >= need) { seenSec[id] = 1; T(SECTION_EVENTS[id]); secObs.unobserve(e.target); }
+    });
+  }, { threshold: [0, 0.1, 0.2, 0.35, 0.5, 0.75, 1] });
+  Object.keys(SECTION_EVENTS).forEach(function (id) { var el = d.getElementById(id); if (el) secObs.observe(el); });
+
+  // visible time on page (tab in foreground)
+  var visMs = 0, visT0 = d.visibilityState === 'visible' ? Date.now() : 0, timeMarks = [30, 90, 180, 300], timeSent = {};
+  d.addEventListener('visibilitychange', function () {
+    if (d.visibilityState === 'visible') visT0 = Date.now(); else if (visT0) { visMs += Date.now() - visT0; visT0 = 0; }
+  });
+  setInterval(function () {
+    var sec = (visMs + (visT0 ? Date.now() - visT0 : 0)) / 1000;
+    timeMarks.forEach(function (m) { if (sec >= m && !timeSent[m]) { timeSent[m] = 1; T('engaged_' + m + 's'); } });
+  }, 5000);
+
+  // clicks — only where the markup has no inline trackEvent already
+  var onceSent = {};
+  function once(n, p) { if (onceSent[n]) return; onceSent[n] = 1; T(n, p); }
+  d.addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target : null; if (!t) return;
+    var el = t.closest('a,button,.kopt,.mc-daynum');
+    if (!el) return;
+    var inline = (el.getAttribute('onclick') || '').indexOf('trackEvent') > -1;
+    var href = el.getAttribute('href') || '';
+    if (el.matches('.mtab')) return T('menu_category_click', { event_label: el.getAttribute('data-c') || '' });
+    if (el.matches('.mgroup-btn')) return T('menu_group_click', { event_label: el.getAttribute('data-g') || '' });
+    if (el.matches('.m-dergi-btn')) return T('digital_menu_open');
+    if (el.matches('.occ-card')) { var h = el.querySelector('h3'); return T('occasion_click', { event_label: h ? h.textContent : href }); }
+    if (el.closest('#reviews') && el.matches('.v2-btn-line')) return T('reviews_more_click');
+    if (el.closest('#signature') && el.matches('.v2-btn-line')) return T('signature_all_menu_click');
+    if (el.matches('.ev-info-btn')) return T('events_info_open');
+    if (el.matches('.mc-daynum')) return T('rez_date_select');
+    if (el.closest('.time-list') && el.matches('.tpill')) return T('rez_time_select', { event_label: el.textContent.trim() });
+    if (el.matches('.gcnt-btn')) return once('rez_guests_change');
+    if (el.matches('.kopt')) return T('rez_stay_select', { event_label: (el.querySelector('h4') || el).textContent.replace(/\s+/g, ' ').trim() });
+    if (inline) return;
+    if (el.closest('.langsw-menu,.mob-langs')) return T('language_switch', { event_label: href });
+    if (/instagram\.com/.test(href)) return T('instagram_click', { event_label: href });
+    if (/^mailto:/.test(href)) return T('email_click');
+    if (/tripadvisor\./.test(href)) return T('tripadvisor_click');
+    if (/sapancadidiotel\.com/.test(href)) return T('didi_hotel_click');
+    if (/^tel:/.test(href)) return T('phone_click', { event_label: 'page' });
+    if (/(^|\/)blog\//.test(href)) return T('blog_click', { event_label: href });
+  }, true);
+
   /* ── Counters ── */
   function runCount(el) {
     var to = parseFloat(el.getAttribute('data-count')), dec = +el.getAttribute('data-dec') || 0;

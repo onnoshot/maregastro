@@ -2253,6 +2253,11 @@ INDEX = """<!DOCTYPE html>
 <meta name="author" content="Mare Gastro">
 <meta name="theme-color" content="#04080F">
 <link rel="canonical" href="{site}/blog/">
+<link rel="alternate" hreflang="tr" href="{site}/blog/">
+<link rel="alternate" hreflang="en" href="{site}/en/blog/">
+<link rel="alternate" hreflang="ar" href="{site}/ar/blog/">
+<link rel="alternate" hreflang="ru" href="{site}/ru/blog/">
+<link rel="alternate" hreflang="x-default" href="{site}/blog/">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">

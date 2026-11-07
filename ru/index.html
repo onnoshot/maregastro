@@ -13,10 +13,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- dataLayer event helper (GTM) -->
 <script>
-// GTM'de etiketi olmayan olaylar Google etiketi uzerinden dogrudan GA4'e gider.
-var MARE_DIRECT_EVENTS=['reservation_submit_click','form_start','form_details_start','form_error'];
+// GTM yalnizca bu 4 olayi GA4'e (ve Google Ads'e) iletiyor; digerleri Google etiketi uzerinden dogrudan GA4'e gider.
+var MARE_GTM_EVENTS=['phone_click','menu_click','whatsapp_click','availability_check'];
 function gtag(){window.dataLayer.push(arguments);}
-function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];window.dataLayer.push(Object.assign({event:name},params||{}));if(MARE_DIRECT_EVENTS.indexOf(name)>=0)gtag('event',name,Object.assign({send_to:'G-LMZ66PTR0T'},params||{}));}catch(e){}}
+function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];var p=Object.assign({page_lang:document.documentElement.lang||''},params||{});window.dataLayer.push(Object.assign({event:name},p));if(MARE_GTM_EVENTS.indexOf(name)<0)gtag('event',name,Object.assign({send_to:'G-LMZ66PTR0T'},p));if(name==='reservation_step_view'&&p.step)trackEvent('rez_step_'+p.step);}catch(e){}}
 </script>
 <!-- Metricool -->
 <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"a9b79986564317dc3a4287a11241bf7"})});</script>
@@ -101,7 +101,7 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];windo
   }
  ],
  "acceptsReservations": "True",
- "hasMenu": "https://maregastro.com/#menu",
+ "hasMenu": "https://maregastro.com/ru/#menu",
  "hasMap": "https://maps.google.com/?cid=7177941338358519695",
  "currenciesAccepted": "TRY",
  "sameAs": [
@@ -2212,7 +2212,7 @@ function submitReservation(a){
 <script src="/assets/v2/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/assets/v2/vendor/SplitText.min.js" defer></script>
 <script src="/assets/v2/vendor/lenis.min.js" defer></script>
-<script src="/assets/v2/motion.js?v=2" defer></script>
+<script src="/assets/v2/motion.js?v=3" defer></script>
 
 </body>
 </html>
