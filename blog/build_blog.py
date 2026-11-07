@@ -2064,15 +2064,165 @@ POSTS += [
 },
 ]
 
+# 2026-11-07 — Search Console + rakip liste analizi sonrası 3 yeni yazı (yalnızca doğrulanmış bilgi):
+# içecek sayıları canlı menüden (/api/menu, 7 Kasım 2026); canlı müzik tarih/sanatçıları @maregastro
+# Instagram paylaşımlarından; tarifler şefin YouTube videolarındaki kendi anlatımından.
+VIDEOS["NybLKER1j_4"] = ("Deniz Mahsullü Buğday Risotto Nasıl Yapılır? | Mare Gastro Sapanca & Şef Doğan Anapa",
+                         "Şef Doğan Anapa aşurelik buğday, çimçim karides ve kalamarla deniz mahsullü buğday risottoyu anlatıyor.",
+                         "2026-08-01T12:00:00+03:00", 120)
+VIDEOS["enOAIZfhK3s"] = ("Özel Tarif: Ferahlatıcı Karpuz Salatası Yatağında Kuzu Kokoreç | Mare Gastro Sapanca",
+                         "Şef Doğan Anapa karpuz salatası yatağında, ızgara lavaş üzerinde kuzu kokoreç tabağını anlatıyor.",
+                         "2026-07-21T12:00:00+03:00", 122)
+POSTS += [
+{
+ "slug":"sapanca-alkollu-restoran",
+ "cat":"raki","date":"2026-11-07","read":"6 dk",
+ "img":"ig-imza-kokteyl.webp","alt":"Mare Gastro barında imza kokteyl, Sapanca alkollü restoran",
+ "h1":"Sapanca'da <em>Alkollü Restoran</em>: Rakı, Şarap ve Kokteyl Rehberi",
+ "title":"Sapanca'da Alkollü Restoran: Rakı, Şarap, Kokteyl | Mare Gastro",
+ "desc":"Sapanca'da alkollü restoran arıyorsanız: Mare Gastro'da 30 rakı seçeneği, 21 şarap, şampanya ve 12 imza kokteyl, açık bahçe ve hafta sonu canlı müzik.",
+ "kw":"sapanca alkollü restoran, sapanca alkollü mekanlar, kırkpınar alkollü mekanlar, sapanca kokteyl, sapanca şarap, sapanca rakı",
+ "lead":"<strong>Kısa cevap:</strong> Sapanca'da alkollü bir akşam yemeği için Mare Gastro, Didi Otel bahçesinde gölün hemen yanında rakı, şarap ve kokteyli fine dining mutfağıyla birlikte sunuyor. Kasım 2026 itibarıyla menüde 30 rakı seçeneği, 21 şarap, 4 şampanya ve köpüklü şarap ile 12 alkollü kokteyl var; hafta sonu akşamlarına canlı müzik eşlik ediyor.",
+ "body":[
+  ("Sapanca'da Alkollü Restoran Var mı?",
+   ["Evet. Sapanca'da alkollü servis yapan restoranlar var; Kırkpınar'daki Mare Gastro bunlardan biri ve içkiyi bir yemek deneyiminin parçası olarak sunuyor. Restoran Salı'dan Pazar'a 12:00–00:00 arası açık, Pazartesi kapalı.",
+    "Menüde rakı-balık sofrasından şarap eşliğinde bir akşam yemeğine, gün batımında bir kokteyle kadar farklı seçenekler bulunuyor. Güncel liste ve fiyatlar için %s bakabilirsiniz; menü mevsime göre güncellenir."%L(SITE+"/dijitalmenu","dijital menümüze")]),
+  ("Menüde Hangi İçkiler Var?",
+   ["Aşağıdaki tablo, 7 Kasım 2026'da canlı menümüzden alınmıştır. Aynı içeceğin farklı şişe boyları (ör. 20, 35, 50 ve 70 cl rakı) ayrı seçenek olarak sayıldı.",
+    btable(["Kategori","Seçenek sayısı","Örnekler"],[
+     ["Rakı","30","Beylerbeyi Göbek, Sarı Zeybek, Efe Gold, Efe Yaş Üzüm (20–70 cl)"],
+     ["Şarap","21","Kavaklıdere 1929 Cabernet, Pendore Öküzgözü, Pendore Syrah, Prinz von Hessen Riesling"],
+     ["Şampanya ve köpüklü","4","Moët & Chandon, Chandon Rosé, Bottega White Gold, Martini Brut"],
+     ["Alkollü kokteyl","12","Kuzu Kulağı Sour, R.R. (rakı, roka, limon), Espresso Martini, Whisky Sour"],
+     ["Viski","13","Menüde 13 seçenek"],
+     ["Likör","10","Menüde 10 seçenek"],
+     ["Cin / Votka / Tekila / Rom","8 / 6 / 5 / 2","Kokteyllerde ve sade servis"],
+     ["Bira","7","Menüde 7 seçenek"],
+    ])]),
+  ("Rakı-Balık İçin Uygun mu?",
+   ["Evet. Mare Gastro'nun mutfağı deniz ürünleri ağırlıklı ve başlangıç menüsü rakı sofrasının mezelerine çok yakın: humus, pancar borani, havuç tarator, Girit ezme, peynir tabağı, günün zeytinyağlı enginarı ve palamut carpaccio bunlardan bazıları. Ara sıcaklarda kalamar tava ve Mare Spesiyal Islama Kalamar var.",
+    "Meze seçimi ve sofra düzeni için %s hazırladık."%L(post_url("sapanca-raki-balik"),"Sapanca rakı-balık rehberimizi")]),
+  ("İmza Kokteyller Neler?",
+   ["Kokteyl menüsünde klasiklerin yanında yerel dokunuşlu tarifler var. <strong>Kuzu Kulağı Sour</strong> kuzu kulağı otuyla, <strong>R.R.</strong> ise rakı, roka ve limonla hazırlanıyor. Espresso Martini, Whisky Sour, Mojito ve Margarita da menüde. Alkolsüz kokteyl, soğuk içecekler ve sıcak içecekler de bulunuyor.",
+    bfig("ig-kokteyl-serefe.webp","Mare Gastro'da imza kokteyllerle şerefe","Mare Gastro'da imza kokteyller")]),
+  ("Canlı Müzik Var mı?",
+   ["Hafta sonu akşamlarına canlı müzik eşlik ediyor; özel gecelerde konuk sanatçılar sahneye çıkıyor. Yaz 2026 programını ve güncel etkinlikleri %s derledik."%L(post_url("sapanca-canli-muzik-mekanlari"),"Sapanca canlı müzik rehberimizde")]),
+  ("Açık Havada İçki İçilebilir mi?",
+   ["Evet. Mare Gastro'nun açık bahçesi ve kapalı salonu var. Yazın bahçede açık havada, serin ve yağışlı günlerde kapalı alanda aynı menüyle ağırlanırsınız."]),
+  ("Alkol Aldıktan Sonra Konaklama Mümkün mü?",
+   ["Mare Gastro, %s bahçesinde. Akşam yemeğinden sonra yola çıkmak yerine aynı bahçedeki otelde kalabilirsiniz; konaklama tercihinizi rezervasyon formunda belirtmeniz yeterli. Otopark ücretsiz ve vale hizmeti var."%L("https://sapancadidiotel.com/","Didi Otel")]),
+ ],
+ "faq":[
+  ("Sapanca'da alkollü restoran var mı?","Evet. Kırkpınar'daki Mare Gastro rakı, şarap, şampanya ve kokteyl servisi yapan bir fine dining restorandır; Salı–Pazar 12:00–00:00 arası açıktır."),
+  ("Mare Gastro'da kaç çeşit rakı var?","Kasım 2026 itibarıyla menüde farklı marka ve şişe boylarıyla 30 rakı seçeneği bulunur."),
+  ("Şarap menüsünde neler var?","21 şarap var; Kavaklıdere 1929 Cabernet, Pendore Öküzgözü, Pendore Syrah ve Prinz von Hessen Riesling bunlardan bazıları."),
+  ("Kokteyl var mı?","Evet. Kuzu Kulağı Sour ve rakılı R.R. dahil 12 alkollü kokteyl ile alkolsüz kokteyl seçeneği bulunur."),
+  ("Fiyatları nereden görebilirim?","Güncel fiyatlar maregastro.com/dijitalmenu adresindeki dijital menüde yer alır."),
+ ],
+ "rel":["sapanca-raki-balik","sapanca-canli-muzik-mekanlari","sapanca-deniz-urunleri"],
+},
+{
+ "slug":"sapanca-canli-muzik-mekanlari",
+ "cat":"gece","date":"2026-11-07","read":"6 dk",
+ "img":"mare-gece-terasi.webp","alt":"Mare Gastro gece terası, Sapanca canlı müzik mekanı",
+ "videos":["GiwkPYUSVyY"],
+ "h1":"Sapanca'da <em>Canlı Müzik</em>: Mare Gastro'da Müzikli Akşamlar",
+ "title":"Sapanca Canlı Müzik Mekanları: Müzikli Akşam Yemeği | Mare Gastro",
+ "desc":"Sapanca'da canlı müzik eşliğinde akşam yemeği: Mare Gastro'da hafta sonu canlı müzik, konuk sanatçılar ve özel geceler. Güncel program ve rezervasyon.",
+ "kw":"sapanca canlı müzik, sapanca canlı müzik mekanları, sapanca müzikli mekanlar, sapanca canlı müzik restaurant, kırkpınar canlı müzik",
+ "lead":"<strong>Kısa cevap:</strong> Sapanca'da canlı müzik eşliğinde akşam yemeği için Mare Gastro'da hafta sonu akşamlarına canlı müzik eşlik ediyor; özel gecelerde konuk sanatçılar sahneye çıkıyor. Yaz 2026'da cumartesi geceleri Eda Acar ve Orkestrası açık bahçede sahne aldı. Güncel program Instagram hesabımızda ve rezervasyon takviminde yer alıyor.",
+ "body":[
+  ("Sapanca'da Canlı Müzik Nerede Var?",
+   ["Sapanca'da canlı müzik yapan mekanlar çoğunlukla göl çevresinde ve Kırkpınar'da toplanıyor. Mare Gastro, Didi Otel bahçesinde fine dining mutfağı ile canlı müziği aynı akşamda buluşturuyor: yemek, kokteyl ve sahne aynı bahçede.",
+    "Restoran Salı'dan Pazar'a 12:00–00:00 arası açık; canlı müzikli akşamlar genellikle hafta sonu oluyor."]),
+  ("Yaz 2026'da Kimler Sahne Aldı?",
+   ["Aşağıdaki program, @maregastro Instagram hesabındaki paylaşımlardan derlendi. Sanatçılar ve günler sezona göre değişir; bu tablo geçmiş programı gösterir.",
+    btable(["Tarih","Sanatçı","Not"],[
+     ["Temmuz 2026, her perşembe","@asyaarslanofficial","Perşembe akşamları canlı müzik"],
+     ["10 Temmuz 2026","Gökçe Erdoğan","Saat 21:00"],
+     ["Temmuz 2026, cumartesi geceleri","Eda Acar ve Orkestrası","Açık bahçede"],
+     ["30 Ağustos 2026","@ezgiayce feat. @apigitar","Şefin fix menüsüyle özel gece"],
+    ]),
+    bvid("GiwkPYUSVyY","Eda Acar ve Orkestrası Mare Gastro sahnesinde")]),
+  ("Güncel Canlı Müzik Programını Nereden Öğrenebilirim?",
+   ["Sahneye çıkacak sanatçılar ve özel geceler %s duyuruluyor. Sitemizdeki %s ise özel etkinliklerin olduğu günler renkli işaretle gösteriliyor; bir güne dokunduğunuzda etkinliğin ayrıntısı açılıyor."%(L(IG,"Instagram hesabımızda"),L(REZ,"rezervasyon takviminde"))]),
+  ("Canlı Müzikli Akşamda Masa Bulmak Zor mu?",
+   ["Özel gecelerde masa sayısı sınırlı olabiliyor. Bu yüzden canlı müzikli bir akşam için %s; tarih, saat ve kişi sayısını seçip WhatsApp üzerinden onaylamanız birkaç dakika sürüyor."%L(REZ,"önceden rezervasyon yapmanızı öneririz")]),
+  ("Daha Sakin Bir Masa İstersem?",
+   ["Rezervasyon sırasında belirtmeniz yeterli; ekibimiz sahneden uzak, daha sakin bir köşe ayarlamaya çalışır. Baş başa bir akşam için %s de göz atabilirsiniz."%L(post_url("sapanca-romantik-aksam-yemegi"),"romantik akşam yemeği rehberimize")]),
+  ("Müzik Dışında Neler Oluyor?",
+   ["Mare Gastro'da zaman zaman müzik dışı etkinlikler de düzenleniyor. Örneğin Eylül 2026'da mikolog Jilber Barutçiyan (@mushroomsofturkey) ile yabani mantarlar üzerine bir atölye yapıldı. Yaklaşan etkinlikler rezervasyon bölümündeki takvimde görünür."]),
+ ],
+ "faq":[
+  ("Sapanca'da canlı müzik olan restoran var mı?","Evet. Mare Gastro'da hafta sonu akşamlarına canlı müzik eşlik eder; özel gecelerde konuk sanatçılar sahne alır."),
+  ("Mare Gastro'da canlı müzik hangi günler?","Canlı müzik genellikle hafta sonu akşamları olur. Güncel program Instagram hesabımızda ve rezervasyon takviminde yer alır."),
+  ("Canlı müzikli akşam için rezervasyon gerekir mi?","Özel gecelerde masa sayısı sınırlı olabildiği için önceden rezervasyon önerilir."),
+  ("Canlı müzik açık havada mı?","Yaz aylarında sahne açık bahçede kuruluyor; serin havalarda kapalı salonda devam ediyor."),
+ ],
+ "rel":["sapanca-alkollu-restoran","sapanca-gece-acik-restoran","sapanca-raki-balik"],
+},
+{
+ "slug":"mare-gastro-imza-tabaklar-nasil-hazirlaniyor",
+ "cat":"sef","date":"2026-11-07","read":"8 dk",
+ "img":"mare-sofra-detay.webp","alt":"Mare Gastro sofrasından imza tabaklar, Şef Doğan Anapa",
+ "videos":["YAbVQG4u7LI","NybLKER1j_4","enOAIZfhK3s","zseYjYW3uFk","Asn8FZ0nFX0","rhSfnoAOCIg"],
+ "h1":"Mare Gastro'nun <em>İmza Tabakları</em> Nasıl Hazırlanıyor?",
+ "title":"Şef Doğan Anapa'nın İmza Tabakları ve Tarifleri | Mare Gastro",
+ "desc":"Islama kalamar, deniz mahsullü buğday risotto, karpuz salatalı kuzu kokoreç: Şef Doğan Anapa imza tabaklarının nasıl hazırlandığını videolarıyla anlatıyor.",
+ "kw":"şef doğan anapa tarifleri, mare gastro imza tabak, ıslama kalamar, buğday risotto tarifi, kuzu kokoreç karpuz salatası, sapanca fine dining menü",
+ "lead":"<strong>Kısa cevap:</strong> Mare Gastro'nun imza tabakları, Yönetici Şef Doğan Anapa'nın Sakarya'nın yerel tatlarını Ege-Akdeniz tekniğiyle yorumlamasından doğuyor. Islama kalamar Adapazarı'nın ıslama köftesinden, keşkekli kuzu incik bölgenin keşkek geleneğinden ilham alıyor. Aşağıda altı tabağı, şefin videolardaki kendi anlatımıyla özetledik.",
+ "body":[
+  ("Mare Spesiyal Islama Kalamar",
+   ["Şefin anlatımıyla tabağın fikri, Adapazarı'nın ünlü ıslama köftesinden geliyor: ıslama köftede ekmek kemik suyuyla ıslatılıyorsa, burada <strong>balık suyuyla</strong> ıslatılıyor. Balık suyuyla ıslatılan, tatlı toz biber ve tereyağında çevrilen ekmeğin üzerine ızgarada pişmiş bebek kalamar yerleştiriliyor.",
+    "Üzerine şefin kendi reçetesi olan <strong>naneli hardallı sos</strong>, ferahlık ve asit dengesi için domates küpleri ve taze soğan ekleniyor. Kasım 2026 itibarıyla ara sıcaklar arasında \"Mare Spesiyal Islama Kalamar\" adıyla menüde.",
+    bvid("YAbVQG4u7LI","Şef Doğan Anapa ıslama kalamarı anlatıyor")]),
+  ("Deniz Mahsullü Buğday Risotto",
+   ["Pirinç yerine <strong>aşurelik buğday</strong> kullanılıyor. Buğday, çimçim karides ve küçük kalamar parçalarıyla sarımsak, maydanoz ve tereyağında uzun süre pişirilip beyaz şarapla tamamlanıyor. Üzerine ayrıca pişirilen kabuklu jumbo karides ve kum midyesi yerleştiriliyor.",
+    "Şefin tercihi: karidesler hafif diri kalacak kadar az pişiyor; bitişte parmesan yerine yerel bir peynir olan <strong>Trakya eski kaşarı</strong> rendeleniyor. Ana yemekler arasında menüde.",
+    bvid("NybLKER1j_4","Deniz mahsullü buğday risotto")]),
+  ("Karpuz Salatası Yatağında Kuzu Kokoreç",
+   ["Kokoreçin yağlılığını dengelemek için tabağın altında domatesli, karpuzlu, fesleğenli ve hafif sirkeli bir salata var. Üzerine ızgarada çevrilmiş lavaş parçaları, onun üstüne de önce <strong>160 °C'de uzun süre fırında</strong> pişirilen, sonra ızgarada tereyağında çevrilen atom kokoreç geliyor.",
+    "Kimyon, pul biber, kekik ve tuzla baharatlanıp közlenmiş yeşil biberle servis ediliyor. Kuzu Kokoreç ana yemekler arasında menüde.",
+    bvid("enOAIZfhK3s","Karpuz salatası yatağında kuzu kokoreç")]),
+  ("Kabuklu Izgara Kaplan Karides",
+   ["Kaplan karidesler ortadan ikiye kesilip kabuğuyla pişiriliyor; şefe göre karides kabuğunun içinde çok daha lezzetleniyor. Sos sade: sarımsak, tereyağı, tuz ve maydanoz. Servis lime ve limonla yapılıyor.",
+    "Videoda tarifi Didi Otel Yönetim Kurulu Başkanı Kadir Çiçek'le birlikte hazırlıyorlar. Menüde \"Jumbo Karides Izgara\" ve \"Tereyağlı Karides\" ara sıcaklar arasında.",
+    bvid("zseYjYW3uFk","Şef Doğan Anapa ve Kadir Çiçek ile kabuklu ızgara karides")]),
+  ("Keşkek Üstünde Kuzu İncik",
+   ["Kuzu incik soğan, sarımsak, kekik, nane, fesleğen gibi kuru otlar, et suyu ve çeşitli asitlerle <strong>180 °C'de yaklaşık 2,5–3 saat</strong> fırında, dökme demir tencerede yavaş pişiyor. Keşkek buğday, nohut, soğan, tavuk ve tereyağıyla hazırlanıyor; şefin hatırlattığı gibi keşkek Adapazarı'nda çok sevilen bir yemek.",
+    "Tabak, inciğin kendi sosu ve nane yağıyla bitiriliyor. Bu tabak yaz menüsünde yer aldı; menü mevsime göre değiştiği için güncel menüyü kontrol edin.",
+    bvid("Asn8FZ0nFX0","Keşkek üstünde kuzu incik")]),
+  ("Kaya Levreği ve Karasu Kuşkonmazı",
+   ["Kalın kaya levreği önce ızgarada tur atıyor, sonra fırında pişmeye devam ediyor. Balığın altında iki \"gizli sos\" var: köz yeşil biberli, sarımsaklı ve rezeneli bir sos ile sirkeli, tarhunlu bir sos. Yanında fırında közlenmiş patates ve domates, üstünde Karasu'dan gelen taze kuşkonmaz, fesleğen, soğan turşusu ve limon.",
+    "Bu tabak da yaz menüsünde yer aldı; bugün balık seçenekleri için menüdeki güncel tabaklara bakabilirsiniz.",
+    bvid("rhSfnoAOCIg","Kaya levreği ve Karasu kuşkonmazı")]),
+  ("Bu Tabakların Ortak Noktası Ne?",
+   ["Üç ortak çizgi var: yerel ürün (Karasu kuşkonmazı, Trakya eski kaşarı), bölgenin yemek kültürüne gönderme (ıslama, keşkek) ve asit dengesi (sirkeli soslar, nane yağı, domates). Şefin mutfak anlayışını %s daha ayrıntılı anlattık."%L(post_url("sef-dogan-anapa-kimdir"),"Şef Doğan Anapa kimdir yazımızda"),
+    "Güncel menü için %s, tüm videolar için %s bakabilirsiniz."%(L(SITE+"/dijitalmenu","dijital menümüze"),L(YT,"YouTube kanalımıza"))]),
+ ],
+ "faq":[
+  ("Mare Gastro'nun imza tabakları neler?","Islama kalamar, deniz mahsullü buğday risotto, karpuz salatası yatağında kuzu kokoreç ve kabuklu ızgara karides öne çıkan tabaklardır. Kuzu incik ve kaya levreği yaz menüsünde yer aldı."),
+  ("Islama kalamar nedir?","Adapazarı ıslama köftesinden ilham alan bir tabaktır: balık suyuyla ıslatılmış ekmek üzerinde ızgara bebek kalamar ve naneli hardallı sos."),
+  ("Buğday risottoda hangi peynir kullanılıyor?","Parmesan yerine yerel bir peynir olan Trakya eski kaşarı kullanılıyor."),
+  ("Bu tabaklar her zaman menüde mi?","Menü mevsime göre değişir. Güncel tabaklar için maregastro.com/dijitalmenu adresine bakın."),
+ ],
+ "rel":["sef-dogan-anapa-kimdir","sapanca-deniz-urunleri","sapancada-ne-yenir"],
+},
+]
+
 BY_SLUG = {p["slug"]:p for p in POSTS}
 # 2026-10-24 GEO/AEO yenilemesi: en çok trafik alan 5 yazının güncel içeriği (blog/posts_refresh.py)
 from posts_refresh import REFRESH_TR
 for _r in REFRESH_TR:
     BY_SLUG[_r["slug"]].update(_r)
 # 2026-11-07 Search Console yenilemesi: marka dışı aramalarda 7-12. sıradaki 3 yazı (blog/posts_refresh2.py)
-from posts_refresh2 import REFRESH_TR2
+from posts_refresh2 import REFRESH_TR2, EXTRA_SECTIONS
 for _r in REFRESH_TR2:
     BY_SLUG[_r["slug"]].update(_r)
+for _slug, (_at, _secs) in EXTRA_SECTIONS.items():
+    _body = list(BY_SLUG[_slug]["body"])
+    if not any(h == _secs[0][0] for h, _ in _body):
+        BY_SLUG[_slug]["body"] = _body[:_at] + list(_secs) + _body[_at:]
 def strip_tags(s): return re.sub(r"<[^>]+>","",s)
 def iso(d): return d  # already YYYY-MM-DD
 def tr_date(d):
