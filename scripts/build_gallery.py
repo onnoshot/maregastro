@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Mare Gastro photo gallery — TR /fotograflar.html, EN/AR/RU /{lang}/photos.html.
 
-Only real photographs of the venue, dishes and chef (no AI-generated scenes).
+Only real photographs of the venue, bar, dishes and chef (no AI-generated scenes).
+Instagram photos (images/ig-*.webp) come from @maregastro via Composio (alias maregastro);
+source post per file: data/instagram-gallery-sources.json. Photos with text overlays are skipped.
 Dishes come from the live menu (/api/menu: items that have a photo), names in Turkish
 as on the printed menu. Creates /images/g/<name>-800.webp (grid) and -1600.webp (lightbox).
 
@@ -33,6 +35,25 @@ VENUE = [
  ("mare-romantik-kadeh", {"tr": "İki kişilik akşam yemeğinde kadehler", "en": "A toast at dinner for two", "ar": "نخب في عشاء لشخصين", "ru": "Тост за ужином на двоих"}),
  ("mare-grup-sofra", {"tr": "Paylaşımlık mezelerle kalabalık sofra", "en": "A shared table of meze", "ar": "مائدة مشتركة من المقبلات", "ru": "Общий стол с мезе"}),
  ("mare-sofra-detay", {"tr": "Sofradan mezeler", "en": "Meze on the table", "ar": "مقبلات على المائدة", "ru": "Мезе на столе"}),
+ ("ig-gunduz-tente", {"tr": "Gündüz Mare Gastro tentesi", "en": "The Mare Gastro awning by day", "ar": "مظلة Mare Gastro نهاراً", "ru": "Навес Mare Gastro днём"}),
+ ("ig-gece-zeytin-agaclari", {"tr": "Zeytin ağaçları arasında gece Mare Gastro", "en": "Mare Gastro at night among the olive trees", "ar": "Mare Gastro ليلاً بين أشجار الزيتون", "ru": "Mare Gastro ночью среди оливковых деревьев"}),
+]
+BAR = [
+ ("ig-bar-kokteyl-hazirlik", {"tr": "Barda imza kokteyl hazırlığı", "en": "Preparing a signature cocktail at the bar", "ar": "تحضير كوكتيل مميز في البار", "ru": "Фирменный коктейль готовится у бара"}),
+ ("ig-kokteyl-serefe", {"tr": "İmza kokteyllerle şerefe", "en": "Cheers with signature cocktails", "ar": "نخب بالكوكتيلات المميزة", "ru": "Тост с фирменными коктейлями"}),
+ ("ig-gece-kadeh", {"tr": "Gece kadehler kalkıyor", "en": "Glasses raised at night", "ar": "رفع الكؤوس ليلاً", "ru": "Бокалы поднимаются вечером"}),
+ ("ig-imza-kokteyl", {"tr": "İmza kokteyl", "en": "Signature cocktail", "ar": "كوكتيل مميز", "ru": "Фирменный коктейль"}),
+ ("ig-bar-kokteyl", {"tr": "Barda bir kokteyl", "en": "A cocktail at the bar", "ar": "كوكتيل في البار", "ru": "Коктейль у бара"}),
+ ("ig-aksam-bar", {"tr": "Akşam barda", "en": "Evening at the bar", "ar": "مساء في البار", "ru": "Вечер у бара"}),
+]
+IG_DISHES = [
+ ("ig-koy-salatasi", {"tr": "Köy salatası: domates, biber, salatalık, beyaz peynir, zeytin", "en": "Village salad: tomato, pepper, cucumber, white cheese, olives", "ar": "سلطة القرية: طماطم، فلفل، خيار، جبن أبيض، زيتون", "ru": "Деревенский салат: томаты, перец, огурец, белый сыр, оливки"}),
+ ("ig-zeytinyaglilar", {"tr": "Zeytinyağlılar ve mezeler", "en": "Olive-oil dishes and meze", "ar": "أطباق بزيت الزيتون ومقبلات", "ru": "Блюда на оливковом масле и мезе"}),
+ ("ig-akdeniz-mezeleri", {"tr": "Akdeniz mezeleri: taze fasulye, pancar carpaccio, közlenmiş patlıcan, enginar", "en": "Mediterranean meze: green beans, beetroot carpaccio, roasted aubergine, artichoke", "ar": "مقبلات متوسطية: فاصوليا خضراء، كارباتشيو الشمندر، باذنجان مشوي، خرشوف", "ru": "Средиземноморские мезе: стручковая фасоль, карпаччо из свёклы, печёный баклажан, артишок"}),
+ ("ig-citir-kalamar", {"tr": "Çıtır kalamar", "en": "Crispy calamari", "ar": "كاليماري مقرمش", "ru": "Хрустящие кальмары"}),
+ ("ig-balik-tabagi", {"tr": "Mare Gastro mutfağından bir balık tabağı", "en": "A fish plate from the Mare Gastro kitchen", "ar": "طبق سمك من مطبخ Mare Gastro", "ru": "Рыбное блюдо с кухни Mare Gastro"}),
+ ("ig-tabak-1", {"tr": "Mare Gastro mutfağından bir tabak", "en": "A plate from the Mare Gastro kitchen", "ar": "طبق من مطبخ Mare Gastro", "ru": "Блюдо с кухни Mare Gastro"}),
+ ("ig-yanik-cheesecake", {"tr": "Yanık yüzlü cheesecake", "en": "Burnt Basque cheesecake", "ar": "تشيز كيك محروق الوجه", "ru": "Баскский чизкейк"}),
 ]
 CHEF = [("dogansef", {"tr": "Yönetici Şef Doğan Anapa", "en": "Executive Chef Doğan Anapa", "ar": "الشيف التنفيذي دوغان أنابا", "ru": "Шеф-повар Доган Анапа"})]
 
@@ -40,19 +61,19 @@ T = {
  "tr": dict(title="Mare Gastro Fotoğrafları | Sapanca Bahçe, Teras ve Tabaklar",
   desc="Mare Gastro'dan gerçek fotoğraflar: Sapanca'da Didi Otel bahçesi, gece terası, havuz ve kabanalar, Şef Doğan Anapa ve menüdeki tabaklar.",
   h1="Mare Gastro <em>Fotoğrafları</em>", lead="Bahçeden, terastan ve mutfaktan gerçek kareler. Büyütmek için bir fotoğrafa dokunun.",
-  venue="Mekân", dishes="Tabaklar", chef="Şef", rez="Rezervasyon Yap", ig="Instagram'da daha fazlası", back="Ana sayfa", crumb="Fotoğraflar", close="Kapat", prev="Önceki", next="Sonraki"),
+  venue="Mekân", bar="Bar ve Kokteyller", dishes="Tabaklar", chef="Şef", rez="Rezervasyon Yap", ig="Instagram'da daha fazlası", back="Ana sayfa", crumb="Fotoğraflar", close="Kapat", prev="Önceki", next="Sonraki"),
  "en": dict(title="Mare Gastro Photos | Garden, Terrace and Dishes in Sapanca",
   desc="Real photos of Mare Gastro: the Didi Otel garden in Sapanca, the night terrace, pool and cabanas, Chef Doğan Anapa and dishes from the menu.",
   h1="Mare Gastro <em>Photos</em>", lead="Real moments from the garden, the terrace and the kitchen. Tap a photo to enlarge it.",
-  venue="The Place", dishes="Dishes", chef="Chef", rez="Book a Table", ig="More on Instagram", back="Home", crumb="Photos", close="Close", prev="Previous", next="Next"),
+  venue="The Place", bar="Bar & Cocktails", dishes="Dishes", chef="Chef", rez="Book a Table", ig="More on Instagram", back="Home", crumb="Photos", close="Close", prev="Previous", next="Next"),
  "ar": dict(title="صور Mare Gastro | الحديقة والتراس والأطباق في سابانجا",
   desc="صور حقيقية من Mare Gastro: حديقة Didi Otel في سابانجا، التراس الليلي، المسبح والأكواخ، الشيف دوغان أنابا وأطباق من القائمة.",
   h1="صور <em>Mare Gastro</em>", lead="لقطات حقيقية من الحديقة والتراس والمطبخ. اضغط على الصورة لتكبيرها.",
-  venue="المكان", dishes="الأطباق", chef="الشيف", rez="احجز طاولة", ig="المزيد على إنستغرام", back="الرئيسية", crumb="الصور", close="إغلاق", prev="السابق", next="التالي"),
+  venue="المكان", bar="البار والكوكتيلات", dishes="الأطباق", chef="الشيف", rez="احجز طاولة", ig="المزيد على إنستغرام", back="الرئيسية", crumb="الصور", close="إغلاق", prev="السابق", next="التالي"),
  "ru": dict(title="Фото Mare Gastro | Сад, терраса и блюда в Сапандже",
   desc="Настоящие фото Mare Gastro: сад отеля Didi Otel в Сапандже, ночная терраса, бассейн и кабаны, шеф Доган Анапа и блюда из меню.",
   h1="Фото <em>Mare Gastro</em>", lead="Настоящие кадры из сада, с террасы и с кухни. Нажмите на фото, чтобы увеличить.",
-  venue="Место", dishes="Блюда", chef="Шеф", rez="Забронировать", ig="Больше в Instagram", back="Главная", crumb="Фото", close="Закрыть", prev="Назад", next="Далее"),
+  venue="Место", bar="Бар и коктейли", dishes="Блюда", chef="Шеф", rez="Забронировать", ig="Больше в Instagram", back="Главная", crumb="Фото", close="Закрыть", prev="Назад", next="Далее"),
 }
 
 
@@ -163,13 +184,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 function trackEvent(n,p){try{window.dataLayer=window.dataLayer||[];p=Object.assign({page_lang:document.documentElement.lang||''},p||{});window.dataLayer.push(Object.assign({event:n},p));if(MARE_GTM_EVENTS.indexOf(n)<0)gtag('event',n,Object.assign({send_to:'G-LMZ66PTR0T'},p));}catch(e){}}</script>"""
 
 
-def page(lang, venue, dishes, chef):
+def page(lang, venue, dishes, chef, bar):
     t = T[lang]
     url = SITE + PATHS[lang]
     rtl = ' dir="rtl"' if lang == "ar" else ""
     alts = "".join('<link rel="alternate" hreflang="%s" href="%s%s">\n' % (l, SITE, p) for l, p in PATHS.items())
     alts += '<link rel="alternate" hreflang="x-default" href="%s%s">\n' % (SITE, PATHS["tr"])
-    imgs = [(v[1600][0], alt) for _, alt, v in venue + chef + dishes]
+    imgs = [(v[1600][0], alt) for _, alt, v in venue + bar + chef + dishes]
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "ImageGallery", "@id": url + "#gallery", "url": url, "name": html.unescape(t["title"]), "inLanguage": lang,
          "about": {"@type": "Restaurant", "name": "Mare Gastro", "url": SITE + HOME[lang]},
@@ -212,6 +233,8 @@ def page(lang, venue, dishes, chef):
 <p class="lead">{t['lead']}</p>
 <h2>{t['venue']}</h2>
 <div class="grid">{g(venue, 'g-venue')}</div>
+<h2>{t['bar']}</h2>
+<div class="grid">{g(bar, 'g-bar')}</div>
 <h2>{t['chef']}</h2>
 <div class="grid">{g(chef, 'g-chef')}</div>
 <h2>{t['dishes']}</h2>
@@ -232,10 +255,11 @@ def main():
     for lang in PATHS:
         venue = [(n, a[lang], variants(n)) for n, a in VENUE if variants(n)]
         chef = [(n, a[lang], variants(n)) for n, a in CHEF if variants(n)]
-        dishes = [(n, label, variants(n)) for n, label in dishes_raw if variants(n)]
+        bar = [(n, a[lang], variants(n)) for n, a in BAR if variants(n)]
+        dishes = [(n, a[lang], variants(n)) for n, a in IG_DISHES if variants(n)] + [(n, label, variants(n)) for n, label in dishes_raw if variants(n)]
         out = os.path.join(ROOT, PATHS[lang].lstrip("/"))
-        open(out, "w", encoding="utf-8").write(page(lang, venue, dishes, chef))
-        print("wrote", PATHS[lang], "venue", len(venue), "chef", len(chef), "dishes", len(dishes))
+        open(out, "w", encoding="utf-8").write(page(lang, venue, dishes, chef, bar))
+        print("wrote", PATHS[lang], "venue", len(venue), "bar", len(bar), "chef", len(chef), "dishes", len(dishes))
 
 
 if __name__ == "__main__":
