@@ -28,6 +28,7 @@ const JOURNEY_EXTRA = ['view_contact', 'menu_group_click', 'digital_menu_open', 
   'whatsapp_click', 'phone_click', 'menu_click', 'availability_check', 'form_start', 'form_details_start', 'form_error',
   'engaged_30s', 'engaged_90s', 'engaged_180s', 'engaged_300s'];
 const JOURNEY_EVENTS = [...JOURNEY_STEPS.map((x) => x[0]), ...JOURNEY_EXTRA];
+const JOURNEY_SINCE = '2026-11-07';
 let journeyCache = null;
 let journeyCacheExpiry = 0;
 const SEARCH_SITES = ['sc-domain:maregastro.com', 'https://maregastro.com/', 'https://www.maregastro.com/'];
@@ -167,8 +168,13 @@ export default async function handler(req, res) {
     // ── ?journey=1 → Ziyaretci Yolculugu: adim adim huni, bolum erisimi, dil kirilimi, kalma suresi ──
     if (String((req.query && req.query.journey) || '') === '1') {
       if (journeyCache && Date.now() < journeyCacheExpiry) return send(res, 200, journeyCache);
-      const d30 = { startDate: '29daysAgo', endDate: 'today' };
-      const compare = [{ ...d30, name: 'cur' }, { startDate: '59daysAgo', endDate: '30daysAgo', name: 'prev' }];
+      // Olcum 2026-11-07'de basladi: pencere en fazla 30 gun, ama bu tarihten once baslamaz
+      // (aksi halde huni tabani 30 gunluk, adimlar birkac gunluk olur ve oranlar yaniltir).
+      const iso = (t) => new Date(t).toISOString().slice(0, 10);
+      const startMs = Math.max(Date.parse(JOURNEY_SINCE), Date.now() - 29 * 864e5);
+      const spanDays = Math.round((Date.now() - startMs) / 864e5) + 1;
+      const d30 = { startDate: iso(startMs), endDate: 'today' };
+      const compare = [{ ...d30, name: 'cur' }, { startDate: iso(startMs - spanDays * 864e5), endDate: iso(startMs - 864e5), name: 'prev' }];
       const inList = { filter: { fieldName: 'eventName', inListFilter: { values: JOURNEY_EVENTS } } };
       const [evR, langR, baseR, dayR] = await gaBatch(token, [
         { dateRanges: compare, dimensions: [{ name: 'eventName' }], metrics: [{ name: 'totalUsers' }, { name: 'eventCount' }], dimensionFilter: inList, limit: 200 },
@@ -200,7 +206,7 @@ export default async function handler(req, res) {
         const d = row.dimensionValues[0].value;
         return { date: `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}`, name: row.dimensionValues[1].value, users: Number(row.metricValues[0].value) };
       });
-      journeyCache = { ok: true, updatedAt: new Date().toISOString(), since: '2026-11-07', steps: JOURNEY_STEPS, base, events, byLang, daily };
+      journeyCache = { ok: true, updatedAt: new Date().toISOString(), since: JOURNEY_SINCE, startDate: d30.startDate, days: spanDays, steps: JOURNEY_STEPS, base, events, byLang, daily };
       journeyCacheExpiry = Date.now() + 5 * 60 * 1000;
       return send(res, 200, journeyCache);
     }
