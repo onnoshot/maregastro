@@ -2069,6 +2069,10 @@ BY_SLUG = {p["slug"]:p for p in POSTS}
 from posts_refresh import REFRESH_TR
 for _r in REFRESH_TR:
     BY_SLUG[_r["slug"]].update(_r)
+# 2026-11-07 Search Console yenilemesi: marka dışı aramalarda 7-12. sıradaki 3 yazı (blog/posts_refresh2.py)
+from posts_refresh2 import REFRESH_TR2
+for _r in REFRESH_TR2:
+    BY_SLUG[_r["slug"]].update(_r)
 def strip_tags(s): return re.sub(r"<[^>]+>","",s)
 def iso(d): return d  # already YYYY-MM-DD
 def tr_date(d):

@@ -223,6 +223,7 @@ REFRESH = {
  "body": [
   ("Коротко: кто такой Доган Анапа?", [
    "Доган Анапа — шеф-повар ресторана <strong>Mare Gastro</strong> в саду отеля Didi Otel в Сапандже (Турция). Он руководит эгейско-средиземноморской кухней высокого уровня с акцентом на морепродукты и свежие сезонные продукты и известен повествовательным подходом, сформированным опытом в кино.",
+    '<figure class="bbody-fig bfig-portrait"><img src="/images/dogan-anapa-sef-bahce-720.webp" srcset="/images/dogan-anapa-sef-bahce-720.webp 720w, /images/dogan-anapa-sef-bahce.webp 1360w" sizes="(max-width:520px) 92vw, 440px" width="720" height="1084" alt="Шеф-повар Доган Анапа в саду Mare Gastro" loading="lazy"><figcaption>Шеф-повар Доган Анапа в саду Mare Gastro.</figcaption></figure>',
   ]),
   ("Доган Анапа в одной таблице", [
    table(["", ""], [

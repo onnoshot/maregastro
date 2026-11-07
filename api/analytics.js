@@ -31,6 +31,7 @@ const JOURNEY_EVENTS = [...JOURNEY_STEPS.map((x) => x[0]), ...JOURNEY_EXTRA];
 const JOURNEY_SINCE = '2026-11-07';
 let journeyCache = null;
 let journeyCacheExpiry = 0;
+const AI_SOURCES_RE = 'chatgpt|openai|perplexity|gemini|bard|copilot|claude|anthropic|deepseek|grok|meta\\.ai|you\\.com|mistral';
 const SEARCH_SITES = ['sc-domain:maregastro.com', 'https://maregastro.com/', 'https://www.maregastro.com/'];
 
 function cors(res) {
@@ -229,7 +230,7 @@ export default async function handler(req, res) {
         dateRanges: [d30], dimensions: [{ name: dim }], metrics: [{ name: metric }],
         orderBys: [{ metric: { metricName: metric }, desc: true }], limit,
       });
-      const [[hourR, dowR, cityR, langR, nvrR], [landR, srcR, sumR, evCmpR, evDayR], [menuR]] = await Promise.all([
+      const [[hourR, dowR, cityR, langR, nvrR], [landR, srcR, sumR, evCmpR, evDayR], [menuR, aiR]] = await Promise.all([
         gaBatch(token, [
           top('hour', 'activeUsers', 24), top('dayOfWeek', 'activeUsers', 7),
           top('city', 'sessions', 10), top('language', 'sessions', 6), top('newVsReturning', 'activeUsers', 3),
@@ -252,6 +253,12 @@ export default async function handler(req, res) {
           dateRanges: [d30], dimensions: [{ name: 'pageTitle' }], metrics: [{ name: 'eventCount' }],
           dimensionFilter: { filter: { fieldName: 'eventName', stringFilter: { value: 'menu_section_view' } } },
           orderBys: [{ metric: { metricName: 'eventCount' }, desc: true }], limit: 14,
+        }, {
+          // Yapay zeka asistanlarindan gelen ziyaretler (ChatGPT, Gemini, Perplexity, Copilot, Claude...)
+          dateRanges: [{ startDate: '89daysAgo', endDate: 'today', name: 'cur' }, { startDate: '179daysAgo', endDate: '90daysAgo', name: 'prev' }],
+          dimensions: [{ name: 'sessionSource' }, { name: 'landingPage' }], metrics: [{ name: 'sessions' }],
+          dimensionFilter: { filter: { fieldName: 'sessionSource', stringFilter: { matchType: 'PARTIAL_REGEXP', value: AI_SOURCES_RE, caseSensitive: false } } },
+          limit: 200,
         }]),
       ]);
       const pairs = (rep) => (rep.rows || []).map((row) => ({ name: row.dimensionValues[0].value, value: Number(row.metricValues[0].value) }));
@@ -276,6 +283,7 @@ export default async function handler(req, res) {
         hours: pairs(hourR), weekdays: pairs(dowR), cities: pairs(cityR), languages: pairs(langR), audience: pairs(nvrR),
         landings: (landR.rows || []).map((row) => ({ path: row.dimensionValues[0].value, sessions: Number(row.metricValues[0].value), engagement: Number(row.metricValues[1].value) })),
         sources: pairs(srcR), summary, eventCompare, eventDaily, menuSections: pairs(menuR),
+        aiVisits: (aiR.rows || []).map((row) => ({ source: row.dimensionValues[0].value, landing: row.dimensionValues[1].value, period: row.dimensionValues[2] ? row.dimensionValues[2].value : 'cur', sessions: Number(row.metricValues[0].value) })),
       };
       insightsCacheExpiry = Date.now() + 5 * 60 * 1000;
       return send(res, 200, insightsCache);

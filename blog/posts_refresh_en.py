@@ -224,6 +224,7 @@ REFRESH = {
  "body": [
   ("Quick Answer: Who Is Doğan Anapa?", [
    "Doğan Anapa is the Executive Chef of <strong>Mare Gastro</strong>, located in the garden of Didi Otel in Sapanca, Turkey. He leads a seafood-focused Aegean-Mediterranean fine dining kitchen built on fresh, seasonal produce, and is known for a storytelling approach shaped by his background in cinema.",
+    '<figure class="bbody-fig bfig-portrait"><img src="/images/dogan-anapa-sef-bahce-720.webp" srcset="/images/dogan-anapa-sef-bahce-720.webp 720w, /images/dogan-anapa-sef-bahce.webp 1360w" sizes="(max-width:520px) 92vw, 440px" width="720" height="1084" alt="Executive Chef Doğan Anapa in the Mare Gastro garden" loading="lazy"><figcaption>Executive Chef Doğan Anapa in the Mare Gastro garden.</figcaption></figure>',
   ]),
   ("Doğan Anapa at a Glance", [
    table(["", ""], [

@@ -223,6 +223,7 @@ REFRESH = {
  "body": [
   ("الإجابة المختصرة: من هو دوغان أنابا؟", [
    "دوغان أنابا هو الشيف التنفيذي لمطعم <strong>Mare Gastro</strong> في حديقة فندق Didi Otel في سابانجا بتركيا. يقود مطبخ طعام فاخر إيجيًا-متوسطيًا يركّز على المأكولات البحرية ويعتمد على المكونات الطازجة الموسمية، ويُعرف بأسلوب سردي تشكّل من خلفيته في السينما.",
+    '<figure class="bbody-fig bfig-portrait"><img src="/images/dogan-anapa-sef-bahce-720.webp" srcset="/images/dogan-anapa-sef-bahce-720.webp 720w, /images/dogan-anapa-sef-bahce.webp 1360w" sizes="(max-width:520px) 92vw, 440px" width="720" height="1084" alt="الشيف التنفيذي دوغان أنابا في حديقة Mare Gastro" loading="lazy"><figcaption>الشيف التنفيذي دوغان أنابا في حديقة Mare Gastro.</figcaption></figure>',
   ]),
   ("دوغان أنابا في لمحة", [
    table(["", ""], [

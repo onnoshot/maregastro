@@ -286,6 +286,7 @@ REFRESH_TR = [
  "body": [
   ("Kısa Cevap: Doğan Anapa Kimdir?", [
    "Doğan Anapa, Sapanca'da Didi Otel bahçesinde yer alan <strong>Mare Gastro</strong>'nun Yönetici Şefi'dir. Taze ve mevsimsel malzemeye dayanan, deniz ürünleri ağırlıklı bir Ege-Akdeniz fine dining mutfağı yürütüyor. Sinema geçmişinden gelen anlatı odaklı bakışı, tabaklarını bir sahne gibi kurgulamasıyla biliniyor.",
+    '<figure class="bbody-fig bfig-portrait"><img src="/images/dogan-anapa-sef-bahce-720.webp" srcset="/images/dogan-anapa-sef-bahce-720.webp 720w, /images/dogan-anapa-sef-bahce.webp 1360w" sizes="(max-width:520px) 92vw, 440px" width="720" height="1084" alt="Yönetici Şef Doğan Anapa, Mare Gastro bahçesinde" loading="lazy"><figcaption>Yönetici Şef Doğan Anapa, Mare Gastro bahçesinde.</figcaption></figure>',
   ]),
   ("Doğan Anapa Hakkında Temel Bilgiler", [
    table(["", ""], [
