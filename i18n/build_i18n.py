@@ -279,9 +279,10 @@ __GA__
 <meta name="description" content="Sapanca'da gölün hemen yanında lüks fine dining restoran. Mare Gastro, Didi Otel bahçesinde. Dilinizi seçin, Select your language.">
 <meta name="theme-color" content="#04080F">
 <link rel="canonical" href="__SITE__/">
-<link rel="icon" type="image/svg+xml" href="/images/mare.svg">
-<link rel="icon" type="image/png" href="/images/marelogo.png">
-<link rel="apple-touch-icon" href="/images/marelogo.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Mare Gastro","alternateName":["Mare Gastro Sapanca","maregastro.com"],"url":"https://maregastro.com/"}</script>
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 __HREFLANG__
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

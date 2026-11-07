@@ -2180,7 +2180,9 @@ PAGE = """<!DOCTYPE html>
 <meta name="author" content="Mare Gastro">
 <meta name="theme-color" content="#04080F">
 <link rel="canonical" href="{url}">
-<link rel="icon" type="image/png" href="../images/marelogo.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Mare Gastro">
 <meta property="og:title" content="{title}">
@@ -2251,7 +2253,9 @@ INDEX = """<!DOCTYPE html>
 <meta name="author" content="Mare Gastro">
 <meta name="theme-color" content="#04080F">
 <link rel="canonical" href="{site}/blog/">
-<link rel="icon" type="image/png" href="../images/marelogo.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Mare Gastro">
 <meta property="og:title" content="Blog | Mare Gastro — Sapanca Fine Dining Rehberi">
