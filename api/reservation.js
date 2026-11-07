@@ -140,14 +140,15 @@ async function readRecords(blobs) {
 }
 
 async function tgSend(text) {
-  const token = process.env.TG_BOT_TOKEN, chatId = process.env.TG_CHAT_ID;
-  if (!token || !chatId) return;
-  try {
-    await fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
+  const token = process.env.TG_BOT_TOKEN;
+  const chatIds = String(process.env.TG_CHAT_ID || '').split(',').map(s => s.trim()).filter(Boolean);
+  if (!token || !chatIds.length) return;
+  await Promise.all(chatIds.map(chatId =>
+    fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML', disable_web_page_preview: true }),
-    });
-  } catch (e) { /* bildirim hatasi akisi bozmaz */ }
+    }).catch(() => { /* bildirim hatasi akisi bozmaz */ })
+  ));
 }
 
 export default async function handler(req, res) {
