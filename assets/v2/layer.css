@@ -678,3 +678,4 @@ nav .nlinks a{font-size:13px;font-weight:500;letter-spacing:-.005em;text-transfo
 .pdot::before{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;border-radius:50%;background:rgba(16,32,46,.28);transform:translate(-50%,-50%);transition:all .35s var(--ease)}
 .pdot.on::before{background:var(--amber);width:8px;height:8px}
 @media(max-width:767px){.pdots{right:2px}}
+.kfoot-t a{color:var(--amber-ink)!important}

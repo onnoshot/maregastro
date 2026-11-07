@@ -167,8 +167,8 @@ a:hover{color:var(--amber)}
 .btn-gold:hover{background:var(--amber2);color:var(--bg);transform:translateY(-1px)}
 .btn-line{background:var(--glass);border:1px solid var(--glassBorder);color:var(--cream);border-radius:100px;padding:13px 26px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;transition:background .25s}
 .btn-line:hover{background:rgba(255,255,255,.1);color:var(--cream)}
-.btn-wa{background:#25D366;color:#fff;border-radius:100px;padding:13px 26px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;transition:background .25s}
-.btn-wa:hover{background:#1dbd5a;color:#fff}
+.btn-wa{background:#167A43;color:#fff;border-radius:100px;padding:13px 26px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;transition:background .25s}
+.btn-wa:hover{background:#12673A;color:#fff}
 
 /* ── RELATED ── */
 .brel{max-width:980px;margin:60px auto 0;padding:0 22px}
