@@ -316,7 +316,7 @@ nav.nav-hide{transform:translateY(-130%)}
 
 /* ── RESERVATION ── */
 #reservation{padding:var(--sec-pad) 0;background:var(--bg)}
-#reservation::before{background:linear-gradient(rgba(251,248,242,.9),rgba(251,248,242,.95)),url('/images/mare-aerial.webp') center/cover no-repeat}
+#reservation::before{background:linear-gradient(rgba(251,248,242,.9),rgba(251,248,242,.95)),url('/images/mare-aerial-bg.webp') center/cover no-repeat}
 .rez-wrap{padding:0}
 .rez-inner{max-width:1100px;padding:0 20px}
 @media(min-width:768px){.rez-inner{padding:0 48px;gap:72px}.rez-left{width:300px;position:sticky;top:110px}}
@@ -500,7 +500,7 @@ nav .langsw-btn{background:rgba(255,255,255,.7)!important;border-color:rgba(16,3
 .v2-occ .v2-title{color:var(--ink)}
 .v2-occ .v2-eyebrow{color:var(--amber)}
 #reservation{background:var(--sea)}
-#reservation::before{background:linear-gradient(rgba(232,239,241,.92),rgba(232,239,241,.96)),url('/images/mare-aerial.webp') center/cover no-repeat}
+#reservation::before{background:linear-gradient(rgba(232,239,241,.92),rgba(232,239,241,.96)),url('/images/mare-aerial-bg.webp') center/cover no-repeat}
 #contact{background:var(--bg)}
 .sc-frame,.mpanel.on.list,.mgroup-btn:not(.on),.mtab:not(.on){background:#fff}
 .v2-sig .sig-card{border-color:rgba(16,32,46,.06)}
@@ -659,3 +659,22 @@ nav .nlinks a{font-size:13px;font-weight:500;letter-spacing:-.005em;text-transfo
 .sc-frame-img,.sc-frame-img img{aspect-ratio:4/5}
 .sc-frame-img img{height:100%;width:100%;object-fit:cover;object-position:50% 18%;animation:none;transform:none}
 @media(max-width:767px){.sc-frame{max-width:380px}.sc-frame-img{aspect-ratio:4/5}}
+
+/* ═════════════════════════════════════════════════════════════
+   v2.3 (2026-11-07) — accessibility: contrast ≥ 4.5:1, 24px targets
+═════════════════════════════════════════════════════════════ */
+:root{--amber-ink:#7A5A27;--muted:rgba(16,32,46,.74)}
+/* small gold text uses the darker ink tone (gold #9C7437 stays for large headings) */
+.v2-eyebrow,.a-eyebrow,.sc-eyebrow,.m-eyebrow,.r-eyebrow,.k-eyebrow,.sig-cat,.field-label,.kdet-body h3,.kdet-body h4,
+.pstep-label,.sum-item label,.mc-detail-date,.ev-pop-date,.dc-price,.dlist-price,.a-body em,.st-l{color:var(--amber-ink)}
+.v2-occ .v2-eyebrow{color:var(--amber-ink)}
+.mtab.on{background:var(--amber-ink);border-color:var(--amber-ink)}
+.dc-desc,.sig-desc,.dlist-desc,.m-hint,.sig-hint,.r-body,.v2-lead,.rv-who small,.gcnt-sublabel,.gcnt-note,.rez-step-header small{color:rgba(16,32,46,.74)}
+/* contact detail headings: h4 -> h3 for heading order, same look */
+.kdet-body h3{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:3px}
+/* section dots: 24×24 hit area, same small visual dot */
+.pdots{gap:0}
+.pdot{width:24px;height:24px;background:none!important;border-radius:0;position:relative;transform:none!important}
+.pdot::before{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;border-radius:50%;background:rgba(16,32,46,.28);transform:translate(-50%,-50%);transition:all .35s var(--ease)}
+.pdot.on::before{background:var(--amber);width:8px;height:8px}
+@media(max-width:767px){.pdots{right:2px}}

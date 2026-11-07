@@ -43,3 +43,7 @@ for slug in TARGETS:
         I.build_post(lang, slug, data, P.POSTS)
 
 print("Rebuilt %d posts (TR + translations where available)" % len(TARGETS))
+
+# 2026-11-07: hafif WebP blog görselleri (scripts/optimize_blog_images.py)
+import subprocess
+subprocess.run([sys.executable, "-I", os.path.join(os.path.dirname(HERE), "scripts", "optimize_blog_images.py")], check=False)

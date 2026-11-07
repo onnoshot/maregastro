@@ -16,7 +16,8 @@
   var loader = $('#v2Loader');
   function hideLoader() { if (loader) loader.classList.add('done'); }
   if (root.classList.contains('v2-seen') || RM) hideLoader();
-  else { window.addEventListener('load', function () { setTimeout(hideLoader, 250); }); setTimeout(hideLoader, 1600); }
+  // motion.js is deferred, so the DOM is ready here; don't wait for video/images (hurt LCP)
+  else { setTimeout(hideLoader, 350); setTimeout(hideLoader, 900); }
 
   /* ── Smooth scroll (Lenis) ── */
   var lenis = null;
@@ -225,8 +226,16 @@
     ScrollTrigger.refresh();
   }
 
-  /* ── GSAP-powered motion ── */
+  /* ── TripAdvisor badge: give the injected link an accessible name ── */
+  var ta = $('.kfoot-ta');
+  if (ta && 'MutationObserver' in window) {
+    var nameTa = function () { $$('a', ta).forEach(function (x) { if (!x.textContent.trim() && !x.getAttribute('aria-label')) x.setAttribute('aria-label', 'Mare Gastro TripAdvisor'); }); };
+    nameTa(); new MutationObserver(nameTa).observe(ta, { childList: true, subtree: true });
+  }
+
+  /* ── GSAP-powered motion: set up after load, when the browser is idle (keeps the main thread free for first paint) ── */
   if (!hasG || RM) { $$('.v2-split').forEach(function (el) { el.classList.add('in'); }); return; }
+  function heavyMotion() {
   gsap.registerPlugin(ScrollTrigger);
   if (window.SplitText) gsap.registerPlugin(SplitText);
 
@@ -286,5 +295,8 @@
     var rT; var doRefresh = function () { if (lenis && lenis.isScrolling) { rT = setTimeout(doRefresh, 300); return; } ScrollTrigger.refresh(); };
     new ResizeObserver(function () { clearTimeout(rT); rT = setTimeout(doRefresh, 250); }).observe(mp);
   }
-  window.addEventListener('load', function () { ScrollTrigger.refresh(); });
+  ScrollTrigger.refresh();
+  }
+  var startHeavy = function () { (window.requestIdleCallback || function (f) { setTimeout(f, 1); })(heavyMotion, { timeout: 1500 }); };
+  if (d.readyState === 'complete') startHeavy(); else window.addEventListener('load', startHeavy);
 })();
