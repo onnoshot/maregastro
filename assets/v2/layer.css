@@ -653,3 +653,9 @@ nav .nlinks a{font-size:13px;font-weight:500;letter-spacing:-.005em;text-transfo
 .dc-noimg svg{display:none}
 .dc-noimg::before{content:"";width:52%;max-width:150px;aspect-ratio:2/1;background:url('/images/marelogo1.png') center/contain no-repeat;filter:brightness(0);opacity:.1}
 @media(max-width:767px){.m-hint{margin:6px 0 10px}}
+
+/* Chef portrait (2026-11-07): vertical 4:5 frame for the new garden-terrace photo */
+.sc-frame{max-width:460px}
+.sc-frame-img,.sc-frame-img img{aspect-ratio:4/5}
+.sc-frame-img img{height:100%;width:100%;object-fit:cover;object-position:50% 18%;animation:none;transform:none}
+@media(max-width:767px){.sc-frame{max-width:380px}.sc-frame-img{aspect-ratio:4/5}}
