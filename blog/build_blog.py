@@ -110,7 +110,7 @@ POSTS = [
  ],
  "faq":[
   ("Sapanca'da lüks restoran nerede?","Mare Gastro, Sapanca Gölü kıyısındaki Didi Otel bahçesinde yer alır. Gölün hemen yanında olmasına karşı fine dining deneyimi sunan, doğayla iç içe lüks bir restorandır."),
-  ("Mare Gastro hangi günler açık?","Mare Gastro Salı'dan Pazar'a 12:00–00:00 arası açıktır. Pazartesi kapalıdır."),
+  ("Mare Gastro hangi günler açık?","Mare Gastro Salı'dan Pazar'a 09:00–00:00 arası açıktır. Pazartesi kapalıdır."),
   ("Mare Gastro'da rezervasyon nasıl yapılır?","Web sitesindeki üç adımlı rezervasyon formundan tarih, saat ve kişi sayısını seçerek WhatsApp üzerinden hızlıca rezervasyon oluşturabilirsiniz."),
   ("Mare Gastro İstanbul'a uzak mı?","Sapanca, İstanbul'a yaklaşık 1,5 saat mesafededir; bu da Mare Gastro'yu hafta sonu gurme kaçamakları için ideal kılar."),
  ],
@@ -286,7 +286,7 @@ POSTS = [
   ("Didi Otel'in restoranı hangisi?","Didi Otel bahçesindeki fine dining restoranı Mare Gastro'dur. Gölün hemen yanında olmasına karşı Ege ve Akdeniz mutfağı sunar."),
   ("Mare Gastro Didi Otel'in neresinde?","Mare Gastro, Sapanca'daki Didi Otel'in bahçesinde yer alır; göl kıyısının doğal dokusuyla iç içedir."),
   ("Didi Otel'de konaklayıp restoranda yemek yiyebilir miyim?","Evet. Konaklayan misafirler Mare Gastro'da akşam yemeği deneyimini yaşayabilir; rezervasyon formunda konaklama tercihinizi belirtebilirsiniz."),
-  ("Mare Gastro hangi günler açık?","Salı'dan Pazar'a 12:00–00:00 arası açıktır; Pazartesi kapalıdır."),
+  ("Mare Gastro hangi günler açık?","Salı'dan Pazar'a 09:00–00:00 arası açıktır; Pazartesi kapalıdır."),
  ],
  "rel":["sapanca-luks-restoran","sapanca-romantik-aksam-yemegi","sapanca-fine-dining-nedir"],
 },
@@ -339,7 +339,7 @@ POSTS = [
    ["Özel bir teklif için küçük dokunuşlar büyük fark yaratır. Mare Gastro'nun imza tatlıları, anınızı tatlı bir sürprizle taçlandırmak için idealdir; özel bir pasta, çiçek düzenlemesi veya masaya özel bir not gibi taleplerinizi rezervasyon sırasında iletebilirsiniz.",
     "Akşamı bir %s gibi kurgulamak isterseniz, taze deniz ürünleri ve şefin imza tabaklarından oluşan bir akış öneririz. Tüm seçenekleri %s görebilirsiniz."%(L(post_url("sapanca-romantik-aksam-yemegi"),"romantik akşam yemeği"),L(MENU,"menümüzde"))]),
   ("Evlilik Teklifi İçin Ne Zaman Rezervasyon Yapmalı?",
-   ["Sürprizin kusursuz olması için en az birkaç gün önceden rezervasyon yapmanızı öneririz; özellikle hafta sonları ve gün batımı saatleri hızlı dolar. Mare Gastro Salı'dan Pazar'a 12:00–00:00 arası açıktır.",
+   ["Sürprizin kusursuz olması için en az birkaç gün önceden rezervasyon yapmanızı öneririz; özellikle hafta sonları ve gün batımı saatleri hızlı dolar. Mare Gastro Salı'dan Pazar'a 09:00–00:00 arası açıktır.",
     "Erken planlama, masa yeri ve sürpriz düzenleme için bize hazırlık zamanı tanır. Üç adımlı %s tarih, saat ve kişi sayısını seçip WhatsApp üzerinden hızlıca yerinizi ayırtabilirsiniz."%L(REZ,"rezervasyon formundan")]),
  ],
  "faq":[
@@ -376,7 +376,7 @@ POSTS = [
  "faq":[
   ("Sapanca'da yıldönümü yemeği nerede yenir?","Sapanca'da gölün hemen yanındaki, romantik bir yıldönümü yemeği için Didi Otel bahçesindeki Mare Gastro öne çıkar. Mum ışığı, taze deniz ürünleri ve fine dining menü kutlamayı özel kılar."),
   ("Yıldönümü için sürpriz pasta ayarlanabilir mi?","Evet. Özel pasta veya masaya küçük sürpriz gibi taleplerinizi rezervasyon sırasında paylaşabilirsiniz; ekibimiz gerekli hazırlığı yapar."),
-  ("Mare Gastro hangi günler açık?","Mare Gastro Salı'dan Pazar'a 12:00–00:00 arası açıktır; Pazartesi kapalıdır."),
+  ("Mare Gastro hangi günler açık?","Mare Gastro Salı'dan Pazar'a 09:00–00:00 arası açıktır; Pazartesi kapalıdır."),
   ("Yıldönümü akşamı konaklama mümkün mü?","Mare Gastro Didi Otel bünyesindedir; göl kenarında konaklayarak akşamınızı uzatabilirsiniz. Konaklama tercihinizi rezervasyon formunda belirtebilirsiniz."),
  ],
  "rel":["sapanca-ozel-gun-kutlama","sapanca-dogum-gunu-nerede-kutlanir","sapanca-romantik-aksam-yemegi"],
@@ -409,7 +409,7 @@ POSTS = [
   ("Sapanca'da gölün hemen yanındaki kahvaltı nerede yapılır?","Sapanca'da gölün hemen yanındaki, sakin bir kahvaltı için Didi Otel bahçesindeki Mare Gastro öne çıkar. Çamların gölgesinde, göle karşı zengin bir sofra sunar."),
   ("Kahvaltı için rezervasyon gerekli mi?","Hafta sonları gölün hemen yanındaki masalar hızlı dolduğu için önceden rezervasyon önerilir. Üç adımlı form ile WhatsApp üzerinden kolayca yer ayırtabilirsiniz."),
   ("Kahvaltıda hangi lezzetler öne çıkar?","Ege otları, yöresel peynirler, zeytinyağlılar ve taze ekmek öne çıkar. Menü mevsime ve günün taze ürününe göre değişir."),
-  ("Mare Gastro kahvaltı için hangi günler açık?","Mare Gastro Salı'dan Pazar'a 12:00'den itibaren hizmet verir; gölün hemen yanında geç bir kahvaltı ya da öğle sofrası için rezervasyon sırasında güncel seçenekleri sorabilirsiniz."),
+  ("Mare Gastro kahvaltı için hangi günler açık?","Mare Gastro Salı'dan Pazar'a 09:00'dan itibaren hizmet verir; gölün hemen yanında geç bir kahvaltı ya da öğle sofrası için rezervasyon sırasında güncel seçenekleri sorabilirsiniz."),
  ],
  "rel":["didi-otel-restoran","sapancada-ne-yenir","sapanca-gun-batimi-restoran"],
 },
@@ -455,7 +455,7 @@ POSTS = [
  "lead":"Kışın Sapanca, bambaşka bir dinginliğe bürünür; gölün üzerine inen sis, çamların üzerindeki kar ve sıcak bir sofranın buğusu... Soğuk mevsim, doğayla iç içe bir akşam yemeği için en şiirsel zamandır.",
  "body":[
   ("Sapanca'da Kışın Restoranlar Açık mı?",
-   ["Evet. Mare Gastro, Didi Otel bahçesinde kış aylarında da Salı'dan Pazar'a 12:00–00:00 arası misafirlerini ağırlar. Kış, gölün hemen yanında olmasının en sakin ve etkileyici hâlini sunduğu için akşam yemeği deneyimini daha da özel kılar.",
+   ["Evet. Mare Gastro, Didi Otel bahçesinde kış aylarında da Salı'dan Pazar'a 09:00–00:00 arası misafirlerini ağırlar. Kış, gölün hemen yanında olmasının en sakin ve etkileyici hâlini sunduğu için akşam yemeği deneyimini daha da özel kılar.",
     "Soğuk havada doğanın içinde sıcak bir sofra arayanlar için %s konumumuza göz atabilirsiniz."%L(LOC,"göl kıyısındaki")]),
   ("Kışın Gölün Hemen Yanında Yemek İçin En İyi Yer Neresi?",
    ["Kış aylarında gölün hemen yanındaki bu konum, Mare Gastro'nun camlarından adeta bir tabloya dönüşür. Doğanın bu sakin hâline karşı, sıcak ve özenli bir menüyle geçirilen akşam; kışın en keyifli ritüellerinden biridir.",
@@ -468,7 +468,7 @@ POSTS = [
     "Üç adımlı %s tarih ve saatinizi seçip yerinizi ayırtabilirsiniz."%L(REZ,"rezervasyon formundan")]),
  ],
  "faq":[
-  ("Sapanca'da kışın açık restoran var mı?","Evet. Mare Gastro, Didi Otel bahçesinde kış aylarında da Salı'dan Pazar'a 12:00–00:00 arası hizmet verir ve gölün hemen yanında sıcak bir akşam yemeği sunar."),
+  ("Sapanca'da kışın açık restoran var mı?","Evet. Mare Gastro, Didi Otel bahçesinde kış aylarında da Salı'dan Pazar'a 09:00–00:00 arası hizmet verir ve gölün hemen yanında sıcak bir akşam yemeği sunar."),
   ("Sapanca'da kışın gölün hemen yanında yemek nerede yenir?","Gölün hemen yanındaki, Didi Otel bahçesindeki Mare Gastro kışın en etkileyici akşam yemeği adreslerinden biridir."),
   ("Kış menüsünde neler öne çıkar?","Kış aylarında kremalı deniz ürünleri, ızgaralar ve sıcak başlangıçlar öne çıkar. Menü mevsime ve günün taze ürününe göre değişir."),
   ("Kışın rezervasyon gerekir mi?","Gölün hemen yanındaki masalar kış aylarında da hızlı dolduğu için, özellikle hafta sonları önceden rezervasyon önerilir."),
@@ -593,7 +593,7 @@ POSTS = [
  ],
  "faq":[
   ("Sapanca'da gece açık restoran var mı?","Evet. Mare Gastro, Didi Otel bahçesinde Salı'dan Pazar'a gece yarısına (00:00) kadar açıktır ve geç saatte gölün hemen yanında bir akşam yemeği sunar."),
-  ("Mare Gastro hangi saatlerde açık?","Mare Gastro Salı'dan Pazar'a 12:00–00:00 arası hizmet verir; Pazartesi kapalıdır."),
+  ("Mare Gastro hangi saatlerde açık?","Mare Gastro Salı'dan Pazar'a 09:00–00:00 arası hizmet verir; Pazartesi kapalıdır."),
   ("Geç saatte tam menü servisi var mı?","Gece servisinde de taze deniz ürünleri, ızgaralar ve şefin imza tabakları aynı özenle sunulur. Menü mevsime göre değişir."),
   ("Gece için rezervasyon gerekir mi?","Geç saatte sorunsuz bir deneyim için, özellikle hafta sonları önceden rezervasyon önerilir."),
  ],
@@ -688,7 +688,7 @@ POSTS = [
   ("Mare Gastro'da açık hava masası var mı?","Evet, Didi Otel bahçesinde çam ağaçları arasında, gölün hemen yanında açık hava masaları bulunur."),
   ("Yazın hangi saatlerde rezervasyon önerilir?","Gün batımı saatleri hem serinlik hem de manzara açısından en çok tercih edilen zaman dilimidir; bu saatler için erken rezervasyon önerilir."),
   ("Yağmur ya da olumsuz hava durumunda alternatif var mı?","Mare Gastro'nun kapalı alanları da gölün hemen yanında olma hissini koruyacak şekilde tasarlanmıştır; hava durumuna göre masanız iç mekâna alınabilir."),
-  ("Mare Gastro haftanın hangi günleri açık?","Mare Gastro Salı'dan Pazar'a 12:00–00:00 arası açıktır; Pazartesi kapalıdır."),
+  ("Mare Gastro haftanın hangi günleri açık?","Mare Gastro Salı'dan Pazar'a 09:00–00:00 arası açıktır; Pazartesi kapalıdır."),
  ],
  "rel":["sapanca-kis-restoran","sapanca-gun-batimi-restoran","sapanca-gol-manzarali-kahvalti"],
 },
@@ -1159,7 +1159,7 @@ POSTS = [
   ("Sapanca'da Gece Doğum Günü Kutlamak Mümkün mü?",
    ["Evet. <strong>Sapanca'da gece doğum günü</strong> kutlamak isteyenler için Mare Gastro Salı'dan Pazar'a gece yarısına (00:00) kadar açık; iş çıkışı geç bir kutlama ya da gece yarısına uzanan bir sofra mümkün."]),
   ("Salı'dan Pazar'a: Gece Yarısına Kadar Açık",
-   ["Mare Gastro Salı'dan Pazar'a 12:00–00:00 arası açıktır; Pazartesi kapalıdır. Öğleden gece yarısına uzanan bu saatler, Sapanca'da doğum günü planlayan misafirlere akşamı acele etmeden kutlama imkânı tanır.",
+   ["Mare Gastro Salı'dan Pazar'a 09:00–00:00 arası açıktır; Pazartesi kapalıdır. Sabahtan gece yarısına uzanan bu saatler, Sapanca'da doğum günü planlayan misafirlere akşamı acele etmeden kutlama imkânı tanır.",
     bfig("mare-teras-misafir.webp","Didi Otel terasında bir misafir — Sapanca'da gece doğum günü kutlaması","Mare Gastro terasından bir kare")]),
   ("Gece Atmosferi: Işıklar, Müzik ve Göl",
    ["Gece saatlerinde ışıklandırılan bahçe, gölün karanlıkta yansıyan ışıkları ve genellikle eşlik eden canlı müzik; Mare Gastro'yu Sapanca'da gece kutlamaları için eşsiz bir adrese dönüştürüyor."]),
@@ -1168,7 +1168,7 @@ POSTS = [
  ],
  "faq":[
   ("Sapanca'da gece doğum günü kutlanabilir mi?","Evet. Mare Gastro Salı'dan Pazar'a gece yarısına (00:00) kadar açık olduğu için akşam geç saatlerde de doğum günü kutlaması yapılabilir."),
-  ("Mare Gastro hangi gün ve saatlerde açık?","Salı'dan Pazar'a 12:00–00:00 arası açıktır; Pazartesi kapalıdır."),
+  ("Mare Gastro hangi gün ve saatlerde açık?","Salı'dan Pazar'a 09:00–00:00 arası açıktır; Pazartesi kapalıdır."),
   ("Gece kutlamalarında canlı müzik oluyor mu?","Hafta sonu akşamlarına genellikle canlı müzik atmosferi eşlik eder."),
   ("Gece için otopark sorun olur mu?","Hayır, Didi Otel bünyesinde geniş otopark imkânı geceleri de kullanılabilir."),
  ],
@@ -1274,7 +1274,7 @@ POSTS = [
    ["Sapanca Gölü çevresinde onlarca restoran var, ama her biri her kutlamaya uygun değil. Bir <strong>doğum günü mekanı</strong> seçerken dört şey öne çıkar: göl manzarası olup olmadığı, atmosferin kutlamaya (mum, pasta, sürpriz) izin verip vermediği, grup büyüklüğüne uygunluk ve mutfağın kalitesi.",
     "Aşağıdaki liste, bu kriterlere göre Sapanca'nın bilinen adreslerinden beşini karşılaştırıyor — sıralama Mare Gastro'nun kendi blogunda hazırlanmış olsa da, her mekanın gerçek ve doğrulanabilir özelliklerine dayanıyor."]),
   ("1. Mare Gastro — Gölün Hemen Yanında Fine Dining Kutlama",
-   ["Didi Otel bahçesinde, gölün hemen kıyısında konumlanan Mare Gastro; doğum günlerine özel <strong>pasta ve masa süslemesi</strong> desteği sunan, Yönetici Şef Doğan Anapa imzalı Ege-Akdeniz mutfağıyla fine dining bir deneyim sunuyor. Salı'dan Pazar'a 12:00–00:00 arası açık olması, öğle ya da akşam planlanan kutlamalar için esneklik sağlıyor.",
+   ["Didi Otel bahçesinde, gölün hemen kıyısında konumlanan Mare Gastro; doğum günlerine özel <strong>pasta ve masa süslemesi</strong> desteği sunan, Yönetici Şef Doğan Anapa imzalı Ege-Akdeniz mutfağıyla fine dining bir deneyim sunuyor. Salı'dan Pazar'a 09:00–00:00 arası açık olması, öğle ya da akşam planlanan kutlamalar için esneklik sağlıyor.",
     bfig("mare-grup-sofra.webp","Gölün hemen yanında hazırlanmış bir grup sofrası — Mare Gastro doğum günü kutlaması","Mare Gastro'da bir kutlama sofrası"),
     "Öne çıkanlar: göl manzarası, %s, canlı müzik (hafta sonu), imza tatlılar."%L(MENU,"à la carte menü")]),
   ("2. Sasa Sapanca — Canlı Müzik Eşliğinde Göl Kıyısında",
@@ -1322,7 +1322,7 @@ POSTS = [
  "faq":[
   ("Sapanca'da arkadaşlarla buluşmak için en iyi mekan neresi?","Göl manzarası, geniş menü seçenekleri ve gece geç saate kadar açık olma özelliğiyle Mare Gastro, arkadaş grubu buluşmaları için uygun bir adres."),
   ("Kalabalık bir arkadaş grubu için rezervasyon yapılabilir mi?","Evet, rezervasyon formunda kişi sayısını belirterek grubunuza uygun bir masa düzeni talep edebilirsiniz."),
-  ("Sapanca'da gece geç saate kadar açık restoran var mı?","Mare Gastro Salı'dan Pazar'a 12:00–00:00 arası hizmet veriyor; Pazartesi kapalı."),
+  ("Sapanca'da gece geç saate kadar açık restoran var mı?","Mare Gastro Salı'dan Pazar'a 09:00–00:00 arası hizmet veriyor; Pazartesi kapalı."),
   ("Arkadaş buluşmasında canlı müzik oluyor mu?","Hafta sonu akşamlarında canlı müzik atmosfere eşlik ediyor."),
  ],
  "rel":["sapanca-kalabalik-arkadas-grubu-dogum-gunu","sapanca-gece-acik-restoran","sapanca-hafta-sonu-rotasi"],
@@ -1470,7 +1470,7 @@ POSTS = [
   ("Fine Dining ama Gösterişsiz",
    ["Mare Gastro'nun felsefesi, ağır ve gösterişli bir fine dining anlayışından çok; malzemenin kalitesini öne çıkaran, sade ve içten bir sunuma dayanıyor. Gölün manzarası zaten kendi başına bir sahne kurduğu için, tabaktaki sunum bu sakinliği bozmadan tamamlıyor."]),
   ("Bugün Mare Gastro",
-   ["Bugün Mare Gastro; Salı'dan Pazar'a 12:00–00:00 arası açık, canlı müzik akşamları ve %s ile Sapanca'da fine dining arayanların adresi haline geldi."%L(MENU,"mevsimsel bir menü")]),
+   ["Bugün Mare Gastro; Salı'dan Pazar'a 09:00–00:00 arası açık, canlı müzik akşamları ve %s ile Sapanca'da fine dining arayanların adresi haline geldi."%L(MENU,"mevsimsel bir menü")]),
  ],
  "faq":[
   ("Mare Gastro kimin projesi?","Mare Gastro, Didi Otel bahçesinde Kadir Çiçek tarafından tasarlanan bir konsept olarak hayata geçirildi; mutfağın başında Yönetici Şef Doğan Anapa var."),
@@ -2085,7 +2085,7 @@ POSTS += [
  "lead":"<strong>Kısa cevap:</strong> Sapanca'da alkollü bir akşam yemeği için Mare Gastro, Didi Otel bahçesinde gölün hemen yanında rakı, şarap ve kokteyli fine dining mutfağıyla birlikte sunuyor. Kasım 2026 itibarıyla menüde 30 rakı seçeneği, 21 şarap, 4 şampanya ve köpüklü şarap ile 12 alkollü kokteyl var; hafta sonu akşamlarına canlı müzik eşlik ediyor.",
  "body":[
   ("Sapanca'da Alkollü Restoran Var mı?",
-   ["Evet. Sapanca'da alkollü servis yapan restoranlar var; Kırkpınar'daki Mare Gastro bunlardan biri ve içkiyi bir yemek deneyiminin parçası olarak sunuyor. Restoran Salı'dan Pazar'a 12:00–00:00 arası açık, Pazartesi kapalı.",
+   ["Evet. Sapanca'da alkollü servis yapan restoranlar var; Kırkpınar'daki Mare Gastro bunlardan biri ve içkiyi bir yemek deneyiminin parçası olarak sunuyor. Restoran Salı'dan Pazar'a 09:00–00:00 arası açık, Pazartesi kapalı.",
     "Menüde rakı-balık sofrasından şarap eşliğinde bir akşam yemeğine, gün batımında bir kokteyle kadar farklı seçenekler bulunuyor. Güncel liste ve fiyatlar için %s bakabilirsiniz; menü mevsime göre güncellenir."%L(SITE+"/dijitalmenu","dijital menümüze")]),
   ("Menüde Hangi İçkiler Var?",
    ["Aşağıdaki tablo, 7 Kasım 2026'da canlı menümüzden alınmıştır. Aynı içeceğin farklı şişe boyları (ör. 20, 35, 50 ve 70 cl rakı) ayrı seçenek olarak sayıldı.",
@@ -2113,7 +2113,7 @@ POSTS += [
    ["Mare Gastro, %s bahçesinde. Akşam yemeğinden sonra yola çıkmak yerine aynı bahçedeki otelde kalabilirsiniz; konaklama tercihinizi rezervasyon formunda belirtmeniz yeterli. Otopark ücretsiz ve vale hizmeti var."%L("https://sapancadidiotel.com/","Didi Otel")]),
  ],
  "faq":[
-  ("Sapanca'da alkollü restoran var mı?","Evet. Kırkpınar'daki Mare Gastro rakı, şarap, şampanya ve kokteyl servisi yapan bir fine dining restorandır; Salı–Pazar 12:00–00:00 arası açıktır."),
+  ("Sapanca'da alkollü restoran var mı?","Evet. Kırkpınar'daki Mare Gastro rakı, şarap, şampanya ve kokteyl servisi yapan bir fine dining restorandır; Salı–Pazar 09:00–00:00 arası açıktır."),
   ("Mare Gastro'da kaç çeşit rakı var?","Kasım 2026 itibarıyla menüde farklı marka ve şişe boylarıyla 30 rakı seçeneği bulunur."),
   ("Şarap menüsünde neler var?","21 şarap var; Kavaklıdere 1929 Cabernet, Pendore Öküzgözü, Pendore Syrah ve Prinz von Hessen Riesling bunlardan bazıları."),
   ("Kokteyl var mı?","Evet. Kuzu Kulağı Sour ve rakılı R.R. dahil 12 alkollü kokteyl ile alkolsüz kokteyl seçeneği bulunur."),
@@ -2134,7 +2134,7 @@ POSTS += [
  "body":[
   ("Sapanca'da Canlı Müzik Nerede Var?",
    ["Sapanca'da canlı müzik yapan mekanlar çoğunlukla göl çevresinde ve Kırkpınar'da toplanıyor. Mare Gastro, Didi Otel bahçesinde fine dining mutfağı ile canlı müziği aynı akşamda buluşturuyor: yemek, kokteyl ve sahne aynı bahçede.",
-    "Restoran Salı'dan Pazar'a 12:00–00:00 arası açık; canlı müzikli akşamlar genellikle hafta sonu oluyor."]),
+    "Restoran Salı'dan Pazar'a 09:00–00:00 arası açık; canlı müzikli akşamlar genellikle hafta sonu oluyor."]),
   ("Yaz 2026'da Kimler Sahne Aldı?",
    ["Aşağıdaki program, @maregastro Instagram hesabındaki paylaşımlardan derlendi. Sanatçılar ve günler sezona göre değişir; bu tablo geçmiş programı gösterir.",
     btable(["Tarih","Sanatçı","Not"],[
@@ -2495,11 +2495,11 @@ def build_llms_txt():
         "",
         "> Sapanca Gölü'nün hemen yanında, Didi Otel bahçesinde bir fine dining restoranı. "
         "Ege ve Akdeniz mutfağı, taze deniz ürünleri, Yönetici Şef Doğan Anapa imzasıyla. "
-        "Salı'dan Pazar'a 12:00–00:00 arası açık; Pazartesi kapalı.",
+        "Salı'dan Pazar'a 09:00–00:00 arası açık; Pazartesi kapalı.",
         "",
         "## Temel Bilgiler",
         "- Konum: Didi Otel bahçesi, Sapanca, Sakarya, Türkiye — gölün hemen yanında",
-        "- Açılış saatleri: Salı–Pazar 12:00–00:00, Pazartesi kapalı",
+        "- Açılış saatleri: Salı–Pazar 09:00–00:00, Pazartesi kapalı",
         "- Rezervasyon: %s (üç adımlı form, WhatsApp onaylı)" % REZ,
         "- WhatsApp: %s" % WA,
         "- Menü: %s" % MENU,

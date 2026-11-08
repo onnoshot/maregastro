@@ -96,7 +96,7 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];var p
     "Saturday",
     "Sunday"
    ],
-   "opens": "12:00",
+   "opens": "09:00",
    "closes": "00:00"
   }
  ],
@@ -1615,7 +1615,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="kdet">
           <div class="k-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div>
-          <div class="kdet-body"><h3>Çalışma Saatleri</h3><p>Salı – Pazar: 12:00 – 00:00<br>Pazartesi: Kapalı</p></div>
+          <div class="kdet-body"><h3>Çalışma Saatleri</h3><p>Salı – Pazar: 09:00 – 00:00<br>Pazartesi: Kapalı</p></div>
         </div>
         <div class="kdet">
           <div class="k-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
@@ -2002,8 +2002,8 @@ function mcSelectDay(iso){
 renderMiniCal();
 loadClosedDays();
 
-/* ── SAAT LİSTESİ (12:00–00:00) ── */
-const TIME_SLOTS=(()=>{const out=[];for(let h=12;h<24;h++){out.push(String(h).padStart(2,'0')+':00');out.push(String(h).padStart(2,'0')+':30');}out.push('00:00');return out;})();
+/* ── SAAT LİSTESİ (09:00–00:00) ── */
+const TIME_SLOTS=(()=>{const out=[];for(let h=9;h<24;h++){out.push(String(h).padStart(2,'0')+':00');out.push(String(h).padStart(2,'0')+':30');}out.push('00:00');return out;})();
 document.getElementById('timeList').innerHTML=TIME_SLOTS.map(t=>`<button type="button" class="tpill" onclick="selTime(this,'${t}')">${t}</button>`).join('');
 (()=>{const def=document.querySelector('.time-list .tpill[onclick*="19:00"]');if(def)def.scrollIntoView({block:'nearest'});})();
 

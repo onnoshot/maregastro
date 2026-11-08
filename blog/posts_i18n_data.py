@@ -33,7 +33,7 @@ POSTS["sapanca-luks-restoran"] = {
  ],
  "faq":[
   ("Where is the best luxury restaurant in Sapanca?","Mare Gastro sits in the garden of Didi Otel on the shore of Lake Sapanca. Right by the lake, it offers a fine dining experience deeply connected to nature."),
-  ("Which days is Mare Gastro open?","Mare Gastro is open Tuesday to Sunday, 12:00–00:00 (noon to midnight). It is closed on Mondays."),
+  ("Which days is Mare Gastro open?","Mare Gastro is open Tuesday to Sunday, 09:00–00:00 (9 a.m. to midnight). It is closed on Mondays."),
   ("How do I make a reservation at Mare Gastro?","Use the three-step reservation form on our website to pick a date, time and party size, then confirm quickly via WhatsApp."),
   ("Is Mare Gastro far from Istanbul?","Sapanca is about 1.5 hours from Istanbul, making Mare Gastro ideal for a weekend gourmet getaway."),
  ],
@@ -61,7 +61,7 @@ POSTS["sapanca-luks-restoran"] = {
  ],
  "faq":[
   ("أين يقع أفضل مطعم فاخر في سابانجا؟","يقع Mare Gastro في حديقة فندق Didi Otel على ضفاف بحيرة سابانجا، ويقدم تجربة فاين داينينغ مرتبطة بعمق بالطبيعة."),
-  ("ما هي أيام عمل Mare Gastro؟","يفتح Mare Gastro من الثلاثاء إلى الأحد من 12:00 ظهرًا حتى 00:00 منتصف الليل، ويُغلق يوم الاثنين."),
+  ("ما هي أيام عمل Mare Gastro؟","يفتح Mare Gastro من الثلاثاء إلى الأحد من 09:00 صباحًا حتى 00:00 منتصف الليل، ويُغلق يوم الاثنين."),
   ("كيف يمكنني الحجز في Mare Gastro؟","استخدم نموذج الحجز المكون من ثلاث خطوات في موقعنا لاختيار التاريخ والوقت وعدد الأشخاص، ثم أكّد الحجز عبر واتساب."),
   ("هل Mare Gastro بعيد عن إسطنبول؟","تبعد سابانجا حوالي ساعة ونصف عن إسطنبول، مما يجعل Mare Gastro مثاليًا لرحلة نهاية أسبوع فاخرة."),
  ],
@@ -89,7 +89,7 @@ POSTS["sapanca-luks-restoran"] = {
  ],
  "faq":[
   ("Где находится лучший роскошный ресторан в Сапанджа?","Mare Gastro расположен в саду отеля Didi Otel на берегу озера Сапанджа и предлагает высокую кухню в тесной связи с природой."),
-  ("В какие дни открыт Mare Gastro?","Mare Gastro открыт со вторника по воскресенье с 12:00 до 00:00. В понедельник ресторан закрыт."),
+  ("В какие дни открыт Mare Gastro?","Mare Gastro открыт со вторника по воскресенье с 09:00 до 00:00. В понедельник ресторан закрыт."),
   ("Как забронировать столик в Mare Gastro?","Используйте трёхшаговую форму бронирования на нашем сайте, чтобы выбрать дату, время и число гостей, затем подтвердите через WhatsApp."),
   ("Далеко ли Mare Gastro от Стамбула?","Сапанджа находится примерно в 1,5 часах от Стамбула, что делает Mare Gastro идеальным местом для гастрономического уик-энда."),
  ],
@@ -791,7 +791,7 @@ POSTS["sapanca-en-iyi-dogum-gunu-mekanlari"] = {
    ["There are dozens of restaurants around Lake Sapanca, but not every one suits every celebration. Four things matter most when choosing a <strong>birthday venue</strong>: whether it has a lake view, whether the atmosphere allows for celebration (candles, cake, surprises), how well it fits your group size, and the quality of the kitchen.",
     "The list below compares five well-known Sapanca addresses on these criteria — while compiled on Mare Gastro's own blog, it rests on each venue's real, verifiable features."]),
   ("1. Mare Gastro — Fine Dining Celebration Right by the Lake",
-   ["Set in the garden of Didi Otel, right on the shore of the lake, Mare Gastro offers a fine dining experience under Executive Chef Doğan Anapa's Aegean-Mediterranean cuisine, with dedicated <strong>cake and table decoration</strong> support for birthdays. Being open Tuesday to Sunday from noon to midnight gives flexibility for lunch or evening celebrations.",
+   ["Set in the garden of Didi Otel, right on the shore of the lake, Mare Gastro offers a fine dining experience under Executive Chef Doğan Anapa's Aegean-Mediterranean cuisine, with dedicated <strong>cake and table decoration</strong> support for birthdays. Being open Tuesday to Sunday from 9 a.m. to midnight gives flexibility for lunch or evening celebrations.",
     bfig("mare-grup-sofra.webp","A group table prepared right by the lake — birthday celebration at Mare Gastro","A celebration table at Mare Gastro"),
     "Highlights: lake view, %s, live music (weekends), signature desserts."%L(MENU_A("en"),"à la carte menu")]),
   ("2. Sasa Sapanca — Lakeside with Live Music",
@@ -825,7 +825,7 @@ POSTS["sapanca-en-iyi-dogum-gunu-mekanlari"] = {
    ["توجد عشرات المطاعم حول بحيرة سابانجا، لكن ليست جميعها تناسب كل احتفال. أربعة أمور تبرز عند اختيار <strong>مكان عيد الميلاد</strong>: وجود إطلالة على البحيرة، وسماح الأجواء بالاحتفال (شموع، كعكة، مفاجآت)، ومدى ملاءمته لحجم مجموعتك، وجودة المطبخ.",
     "القائمة أدناه تقارن خمسة عناوين معروفة في سابانجا وفق هذه المعايير — وعلى الرغم من إعدادها في مدونة Mare Gastro، فإنها تستند إلى ميزات حقيقية وقابلة للتحقق لكل مكان."]),
   ("1. Mare Gastro — احتفال فاين داينينغ على ضفاف البحيرة مباشرة",
-   ["يقع Mare Gastro في حديقة فندق Didi Otel، على ضفاف البحيرة مباشرة، ويقدم تجربة فاين داينينغ بمطبخ الشيف التنفيذي Doğan Anapa الإيجي والمتوسطي، مع دعم مخصص <strong>للكعكة وتزيين الطاولة</strong> لأعياد الميلاد. كونه مفتوحًا من الثلاثاء إلى الأحد من الظهر حتى منتصف الليل يمنح مرونة لاحتفالات الغداء أو المساء.",
+   ["يقع Mare Gastro في حديقة فندق Didi Otel، على ضفاف البحيرة مباشرة، ويقدم تجربة فاين داينينغ بمطبخ الشيف التنفيذي Doğan Anapa الإيجي والمتوسطي، مع دعم مخصص <strong>للكعكة وتزيين الطاولة</strong> لأعياد الميلاد. كونه مفتوحًا من الثلاثاء إلى الأحد من التاسعة صباحًا حتى منتصف الليل يمنح مرونة لاحتفالات الغداء أو المساء.",
     bfig("mare-grup-sofra.webp","طاولة جماعية مُجهزة على ضفاف البحيرة مباشرة — احتفال عيد ميلاد في Mare Gastro","طاولة احتفال في Mare Gastro"),
     "أبرز المميزات: إطلالة البحيرة، %s، موسيقى حية (نهاية الأسبوع)، حلويات مميزة."%L(MENU_A("ar"),"قائمة بنظام الأطباق المفردة")]),
   ("2. Sasa Sapanca — على ضفاف البحيرة مع موسيقى حية",
@@ -859,7 +859,7 @@ POSTS["sapanca-en-iyi-dogum-gunu-mekanlari"] = {
    ["Вокруг озера Сапанджа десятки ресторанов, но не каждый подходит для любого праздника. При выборе <strong>места для дня рождения</strong> важны четыре вещи: есть ли вид на озеро, позволяет ли атмосфера праздник (свечи, торт, сюрпризы), насколько подходит размеру вашей компании, и качество кухни.",
     "Список ниже сравнивает пять известных адресов Сапанджа по этим критериям — хотя он составлен в блоге Mare Gastro, он опирается на реальные, проверяемые особенности каждого места."]),
   ("1. Mare Gastro — праздник высокой кухни прямо у озера",
-   ["Расположенный в саду отеля Didi Otel, прямо на берегу озера, Mare Gastro предлагает опыт высокой кухни от шеф-повара Doğan Anapa с эгейско-средиземноморской кухней, с отдельной поддержкой <strong>торта и украшения стола</strong> для дней рождения. Работа со вторника по воскресенье с полудня до полуночи даёт гибкость для дневных и вечерних праздников.",
+   ["Расположенный в саду отеля Didi Otel, прямо на берегу озера, Mare Gastro предлагает опыт высокой кухни от шеф-повара Doğan Anapa с эгейско-средиземноморской кухней, с отдельной поддержкой <strong>торта и украшения стола</strong> для дней рождения. Работа со вторника по воскресенье с 9 утра до полуночи даёт гибкость для дневных и вечерних праздников.",
     bfig("mare-grup-sofra.webp","Групповой стол, накрытый прямо у озера — празднование дня рождения в Mare Gastro","Праздничный стол в Mare Gastro"),
     "Особенности: вид на озеро, %s, живая музыка (выходные), фирменные десерты."%L(MENU_A("ru"),"меню à la carte")]),
   ("2. Sasa Sapanca — у озера с живой музыкой",
@@ -1561,7 +1561,7 @@ POSTS["didi-otel-restoran"] = {
   ("Which restaurant belongs to Didi Otel?","The fine dining restaurant in the Didi Otel garden is Mare Gastro. Right by the lake, it offers Aegean and Mediterranean cuisine."),
   ("Where in Didi Otel is Mare Gastro?","Mare Gastro is in the garden of Didi Otel in Sapanca, woven into the natural texture of the lakeshore."),
   ("Can I stay at Didi Otel and dine at the restaurant?","Yes. Guests staying at the hotel can enjoy dinner at Mare Gastro; you can note your accommodation preference in the reservation form."),
-  ("Which days is Mare Gastro open?","It's open Tuesday to Sunday, 12:00–00:00; closed on Mondays."),
+  ("Which days is Mare Gastro open?","It's open Tuesday to Sunday, 09:00–00:00; closed on Mondays."),
  ],
 },
 "ar": {
@@ -1585,7 +1585,7 @@ POSTS["didi-otel-restoran"] = {
   ("ما هو مطعم Didi Otel؟","مطعم الفاين داينينغ في حديقة Didi Otel هو Mare Gastro. على ضفاف البحيرة مباشرة، يقدم مطبخًا إيجيًا ومتوسطيًا."),
   ("أين يقع Mare Gastro ضمن Didi Otel؟","يقع Mare Gastro في حديقة Didi Otel في سابانجا، منسوجًا في النسيج الطبيعي لضفاف البحيرة."),
   ("هل يمكنني الإقامة في Didi Otel وتناول الطعام في المطعم؟","نعم. يمكن لضيوف الفندق الاستمتاع بعشاء في Mare Gastro؛ يمكنك تحديد تفضيل الإقامة في نموذج الحجز."),
-  ("ما هي أيام عمل Mare Gastro؟","يفتح من الثلاثاء إلى الأحد من 12:00 حتى 00:00؛ ويُغلق يوم الاثنين."),
+  ("ما هي أيام عمل Mare Gastro؟","يفتح من الثلاثاء إلى الأحد من 09:00 حتى 00:00؛ ويُغلق يوم الاثنين."),
  ],
 },
 "ru": {
@@ -1609,7 +1609,7 @@ POSTS["didi-otel-restoran"] = {
   ("Какой ресторан принадлежит Didi Otel?","Ресторан высокой кухни в саду Didi Otel — это Mare Gastro. Прямо у озера, он предлагает эгейскую и средиземноморскую кухню."),
   ("Где в Didi Otel находится Mare Gastro?","Mare Gastro расположен в саду Didi Otel в Сапанджа, вплетённый в природную текстуру берега озера."),
   ("Могу ли я остановиться в Didi Otel и поужинать в ресторане?","Да. Гости отеля могут насладиться ужином в Mare Gastro; укажите пожелание по проживанию в форме бронирования."),
-  ("В какие дни открыт Mare Gastro?","Открыт со вторника по воскресенье с 12:00 до 00:00; в понедельник закрыт."),
+  ("В какие дни открыт Mare Gastro?","Открыт со вторника по воскресенье с 09:00 до 00:00; в понедельник закрыт."),
  ],
 },
 }
@@ -1724,7 +1724,7 @@ POSTS["sapanca-evlilik-teklifi"] = {
    ["Small touches make a big difference for a special proposal. Mare Gastro's signature desserts are ideal for crowning your moment with a sweet surprise; you can share requests like a special cake, flower arrangement or a personal note on the table at reservation.",
     "If you'd like to frame the evening like a %s, we suggest a flow of fresh seafood and the chef's signature plates. You can see all options on our %s."%(L(post_url("sapanca-romantik-aksam-yemegi","en"),"romantic dinner"),L(MENU_A("en"),"menu"))]),
   ("When Should You Reserve for a Marriage Proposal?",
-   ["For a flawless surprise, we recommend reserving at least a few days ahead; weekends and sunset hours in particular fill up fast. Mare Gastro is open Tuesday to Sunday, 12:00–00:00.",
+   ["For a flawless surprise, we recommend reserving at least a few days ahead; weekends and sunset hours in particular fill up fast. Mare Gastro is open Tuesday to Sunday, 09:00–00:00.",
     "Early planning gives us time to prepare the table placement and surprise arrangements. Use the three-step %s to pick a date, time and party size and secure your spot quickly via WhatsApp."%L(REZ_A("en"),"reservation form")]),
  ],
  "faq":[
@@ -1753,7 +1753,7 @@ POSTS["sapanca-evlilik-teklifi"] = {
    ["اللمسات الصغيرة تصنع فرقًا كبيرًا لعرض خاص. حلويات Mare Gastro المميزة مثالية لتتويج لحظتك بمفاجأة حلوة؛ يمكنك مشاركة طلبات مثل كعكة خاصة أو تنسيق ورد أو ملاحظة شخصية على الطاولة أثناء الحجز.",
     "إذا رغبت في تأطير الأمسية مثل %s، ننصح بتسلسل من المأكولات البحرية الطازجة وأطباق الشيف المميزة. يمكنك رؤية جميع الخيارات في %s."%(L(post_url("sapanca-romantik-aksam-yemegi","ar"),"عشاء رومانسي"),L(MENU_A("ar"),"قائمتنا"))]),
   ("متى يجب أن تحجز لعرض الزواج؟",
-   ["لمفاجأة متقنة، ننصح بالحجز قبل أيام على الأقل؛ فأوقات نهاية الأسبوع والغروب تمتلئ بسرعة خاصة. يفتح Mare Gastro من الثلاثاء إلى الأحد من 12:00 حتى 00:00.",
+   ["لمفاجأة متقنة، ننصح بالحجز قبل أيام على الأقل؛ فأوقات نهاية الأسبوع والغروب تمتلئ بسرعة خاصة. يفتح Mare Gastro من الثلاثاء إلى الأحد من 09:00 حتى 00:00.",
     "التخطيط المبكر يمنحنا وقتًا لتحضير ترتيب المائدة وترتيبات المفاجأة. استخدم %s المكون من ثلاث خطوات لاختيار التاريخ والوقت وعدد الأشخاص وتأمين مكانك بسرعة عبر واتساب."%L(REZ_A("ar"),"نموذج الحجز")]),
  ],
  "faq":[
@@ -1782,7 +1782,7 @@ POSTS["sapanca-evlilik-teklifi"] = {
    ["Небольшие штрихи имеют большое значение для особого предложения. Фирменные десерты Mare Gastro идеальны, чтобы увенчать момент сладким сюрпризом; вы можете поделиться пожеланиями вроде особого торта, цветочной композиции или личной записки на столе при бронировании.",
     "Если хотите оформить вечер как %s, рекомендуем последовательность из свежих морепродуктов и фирменных блюд шеф-повара. Все варианты можно увидеть в %s."%(L(post_url("sapanca-romantik-aksam-yemegi","ru"),"романтичный ужин"),L(MENU_A("ru"),"нашем меню"))]),
   ("Когда бронировать для предложения руки и сердца?",
-   ["Для безупречного сюрприза рекомендуем бронировать минимум за несколько дней; особенно быстро заполняются выходные и часы заката. Mare Gastro открыт со вторника по воскресенье с 12:00 до 00:00.",
+   ["Для безупречного сюрприза рекомендуем бронировать минимум за несколько дней; особенно быстро заполняются выходные и часы заката. Mare Gastro открыт со вторника по воскресенье с 09:00 до 00:00.",
     "Раннее планирование даёт нам время подготовить расстановку стола и сюрприз. Используйте трёхшаговую %s, чтобы выбрать дату, время и число гостей и быстро закрепить место через WhatsApp."%L(REZ_A("ru"),"форму бронирования")]),
  ],
  "faq":[
@@ -1823,7 +1823,7 @@ POSTS["sapanca-yildonumu-yemegi"] = {
  "faq":[
   ("Where's the best place for an anniversary dinner in Sapanca?","Mare Gastro, in the garden of Didi Otel right by the lake, stands out for a romantic anniversary dinner in Sapanca. Candlelight, fresh seafood and a fine dining menu make the celebration special."),
   ("Can a surprise cake be arranged for an anniversary?","Yes. You can share requests like a special cake or a small table surprise at reservation; our team makes the necessary preparations."),
-  ("Which days is Mare Gastro open?","Mare Gastro is open Tuesday to Sunday, 12:00–00:00; closed on Mondays."),
+  ("Which days is Mare Gastro open?","Mare Gastro is open Tuesday to Sunday, 09:00–00:00; closed on Mondays."),
   ("Is accommodation possible on the anniversary night?","Mare Gastro is within Didi Otel; you can extend your evening by staying by the lake. You can note your accommodation preference in the reservation form."),
  ],
 },
@@ -1852,7 +1852,7 @@ POSTS["sapanca-yildonumu-yemegi"] = {
  "faq":[
   ("أين أفضل مكان لعشاء الذكرى السنوية في سابانجا؟","يبرز Mare Gastro، في حديقة Didi Otel على ضفاف البحيرة مباشرة، لعشاء ذكرى سنوية رومانسي في سابانجا. ضوء الشموع، والمأكولات البحرية الطازجة، وقائمة الفاين داينينغ تجعل الاحتفال خاصًا."),
   ("هل يمكن ترتيب كعكة مفاجئة للذكرى السنوية؟","نعم. يمكنك مشاركة طلبات مثل كعكة خاصة أو مفاجأة صغيرة على الطاولة أثناء الحجز؛ يقوم فريقنا بالتحضيرات اللازمة."),
-  ("ما هي أيام عمل Mare Gastro؟","يفتح Mare Gastro من الثلاثاء إلى الأحد من 12:00 حتى 00:00؛ ويُغلق يوم الاثنين."),
+  ("ما هي أيام عمل Mare Gastro؟","يفتح Mare Gastro من الثلاثاء إلى الأحد من 09:00 حتى 00:00؛ ويُغلق يوم الاثنين."),
   ("هل الإقامة ممكنة ليلة الذكرى السنوية؟","يقع Mare Gastro ضمن Didi Otel؛ يمكنك إطالة أمسيتك بالإقامة على ضفاف البحيرة. يمكنك تحديد تفضيل الإقامة في نموذج الحجز."),
  ],
 },
@@ -1881,7 +1881,7 @@ POSTS["sapanca-yildonumu-yemegi"] = {
  "faq":[
   ("Где лучшее место для ужина на годовщину в Сапанджа?","Mare Gastro, в саду Didi Otel прямо у озера, выделяется для романтичного ужина на годовщину в Сапанджа. Свечи, свежие морепродукты и меню высокой кухни делают праздник особым."),
   ("Можно ли организовать сюрприз-торт на годовщину?","Да. Вы можете поделиться пожеланиями вроде особого торта или небольшого сюрприза на столе при бронировании; наша команда сделает необходимые приготовления."),
-  ("В какие дни открыт Mare Gastro?","Mare Gastro открыт со вторника по воскресенье с 12:00 до 00:00; в понедельник закрыт."),
+  ("В какие дни открыт Mare Gastro?","Mare Gastro открыт со вторника по воскресенье с 09:00 до 00:00; в понедельник закрыт."),
   ("Возможно ли проживание в ночь годовщины?","Mare Gastro находится в составе Didi Otel; вы можете продлить вечер ночлегом у озера. Укажите пожелание по проживанию в форме бронирования."),
  ],
 },
@@ -1918,7 +1918,7 @@ POSTS["sapanca-gol-manzarali-kahvalti"] = {
   ("Where's breakfast right by the lake in Sapanca?","For a calm breakfast right by the lake in Sapanca, Mare Gastro in the garden of Didi Otel stands out, offering a rich table facing the lake in the shade of pines."),
   ("Is a reservation needed for breakfast?","Since lakeside tables fill up fast on weekends, reserving ahead is recommended. The three-step form lets you book easily via WhatsApp."),
   ("What flavors stand out at breakfast?","Aegean herbs, regional cheeses, olive-oil dishes and fresh bread stand out. The menu changes with the season and the day's freshest products."),
-  ("Which days is Mare Gastro open for breakfast?","Mare Gastro serves Tuesday to Sunday from 12:00 — ask about current late-breakfast or lunch options by the lake when you book."),
+  ("Which days is Mare Gastro open for breakfast?","Mare Gastro serves Tuesday to Sunday from 09:00 — ask about current late-breakfast or lunch options by the lake when you book."),
  ],
 },
 "ar": {
@@ -1948,7 +1948,7 @@ POSTS["sapanca-gol-manzarali-kahvalti"] = {
   ("أين الفطور على ضفاف البحيرة مباشرة في سابانجا؟","لفطور هادئ على ضفاف البحيرة مباشرة في سابانجا، يبرز Mare Gastro في حديقة Didi Otel، ويقدم مائدة غنية تواجه البحيرة في ظل أشجار الصنوبر."),
   ("هل الحجز ضروري للفطور؟","نظرًا لأن طاولات ضفاف البحيرة تمتلئ بسرعة في عطلات نهاية الأسبوع، يُنصح بالحجز مسبقًا. يتيح لك النموذج المكون من ثلاث خطوات الحجز بسهولة عبر واتساب."),
   ("ما هي النكهات التي تبرز في الفطور؟","تبرز أعشاب بحر إيجه والأجبان المحلية وأطباق زيت الزيتون والخبز الطازج. تتغير القائمة حسب الموسم وأطزج منتجات اليوم."),
-  ("ما هي أيام عمل Mare Gastro للفطور؟","يقدم Mare Gastro خدماته من الثلاثاء إلى الأحد ابتداءً من 12:00 — اسألوا عند الحجز عن خيارات الفطور المتأخر أو الغداء الحالية بجوار البحيرة."),
+  ("ما هي أيام عمل Mare Gastro للفطور؟","يقدم Mare Gastro خدماته من الثلاثاء إلى الأحد ابتداءً من 09:00 — اسألوا عند الحجز عن خيارات الفطور المتأخر أو الغداء الحالية بجوار البحيرة."),
  ],
 },
 "ru": {
@@ -1978,7 +1978,7 @@ POSTS["sapanca-gol-manzarali-kahvalti"] = {
   ("Где завтрак прямо у озера в Сапанджа?","Для спокойного завтрака прямо у озера в Сапанджа выделяется Mare Gastro в саду Didi Otel, предлагая богатый стол с видом на озеро в тени сосен."),
   ("Нужно ли бронирование на завтрак?","Поскольку столики у озера быстро заполняются по выходным, рекомендуется бронировать заранее. Трёхшаговая форма позволяет легко забронировать через WhatsApp."),
   ("Какие вкусы выделяются на завтраке?","Выделяются эгейские травы, региональные сыры, блюда на оливковом масле и свежий хлеб. Меню меняется в зависимости от сезона и самых свежих продуктов дня."),
-  ("В какие дни Mare Gastro открыт на завтрак?","Mare Gastro работает со вторника по воскресенье с 12:00 — об актуальных вариантах позднего завтрака или обеда у озера спросите при бронировании."),
+  ("В какие дни Mare Gastro открыт на завтрак?","Mare Gastro работает со вторника по воскресенье с 09:00 — об актуальных вариантах позднего завтрака или обеда у озера спросите при бронировании."),
  ],
 },
 }
@@ -1997,7 +1997,7 @@ POSTS["sapanca-kis-restoran"] = {
  "lead":"In winter, Sapanca takes on a whole different calm; the mist descending over the lake, snow on the pines, and the steam of a warm table... The cold season is the most poetic time for a dinner deep in nature.",
  "body":[
   ("Are Restaurants Open in Sapanca in Winter?",
-   ["Yes. Mare Gastro welcomes guests in the garden of Didi Otel in winter too, Tuesday to Sunday from 12:00 to 00:00. Winter offers the calmest and most striking version of being right by the lake, making the dinner experience even more special.",
+   ["Yes. Mare Gastro welcomes guests in the garden of Didi Otel in winter too, Tuesday to Sunday from 09:00 to 00:00. Winter offers the calmest and most striking version of being right by the lake, making the dinner experience even more special.",
     "For those seeking a warm table amid nature in cold weather, you can check %s."%L(LOC_A("en"),"our lakeside location")]),
   ("Where's the Best Place to Eat Right by the Lake in Winter?",
    ["In winter, this lakeside location turns into a picture through Mare Gastro's windows. An evening spent with a warm, careful menu against this calm side of nature is one of winter's most delightful rituals.",
@@ -2010,7 +2010,7 @@ POSTS["sapanca-kis-restoran"] = {
     "Use the three-step %s to pick your date and time and secure your spot."%L(REZ_A("en"),"reservation form")]),
  ],
  "faq":[
-  ("Is there an open restaurant in Sapanca in winter?","Yes. Mare Gastro serves in the garden of Didi Otel in winter too, Tuesday to Sunday from 12:00 to 00:00, offering a warm dinner right by the lake."),
+  ("Is there an open restaurant in Sapanca in winter?","Yes. Mare Gastro serves in the garden of Didi Otel in winter too, Tuesday to Sunday from 09:00 to 00:00, offering a warm dinner right by the lake."),
   ("Where's the best place to eat right by the lake in Sapanca in winter?","Mare Gastro, in the garden of Didi Otel right by the lake, is one of the most striking winter dinner addresses."),
   ("What stands out on the winter menu?","Creamy seafood, grills and warm starters stand out in winter. The menu changes with the season and the day's freshest products."),
   ("Is a reservation needed in winter?","Since lakeside tables fill up fast in winter too, especially on weekends, reserving ahead is recommended."),
@@ -2026,7 +2026,7 @@ POSTS["sapanca-kis-restoran"] = {
  "lead":"في الشتاء، تكتسي سابانجا هدوءًا مختلفًا تمامًا؛ الضباب الذي ينزل فوق البحيرة، والثلج على أشجار الصنوبر، وبخار مائدة دافئة... الموسم البارد هو الوقت الأكثر شاعرية لعشاء في عمق الطبيعة.",
  "body":[
   ("هل المطاعم مفتوحة في سابانجا في الشتاء؟",
-   ["نعم. يستقبل Mare Gastro ضيوفه في حديقة Didi Otel في الشتاء أيضًا، من الثلاثاء إلى الأحد من 12:00 حتى 00:00. يقدم الشتاء النسخة الأكثر هدوءًا وإثارة من القرب من البحيرة مباشرة، مما يجعل تجربة العشاء أكثر تميزًا.",
+   ["نعم. يستقبل Mare Gastro ضيوفه في حديقة Didi Otel في الشتاء أيضًا، من الثلاثاء إلى الأحد من 09:00 حتى 00:00. يقدم الشتاء النسخة الأكثر هدوءًا وإثارة من القرب من البحيرة مباشرة، مما يجعل تجربة العشاء أكثر تميزًا.",
     "لمن يبحث عن مائدة دافئة وسط الطبيعة في الطقس البارد، يمكنك مراجعة %s."%L(LOC_A("ar"),"موقعنا على ضفاف البحيرة")]),
   ("أين أفضل مكان لتناول الطعام على ضفاف البحيرة مباشرة في الشتاء؟",
    ["في الشتاء، يتحول هذا الموقع على ضفاف البحيرة إلى لوحة من خلال نوافذ Mare Gastro. أمسية تُقضى بقائمة دافئة وعناية مقابل هذا الجانب الهادئ من الطبيعة هي من أمتع طقوس الشتاء.",
@@ -2039,7 +2039,7 @@ POSTS["sapanca-kis-restoran"] = {
     "استخدم %s المكون من ثلاث خطوات لاختيار تاريخك ووقتك وتأمين مكانك."%L(REZ_A("ar"),"نموذج الحجز")]),
  ],
  "faq":[
-  ("هل يوجد مطعم مفتوح في سابانجا في الشتاء؟","نعم. يقدم Mare Gastro خدماته في حديقة Didi Otel في الشتاء أيضًا، من الثلاثاء إلى الأحد من 12:00 حتى 00:00، ويوفر عشاءً دافئًا على ضفاف البحيرة مباشرة."),
+  ("هل يوجد مطعم مفتوح في سابانجا في الشتاء؟","نعم. يقدم Mare Gastro خدماته في حديقة Didi Otel في الشتاء أيضًا، من الثلاثاء إلى الأحد من 09:00 حتى 00:00، ويوفر عشاءً دافئًا على ضفاف البحيرة مباشرة."),
   ("أين أفضل مكان لتناول الطعام على ضفاف البحيرة في سابانجا في الشتاء؟","يُعد Mare Gastro، في حديقة Didi Otel على ضفاف البحيرة مباشرة، من أكثر عناوين عشاء الشتاء إثارة."),
   ("ما الذي يبرز في قائمة الشتاء؟","تبرز المأكولات البحرية الكريمية والمشويات والمقبلات الدافئة في الشتاء. تتغير القائمة حسب الموسم وأطزج منتجات اليوم."),
   ("هل الحجز ضروري في الشتاء؟","نظرًا لأن طاولات ضفاف البحيرة تمتلئ بسرعة في الشتاء أيضًا، خاصة في عطلات نهاية الأسبوع، يُنصح بالحجز مسبقًا."),
@@ -2055,7 +2055,7 @@ POSTS["sapanca-kis-restoran"] = {
  "lead":"Зимой Сапанджа обретает совершенно иное спокойствие; туман, опускающийся над озером, снег на соснах и пар тёплого стола... Холодный сезон — самое поэтичное время для ужина среди природы.",
  "body":[
   ("Открыты ли рестораны в Сапанджа зимой?",
-   ["Да. Mare Gastro принимает гостей в саду Didi Otel и зимой, со вторника по воскресенье с 12:00 до 00:00. Зима предлагает самую спокойную и впечатляющую версию близости к озеру, делая опыт ужина ещё более особенным.",
+   ["Да. Mare Gastro принимает гостей в саду Didi Otel и зимой, со вторника по воскресенье с 09:00 до 00:00. Зима предлагает самую спокойную и впечатляющую версию близости к озеру, делая опыт ужина ещё более особенным.",
     "Для тех, кто ищет тёплый стол среди природы в холодную погоду, посмотрите %s."%L(LOC_A("ru"),"наше расположение у озера")]),
   ("Где лучшее место поесть прямо у озера зимой?",
    ["Зимой это расположение у озера превращается в картину через окна Mare Gastro. Вечер, проведённый с тёплым, тщательно составленным меню на фоне этой спокойной стороны природы — один из самых приятных зимних ритуалов.",
@@ -2068,7 +2068,7 @@ POSTS["sapanca-kis-restoran"] = {
     "Используйте трёхшаговую %s, чтобы выбрать дату и время и закрепить место."%L(REZ_A("ru"),"форму бронирования")]),
  ],
  "faq":[
-  ("Есть ли открытый ресторан в Сапанджа зимой?","Да. Mare Gastro работает в саду Didi Otel и зимой, со вторника по воскресенье с 12:00 до 00:00, предлагая тёплый ужин прямо у озера."),
+  ("Есть ли открытый ресторан в Сапанджа зимой?","Да. Mare Gastro работает в саду Didi Otel и зимой, со вторника по воскресенье с 09:00 до 00:00, предлагая тёплый ужин прямо у озера."),
   ("Где лучшее место поесть у озера в Сапанджа зимой?","Mare Gastro, в саду Didi Otel прямо у озера, — один из самых впечатляющих зимних адресов для ужина."),
   ("Что выделяется в зимнем меню?","Зимой выделяются сливочные морепродукты, гриль и тёплые закуски. Меню меняется в зависимости от сезона и самых свежих продуктов дня."),
   ("Нужно ли бронирование зимой?","Поскольку столики у озера быстро заполняются и зимой, особенно по выходным, рекомендуется бронировать заранее."),
@@ -2290,7 +2290,7 @@ POSTS["sapanca-gece-acik-restoran"] = {
  ],
  "faq":[
   ("Is there a restaurant open at night in Sapanca?","Yes. Mare Gastro, in the garden of Didi Otel, is open until midnight (00:00) Tuesday to Sunday, offering a late dinner right by the lake."),
-  ("What hours is Mare Gastro open?","Mare Gastro serves Tuesday to Sunday, 12:00–00:00; closed on Mondays."),
+  ("What hours is Mare Gastro open?","Mare Gastro serves Tuesday to Sunday, 09:00–00:00; closed on Mondays."),
   ("Is there full menu service late at night?","Fresh seafood, grills and the chef's signature plates are served with the same care during night service too. The menu changes with the season."),
   ("Is a reservation needed at night?","For a smooth experience late at night, reserving ahead is recommended, especially on weekends."),
  ],
@@ -2319,7 +2319,7 @@ POSTS["sapanca-gece-acik-restoran"] = {
  ],
  "faq":[
   ("هل يوجد مطعم مفتوح ليلًا في سابانجا؟","نعم. يفتح Mare Gastro في حديقة Didi Otel حتى منتصف الليل (00:00) من الثلاثاء إلى الأحد، ويقدم عشاءً متأخرًا على ضفاف البحيرة مباشرة."),
-  ("ما هي ساعات عمل Mare Gastro؟","يقدم Mare Gastro خدماته من الثلاثاء إلى الأحد من 12:00 حتى 00:00؛ ويُغلق يوم الاثنين."),
+  ("ما هي ساعات عمل Mare Gastro؟","يقدم Mare Gastro خدماته من الثلاثاء إلى الأحد من 09:00 حتى 00:00؛ ويُغلق يوم الاثنين."),
   ("هل توجد خدمة قائمة كاملة في وقت متأخر من الليل؟","تُقدَّم المأكولات البحرية الطازجة والمشويات وأطباق الشيف المميزة بنفس العناية خلال الخدمة الليلية أيضًا. تتغير القائمة حسب الموسم."),
   ("هل الحجز ضروري ليلًا؟","لتجربة سلسة في وقت متأخر من الليل، يُنصح بالحجز مسبقًا، خاصة في عطلات نهاية الأسبوع."),
  ],
@@ -2348,7 +2348,7 @@ POSTS["sapanca-gece-acik-restoran"] = {
  ],
  "faq":[
   ("Есть ли ресторан, открытый ночью в Сапанджа?","Да. Mare Gastro в саду Didi Otel открыт до полуночи (00:00) со вторника по воскресенье, предлагая поздний ужин прямо у озера."),
-  ("В какие часы работает Mare Gastro?","Mare Gastro открыт со вторника по воскресенье с 12:00 до 00:00; в понедельник закрыт."),
+  ("В какие часы работает Mare Gastro?","Mare Gastro открыт со вторника по воскресенье с 09:00 до 00:00; в понедельник закрыт."),
   ("Есть ли полное меню поздней ночью?","Свежие морепродукты, гриль и фирменные блюда шеф-повара подаются с той же тщательностью и во время ночного сервиса. Меню меняется в зависимости от сезона."),
   ("Нужно ли бронирование ночью?","Для гладкого опыта поздней ночью рекомендуется бронировать заранее, особенно по выходным."),
  ],
@@ -2571,7 +2571,7 @@ POSTS["sapanca-yazin-acik-hava-restoran"] = {
   ("Does Mare Gastro have outdoor tables?","Yes, there are outdoor tables among the pine trees, right by the lake, in the garden of Didi Otel."),
   ("What hours are recommended for a reservation in summer?","Sunset hours are the most preferred time for both coolness and view; early reservation is recommended for these hours."),
   ("Is there an alternative in case of rain or bad weather?","Mare Gastro's indoor areas are also designed to preserve the sense of being right by the lake; your table can be moved indoors depending on the weather."),
-  ("Which days of the week is Mare Gastro open?","Mare Gastro is open Tuesday to Sunday, 12:00–00:00; closed on Mondays."),
+  ("Which days of the week is Mare Gastro open?","Mare Gastro is open Tuesday to Sunday, 09:00–00:00; closed on Mondays."),
  ],
 },
 "ar": {
@@ -2600,7 +2600,7 @@ POSTS["sapanca-yazin-acik-hava-restoran"] = {
   ("هل يمتلك Mare Gastro طاولات في الهواء الطلق؟","نعم، توجد طاولات في الهواء الطلق بين أشجار الصنوبر، على ضفاف البحيرة مباشرة، في حديقة Didi Otel."),
   ("ما هي الساعات الموصى بها للحجز في الصيف؟","أوقات الغروب هي الأكثر تفضيلًا لكل من البرودة والمنظر؛ يُنصح بالحجز المبكر لهذه الساعات."),
   ("هل يوجد بديل في حال المطر أو سوء الأحوال الجوية؟","صُممت المساحات الداخلية في Mare Gastro أيضًا للحفاظ على الشعور بالقرب من البحيرة مباشرة؛ يمكن نقل طاولتك إلى الداخل حسب الطقس."),
-  ("ما هي أيام الأسبوع التي يعمل فيها Mare Gastro؟","يفتح Mare Gastro من الثلاثاء إلى الأحد من 12:00 حتى 00:00؛ ويُغلق يوم الاثنين."),
+  ("ما هي أيام الأسبوع التي يعمل فيها Mare Gastro؟","يفتح Mare Gastro من الثلاثاء إلى الأحد من 09:00 حتى 00:00؛ ويُغلق يوم الاثنين."),
  ],
 },
 "ru": {
@@ -2629,7 +2629,7 @@ POSTS["sapanca-yazin-acik-hava-restoran"] = {
   ("Есть ли у Mare Gastro столики на открытом воздухе?","Да, есть столики на открытом воздухе среди сосен, прямо у озера, в саду Didi Otel."),
   ("Какие часы рекомендуются для бронирования летом?","Часы заката — самое предпочитаемое время как для прохлады, так и для вида; для этих часов рекомендуется раннее бронирование."),
   ("Есть ли альтернатива на случай дождя или плохой погоды?","Внутренние помещения Mare Gastro также спроектированы так, чтобы сохранить ощущение близости к озеру; ваш стол может быть перенесён внутрь в зависимости от погоды."),
-  ("В какие дни недели открыт Mare Gastro?","Mare Gastro открыт со вторника по воскресенье с 12:00 до 00:00; в понедельник закрыт."),
+  ("В какие дни недели открыт Mare Gastro?","Mare Gastro открыт со вторника по воскресенье с 09:00 до 00:00; в понедельник закрыт."),
  ],
 },
 }
@@ -3002,7 +3002,7 @@ POSTS["sapanca-gece-dogum-gunu-kutlamasi-hafta-sonu"] = {
   ("Is It Possible to Celebrate a Birthday at Night in Sapanca?",
    ["Yes. For those wanting to celebrate a <strong>night birthday in Sapanca</strong>, Mare Gastro is open until midnight (00:00) Tuesday to Sunday; a late celebration after work, or a table that stretches to midnight, is possible."]),
   ("Tuesday to Sunday: Open Until Midnight",
-   ["Mare Gastro is open Tuesday to Sunday, 12:00–00:00; closed on Mondays. Hours that run from noon to midnight let guests planning a birthday in Sapanca celebrate without rushing the evening.",
+   ["Mare Gastro is open Tuesday to Sunday, 09:00–00:00; closed on Mondays. Hours that run from 9 a.m. to midnight let guests planning a birthday in Sapanca celebrate without rushing the evening.",
     bfig("mare-teras-misafir.webp","A guest on the Didi Otel terrace — night birthday celebration in Sapanca","A frame from the Mare Gastro terrace")]),
   ("Night Atmosphere: Lights, Music and the Lake",
    ["The garden lit up at night, the lake's reflections shimmering in the dark, and the live music that often accompanies the evening turn Mare Gastro into a unique address for night celebrations in Sapanca."]),
@@ -3011,7 +3011,7 @@ POSTS["sapanca-gece-dogum-gunu-kutlamasi-hafta-sonu"] = {
  ],
  "faq":[
   ("Can a birthday be celebrated at night in Sapanca?","Yes. Since Mare Gastro is open until midnight (00:00) Tuesday to Sunday, a birthday can be celebrated late in the evening as well."),
-  ("What are Mare Gastro's opening hours?","It is open Tuesday to Sunday, 12:00–00:00; closed on Mondays."),
+  ("What are Mare Gastro's opening hours?","It is open Tuesday to Sunday, 09:00–00:00; closed on Mondays."),
   ("Is there live music for night celebrations?","Weekend evenings are generally accompanied by a live music atmosphere."),
   ("Is parking an issue at night?","No, the ample parking within Didi Otel can also be used at night."),
  ],
@@ -3028,7 +3028,7 @@ POSTS["sapanca-gece-dogum-gunu-kutlamasi-hafta-sonu"] = {
   ("هل يمكن الاحتفال بعيد ميلاد ليلًا في سابانجا؟",
    ["نعم. لمن يريد الاحتفال بـ<strong>عيد ميلاد ليلي في سابانجا</strong>، يفتح Mare Gastro حتى منتصف الليل (00:00) من الثلاثاء إلى الأحد؛ احتفال متأخر بعد العمل أو سهرة تمتد حتى منتصف الليل أمر ممكن."]),
   ("من الثلاثاء إلى الأحد: مفتوح حتى منتصف الليل",
-   ["يفتح Mare Gastro من الثلاثاء إلى الأحد من 12:00 حتى 00:00؛ ومغلق يوم الاثنين. هذه الساعات الممتدة من الظهر حتى منتصف الليل تمنح الضيوف المخططين لعيد ميلاد في سابانجا فرصة الاحتفال دون استعجال.",
+   ["يفتح Mare Gastro من الثلاثاء إلى الأحد من 09:00 حتى 00:00؛ ومغلق يوم الاثنين. هذه الساعات الممتدة من التاسعة صباحًا حتى منتصف الليل تمنح الضيوف المخططين لعيد ميلاد في سابانجا فرصة الاحتفال دون استعجال.",
     bfig("mare-teras-misafir.webp","ضيف على تراس Didi Otel — احتفال عيد ميلاد ليلي في سابانجا","لقطة من تراس Mare Gastro")]),
   ("أجواء الليل: الأضواء والموسيقى والبحيرة",
    ["الحديقة المضاءة ليلًا، وانعكاسات البحيرة المتلألئة في الظلام، والموسيقى الحية التي غالبًا ما ترافق المساء تجعل من Mare Gastro عنوانًا فريدًا للاحتفالات الليلية في سابانجا."]),
@@ -3037,7 +3037,7 @@ POSTS["sapanca-gece-dogum-gunu-kutlamasi-hafta-sonu"] = {
  ],
  "faq":[
   ("هل يمكن الاحتفال بعيد ميلاد ليلًا في سابانجا؟","نعم. بما أن Mare Gastro يفتح حتى منتصف الليل (00:00) من الثلاثاء إلى الأحد، يمكن الاحتفال بعيد الميلاد في ساعة متأخرة من المساء أيضًا."),
-  ("ما هي ساعات عمل Mare Gastro؟","يفتح من الثلاثاء إلى الأحد من 12:00 حتى 00:00؛ ومغلق يوم الاثنين."),
+  ("ما هي ساعات عمل Mare Gastro؟","يفتح من الثلاثاء إلى الأحد من 09:00 حتى 00:00؛ ومغلق يوم الاثنين."),
   ("هل توجد موسيقى حية للاحتفالات الليلية؟","عادةً ما ترافق الموسيقى الحية أمسيات نهاية الأسبوع."),
   ("هل تُعد مواقف السيارات مشكلة ليلًا؟","لا، تتوفر مواقف سيارات واسعة ضمن Didi Otel ويمكن استخدامها ليلًا أيضًا."),
  ],
@@ -3054,7 +3054,7 @@ POSTS["sapanca-gece-dogum-gunu-kutlamasi-hafta-sonu"] = {
   ("Можно ли отпраздновать день рождения ночью в Сапанджа?",
    ["Да. Для желающих отпраздновать <strong>ночной день рождения в Сапанджа</strong> Mare Gastro открыт до полуночи (00:00) со вторника по воскресенье; возможен поздний праздник после работы или застолье, растянувшееся до полуночи."]),
   ("Со вторника по воскресенье: открыто до полуночи",
-   ["Mare Gastro открыт со вторника по воскресенье с 12:00 до 00:00; в понедельник закрыт. Часы работы с полудня до полуночи позволяют гостям, планирующим день рождения в Сапанджа, праздновать без спешки.",
+   ["Mare Gastro открыт со вторника по воскресенье с 09:00 до 00:00; в понедельник закрыт. Часы работы с 9 утра до полуночи позволяют гостям, планирующим день рождения в Сапанджа, праздновать без спешки.",
     bfig("mare-teras-misafir.webp","Гость на террасе Didi Otel — ночное празднование дня рождения в Сапанджа","Кадр с террасы Mare Gastro")]),
   ("Ночная атмосфера: огни, музыка и озеро",
    ["Сад, освещённый ночью, отражения озера, мерцающие в темноте, и живая музыка, часто сопровождающая вечер, превращают Mare Gastro в уникальное место для ночных праздников в Сапанджа."]),
@@ -3063,7 +3063,7 @@ POSTS["sapanca-gece-dogum-gunu-kutlamasi-hafta-sonu"] = {
  ],
  "faq":[
   ("Можно ли отпраздновать день рождения ночью в Сапанджа?","Да. Поскольку Mare Gastro открыт до полуночи (00:00) со вторника по воскресенье, день рождения можно отпраздновать и поздно вечером."),
-  ("Какие часы работы у Mare Gastro?","Открыт со вторника по воскресенье с 12:00 до 00:00; в понедельник закрыт."),
+  ("Какие часы работы у Mare Gastro?","Открыт со вторника по воскресенье с 09:00 до 00:00; в понедельник закрыт."),
   ("Есть ли живая музыка для ночных праздников?","Вечера выходных обычно сопровождаются атмосферой живой музыки."),
   ("Является ли парковка проблемой ночью?","Нет, обширная парковка на территории Didi Otel доступна и ночью."),
  ],
@@ -3094,7 +3094,7 @@ POSTS["mare-gastro-hikayesi"] = {
   ("Fine Dining, Without the Fuss",
    ["Mare Gastro's philosophy is based not on a heavy, showy notion of fine dining, but on a simple, sincere presentation that lets the quality of the ingredients speak. Since the lake's view already sets a scene on its own, the plate's presentation completes this calm without disturbing it."]),
   ("Mare Gastro Today",
-   ["Today, open Tuesday to Sunday from noon to midnight, with live music evenings and %s, Mare Gastro has become the address for those seeking fine dining in Sapanca."%L(MENU_A("en"),"a seasonal menu")]),
+   ["Today, open Tuesday to Sunday from 9 a.m. to midnight, with live music evenings and %s, Mare Gastro has become the address for those seeking fine dining in Sapanca."%L(MENU_A("en"),"a seasonal menu")]),
  ],
  "faq":[
   ("Whose project is Mare Gastro?","Mare Gastro was brought to life as a concept designed by Kadir Çiçek in the Didi Otel garden; Executive Chef Doğan Anapa leads the kitchen."),
@@ -3122,7 +3122,7 @@ POSTS["mare-gastro-hikayesi"] = {
   ("فاين داينينغ بلا تكلّف",
    ["تقوم فلسفة Mare Gastro لا على مفهوم فاين داينينغ ثقيل ومبهرج، بل على تقديم بسيط وصادق يُبرز جودة المكونات. وبما أن إطلالة البحيرة تُشكّل مشهدًا بحد ذاتها، فإن تقديم الطبق يكمل هذا الهدوء دون الإخلال به."]),
   ("Mare Gastro اليوم",
-   ["اليوم، مفتوحًا من الثلاثاء إلى الأحد من الظهر حتى منتصف الليل، مع أمسيات موسيقى حية و%s، أصبح Mare Gastro عنوانًا للباحثين عن فاين داينينغ في سابانجا."%L(MENU_A("ar"),"قائمة موسمية")]),
+   ["اليوم، مفتوحًا من الثلاثاء إلى الأحد من التاسعة صباحًا حتى منتصف الليل، مع أمسيات موسيقى حية و%s، أصبح Mare Gastro عنوانًا للباحثين عن فاين داينينغ في سابانجا."%L(MENU_A("ar"),"قائمة موسمية")]),
  ],
  "faq":[
   ("مشروع من هو Mare Gastro؟","تحقق Mare Gastro كمفهوم صممه Kadir Çiçek في حديقة Didi Otel؛ ويقود المطبخ الشيف التنفيذي Doğan Anapa."),
@@ -3150,7 +3150,7 @@ POSTS["mare-gastro-hikayesi"] = {
   ("Fine dining без вычурности",
    ["Философия Mare Gastro основана не на тяжёлом, показном понимании fine dining, а на простой, искренней подаче, выдвигающей на первый план качество ингредиентов. Поскольку вид на озеро уже сам по себе создаёт сцену, подача блюда дополняет это спокойствие, не нарушая его."]),
   ("Mare Gastro сегодня",
-   ["Сегодня, работая со вторника по воскресенье с полудня до полуночи, с вечерами живой музыки и %s, Mare Gastro стал адресом для тех, кто ищет fine dining в Сапанджа."%L(MENU_A("ru"),"сезонным меню")]),
+   ["Сегодня, работая со вторника по воскресенье с 9 утра до полуночи, с вечерами живой музыки и %s, Mare Gastro стал адресом для тех, кто ищет fine dining в Сапанджа."%L(MENU_A("ru"),"сезонным меню")]),
  ],
  "faq":[
   ("Чей это проект — Mare Gastro?","Mare Gastro воплощён как концепция, разработанная Kadir Çiçek в саду Didi Otel; кухню возглавляет шеф-повар Doğan Anapa."),
@@ -4513,7 +4513,7 @@ POSTS["sapanca-arkadaslarla-bulusma-mekani"] = {
  "faq":[
   ("Where's the best venue in Sapanca for meeting up with friends?","With its lake view, wide menu options and late-night opening hours, Mare Gastro is a fitting address for friend group gatherings."),
   ("Can a reservation be made for a large group of friends?","Yes, by stating the number of guests on the reservation form you can request a table layout suited to your group."),
-  ("Is there a restaurant in Sapanca open late at night?","Mare Gastro is open Tuesday to Sunday, 12:00–00:00; closed on Mondays."),
+  ("Is there a restaurant in Sapanca open late at night?","Mare Gastro is open Tuesday to Sunday, 09:00–00:00; closed on Mondays."),
   ("Is there live music for gatherings with friends?","Live music accompanies the atmosphere on weekend evenings."),
  ],
 },
@@ -4542,7 +4542,7 @@ POSTS["sapanca-arkadaslarla-bulusma-mekani"] = {
  "faq":[
   ("أين أفضل مكان في سابانجا للقاء الأصدقاء؟","بفضل إطلالته على البحيرة وخيارات قائمته الواسعة وساعات فتحه المتأخرة، يُعد Mare Gastro عنوانًا مناسبًا للقاءات مجموعات الأصدقاء."),
   ("هل يمكن الحجز لمجموعة كبيرة من الأصدقاء؟","نعم، بذكر عدد الأشخاص في نموذج الحجز يمكنكم طلب ترتيب طاولة يناسب مجموعتكم."),
-  ("هل يوجد مطعم في سابانجا مفتوح حتى وقت متأخر من الليل؟","يفتح Mare Gastro من الثلاثاء إلى الأحد من 12:00 حتى 00:00؛ ويُغلق يوم الاثنين."),
+  ("هل يوجد مطعم في سابانجا مفتوح حتى وقت متأخر من الليل؟","يفتح Mare Gastro من الثلاثاء إلى الأحد من 09:00 حتى 00:00؛ ويُغلق يوم الاثنين."),
   ("هل توجد موسيقى حية للقاءات مع الأصدقاء؟","الموسيقى الحية ترافق الأجواء في أمسيات نهاية الأسبوع."),
  ],
 },
@@ -4571,7 +4571,7 @@ POSTS["sapanca-arkadaslarla-bulusma-mekani"] = {
  "faq":[
   ("Где лучшее место в Сапанджа для встречи с друзьями?","Благодаря виду на озеро, широкому меню и позднему времени работы Mare Gastro — подходящий адрес для встреч компаний друзей."),
   ("Можно ли забронировать стол для большой компании друзей?","Да, указав число гостей в форме бронирования, вы можете запросить расстановку столов, подходящую для вашей компании."),
-  ("Есть ли в Сапанджа ресторан, открытый допоздна?","Mare Gastro открыт со вторника по воскресенье с 12:00 до 00:00; в понедельник закрыт."),
+  ("Есть ли в Сапанджа ресторан, открытый допоздна?","Mare Gastro открыт со вторника по воскресенье с 09:00 до 00:00; в понедельник закрыт."),
   ("Есть ли живая музыка для встреч с друзьями?","Живая музыка сопровождает атмосферу по вечерам выходных."),
  ],
 },

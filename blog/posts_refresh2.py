@@ -5,7 +5,7 @@ Search Console (2026-08-07..11-05): "sapanca en iyi restoranlar" ~11. sıra,
 "sapanca lüks restoranlar" ~10. sıra, "sapancaya nasıl gidilir" 7-10. sıra.
 Yalnızca başlık, açıklama, cevap-önce giriş paragrafı ve güncelleme tarihi değişir;
 gövde metni aynı kalır. Kullanılan bilgiler sitede zaten doğrulanmış olanlardır:
-Google puanı 4,9 (24 Ekim 2026), Salı–Pazar 12:00–00:00 / Pazartesi kapalı,
+Google puanı 4,9 (24 Ekim 2026), Salı–Pazar 09:00–00:00 / Pazartesi kapalı,
 İstanbul'a ~1,5 saat, Didi Otel bahçesi, Şef Doğan Anapa, ücretsiz otopark + vale.
 """
 
@@ -18,13 +18,13 @@ REFRESH_TR2 = [
         "slug": "sapancanin-en-iyi-restorani", "updated": UPDATED,
         "title": "Sapanca'nın En İyi Restoranları (2026 Rehberi) | Mare Gastro",
         "desc": "Sapanca'da en iyi restoran hangisi? Göl manzarası, mutfak ve atmosfere göre 2026 karşılaştırması. Fine dining için Mare Gastro: Şef Doğan Anapa, Google'da 4,9.",
-        "lead": "<strong>Kısa cevap:</strong> Sapanca'da fine dining arıyorsanız Mare Gastro, Didi Otel bahçesinde gölün hemen yanında, Yönetici Şef Doğan Anapa'nın Ege ve Akdeniz mutfağıyla öne çıkıyor; Google'da 4,9 puanlı (Ekim 2026) ve Salı–Pazar 12:00–00:00 açık. Ama \"en iyi\" aranan deneyime göre değişir; bölgenin öne çıkan adreslerini mutfak, konum ve atmosfer açısından karşılaştırdık.",
+        "lead": "<strong>Kısa cevap:</strong> Sapanca'da fine dining arıyorsanız Mare Gastro, Didi Otel bahçesinde gölün hemen yanında, Yönetici Şef Doğan Anapa'nın Ege ve Akdeniz mutfağıyla öne çıkıyor; Google'da 4,9 puanlı (Ekim 2026) ve Salı–Pazar 09:00–00:00 açık. Ama \"en iyi\" aranan deneyime göre değişir; bölgenin öne çıkan adreslerini mutfak, konum ve atmosfer açısından karşılaştırdık.",
     },
     {
         "slug": "sapanca-luks-restoran", "updated": UPDATED,
         "title": "Sapanca Lüks Restoran: Gölün Yanında Fine Dining | Mare Gastro",
         "desc": "Sapanca'da lüks restoran mı arıyorsunuz? Didi Otel bahçesinde, gölün hemen yanında fine dining: Şef Doğan Anapa, Google'da 4,9, ücretsiz otopark ve vale.",
-        "lead": "<strong>Kısa cevap:</strong> Sapanca'da lüks bir akşam yemeği için Mare Gastro, Didi Otel'in bahçesinde gölün hemen yanında fine dining sunuyor: Yönetici Şef Doğan Anapa imzalı Ege ve Akdeniz mutfağı, açık ve kapalı alan, ücretsiz otopark ve vale hizmeti. Salı'dan Pazar'a 12:00–00:00 arası açık; rezervasyon site üzerinden üç adımda, WhatsApp onaylı.",
+        "lead": "<strong>Kısa cevap:</strong> Sapanca'da lüks bir akşam yemeği için Mare Gastro, Didi Otel'in bahçesinde gölün hemen yanında fine dining sunuyor: Yönetici Şef Doğan Anapa imzalı Ege ve Akdeniz mutfağı, açık ve kapalı alan, ücretsiz otopark ve vale hizmeti. Salı'dan Pazar'a 09:00–00:00 arası açık; rezervasyon site üzerinden üç adımda, WhatsApp onaylı.",
     },
     {
         "slug": "sapancaya-nasil-gidilir", "updated": UPDATED,
@@ -47,13 +47,13 @@ REFRESH_TR2 += [
         "slug": "sapanca-romantik-aksam-yemegi", "updated": UPDATED,
         "title": "Sapanca Romantik Akşam Yemeği: Göl Kenarında Fine Dining (2026) | Mare Gastro",
         "desc": "Sapanca'da romantik akşam yemeği için Mare Gastro: Didi Otel bahçesinde açık ve kapalı alan, Google'da 4,9, özel gün hazırlığı ve aynı bahçede konaklama.",
-        "lead": "<strong>Kısa cevap:</strong> Sapanca'da romantik bir akşam yemeği için Mare Gastro, Didi Otel bahçesinde gölün hemen yanında fine dining sunuyor: açık bahçe ve kapalı salon, Google'da 4,9 puan (Ekim 2026), Salı–Pazar 12:00–00:00. Rezervasyonda not bırakırsanız ekip özel gün hazırlığını sizinle planlar ve sakin bir köşe ayarlar; gece aynı bahçedeki Didi Otel'de kalabilirsiniz.",
+        "lead": "<strong>Kısa cevap:</strong> Sapanca'da romantik bir akşam yemeği için Mare Gastro, Didi Otel bahçesinde gölün hemen yanında fine dining sunuyor: açık bahçe ve kapalı salon, Google'da 4,9 puan (Ekim 2026), Salı–Pazar 09:00–00:00. Rezervasyonda not bırakırsanız ekip özel gün hazırlığını sizinle planlar ve sakin bir köşe ayarlar; gece aynı bahçedeki Didi Otel'de kalabilirsiniz.",
     },
     {
         "slug": "sapanca-gol-manzarali-kahvalti", "updated": UPDATED,
         "title": "Sapanca Kahvaltı Yerleri: Serpme Kahvaltı ve Kuymak (2026) | Mare Gastro",
-        "desc": "Sapanca'da kahvaltı nerede yapılır? Mare Gastro'da serpme kahvaltı, tabak kahvaltı, kuymak ve Brioche Benedict; Didi Otel bahçesinde, Salı–Pazar 12:00'den itibaren.",
-        "lead": "<strong>Kısa cevap:</strong> Sapanca'da kahvaltı için Mare Gastro'nun kahvaltı menüsünde Serpme Kahvaltı, Tabak Kahvaltı, Kuymak ve Brioche Benedict var. Restoran Didi Otel bahçesinde, Salı'dan Pazar'a 12:00'den itibaren açık; Pazartesi kapalı. Hafta sonu masalar çabuk dolduğu için rezervasyon önerilir.",
+        "desc": "Sapanca'da kahvaltı nerede yapılır? Mare Gastro'da serpme kahvaltı, tabak kahvaltı, kuymak ve Brioche Benedict; Didi Otel bahçesinde, Salı–Pazar 09:00'dan itibaren.",
+        "lead": "<strong>Kısa cevap:</strong> Sapanca'da kahvaltı için Mare Gastro'nun kahvaltı menüsünde Serpme Kahvaltı, Tabak Kahvaltı, Kuymak ve Brioche Benedict var. Restoran Didi Otel bahçesinde, Salı'dan Pazar'a 09:00'dan itibaren açık; Pazartesi kapalı. Hafta sonu masalar çabuk dolduğu için rezervasyon önerilir.",
     },
 ]
 

@@ -2,7 +2,7 @@
 """Mare Gastro — official FAQ pages (TR /sss.html, EN/AR/RU /{lang}/faq.html).
 
 Only facts already verified and published elsewhere on the site are used:
-address, hours (Tue–Sun 12:00–00:00, Mon closed — owner confirmed 2026-10-25),
+address, hours (Tue–Sun 09:00–00:00, Mon closed — owner confirmed 2026-10-25),
 reservation flow, live menu categories (/api/menu, 2026-11-07), free parking + valet
 (blog/sapanca-vale-otopark-restoran), vegetarian dishes (live menu), Didi Otel stay
 option (reservation form), indoor+outdoor (owner), Google rating 4.9 (Maps, 2026-10-24),
@@ -39,7 +39,7 @@ T = {
   updated="Son güncelleme: 7 Kasım 2026", rez="Rezervasyon Yap", wa="WhatsApp ile Yaz", back="Ana sayfa", crumb="Sık Sorulan Sorular",
   qa=[
    ("Mare Gastro nerede?", "Mare Gastro, Sapanca'da Didi Otel'in bahçesinde, Sapanca Gölü'nün hemen yanında. Adres: Kırkpınar Soğuksu, İstasyon 3 Cad. No:55, 54600 Sapanca/Sakarya. " + a(MAPS, "Google Haritalar'da aç") + "."),
-   ("Çalışma saatleri nedir?", "Salı'dan Pazar'a 12:00–00:00 arası açığız. Pazartesi kapalıyız."),
+   ("Çalışma saatleri nedir?", "Salı'dan Pazar'a 09:00–00:00 arası açığız. Pazartesi kapalıyız."),
    ("Nasıl rezervasyon yapabilirim?", "Sitedeki " + a(HOME["tr"] + "#reservation", "rezervasyon formundan") + " üç adımda tarih, saat ve kişi sayısını seçip WhatsApp üzerinden onaylayabilirsiniz. Telefon ve WhatsApp: " + a("tel:+905323540888", "+90 532 354 08 88") + "."),
    ("Nasıl bir mutfağınız var?", "Yönetici Şef Doğan Anapa'nın imzasıyla, deniz ürünleri ağırlıklı Ege ve Akdeniz mutfağı sunuyoruz. Menüde başlangıçlar, salatalar, ara sıcaklar, ana yemekler, kahvaltılar, tatlılar ve atıştırmalıklar bulunur."),
    ("Menüyü ve fiyatları nereden görebilirim?", "Güncel menü ve fiyatlar " + a("/dijitalmenu", "dijital menümüzde") + " ve " + a(HOME["tr"] + "#menu", "sitemizin menü bölümünde") + " yer alır."),
@@ -62,7 +62,7 @@ T = {
   updated="Last updated: 7 November 2026", rez="Book a Table", wa="Message on WhatsApp", back="Home", crumb="FAQ",
   qa=[
    ("Where is Mare Gastro?", "Mare Gastro is in the garden of Didi Otel in Sapanca, right by Lake Sapanca. Address: Kırkpınar Soğuksu, İstasyon 3 Cad. No:55, 54600 Sapanca/Sakarya, Türkiye. " + a(MAPS, "Open in Google Maps") + "."),
-   ("What are your opening hours?", "We are open Tuesday to Sunday, 12:00–00:00. We are closed on Mondays."),
+   ("What are your opening hours?", "We are open Tuesday to Sunday, 09:00–00:00. We are closed on Mondays."),
    ("How do I make a reservation?", "Use the three-step " + a(HOME["en"] + "#reservation", "reservation form") + " to choose your date, time and party size, then confirm via WhatsApp. Phone and WhatsApp: " + a("tel:+905323540888", "+90 532 354 08 88") + "."),
    ("What kind of cuisine do you serve?", "Seafood-focused Aegean and Mediterranean cuisine by Executive Chef Doğan Anapa. The menu has starters, salads, hot appetisers, main courses, breakfast plates, desserts and snacks."),
    ("Where can I see the menu and prices?", "The current menu and prices are in our " + a("/dijitalmenu?lang=en", "digital menu") + " and in the " + a(HOME["en"] + "#menu", "menu section") + " of our website."),
@@ -85,7 +85,7 @@ T = {
   updated="آخر تحديث: 7 نوفمبر 2026", rez="احجز طاولة", wa="راسلنا على واتساب", back="الرئيسية", crumb="الأسئلة الشائعة",
   qa=[
    ("أين يقع Mare Gastro؟", "يقع Mare Gastro في حديقة فندق Didi Otel في سابانجا، بجوار بحيرة سابانجا مباشرة. العنوان: Kırkpınar Soğuksu, İstasyon 3 Cad. No:55, 54600 Sapanca/Sakarya، تركيا. " + a(MAPS, "افتح في خرائط Google") + "."),
-   ("ما هي ساعات العمل؟", "نفتح من الثلاثاء إلى الأحد من 12:00 حتى 00:00. نغلق يوم الاثنين."),
+   ("ما هي ساعات العمل؟", "نفتح من الثلاثاء إلى الأحد من 09:00 حتى 00:00. نغلق يوم الاثنين."),
    ("كيف أحجز طاولة؟", "استخدم " + a(HOME["ar"] + "#reservation", "نموذج الحجز") + " المكوّن من ثلاث خطوات لاختيار التاريخ والوقت وعدد الأشخاص، ثم أكّد عبر واتساب. الهاتف وواتساب: " + a("tel:+905323540888", "‎+90 532 354 08 88") + "."),
    ("ما نوع المطبخ لديكم؟", "مطبخ بحر إيجه والبحر المتوسط مع تركيز على المأكولات البحرية بتوقيع الشيف التنفيذي دوغان أنابا. تضم القائمة المقبلات والسلطات والمقبلات الساخنة والأطباق الرئيسية وأطباق الفطور والحلويات والوجبات الخفيفة."),
    ("أين أجد القائمة والأسعار؟", "القائمة والأسعار المحدّثة موجودة في " + a("/dijitalmenu?lang=ar", "القائمة الرقمية") + " وفي " + a(HOME["ar"] + "#menu", "قسم القائمة") + " على موقعنا."),
@@ -108,7 +108,7 @@ T = {
   updated="Обновлено: 7 ноября 2026", rez="Забронировать", wa="Написать в WhatsApp", back="Главная", crumb="Частые вопросы",
   qa=[
    ("Где находится Mare Gastro?", "Mare Gastro находится в саду отеля Didi Otel в Сапандже, прямо у озера Сапанджа. Адрес: Kırkpınar Soğuksu, İstasyon 3 Cad. No:55, 54600 Sapanca/Sakarya, Турция. " + a(MAPS, "Открыть в Google Картах") + "."),
-   ("Какие часы работы?", "Мы открыты со вторника по воскресенье с 12:00 до 00:00. В понедельник закрыто."),
+   ("Какие часы работы?", "Мы открыты со вторника по воскресенье с 09:00 до 00:00. В понедельник закрыто."),
    ("Как забронировать столик?", "Воспользуйтесь " + a(HOME["ru"] + "#reservation", "формой бронирования") + " из трёх шагов: выберите дату, время и число гостей и подтвердите через WhatsApp. Телефон и WhatsApp: " + a("tel:+905323540888", "+90 532 354 08 88") + "."),
    ("Какая у вас кухня?", "Эгейская и средиземноморская кухня с акцентом на морепродукты от шеф-повара Догана Анапы. В меню закуски, салаты, горячие закуски, основные блюда, завтраки, десерты и снеки."),
    ("Где посмотреть меню и цены?", "Актуальное меню и цены — в нашем " + a("/dijitalmenu?lang=ru", "цифровом меню") + " и в " + a(HOME["ru"] + "#menu", "разделе меню") + " на сайте."),
