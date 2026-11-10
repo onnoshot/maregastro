@@ -12,6 +12,18 @@
       "permanent": true
     },
     {
+      "source": "/dijitalmenu/",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/qr/en/",
+      "permanent": true
+    },
+    {
       "source": "/dijitalmenu",
       "has": [
         {
@@ -33,6 +45,11 @@
         }
       ],
       "destination": "/qr/en/",
+      "permanent": true
+    },
+    {
+      "source": "/dijitalmenu/",
+      "destination": "/qr/",
       "permanent": true
     },
     {
