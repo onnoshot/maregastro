@@ -194,7 +194,7 @@
     track.innerHTML = picks.map(function (it, i) {
       return '<button type="button" class="sig-card" data-cat="' + esc(it.cat) + '">' +
         '<span class="sig-num">' + String(i + 1).padStart(2, '0') + '</span>' +
-        '<div class="sig-img"><img loading="lazy" decoding="async" src="/images/' + esc(it.img) + '" alt="' + esc(txt(it, 'name')) + '"></div>' +
+        '<div class="sig-img"><img loading="lazy" decoding="async" src="/images/' + (CHEF_PICKS.indexOf(it.id) > -1 ? 'sig/' + esc(it.id) + '.webp?v=1' : esc(it.img)) + '" alt="' + esc(txt(it, 'name')) + '"></div>' +
         '<div class="sig-body"><span class="sig-cat">' + esc(lab(it.cat)) + '</span><span class="sig-name">' + esc(txt(it, 'name')) + '</span>' +
         (txt(it, 'desc') ? '<span class="sig-desc">' + esc(txt(it, 'desc')) + '</span>' : '') + '</div></button>';
     }).join('');
