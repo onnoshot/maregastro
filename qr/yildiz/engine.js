@@ -653,7 +653,38 @@
     return byId;
   }
 
+  // a realistic dinner: single = starter/salad/main/dessert (rakı table: mezes + hot starter); couple shares the cold side, main and dessert are personal
+  function servingsFor(mode, st) { if (mode === 'couple') return (st === 'cocktail' || st === 'none') ? 4 : 1; return st === 'whisky' ? 1 : 2; }
+  function slotsYz(mode, style) {
+    const raki = style === 'raki', S = [], n = servingsFor(mode, style);
+    const drink = { key: 'icki', label: style === 'none' ? 'İçecek' : 'İçki', course: 'drink', min: n, max: n, owner: mode === 'couple' ? 'both' : 0, repeat: true, same: true };
+    if (mode === 'couple') {
+      S.push({ key: 'baslangic', label: 'Başlangıç', course: 'baslangic', min: 1, max: 1, owner: 'both' });
+      S.push({ key: 'meze', label: raki ? 'Mezeler' : 'Meze', course: 'meze', min: raki ? 2 : 1, max: raki ? 3 : 1, owner: 'both' });
+      S.push({ key: 'salata', label: 'Salata', course: 'salata', min: 1, max: 1, owner: 'both' });
+      S.push({ key: 'ara', label: 'Ara Sıcak', course: 'ara', min: 1, max: 1, owner: 'both' });
+      S.push({ key: 'ana0', label: 'Ana Yemek', course: 'ana', min: 1, max: 1, owner: 0 });
+      S.push({ key: 'ana1', label: 'Ana Yemek', course: 'ana', min: 1, max: 1, owner: 1 });
+      S.push({ key: 'tatli0', label: 'Tatlı', course: 'tatli', min: 1, max: 1, owner: 0 });
+      S.push({ key: 'tatli1', label: 'Tatlı', course: 'tatli', min: 1, max: 1, owner: 1 });
+    } else {
+      if (raki) S.push({ key: 'meze', label: 'Mezeler', course: 'meze', min: 2, max: 2, owner: 0 });
+      else S.push({ key: 'baslangic', label: 'Başlangıç', course: 'baslangic', min: 1, max: 1, owner: 0 });
+      S.push({ key: 'salata', label: 'Salata', course: 'salata', min: 1, max: 1, owner: 0 });
+      if (raki) S.push({ key: 'ara', label: 'Ara Sıcak', course: 'ara', min: 1, max: 1, owner: 0 });
+      S.push({ key: 'ana0', label: 'Ana Yemek', course: 'ana', min: 1, max: 1, owner: 0 });
+      S.push({ key: 'tatli0', label: 'Tatlı', course: 'tatli', min: 1, max: 1, owner: 0 });
+    }
+    S.push(drink);
+    return S;
+  }
+  // food budget (drinks come on top, so a wine or rakı table naturally costs more than an alcohol-free one)
+  const FOOD_BUDGET = {
+    single: { def: { min: 2800, max: 4400, center: 3500 }, raki: { min: 3600, max: 5200, center: 4300 } },
+    couple: { def: { min: 6000, max: 9000, center: 7200 }, raki: { min: 7000, max: 10200, center: 8400 } },
+  };
   function slotsFor(mode, style, lux) {
+    if (!lux) return slotsYz(mode, style);
     const couple = mode === 'couple';
     const raki = style === 'raki', none = style === 'none';
     const S = [];
@@ -727,34 +758,24 @@
   }
   function drinkAlt(mode, style, persons, byId, input, cur) {
     const pref = (st) => persons.reduce((a, P) => a + (P.sign.drinks[st] || 0) + (P.co ? (P.co.drinks[st] || 0) * 0.3 : 0), 0) / persons.length;
-    const curIds = cur.map((i) => i.id), servings = cur.reduce((a, i) => a + i.qty, 0) || 1;
-    const curCost = cur.reduce((a, i) => a + i.price * i.qty, 0);
-    let opts = stylesFor(mode, input).filter((st) => st !== style).map((st) => ({ st, pool: drinkPool(mode, st, byId, persons) })).filter((x) => x.pool.length);
-    if (style === 'none' || style === 'cocktail' || !opts.length) {
-      const same = drinkPool(mode, style, byId, persons).filter((c) => !curIds.includes(c.id));
-      if (style === 'none' || !opts.length) opts = same.length ? [{ st: style, pool: same }] : opts;
-    }
+    const curIds = cur.map((i) => i.id), curCost = cur.reduce((a, i) => a + i.price * i.qty, 0);
+    let opts = style === 'none' ? [] : stylesFor(mode, input).filter((st) => st !== style).map((st) => ({ st, pool: drinkPool(mode, st, byId, persons) })).filter((x) => x.pool.length);
+    if (!opts.length) { const same = drinkPool(mode, style, byId, persons).filter((c) => !curIds.includes(c.id)); if (same.length) opts = [{ st: style, pool: same }]; }
     if (!opts.length) return null;
     opts.sort((a, b) => pref(b.st) - pref(a.st));
-    const { st, pool } = opts[0];
-    const bottle = mode === 'couple' && BOTTLE[st];
-    const multi = !bottle && (st === 'cocktail' || st === 'none') && servings > 1;
+    const { st, pool } = opts[0], n = servingsFor(mode, st);
     const rank = pool.map((c) => {
       const aff = persons.reduce((a, P) => a + affinity(c.tags, P), 0) / persons.length;
-      const cost = c.price * (bottle ? 1 : multi ? 1 : servings);
-      return { c, k: aff / 3 + (c.fav || 0) * 1.4 - Math.abs(cost - (multi ? curCost / servings : curCost)) / 450 };
-    }).sort((a, b) => b.k - a.k);
-    let items;
-    if (bottle) items = [drinkItem(rank[0].c, 1)];
-    else if (multi) items = rank.slice(0, Math.min(servings, rank.length)).map((x) => drinkItem(x.c, 1));
-    else items = [drinkItem(rank[0].c, servings)];
-    if (multi && items.length < servings) items[0].qty += servings - items.length;
-    return { style: st, label: st === style ? optLabel(items) : STYLE_NAME[st], items };
+      return { c, k: aff / 3 + (c.fav || 0) * 1.4 - Math.abs(c.price * n - curCost) / 600 };
+    }).sort((x, y) => y.k - x.k);
+    const item = drinkItem(rank[0].c, n);
+    return { style: st, label: item.name, items: [item] };
   }
+
 
   function solve(mode, style, persons, byId, R, mask, lux) {
     let slots = slotsFor(mode, style, lux);
-    const B = Object.assign({}, (lux ? BUDGET_LUX : BUDGET)[mode]);
+    const B = Object.assign({}, lux ? BUDGET_LUX[mode] : FOOD_BUDGET[mode][style === 'raki' ? 'raki' : 'def']);
     const closer = byId[CLOSER.id];
     const closerCost = 0; // Türk kahvesi her menüde ikram
     const jit = {};
@@ -788,13 +809,14 @@
     const cands = slots.map((s, si) => pools[si].map((c) => {
       const owners = s.owner === 'both' ? persons : [persons[s.owner]];
       const aff = owners.reduce((a, P) => a + affinity(c.tags, P), 0) / owners.length;
-      const prem = c.course === 'drink' ? 0 : Math.min(c.price, 2400) / (lux ? 520 : 1100);
+      const prem = c.course === 'drink' ? (lux ? 0 : -c.price / 1500) : Math.min(c.price, 2400) / (lux ? 520 : 1100);
       const base = 4 + aff / 3 + (c.pair || 0) * 1.0 + (c.fav || 0) * 1.4 + prem + J(c.id + s.key.replace(/\d/, ''));
       return Object.assign({}, c, { score: base });
     }));
     // budget that the menu can actually reach with these dishes
     let reach = closerCost;
     slots.forEach((s, si) => {
+      if (!lux && s.course === 'drink') return;
       const prices = cands[si].map((c) => c.price).sort((a, b) => b - a);
       reach += s.repeat ? prices[0] * s.max : prices.slice(0, s.max).reduce((a, b) => a + b, 0);
     });
@@ -802,13 +824,13 @@
     if (reach * 0.94 < B.min) { light = true; B.min = Math.round(reach * 0.55 / 10) * 10; B.center = Math.round(reach * 0.72 / 10) * 10; B.max = Math.min(B.max, reach); }
 
     function evaluate(state) {
-      let total = closerCost, score = 0, count = 0;
+      let total = closerCost, btot = closerCost, score = 0, count = 0;
       const ingCount = {}, used = {};
       const drinkTags = {};
       state.forEach((sel, si) => {
         sel.forEach((ci, k) => {
           const c = cands[si][ci];
-          total += c.price;
+          total += c.price; if (lux || c.course !== 'drink') btot += c.price;
           score += k < slots[si].min ? c.score : c.score * 0.3; count++;
           if (c.course === 'drink') { for (const t in c.tags) drinkTags[t] = (drinkTags[t] || 0) + c.tags[t]; }
           else {
@@ -823,10 +845,11 @@
         sel.forEach((ci) => { const c = cands[si][ci]; for (const t in c.tags) if (drinkTags[t]) score += 0.12 * c.tags[t] * Math.min(drinkTags[t], 3); });
       });
       let pen = 0;
-      if (total < B.min) pen += (B.min - total) / 15;
-      if (total > B.max) pen += (total - B.max) / 15;
-      pen += Math.abs(total - B.center) / (lux ? 220 : 75);
-      return { f: score - pen, total, score, count };
+      state.forEach((sel, si) => { if (slots[si].same && new Set(sel).size > 1) score -= 1e6; });
+      if (btot < B.min) pen += (B.min - btot) / 15;
+      if (btot > B.max) pen += (btot - B.max) / 15;
+      pen += Math.abs(btot - B.center) / (lux ? 220 : 90);
+      return { f: score - pen, total, btot, score, count };
     }
     const legal = (state) => state.every((sel, si) => sel.length >= slots[si].min && sel.length <= slots[si].max && (slots[si].repeat || new Set(sel).size === sel.length));
     function climb(state) {
@@ -852,14 +875,14 @@
         const order = cands[si].map((c, i) => i).sort((a, b) => cands[si][b].score - cands[si][a].score);
         if (randomize) for (let i = order.length - 1; i > 0; i--) { if (R() < 0.5) { const j = Math.floor(R() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; } }
         const out = [];
-        for (let k = 0; k < s.min; k++) out.push(order[k % order.length]);
+        for (let k = 0; k < s.min; k++) out.push(s.same ? order[0] : order[k % order.length]);
         return out;
       });
     }
     let best = null;
     for (let r = 0; r < 4; r++) {
       const res = climb(init(r > 0));
-      const ok = res.ev.total >= B.min && res.ev.total <= B.max && res.ev.f > -1e5;
+      const ok = res.ev.btot >= B.min && res.ev.btot <= B.max && res.ev.f > -1e5;
       const key = (ok ? 1e6 : 0) + res.ev.f;
       if (!best || key > best.key) best = Object.assign(res, { key, ok });
     }
@@ -1022,7 +1045,7 @@
       const ic = courses.find((g) => g.key === 'icki');
       if (ic) {
         const alt = drinkAlt(mode, style, persons, byId, input, ic.items);
-        if (alt) { ic.choice = [{ style, label: alt.style === style ? optLabel(ic.items) : STYLE_NAME[style], items: ic.items }, alt]; ic.label = style === 'none' ? 'İçecek' : 'İçki'; }
+        if (alt) { ic.choice = [{ style, label: ic.items[0].name, items: ic.items }, alt]; ic.label = style === 'none' ? 'İçecek' : 'İçki'; }
       }
       const si = slots.findIndex((x) => x.key === 'salata'), sg = courses.find((g) => g.key === 'salata');
       if (si >= 0 && sg && sg.items.length) {

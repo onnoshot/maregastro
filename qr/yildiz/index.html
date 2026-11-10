@@ -475,6 +475,8 @@ a.ibtn{color:var(--ink)}
 .it .pr.free{color:var(--amber)}
 .gift-it{box-shadow:0 0 0 1px var(--amber-soft),var(--sh-sm)}
 .sum .l.gift-l{margin-top:6px;color:var(--amber);font-weight:600}
+.sum .l.gain{margin-top:10px;padding:9px 12px;border-radius:12px;background:var(--amber-soft);color:var(--ink);font-weight:700}
+.opt-why{margin:2px 2px 0}
 #s-res .sum{margin-top:18px;padding:16px;border-radius:20px}
 #s-res .sum .t b{font-size:26px}
 #s-res .acts2{margin-top:12px}
@@ -805,7 +807,7 @@ var m=location.search.match(/[?&]masa=([^&]+)/);gtag('config','G-LMZ66PTR0T',{co
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script src="names.js?v=2"></script>
 <script src="names_notes.js?v=1"></script>
-<script src="engine.js?v=6"></script>
+<script src="engine.js?v=7"></script>
 <script src="story.js?v=1"></script>
 <script>
 (function(){
@@ -1277,7 +1279,7 @@ function optionsHtml(g, gi, r){
   return '<div class="opt2" role="radiogroup" aria-label="' + esc(g.label) + ' seçimi"><div class="opt2-h"><span>İki seçenek</span><em>Birini seç</em></div><div class="opt2-g">' +
     g.choice.map((o, i) => {
       const it0 = o.items[0], diff = setCost(o.items) - base;
-      const sub = g.key === 'icki' && o.label !== o.items.map((x) => x.name).join(' + ') ? o.items.map((x) => (x.qty > 1 ? x.qty + '× ' : '') + x.name).join(' + ') : (it0.note || '');
+      const sub = g.key === 'icki' ? [DR_TR[o.style] || '', it0.qty > 1 ? it0.qty + ' × ' + money(it0.price) : (it0.note || '')].filter(Boolean).join(' · ') : (it0.note || '');
       return '<button type="button" role="radio" aria-checked="' + (i === cur) + '" class="opt' + (i === cur ? ' on' : '') + '" data-opt="' + gi + ':' + i + '">' +
         '<span class="opt-th">' + (it0.img ? '<img src="/images/' + encodeURI(it0.img) + '" alt="" loading="lazy">' : ico(courseIc(g.key, o.style || r.style))) + '<i class="opt-ck">' + ico('i-chk') + '</i></span>' +
         '<b>' + esc(o.label) + '</b><small>' + esc(sub) + '</small><em>' + (i === 0 ? money(setCost(o.items)) : diff === 0 ? 'Aynı fiyat' : (diff > 0 ? '+' : '−') + money(Math.abs(diff))) + '</em></button>';
@@ -1288,16 +1290,19 @@ function courseHtml(g, gi, r){
   let h = '<div class="course rv" id="c-' + gi + '"><div class="c-h"><span class="ci2">' + ico(courseIc(g.key, r.style)) + '</span><b>' + esc(g.label) + '</b>' +
     (g.key === 'kapanis' ? '<span class="gift">Bizden ikram</span>' : g.optional ? '<span class="gift opt-b">İsteğe bağlı</span>' : '') + '</div>';
   if (g.choice) h += optionsHtml(g, gi, r);
-  items.forEach((it) => { h += itemHtml(it, g, r); });
+  if (g.choice) { const w = items[0] && items[0].why; if (w) h += '<p class="why opt-why">' + esc(w) + '</p>'; }
+  else items.forEach((it) => { h += itemHtml(it, g, r); });
   if (g.key === 'icki' && cur === 0) h += '<div class="dnote"><b>Neden ' + esc(r.styleName.toLocaleLowerCase('tr')) + '?</b>' + esc(r.styleWhy) + '</div>';
   return h + '</div>';
 }
+const gainOf = (r, T) => T.disc + r.courses.filter((g) => g.key === 'kapanis').reduce((a, g) => a + g.items.reduce((b, it) => b + (it.listPrice || 0) * it.qty, 0), 0);
 function sumHtml(r){
   const T = totals(r), couple = r.mode === 'couple';
   const dropped = r.courses.filter((g) => g.optional).reduce((a, g) => a + g.items.filter((it) => S.drop[dropKey(g, it)]).length, 0);
   return '<div class="sum rv in" id="sec-sum"><div class="l"><span>Menü toplamı</span><span>' + (DISCOUNT_ON ? '<s>' + money(T.total) + '</s>' : money(T.total)) + '</span></div>' +
     (DISCOUNT_ON ? '<div class="l dc"><span>Yıldız Menüsü indirimi %' + DISCOUNT + '</span><span>−' + money(T.disc) + '</span></div>' : '') +
     '<div class="l gift-l"><span>Türk kahvesi</span><span>İkram</span></div>' +
+    (gainOf(r, T) ? '<div class="l gain"><span>Bu menüde kazancın</span><span>' + money(gainOf(r, T)) + '</span></div>' : '') +
     (dropped ? '<div class="l"><span>Çıkarılan tatlı</span><span>' + dropped + '</span></div>' : '') +
     '<div class="t"><span>' + (couple ? 'İki kişilik toplam' : 'Toplam') + '</span><b>' + money(T.final) + '</b></div>' +
     '<p>Seçimlerine göre anında güncellenir. ' + (DISCOUNT_ON ? 'İndirim, menünün tamamı sipariş edildiğinde uygulanır. ' : '') + 'Fiyatlar güncel menü fiyatlarıdır.</p></div>';
