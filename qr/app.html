@@ -406,6 +406,18 @@ svg{display:block}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
   .rv{opacity:1;transform:none}
 }
+
+/* Yıldız Menüsü entry points */
+.poster.yzc .pz{transform:none}
+.poster.yzc .art{position:relative}
+.yz-new{position:absolute;top:12px;left:12px;height:24px;padding:0 10px;border-radius:99px;background:rgba(255,255,255,.92);color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.02em;display:inline-flex;align-items:center}
+.yz-go{display:flex;align-items:center;justify-content:space-between;padding:12px 0 14px}
+.yz-go span{font-size:12.5px;color:var(--muted)}
+.yz-go b{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 14px;border-radius:99px;background:var(--ink);color:#fff;font-size:13px;font-weight:600}
+.yz-go b svg{width:14px;height:14px}
+.tabbar .tb-yz{flex:1.25;color:var(--ink)}
+.tabbar .tb-yz svg{color:var(--amber)}
+.tabbar .tb-yz span{white-space:nowrap}
 </style>
 <script>
 (function(){if(/[?&]preview=1/.test(location.search))return;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-LMZ66PTR0T';document.head.appendChild(s);
@@ -425,6 +437,7 @@ var m=location.search.match(/[?&]masa=([^&]+)/);gtag('config','G-LMZ66PTR0T',{co
     <symbol id="i-drink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8"/><path d="M12 11v11"/><path d="m19 3-7 8-7-8Z"/></symbol>
     <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.6 2.8 3.9 6 3.9 9.5S14.6 18.7 12 21.5C9.4 18.7 8.1 15.5 8.1 12S9.4 5.3 12 2.5Z"/></symbol>
     <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3.2l2.5 5.3 5.8.7-4.3 4 1.1 5.7L12 16.1l-5.1 2.8 1.1-5.7-4.3-4 5.8-.7z"/></symbol>
     <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3" y="4.5" width="18" height="17" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></symbol>
     <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></symbol>
   </defs>
@@ -461,6 +474,7 @@ var m=location.search.match(/[?&]masa=([^&]+)/);gtag('config','G-LMZ66PTR0T',{co
   <button data-t="yemek"><svg><use href="#i-food"/></svg><span></span></button>
   <button data-t="icecek"><svg><use href="#i-drink"/></svg><span></span></button>
   <button data-t="search"><svg><use href="#i-search"/></svg><span></span></button>
+  <button data-t="yz" class="tb-yz" data-yz="tabbar" hidden><svg><use href="#i-star"/></svg><span>Şansını Dene</span></button>
 </nav>
 
 <div class="sv" id="sv" role="dialog" aria-modal="true"><div class="sv-in">
@@ -574,6 +588,10 @@ function sc(kind){
 }
 function words(s){return String(s).split(/\s+/).filter(Boolean).map(function(w,i){return '<span class="w"><span style="--i:'+i+'">'+esc(w)+'</span></span>'}).join(' ')}
 var POSTERS={'kereviz-pureli-jumbo-karides-sogus':'jumbo-karides','somon-tartar':'somon-tartar','citir-somon':'citir-somon','ormanda-bir-yuruyus':'ormanda-bir-yuruyus','mezgit-tempura':'mezgit-tempura'};
+function yzHref(src){var m=location.search.match(/[?&]masa=([^&]+)/);return '/qr/yildiz/?utm_source=qr_menu&utm_medium='+src+(m?'&masa='+m[1]:'')}
+function yzCard(i){var no=(i+1<10?'0':'')+(i+1);return '<article class="poster yzc" data-yz="featured" role="link" tabindex="0" aria-label="Yıldız Menüsü: Şansını Dene"><div class="art"><div class="pz"><img src="/images/qr/yildiz-menusu.webp" alt="Yıldız Menüsü" loading="lazy" decoding="async"></div><span class="yz-new">Yeni</span></div>'+
+  '<div class="cap"><div class="cap-top"><span class="no">Nº '+no+'</span><span>Yıldız Menüsü</span></div><h3 class="p-title">Şansını Dene</h3><p class="p-tag">Doğum gününe ve adına göre sana özel bir menü. Hızlı ve gerçekçi bir analiz.</p>'+
+  '<div class="cap-bot yz-go"><span>Menünü keşfet</span><b>Başla<svg><use href="#i-star"/></svg></b></div></div></article>'}
 function pimg(f){return '/images/qr/'+(lang==='tr'?'tr':'en')+'/'+f+'.webp'}
 var STORIES=[
  {k:'mare',l:{tr:'Mare',en:'Mare',ar:'مار',ru:'Mare'},s:[{f:'aksamin-en-guzel-hali'},{f:'ege-sapanca'}]},
@@ -647,8 +665,10 @@ function render(){
   var F=sc('featured');
   if(F){
     html+='<section class="sec" id="s-featured"><div class="sh"><div><div class="eb">'+esc(t('nowEb'))+'</div><h2 class="st">'+esc(F.title)+'</h2></div><span class="cnt">'+F.list.length+' '+esc(t('items'))+'</span></div>';
-    if(F.list.length>1)html+='<div class="prog" id="prog">'+F.list.map(function(){return '<span><i></i></span>'}).join('')+'</div>';
-    html+='<div class="rail" id="rail">'+F.list.map(function(o,i){
+    var L=F.list.slice(); if(lang==='tr')L.splice(Math.min(1,L.length),0,{yz:1});
+    if(L.length>1)html+='<div class="prog" id="prog">'+L.map(function(){return '<span><i></i></span>'}).join('')+'</div>';
+    html+='<div class="rail" id="rail">'+L.map(function(o,i){
+      if(o.yz)return yzCard(i);
       var it=o.it;
       var n=F.list.length, pad=function(x){return (x<10?'0':'')+x};
       var cap='<div class="cap-top"><span class="no">Nº '+pad(i+1)+'</span><span>'+esc(cl(it.cat))+'</span></div>';
@@ -895,13 +915,14 @@ function setLang(l,save){
   if(save&&!PREVIEW&&(lang==='tr'||lang==='en')){var np=lang==='en'?'/qr/en/':'/qr/';setTimeout(function(){try{if(location.pathname!==np)history.replaceState(history.state,'',np+location.search)}catch(e){}},450)}
   document.documentElement.lang=lang; document.documentElement.dir=lang==='ar'?'rtl':'ltr';
   $('#langBtn').textContent=lang.toUpperCase();
-  $$('#tabbar button').forEach(function(b){var k=b.dataset.t;$('span',b).textContent=k==='home'?t('home'):k==='search'?t('search'):cl(k)});
+  $$('#tabbar button').forEach(function(b){var k=b.dataset.t;if(k==='yz'){b.hidden=lang!=='tr';return}$('span',b).textContent=k==='home'?t('home'):k==='search'?t('search'):cl(k)});
   if(TABLE){$('#tableChip span').textContent=t('table')+' '+TABLE}
   if(MENU)render();
 }
 
 /* ── global clicks ── */
 document.addEventListener('click',function(e){
+  var yz=e.target.closest('[data-yz]'); if(yz){track('qr_yildiz_open',{source:yz.dataset.yz});location.href=yzHref(yz.dataset.yz);return}
   var so=e.target.closest('[data-story]'); if(so){svOpen(+so.dataset.story);return}
   var c=e.target.closest('[data-id]'); if(c&&!e.target.closest('.sheet .x')){openItem(c.dataset.id,srcOf(c));return}
   var g=e.target.closest('#seg button'); if(g){track(g.dataset.g==='icecek'?'qr_tab_drinks':'qr_tab_food');if(g.dataset.g!==curGroup){renderGroup(g.dataset.g,true)}jumpMenu();return}
@@ -909,13 +930,14 @@ document.addEventListener('click',function(e){
 });
 document.addEventListener('keydown',function(e){
   if(e.key==='Escape'&&openSheet){hideSheet();return}
+  if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('[data-yz]')){e.preventDefault();e.target.click();return}
   if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('[role=button][data-id]')){e.preventDefault();openItem(e.target.dataset.id)}
 });
 $('#searchBtn').addEventListener('click',function(){track('qr_search_open');openSearch()});
 $('#langBtn').addEventListener('click',openLang);
 $('#dealbar').addEventListener('click',function(){track('qr_deals_bar');scrollToEl($('#s-deals'),hdrH()+4)});
 $('#tabbar').addEventListener('click',function(e){
-  var b=e.target.closest('button'); if(!b||!MENU)return; var k=b.dataset.t;
+  var b=e.target.closest('button'); if(!b||!MENU)return; var k=b.dataset.t; if(k==='yz')return;
   if(k==='search'){openSearch();return}
   if(k==='home'){window.scrollTo({top:0,behavior:'smooth'});return}
   track(k==='icecek'?'qr_tab_drinks':'qr_tab_food');
@@ -924,7 +946,7 @@ $('#tabbar').addEventListener('click',function(e){
 });
 function syncTabbar(){
   var m=$('#s-menu'); var inMenu=m&&m.getBoundingClientRect().top<innerHeight*.5;
-  $$('#tabbar button').forEach(function(b){var k=b.dataset.t;b.classList.toggle('on',inMenu?k===curGroup:k==='home')});
+  $$('#tabbar button').forEach(function(b){var k=b.dataset.t;if(k==='yz')return;b.classList.toggle('on',inMenu?k===curGroup:k==='home')});
 }
 var ticking=false;
 window.addEventListener('scroll',function(){if(ticking)return;ticking=true;requestAnimationFrame(function(){ticking=false;$('#hdr').classList.toggle('scrolled',scrollY>4);syncTabbar()})},{passive:true});

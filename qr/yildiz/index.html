@@ -570,6 +570,68 @@ body.yz-locked #bar{display:none}
 .in .drb-r s{width:var(--w)}
 .drb-r em{font-style:normal;font-size:10.5px;font-weight:700;color:var(--amber);white-space:nowrap}
 @media (prefers-reduced-motion:reduce){.axr-b s,.drb-r s{transition:none}.in .nwh .nw-on,.in .pers-svg{animation:none}}
+/* ── guest choices ── */
+.opt2{margin:0 0 10px}
+.opt2-h{display:flex;justify-content:space-between;align-items:baseline;font-size:11.5px;font-weight:600;color:var(--muted);margin:0 2px 7px}
+.opt2-h em{font-style:normal;color:var(--amber)}
+.opt2-g{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opt{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:10px;border-radius:16px;background:var(--card);box-shadow:0 0 0 1px var(--line),var(--sh-sm);text-align:left;transition:box-shadow .25s var(--ease),transform .15s var(--ease)}
+.opt:active{transform:scale(.97)}
+.opt.on{box-shadow:0 0 0 2px var(--ink),var(--sh-md)}
+.opt-th{position:relative;width:100%;aspect-ratio:16/10;border-radius:11px;overflow:hidden;clip-path:inset(0 round 11px);background:var(--paper);display:grid;place-items:center;color:var(--amber);margin-bottom:5px}
+.opt-th img{width:100%;height:100%;object-fit:cover}
+.opt-th>svg{width:26px;height:26px}
+.opt-ck{position:absolute;top:6px;right:6px;width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;color:transparent;box-shadow:0 0 0 1px var(--line);transition:background .2s,color .2s}
+.opt-ck svg{width:13px;height:13px}
+.opt.on .opt-ck{background:var(--ink);color:#fff;box-shadow:none}
+.opt b{font-size:13.5px;font-weight:600;letter-spacing:-.015em;line-height:1.25}
+.opt small{font-size:11px;color:var(--muted);line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.opt em{font-style:normal;font-size:12px;font-weight:700;color:var(--ink);margin-top:3px;font-variant-numeric:tabular-nums}
+.opt:not(.on) em{color:var(--amber)}
+.opt-b{background:var(--paper)!important;color:var(--ink2)!important}
+.dsw{display:inline-flex;align-items:center;gap:8px;margin-top:10px;height:30px;padding:0 12px 0 6px;border-radius:99px;background:var(--paper);font-size:12px;font-weight:600;color:var(--ink2)}
+.dsw i{position:relative;width:30px;height:18px;border-radius:99px;background:rgba(11,27,51,.18);transition:background .25s}
+.dsw i::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.2);transition:transform .25s var(--out)}
+.dsw.on i{background:var(--ink)}
+.dsw.on i::after{transform:translateX(12px)}
+.it.dropped{opacity:.55}
+.it.dropped h3,.it.dropped .pr{text-decoration:line-through;text-decoration-color:rgba(11,27,51,.4)}
+.course.bump .it,.course.bump .opt2{animation:bump .4s var(--out)}
+@keyframes bump{from{transform:translateY(4px);opacity:.6}to{transform:none;opacity:1}}
+body.alt-drink .pl-drink{display:none}
+.bar.pulse #barNew{animation:pulse .5s var(--out)}
+@keyframes pulse{40%{transform:scale(1.08)}}
+#barNew{display:inline-block}
+@media (prefers-reduced-motion:reduce){.course.bump .it,.course.bump .opt2,.bar.pulse #barNew{animation:none}}
+
+/* analysis schema */
+.fl-wrap{display:grid;grid-template-columns:minmax(0,1fr) 92px;gap:12px;align-items:center}
+.fl{list-style:none;position:relative;display:grid;gap:10px;margin:0;padding:0}
+.fl::before{content:"";position:absolute;left:17px;top:18px;bottom:18px;width:2px;background:repeating-linear-gradient(var(--amber2) 0 4px,transparent 4px 8px);background-size:2px 8px;opacity:.7}
+.in .fl::before{animation:flow 1s linear infinite}
+@keyframes flow{to{background-position:0 8px}}
+.fl li{position:relative;display:grid;grid-template-columns:36px minmax(0,1fr);gap:10px;align-items:center;opacity:0;transform:translateX(-8px);transition:opacity .5s var(--out),transform .5s var(--out);transition-delay:calc(var(--i) * .22s + .1s)}
+.in .fl li{opacity:1;transform:none}
+.fl-ic{position:relative;z-index:1;width:36px;height:36px;border-radius:50%;background:var(--card);box-shadow:0 0 0 1px var(--line),var(--sh-sm);display:grid;place-items:center;color:var(--ink)}
+.fl-ic svg{width:17px;height:17px}
+.fl li:last-child .fl-ic{background:var(--ink);color:#fff}
+.in .fl li .fl-ic{animation:ping .9s var(--out) both;animation-delay:calc(var(--i) * .22s + .3s)}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(61,90,128,.35)}100%{box-shadow:0 0 0 10px rgba(61,90,128,0)}}
+.fl b{display:block;font-size:13px;font-weight:600}
+.fl small{display:block;font-size:11.5px;color:var(--muted);margin-top:1px}
+.fl small b{display:inline;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.gauge{position:relative;width:92px;height:92px}
+.gauge svg{width:100%;height:100%;transform:rotate(-90deg)}
+.gauge circle{fill:none;stroke-width:6;stroke-linecap:round}
+.g-bg{stroke:var(--paper)}
+.g-fg{stroke:var(--ink);stroke-dasharray:var(--c);stroke-dashoffset:var(--c);transition:stroke-dashoffset 1.6s var(--out) .6s}
+.in .g-fg{stroke-dashoffset:var(--o)}
+.gauge>div{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.gauge b{font-size:20px;font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.gauge span{font-size:9.5px;color:var(--muted);line-height:1.2;margin-top:1px}
+.it .nt{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.nhow{font-size:11.5px;line-height:1.45;color:var(--muted);margin-top:8px}
+@media (prefers-reduced-motion:reduce){.in .fl::before,.in .fl li .fl-ic{animation:none}.fl li,.g-fg{transition:none}}
 </style>
 <script>
 (function(){if(/[?&]preview=1/.test(location.search)||/bot|crawl|spider|headless/i.test(navigator.userAgent))return;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-LMZ66PTR0T';document.head.appendChild(s);
@@ -711,7 +773,8 @@ var m=location.search.match(/[?&]masa=([^&]+)/);gtag('config','G-LMZ66PTR0T',{co
 <div class="toast" id="toast"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
-<script src="names.js?v=1"></script>
+<script src="names.js?v=2"></script>
+<script src="names_notes.js?v=1"></script>
 <script src="engine.js?v=6"></script>
 <script src="story.js?v=1"></script>
 <script>
@@ -725,7 +788,7 @@ const MASA = (location.search.match(/[?&]masa=([^&]+)/) || [])[1];
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 let DISCOUNT = 20, DISCOUNT_ON = true, MENU = null;
 const blank = () => ({ name: '', gender: null, day: '', month: '', sign: null, byGrid: false });
-const S = { mode: null, gender: null, step: 0, people: [blank(), blank()], diet: [], noAlc: false, variant: 0, result: null, lastSig: '' };
+const S = { mode: null, gender: null, step: 0, people: [blank(), blank()], diet: [], noAlc: false, variant: 0, result: null, lastSig: '', sel: {}, drop: {} };
 const money = (n) => Math.round(n).toLocaleString('tr-TR') + ' ₺';
 const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 function track(name, params){ if (PREVIEW || !window.gtag) return; try { gtag('event', name, params || {}); } catch (e) {} }
@@ -881,7 +944,7 @@ window.addEventListener('popstate', (e) => {
 });
 
 // ── result ──
-function totals(r){ const total = r.total; const disc = DISCOUNT_ON ? Math.round(total * DISCOUNT / 100 / 10) * 10 : 0; return { total, disc, final: total - disc }; }
+function totals(r){ const total = effCourses(r).reduce((a, g) => a + setCost(g.items), 0); const disc = DISCOUNT_ON ? Math.round(total * DISCOUNT / 100 / 10) * 10 : 0; return { total, disc, final: total - disc }; }
 const bdayText = (p) => p.birth ? p.birth.d + ' ' + MONTHS[p.birth.m - 1] : null;
 function thumb(it, key){
   if (it.img) return '<img src="/images/' + encodeURI(it.img) + '" alt="" loading="lazy" onerror="this.remove()">';
@@ -903,7 +966,7 @@ function firstSentence(s){
 const EL_ID = { 'Ateş': 'ates', 'Toprak': 'toprak', 'Hava': 'hava', 'Su': 'su' };
 const elChip = (el) => '<span class="chip"><svg><use href="#e-' + EL_ID[el] + '"/></svg>' + el + '</span>';
 const DRINK_IC = { raki: 'c-raki', white: 'c-wine', red: 'c-wine', rose: 'c-wine', sparkling: 'c-wine', cocktail: 'c-cocktail', whisky: 'c-whisky', none: 'c-mock' };
-const courseIc = (key, style) => key === 'icki' ? DRINK_IC[style] || 'c-wine' : ({ baslangic: 'c-start', meze: 'c-meze', ara: 'c-ara', ana: 'c-ana', tatli: 'c-tatli', kapanis: 'c-cup' })[key] || 'c-start';
+const courseIc = (key, style) => key === 'icki' ? DRINK_IC[style] || 'c-wine' : ({ baslangic: 'c-start', meze: 'c-meze', ara: 'c-ara', ana: 'c-ana', tatli: 'c-tatli', kapanis: 'c-cup', salata: 'd-leaf' })[key] || 'c-start';
 const ico = (id) => '<svg viewBox="0 0 24 24"><use href="#' + id + '"/></svg>';
 function radarSvg(r){
   const couple = r.mode === 'couple', A = r.reading[0].profile, B = couple ? r.reading[1].profile : null;
@@ -976,7 +1039,6 @@ function nameCard(p, opt){
     '<div class="nmc-chips">' + (nd.origin ? '<span>' + esc(nd.origin) + '</span>' : '') + (nd.kind === 'dict' ? '<span class="ok">Sözlük anlamı</span>' : nd.kind === 'roots' ? '<span>Kök okuması</span>' : '<span>Ses okuması</span>') + '</div></div></div>';
   if (nd.note) h += '<p class="nmc-note">' + esc(nd.note) + '</p>';
   if (nd.kind === 'roots' && nd.parts) h += '<div class="nmc-roots">' + nd.parts.map((x, i) => (i ? '<i>+</i>' : '') + '<span><b>' + esc(x[0].charAt(0) === '-' ? x[0] : x[0].charAt(0).toLocaleUpperCase('tr') + x[0].slice(1)) + '</b>' + esc(x[1]) + '</span>').join('') + '</div>';
-  h += '<p class="nmc-why"><svg><use href="#i-sky"/></svg>' + esc(EMB_WHY[grp] || EMB_WHY.farkli) + '</p>';
   if (!opt.short) h += numBlock(p);
   return h + '</div>';
 }
@@ -1036,7 +1098,7 @@ function numWheel(n){
   return h + '<circle cx="60" cy="60" r="3" fill="currentColor"/></svg>';
 }
 function numBlock(p){
-  return '<div class="nmc-num">' + lettersHtml(p) + '<div class="nrow"><div class="nwrap">' + numWheel(p.num) + '</div><div><div class="sumn"><b>' + p.numTotal + ' → ' + p.num + '</b><span>' + p.numTitle + '</span></div><p class="rd dim">' + esc(p.numText) + '</p></div></div></div>';
+  return '<div class="nmc-num">' + lettersHtml(p) + '<div class="nrow"><div class="nwrap">' + numWheel(p.num) + '</div><div><div class="sumn"><b>' + p.numTotal + ' → ' + p.num + '</b><span>' + p.numTitle + '</span></div><p class="rd dim">' + esc(p.numText) + '</p></div></div><p class="nhow">Pisagor numerolojisi Türk alfabesine uyarlandı: her harf 1–9 arası bir değer alır, toplam tek haneye indirgenir.</p></div>';
 }
 // palate
 function personaCard(p, small){
@@ -1100,6 +1162,7 @@ function renderResult(){
   }
   P.okuma += '<button class="nextt rv" data-tab-go="damak">Damak tadını gör<svg><use href="#i-arrow"/></svg></button>';
   P.damak += '<button class="nextt rv" data-tab-go="menu">Menünü gör<svg><use href="#i-arrow"/></svg></button>';
+  P.menu += flowSchema(r);
   let star = null; r.courses.forEach((g) => g.items.forEach((it) => { if (it.star) star = it; }));
   if (star) {
     P.menu += '<section class="star rv" id="sec-star"><div class="s-img"><img src="/images/' + encodeURI(star.img) + '" alt="' + esc(star.name) + '"></div><div class="s-body">' +
@@ -1107,30 +1170,17 @@ function renderResult(){
       '<h3>' + esc(star.name) + '</h3><p class="nt">' + esc(star.note) + '</p>' + (star.why ? '<p class="why">' + esc(star.why) + '</p>' : '') +
       (star.pair ? '<p class="pl"><svg><use href="#i-glass"/></svg>' + esc(star.pair) + '</p>' : '') + '</div></section>';
   }
-  P.menu += '<div class="sec-h rv" id="sec-menu"><h2>' + (couple ? 'Menünüz' : 'Menün') + '</h2><span class="chip">' + ico(courseIc('icki', r.style)).replace('<svg', '<svg style="width:14px;height:14px;margin-right:5px"') + esc(r.styleName) + '</span></div>';
+  P.menu += '<div class="sec-h rv" id="sec-menu"><h2>' + (couple ? 'Menünüz' : 'Menün') + '</h2><span class="chip" id="styleChip">' + ico(courseIc('icki', r.style)).replace('<svg', '<svg style="width:14px;height:14px;margin-right:5px"') + esc(r.styleName) + '</span></div>';
   P.menu += '<div class="flow rv">' + r.courses.map((g, gi) => '<button type="button" data-go="c-' + gi + '" style="--dl:' + (gi * .08).toFixed(2) + 's"><i>' + ico(courseIc(g.key, r.style)) + '</i><span>' + esc(g.label) + '</span></button>').join('') + '</div>';
   if (r.notes.length || r.diet.length) P.menu += '<div class="notes rv"><b>' + esc(r.diet.length ? r.diet.join(' · ') : 'Not') + '</b>' + esc(r.notes.length ? r.notes.join(' ') : 'Menün bu tercihlere göre hazırlandı.') + '</div>';
-  r.courses.forEach((g, gi) => {
-    P.menu += '<div class="course rv" id="c-' + gi + '"><div class="c-h"><span class="ci2">' + ico(courseIc(g.key, r.style)) + '</span><b>' + esc(g.label) + '</b>' + (g.key === 'kapanis' ? '<span class="gift">Bizden ikram</span>' : '') + '</div>';
-    g.items.forEach((it) => {
-      const tags = (it.pct ? '<span class="pct lt">%' + it.pct + ' uyum</span>' : '') + (it.tags || []).map((t) => '<span>' + esc(t) + '</span>').join('') + (couple && it.forName ? '<span class="for">' + esc(it.forName) + ' için</span>' : '');
-      P.menu += '<div class="it' + (it.free ? ' gift-it' : '') + '"><div class="th">' + (it.img ? thumb(it, g.key) : ico(courseIc(g.key, r.style))) + '</div><div class="tx"><div class="row"><h3>' + esc(it.name) + (it.star ? '<svg class="sm"><use href="#i-star"/></svg>' : '') + '</h3><span class="pr' + (it.free ? ' free' : '') + '">' + (it.qty > 1 ? '<small>' + it.qty + ' × </small>' : '') + (it.free ? 'İkram' : money(it.price)) + '</span></div>' +
-        (it.note ? '<p class="nt">' + esc(it.note) + '</p>' : '') + (tags ? '<div class="tags">' + tags + '</div>' : '') +
-        (it.why ? '<p class="why">' + esc(it.why) + '</p>' : '') + (it.pair && !it.star ? '<p class="pl"><svg><use href="#i-glass"/></svg>' + esc(it.pair) + '</p>' : '') + '</div></div>';
-    });
-    if (g.key === 'icki') P.menu += '<div class="dnote"><b>Neden ' + esc(r.styleName.toLocaleLowerCase('tr')) + '?</b>' + esc(r.styleWhy) + '</div>';
-    P.menu += '</div>';
-  });
-  P.menu += '<div class="sum rv" id="sec-sum"><div class="l"><span>Menü toplamı</span><span>' + (DISCOUNT_ON ? '<s>' + money(T.total) + '</s>' : money(T.total)) + '</span></div>' +
-    (DISCOUNT_ON ? '<div class="l dc"><span>Yıldız Menüsü indirimi %' + DISCOUNT + '</span><span>−' + money(T.disc) + '</span></div>' : '') +
-    '<div class="l gift-l"><span>Türk kahvesi</span><span>İkram</span></div>' +
-    '<div class="t"><span>' + (couple ? 'İki kişilik toplam' : 'Toplam') + '</span><b data-money="' + T.final + '">' + money(T.final) + '</b></div>' +
-    '<p>' + (DISCOUNT_ON ? 'İndirim, menünün tamamı sipariş edildiğinde uygulanır. ' : '') + 'Fiyatlar güncel menü fiyatlarıdır.</p></div>';
+  r.courses.forEach((g, gi) => { P.menu += courseHtml(g, gi, r); });
+  P.menu += sumHtml(r).replace(' rv in"', ' rv"');
   P.menu += '<div class="acts2"><button class="tile dark" data-act="waiter">' + ico('i-cloche') + '<b>Garsona Göster</b><span>Siparişin ve indirimin tek ekranda</span></button>' +
     '<button class="tile" data-act="story">' + ico('i-story') + '<b>Story Paylaş</b><span>Fiyatsız, sana özel görsel</span></button></div>' +
     '<div class="acts"><div class="two"><button class="btn ghost" data-act="again">Başka bir yorum</button><button class="btn ghost" data-act="reset">Baştan başla</button></div></div>';
   const cur = S.tab && P[S.tab] !== undefined ? S.tab : 'okuma';
   const nav = '<nav class="rseg" aria-label="Sonuç bölümleri" role="tablist"><div class="rseg-in">' + TABS.map(([k, ic, l]) => '<button role="tab" data-tab-go="' + k + '"' + (k === cur ? ' class="on" aria-selected="true"' : ' aria-selected="false"') + '>' + ico(ic || 'e-' + EL_ID[r.reading[0].el]) + l + '</button>').join('') + '<i class="rseg-pill"></i></div></nav>';
+  document.body.classList.remove('alt-drink');
   $('#resBody').innerHTML = nav + TABS.map(([k]) => '<div class="tabp' + (k === cur ? ' on' : '') + '" data-tab="' + k + '" role="tabpanel">' + P[k] + '</div>').join('');
   S.tab = cur; segPill();
   $('#barOld').innerHTML = DISCOUNT_ON ? '<s>' + money(T.total) + '</s> %' + DISCOUNT + ' indirimli' : 'Menü toplamı';
@@ -1138,6 +1188,99 @@ function renderResult(){
   applyLock(r);
   observe();
 }
+
+// ── "menünü nasıl kurduk" analysis schema (animated) ──
+function flowSchema(r){
+  const couple = r.mode === 'couple', p = r.reading[0];
+  const eff = effCourses(r).filter((g) => g.key !== 'kapanis'), picked = eff.reduce((a, g) => a + g.items.length, 0);
+  const pcts = []; eff.forEach((g) => g.items.forEach((it) => { if (it.pct) pcts.push(it.pct); }));
+  const avg = pcts.length ? Math.round(pcts.reduce((a, b) => a + b, 0) / pcts.length) : 90;
+  const nodes = [
+    ['i-cal', couple ? 'İki doğum günü' : 'Doğum günün', couple ? r.reading.map((x) => x.signName).join(' & ') : p.signName + ' · ' + p.el],
+    ['e-' + (EL_ID[p.el] || 'su'), 'Damak profili', '6 tat ekseni'],
+    ['i-cloche', 'Mutfak taraması', '<b data-count="' + r.scanned + '">' + r.scanned + '</b> tabak ve içki'],
+    ['i-star', 'Sana özel menü', picked + ' seçim · bütçe dengesi'],
+  ];
+  const R = 34, C = 2 * Math.PI * R;
+  return '<section class="blk rv flowc"><div class="eb">Menünü nasıl kurduk</div><div class="fl-wrap"><ol class="fl">' +
+    nodes.map((n, i) => '<li style="--i:' + i + '"><span class="fl-ic">' + ico(n[0]) + '</span><div><b>' + n[1] + '</b><small>' + n[2] + '</small></div></li>').join('') +
+    '</ol><div class="gauge"><svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="' + R + '" class="g-bg"/><circle cx="40" cy="40" r="' + R + '" class="g-fg" style="--c:' + C.toFixed(1) + ';--o:' + (C * (1 - avg / 100)).toFixed(1) + '"/></svg><div><b data-count="' + avg + '" data-pct="1">%' + avg + '</b><span>ortalama uyum</span></div></div></div></section>';
+}
+
+// ── guest choices: drink/salad options, optional desserts, live total ──
+const optIdx = (g) => (g.choice ? Math.min(S.sel[g.key] | 0, g.choice.length - 1) : 0);
+const dropKey = (g, it) => g.key + ':' + it.id;
+function effCourses(r){
+  return r.courses.map((g) => {
+    let items = g.choice ? g.choice[optIdx(g)].items : g.items;
+    if (g.optional) items = items.filter((it) => !S.drop[dropKey(g, it)]);
+    return Object.assign({}, g, { items });
+  }).filter((g) => g.items.length);
+}
+const setCost = (items) => items.reduce((a, it) => a + it.price * it.qty, 0);
+function itemHtml(it, g, r){
+  const couple = r.mode === 'couple';
+  const drop = g.optional && S.drop[dropKey(g, it)];
+  const tags = (it.pct ? '<span class="pct lt">%' + it.pct + ' uyum</span>' : '') + (it.tags || []).slice(0, 1).map((t) => '<span>' + esc(t) + '</span>').join('') + (couple && it.forName ? '<span class="for">' + esc(it.forName) + ' için</span>' : '');
+  return '<div class="it' + (it.free ? ' gift-it' : '') + (drop ? ' dropped' : '') + '"><div class="th">' + (it.img ? thumb(it, g.key) : ico(courseIc(g.key, r.style))) + '</div><div class="tx"><div class="row"><h3>' + esc(it.name) + (it.star ? '<svg class="sm"><use href="#i-star"/></svg>' : '') + '</h3><span class="pr' + (it.free ? ' free' : '') + '">' + (it.qty > 1 ? '<small>' + it.qty + ' × </small>' : '') + (it.free ? 'İkram' : money(it.price)) + '</span></div>' +
+    (it.note ? '<p class="nt">' + esc(it.note) + '</p>' : '') + (tags ? '<div class="tags">' + tags + '</div>' : '') +
+    (it.why ? '<p class="why">' + esc(it.why) + '</p>' : '') +
+    (g.optional ? '<button type="button" role="switch" class="dsw' + (drop ? '' : ' on') + '" data-drop="' + esc(dropKey(g, it)) + '" aria-checked="' + !drop + '"><i></i>Bu tatlıyı istiyorum</button>' : '') +
+    '</div></div>';
+}
+function optionsHtml(g, gi, r){
+  const cur = optIdx(g), base = setCost(g.choice[0].items);
+  return '<div class="opt2" role="radiogroup" aria-label="' + esc(g.label) + ' seçimi"><div class="opt2-h"><span>İki seçenek</span><em>Birini seç</em></div><div class="opt2-g">' +
+    g.choice.map((o, i) => {
+      const it0 = o.items[0], diff = setCost(o.items) - base;
+      const sub = g.key === 'icki' && o.label !== o.items.map((x) => x.name).join(' + ') ? o.items.map((x) => (x.qty > 1 ? x.qty + '× ' : '') + x.name).join(' + ') : (it0.note || '');
+      return '<button type="button" role="radio" aria-checked="' + (i === cur) + '" class="opt' + (i === cur ? ' on' : '') + '" data-opt="' + gi + ':' + i + '">' +
+        '<span class="opt-th">' + (it0.img ? '<img src="/images/' + encodeURI(it0.img) + '" alt="" loading="lazy">' : ico(courseIc(g.key, o.style || r.style))) + '<i class="opt-ck">' + ico('i-chk') + '</i></span>' +
+        '<b>' + esc(o.label) + '</b><small>' + esc(sub) + '</small><em>' + (i === 0 ? money(setCost(o.items)) : diff === 0 ? 'Aynı fiyat' : (diff > 0 ? '+' : '−') + money(Math.abs(diff))) + '</em></button>';
+    }).join('') + '</div></div>';
+}
+function courseHtml(g, gi, r){
+  const cur = optIdx(g), items = g.choice ? g.choice[cur].items : g.items;
+  let h = '<div class="course rv" id="c-' + gi + '"><div class="c-h"><span class="ci2">' + ico(courseIc(g.key, r.style)) + '</span><b>' + esc(g.label) + '</b>' +
+    (g.key === 'kapanis' ? '<span class="gift">Bizden ikram</span>' : g.optional ? '<span class="gift opt-b">İsteğe bağlı</span>' : '') + '</div>';
+  if (g.choice) h += optionsHtml(g, gi, r);
+  items.forEach((it) => { h += itemHtml(it, g, r); });
+  if (g.key === 'icki' && cur === 0) h += '<div class="dnote"><b>Neden ' + esc(r.styleName.toLocaleLowerCase('tr')) + '?</b>' + esc(r.styleWhy) + '</div>';
+  return h + '</div>';
+}
+function sumHtml(r){
+  const T = totals(r), couple = r.mode === 'couple';
+  const dropped = r.courses.filter((g) => g.optional).reduce((a, g) => a + g.items.filter((it) => S.drop[dropKey(g, it)]).length, 0);
+  return '<div class="sum rv in" id="sec-sum"><div class="l"><span>Menü toplamı</span><span>' + (DISCOUNT_ON ? '<s>' + money(T.total) + '</s>' : money(T.total)) + '</span></div>' +
+    (DISCOUNT_ON ? '<div class="l dc"><span>Yıldız Menüsü indirimi %' + DISCOUNT + '</span><span>−' + money(T.disc) + '</span></div>' : '') +
+    '<div class="l gift-l"><span>Türk kahvesi</span><span>İkram</span></div>' +
+    (dropped ? '<div class="l"><span>Çıkarılan tatlı</span><span>' + dropped + '</span></div>' : '') +
+    '<div class="t"><span>' + (couple ? 'İki kişilik toplam' : 'Toplam') + '</span><b>' + money(T.final) + '</b></div>' +
+    '<p>Seçimlerine göre anında güncellenir. ' + (DISCOUNT_ON ? 'İndirim, menünün tamamı sipariş edildiğinde uygulanır. ' : '') + 'Fiyatlar güncel menü fiyatlarıdır.</p></div>';
+}
+function refreshChoices(gi){
+  const r = S.result; if (!r) return;
+  const g = r.courses[gi], el = document.getElementById('c-' + gi);
+  if (g && el) { el.outerHTML = courseHtml(g, gi, r); const n = document.getElementById('c-' + gi); if (n) n.classList.add('in', 'bump'); }
+  const s = document.getElementById('sec-sum'); if (s) s.outerHTML = sumHtml(r);
+  const T = totals(r);
+  $('#barOld').innerHTML = DISCOUNT_ON ? '<s>' + money(T.total) + '</s> %' + DISCOUNT + ' indirimli' : 'Menü toplamı';
+  $('#barNew').textContent = money(T.final);
+  const ic = r.courses.find((x) => x.key === 'icki'), alt = ic && ic.choice && optIdx(ic) > 0;
+  document.body.classList.toggle('alt-drink', !!alt);
+  const chip = document.getElementById('styleChip');
+  if (chip && ic) { const o = ic.choice ? ic.choice[optIdx(ic)] : null; chip.lastChild.textContent = o && alt ? (o.style ? STYLE_LABEL(o.style, o.label) : o.label) : r.styleName; }
+  const bar = $('#bar'); bar.classList.remove('pulse'); void bar.offsetWidth; bar.classList.add('pulse');
+  resetStory();
+}
+const STYLE_LABEL = (st, label) => label;
+$('#resBody').addEventListener('click', (e) => {
+  const o = e.target.closest('[data-opt]');
+  if (o) { const [gi, i] = o.dataset.opt.split(':').map(Number), g = S.result.courses[gi]; if (!g || optIdx(g) === i) return; S.sel[g.key] = i; refreshChoices(gi); track('astro_choice', { course: g.key, option: i }); return; }
+  const d = e.target.closest('[data-drop]');
+  if (d) { const k = d.dataset.drop; S.drop[k] = !S.drop[k]; const gi = S.result.courses.findIndex((g) => g.key === k.split(':')[0]); refreshChoices(gi); track('astro_dessert', { on: !S.drop[k] }); }
+});
+
 // ── guest lock: full result only for guests at the restaurant (password from the waiter) ──
 const LOCK_H = 3343413599, LOCK_KEY = 'yz_unlock';
 const lkFold = (s) => String(s || '').toLocaleLowerCase('tr').replace(/\s+/g, '').replace(/ç/g, 'c').replace(/ğ/g, 'g').replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ş/g, 's').replace(/ü/g, 'u').replace(/i̇/g, 'i');
@@ -1246,6 +1389,7 @@ function observe(){
     const ring = el.querySelector('.mring .fg');
     if (ring) { const v = +ring.dataset.v; requestAnimationFrame(() => { ring.style.strokeDashoffset = (364.4 * (1 - v / 100)).toFixed(1); }); countUp(el.querySelector('[data-count]'), v, (x) => '%' + Math.round(x), 1800); }
     const m = el.querySelector('[data-money]'); if (m) countUp(m, +m.dataset.money, money, 1100);
+    if (el.classList.contains('flowc')) el.querySelectorAll('[data-count]').forEach((x) => countUp(x, +x.dataset.count, x.dataset.pct ? (v) => '%' + Math.round(v) : (v) => String(Math.round(v)), 1500));
   };
   if (!('IntersectionObserver' in window)) { els.forEach(fire); return; }
   io = new IntersectionObserver((ents) => ents.forEach((e) => { if (e.isIntersecting) { fire(e.target); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: .06 });
@@ -1263,6 +1407,7 @@ function input(){
   return { mode: isCouple() ? 'couple' : 'single', people: ppl, noAlcohol: S.noAlc, diet: S.diet.slice(), variant: S.variant };
 }
 function compute(fresh){
+  S.sel = {}; S.drop = {};
   const inp = input();
   let r = E.build(MENU, inp), tries = 0;
   while (!fresh && sig(r) === S.lastSig && tries++ < 6) { inp.variant = ++S.variant; r = E.build(MENU, inp); }
@@ -1280,7 +1425,7 @@ function loading(r, cb){
   const skyLine = couple ? a.signName + ' ve ' + b.signName + ' · ' + a.el + ' ile ' + b.el : a.signName + ' · ' + a.el + ' · ' + a.ruler;
   const nameLine = couple ? a.first + ' = ' + a.num + ' · ' + b.first + ' = ' + b.num : a.first + ' = ' + a.numTotal + ' → ' + a.num;
   const dishes = r.courses.reduce((x, g) => x + g.items.length, 0);
-  $('#ldList').innerHTML = [['Gökyüzü haritası', skyLine], ['İsminin şifresi', nameLine], ['Mutfakla eşleşme', r.scanned + ' tabak ve içki tarandı · ' + dishes + ' seçim']].map((x) => '<div class="ld-row"><i><svg><use href="#i-chk"/></svg></i><div><b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div></div>').join('');
+  $('#ldList').innerHTML = [['Gökyüzü haritası', skyLine], ['Adının anlamı', nameLine], ['Mutfakla eşleşme', r.scanned + ' tabak ve içki tarandı · ' + dishes + ' seçim']].map((x) => '<div class="ld-row"><i><svg><use href="#i-chk"/></svg></i><div><b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div></div>').join('');
   const imgs = []; r.courses.forEach((g) => g.items.forEach((it) => { if (it.img && imgs.length < 6) imgs.push(it.img); }));
   $('#ldDish').innerHTML = imgs.map((s) => '<span><img src="/images/' + encodeURI(s) + '" alt=""></span>').join('');
   const rows = $$('#ldList .ld-row'), sp = $$('#ldDish span');
@@ -1313,7 +1458,7 @@ function openWaiter(){
   $('#wSub').innerHTML = esc(r.reading.map((p) => p.first + ' · ' + p.signName).join('  &  ')) + (MASA ? ' · Masa ' + esc(decodeURIComponent(MASA)) : '') + (r.diet.length ? '<br>' + esc(r.diet.join(' · ')) : '');
   $('#wCode').innerHTML = '<span>Kod</span>' + esc(r.code);
   let h = '';
-  r.courses.forEach((g) => {
+  effCourses(r).forEach((g) => {
     h += '<div class="g">' + esc(g.label) + '</div>';
     g.items.forEach((it) => { h += '<div class="r"><em>' + it.qty + '×</em><span>' + esc(it.name) + (r.mode === 'couple' && it.forName ? '<small>' + esc(it.forName) + ' için</small>' : '') + '</span><b>' + (it.free ? 'İkram' : money(it.price * it.qty)) + '</b></div>'; });
   });
@@ -1330,7 +1475,7 @@ function prepareStory(){
   if (storyBlob) return Promise.resolve(storyBlob);
   if (storyBusy) return storyBusy;
   const r = S.result;
-  storyBusy = window.YildizStory.render(r, { titleOf, firstSentence }).then((b) => { if (S.result !== r) return null; storyBlob = b; storyUrl = URL.createObjectURL(b); storyBusy = null; return b; }).catch(() => { storyBusy = null; return null; });
+  storyBusy = window.YildizStory.render(Object.assign({}, r, { courses: effCourses(r) }), { titleOf, firstSentence }).then((b) => { if (S.result !== r) return null; storyBlob = b; storyUrl = URL.createObjectURL(b); storyBusy = null; return b; }).catch(() => { storyBusy = null; return null; });
   return storyBusy;
 }
 const storyFile = () => storyBlob ? new File([storyBlob], 'mare-yildiz-menusu.png', { type: 'image/png' }) : null;

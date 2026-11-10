@@ -1080,5 +1080,5 @@ pelinsu|pelin ve su|T|su|
     const s = sound(w);
     return { word: w, kind: 'sound', meaning: null, group: s.group, origin: null, note: s.text };
   }
-  root.YildizNames = { lookup, size: Object.keys(DICT).length, ORIGIN };
+  root.YildizNames = { lookup, size: Object.keys(DICT).length, ORIGIN, _dict: DICT };
 })(typeof window !== 'undefined' ? window : globalThis);

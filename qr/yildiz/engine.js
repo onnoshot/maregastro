@@ -228,9 +228,9 @@
     'havuc-tarator': { c: 'meze', t: { creamy: 2, sweet: 1, traditional: 1, nutty: 1 }, p: P(3, 2, 0, 2, 1, 1, 0, 3), i: ['havuc'], note: 'Havuç püresiyle yumuşacık tarator' },
     'dilim-ezine-peyniri': { c: 'meze', t: { traditional: 2, local: 2 }, p: P(3, 0, 0, 0, 0, 0, 0, 0), i: ['ezine'], note: 'Rakının vazgeçilmezi, bir dilim ezine peyniri' },
     // Salatalar (meze slot)
-    'roka-salatasi': { c: 'meze', t: { fresh: 3, herbal: 2, light: 2, bold: 1 }, p: P(2, 3, 2, 2, 2, 2, 1, 3), i: ['roka'], note: 'Roka, küp domates, parmesan ve sarımsaklı nar ekşili sos' },
-    'semizotu-salatasi': { c: 'meze', t: { fruity: 3, fresh: 2, playful: 2, local: 1, nutty: 1 }, p: P(2, 3, 1, 3, 2, 2, 0, 3), i: ['semizotu'], note: 'Çilek, ceviz, Erzincan tulumu ve nar ekşisiyle semizotu' },
-    'komsu-salata': { c: 'meze', t: { fresh: 3, traditional: 2, local: 2, light: 2 }, p: P(3, 2, 2, 2, 1, 1, 0, 3), i: ['komsu', 'ezine'], note: 'Domates, salatalık, zeytin ve ezine peyniriyle limonlu komşu salata' },
+    'roka-salatasi': { c: 'meze', sal: 1, t: { fresh: 3, herbal: 2, light: 2, bold: 1 }, p: P(2, 3, 2, 2, 2, 2, 1, 3), i: ['roka'], note: 'Roka, küp domates, parmesan ve sarımsaklı nar ekşili sos' },
+    'semizotu-salatasi': { c: 'meze', sal: 1, t: { fruity: 3, fresh: 2, playful: 2, local: 1, nutty: 1 }, p: P(2, 3, 1, 3, 2, 2, 0, 3), i: ['semizotu'], note: 'Çilek, ceviz, Erzincan tulumu ve nar ekşisiyle semizotu' },
+    'komsu-salata': { c: 'meze', sal: 1, t: { fresh: 3, traditional: 2, local: 2, light: 2 }, p: P(3, 2, 2, 2, 1, 1, 0, 3), i: ['komsu', 'ezine'], note: 'Domates, salatalık, zeytin ve ezine peyniriyle limonlu komşu salata' },
     // Ara sıcaklar
     '3-lu-deniz-mahsulu-lezzeti': { c: 'ara', share: true, t: { sea: 3, share: 3, signature: 2, rich: 1 }, p: P(3, 3, 0, 2, 2, 1, 0, 2), i: ['kalamar', 'karides', 'ahtapot'], note: 'Islama kalamar, tereyağlı karides ve ahtapot güveç tek tabakta' },
     'mare-spesiyal-ahtapot-guvec': { c: 'ara', t: { sea: 3, signature: 3, buttery: 2, rich: 2, spicy: 1, bold: 1 }, p: P(3, 3, 1, 2, 1, 1, 0, 2), i: ['ahtapot'], note: 'Sarımsak ve baharatlı tereyağında, özel marine ahtapot' },
@@ -320,7 +320,7 @@
     'johnnie-walker-black-label-35-cl': { st: 'whisky', for: 'c', t: { smoky: 2, bold: 2, meat: 1 }, note: '35 cl, ikiye paylaşılan bir şişe' },
   };
   // drinks without a menu photo get a serving shot in the menu style (no brand labels)
-  const DRINK_IMG = { 'raki-s': 'yz-raki-duble.webp', 'raki-c': 'yz-raki-sise.webp', 'white-s': 'yz-beyaz-kadeh.webp', 'white-c': 'yz-beyaz-sise.webp', 'red-s': 'yz-kirmizi-kadeh.webp', 'red-c': 'yz-kirmizi-sise.webp', 'rose-c': 'yz-roze-sise.webp', 'sparkling-c': 'yz-kopuklu-sise.webp' };
+  const DRINK_IMG = { 'whisky-s': 'yz-viski-duble.webp', 'whisky-c': 'yz-viski-sise.webp', 'cocktail-s': 'yz-kokteyl.webp', 'none-s': 'yz-alkolsuz.webp', 'raki-s': 'yz-raki-duble.webp', 'raki-c': 'yz-raki-sise.webp', 'white-s': 'yz-beyaz-kadeh.webp', 'white-c': 'yz-beyaz-sise.webp', 'red-s': 'yz-kirmizi-kadeh.webp', 'red-c': 'yz-kirmizi-sise.webp', 'rose-c': 'yz-roze-sise.webp', 'sparkling-c': 'yz-kopuklu-sise.webp' };
   const CLOSER = { id: 'turk-kahvesi', img: 'turk-kahvesi-2026.webp', note: 'Bizden ikram. Fincanı kapatın: gökyüzü söyledi, gerisini kahve söylesin' };
 
   const STYLE_NAME = { raki: 'Rakı Sofrası', white: 'Beyaz Şarap', red: 'Kırmızı Şarap', rose: 'Roze', sparkling: 'Köpüklü', cocktail: 'Kokteyl Eşliği', whisky: 'Viski', none: 'Alkolsüz Eşlik' };
@@ -644,7 +644,8 @@
   }
 
   // ───────────────────────────── Builder ─────────────────────────────
-  const BUDGET = { single: { min: 5000, max: 6000, center: 5600 }, couple: { min: 10000, max: 12500, center: 11200 } };
+  const BUDGET = { single: { min: 4000, max: 6000, center: 5000 }, couple: { min: 8000, max: 12000, center: 10000 } };
+  const BUDGET_LUX = { single: { min: 5000, max: 6000, center: 5600 }, couple: { min: 10000, max: 12500, center: 11200 } };
 
   function catalog(menu) {
     const byId = {};
@@ -652,13 +653,14 @@
     return byId;
   }
 
-  function slotsFor(mode, style) {
+  function slotsFor(mode, style, lux) {
     const couple = mode === 'couple';
     const raki = style === 'raki', none = style === 'none';
     const S = [];
     if (couple) {
       S.push({ key: 'baslangic', label: 'Başlangıç', course: 'baslangic', min: 1, max: 2, owner: 'both' });
-      S.push({ key: 'meze', label: raki ? 'Mezeler' : 'Meze ve Salata', course: 'meze', min: raki ? 3 : 2, max: raki ? 4 : 3, owner: 'both' });
+      S.push({ key: 'meze', label: lux ? (raki ? 'Mezeler' : 'Meze ve Salata') : 'Mezeler', course: 'meze', min: lux ? (raki ? 3 : 2) : (raki ? 2 : 1), max: lux ? (raki ? 4 : 3) : (raki ? 3 : 2), owner: 'both' });
+      if (!lux) S.push({ key: 'salata', label: 'Salata', course: 'salata', min: 1, max: 1, owner: 'both' });
       S.push({ key: 'ara', label: 'Ara Sıcak', course: 'ara', min: 1, max: 2, owner: 'both' });
       S.push({ key: 'ana0', label: 'Ana Yemek', course: 'ana', min: 1, max: 1, owner: 0 });
       S.push({ key: 'ana1', label: 'Ana Yemek', course: 'ana', min: 1, max: 1, owner: 1 });
@@ -669,7 +671,8 @@
       else S.push({ key: 'icki', label: STYLE_NAME[style], course: 'drink', min: 1, max: 1, owner: 'both' });
     } else {
       S.push({ key: 'baslangic', label: 'Başlangıç', course: 'baslangic', min: 1, max: 1, owner: 0 });
-      S.push({ key: 'meze', label: raki ? 'Mezeler' : 'Meze ve Salata', course: 'meze', min: raki ? 2 : 1, max: raki ? 3 : 2, owner: 0 });
+      S.push({ key: 'meze', label: lux ? (raki ? 'Mezeler' : 'Meze ve Salata') : (raki ? 'Mezeler' : 'Meze'), course: 'meze', min: lux ? (raki ? 2 : 1) : 1, max: lux ? (raki ? 3 : 2) : (raki ? 2 : 1), owner: 0 });
+      if (!lux) S.push({ key: 'salata', label: 'Salata', course: 'salata', min: 1, max: 1, owner: 0 });
       S.push({ key: 'ara', label: 'Ara Sıcak', course: 'ara', min: 1, max: none ? 2 : 1, owner: 0 });
       S.push({ key: 'ana0', label: 'Ana Yemek', course: 'ana', min: 1, max: 1, owner: 0 });
       S.push({ key: 'tatli0', label: 'Tatlı', course: 'tatli', min: 1, max: 1, owner: 0 });
@@ -699,10 +702,11 @@
     });
   }
 
-  function foodPool(course, style, byId, mode, mask, ignorePair) {
+  function foodPool(course, style, byId, mode, mask, ignorePair, lux) {
     return Object.keys(FOOD).filter((id) => {
       const f = FOOD[id];
-      if (f.c !== course || !byId[id] || !allowed(id, mask)) return false;
+      const fc = f.sal && !lux ? 'salata' : f.c;
+      if (fc !== course || !byId[id] || !allowed(id, mask)) return false;
       if (f.share && mode !== 'couple') return false;
       if (ignorePair) return true;
       const pr = f.p[style] == null ? 1 : f.p[style];
@@ -714,9 +718,43 @@
     });
   }
 
-  function solve(mode, style, persons, byId, R, mask) {
-    let slots = slotsFor(mode, style);
-    const B = Object.assign({}, BUDGET[mode]);
+
+  // ── guest choices (Yıldız): a second drink option, a second salad, an optional dessert ──
+  const BOTTLE = { raki: 1, white: 1, red: 1, rose: 1, sparkling: 1, whisky: 1 };
+  const optLabel = (items) => items.map((i) => i.name).join(' + ');
+  function drinkItem(c, qty, why) {
+    return { id: c.id, menuId: c.menuId, name: c.name, price: c.price, qty, img: c.img, note: c.note, why: why || null, pct: null, tags: [], pair: null, course: 'drink', score: 0, forName: null, forSign: null };
+  }
+  function drinkAlt(mode, style, persons, byId, input, cur) {
+    const pref = (st) => persons.reduce((a, P) => a + (P.sign.drinks[st] || 0) + (P.co ? (P.co.drinks[st] || 0) * 0.3 : 0), 0) / persons.length;
+    const curIds = cur.map((i) => i.id), servings = cur.reduce((a, i) => a + i.qty, 0) || 1;
+    const curCost = cur.reduce((a, i) => a + i.price * i.qty, 0);
+    let opts = stylesFor(mode, input).filter((st) => st !== style).map((st) => ({ st, pool: drinkPool(mode, st, byId, persons) })).filter((x) => x.pool.length);
+    if (style === 'none' || style === 'cocktail' || !opts.length) {
+      const same = drinkPool(mode, style, byId, persons).filter((c) => !curIds.includes(c.id));
+      if (style === 'none' || !opts.length) opts = same.length ? [{ st: style, pool: same }] : opts;
+    }
+    if (!opts.length) return null;
+    opts.sort((a, b) => pref(b.st) - pref(a.st));
+    const { st, pool } = opts[0];
+    const bottle = mode === 'couple' && BOTTLE[st];
+    const multi = !bottle && (st === 'cocktail' || st === 'none') && servings > 1;
+    const rank = pool.map((c) => {
+      const aff = persons.reduce((a, P) => a + affinity(c.tags, P), 0) / persons.length;
+      const cost = c.price * (bottle ? 1 : multi ? 1 : servings);
+      return { c, k: aff / 3 + (c.fav || 0) * 1.4 - Math.abs(cost - (multi ? curCost / servings : curCost)) / 450 };
+    }).sort((a, b) => b.k - a.k);
+    let items;
+    if (bottle) items = [drinkItem(rank[0].c, 1)];
+    else if (multi) items = rank.slice(0, Math.min(servings, rank.length)).map((x) => drinkItem(x.c, 1));
+    else items = [drinkItem(rank[0].c, servings)];
+    if (multi && items.length < servings) items[0].qty += servings - items.length;
+    return { style: st, label: st === style ? optLabel(items) : STYLE_NAME[st], items };
+  }
+
+  function solve(mode, style, persons, byId, R, mask, lux) {
+    let slots = slotsFor(mode, style, lux);
+    const B = Object.assign({}, (lux ? BUDGET_LUX : BUDGET)[mode]);
     const closer = byId[CLOSER.id];
     const closerCost = 0; // Türk kahvesi her menüde ikram
     const jit = {};
@@ -728,10 +766,10 @@
       let pool;
       if (s.course === 'drink') pool = drinkPool(mode, style, byId, persons);
       else {
-        pool = foodPool(s.course, style, byId, mode, mask, false);
+        pool = foodPool(s.course, style, byId, mode, mask, false, lux);
         if (!pool.length) {
           // empty because of the guest's diet -> drop the course; empty because of the drink -> this drink doesn't fit
-          if (foodPool(s.course, style, byId, mode, mask, true).length) return null;
+          if (foodPool(s.course, style, byId, mode, mask, true, lux).length) return null;
           if (!dropped.includes(s.course)) dropped.push(s.course);
           continue;
         }
@@ -750,7 +788,7 @@
     const cands = slots.map((s, si) => pools[si].map((c) => {
       const owners = s.owner === 'both' ? persons : [persons[s.owner]];
       const aff = owners.reduce((a, P) => a + affinity(c.tags, P), 0) / owners.length;
-      const prem = c.course === 'drink' ? 0 : Math.min(c.price, 2400) / 520;
+      const prem = c.course === 'drink' ? 0 : Math.min(c.price, 2400) / (lux ? 520 : 1100);
       const base = 4 + aff / 3 + (c.pair || 0) * 1.0 + (c.fav || 0) * 1.4 + prem + J(c.id + s.key.replace(/\d/, ''));
       return Object.assign({}, c, { score: base });
     }));
@@ -787,7 +825,7 @@
       let pen = 0;
       if (total < B.min) pen += (B.min - total) / 15;
       if (total > B.max) pen += (total - B.max) / 15;
-      pen += Math.abs(total - B.center) / 220;
+      pen += Math.abs(total - B.center) / (lux ? 220 : 75);
       return { f: score - pen, total, score, count };
     }
     const legal = (state) => state.every((sel, si) => sel.length >= slots[si].min && sel.length <= slots[si].max && (slots[si].repeat || new Set(sel).size === sel.length));
@@ -942,7 +980,7 @@
     let pick = null;
     styles.forEach((st) => {
       const R = rng(hash(seedStr + '#' + st));
-      const res = solve(mode, st, persons, byId, R, mask);
+      const res = solve(mode, st, persons, byId, R, mask, input.tone === 'lux');
       if (!res) return;
       const pref = persons.reduce((a, P) => a + (P.sign.drinks[st] || 0) + (P.co ? (P.co.drinks[st] || 0) * 0.3 : 0), 0) / persons.length;
       const avg = res.best.ev.score / Math.max(1, res.best.ev.count);
@@ -980,6 +1018,25 @@
     });
     courses.forEach((g) => { if (g.key === 'ana' && g.items.length > 1) g.label = 'Ana Yemekler'; if (g.key === 'tatli' && g.items.length > 1) g.label = 'Tatlılar'; });
     if (style === 'cocktail') { const ck = courses.find((g) => g.key === 'icki'); if (ck && ck.items.length === 1 && ck.items[0].qty === 1) ck.label = 'Kokteyl'; }
+    if (input.tone !== 'lux') {
+      const ic = courses.find((g) => g.key === 'icki');
+      if (ic) {
+        const alt = drinkAlt(mode, style, persons, byId, input, ic.items);
+        if (alt) { ic.choice = [{ style, label: alt.style === style ? optLabel(ic.items) : STYLE_NAME[style], items: ic.items }, alt]; ic.label = style === 'none' ? 'İçecek' : 'İçki'; }
+      }
+      const si = slots.findIndex((x) => x.key === 'salata'), sg = courses.find((g) => g.key === 'salata');
+      if (si >= 0 && sg && sg.items.length) {
+        const cur = sg.items[0], other = cands[si].filter((c) => c.id !== cur.id).sort((a, b) => b.score - a.score)[0];
+        if (other) {
+          const owners = slots[si].owner === 'both' ? persons : [persons[slots[si].owner]];
+          const sc = cands[si].map((c) => c.score), mx = Math.max.apply(null, sc), mn = Math.min.apply(null, sc);
+          const rs = reasonFor(other, owners, usedTags, R);
+          const alt = { id: other.id, menuId: other.menuId, name: other.name, price: other.price, qty: cur.qty, img: other.img, note: other.note, why: rs.text, pct: Math.round(78 + 20 * ((other.score - mn) / ((mx - mn) || 1))), tags: topTags(other.tags), pair: null, course: 'salata', score: other.score, forName: null, forSign: null };
+          sg.choice = [{ label: cur.name, items: [cur] }, { label: alt.name, items: [alt] }];
+        }
+      }
+      courses.forEach((g) => { if (g.key === 'tatli') g.optional = true; });
+    }
     if (closer) courses.push({ key: 'kapanis', label: 'Kapanış', items: [{ id: CLOSER.id, menuId: CLOSER.id, name: closer.name, price: 0, listPrice: closer.price, free: true, qty: persons.length, img: CLOSER.img, note: input.tone === 'lux' ? 'Bizden ikram. Akşamı Türk kahvesi ve sohbetle kapatın' : CLOSER.note, why: null, pct: null, tags: [] }] });
 
     // the star dish: best-fitting hot course with a photo
