@@ -174,15 +174,13 @@
     9: { t: 'Bütünlük', s: 'Sayın 9, tamamlanmanın sayısı. Menün tazeden zengine, baştan sona dengeli bir yolculuk.', tags: { fresh: 2, herbal: 1, share: 1 } },
   };
   const ALPHA = 'abcçdefgğhıijklmnoöprsştuüvyz';
+  const letterVal = (ch) => { const i = ALPHA.indexOf(ch); if (i >= 0) return (i % 9) + 1; return ch === 'w' ? 5 : ch === 'x' ? 6 : ch === 'q' ? 8 : 0; };
   function numerology(lower) {
     let sum = 0;
-    for (const ch of lower) {
-      const i = ALPHA.indexOf(ch);
-      if (i >= 0) sum += (i % 9) + 1;
-      else if (ch === 'w') sum += 5; else if (ch === 'x') sum += 6; else if (ch === 'q') sum += 8;
-    }
+    for (const ch of lower) sum += letterVal(ch);
+    const total = sum;
     while (sum > 9) sum = String(sum).split('').reduce((a, b) => a + Number(b), 0);
-    return sum || 9;
+    return { n: sum || 9, total };
   }
   const lowerTr = (s) => String(s || '').toLocaleLowerCase('tr');
   function cleanName(raw) {
@@ -193,9 +191,11 @@
     const display = cleanName(raw);
     const first = lowerTr(display.split(' ')[0] || '');
     const hit = NAMES[first] || NAMES_FOLD[fold(first)] || null;
-    const n = numerology(lowerTr(display.replace(/\s/g, '')));
+    const flat = lowerTr(display.replace(/\s/g, ''));
+    const nr = numerology(flat), n = nr.n;
+    const digits = Array.from(flat).map((ch) => ({ ch: ch.toLocaleUpperCase('tr'), v: letterVal(ch) })).filter((d) => d.v);
     return { display, first: display.split(' ')[0] || '', meaning: hit ? hit[0] : null, group: hit ? hit[1] : null,
-      tags: hit ? NAME_GROUP[hit[1]] : {}, num: n, numInfo: NUM[n] };
+      tags: hit ? NAME_GROUP[hit[1]] : {}, num: n, numTotal: nr.total, digits, multi: display.split(' ').length > 1, numInfo: NUM[n] };
   }
   // Turkish genitive suffix: Ayşe'nin, Deniz'in, Onur'un, Gül'ün
   function gen(name) {
@@ -390,7 +390,7 @@
     7: 'katmanlı ve derin bir tat', 8: 'doyurucu ve güçlü bir seçim', 9: 'menünün dengesini tamamlıyor',
   };
   const FALLBACK = {
-    meze: ['Rakı sofrasının klasiklerinden; masanın ritmini bu mezeler kurar.', 'Masayı açan, damağı hazırlayan bir meze; ağır tabaklardan önce iyi bir denge.', 'Sofranın sessiz kahramanı; diğer tabakların arasında köprü kurar.'],
+    meze: ['Rakı sofrasının klasiklerinden; masanın ritmini bu mezeler kurar.', 'Masayı açan, damağı hazırlayan bir meze; ağır tabaklardan önce iyi bir denge.', 'Sofranın sessiz kahramanı; diğer tabakların arasında köprü kurar.', 'Renkleri ve dokusuyla masaya canlılık katan, paylaşılmaya hazır bir tabak.', 'Mezeler arasında dengeyi kuran, damağı dinlendiren bir seçim.', 'Zeytinyağının ve sebzenin sade gücü; menünün nefes aldığı an.', 'Küçük ama karakterli; her lokmada ayrı bir tat bırakır.'],
     baslangic: ['Akşamı açan tabak; damağı uyandırır ve devamı için merak bırakır.', 'Hafif ama iddialı bir açılış; menünün tonunu belirler.'],
     ara: ['Masanın ortasına konan sıcak bir ara; sohbeti büyütür.', 'Soğuklardan ana yemeğe geçişte sıcak bir köprü.'],
     ana: ['Menünün merkezinde, içkinizle en iyi eşleşen ana yemek.', 'Akşamın doruk noktası; seçtiğimiz içkiyle tam uyumlu.'],
@@ -409,18 +409,153 @@
     if (md >= 923 && md <= 1022) return 'terazi'; if (md >= 1023 && md <= 1121) return 'akrep'; if (md >= 1122 && md <= 1221) return 'yay';
     if (md >= 1222 || md <= 119) return 'oglak'; if (md >= 120 && md <= 218) return 'kova'; return 'balik';
   }
+  const DAYS_IN = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  const validDate = (m, d) => m >= 1 && m <= 12 && d >= 1 && d <= DAYS_IN[m - 1];
+
+  // Sky details: decans (triplicity), cusps, modality
+  const START = { koc: [3, 21], boga: [4, 20], ikizler: [5, 21], yengec: [6, 21], aslan: [7, 23], basak: [8, 23], terazi: [9, 23], akrep: [10, 23], yay: [11, 22], oglak: [12, 22], kova: [1, 20], balik: [2, 19] };
+  const ORDER = ['koc', 'boga', 'ikizler', 'yengec', 'aslan', 'basak', 'terazi', 'akrep', 'yay', 'oglak', 'kova', 'balik'];
+  const TRIP = { ates: ['koc', 'aslan', 'yay'], toprak: ['boga', 'basak', 'oglak'], hava: ['ikizler', 'terazi', 'kova'], su: ['yengec', 'akrep', 'balik'] };
+  const MOD = { koc: 'Öncü', yengec: 'Öncü', terazi: 'Öncü', oglak: 'Öncü', boga: 'Sabit', aslan: 'Sabit', akrep: 'Sabit', kova: 'Sabit', ikizler: 'Değişken', basak: 'Değişken', yay: 'Değişken', balik: 'Değişken' };
+  const doy = (m, d) => Math.round((Date.UTC(2001, m - 1, d) - Date.UTC(2001, 0, 1)) / 864e5);
+  function astroFromDate(m, d) {
+    if (m === 2 && d === 29) d = 28;
+    const id = signFromDate(m, d);
+    let off = doy(m, d) - doy(START[id][0], START[id][1]); if (off < 0) off += 365;
+    const i = ORDER.indexOf(id), next = ORDER[(i + 1) % 12], prev = ORDER[(i + 11) % 12];
+    let toNext = doy(START[next][0], START[next][1]) - doy(m, d); if (toNext <= 0) toNext += 365;
+    return { id, decan: off < 10 ? 1 : off < 20 ? 2 : 3, cusp: off <= 1 ? prev : toNext <= 2 ? next : null };
+  }
+
+  // Diet flags per dish: s seafood, r red meat, o offal, w raw, h spicy
+  const FLAGS = {
+    'kereviz-pureli-jumbo-karides-sogus': 's', 'dana-carpaccio': 'rw', 'somon-tartar': 'sw', 'palamut-carpaccio': 'sw',
+    'patates-cipsli-acili-atom': 'h', '3-lu-deniz-mahsulu-lezzeti': 's', 'mare-spesiyal-ahtapot-guvec': 's', 'mare-spesiyal-islama-kalamar': 's',
+    'jumbo-karides-izgara': 's', 'kalamar-tava': 's', 'yaprak-ciger': 'ro', 'patates-terin': 'r', 'tereyagli-karides': 's',
+    'biber-kremali-bonfile': 'r', 'citir-somon': 's', 'deniz-mahsulleri-bugday-risotto': 's', 'firinda-kremali-levrek': 's', 'mare-spesiyal-granyoz': 's',
+    'kuzu-pirzola': 'r', 'balkabagi-soslu-kestane-dolgulu-makarna': 'r', 'palamut-izgara-kofte': 's', 'kuzu-kokorec': 'roh', 'mezgit-tempura': 's', 'incik-ruyasi': 'r',
+  };
+  const DIETS = {
+    noSea: { f: 's', label: 'Deniz ürünü yok' }, noRed: { f: 'r', label: 'Kırmızı et yok' }, noOffal: { f: 'o', label: 'Sakatat yok' },
+    noRaw: { f: 'w', label: 'Çiğ yok' }, noSpicy: { f: 'h', label: 'Acısız' }, veg: { f: 'sro', label: 'Vejetaryen' },
+  };
+  function dietMask(diet) { let m = ''; (diet || []).forEach((k) => { if (DIETS[k]) m += DIETS[k].f; }); return m; }
+  const allowed = (id, mask) => { const f = FLAGS[id] || ''; for (const ch of f) if (mask.includes(ch)) return false; return true; };
+
+  // Names shown on shareable images must be names
+  const BAD_SUB = ['orospu', 'yarrak', 'siktir', 'sikis', 'amcik', 'pezeven', 'kahpe', 'gavat', 'yavsak', 'serefsiz', 'ibne', 'gerizekali', 'fuck', 'shit', 'bitch', 'porno', 'kaltak', 'surtuk', 'dalyarak', 'amina koy', 'aminakoy'];
+  const BAD_WORD = ['amk', 'aq', 'oc', 'got', 'sik', 'am', 'pic', 'salak', 'aptal', 'mal', 'dangalak', 'it', 'esek', 'eşek', 'kopek', 'domuz', 'test', 'deneme', 'asd', 'asdf', 'qwe', 'xxx'];
+  function nameOk(raw) {
+    const d = cleanName(raw);
+    const f = fold(lowerTr(d));
+    const flat = f.replace(/\s/g, '');
+    if (flat.length < 2 || flat.length > 30) return false;
+    if (/(.)\1\1/.test(flat)) return false;
+    if (BAD_SUB.some((b) => flat.includes(b.replace(/\s/g, '')))) return false;
+    if (f.split(' ').some((w) => BAD_WORD.includes(w))) return false;
+    return true;
+  }
 
   function person(p) {
-    const sign = signById(p.sign);
+    let id = p.sign, decan = null, cuspId = null, birth = null;
+    if (p.month && p.day && validDate(+p.month, +p.day)) {
+      const a = astroFromDate(+p.month, +p.day); id = a.id; decan = a.decan; cuspId = a.cusp; birth = { d: +p.day, m: +p.month };
+    }
+    const sign = signById(id);
+    if (!sign) return { sign: null };
     const ni = nameInfo(p.name);
-    return { sign, name: ni.display || sign.name, first: ni.first || sign.name, gender: p.gender || null, ni };
+    const tri = TRIP[sign.el];
+    const co = decan ? signById(tri[(tri.indexOf(sign.id) + decan - 1) % 3]) : null;
+    const cusp = cuspId ? signById(cuspId) : null;
+    const extra = {}, extraSrc = {};
+    if (co && co.id !== sign.id) for (const t in co.taste) { extra[t] = (extra[t] || 0) + co.taste[t] * 0.45; extraSrc[t] = 'co'; }
+    if (cusp) for (const t in cusp.taste) { extra[t] = (extra[t] || 0) + cusp.taste[t] * 0.3; if (!extraSrc[t]) extraSrc[t] = 'cusp'; }
+    return { sign, name: ni.display || sign.name, first: ni.first || sign.name, gender: p.gender || null, ni, decan, co, cusp, extra, extraSrc, birth };
   }
   function affinity(tags, P) {
     let s = 0;
-    for (const t in tags) {
-      s += tags[t] * ((P.sign.taste[t] || 0) + 0.8 * (P.ni.tags[t] || 0) + 0.5 * (P.ni.numInfo.tags[t] || 0));
-    }
+    for (const t in tags) s += tags[t] * ((P.sign.taste[t] || 0) + (P.extra[t] || 0) + 0.8 * (P.ni.tags[t] || 0) + 0.5 * (P.ni.numInfo.tags[t] || 0));
     return s;
+  }
+
+  // ───────────────────────────── Analysis ─────────────────────────────
+  const AXES = [
+    { id: 'deniz', label: 'Deniz', tags: ['sea', 'raw'] },
+    { id: 'ates', label: 'Ateş ve köz', tags: ['spicy', 'grill', 'bold', 'smoky'] },
+    { id: 'toprak', label: 'Toprak ve gelenek', tags: ['earthy', 'traditional', 'slow', 'local', 'meat'] },
+    { id: 'ferah', label: 'Ferahlık', tags: ['fresh', 'citrus', 'herbal', 'light', 'fruity'] },
+    { id: 'kadife', label: 'Kadife ve tatlı', tags: ['creamy', 'buttery', 'rich', 'sweet', 'chocolate', 'dreamy'] },
+    { id: 'merak', label: 'Merak ve gösteriş', tags: ['playful', 'crispy', 'share', 'signature', 'elegant'] },
+  ];
+  const AXIS_TOP = {
+    deniz: 'Damağının pusulası denizi gösteriyor; tuzlu, iyot kokulu tatlar seni en çok mutlu eder.',
+    ates: 'Közün dumanı ve baharatın sıcaklığı seni çağırıyor; net ve iddialı tatlar senin alanın.',
+    toprak: 'Köklü, sabırla pişmiş tatlar sana iyi gelir; tanıdık olanın en iyisini ararsın.',
+    ferah: 'Ferah, yeşil ve narenciyeli tatlar enerjini tazeler; hafiflik senin için bir lüks.',
+    kadife: 'Yumuşak, kremalı ve tatlı dokular senin konfor alanın; iyi bir kapanış senin için şart.',
+    merak: 'Sürprizli ve gösterişli tabaklar merakını besler; masada sıradan olan seni sıkar.',
+  };
+  const AXIS_LOW = {
+    deniz: 'Denizden gelen tatlar senin için küçük bir keşif; menüde ölçülü bir dokunuş var.',
+    ates: 'Acı ve köz ilk tercihin değil; menüde bu taraf dengeli tutuldu.',
+    toprak: 'Ağır ve köklü tatlar yerine daha hafif bir ritim sana iyi gelir.',
+    ferah: 'Ferah tatlar senin için bir mola; menünün dengesini onlar kuruyor.',
+    kadife: 'Tatlı ve kremalı olan seni yormamalı; kapanış bu yüzden ölçülü.',
+    merak: 'Gösterişten çok özü seversin; menü sade ve net kuruldu.',
+  };
+  function profile(P) {
+    const raw = AXES.map((a) => a.tags.reduce((s, t) => s + (P.sign.taste[t] || 0) + (P.extra[t] || 0) + 0.8 * (P.ni.tags[t] || 0) + 0.5 * (P.ni.numInfo.tags[t] || 0), 0) / Math.sqrt(a.tags.length));
+    const mx = Math.max.apply(null, raw), mn = Math.min.apply(null, raw);
+    return AXES.map((a, i) => ({ id: a.id, label: a.label, v: Math.round(34 + 62 * (raw[i] - mn) / ((mx - mn) || 1)) }));
+  }
+  function decanText(P) {
+    if (!P.decan) return null;
+    if (P.decan === 1 || !P.co || P.co.id === P.sign.id) return P.sign.name + ' burcunun 1. dekanındasın: saf ' + P.sign.name + '. ' + P.sign.rulerGen + ' etkisi en güçlü halinde; burcunun özelliklerini en net taşıyanlardansın.';
+    return P.sign.name + ' burcunun ' + P.decan + '. dekanındasın: ' + P.co.name + ' etkisi. ' + P.sign.name + ' enerjine ' + gen(P.co.name) + ' ' + P.co.key + ' duygusu karışıyor; menünde bu ikinci sesin de izi var.';
+  }
+  function cuspText(P) {
+    if (!P.cusp) return null;
+    const a = ORDER.indexOf(P.sign.id), b = ORDER.indexOf(P.cusp.id);
+    const first = (b === (a + 1) % 12) ? P.sign : P.cusp, second = first === P.sign ? P.cusp : P.sign;
+    return 'Doğum günün ' + first.name + '–' + second.name + ' geçişine çok yakın; iki burcun izini birlikte taşıyorsun. Menünde ' + gen(P.cusp.name) + ' damağından da bir dokunuş var.';
+  }
+  const EL_SCORE = { 'ates|ates': 86, 'toprak|toprak': 88, 'hava|hava': 84, 'su|su': 90, 'ates|hava': 93, 'su|toprak': 92, 'ates|toprak': 71, 'ates|su': 68, 'hava|toprak': 70, 'hava|su': 74 };
+  function compat(A, B, profA, profB) {
+    let s = EL_SCORE[[A.sign.el, B.sign.el].sort().join('|')];
+    const ma = MOD[A.sign.id], mb = MOD[B.sign.id];
+    s += ma === mb ? -3 : 3;
+    if (A.sign.ruler === B.sign.ruler) s += 3;
+    if ((A.ni.num + B.ni.num) % 3 === 0) s += 2;
+    s = Math.max(61, Math.min(97, s));
+    const band = s >= 90 ? 'Gökyüzünde nadir görülen bir uyum.' : s >= 80 ? 'Birbirini tamamlayan bir uyum.' : s >= 70 ? 'Farklılıkların tat kattığı bir uyum.' : 'Zıtların çekimi: bu masada kimse sıkılmaz.';
+    let lead;
+    if (ma === 'Öncü' && mb !== 'Öncü') lead = A.first + ' seçer, ' + B.first + ' onaylar. Öncü burçlar masada ilk sözü söyler.';
+    else if (mb === 'Öncü' && ma !== 'Öncü') lead = B.first + ' seçer, ' + A.first + ' onaylar. Öncü burçlar masada ilk sözü söyler.';
+    else if (ma === 'Öncü') lead = 'İkiniz de ilk sözü söylemek istersiniz; menüyü bu yüzden yıldızlar seçti.';
+    else if (ma === 'Sabit' && mb === 'Sabit') lead = 'İkiniz de sevdiğinden kolay vazgeçmezsiniz; menüde ikinizin de favorisi var.';
+    else lead = 'Kararı birbirinize bırakırsınız; menüyü bu yüzden yıldızlar seçti.';
+    const ka = profA.find((x) => x.id === 'kadife').v, kb = profB.find((x) => x.id === 'kadife').v;
+    const sweet = ka === kb ? 'Tatlıyı ikiniz de aynı anda istersiniz; bu yüzden iki ayrı tatlı seçtik.' : (ka > kb ? A.first : B.first) + ' tatlıyı ilk ister, son lokmayı ' + (ka > kb ? B.first : A.first) + ' alır.';
+    const els = [A.sign.el, B.sign.el];
+    const rhythm = els.includes('ates') && els.includes('su') ? 'Biri hızlandırır, diğeri yavaşlatır; akşamın temposu kendiliğinden dengelenir.'
+      : els.includes('ates') ? 'Masada tempo yüksek; ilk tabaklar çabuk biter, sohbet hızlı akar.'
+      : els.includes('su') ? 'Sohbet derinleşir, akşam uzar; menü bu yüzden acele ettirmeyen bir sırayla kuruldu.'
+      : els.includes('hava') ? 'Konudan konuya geçen, paylaşılan tabaklarla büyüyen bir akşam.'
+      : 'Sakin, kaliteli ve uzun bir akşam; her aşamanın tadını çıkarırsınız.';
+    return { score: s, band, insights: [{ k: 'Menüyü kim seçer?', v: lead }, { k: 'Tatlıyı kim ister?', v: sweet }, { k: 'Masanın ritmi', v: rhythm }] };
+  }
+  function pairLine(style, c) {
+    const t = c.tags || {};
+    switch (style) {
+      case 'raki': return t.sea ? 'Rakının anasonu denizin tuzuyla en eski dostluğu kurar.' : 'Rakının anasonu bu tabağın yağını ve baharatını dengeler.';
+      case 'white': return t.creamy || t.buttery ? 'Beyazın canlı asiditesi kremayı hafifletir, her lokmayı tazeler.' : 'Beyaz şarap bu tabağın tazeliğini öne çıkarır.';
+      case 'red': return t.meat ? 'Kırmızının taneni etin yağını dengeler; tat damakta daha uzun kalır.' : 'Kırmızının gövdesi bu tabağın derinliğine eşlik eder.';
+      case 'rose': return 'Roze bu tabağın hem tazeliğine hem gövdesine eşlik eder.';
+      case 'sparkling': return 'Köpüklünün kabarcıkları damağı temizler; her lokma ilk lokma gibi olur.';
+      case 'cocktail': return 'Kokteylin ekşi ve canlı yapısı tabağın tadını açar.';
+      case 'whisky': return t.smoky || t.meat ? 'Viskinin isli notası bu tabakla aynı dilden konuşur.' : 'Viski bu tabağın gücüne yavaş yavaş eşlik eder.';
+      default: return 'Ferah eşlik, tabağın tadını öne çıkarır.';
+    }
   }
 
   // ───────────────────────────── Builder ─────────────────────────────
@@ -479,45 +614,74 @@
     });
   }
 
-  function foodPool(course, style, byId, mode) {
+  function foodPool(course, style, byId, mode, mask, ignorePair) {
     return Object.keys(FOOD).filter((id) => {
       const f = FOOD[id];
-      if (f.c !== course || !byId[id]) return false;
+      if (f.c !== course || !byId[id] || !allowed(id, mask)) return false;
+      if (f.share && mode !== 'couple') return false;
+      if (ignorePair) return true;
       const pr = f.p[style] == null ? 1 : f.p[style];
       if (course === 'ana' && pr < 2) return false;
-      if (pr < 1) return false;
-      if (f.share && mode !== 'couple') return false;
-      return true;
+      return pr >= 1;
     }).map((id) => {
       const f = FOOD[id], it = byId[id];
       return { id, menuId: id, name: it.name, price: it.price, img: it.img || null, tags: f.t, pair: f.p[style] == null ? 1 : f.p[style], ing: f.i, note: f.note, course };
     });
   }
 
-  function solve(mode, style, persons, byId, R) {
-    const slots = slotsFor(mode, style);
-    const B = BUDGET[mode];
+  function solve(mode, style, persons, byId, R, mask) {
+    let slots = slotsFor(mode, style);
+    const B = Object.assign({}, BUDGET[mode]);
     const closer = byId[CLOSER.id];
     const closerCost = closer ? closer.price * persons.length : 0;
     const jit = {};
     const J = (id) => (jit[id] == null ? (jit[id] = R() * 3.4) : jit[id]);
-    // candidate lists with per-owner scores
-    const cands = slots.map((s) => {
-      const pool = s.course === 'drink' ? drinkPool(mode, style, byId, persons) : foodPool(s.course, style, byId, mode);
-      return pool.map((c) => {
-        const owners = s.owner === 'both' ? persons : [persons[s.owner]];
-        const aff = owners.reduce((a, P) => a + affinity(c.tags, P), 0) / owners.length;
-        const prem = c.course === 'drink' ? 0 : Math.min(c.price, 2400) / 520;
-        const base = 4 + aff / 3 + (c.pair || 0) * 1.0 + (c.fav || 0) * 1.4 + prem + J(c.id + s.key.replace(/\d/, ''));
-        return Object.assign({}, c, { score: base });
-      });
+    const dropped = [];
+    const pools = [];
+    const keep = [];
+    for (const s of slots) {
+      let pool;
+      if (s.course === 'drink') pool = drinkPool(mode, style, byId, persons);
+      else {
+        pool = foodPool(s.course, style, byId, mode, mask, false);
+        if (!pool.length) {
+          // empty because of the guest's diet -> drop the course; empty because of the drink -> this drink doesn't fit
+          if (foodPool(s.course, style, byId, mode, mask, true).length) return null;
+          if (!dropped.includes(s.course)) dropped.push(s.course);
+          continue;
+        }
+      }
+      if (!pool.length) return null;
+      pools.push(pool); keep.push(Object.assign({}, s));
+    }
+    slots = keep;
+    if (dropped.length) {
+      // give the room to cold starters so the table still feels complete
+      const mz = slots.find((s) => s.key === 'meze');
+      if (mz) { mz.min += dropped.length; mz.max += dropped.length * 2; if (dropped.includes('ana')) mz.label = 'Meze ve Salata Seçkisi'; }
+    }
+    slots.forEach((s, i) => { if (!s.repeat) { s.max = Math.min(s.max, pools[i].length); s.min = Math.min(s.min, s.max); } });
+    // personal courses for a couple must still be two different dishes
+    const cands = slots.map((s, si) => pools[si].map((c) => {
+      const owners = s.owner === 'both' ? persons : [persons[s.owner]];
+      const aff = owners.reduce((a, P) => a + affinity(c.tags, P), 0) / owners.length;
+      const prem = c.course === 'drink' ? 0 : Math.min(c.price, 2400) / 520;
+      const base = 4 + aff / 3 + (c.pair || 0) * 1.0 + (c.fav || 0) * 1.4 + prem + J(c.id + s.key.replace(/\d/, ''));
+      return Object.assign({}, c, { score: base });
+    }));
+    // budget that the menu can actually reach with these dishes
+    let reach = closerCost;
+    slots.forEach((s, si) => {
+      const prices = cands[si].map((c) => c.price).sort((a, b) => b - a);
+      reach += s.repeat ? prices[0] * s.max : prices.slice(0, s.max).reduce((a, b) => a + b, 0);
     });
-    if (cands.some((list, i) => list.length < (slots[i].repeat ? 1 : slots[i].min))) return null;
+    let light = false;
+    if (reach * 0.94 < B.min) { light = true; B.min = Math.round(reach * 0.55 / 10) * 10; B.center = Math.round(reach * 0.72 / 10) * 10; B.max = Math.min(B.max, reach); }
 
     function evaluate(state) {
       let total = closerCost, score = 0, count = 0;
       const ingCount = {}, used = {};
-      let drinkTags = {};
+      const drinkTags = {};
       state.forEach((sel, si) => {
         sel.forEach((ci, k) => {
           const c = cands[si][ci];
@@ -531,7 +695,6 @@
         });
       });
       for (const g in ingCount) if (ingCount[g] > 1) score -= 6 * (ingCount[g] - 1);
-      // drink ↔ food chemistry
       state.forEach((sel, si) => {
         if (slots[si].course === 'drink') return;
         sel.forEach((ci) => { const c = cands[si][ci]; for (const t in c.tags) if (drinkTags[t]) score += 0.12 * c.tags[t] * Math.min(drinkTags[t], 3); });
@@ -542,12 +705,7 @@
       pen += Math.abs(total - B.center) / 220;
       return { f: score - pen, total, score, count };
     }
-
-    function legal(state) {
-      return state.every((sel, si) => sel.length >= slots[si].min && sel.length <= slots[si].max &&
-        (slots[si].repeat || new Set(sel).size === sel.length));
-    }
-
+    const legal = (state) => state.every((sel, si) => sel.length >= slots[si].min && sel.length <= slots[si].max && (slots[si].repeat || new Set(sel).size === sel.length));
     function climb(state) {
       let cur = evaluate(state);
       for (let iter = 0; iter < 300; iter++) {
@@ -566,74 +724,85 @@
       }
       return { state, ev: cur };
     }
-
     function init(randomize) {
       return slots.map((s, si) => {
         const order = cands[si].map((c, i) => i).sort((a, b) => cands[si][b].score - cands[si][a].score);
         if (randomize) for (let i = order.length - 1; i > 0; i--) { if (R() < 0.5) { const j = Math.floor(R() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; } }
         const out = [];
-        for (let k = 0; k < s.min; k++) out.push(s.repeat && order.length <= k ? order[0] : order[k % order.length]);
+        for (let k = 0; k < s.min; k++) out.push(order[k % order.length]);
         return out;
       });
     }
-
-    // Couples: the two personal mains/desserts start on different dishes
     let best = null;
     for (let r = 0; r < 4; r++) {
       const res = climb(init(r > 0));
-      const ok = res.ev.total >= B.min && res.ev.total <= B.max;
+      const ok = res.ev.total >= B.min && res.ev.total <= B.max && res.ev.f > -1e5;
       const key = (ok ? 1e6 : 0) + res.ev.f;
       if (!best || key > best.key) best = Object.assign(res, { key, ok });
     }
-    return { slots, cands, closer, closerCost, best };
+    return { slots, cands, closer, closerCost, best, dropped, light, budget: B };
   }
 
-  const fill = (tpl, P) => tpl.replace(/\{SG\}/g, P.sign.name + ' burcunun').replace(/\{S\}/g, P.sign.name + ' burcu').replace(/\{R\}/g, P.sign.rulerGen);
+  const fillS = (tpl, S) => tpl.replace(/\{SG\}/g, S.name + ' burcunun').replace(/\{S\}/g, S.name + ' burcu').replace(/\{R\}/g, S.rulerGen);
+  const fill = (tpl, P) => fillS(tpl, P.sign);
   function reasonFor(c, owners, usedTags, R) {
     if (c.course === 'drink') {
       const fan = owners.find((P) => P.sign.cocktails.indexOf(c.id) === 0) || owners.find((P) => P.sign.cocktails.indexOf(c.id) > 0);
       return { text: fan ? (owners.length > 1 ? fan.first + ' için: ' : '') + fan.sign.name + ' burcunun imza kokteyli.' : null, owner: fan || owners[0] };
     }
-    // strongest (tag, owner, source) whose sentence hasn't been used yet in this menu
     const seen = usedTags['#tpl'] || (usedTags['#tpl'] = {});
     const opts = [];
     owners.forEach((P) => {
       for (const t in c.tags) {
         const pen = usedTags[t] ? 0.6 : 1;
         const sv = c.tags[t] * (P.sign.taste[t] || 0) * pen;
+        const xv = c.tags[t] * (P.extra[t] || 0) * pen * 1.15;
         const nv = c.tags[t] * (P.ni.tags[t] || 0) * 0.95 * pen;
         if (sv > 0) opts.push({ v: sv, t, src: 'sign', P });
+        if (xv > 0) opts.push({ v: xv, t, src: 'extra', P });
         if (nv > 0 && P.ni.group) opts.push({ v: nv, t, src: 'name', P });
       }
     });
     opts.sort((a, b) => b.v - a.v);
+    const solo = owners.length === 1 && owners[0].__solo;
     for (const o of opts) {
       const P = o.P;
       if (o.src === 'name') {
         if (seen['#name' + P.first]) continue;
         seen['#name' + P.first] = 1; usedTags[o.t] = (usedTags[o.t] || 0) + 1;
-        const who = owners.length === 1 && P.__solo ? 'Adın' : P.first + ' adı';
+        const who = solo ? 'Adın' : P.first + ' adı';
         return { text: who + ' “' + P.ni.meaning + '” demek; ' + NAME_WHY[P.ni.group] + '.', owner: P, tag: o.t };
       }
+      const S = o.src === 'extra' ? (P.extraSrc[o.t] === 'co' ? P.co : P.cusp) : P.sign;
+      if (!S) continue;
       const list = WHY[o.t] || [];
       const k0 = Math.floor(R() * list.length);
       for (let k = 0; k < list.length; k++) {
-        const tpl = list[(k0 + k) % list.length], key = tpl + P.sign.id;
+        const tpl = list[(k0 + k) % list.length], key = tpl + S.id;
         if (seen[key]) continue;
+        if (o.src === 'extra' && seen['#extra' + P.first]) break;
         seen[key] = 1; usedTags[o.t] = (usedTags[o.t] || 0) + 1;
-        return { text: fill(tpl, P), owner: P, tag: o.t };
+        if (o.src === 'extra') {
+          seen['#extra' + P.first] = 1;
+          const lead = P.extraSrc[o.t] === 'co' ? (solo ? 'Dekanındaki ' : gen(P.first) + ' dekanındaki ') + S.name + ' etkisi: ' : (solo ? 'Burç geçişindeki ' : gen(P.first) + ' burç geçişindeki ') + S.name + ' etkisi: ';
+          return { text: lead + fillS(tpl, S), owner: P, tag: o.t };
+        }
+        return { text: fillS(tpl, S), owner: P, tag: o.t };
       }
     }
     const P = owners[0];
     const nt = Object.keys(P.ni.numInfo.tags).find((t) => c.tags[t]);
-    if (nt && !seen['#num' + P.first]) { seen['#num' + P.first] = 1; return { text: (owners.length === 1 && P.__solo ? 'Sayın ' : P.first + ' için sayı ') + P.ni.num + ', ' + P.ni.numInfo.t.toLocaleLowerCase('tr') + ': ' + NUM_WHY[P.ni.num] + '.', owner: P }; }
+    if (nt && !seen['#num' + P.first]) { seen['#num' + P.first] = 1; return { text: (solo ? 'Sayın ' : P.first + ' için sayı ') + P.ni.num + ', ' + P.ni.numInfo.t.toLocaleLowerCase('tr') + ': ' + NUM_WHY[P.ni.num] + '.', owner: P }; }
     const list = FALLBACK[c.course] || FALLBACK.meze;
     for (let k = 0; k < list.length; k++) { const tpl = list[k]; if (!seen['#fb' + tpl]) { seen['#fb' + tpl] = 1; return { text: fill(tpl, P), owner: P }; } }
     return { text: null, owner: P };
   }
 
+  const TAG_TR = { sea: 'Deniz', raw: 'Çiğ', spicy: 'Acı', grill: 'Köz', bold: 'Güçlü', smoky: 'İsli', earthy: 'Toprak', traditional: 'Geleneksel', slow: 'Yavaş pişmiş', local: 'Yerel', meat: 'Et', fresh: 'Ferah', citrus: 'Narenciye', herbal: 'Taze ot', light: 'Hafif', fruity: 'Meyveli', creamy: 'Kremalı', buttery: 'Tereyağlı', rich: 'Zengin', sweet: 'Tatlı', chocolate: 'Çikolata', dreamy: 'Rüya gibi', playful: 'Oyunbaz', crispy: 'Çıtır', share: 'Paylaşımlık', signature: 'Şefin imzası', elegant: 'Zarif', nutty: 'Kuruyemiş' };
+  const topTags = (tags) => Object.keys(tags || {}).sort((a, b) => tags[b] - tags[a]).slice(0, 2).map((t) => TAG_TR[t]).filter(Boolean);
+
   /**
-   * build(menu, { mode: 'single'|'couple', people: [{name, sign, gender}], noAlcohol, variant })
+   * build(menu, { mode: 'single'|'couple', people: [{ name, day, month | sign, gender }], noAlcohol, diet: [...], variant })
    */
   function build(menu, input) {
     const mode = input.mode === 'couple' ? 'couple' : 'single';
@@ -642,15 +811,17 @@
     if (mode === 'single') persons[0].__solo = true;
     const byId = catalog(menu);
     const variant = input.variant | 0;
-    const seedStr = [mode, input.noAlcohol ? 1 : 0, variant].concat(persons.map((p) => lowerTr(p.name) + '|' + p.sign.id + '|' + (p.gender || ''))).join('#');
+    const diet = (input.diet || []).filter((k) => DIETS[k]).sort();
+    const mask = dietMask(diet);
+    const seedStr = [mode, input.noAlcohol ? 1 : 0, variant, diet.join(',')].concat(persons.map((p) => lowerTr(p.name) + '|' + p.sign.id + '|' + (p.decan || 0) + '|' + (p.gender || ''))).join('#');
     const styles = stylesFor(mode, input);
     const Rs = rng(hash(seedStr + '#style'));
     let pick = null;
     styles.forEach((st) => {
       const R = rng(hash(seedStr + '#' + st));
-      const res = solve(mode, st, persons, byId, R);
+      const res = solve(mode, st, persons, byId, R, mask);
       if (!res) return;
-      const pref = persons.reduce((a, P) => a + (P.sign.drinks[st] || 0), 0) / persons.length;
+      const pref = persons.reduce((a, P) => a + (P.sign.drinks[st] || 0) + (P.co ? (P.co.drinks[st] || 0) * 0.3 : 0), 0) / persons.length;
       const avg = res.best.ev.score / Math.max(1, res.best.ev.count);
       const key = (res.best.ok ? 1e6 : 0) + avg * 1.5 + pref * 6 + Rs() * 5;
       if (!pick || key > pick.key) pick = { key, style: st, res };
@@ -661,52 +832,76 @@
     const R = rng(hash(seedStr + '#text'));
     const usedTags = {};
     const courses = [];
+    const seenIds = {};
+    Object.keys(FOOD).forEach((id) => { if (byId[id]) seenIds[id] = 1; });
+    Object.keys(DRINK).forEach((k) => { const b = DRINK[k].base || k; if (byId[b]) seenIds[b] = 1; });
+    const scanned = Object.keys(seenIds).length;
     best.state.forEach((sel, si) => {
       const s = slots[si];
       const owners = s.owner === 'both' ? persons : [persons[s.owner]];
       const groupKey = s.key.replace(/\d$/, '');
       let g = courses.find((x) => x.key === groupKey);
       if (!g) { g = { key: groupKey, label: s.label, items: [] }; courses.push(g); }
-      // aggregate repeats into qty
+      const sc = cands[si].map((c) => c.score), mx = Math.max.apply(null, sc), mn = Math.min.apply(null, sc);
       const counts = {};
       sel.forEach((ci) => { counts[ci] = (counts[ci] || 0) + 1; });
       Object.keys(counts).forEach((ci) => {
         const c = cands[si][ci];
-        const qty = counts[ci];
         const rs = reasonFor(c, owners, usedTags, R);
-        g.items.push({ id: c.id, menuId: c.menuId, name: c.name, price: c.price, qty, img: c.img, note: c.note,
-          why: rs.text, forName: s.owner === 'both' ? null : persons[s.owner].first, forSign: s.owner === 'both' ? null : persons[s.owner].sign.id });
+        const pct = Math.round(78 + 20 * ((c.score - mn) / ((mx - mn) || 1)));
+        g.items.push({ id: c.id, menuId: c.menuId, name: c.name, price: c.price, qty: counts[ci], img: c.img, note: c.note,
+          why: rs.text, pct: c.course === 'drink' ? null : pct, tags: c.course === 'drink' ? [] : topTags(c.tags),
+          pair: c.course === 'ana' ? pairLine(style, c) : null, course: c.course, score: c.score,
+          forName: s.owner === 'both' ? null : persons[s.owner].first, forSign: s.owner === 'both' ? null : persons[s.owner].sign.id });
       });
     });
-    // couple: single label for personal courses
     courses.forEach((g) => { if (g.key === 'ana' && g.items.length > 1) g.label = 'Ana Yemekler'; if (g.key === 'tatli' && g.items.length > 1) g.label = 'Tatlılar'; });
-    if (style === 'cocktail') {
-      const ck = courses.find((g) => g.key === 'icki');
-      if (ck && ck.items.length === 1 && ck.items[0].qty === 1) ck.label = 'Kokteyl';
-    }
-    if (closer) courses.push({ key: 'kapanis', label: 'Kapanış', items: [{ id: CLOSER.id, menuId: CLOSER.id, name: closer.name, price: closer.price, qty: persons.length, img: null, note: CLOSER.note, why: null }] });
+    if (style === 'cocktail') { const ck = courses.find((g) => g.key === 'icki'); if (ck && ck.items.length === 1 && ck.items[0].qty === 1) ck.label = 'Kokteyl'; }
+    if (closer) courses.push({ key: 'kapanis', label: 'Kapanış', items: [{ id: CLOSER.id, menuId: CLOSER.id, name: closer.name, price: closer.price, qty: persons.length, img: null, note: CLOSER.note, why: null, pct: null, tags: [] }] });
+
+    // the star dish: best-fitting hot course with a photo
+    let star = null;
+    courses.forEach((g) => g.items.forEach((it) => {
+      if (!it.img || !['ana', 'ara', 'baslangic'].includes(it.course)) return;
+      const k = it.pct * 10 + (it.course === 'ana' ? 6 : it.course === 'ara' ? 3 : 0) + it.price / 1000;
+      if (!star || k > star.k) star = { k, it };
+    }));
+    if (star) { star.it.star = true; if (!star.it.pair) star.it.pair = pairLine(style, { tags: (FOOD[star.it.id] || {}).t }); }
 
     const total = courses.reduce((a, g) => a + g.items.reduce((b, it) => b + it.price * it.qty, 0), 0);
-    const code = 'YM-' + (hash(courses.map((g) => g.items.map((i) => i.id + i.qty).join(',')).join('|')) % 46656).toString(36).toUpperCase().padStart(3, '0') + persons.map((p) => p.sign.name.charAt(0).toLocaleUpperCase('tr')).join('');
+    const code = 'YM-' + (hash(courses.map((g) => g.items.map((i) => i.id + i.qty).join(',')).join('|')) % 46656).toString(36).toUpperCase().padStart(3, '0') + persons.map((p) => fold(lowerTr(p.sign.name.charAt(0))).toUpperCase()).join('');
 
-    // reading
-    const reading = persons.map((P) => ({
-      name: P.name, first: P.first, sign: P.sign.id, signName: P.sign.name, el: EL[P.sign.el], ruler: P.sign.ruler, dates: P.sign.dates,
-      intro: P.gender === 'f' ? P.sign.f : P.gender === 'm' ? P.sign.m : null,
-      palate: P.sign.palate, meaning: P.ni.meaning, num: P.ni.num, numTitle: P.ni.numInfo.t, numText: P.ni.numInfo.s,
-    }));
-    let pairText = null;
+    const profiles = persons.map(profile);
+    const reading = persons.map((P, i) => {
+      const prof = profiles[i].slice().sort((a, b) => b.v - a.v);
+      return {
+        name: P.name, first: P.first, sign: P.sign.id, signName: P.sign.name, el: EL[P.sign.el], ruler: P.sign.ruler, dates: P.sign.dates, mod: MOD[P.sign.id],
+        gender: P.gender, decan: P.decan, co: P.co ? P.co.name : null, cusp: P.cusp ? P.cusp.name : null, birth: P.birth,
+        intro: P.gender === 'f' ? P.sign.f : P.gender === 'm' ? P.sign.m : null,
+        palate: P.sign.palate, decanText: decanText(P), cuspText: cuspText(P),
+        meaning: P.ni.meaning, num: P.ni.num, numTotal: P.ni.numTotal, digits: P.ni.digits, numTitle: P.ni.numInfo.t, numText: P.ni.numInfo.s,
+        profile: profiles[i],
+        insights: [{ k: 'Güçlü yönün', v: AXIS_TOP[prof[0].id] }, { k: 'İkinci sesin', v: AXIS_TOP[prof[1].id] }, { k: 'Keşif alanın', v: AXIS_LOW[prof[prof.length - 1].id] }],
+      };
+    });
+    let pairText = null, match = null;
     if (mode === 'couple') {
       const k = [persons[0].sign.el, persons[1].sign.el].sort().join('|');
       pairText = PAIR_TEXT[k];
       if (persons[0].sign.id === persons[1].sign.id) pairText = 'İki ' + persons[0].sign.name + ' aynı masada: aynı dili konuşan iki damak. ' + pairText;
+      match = compat(persons[0], persons[1], profiles[0], profiles[1]);
     }
+    const notes = [];
+    if (res.dropped.includes('ana')) notes.push('Menümüzde tercihine uygun bir ana yemek bulunmadığı için ana yemek yerine zengin bir meze ve salata seçkisi hazırladık.');
+    if (res.dropped.includes('ara')) notes.push('Tercihine uygun bir ara sıcak bulunmadığından yerine ek bir soğuk başlangıç koyduk.');
+    if (res.dropped.includes('baslangic')) notes.push('Tercihine uygun bir başlangıç bulunmadığından mezelerle açılış yaptık.');
+    if (res.light) notes.push('Tercihlerin doğrultusunda menü daha hafif tutuldu; indirim yine menünün tamamına uygulanır.');
     return {
-      mode, style, styleName: STYLE_NAME[style], styleWhy: STYLE_WHY[style], courses, total, code, reading, pairText,
-      ok: best.ok, budget: BUDGET[mode],
+      mode, style, styleName: STYLE_NAME[style], styleWhy: STYLE_WHY[style], courses, total, code, reading, pairText, match,
+      ok: best.ok, budget: res.budget, diet: diet.map((k) => DIETS[k].label), notes, scanned,
     };
   }
 
-  const api = { SIGNS, STARS, EL, build, nameInfo, signFromDate, cleanName, gen, BUDGET, FOOD, DRINK };
+  const api = { SIGNS, STARS, EL, MOD, DIETS, build, nameInfo, nameOk, signFromDate, astroFromDate, validDate, cleanName, gen, BUDGET, FOOD, DRINK };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.YildizEngine = api;
 })(typeof window !== 'undefined' ? window : globalThis);
