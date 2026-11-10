@@ -100,9 +100,13 @@ svg{display:block}
 [dir=rtl] .prog span i{transform-origin:right}
 
 /* ── Featured: gallery prints (no text on the artwork) ── */
-.poster{position:relative;flex:none;width:80%;scroll-snap-align:center;background:#fff;border-radius:6px;padding:10px 10px 0;box-shadow:0 1px 2px rgba(16,32,46,.05),0 34px 60px -36px rgba(16,32,46,.4);transform:scale(.93);opacity:.5;transition:transform .9s var(--ease),opacity .9s var(--ease);cursor:pointer}
+.poster{position:relative;flex:none;width:80%;scroll-snap-align:center;background:#fff;border-radius:24px;padding:10px 10px 0;box-shadow:0 1px 2px rgba(16,32,46,.05),0 34px 60px -36px rgba(16,32,46,.4);transform:scale(.93);opacity:.5;transition:transform .9s var(--ease),opacity .9s var(--ease);cursor:pointer}
 .poster.act{transform:none;opacity:1}
-.art{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:2px;background:#EDEBE6;isolation:isolate}
+.poster{display:flex;flex-direction:column}
+.poster .cap{flex:1;display:flex;flex-direction:column}
+.poster .cap-bot{margin-top:auto}
+.poster .p-title{margin-bottom:14px}
+.art{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:15px;background:#EDEBE6;isolation:isolate}
 .art .grain{opacity:.08}
 .pz{position:absolute;inset:0;transform:scale(1.6);transition:transform 2.2s var(--ease)}
 .poster.pm .pz{transform:scale(1.15)}
@@ -111,19 +115,19 @@ svg{display:block}
 .poster.pm.act .pz{transform:none}
 .poster.act .pz img,.cine.in .pz img{animation:kb 12s ease-in-out 2.2s infinite alternate}
 @keyframes kb{from{transform:scale(1)}to{transform:scale(1.06) translate(-1%,-1.5%)}}
-.flash{position:absolute;inset:0;z-index:4;background:#FFFDF8;opacity:0;pointer-events:none}
-.poster.act .flash,.cine.in .flash{animation:flash 1s ease-out}
-@keyframes flash{0%{opacity:.9}14%{opacity:.2}22%{opacity:.6}36%{opacity:.08}46%{opacity:.3}100%{opacity:0}}
+.flash{position:absolute;inset:-20% -60%;z-index:4;pointer-events:none;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.08) 46%,rgba(255,255,255,.5) 50%,rgba(255,255,255,.08) 54%,transparent 58%);transform:translateX(-70%);opacity:0}
+.poster.act .flash,.cine.in .flash{animation:sheen 1.6s cubic-bezier(.45,.05,.25,1) .5s 1 both}
+@keyframes sheen{0%{transform:translateX(-70%);opacity:1}100%{transform:translateX(70%);opacity:1}}
 .p-noimg{position:absolute;inset:0;display:grid;place-items:center;color:var(--amber);opacity:.5}
 .p-noimg svg{width:46%}
 .cap{padding:16px 6px 18px;text-align:start}
-.cap-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:11px;font-weight:500;letter-spacing:.04em;color:var(--muted);opacity:0;transform:translateY(6px);transition:opacity .8s var(--ease) .35s,transform .8s var(--ease) .35s}
+.cap-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:11px;font-weight:500;letter-spacing:.04em;color:var(--muted)}
 .cap-top .no{color:var(--amber);font-weight:600;font-variant-numeric:tabular-nums}
 .p-title{margin-top:8px;font-size:clamp(25px,7.6vw,31px);line-height:1.05;font-weight:300;letter-spacing:-.025em;color:var(--ink);text-wrap:balance}
 .w{display:inline-block}
-.w>span{display:inline-block;opacity:0;transform:translateY(.35em);transition:opacity 1s var(--ease) calc(.5s + var(--i)*.09s),transform 1.1s var(--ease) calc(.5s + var(--i)*.09s)}
-.p-tag{margin-top:8px;font-size:13px;line-height:1.5;color:var(--muted);opacity:0;transition:opacity .9s var(--ease) .9s}
-.cap-bot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);opacity:0;transition:opacity .9s var(--ease) 1s}
+.w>span{display:inline-block}
+.p-tag{margin-top:8px;font-size:13px;line-height:1.5;color:var(--muted)}
+.cap-bot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
 .cap-bot .price{font-size:15px;color:var(--ink)}
 .poster.act .cap-top,.cine.in .cap-top{opacity:1;transform:none}
 .poster.act .w>span,.cine.in .w>span{opacity:1;transform:none}
@@ -164,7 +168,7 @@ svg{display:block}
 .sv-top b{font-size:14px;font-weight:600;flex:1}
 .sv-top .ibtn{width:34px;height:34px}
 .sv-media{position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
-.sv-media img{max-width:100%;max-height:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px;box-shadow:var(--sh-md);animation:svIn .7s var(--ease) both}
+.sv-media img{max-width:100%;max-height:100%;aspect-ratio:4/5;object-fit:cover;border-radius:22px;box-shadow:var(--sh-md);animation:svIn .7s var(--ease) both}
 @keyframes svIn{from{opacity:0;transform:scale(1.04);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
 .sv-tap{position:absolute;top:0;bottom:0;width:38%;z-index:2}
 .sv-tap.l{left:0}.sv-tap.r{right:0}
@@ -172,7 +176,7 @@ svg{display:block}
 .sv-cta button,.sv-cta a{height:46px;padding:0 22px;border-radius:14px;background:var(--ink);color:#fff;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
 
 /* reservation card */
-.rezc{display:block;margin:30px 20px 0;border-radius:8px;overflow:hidden;position:relative;box-shadow:var(--sh-md);aspect-ratio:4/5;background:#EDEBE6}
+.rezc{display:block;margin:30px 20px 0;border-radius:24px;overflow:hidden;position:relative;box-shadow:var(--sh-md);aspect-ratio:4/5;background:#EDEBE6}
 .rezc img{width:100%;height:100%;object-fit:cover}
 .rezc span{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);height:44px;padding:0 22px;border-radius:99px;background:rgba(255,255,255,.95);color:var(--ink);font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;box-shadow:0 8px 20px -10px rgba(0,0,0,.5)}
 
@@ -211,8 +215,8 @@ svg{display:block}
 .bo .p-title{margin:12px 20px 0}
 .p-bill{margin:0 24px;font-size:9px;line-height:1.35;color:var(--muted);font-weight:500}
 .p-bill b{font-weight:700;color:var(--ink2)}
-.bo{margin:0 20px;border-radius:6px;background:var(--paper);box-shadow:var(--sh-md);position:relative;overflow:hidden;isolation:isolate;text-align:center;padding:26px 0 0;cursor:pointer;display:block;width:calc(100% - 40px)}
-.bo::before{content:"";position:absolute;inset:7px;border:1px solid rgba(16,32,46,.14);border-radius:2px;pointer-events:none;z-index:3}
+.bo{margin:0 20px;border-radius:24px;background:var(--paper);box-shadow:var(--sh-md);position:relative;overflow:hidden;isolation:isolate;text-align:center;padding:26px 0 0;cursor:pointer;display:block;width:calc(100% - 40px)}
+.bo::before{content:"";position:absolute;inset:7px;border:1px solid rgba(16,32,46,.14);border-radius:17px;pointer-events:none;z-index:3}
 .bo .no{position:absolute;top:22px;left:24px;font-size:40px;line-height:1;font-weight:200;letter-spacing:-.04em;color:var(--ink)}
 .bo .no small{font-size:13px;font-weight:500;letter-spacing:.1em;vertical-align:top;margin-inline-end:2px}
 [dir=rtl] .bo .no{left:auto;right:24px}
@@ -221,7 +225,7 @@ svg{display:block}
 .bo .laurel .lt{font-size:10.5px;max-width:110px}
 .bo .p-title{font-size:clamp(25px,7.6vw,34px);margin-top:12px}
 .bo .p-tag{margin-top:10px}
-.bo .bo-ph{position:relative;z-index:1;margin:18px 22px 14px;aspect-ratio:1/.86;overflow:hidden;border-radius:2px;background:var(--sand)}
+.bo .bo-ph{position:relative;z-index:1;margin:18px 22px 14px;aspect-ratio:1/.86;overflow:hidden;border-radius:14px;background:var(--sand)}
 .bo .bo-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.18)}
 .bo .bo-ph.in img{animation:boIn 1.6s var(--ease) both}
 @keyframes boIn{from{transform:scale(1.4);opacity:0}to{transform:scale(1.18);opacity:1}}
@@ -238,9 +242,9 @@ svg{display:block}
 .rk .price{font-size:13px;color:var(--ink2);margin-top:2px;display:block}
 
 /* ── Chef's favourite: the masterpiece (cinemascope aperture opening) ── */
-.cine{margin:0 20px;background:#fff;border-radius:6px;padding:12px 12px 0;box-shadow:0 1px 2px rgba(16,32,46,.05),0 40px 70px -40px rgba(16,32,46,.45);display:block;width:calc(100% - 40px);cursor:pointer}
-.cine .art{aspect-ratio:4/5;clip-path:inset(30% 0 30% 0);transition:clip-path 1.8s var(--ease) .1s}
-.cine.in .art{clip-path:inset(0 0 0 0)}
+.cine{margin:0 20px;background:#fff;border-radius:26px;padding:12px 12px 0;box-shadow:0 1px 2px rgba(16,32,46,.05),0 40px 70px -40px rgba(16,32,46,.45);display:block;width:calc(100% - 40px);cursor:pointer}
+.cine .art{aspect-ratio:4/5;clip-path:inset(30% 0 30% 0 round 15px);transition:clip-path 1.8s var(--ease) .1s}
+.cine.in .art{clip-path:inset(0 0 0 0 round 15px)}
 .cine .pz{transform:scale(1.7);transition:transform 2.8s var(--ease)}
 .cine .cap{padding:18px 6px 20px}
 .cine .who{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:500;color:var(--ink2)}
@@ -599,7 +603,7 @@ function render(){
       var it=o.it;
       var n=F.list.length, pad=function(x){return (x<10?'0':'')+x};
       var cap='<div class="cap-top"><span class="no">Nº '+pad(i+1)+'</span><span>'+esc(cl(it.cat))+'</span></div>';
-      var bot='<div class="cap-bot"><span>'+esc(t('chefCredit'))+'</span>'+priceHTML(it)+'</div>';
+      var bot='<div class="cap-bot"><span></span>'+priceHTML(it)+'</div>';
       var art=POSTERS[it.id]?'<img src="'+pimg(POSTERS[it.id])+'" alt="'+esc(tx(it,'name'))+'" '+(i<2?'fetchpriority="high"':'loading="lazy"')+' decoding="async">':(it.img?imgTag(it,'',i<2):'<span class="p-noimg"><svg><use href="#fish"/></svg></span>');
       return '<article class="poster'+(POSTERS[it.id]?' pm':'')+'" data-id="'+esc(it.id)+'" role="button" tabindex="0" aria-label="'+esc(tx(it,'name'))+'"><div class="art"><div class="pz">'+art+'</div><span class="grain"></span><span class="flash"></span>'+sticker(it)+'</div>'+
         '<div class="cap">'+cap+(POSTERS[it.id]?'':'<h3 class="p-title">'+words(tx(it,'name'))+'</h3>'+(o.tag&&lang==='tr'?'<p class="p-tag">'+esc(o.tag)+'</p>':''))+bot+'</div></article>';
