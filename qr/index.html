@@ -175,6 +175,19 @@ svg{display:block}
 .sv-cta{display:flex;justify-content:center;padding-top:12px;min-height:58px}
 .sv-cta button,.sv-cta a{height:46px;padding:0 22px;border-radius:14px;background:var(--ink);color:#fff;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
 
+/* DİDİ stay */
+.stay{margin:0 20px;background:#fff;border-radius:26px;padding:10px;box-shadow:0 1px 2px rgba(16,32,46,.05),0 34px 60px -36px rgba(16,32,46,.4)}
+.stay-v{position:relative;aspect-ratio:9/16;border-radius:17px;overflow:hidden;background:#1d2a33}
+.stay-v video,.stay-v img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.stay-snd{position:absolute;right:12px;bottom:12px;z-index:2;height:36px;padding:0 12px;border-radius:99px;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.88);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);font-size:12px;font-weight:600;color:var(--ink)}
+.stay-snd svg{width:16px;height:16px}
+[dir=rtl] .stay-snd{right:auto;left:12px}
+.stay-c{padding:18px 8px 8px}
+.stay-off{display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:99px;background:var(--deal);color:#fff;font-size:13px;font-weight:700}
+.stay-c p{font-size:14px;line-height:1.5;color:var(--ink2);margin-top:10px}
+.stay-btn{display:flex;align-items:center;justify-content:center;gap:8px;height:52px;margin-top:16px;border-radius:16px;background:var(--ink);color:#fff;font-size:15px;font-weight:600;text-decoration:none}
+.stay-lnk{display:flex;align-items:center;justify-content:center;height:44px;margin-top:6px;font-size:13.5px;font-weight:600;color:var(--ink2);text-decoration:none}
+
 /* reservation card */
 .rezc{display:block;margin:30px 20px 0;border-radius:24px;overflow:hidden;position:relative;box-shadow:var(--sh-md);aspect-ratio:4/5;background:#EDEBE6}
 .rezc img{width:100%;height:100%;object-fit:cover}
@@ -462,10 +475,10 @@ ar:{yemek:"الطعام",icecek:"المشروبات",b:"المقبلات",s:"ا�
 ru:{yemek:"Еда",icecek:"Напитки",b:"Закуски",s:"Салаты",a:"Горячие закуски",n:"Основные блюда",kahvalti:"Завтрак",t:"Десерты",c:"Детское меню",extra:"Дополнения",sarap:"Вина","kokteyl-al":"Коктейли","kokteyl-sz":"Безалкогольные коктейли",raki:"Раки",viski:"Виски",votka:"Водка",cin:"Джин",tekila:"Текила",rom:"Ром",likor:"Ликёры",bira:"Пиво","soguk-kahve":"Холодный кофе","soguk-icecek":"Холодные напитки",milkshake:"Милкшейки",frozen:"Фрозен","taze-sikim":"Свежевыжатые соки",sampanya:"Шампанское",atistirmalik:"Снэки",havuz:"Меню у бассейна","sicak-icecek":"Горячие напитки"}
 };
 var T={
-tr:{featured:"Öne Çıkanlar",bestseller:"Haftanın En Çok Satanı",chef:"Şefin Favorisi",deals:"Fırsatlar",presents:"Mare Gastro Sunar",now:"Şimdi Masalarda",nowEb:"Bu Akşam",selection:"Şefin Seçimi",no1:"En Çok Tercih Edilen",bestShort:"Çok Satan",chefBy:"Şef Doğan Anapa'nın Seçimi",chefCredit:"Şef Doğan Anapa",house:"Mare Gastro · Sapanca",home:"Keşfet",search:"Ara",searchPh:"Yemek veya içecek ara",noRes:"Sonuç bulunamadı",table:"Masa",lang:"Dil seçin",items:"ürün",dealsBar:function(n){return n+" üründe indirim var"},until:function(d){return d+" tarihine kadar"},off:"İndirim",dealLbl:"İndirimli Fiyat",priceLbl:"Fiyat",ask:"Fiyat için ekibimize sorun",note:"Alerjiniz ya da özel bir isteğiniz varsa lütfen ekibimize iletin.",currency:"Fiyatlar Türk Lirası (₺) cinsindendir.",err:"Menü şu an yüklenemedi.",retry:"Tekrar dene",reserve:"Rezervasyon",top:"Gişe Listesi"},
-en:{featured:"Featured",bestseller:"Best Seller of the Week",chef:"Chef's Favourite",deals:"Special Offers",presents:"Mare Gastro Presents",now:"Now Serving",nowEb:"Tonight",selection:"Chef's Selection",no1:"Most Ordered",bestShort:"Best Seller",chefBy:"Chosen by Chef Doğan Anapa",chefCredit:"Chef Doğan Anapa",house:"Mare Gastro · Sapanca",home:"Discover",search:"Search",searchPh:"Search food or drinks",noRes:"No results",table:"Table",lang:"Choose language",items:"items",dealsBar:function(n){return n+(n>1?" items":" item")+" on offer"},until:function(d){return "Until "+d},off:"Offer",dealLbl:"Offer Price",priceLbl:"Price",ask:"Please ask our team for the price",note:"Please let our team know about any allergies or special requests.",currency:"Prices are in Turkish Lira (₺).",err:"The menu could not be loaded right now.",retry:"Try again",reserve:"Reservation",top:"Top of the Week"},
-ar:{featured:"مختارات مميزة",bestseller:"الأكثر مبيعًا هذا الأسبوع",chef:"المفضل لدى الشيف",deals:"عروض خاصة",presents:"مار غاسترو يقدّم",now:"يُقدَّم الآن",nowEb:"الليلة",selection:"اختيار الشيف",no1:"الأكثر طلبًا",bestShort:"الأكثر مبيعًا",chefBy:"اختيار الشيف دوغان أنابا",chefCredit:"الشيف دوغان أنابا",house:"Mare Gastro · Sapanca",home:"اكتشف",search:"بحث",searchPh:"ابحث عن طعام أو مشروب",noRes:"لا توجد نتائج",table:"طاولة",lang:"اختر اللغة",items:"عناصر",dealsBar:function(n){return "خصم على "+n+" عناصر"},until:function(d){return "حتى "+d},off:"خصم",dealLbl:"سعر العرض",priceLbl:"السعر",ask:"يرجى سؤال فريقنا عن السعر",note:"يرجى إبلاغ فريقنا بأي حساسية أو طلبات خاصة.",currency:"الأسعار بالليرة التركية (₺).",err:"تعذّر تحميل القائمة الآن.",retry:"أعد المحاولة",reserve:"الحجز",top:"الأكثر طلبًا"},
-ru:{featured:"Рекомендуем",bestseller:"Хит недели",chef:"Выбор шефа",deals:"Спецпредложения",presents:"Mare Gastro представляет",now:"Сейчас в меню",nowEb:"Сегодня",selection:"Выбор шефа",no1:"Самое популярное",bestShort:"Хит",chefBy:"Выбор шефа Догана Анапы",chefCredit:"Шеф Доган Анапа",house:"Mare Gastro · Sapanca",home:"Главная",search:"Поиск",searchPh:"Найти блюдо или напиток",noRes:"Ничего не найдено",table:"Стол",lang:"Выберите язык",items:"позиций",dealsBar:function(n){return "Скидки на "+n+" позиций"},until:function(d){return "До "+d},off:"Скидка",dealLbl:"Цена со скидкой",priceLbl:"Цена",ask:"Цену уточните у нашей команды",note:"Пожалуйста, сообщите нам об аллергии или особых пожеланиях.",currency:"Цены указаны в турецких лирах (₺).",err:"Не удалось загрузить меню.",retry:"Повторить",reserve:"Бронирование",top:"Топ недели"}
+tr:{featured:"Öne Çıkanlar",stayEb:"Mare Gastro Misafirlerine Özel",stayT:"DİDİ Otel'de Konaklayın",stayOff:"Ekstra %20 İndirim",stayTx:"Mare Gastro misafirlerine DİDİ Otel konaklamalarında ekstra %20 indirim.",stayBtn:"DİDİ Otel Rezervasyonu",stayRooms:"Odaları İncele",stayMsg:"Merhaba, Mare Gastro QR menüsünden yazıyorum. Mare Gastro misafirlerine özel %20 indirimli konaklama için bilgi almak istiyorum.",sound:"Ses",bestseller:"Haftanın En Çok Satanı",chef:"Şefin Favorisi",deals:"Fırsatlar",presents:"Mare Gastro Sunar",now:"Şimdi Masalarda",nowEb:"Bu Akşam",selection:"Şefin Seçimi",no1:"En Çok Tercih Edilen",bestShort:"Çok Satan",chefBy:"Şef Doğan Anapa'nın Seçimi",chefCredit:"Şef Doğan Anapa",house:"Mare Gastro · Sapanca",home:"Keşfet",search:"Ara",searchPh:"Yemek veya içecek ara",noRes:"Sonuç bulunamadı",table:"Masa",lang:"Dil seçin",items:"ürün",dealsBar:function(n){return n+" üründe indirim var"},until:function(d){return d+" tarihine kadar"},off:"İndirim",dealLbl:"İndirimli Fiyat",priceLbl:"Fiyat",ask:"Fiyat için ekibimize sorun",note:"Alerjiniz ya da özel bir isteğiniz varsa lütfen ekibimize iletin.",currency:"Fiyatlar Türk Lirası (₺) cinsindendir.",err:"Menü şu an yüklenemedi.",retry:"Tekrar dene",reserve:"Rezervasyon",top:"Gişe Listesi"},
+en:{featured:"Featured",stayEb:"Exclusive for Mare Gastro Guests",stayT:"Stay at DİDİ Hotel",stayOff:"Extra 20% Off",stayTx:"Mare Gastro guests get an extra 20% off their stay at DİDİ Hotel.",stayBtn:"Book DİDİ Hotel",stayRooms:"See the Rooms",stayMsg:"Hello, I am writing from the Mare Gastro QR menu. I would like information about the 20% discount on stays for Mare Gastro guests.",sound:"Sound",bestseller:"Best Seller of the Week",chef:"Chef's Favourite",deals:"Special Offers",presents:"Mare Gastro Presents",now:"Now Serving",nowEb:"Tonight",selection:"Chef's Selection",no1:"Most Ordered",bestShort:"Best Seller",chefBy:"Chosen by Chef Doğan Anapa",chefCredit:"Chef Doğan Anapa",house:"Mare Gastro · Sapanca",home:"Discover",search:"Search",searchPh:"Search food or drinks",noRes:"No results",table:"Table",lang:"Choose language",items:"items",dealsBar:function(n){return n+(n>1?" items":" item")+" on offer"},until:function(d){return "Until "+d},off:"Offer",dealLbl:"Offer Price",priceLbl:"Price",ask:"Please ask our team for the price",note:"Please let our team know about any allergies or special requests.",currency:"Prices are in Turkish Lira (₺).",err:"The menu could not be loaded right now.",retry:"Try again",reserve:"Reservation",top:"Top of the Week"},
+ar:{featured:"مختارات مميزة",stayEb:"حصريًا لضيوف مار غاسترو",stayT:"أقم في فندق ديدي",stayOff:"خصم إضافي 20%",stayTx:"يحصل ضيوف مار غاسترو على خصم إضافي 20% على الإقامة في فندق ديدي.",stayBtn:"احجز في فندق ديدي",stayRooms:"شاهد الغرف",stayMsg:"مرحبًا، أكتب من قائمة مار غاسترو. أود معرفة تفاصيل خصم 20% على الإقامة لضيوف مار غاسترو.",sound:"الصوت",bestseller:"الأكثر مبيعًا هذا الأسبوع",chef:"المفضل لدى الشيف",deals:"عروض خاصة",presents:"مار غاسترو يقدّم",now:"يُقدَّم الآن",nowEb:"الليلة",selection:"اختيار الشيف",no1:"الأكثر طلبًا",bestShort:"الأكثر مبيعًا",chefBy:"اختيار الشيف دوغان أنابا",chefCredit:"الشيف دوغان أنابا",house:"Mare Gastro · Sapanca",home:"اكتشف",search:"بحث",searchPh:"ابحث عن طعام أو مشروب",noRes:"لا توجد نتائج",table:"طاولة",lang:"اختر اللغة",items:"عناصر",dealsBar:function(n){return "خصم على "+n+" عناصر"},until:function(d){return "حتى "+d},off:"خصم",dealLbl:"سعر العرض",priceLbl:"السعر",ask:"يرجى سؤال فريقنا عن السعر",note:"يرجى إبلاغ فريقنا بأي حساسية أو طلبات خاصة.",currency:"الأسعار بالليرة التركية (₺).",err:"تعذّر تحميل القائمة الآن.",retry:"أعد المحاولة",reserve:"الحجز",top:"الأكثر طلبًا"},
+ru:{featured:"Рекомендуем",stayEb:"Только для гостей Mare Gastro",stayT:"Остановитесь в отеле DİDİ",stayOff:"Дополнительная скидка 20%",stayTx:"Гости Mare Gastro получают дополнительную скидку 20% на проживание в отеле DİDİ.",stayBtn:"Забронировать DİDİ",stayRooms:"Смотреть номера",stayMsg:"Здравствуйте, пишу из QR-меню Mare Gastro. Хочу узнать о скидке 20% на проживание для гостей Mare Gastro.",sound:"Звук",bestseller:"Хит недели",chef:"Выбор шефа",deals:"Спецпредложения",presents:"Mare Gastro представляет",now:"Сейчас в меню",nowEb:"Сегодня",selection:"Выбор шефа",no1:"Самое популярное",bestShort:"Хит",chefBy:"Выбор шефа Догана Анапы",chefCredit:"Шеф Доган Анапа",house:"Mare Gastro · Sapanca",home:"Главная",search:"Поиск",searchPh:"Найти блюдо или напиток",noRes:"Ничего не найдено",table:"Стол",lang:"Выберите язык",items:"позиций",dealsBar:function(n){return "Скидки на "+n+" позиций"},until:function(d){return "До "+d},off:"Скидка",dealLbl:"Цена со скидкой",priceLbl:"Цена",ask:"Цену уточните у нашей команды",note:"Пожалуйста, сообщите нам об аллергии или особых пожеланиях.",currency:"Цены указаны в турецких лирах (₺).",err:"Не удалось загрузить меню.",retry:"Повторить",reserve:"Бронирование",top:"Топ недели"}
 };
 var LANGS=[['tr','Türkçe','TR'],['en','English','EN'],['ar','العربية','AR'],['ru','Русский','RU']];
 
@@ -606,7 +619,7 @@ function render(){
       var bot='<div class="cap-bot"><span></span>'+priceHTML(it)+'</div>';
       var art=POSTERS[it.id]?'<img src="'+pimg(POSTERS[it.id])+'" alt="'+esc(tx(it,'name'))+'" '+(i<2?'fetchpriority="high"':'loading="lazy"')+' decoding="async">':(it.img?imgTag(it,'',i<2):'<span class="p-noimg"><svg><use href="#fish"/></svg></span>');
       return '<article class="poster'+(POSTERS[it.id]?' pm':'')+'" data-id="'+esc(it.id)+'" role="button" tabindex="0" aria-label="'+esc(tx(it,'name'))+'"><div class="art"><div class="pz">'+art+'</div><span class="grain"></span><span class="flash"></span>'+sticker(it)+'</div>'+
-        '<div class="cap">'+cap+(POSTERS[it.id]?'':'<h3 class="p-title">'+words(tx(it,'name'))+'</h3>'+(o.tag&&lang==='tr'?'<p class="p-tag">'+esc(o.tag)+'</p>':''))+bot+'</div></article>';
+        '<div class="cap">'+cap+'<h3 class="p-title">'+words(tx(it,'name'))+'</h3>'+(o.tag&&lang==='tr'?'<p class="p-tag">'+esc(o.tag)+'</p>':'')+bot+'</div></article>';
     }).join('')+'</div></section>';
   }
   var dealItems=MENU.items.filter(function(it){return deal(it)});
@@ -636,13 +649,21 @@ function render(){
   }
   html+='<section class="sec" id="s-menu" style="padding-top:34px"><div class="sh"><div><div class="eb">Mare Gastro</div><h2 class="st">'+(lang==='tr'?'Menü':lang==='en'?'Menu':lang==='ar'?'القائمة':'Меню')+'</h2></div></div>'+
     '<div class="mbar" id="mbar"><div class="seg" id="seg"><span class="pill"></span>'+MENU.groups.map(function(g){return '<button data-g="'+esc(g.id)+'">'+esc(cl(g.id))+'</button>'}).join('')+'</div><div class="chips" id="chips"></div></div><div class="mview" id="mview"></div></section>';
+  var wa='https://wa.me/905331350888?text='+encodeURIComponent(t('stayMsg')+(TABLE?' ('+t('table')+' '+TABLE+')':''));
+  var didi='https://www.sapancadidiotel.com/'+(lang==='tr'?'':lang+'/');
+  html+='<section class="sec" id="s-stay" style="padding-top:40px"><div class="sh"><div><div class="eb">'+esc(t('stayEb'))+'</div><h2 class="st">'+esc(t('stayT'))+'</h2></div></div>'+
+    '<div class="stay rv"><div class="stay-v"><img src="/images/qr/video/didi-poster.webp" alt="DİDİ Otel" loading="lazy"><video id="stayVid" muted loop playsinline preload="none" poster="/images/qr/video/didi-poster.webp" data-src="/images/qr/video/didi-reels.mp4"></video>'+
+    '<button class="stay-snd" id="staySnd" aria-label="'+esc(t('sound'))+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path id="sndWave" d="M22 9l-6 6M16 9l6 6"/></svg>'+esc(t('sound'))+'</button></div>'+
+    '<div class="stay-c"><span class="stay-off">'+esc(t('stayOff'))+'</span><p>'+esc(t('stayTx'))+'</p>'+
+    '<a class="stay-btn" href="'+wa+'" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#i-cal"/></svg>'+esc(t('stayBtn'))+'</a>'+
+    '<a class="stay-lnk" href="'+didi+'" target="_blank" rel="noopener">'+esc(t('stayRooms'))+'</a></div></div></section>';
   html+='<a class="rezc rv" href="/'+(lang==='tr'?'tr':lang)+'/#reservation" target="_blank" rel="noopener"><img src="'+pimg('masanizi-ayirtin')+'" alt="'+esc(t('reserve'))+'" loading="lazy"><span><svg width="16" height="16"><use href="#i-cal"/></svg>'+esc(t('reserve'))+'</span></a>';
   $('#main').innerHTML=html;
   renderGroup(curGroup,false);
   renderFoot();
   var n=dealItems.length; var db=$('#dealbar');
   db.classList.toggle('on',n>0); if(n)$('#dealbarT').textContent=t('dealsBar')(n);
-  bindPosters(); observeReveal();
+  bindPosters(); observeReveal(); bindStay();
 }
 function itemHTML(it,cat){
   var compact=!cat||cat.display==='list'||!it.img;
@@ -724,6 +745,17 @@ function bindPosters(){
   rail.addEventListener('touchstart',pause,{passive:true});
   rail.addEventListener('touchend',function(){setTimeout(resume,600)},{passive:true});
   schedule();
+}
+function bindStay(){
+  var v=$('#stayVid'); if(!v)return;
+  var started=false;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){ if(!started){v.src=v.dataset.src;started=true} var pr=v.play(); if(pr&&pr.catch)pr.catch(function(){}) }
+    else if(started) v.pause();
+  })},{rootMargin:'200px 0px',threshold:.25});
+  io.observe(v);
+  var b=$('#staySnd');
+  b.addEventListener('click',function(){ v.muted=!v.muted; if(!v.muted&&v.paused)v.play(); $('#sndWave').setAttribute('d', v.muted?'M22 9l-6 6M16 9l6 6':'M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14'); });
 }
 var revealObs=null;
 function observeReveal(){
