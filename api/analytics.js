@@ -58,6 +58,7 @@ let insightsCache = null;
 let insightsCacheExpiry = 0;
 let searchCache = null;
 let searchCacheExpiry = 0;
+const qrCache = {};
 async function getToken(sa) {
   if (cachedToken && Date.now() < cachedTokenExpiry) return cachedToken;
   const client = new JWT({ email: sa.client_email, key: sa.private_key, scopes: ['https://www.googleapis.com/auth/analytics.readonly'] });
@@ -140,6 +141,74 @@ export default async function handler(req, res) {
         name: row.dimensionValues[0].value, sessions: parseInt(row.metricValues[0].value, 10),
       }));
       return send(res, 200, { ok: true, month: monthParam, startDate, endDate, channels: monthChannels });
+    }
+
+    // ── ?qr=1&days=7|30|90 → QR menu: kullanim, en cok bakilan urunler, tiklanan alanlar ──
+    // Urunler GA4 e-ticaret olaylariyla (view_item / select_item / view_item_list) item_id
+    // uzerinden toplanir; ad/fiyat degisse de seri kopmaz, panel id'yi guncel menuyle eslestirir.
+    // Diger davranislar qr_* olay adlariyla gelir (ozel boyut tanimi gerekmez).
+    if (String((req.query && req.query.qr) || '') === '1') {
+      const days = [7, 30, 90].includes(Number(req.query.days)) ? Number(req.query.days) : 30;
+      const key = 'qr' + days;
+      if (qrCache[key] && Date.now() < qrCache[key].exp) return send(res, 200, qrCache[key].body);
+      const range = { startDate: (days - 1) + 'daysAgo', endDate: 'today' };
+      const prevRange = { startDate: (days * 2 - 1) + 'daysAgo', endDate: days + 'daysAgo' };
+      const qrPage = { filter: { fieldName: 'pagePath', stringFilter: { matchType: 'BEGINS_WITH', value: '/qr' } } };
+      const [[sumR, dayR, hourR, devR, langR], [itemR, listR, evR, searchR]] = await Promise.all([
+        gaBatch(token, [
+          { dateRanges: [{ ...range, name: 'cur' }, { ...prevRange, name: 'prev' }], dimensionFilter: qrPage,
+            metrics: ['sessions', 'activeUsers', 'screenPageViews', 'userEngagementDuration', 'engagedSessions'].map((name) => ({ name })) },
+          { dateRanges: [range], dimensions: [{ name: 'date' }], metrics: [{ name: 'activeUsers' }, { name: 'sessions' }], dimensionFilter: qrPage, orderBys: [{ dimension: { dimensionName: 'date' } }], limit: 100 },
+          { dateRanges: [range], dimensions: [{ name: 'hour' }], metrics: [{ name: 'sessions' }], dimensionFilter: qrPage, limit: 24 },
+          { dateRanges: [range], dimensions: [{ name: 'deviceCategory' }], metrics: [{ name: 'activeUsers' }], dimensionFilter: qrPage, limit: 5 },
+          { dateRanges: [range], dimensions: [{ name: 'language' }], metrics: [{ name: 'activeUsers' }], dimensionFilter: qrPage, orderBys: [{ metric: { metricName: 'activeUsers' }, desc: true }], limit: 6 },
+        ]),
+        gaBatch(token, [
+          { dateRanges: [range], dimensions: [{ name: 'itemId' }, { name: 'itemName' }], metrics: [{ name: 'itemsViewed' }, { name: 'itemsClickedInList' }, { name: 'itemsViewedInList' }],
+            orderBys: [{ metric: { metricName: 'itemsViewed' }, desc: true }], limit: 250 },
+          { dateRanges: [range], dimensions: [{ name: 'itemListName' }], metrics: [{ name: 'itemsClickedInList' }], orderBys: [{ metric: { metricName: 'itemsClickedInList' }, desc: true }], limit: 30 },
+          { dateRanges: [range], dimensions: [{ name: 'eventName' }], metrics: [{ name: 'eventCount' }, { name: 'totalUsers' }],
+            dimensionFilter: { filter: { fieldName: 'eventName', stringFilter: { matchType: 'BEGINS_WITH', value: 'qr_' } } }, limit: 500 },
+          { dateRanges: [range], dimensions: [{ name: 'searchTerm' }], metrics: [{ name: 'eventCount' }],
+            dimensionFilter: { andGroup: { expressions: [{ filter: { fieldName: 'eventName', stringFilter: { value: 'search' } } }, qrPage] } },
+            orderBys: [{ metric: { metricName: 'eventCount' }, desc: true }], limit: 20 },
+        ]),
+      ]);
+      const pairs = (rep) => (rep.rows || []).map((row) => ({ name: row.dimensionValues[0].value, value: Number(row.metricValues[0].value) }));
+      const summary = { cur: {}, prev: {} };
+      (sumR.rows || []).forEach((row) => {
+        const m = {}; (sumR.metricHeaders || []).forEach((x, i) => { m[x.name] = Number(row.metricValues[i].value); });
+        summary[row.dimensionValues && row.dimensionValues[0] ? row.dimensionValues[0].value : 'cur'] = m;
+      });
+      const body = {
+        ok: true, days, updatedAt: new Date().toISOString(), summary,
+        daily: (dayR.rows || []).map((row) => { const d = row.dimensionValues[0].value; return { date: `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}`, users: Number(row.metricValues[0].value), sessions: Number(row.metricValues[1].value) }; }),
+        hours: pairs(hourR), devices: pairs(devR), languages: pairs(langR),
+        items: (itemR.rows || []).filter((row) => row.dimensionValues[0].value && row.dimensionValues[0].value !== '(not set)')
+          .map((row) => ({ id: row.dimensionValues[0].value, name: row.dimensionValues[1].value, views: Number(row.metricValues[0].value), clicks: Number(row.metricValues[1].value), impressions: Number(row.metricValues[2].value) })),
+        lists: pairs(listR).filter((x) => x.name && x.name !== '(not set)'),
+        events: (evR.rows || []).map((row) => ({ name: row.dimensionValues[0].value, count: Number(row.metricValues[0].value), users: Number(row.metricValues[1].value) })),
+        searches: pairs(searchR).filter((x) => x.name && x.name !== '(not set)'),
+      };
+      qrCache[key] = { body, exp: Date.now() + 5 * 60 * 1000 };
+      return send(res, 200, body);
+    }
+
+    // ── ?qrlive=1 → son 30 dakika QR menu olaylari ──
+    if (String((req.query && req.query.qrlive) || '') === '1') {
+      const r = await fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${PROPERTY_ID}:runRealtimeReport`, {
+        method: 'POST', headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ dimensions: [{ name: 'eventName' }], metrics: [{ name: 'eventCount' }, { name: 'activeUsers' }],
+          dimensionFilter: { orGroup: { expressions: [
+            { filter: { fieldName: 'eventName', stringFilter: { matchType: 'BEGINS_WITH', value: 'qr_' } } },
+            { filter: { fieldName: 'eventName', inListFilter: { values: ['view_item', 'select_item'] } } },
+          ] } }, limit: 200 }),
+      });
+      if (!r.ok) throw new Error('ga4 realtime ' + r.status + ' ' + (await r.text()).slice(0, 200));
+      const j = await r.json();
+      const events = (j.rows || []).map((row) => ({ name: row.dimensionValues[0].value, count: Number(row.metricValues[0].value), users: Number(row.metricValues[1].value) }));
+      const open = events.find((e) => e.name === 'qr_open');
+      return send(res, 200, { ok: true, updatedAt: new Date().toISOString(), activeUsers: open ? open.users : 0, events });
     }
 
     // ── ?realtime=1 → son 30 dakika: su an sitede olanlar ve yaptiklari ──
