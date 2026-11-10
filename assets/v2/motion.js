@@ -165,16 +165,28 @@
 
   /* ── Signature dishes (built from the live menu the page already fetched) ── */
   var FEATURED_CATS = ['b', 'a', 'n', 't', 's', 'kahvalti'];
+  var CHEF_PICKS = [
+    'kereviz-pureli-jumbo-karides-sogus', 'dana-carpaccio', 'roka-salatasi',
+    'mare-spesiyal-ahtapot-guvec', 'biber-kremali-bonfile', 'citir-somon', 'ormanda-bir-yuruyus'
+  ];
   function menuData() { try { return (typeof MENU_DATA !== 'undefined' && MENU_DATA) ? MENU_DATA : null; } catch (e) { return null; } }
   function buildSignature(data) {
     var track = $('#sigTrack');
     if (!track || track.children.length) return;
-    var byCat = {};
-    data.items.forEach(function (it) { if (it.img && FEATURED_CATS.indexOf(it.cat) > -1) (byCat[it.cat] = byCat[it.cat] || []).push(it); });
-    var picks = [], round = 0;
-    while (picks.length < 10 && round < 6) {
-      FEATURED_CATS.forEach(function (c) { var a = byCat[c]; if (a && a[round] && picks.length < 10) picks.push(a[round]); });
-      round++;
+    // Chef-picked dishes, shown in menu order (category order, then item order).
+    var catOrder = data.categories.map(function (c) { return c.id; });
+    var picks = data.items
+      .map(function (it, i) { return { it: it, i: i }; })
+      .filter(function (o) { return o.it.img && CHEF_PICKS.indexOf(o.it.id) > -1; })
+      .sort(function (a, b) { return (catOrder.indexOf(a.it.cat) - catOrder.indexOf(b.it.cat)) || (a.i - b.i); })
+      .map(function (o) { return o.it; });
+    if (!picks.length) {
+      var byCat = {}, round = 0;
+      data.items.forEach(function (it) { if (it.img && FEATURED_CATS.indexOf(it.cat) > -1) (byCat[it.cat] = byCat[it.cat] || []).push(it); });
+      while (picks.length < 10 && round < 6) {
+        FEATURED_CATS.forEach(function (c) { var a = byCat[c]; if (a && a[round] && picks.length < 10) picks.push(a[round]); });
+        round++;
+      }
     }
     var lab = function (id) { try { return mLabel(id); } catch (e) { return ''; } };
     var txt = function (it, f) { try { return mText(it, f); } catch (e) { return it[f] || ''; } };
