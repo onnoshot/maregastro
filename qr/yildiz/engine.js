@@ -654,7 +654,8 @@
   }
 
   // a realistic dinner: single = starter/salad/main/dessert (rakı table: mezes + hot starter); couple shares the cold side, main and dessert are personal
-  function servingsFor(mode, st) { if (mode === 'couple') return (st === 'cocktail' || st === 'none') ? 4 : 1; return st === 'whisky' ? 1 : 2; }
+  // one drink per guest: a single glass for one, a bottle or one glass each for two
+  function servingsFor(mode, st) { if (mode === 'couple') return (st === 'cocktail' || st === 'none' || st === 'whisky') ? 2 : 1; return 1; }
   function slotsYz(mode, style) {
     const raki = style === 'raki', S = [], n = servingsFor(mode, style);
     const drink = { key: 'icki', label: style === 'none' ? 'İçecek' : 'İçki', course: 'drink', min: n, max: n, owner: mode === 'couple' ? 'both' : 0, repeat: true, same: true };

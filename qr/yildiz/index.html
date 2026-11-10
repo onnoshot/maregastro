@@ -589,7 +589,6 @@ body.yz-locked #bar{display:none}
 .opt b{font-size:13.5px;font-weight:600;letter-spacing:-.015em;line-height:1.25}
 .opt small{font-size:11px;color:var(--muted);line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .opt em{font-style:normal;font-size:12px;font-weight:700;color:var(--ink);margin-top:3px;font-variant-numeric:tabular-nums}
-.opt:not(.on) em{color:var(--amber)}
 .opt-b{background:var(--paper)!important;color:var(--ink2)!important}
 .dsw{display:inline-flex;align-items:center;gap:8px;margin-top:10px;height:30px;padding:0 12px 0 6px;border-radius:99px;background:var(--paper);font-size:12px;font-weight:600;color:var(--ink2)}
 .dsw i{position:relative;width:30px;height:18px;border-radius:99px;background:rgba(16,32,46,.18);transition:background .25s}
@@ -806,7 +805,7 @@ var m=location.search.match(/[?&]masa=([^&]+)/);gtag('config','G-LMZ66PTR0T',{co
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script src="names.js?v=2"></script>
 <script src="names_notes.js?v=1"></script>
-<script src="engine.js?v=7"></script>
+<script src="engine.js?v=8"></script>
 <script src="story.js?v=1"></script>
 <script>
 (function(){
@@ -1278,10 +1277,10 @@ function optionsHtml(g, gi, r){
   return '<div class="opt2" role="radiogroup" aria-label="' + esc(g.label) + ' seçimi"><div class="opt2-h"><span>İki seçenek</span><em>Birini seç</em></div><div class="opt2-g">' +
     g.choice.map((o, i) => {
       const it0 = o.items[0], diff = setCost(o.items) - base;
-      const sub = g.key === 'icki' ? [DR_TR[o.style] || '', it0.qty > 1 ? it0.qty + ' × ' + money(it0.price) : (it0.note || '')].filter(Boolean).join(' · ') : (it0.note || '');
+      const sub = g.key === 'icki' ? [DR_TR[o.style] || '', it0.qty > 1 ? it0.qty + ' adet' : ''].filter(Boolean).join(' · ') : (it0.note || '');
       return '<button type="button" role="radio" aria-checked="' + (i === cur) + '" class="opt' + (i === cur ? ' on' : '') + '" data-opt="' + gi + ':' + i + '">' +
         '<span class="opt-th">' + (it0.img ? '<img src="/images/' + encodeURI(it0.img) + '" alt="" loading="lazy">' : ico(courseIc(g.key, o.style || r.style))) + '<i class="opt-ck">' + ico('i-chk') + '</i></span>' +
-        '<b>' + esc(o.label) + '</b><small>' + esc(sub) + '</small><em>' + (i === 0 ? money(setCost(o.items)) : diff === 0 ? 'Aynı fiyat' : (diff > 0 ? '+' : '−') + money(Math.abs(diff))) + '</em></button>';
+        '<b>' + esc(o.label) + '</b><small>' + esc(sub) + '</small><em>' + money(it0.price) + '</em></button>';
     }).join('') + '</div></div>';
 }
 function courseHtml(g, gi, r){
