@@ -695,7 +695,7 @@
       const it = byId[d.base || k];
       let fav = 0;
       if (style === 'cocktail') persons.forEach((P) => { const ix = P.sign.cocktails.indexOf(k); if (ix >= 0) fav += 3 - ix * 0.6; });
-      return { id: k, menuId: d.base || k, name: d.label || it.name, price: it.price, img: it.img || DRINK_IMG[d.st + (d.for === 'c' ? '-c' : '-s')] || null, tags: d.t, note: d.note, course: 'drink', style: d.st, fav, ing: [] };
+      return { id: k, menuId: d.base || k, name: d.label || it.name, price: it.price, img: it.img || DRINK_IMG[d.st + (d.for === 'c' ? '-c' : '-s')] || null, tags: d.t, note: (!d.base && String(it.desc || '').trim()) || d.note, course: 'drink', style: d.st, fav, ing: [] };
     });
   }
 
@@ -710,7 +710,7 @@
       return pr >= 1;
     }).map((id) => {
       const f = FOOD[id], it = byId[id];
-      return { id, menuId: id, name: it.name, price: it.price, img: it.img || null, tags: f.t, pair: f.p[style] == null ? 1 : f.p[style], ing: f.i, note: f.note, course };
+      return { id, menuId: id, name: it.name, price: it.price, img: it.img || null, tags: f.t, pair: f.p[style] == null ? 1 : f.p[style], ing: f.i, note: String(it.desc || '').trim() || f.note, course };
     });
   }
 
