@@ -136,7 +136,7 @@
     const couple = r.mode === 'couple', a = r.reading[0], b = r.reading[1];
     const fs = h.firstSentence;
     const qs = r.lux
-      ? (couple ? [r.match.band, r.match.insights[0].v, r.match.insights[1].v, 'İki damak, tek masa: %' + r.match.score + ' uyum.'] : [fs(a.personaText), fs(a.insights[0].v), fs(a.insights[1].v), a.meaning ? 'Adınız “' + a.meaning + '” anlamına geliyor.' : fs(a.personaText)])
+      ? (couple ? [r.match.band, r.match.insights[0].v, r.match.insights[1].v, 'Ortak tabaklar ikinize, ana yemek ve tatlılar her birinize.'] : [fs(a.personaText), fs(a.insights[0].v), fs(a.insights[1].v), a.meaning ? 'Adınızın anlamı: ' + a.meaning + '.' : fs(a.personaText)])
       : couple
       ? [r.match.band, fs(r.pairText), r.match.insights[2].v, 'İki yıldız, tek masa: %' + r.match.score + ' uyum.']
       : [fs(a.insights[0].v), fs(a.palate), fs(a.insights[1].v), a.meaning ? 'Adı “' + a.meaning + '”; sayısı ' + a.num + ', ' + a.numTitle.toLocaleLowerCase('tr') + '.' : fs(a.numText)];
@@ -177,9 +177,9 @@
     const lg = await logo(C.ink); if (lg) x.drawImage(lg, L, 104, 150, 95);
     x.textAlign = 'left'; x.fillStyle = C.ink;
     fit(x, d.title, (s) => DF(D, s, false), TW - 44, 150, 60); x.fillText(d.title, L, 380);
-    x.fillStyle = C.acc; x.font = DF(D, 60, true); x.fillText(d.brand, L, 456);
+    x.fillStyle = C.acc; fit(x, d.brand, (z) => DF(D, z, true), TW - 44, 60, 34); x.fillText(d.brand, L, 456);
     x.save(); x.translate(px + PW - 52, 120); x.rotate(Math.PI / 2); x.fillStyle = C.soft; x.font = BF(600, 20); spaced(x, d.sub, 0, 0, 3); x.restore();
-    if (d.lux) monogram(x, D, d, L + 62, 566, 58, C.acc, C.ink);
+    if (d.lux) { monogram(x, D, d, L + 62, 566, 58, C.acc, C.ink); x.textAlign = 'left'; }
     else { stars(x, d.signs[0], L + 74, 562, 140, C.acc, C.ink, null); if (d.couple) stars(x, d.signs[1], L + 250, 562, 140, C.acc, C.ink, null); }
     x.fillStyle = C.soft; x.font = DF(D, 30, true);
     const ql = clamp(x, d.quote, TW, 2); ql.forEach((l, i) => x.fillText(l, L, 690 + i * 40));

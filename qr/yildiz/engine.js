@@ -398,6 +398,88 @@
     drink: ['Menüyle uyumlu bir eşlik.'],
   };
 
+  // ───────────────────────────── Lux tone (no astrology on screen) ─────────────────────────────
+  const PERSONA = {
+    koc: ['Cesur Damak', 'Net, iddialı ve sıcak tatları seversiniz; közün ve baharatın enerjisi sizi masaya bağlar.'],
+    boga: ['Keyif Ustası', 'Lezzeti acele etmeden yaşarsınız; tereyağı, yavaş pişmiş et ve iyi bir tatlı sizin için akşamın özüdür.'],
+    ikizler: ['Meraklı Kâşif', 'Tek tabakla yetinmezsiniz; çıtır dokular, narenciye ve paylaşılan küçük tabaklar sizi mutlu eder.'],
+    yengec: ['Sofra Ruhu', 'Tanıdık tatlarda huzur bulursunuz; deniz, geleneksel tarifler ve sarıp sarmalayan dokular sizin alanınız.'],
+    aslan: ['İmza Avcısı', 'Şefin imza tabaklarına, cömert ve etkileyici sunumlara yönelirsiniz; sıradan bir tabak size yakışmaz.'],
+    basak: ['İnce Damak', 'Ayrıntıyı fark edersiniz; taze otlar, zeytinyağı ve dengeli, hafif tabaklar size göre.'],
+    terazi: ['Zarafet Tutkunu', 'Tatlı ile ekşinin dengelendiği, göze de hitap eden zarif tabakları seversiniz.'],
+    akrep: ['Yoğunluk Arayan', 'Marine ve çiğ tatlar, isli aromalar ve güçlü kontrastlar sizi çeker; orta yol size göre değil.'],
+    yay: ['Sofra Gezgini', 'Cömert, paylaşılan masalar, baharat ve yerel lezzetler sizin keyfiniz.'],
+    oglak: ['Klasik Tutkunu', 'Zamanın sınadığı tariflere, yavaş pişmiş etlere ve olgun lezzetlere değer verirsiniz.'],
+    kova: ['Özgün Seçici', 'Beklenmedik eşleşmeleri, meyveli ve ekşi dokunuşları, modern tabakları seversiniz.'],
+    balik: ['Deniz Romantiği', 'Denizden gelen, yumuşak ve kremalı tatlar; narenciye ve hafif bir kapanış size iyi gelir.'],
+  };
+  const LUX_WHY = {
+    spicy: ['Baharatın sıcaklığı, net tatları seven damak profilinizle örtüşüyor.', 'Ölçülü bir acı, akşamın temposunu yükseltiyor.'],
+    grill: ['Közün izi, bu tabağı menünün en karakterli anlarından biri yapıyor.', 'Ateşte pişmenin dumanlı derinliği damak profilinize karşılık veriyor.'],
+    bold: ['İddialı ve net bir tat; yarım ölçüyü sevmeyen damaklar için.', 'Kendinden emin bir tabak; menüye güçlü bir vurgu katıyor.'],
+    meat: ['Menünün omurgası: doyurucu ve güçlü bir merkez.', 'İyi pişmiş et, damak profilinizdeki güç tarafına karşılık veriyor.'],
+    crispy: ['Çıtır dokusu her lokmaya canlılık katıyor.', 'Doku oyunu sevenler için; hafif ve hareketli.'],
+    signature: ['Şefimizin imza tabaklarından; Mare mutfağını en iyi anlatanlardan biri.', 'Mare’nin özel tarifi; menünün başrolü.'],
+    rich: ['Zengin ve dolgun; konforlu bir lüks.', 'Dolgun yapısı akşamı uzun ve keyifli kılıyor.'],
+    slow: ['Sabırla, saatlerce pişmiş; zamanın tadı.', 'Yavaş pişirmenin derinliği damakta uzun kalıyor.'],
+    creamy: ['Kadifemsi, sarıp sarmalayan bir doku.', 'Kremalı dokusu menüye yumuşak bir geçiş sağlıyor.'],
+    buttery: ['Tereyağının sıcaklığı tabağı yuvarlıyor.', 'Tereyağıyla bağlanan bu tat, damak profilinizdeki konfor arayışına uyuyor.'],
+    earthy: ['Topraktan gelen derin bir tat.', 'Sebzenin ve toprağın sade gücü.'],
+    chocolate: ['Koyu ve yoğun bir kapanış.', 'Çikolatanın derinliği akşamı imzalıyor.'],
+    traditional: ['Köklü bir tarif; tanıdık olanın en iyisi.', 'Anadolu mutfağından gelen, güven veren bir klasik.'],
+    playful: ['Oyunbaz ve beklenmedik; merakı besleyen bir tabak.', 'Menüye küçük bir sürpriz katıyor.'],
+    fresh: ['Ferah ve temiz; damağı açan bir nefes.', 'Tazeliğiyle menünün ağır tabaklarını dengeliyor.'],
+    citrus: ['Narenciyenin parlaklığı tadı canlandırıyor.', 'Ekşi ve canlı bir dokunuş; damağı her lokmada tazeliyor.'],
+    share: ['Ortaya konan, bölüştükçe güzelleşen bir tabak.', 'Paylaşmak için tasarlanmış; masayı bir araya getiriyor.'],
+    light: ['Hafif ama eksiksiz; az ve kusursuz.', 'Damağı yormayan, dengeli bir seçim.'],
+    herbal: ['Taze otların kokusu tabağa incelik katıyor.', 'Yeşilin dengesi; ayrıntıyı sevenler için.'],
+    sea: ['Denizin tuzlu, derin tadı; Mare’nin özü.', 'Ege kıyılarından ilham alan bir deniz lezzeti.'],
+    sweet: ['Tatlı bir dokunuş; akşamı yumuşatan küçük bir an.', 'Ölçülü bir tatlılık, menüye denge katıyor.'],
+    local: ['Bu topraklardan gelen dürüst bir lezzet.', 'Yerel mutfağın karakterini taşıyan bir tabak.'],
+    elegant: ['Zarif bir sunum, dengeli bir tat.', 'İnce işçiliğiyle menünün en şık anlarından.'],
+    fruity: ['Meyveli bir denge; tatlı ile ekşiyi buluşturuyor.', 'Beklenmedik bir meyve dokunuşu.'],
+    raw: ['Çiğ ve marine; saf ve yoğun bir açılış.', 'Ürünün kendi tadını en saf haliyle gösteriyor.'],
+    smoky: ['İsli bir derinlik, katmanlı bir tat.', 'Dumanın gölgesi tabağa karakter katıyor.'],
+    dreamy: ['Akşamı imzalayan, unutulmayacak bir kapanış.', 'Hafif ve etkileyici bir final.'],
+    nutty: ['Kuruyemişin sıcak dokusu ince bir ayrıntı.', 'Fındık ve cevizin derinliği tabağı tamamlıyor.'],
+  };
+  const LUX_NAME_WHY = {
+    su: 'denizden gelen bu tabak adınıza yakışıyor', ates: 'bu tabağın sıcaklığı adınızın enerjisini taşıyor', isik: 'bu tabağın aydınlık, ferah karakteri adınızla aynı dili konuşuyor',
+    cicek: 'bu tabağın zarif dokunuşu adınıza yakışıyor', toprak: 'topraktan gelen bu tat adınızın köklerine uyuyor', ruzgar: 'bu tabağın hafif ve hareketli yapısı adınıza benziyor',
+    asil: 'şefin bu imza tabağı adınızın asaletine uygun', tatli: 'bu tabağın yumuşaklığı adınızı yansıtıyor', derin: 'bu tabağın derinliği adınıza uyuyor',
+    guc: 'bu tabağın gücü adınızın karakterini taşıyor', nese: 'bu tabağın neşesi adınıza yakışıyor', gok: 'bu tabağın inceliği adınızın anlamına uyuyor', farkli: 'bu sıra dışı tabak adınızın anlamına birebir',
+  };
+  const AXIS_LIKES = { deniz: 'denizi', ates: 'közü ve baharatı', toprak: 'köklü tatları', ferah: 'ferah ve yeşil tatları', kadife: 'kremalı ve tatlı dokuları', merak: 'sürprizli tabakları' };
+  const LUX_AXIS_TOP = {
+    deniz: 'Damak profilinizin merkezinde deniz var; tuzlu, iyot kokulu tatlar sizi en çok mutlu ediyor.',
+    ates: 'Közün dumanı ve baharatın sıcaklığı öne çıkıyor; net ve iddialı tatlar sizin alanınız.',
+    toprak: 'Köklü, sabırla pişmiş tatlar size iyi geliyor; tanıdık olanın en iyisini arıyorsunuz.',
+    ferah: 'Ferah, yeşil ve narenciyeli tatlar enerjinizi tazeliyor; hafiflik sizin için bir lüks.',
+    kadife: 'Yumuşak, kremalı ve tatlı dokular konfor alanınız; iyi bir kapanış sizin için şart.',
+    merak: 'Sürprizli ve gösterişli tabaklar merakınızı besliyor; sıradan olan sizi sıkıyor.',
+  };
+  const LUX_AXIS_LOW = {
+    deniz: 'Deniz ürünleri sizin için küçük bir keşif; menüde ölçülü yer aldı.', ates: 'Acı ve köz ilk tercihiniz değil; menüde dengeli tutuldu.',
+    toprak: 'Ağır ve köklü tatlar yerine daha hafif bir ritim size iyi geliyor.', ferah: 'Ferah tatlar sizin için bir mola; menünün dengesini onlar kuruyor.',
+    kadife: 'Tatlı ve kremalı olan sizi yormamalı; kapanış ölçülü seçildi.', merak: 'Gösterişten çok özü seviyorsunuz; menü sade ve net kuruldu.',
+  };
+  function luxMatch(A, B, pa, pb) {
+    const diff = pa.reduce((s, a, i) => s + Math.abs(a.v - pb[i].v), 0) / pa.length;
+    const score = Math.round(Math.max(72, Math.min(96, 97 - diff * 0.45)));
+    const ta = pa.slice().sort((x, y) => y.v - x.v), tb = pb.slice().sort((x, y) => y.v - x.v);
+    const shared = ta.slice(0, 2).find((a) => tb.slice(0, 2).some((b) => b.id === a.id));
+    const band = score >= 90 ? 'Neredeyse aynı dili konuşan iki damak.' : score >= 84 ? 'Birbirini tamamlayan iki damak.' : 'Farklılıkların zenginleştirdiği bir masa.';
+    const ka = pa.find((x) => x.id === 'kadife').v, kb = pb.find((x) => x.id === 'kadife').v;
+    return {
+      score, band,
+      insights: [
+        { k: 'Ortak noktanız', v: shared ? 'İkiniz de ' + AXIS_LIKES[shared.id] + ' seviyorsunuz; menünün omurgasını bu kurdu.' : 'Damaklarınız farklı yönlere bakıyor; menü ikisini de ağırlayacak şekilde kuruldu.' },
+        { k: 'Farkınız', v: A.first + ' ' + AXIS_LIKES[ta[0].id] + ', ' + B.first + ' ' + AXIS_LIKES[tb[0].id] + ' öne çıkarıyor.' },
+        { k: 'Tatlı anı', v: ka === kb ? 'Tatlıya ikiniz de aynı hevesle bakıyorsunuz; bu yüzden iki ayrı tatlı seçtik.' : (ka > kb ? A.first : B.first) + ' tatlıyı ilk ister, son lokmayı ' + (ka > kb ? B.first : A.first) + ' alır.' },
+      ],
+    };
+  }
+
   // ───────────────────────────── Utilities ─────────────────────────────
   function hash(str) { let h = 2166136261; for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
   function rng(seed) { let a = seed >>> 0; return function () { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
@@ -745,6 +827,44 @@
 
   const fillS = (tpl, S) => tpl.replace(/\{SG\}/g, S.name + ' burcunun').replace(/\{S\}/g, S.name + ' burcu').replace(/\{R\}/g, S.rulerGen);
   const fill = (tpl, P) => fillS(tpl, P.sign);
+  function reasonLux(c, owners, usedTags, R) {
+    const solo = owners.length === 1 && owners[0].__solo;
+    if (c.course === 'drink') {
+      const fan = owners.find((P) => P.sign.cocktails.indexOf(c.id) === 0) || owners.find((P) => P.sign.cocktails.indexOf(c.id) > 0);
+      return { text: fan ? (owners.length > 1 ? fan.first + ' için: ' : '') + 'damak profilinize en uygun kokteyl.' : null, owner: fan || owners[0] };
+    }
+    const seen = usedTags['#tpl'] || (usedTags['#tpl'] = {});
+    const opts = [];
+    owners.forEach((P) => {
+      for (const t in c.tags) {
+        const pen = usedTags[t] ? 0.6 : 1;
+        const sv = c.tags[t] * ((P.sign.taste[t] || 0) + (P.extra[t] || 0)) * pen;
+        const nv = c.tags[t] * (P.ni.tags[t] || 0) * 0.95 * pen;
+        if (sv > 0) opts.push({ v: sv, t, src: 'taste', P });
+        if (nv > 0 && P.ni.group) opts.push({ v: nv, t, src: 'name', P });
+      }
+    });
+    opts.sort((a, b) => b.v - a.v);
+    for (const o of opts) {
+      const P = o.P;
+      if (o.src === 'name') {
+        if (seen['#name' + P.first]) continue;
+        seen['#name' + P.first] = 1; usedTags[o.t] = (usedTags[o.t] || 0) + 1;
+        return { text: (solo ? 'Adınız' : P.first + ' adı') + ' “' + P.ni.meaning + '” anlamına geliyor; ' + LUX_NAME_WHY[P.ni.group] + '.', owner: P };
+      }
+      const list = LUX_WHY[o.t] || [];
+      const k0 = Math.floor(R() * list.length);
+      for (let k = 0; k < list.length; k++) {
+        const tpl = list[(k0 + k) % list.length];
+        if (seen[tpl]) continue;
+        seen[tpl] = 1; usedTags[o.t] = (usedTags[o.t] || 0) + 1;
+        return { text: tpl, owner: P };
+      }
+    }
+    const list = FALLBACK[c.course] || FALLBACK.meze;
+    for (const tpl of list) if (!seen['#fb' + tpl]) { seen['#fb' + tpl] = 1; return { text: tpl.replace('{S} burcu', 'Damağınız'), owner: owners[0] }; }
+    return { text: null, owner: owners[0] };
+  }
   function reasonFor(c, owners, usedTags, R) {
     if (c.course === 'drink') {
       const fan = owners.find((P) => P.sign.cocktails.indexOf(c.id) === 0) || owners.find((P) => P.sign.cocktails.indexOf(c.id) > 0);
@@ -847,7 +967,7 @@
       sel.forEach((ci) => { counts[ci] = (counts[ci] || 0) + 1; });
       Object.keys(counts).forEach((ci) => {
         const c = cands[si][ci];
-        const rs = reasonFor(c, owners, usedTags, R);
+        const rs = (input.tone === 'lux' ? reasonLux : reasonFor)(c, owners, usedTags, R);
         const pct = Math.round(78 + 20 * ((c.score - mn) / ((mx - mn) || 1)));
         g.items.push({ id: c.id, menuId: c.menuId, name: c.name, price: c.price, qty: counts[ci], img: c.img, note: c.note,
           why: rs.text, pct: c.course === 'drink' ? null : pct, tags: c.course === 'drink' ? [] : topTags(c.tags),
@@ -857,7 +977,7 @@
     });
     courses.forEach((g) => { if (g.key === 'ana' && g.items.length > 1) g.label = 'Ana Yemekler'; if (g.key === 'tatli' && g.items.length > 1) g.label = 'Tatlılar'; });
     if (style === 'cocktail') { const ck = courses.find((g) => g.key === 'icki'); if (ck && ck.items.length === 1 && ck.items[0].qty === 1) ck.label = 'Kokteyl'; }
-    if (closer) courses.push({ key: 'kapanis', label: 'Kapanış', items: [{ id: CLOSER.id, menuId: CLOSER.id, name: closer.name, price: closer.price, qty: persons.length, img: null, note: CLOSER.note, why: null, pct: null, tags: [] }] });
+    if (closer) courses.push({ key: 'kapanis', label: 'Kapanış', items: [{ id: CLOSER.id, menuId: CLOSER.id, name: closer.name, price: closer.price, qty: persons.length, img: null, note: input.tone === 'lux' ? 'Akşamı Türk kahvesi ve sohbetle kapatın' : CLOSER.note, why: null, pct: null, tags: [] }] });
 
     // the star dish: best-fitting hot course with a photo
     let star = null;
@@ -880,8 +1000,10 @@
         intro: P.gender === 'f' ? P.sign.f : P.gender === 'm' ? P.sign.m : null,
         palate: P.sign.palate, decanText: decanText(P), cuspText: cuspText(P),
         meaning: P.ni.meaning, num: P.ni.num, numTotal: P.ni.numTotal, digits: P.ni.digits, numTitle: P.ni.numInfo.t, numText: P.ni.numInfo.s,
-        profile: profiles[i],
-        insights: [{ k: 'Güçlü yönün', v: AXIS_TOP[prof[0].id] }, { k: 'İkinci sesin', v: AXIS_TOP[prof[1].id] }, { k: 'Keşif alanın', v: AXIS_LOW[prof[prof.length - 1].id] }],
+        profile: profiles[i], persona: PERSONA[P.sign.id][0], personaText: PERSONA[P.sign.id][1],
+        insights: input.tone === 'lux'
+          ? [{ k: 'Öne çıkan', v: LUX_AXIS_TOP[prof[0].id] }, { k: 'İkinci tercih', v: LUX_AXIS_TOP[prof[1].id] }, { k: 'Keşif alanı', v: LUX_AXIS_LOW[prof[prof.length - 1].id] }]
+          : [{ k: 'Güçlü yönün', v: AXIS_TOP[prof[0].id] }, { k: 'İkinci sesin', v: AXIS_TOP[prof[1].id] }, { k: 'Keşif alanın', v: AXIS_LOW[prof[prof.length - 1].id] }],
       };
     });
     let pairText = null, match = null;
@@ -889,7 +1011,8 @@
       const k = [persons[0].sign.el, persons[1].sign.el].sort().join('|');
       pairText = PAIR_TEXT[k];
       if (persons[0].sign.id === persons[1].sign.id) pairText = 'İki ' + persons[0].sign.name + ' aynı masada: aynı dili konuşan iki damak. ' + pairText;
-      match = compat(persons[0], persons[1], profiles[0], profiles[1]);
+      match = input.tone === 'lux' ? luxMatch(persons[0], persons[1], profiles[0], profiles[1]) : compat(persons[0], persons[1], profiles[0], profiles[1]);
+      if (input.tone === 'lux') pairText = 'Ortak tabaklar ikinizin damak profiline göre, ana yemek ve tatlılar her birinize ayrı seçildi.';
     }
     const notes = [];
     if (res.dropped.includes('ana')) notes.push('Menümüzde tercihine uygun bir ana yemek bulunmadığı için ana yemek yerine zengin bir meze ve salata seçkisi hazırladık.');
@@ -898,7 +1021,7 @@
     if (res.light) notes.push('Tercihlerin doğrultusunda menü daha hafif tutuldu; indirim yine menünün tamamına uygulanır.');
     return {
       mode, style, styleName: STYLE_NAME[style], styleWhy: STYLE_WHY[style], courses, total, code, reading, pairText, match,
-      ok: best.ok, budget: res.budget, diet: diet.map((k) => DIETS[k].label), notes, scanned,
+      ok: best.ok, budget: res.budget, lux: input.tone === 'lux', diet: diet.map((k) => DIETS[k].label), notes, scanned,
     };
   }
 
