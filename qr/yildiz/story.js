@@ -5,7 +5,7 @@
 (function (root) {
   'use strict';
   const W = 1080, H = 1920;
-  const SITE_URL = 'maregastro.com/qr/yildiz';
+  const SITE_URL = 'maregastro.com/qr/yildiz', LUX_URL = 'maregastro.com/qr/imza';
   const LIGHT = [
     { id: 'white', bg: '#FFFFFF', ink: '#0B1B33', soft: 'rgba(11,27,51,.56)', acc: '#3D5A80' },
     { id: 'frost', bg: '#F3F5F9', ink: '#0E2240', soft: 'rgba(14,34,64,.56)', acc: '#4A6C96' },
@@ -56,6 +56,7 @@
   function grain(x, R, n, col) { x.fillStyle = col; for (let i = 0; i < n; i++) { const s = R() * 2 + .6; x.fillRect(R() * W, R() * H, s, s); } }
   const loadImg = (src) => new Promise((res) => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null); im.src = src; });
   const LOGOS = {};
+  let QR_URL = null;
   function logo(col) {
     if (LOGOS[col]) return LOGOS[col];
     const sym = document.getElementById('logo');
@@ -74,9 +75,20 @@
     if (d.couple) { stars(x, d.signs[0], cx - size * .36, cy, size * .64, line, dot, halo); stars(x, d.signs[1], cx + size * .36, cy, size * .64, line, dot, halo); }
     else stars(x, d.signs[0], cx, cy, size, line, dot, halo);
   }
+  function initials(d) { return d.couple ? d.firsts.map((n) => n.charAt(0).toLocaleUpperCase('tr')).join(' · ') : d.firsts[0].charAt(0).toLocaleUpperCase('tr'); }
+  function monogram(x, D, d, cx, cy, r, line, ink) {
+    x.strokeStyle = line; x.lineWidth = 1.6; x.beginPath(); x.arc(cx, cy, r, 0, 7); x.stroke();
+    x.globalAlpha = .5; x.lineWidth = 1; x.beginPath(); x.arc(cx, cy, r - 9, 0, 7); x.stroke(); x.globalAlpha = 1;
+    const t = initials(d); x.textAlign = 'center'; x.fillStyle = ink;
+    fit(x, t, (z) => DF(D, z, true), r * 1.4, Math.round(r * (d.couple ? .62 : .95)), 12);
+    x.fillText(t, cx, cy + r * (d.couple ? .2 : .3));
+  }
+  function mark(x, D, d, cx, cy, size, line, ink, halo) {
+    if (d.lux) monogram(x, D, d, cx, cy, size * .42, line, ink); else signs(x, d, cx, cy, size, line, ink, halo);
+  }
   function qr(x, X, Y, s) {
     try {
-      const q = root.qrcode(0, 'M'); q.addData('https://' + SITE_URL + '/?utm_source=story&utm_medium=social&utm_campaign=yildiz_menusu'); q.make();
+      const q = root.qrcode(0, 'M'); q.addData('https://' + (QR_URL || SITE_URL) + '/?utm_source=story&utm_medium=social&utm_campaign=' + (QR_URL ? 'imza_menu' : 'yildiz_menusu')); q.make();
       const n = q.getModuleCount(), m = s / n;
       x.fillStyle = '#FFFFFF'; rrect(x, X - 12, Y - 12, s + 24, s + 24, 10); x.fill();
       x.fillStyle = '#0B1B33'; for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) if (q.isDark(r, c)) x.fillRect(X + c * m, Y + r * m, Math.ceil(m), Math.ceil(m));
@@ -86,13 +98,14 @@
   function footer(x, D, X, Y, ink, acc, align) {
     const qs = 118, gap = 30;
     x.font = BF(500, 29);
-    const tw = Math.max(x.measureText('Sen de yıldızına göre').width, x.measureText(SITE_URL).width * .78);
+    const L1 = D.lux ? 'Size özel menünüzü' : 'Sen de yıldızına göre', L2 = D.lux ? 'Mare Gastro’da keşfedin' : 'menünü keşfet', U = D.lux ? LUX_URL : SITE_URL;
+    const tw = Math.max(x.measureText(L1).width, x.measureText(L2).width, x.measureText(U).width * .78);
     const total = qs + gap + tw, X0 = align === 'center' ? X - total / 2 : X;
     qr(x, X0, Y, qs);
     x.textAlign = 'left'; x.fillStyle = ink; x.font = BF(500, 29);
-    x.fillText('Sen de yıldızına göre', X0 + qs + gap, Y + 38);
-    x.fillText('menünü keşfet', X0 + qs + gap, Y + 76);
-    x.fillStyle = acc; x.font = BF(600, 21); x.fillText(SITE_URL, X0 + qs + gap, Y + 112);
+    x.fillText(L1, X0 + qs + gap, Y + 38);
+    x.fillText(L2, X0 + qs + gap, Y + 76);
+    x.fillStyle = acc; x.font = BF(600, 21); x.fillText(U, X0 + qs + gap, Y + 112);
   }
   // Course list: label (display italic, accent) + dish names (+ optional note). Shrinks to fit.
   function list(x, D, rows, X, Y, w, hMax, align, ink, acc, soft) {
@@ -122,9 +135,11 @@
   function data(r, D, h) {
     const couple = r.mode === 'couple', a = r.reading[0], b = r.reading[1];
     const fs = h.firstSentence;
-    const qs = couple
+    const qs = r.lux
+      ? (couple ? [r.match.band, r.match.insights[0].v, r.match.insights[1].v, 'İki damak, tek masa: %' + r.match.score + ' uyum.'] : [fs(a.personaText), fs(a.insights[0].v), fs(a.insights[1].v), a.meaning ? 'Adınız “' + a.meaning + '” anlamına geliyor.' : fs(a.personaText)])
+      : couple
       ? [r.match.band, fs(r.pairText), r.match.insights[2].v, 'İki yıldız, tek masa: %' + r.match.score + ' uyum.']
-      : [fs(a.insights[0].v), fs(a.palate), a.decan ? a.signName + ' burcunun ' + a.decan + '. dekanı' + (a.co && a.decan > 1 ? ', ' + a.co + ' etkisinde.' : '; saf ' + a.signName + '.') : fs(a.insights[1].v), a.meaning ? 'Adı “' + a.meaning + '”; sayısı ' + a.num + ', ' + a.numTitle.toLocaleLowerCase('tr') + '.' : fs(a.numText)];
+      : [fs(a.insights[0].v), fs(a.palate), fs(a.insights[1].v), a.meaning ? 'Adı “' + a.meaning + '”; sayısı ' + a.num + ', ' + a.numTitle.toLocaleLowerCase('tr') + '.' : fs(a.numText)];
     const rows = r.courses.filter((g) => g.key !== 'kapanis').map((g) => ({
       key: g.key, label: g.label, names: g.items.map((i) => (i.qty > 1 && g.key !== 'icki' ? i.qty + ' × ' : '') + i.name),
       note: g.items[0].note || '', img: (g.items.find((i) => i.img) || {}).img || null,
@@ -134,8 +149,9 @@
     r.courses.forEach((g) => g.items.forEach((i) => { if (i.img && !photos.includes(i.img) && ['ana', 'ara', 'baslangic', 'tatli'].includes(i.course)) photos.push(i.img); }));
     return {
       couple, rows, photos, quote: qs[D.q] || qs[0], signs: r.reading.map((p) => p.sign),
+      lux: !!r.lux, brand: r.lux ? 'Kişisel Tadım Menüsü' : 'Yıldız Menüsü', firsts: r.reading.map((p) => p.first),
       title: couple ? a.first + ' & ' + b.first : a.first,
-      sub: couple ? a.signName + ' & ' + b.signName + ' · %' + r.match.score + ' uyum' : h.titleOf(a) + (a.decan ? ' · ' + a.decan + '. dekan' : '') + ' · ' + a.el + ' · ' + a.ruler,
+      sub: r.lux ? (couple ? a.persona + ' & ' + b.persona + ' · %' + r.match.score + ' uyum' : a.persona + ' · ' + r.styleName) : couple ? a.signName + ' & ' + b.signName + ' · %' + r.match.score + ' uyum' : h.titleOf(a) + ' · ' + a.el + ' · ' + a.ruler,
       short: couple ? a.signName + ' & ' + b.signName : a.signName + ' · ' + a.el,
     };
   }
@@ -161,10 +177,10 @@
     const lg = await logo(C.ink); if (lg) x.drawImage(lg, L, 104, 150, 95);
     x.textAlign = 'left'; x.fillStyle = C.ink;
     fit(x, d.title, (s) => DF(D, s, false), TW - 44, 150, 60); x.fillText(d.title, L, 380);
-    x.fillStyle = C.acc; x.font = DF(D, 60, true); x.fillText('Yıldız Menüsü', L, 456);
+    x.fillStyle = C.acc; x.font = DF(D, 60, true); x.fillText(d.brand, L, 456);
     x.save(); x.translate(px + PW - 52, 120); x.rotate(Math.PI / 2); x.fillStyle = C.soft; x.font = BF(600, 20); spaced(x, d.sub, 0, 0, 3); x.restore();
-    stars(x, d.signs[0], L + 74, 562, 140, C.acc, C.ink, null);
-    if (d.couple) stars(x, d.signs[1], L + 250, 562, 140, C.acc, C.ink, null);
+    if (d.lux) monogram(x, D, d, L + 62, 566, 58, C.acc, C.ink);
+    else { stars(x, d.signs[0], L + 74, 562, 140, C.acc, C.ink, null); if (d.couple) stars(x, d.signs[1], L + 250, 562, 140, C.acc, C.ink, null); }
     x.fillStyle = C.soft; x.font = DF(D, 30, true);
     const ql = clamp(x, d.quote, TW, 2); ql.forEach((l, i) => x.fillText(l, L, 690 + i * 40));
     list(x, D, d.rows, L, 690 + ql.length * 40 + 40, TW, 1600 - (690 + ql.length * 40 + 40), 'left', C.ink, C.acc, C.soft);
@@ -175,11 +191,11 @@
   async function path(x, D, d, I, R) {
     const C = D.pal;
     x.fillStyle = C.bg; x.fillRect(0, 0, W, H); grain(x, R, 5000, 'rgba(255,255,255,.025)'); grain(x, R, 3000, 'rgba(0,0,0,.05)');
-    for (let i = 0; i < 70; i++) { x.fillStyle = 'rgba(255,255,255,' + (.08 + R() * .25).toFixed(2) + ')'; x.beginPath(); x.arc(R() * W, R() * 470, R() * 1.8 + .4, 0, 7); x.fill(); }
+    if (!d.lux) for (let i = 0; i < 70; i++) { x.fillStyle = 'rgba(255,255,255,' + (.08 + R() * .25).toFixed(2) + ')'; x.beginPath(); x.arc(R() * W, R() * 470, R() * 1.8 + .4, 0, 7); x.fill(); }
     const lg = await logo(C.ink); if (lg) x.drawImage(lg, W / 2 - 72, 96, 144, 92);
     x.textAlign = 'center'; x.fillStyle = C.ink;
     fit(x, d.title, (s) => DF(D, s, false), 880, 120, 60); x.fillText(d.title, W / 2, 330);
-    x.fillStyle = C.acc; x.font = DF(D, 46, true); x.fillText('Yıldız Menüsü', W / 2, 398);
+    x.fillStyle = C.acc; x.font = DF(D, 46, true); x.fillText(d.brand, W / 2, 398);
     x.fillStyle = C.soft; x.font = BF(500, 23); spaced(x, d.sub, W / 2, 448, 2);
     const nodes = d.rows.slice(0, 6), n = nodes.length, top = 530, bot = 1580, step = (bot - top) / n;
     const Rp = Math.min(104, step * .4);
@@ -202,7 +218,7 @@
       x.fillStyle = 'rgba(255,255,255,.07)'; x.beginPath(); x.arc(p.x, p.y, Rp + 16, 0, 7); x.fill();
       x.strokeStyle = C.acc; x.lineWidth = 1.5; x.globalAlpha = .6; x.beginPath(); x.arc(p.x, p.y, Rp + 16, 0, 7); x.stroke(); x.globalAlpha = 1;
       if (im) { x.save(); x.beginPath(); x.arc(p.x, p.y, Rp, 0, 7); x.clip(); cover(x, im, p.x - Rp, p.y - Rp, Rp * 2, Rp * 2, 1.12); x.restore(); }
-      else { x.fillStyle = 'rgba(255,255,255,.05)'; x.beginPath(); x.arc(p.x, p.y, Rp, 0, 7); x.fill(); stars(x, d.signs[i % d.signs.length], p.x, p.y, Rp * 1.25, C.acc, C.ink, null, 1.6); }
+      else { x.fillStyle = 'rgba(255,255,255,.05)'; x.beginPath(); x.arc(p.x, p.y, Rp, 0, 7); x.fill(); if (d.lux) monogram(x, D, d, p.x, p.y, Rp * .62, C.acc, C.ink); else stars(x, d.signs[i % d.signs.length], p.x, p.y, Rp * 1.25, C.acc, C.ink, null, 1.6); }
       const left = colL, tx = left ? base + zig + Rp + 56 : base + zig - Rp - 56, tw = left ? W - 84 - tx : tx - 84;
       x.textAlign = left ? 'left' : 'right';
       x.fillStyle = C.acc; x.font = BF(600, 20); spaced(x, p.nd.label, tx, p.y - 34, 2);
@@ -221,13 +237,13 @@
     grain(x, R, 16000, 'rgba(0,0,0,.08)'); grain(x, R, 7000, 'rgba(255,255,255,.035)');
     x.strokeStyle = C.acc; x.globalAlpha = .55; x.lineWidth = 3; x.setLineDash([16, 11]); rrect(x, 44, 44, W - 88, H - 88, 26); x.stroke(); x.setLineDash([]); x.globalAlpha = 1;
     const lg = await logo(C.acc); if (lg) x.drawImage(lg, W / 2 - 80, 92, 160, 102);
-    x.textAlign = 'center'; x.fillStyle = C.acc; x.font = DF(D, 38, true); x.fillText('Yıldız Menüsü', W / 2, 254);
+    x.textAlign = 'center'; x.fillStyle = C.acc; x.font = DF(D, 38, true); x.fillText(d.brand, W / 2, 254);
     const cx0 = 118, cy0 = 300, cw = W - 236, ch = 1500;
     x.save(); x.shadowColor = 'rgba(0,0,0,.45)'; x.shadowBlur = 50; x.shadowOffsetY = 24; x.fillStyle = '#FBFCFD'; rrect(x, cx0, cy0, cw, ch, 8); x.fill(); x.restore();
     const INK = '#0B1B33', ACC = '#3D5A80', SOFT = 'rgba(11,27,51,.58)';
     x.strokeStyle = 'rgba(61,90,128,.4)'; x.lineWidth = 1.5; rrect(x, cx0 + 26, cy0 + 26, cw - 52, ch - 52, 4); x.stroke();
     if (D.orn === 1) { x.strokeStyle = 'rgba(61,90,128,.22)'; rrect(x, cx0 + 36, cy0 + 36, cw - 72, ch - 72, 3); x.stroke(); }
-    signs(x, d, W / 2, cy0 + 130, 120, 'rgba(61,90,128,.85)', INK, null);
+    mark(x, D, d, W / 2, cy0 + 130, 120, 'rgba(61,90,128,.85)', INK, null);
     x.fillStyle = INK; fit(x, d.title, (s) => DF(D, s, false), cw - 140, 100, 56); x.fillText(d.title, W / 2, cy0 + 300);
     x.strokeStyle = ACC; x.lineWidth = 1.5; x.beginPath(); x.moveTo(W / 2 - 150, cy0 + 344); x.lineTo(W / 2 - 14, cy0 + 344); x.moveTo(W / 2 + 14, cy0 + 344); x.lineTo(W / 2 + 150, cy0 + 344); x.stroke();
     x.save(); x.translate(W / 2, cy0 + 344); x.rotate(Math.PI / 4); x.fillStyle = ACC; x.fillRect(-5, -5, 10, 10); x.restore();
@@ -249,14 +265,14 @@
     x.fillStyle = C.bg; x.fillRect(0, 0, W, H); grain(x, R, 2500, 'rgba(0,0,0,.025)');
     x.strokeStyle = C.acc; x.globalAlpha = .4; x.lineWidth = 2; x.strokeRect(54, 54, W - 108, H - 108); x.globalAlpha = 1;
     const lg = await logo(C.ink); if (lg) x.drawImage(lg, W / 2 - 75, 118, 150, 95);
-    x.textAlign = 'center'; x.fillStyle = C.acc; x.font = DF(D, 40, true); x.fillText('Yıldız Menüsü', W / 2, 280);
+    x.textAlign = 'center'; x.fillStyle = C.acc; x.font = DF(D, 40, true); x.fillText(d.brand, W / 2, 280);
     const cy = 470, Rr = 140;
-    if (D.orn === 0) {
+    if (D.orn === 0 && !d.lux) {
       x.strokeStyle = C.acc; x.globalAlpha = .5; x.lineWidth = 1.5; x.beginPath(); x.arc(W / 2, cy, Rr, 0, 7); x.stroke();
       for (let i = 0; i < 72; i++) { const a = i / 72 * Math.PI * 2, r2 = i % 6 === 0 ? Rr - 16 : Rr - 8; x.beginPath(); x.moveTo(W / 2 + Math.cos(a) * Rr, cy + Math.sin(a) * Rr); x.lineTo(W / 2 + Math.cos(a) * r2, cy + Math.sin(a) * r2); x.stroke(); }
       x.globalAlpha = 1;
     }
-    signs(x, d, W / 2, cy, D.orn === 0 ? 190 : 250, C.acc, C.ink, 'rgba(61,90,128,.12)');
+    if (d.lux) monogram(x, D, d, W / 2, cy, D.orn === 0 ? 120 : 96, C.acc, C.ink); else signs(x, d, W / 2, cy, D.orn === 0 ? 190 : 250, C.acc, C.ink, 'rgba(61,90,128,.12)');
     x.fillStyle = C.ink; fit(x, d.title, (s) => DF(D, s, false), 880, 108, 56); x.fillText(d.title, W / 2, 735);
     x.fillStyle = C.soft; x.font = BF(500, 24); spaced(x, d.sub, W / 2, 790, 2);
     x.fillStyle = C.ink; x.font = DF(D, 32, true);
@@ -285,10 +301,10 @@
     x.restore();
     const bottom = D.orn === 0 ? ay + ah : ay + aw;
     x.fillStyle = C.bg; x.beginPath(); x.arc(W / 2, bottom + 4, 74, 0, 7); x.fill();
-    signs(x, d, W / 2, bottom + 4, 104, C.acc, C.ink, null);
+    mark(x, D, d, W / 2, bottom + 4, 140, C.acc, C.ink, null);
     x.textAlign = 'center'; x.fillStyle = C.ink;
     const ty = bottom + 170; fit(x, d.title, (s) => DF(D, s, false), 880, 112, 56); x.fillText(d.title, W / 2, ty);
-    x.fillStyle = C.acc; x.font = DF(D, 36, true); x.fillText('Yıldız Menüsü', W / 2, ty + 56);
+    x.fillStyle = C.acc; x.font = DF(D, 36, true); x.fillText(d.brand, W / 2, ty + 56);
     x.fillStyle = C.soft; x.font = BF(500, 22); spaced(x, d.sub, W / 2, ty + 100, 2);
     list(x, D, d.rows, 110, ty + 150, 860, 1600 - (ty + 150), 'center', C.ink, C.acc, C.soft);
     footer(x, D, W / 2, 1664, C.ink, C.acc, 'center');
@@ -298,6 +314,7 @@
   async function render(r, helpers) {
     const D = design(r);
     if (helpers.force) { Object.assign(D, helpers.force); if (helpers.force.layout && helpers.force.pi != null) D.pal = (DARK_LAYOUT[D.layout] ? DARK : LIGHT)[helpers.force.pi]; }
+    D.lux = !!r.lux; QR_URL = r.lux ? LUX_URL : null;
     const d = data(r, D, helpers);
     try {
       await Promise.all([
