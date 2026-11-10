@@ -190,7 +190,8 @@
   function nameInfo(raw) {
     const display = cleanName(raw);
     const first = lowerTr(display.split(' ')[0] || '');
-    const hit = NAMES[first] || NAMES_FOLD[fold(first)] || null;
+    const ext = root.YildizNames ? root.YildizNames.lookup(first) : null;
+    const hit = ext && ext.meaning ? [ext.meaning, ext.group] : NAMES[first] || NAMES_FOLD[fold(first)] || (ext ? [null, ext.group] : null);
     const flat = lowerTr(display.replace(/\s/g, ''));
     const nr = numerology(flat), n = nr.n;
     const digits = Array.from(flat).map((ch) => ({ ch: ch.toLocaleUpperCase('tr'), v: letterVal(ch) })).filter((d) => d.v);
@@ -318,7 +319,9 @@
     'chandon-rose-sparkling': { st: 'sparkling', for: 'c', t: { elegant: 3, fruity: 2, signature: 1 }, note: 'Rose köpüklü: bu akşam bir kutlama' },
     'johnnie-walker-black-label-35-cl': { st: 'whisky', for: 'c', t: { smoky: 2, bold: 2, meat: 1 }, note: '35 cl, ikiye paylaşılan bir şişe' },
   };
-  const CLOSER = { id: 'turk-kahvesi', note: 'Fincanı kapatın: gökyüzü söyledi, gerisini kahve söylesin' };
+  // drinks without a menu photo get a serving shot in the menu style (no brand labels)
+  const DRINK_IMG = { 'raki-s': 'yz-raki-duble.webp', 'raki-c': 'yz-raki-sise.webp', 'white-s': 'yz-beyaz-kadeh.webp', 'white-c': 'yz-beyaz-sise.webp', 'red-s': 'yz-kirmizi-kadeh.webp', 'red-c': 'yz-kirmizi-sise.webp', 'rose-c': 'yz-roze-sise.webp', 'sparkling-c': 'yz-kopuklu-sise.webp' };
+  const CLOSER = { id: 'turk-kahvesi', img: 'turk-kahvesi-2026.webp', note: 'Bizden ikram. Fincanı kapatın: gökyüzü söyledi, gerisini kahve söylesin' };
 
   const STYLE_NAME = { raki: 'Rakı Sofrası', white: 'Beyaz Şarap', red: 'Kırmızı Şarap', rose: 'Roze', sparkling: 'Köpüklü', cocktail: 'Kokteyl Eşliği', whisky: 'Viski', none: 'Alkolsüz Eşlik' };
   const STYLE_WHY = {
@@ -692,7 +695,7 @@
       const it = byId[d.base || k];
       let fav = 0;
       if (style === 'cocktail') persons.forEach((P) => { const ix = P.sign.cocktails.indexOf(k); if (ix >= 0) fav += 3 - ix * 0.6; });
-      return { id: k, menuId: d.base || k, name: d.label || it.name, price: it.price, img: it.img || null, tags: d.t, note: d.note, course: 'drink', style: d.st, fav, ing: [] };
+      return { id: k, menuId: d.base || k, name: d.label || it.name, price: it.price, img: it.img || DRINK_IMG[d.st + (d.for === 'c' ? '-c' : '-s')] || null, tags: d.t, note: d.note, course: 'drink', style: d.st, fav, ing: [] };
     });
   }
 
@@ -715,7 +718,7 @@
     let slots = slotsFor(mode, style);
     const B = Object.assign({}, BUDGET[mode]);
     const closer = byId[CLOSER.id];
-    const closerCost = closer ? closer.price * persons.length : 0;
+    const closerCost = 0; // Türk kahvesi her menüde ikram
     const jit = {};
     const J = (id) => (jit[id] == null ? (jit[id] = R() * 3.4) : jit[id]);
     const dropped = [];
@@ -977,7 +980,7 @@
     });
     courses.forEach((g) => { if (g.key === 'ana' && g.items.length > 1) g.label = 'Ana Yemekler'; if (g.key === 'tatli' && g.items.length > 1) g.label = 'Tatlılar'; });
     if (style === 'cocktail') { const ck = courses.find((g) => g.key === 'icki'); if (ck && ck.items.length === 1 && ck.items[0].qty === 1) ck.label = 'Kokteyl'; }
-    if (closer) courses.push({ key: 'kapanis', label: 'Kapanış', items: [{ id: CLOSER.id, menuId: CLOSER.id, name: closer.name, price: closer.price, qty: persons.length, img: null, note: input.tone === 'lux' ? 'Akşamı Türk kahvesi ve sohbetle kapatın' : CLOSER.note, why: null, pct: null, tags: [] }] });
+    if (closer) courses.push({ key: 'kapanis', label: 'Kapanış', items: [{ id: CLOSER.id, menuId: CLOSER.id, name: closer.name, price: 0, listPrice: closer.price, free: true, qty: persons.length, img: CLOSER.img, note: input.tone === 'lux' ? 'Bizden ikram. Akşamı Türk kahvesi ve sohbetle kapatın' : CLOSER.note, why: null, pct: null, tags: [] }] });
 
     // the star dish: best-fitting hot course with a photo
     let star = null;
