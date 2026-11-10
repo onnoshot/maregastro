@@ -196,19 +196,26 @@ export default async function handler(req, res) {
 
     // ── ?qrlive=1 → son 30 dakika QR menu olaylari ──
     if (String((req.query && req.query.qrlive) || '') === '1') {
-      const r = await fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${PROPERTY_ID}:runRealtimeReport`, {
-        method: 'POST', headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ dimensions: [{ name: 'eventName' }], metrics: [{ name: 'eventCount' }, { name: 'activeUsers' }],
+      const rt = async (body) => {
+        const r = await fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${PROPERTY_ID}:runRealtimeReport`, {
+          method: 'POST', headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' }, body: JSON.stringify(body),
+        });
+        if (!r.ok) throw new Error('ga4 realtime ' + r.status + ' ' + (await r.text()).slice(0, 200));
+        return r.json();
+      };
+      const [evs, act] = await Promise.all([
+        rt({ dimensions: [{ name: 'eventName' }], metrics: [{ name: 'eventCount' }], limit: 200,
           dimensionFilter: { orGroup: { expressions: [
             { filter: { fieldName: 'eventName', stringFilter: { matchType: 'BEGINS_WITH', value: 'qr_' } } },
-            { filter: { fieldName: 'eventName', inListFilter: { values: ['view_item', 'select_item'] } } },
-          ] } }, limit: 200 }),
-      });
-      if (!r.ok) throw new Error('ga4 realtime ' + r.status + ' ' + (await r.text()).slice(0, 200));
-      const j = await r.json();
-      const events = (j.rows || []).map((row) => ({ name: row.dimensionValues[0].value, count: Number(row.metricValues[0].value), users: Number(row.metricValues[1].value) }));
-      const open = events.find((e) => e.name === 'qr_open');
-      return send(res, 200, { ok: true, updatedAt: new Date().toISOString(), activeUsers: open ? open.users : 0, events });
+            { filter: { fieldName: 'eventName', inListFilter: { values: ['view_item', 'select_item', 'search'] } } },
+          ] } } }),
+        // QR sayfasinin basligi: "Mare Gastro Menü ve Fiyatlar…" / "Mare Gastro Menu & Prices…"
+        rt({ dimensions: [{ name: 'unifiedScreenName' }], metrics: [{ name: 'activeUsers' }], limit: 20,
+          dimensionFilter: { filter: { fieldName: 'unifiedScreenName', stringFilter: { matchType: 'PARTIAL_REGEXP', value: 'Mare Gastro Men(ü|u)', caseSensitive: false } } } }),
+      ]);
+      const events = (evs.rows || []).map((row) => ({ name: row.dimensionValues[0].value, count: Number(row.metricValues[0].value) }));
+      const activeUsers = (act.rows || []).reduce((a, row) => a + Number(row.metricValues[0].value), 0);
+      return send(res, 200, { ok: true, updatedAt: new Date().toISOString(), activeUsers, events });
     }
 
     // ── ?realtime=1 → son 30 dakika: su an sitede olanlar ve yaptiklari ──
