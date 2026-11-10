@@ -15,6 +15,11 @@
       "source": "/dijitalmenu/",
       "destination": "/dijitalmenu",
       "permanent": true
+    },
+    {
+      "source": "/qr",
+      "destination": "/qr/",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -25,6 +30,26 @@
     {
       "source": "/dijitalmenu/:path*",
       "destination": "https://mare-gastro-dergi.vercel.app/dijitalmenu/:path*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/qr/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/qr",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ]
 }
