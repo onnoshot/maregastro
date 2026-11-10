@@ -481,6 +481,29 @@ a.ibtn{color:var(--ink)}
 #s-res .tile{padding:14px;border-radius:16px}
 #s-res .tile svg{width:24px;height:24px;margin-bottom:8px}
 @media (prefers-reduced-motion:reduce){.tabp.enter,.in .emb{animation:none}.rseg-pill{transition:none}}
+/* ── guest lock ── */
+body.yz-locked #bar{display:none}
+.lk-blur{filter:blur(7px);opacity:.72;pointer-events:none;user-select:none;-webkit-user-select:none;transition:filter .8s var(--out),opacity .8s var(--out)}
+.lk-peek{max-height:230px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent);pointer-events:none;transition:max-height .9s var(--out)}
+.lk-open{filter:none;opacity:1;max-height:2400px;-webkit-mask-image:none;mask-image:none}
+.lockc{position:relative;z-index:2;margin-top:10px;padding:20px 18px 18px;border-radius:20px;background:var(--card);box-shadow:var(--sh-md);text-align:center;animation:lkin .6s var(--out) both}
+.lockc.sm{margin:0 0 10px;padding:16px}
+.lockc.out{animation:lkout .45s var(--ease) forwards}
+@keyframes lkin{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes lkout{to{opacity:0;transform:scale(.96);height:0;margin:0;padding:0}}
+.lk-ic{width:56px;height:56px;margin:0 auto 10px;border-radius:50%;background:var(--paper);display:grid;place-items:center;color:var(--ink)}
+.lk-ic svg{width:34px;height:34px;overflow:visible}
+.lockc h3{font-size:20px;font-weight:600;letter-spacing:-.025em;margin-top:8px;line-height:1.25}
+.lk-t{font-size:13.5px;line-height:1.5;color:var(--ink2);margin:8px auto 0;max-width:320px;text-wrap:balance}
+.lk-f{display:flex;gap:8px;margin-top:14px}
+.lk-f input{flex:1;min-width:0;height:48px;padding:0 16px;border-radius:14px;border:1px solid var(--line);background:var(--paper);font-size:16px;font-weight:500;letter-spacing:.02em;outline:none;transition:border-color .2s,box-shadow .2s}
+.lk-f input:focus{border-color:var(--amber);box-shadow:0 0 0 4px var(--amber-soft);background:var(--card)}
+.lk-f .btn{height:48px;padding:0 20px;flex:none}
+.lk-f.shake{animation:lkshake .42s}
+@keyframes lkshake{20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}
+.lk-h{display:flex;align-items:center;justify-content:center;gap:6px;font-size:12.5px;color:var(--muted);margin-top:10px}
+.lk-e{font-size:12.5px;color:#B4232A;margin-top:4px;min-height:1px;font-weight:600}
+@media (prefers-reduced-motion:reduce){.lockc,.lockc.out,.lk-f.shake{animation:none}.lk-blur,.lk-peek{transition:none}}
 </style>
 <script>
 (function(){if(/[?&]preview=1/.test(location.search)||/bot|crawl|spider|headless/i.test(navigator.userAgent))return;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-LMZ66PTR0T';document.head.appendChild(s);
@@ -954,8 +977,71 @@ function renderResult(){
   S.tab = cur; segPill();
   $('#barOld').innerHTML = DISCOUNT_ON ? '<s>' + money(T.total) + '</s> %' + DISCOUNT + ' indirimli' : 'Menü toplamı';
   $('#barNew').textContent = money(T.final);
+  applyLock(r);
   observe();
 }
+// ── guest lock: full result only for guests at the restaurant (password from the waiter) ──
+const LOCK_H = 3343413599, LOCK_KEY = 'yz_unlock';
+const lkFold = (s) => String(s || '').toLocaleLowerCase('tr').replace(/\s+/g, '').replace(/ç/g, 'c').replace(/ğ/g, 'g').replace(/ı/g, 'i').replace(/ö/g, 'o').replace(/ş/g, 's').replace(/ü/g, 'u').replace(/i̇/g, 'i');
+const lkHash = (s) => { let h = 5381; for (const c of s) h = ((h << 5) + h + c.codePointAt(0)) | 0; return h >>> 0; };
+const lkToday = () => { const d = new Date(); return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); };
+function isUnlocked(){ try { return localStorage.getItem(LOCK_KEY) === lkToday(); } catch (e) { return !!S.unlocked; } }
+const isLocked = () => !!S.result && !isUnlocked();
+function lockCard(r, compact){
+  const couple = r.mode === 'couple', p = r.reading[0];
+  const dishes = r.courses.filter((g) => g.key !== 'icki' && g.key !== 'kapanis').reduce((a, g) => a + g.items.length, 0);
+  const tease = couple
+    ? esc(r.reading[0].first) + ' ve ' + esc(r.reading[1].first) + ' için uyum okuması, iki damak haritası ve ' + dishes + ' tabaklık ortak menünüz hazır.'
+    : esc(p.first) + ' adının anlamı, ' + esc(p.signName) + ' burcunun damak haritası ve ' + dishes + ' tabaklık menün hazır.';
+  return '<div class="lockc' + (compact ? ' sm' : '') + '"><div class="lk-ic"><svg viewBox="0 0 48 48" aria-hidden="true"><rect class="ln-draw" x="11" y="21" width="26" height="20" rx="6" pathLength="100" style="--l:100;--d:1.2s" fill="none" stroke="currentColor" stroke-width="2"/><path class="lk-sh ln-draw" d="M16 21v-5a8 8 0 0116 0v5" pathLength="100" style="--l:100;--d:1s;--dl:.3s" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="30" r="2.4" fill="currentColor"/><path d="M24 32v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>' +
+    '<div class="eb c">Sadece misafirlerimize özel</div><h3>' + (couple ? 'Yıldızlarınız menünüzü hazırladı' : 'Yıldızların menünü hazırladı') + '</h3>' +
+    (compact ? '' : '<p class="lk-t">' + tease + '</p>') +
+    '<form class="lk-f" autocomplete="off"><input type="text" inputmode="text" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="Menü şifresi" aria-label="Menü şifresi" enterkeyhint="go"><button class="btn dark" type="submit">Aç</button></form>' +
+    '<p class="lk-h">Menünüzün şifresini garsonumuzdan talep edebilirsiniz.</p><p class="lk-e" aria-live="polite"></p></div>';
+}
+function applyLock(r){
+  document.body.classList.toggle('yz-locked', isLocked());
+  if (!isLocked()) return;
+  $$('.tabp').forEach((pane) => {
+    const kids = [...pane.children];
+    if (pane.dataset.tab === 'okuma') {
+      kids.forEach((el, i) => { if (i === 1) el.classList.add('lk-peek'); else if (i > 1) el.classList.add('lk-blur'); });
+      const at = kids[1] || kids[0]; at.insertAdjacentHTML('afterend', lockCard(r));
+    } else {
+      kids.forEach((el) => el.classList.add('lk-blur'));
+      pane.insertAdjacentHTML('afterbegin', lockCard(r, true));
+    }
+  });
+  if (!applyLock.seen) { applyLock.seen = true; track('astro_lock_view', { mode: r.mode }); }
+}
+function unlock(){
+  try { localStorage.setItem(LOCK_KEY, lkToday()); } catch (e) {}
+  S.unlocked = true;
+  $$('.lockc').forEach((c) => { c.classList.add('out'); setTimeout(() => c.remove(), 450); });
+  $$('.lk-blur,.lk-peek').forEach((el) => el.classList.add('lk-open'));
+  document.body.classList.remove('yz-locked');
+  setTimeout(() => $$('.lk-blur,.lk-peek').forEach((el) => el.classList.remove('lk-blur', 'lk-peek', 'lk-open')), 900);
+  $('#bar').classList.toggle('on', true);
+  toast('Menün açıldı, afiyet olsun');
+  track('astro_unlock', { mode: S.result.mode });
+  if (navigator.vibrate) try { navigator.vibrate(18); } catch (e) {}
+}
+function focusLock(){
+  if (S.tab !== 'okuma') setTab('okuma', 'lock');
+  const c = $('.tabp.on .lockc'); if (!c) return;
+  c.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'center' });
+  setTimeout(() => { const i = c.querySelector('input'); if (i) i.focus({ preventScroll: true }); }, 350);
+}
+$('#resBody').addEventListener('submit', (e) => {
+  const f = e.target.closest('.lk-f'); if (!f) return;
+  e.preventDefault();
+  const inp = f.querySelector('input'), err = f.parentNode.querySelector('.lk-e');
+  if (lkHash(lkFold(inp.value)) === LOCK_H) { inp.blur(); unlock(); return; }
+  err.textContent = inp.value.trim() ? 'Şifre doğru değil. Garsonumuzdan isteyebilirsin.' : 'Şifreyi garsonumuzdan isteyebilirsin.';
+  f.classList.remove('shake'); void f.offsetWidth; f.classList.add('shake');
+  track('astro_unlock_fail', {});
+});
+
 function segPill(){
   const on = $('.rseg button.on'), pill = $('.rseg-pill'); if (!on || !pill) return;
   pill.style.width = on.offsetWidth + 'px'; pill.style.transform = 'translateX(' + on.offsetLeft + 'px)';
@@ -1064,6 +1150,7 @@ function run(){
 function openOv(id){ $('#' + id).classList.add('on'); history.pushState({ scr: 's-res', ov: id }, ''); document.body.style.overflow = 'hidden'; }
 function closeOv(fromPop){ ['waiter', 'story'].forEach((id) => $('#' + id).classList.remove('on')); document.body.style.overflow = ''; if (!fromPop) history.back(); }
 function openWaiter(){
+  if (isLocked()) { focusLock(); return; }
   const r = S.result, T = totals(r);
   $('#wSub').innerHTML = esc(r.reading.map((p) => p.first + ' · ' + p.signName).join('  &  ')) + (MASA ? ' · Masa ' + esc(decodeURIComponent(MASA)) : '') + (r.diet.length ? '<br>' + esc(r.diet.join(' · ')) : '');
   $('#wCode').innerHTML = '<span>Kod</span>' + esc(r.code);
@@ -1091,6 +1178,7 @@ function prepareStory(){
 const storyFile = () => storyBlob ? new File([storyBlob], 'mare-yildiz-menusu.png', { type: 'image/png' }) : null;
 const IOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 async function openStory(){
+  if (isLocked()) { focusLock(); return; }
   openOv('story');
   $('#stPrev').innerHTML = '<div class="ph">Hazırlanıyor…</div>';
   await prepareStory();
