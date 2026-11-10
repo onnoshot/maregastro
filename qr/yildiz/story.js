@@ -7,24 +7,24 @@
   const W = 1080, H = 1920;
   const SITE_URL = 'maregastro.com/qr/yildiz';
   const LIGHT = [
-    { id: 'ivory', bg: '#F4EFE6', ink: '#1E2A2F', soft: 'rgba(30,42,47,.6)', acc: '#9C7437' },
-    { id: 'stone', bg: '#ECEAE6', ink: '#2B2D2A', soft: 'rgba(43,45,42,.6)', acc: '#7C6A4F' },
-    { id: 'sage', bg: '#E5E9DF', ink: '#24302A', soft: 'rgba(36,48,42,.6)', acc: '#62754F' },
-    { id: 'blush', bg: '#F2E6E0', ink: '#3A2626', soft: 'rgba(58,38,38,.6)', acc: '#A0635A' },
-    { id: 'mist', bg: '#E6EBEE', ink: '#1C2A36', soft: 'rgba(28,42,54,.6)', acc: '#4F6B7C' },
-    { id: 'sand', bg: '#EFE3CF', ink: '#2E2418', soft: 'rgba(46,36,24,.62)', acc: '#9A6A33' },
-    { id: 'paper', bg: '#FBF8F2', ink: '#10202E', soft: 'rgba(16,32,46,.58)', acc: '#9C7437' },
-    { id: 'clay', bg: '#EAD9CA', ink: '#352A22', soft: 'rgba(53,42,34,.6)', acc: '#8E5B3B' },
+    { id: 'white', bg: '#FFFFFF', ink: '#0B1B33', soft: 'rgba(11,27,51,.56)', acc: '#3D5A80' },
+    { id: 'frost', bg: '#F3F5F9', ink: '#0E2240', soft: 'rgba(14,34,64,.56)', acc: '#4A6C96' },
+    { id: 'mist', bg: '#E8EDF3', ink: '#13294B', soft: 'rgba(19,41,75,.58)', acc: '#56719A' },
+    { id: 'porcelain', bg: '#F7F7F5', ink: '#1A2433', soft: 'rgba(26,36,51,.56)', acc: '#5E6E86' },
+    { id: 'silver', bg: '#ECEEF1', ink: '#18212F', soft: 'rgba(24,33,47,.58)', acc: '#6C7A8E' },
+    { id: 'ice', bg: '#EAF1F6', ink: '#0B2A44', soft: 'rgba(11,42,68,.56)', acc: '#2F5D86' },
+    { id: 'pearl', bg: '#F4F4F2', ink: '#13213A', soft: 'rgba(19,33,58,.56)', acc: '#7B8598' },
+    { id: 'cloud', bg: '#EFF2F7', ink: '#1D2A44', soft: 'rgba(29,42,68,.58)', acc: '#3E4F72' },
   ];
   const DARK = [
-    { id: 'forest', bg: '#1F3D33', ink: '#F1E8D6', soft: 'rgba(241,232,214,.66)', acc: '#D2B27A' },
-    { id: 'navy', bg: '#15243A', ink: '#EFE8DA', soft: 'rgba(239,232,218,.64)', acc: '#C9A46A' },
-    { id: 'burgundy', bg: '#4A1C24', ink: '#F3E6DA', soft: 'rgba(243,230,218,.64)', acc: '#D8B07C' },
-    { id: 'espresso', bg: '#33241B', ink: '#F1E6D6', soft: 'rgba(241,230,214,.64)', acc: '#CFA36A' },
-    { id: 'ink', bg: '#10202E', ink: '#F4EEE3', soft: 'rgba(244,238,227,.62)', acc: '#C9A46A' },
-    { id: 'olive', bg: '#36361F', ink: '#F1EBD8', soft: 'rgba(241,235,216,.64)', acc: '#D6BC7E' },
-    { id: 'teal', bg: '#16393D', ink: '#ECE6D8', soft: 'rgba(236,230,216,.64)', acc: '#CDAE76' },
-    { id: 'plum', bg: '#38213A', ink: '#F2E7E4', soft: 'rgba(242,231,228,.64)', acc: '#D3AE82' },
+    { id: 'navy', bg: '#0B1B33', ink: '#F2F5F9', soft: 'rgba(242,245,249,.62)', acc: '#A9BBD3' },
+    { id: 'midnight', bg: '#08111F', ink: '#EEF2F7', soft: 'rgba(238,242,247,.6)', acc: '#C9D3E0' },
+    { id: 'deepsea', bg: '#0E2A3F', ink: '#EFF4F8', soft: 'rgba(239,244,248,.62)', acc: '#9FC0D8' },
+    { id: 'indigo', bg: '#1A2350', ink: '#F0F2FA', soft: 'rgba(240,242,250,.62)', acc: '#B7C2E6' },
+    { id: 'slate', bg: '#1F2A38', ink: '#EEF1F5', soft: 'rgba(238,241,245,.6)', acc: '#B8C4D2' },
+    { id: 'petrol', bg: '#0F3340', ink: '#EDF4F5', soft: 'rgba(237,244,245,.62)', acc: '#A8C8CF' },
+    { id: 'graphite', bg: '#1B1E24', ink: '#F1F2F4', soft: 'rgba(241,242,244,.6)', acc: '#C3C9D2' },
+    { id: 'royal', bg: '#132B5C', ink: '#F1F4FA', soft: 'rgba(241,244,250,.62)', acc: '#C2D0EA' },
   ];
   const FONTS = [
     { fam: 'Cormorant Garamond', w: 500, k: 1.12 },
@@ -79,7 +79,7 @@
       const q = root.qrcode(0, 'M'); q.addData('https://' + SITE_URL + '/?utm_source=story&utm_medium=social&utm_campaign=yildiz_menusu'); q.make();
       const n = q.getModuleCount(), m = s / n;
       x.fillStyle = '#FFFFFF'; rrect(x, X - 12, Y - 12, s + 24, s + 24, 10); x.fill();
-      x.fillStyle = '#10202E'; for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) if (q.isDark(r, c)) x.fillRect(X + c * m, Y + r * m, Math.ceil(m), Math.ceil(m));
+      x.fillStyle = '#0B1B33'; for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) if (q.isDark(r, c)) x.fillRect(X + c * m, Y + r * m, Math.ceil(m), Math.ceil(m));
     } catch (e) {}
   }
   // QR + invitation. align: 'left' (X = left edge) or 'center' (X = centre)
@@ -223,11 +223,11 @@
     const lg = await logo(C.acc); if (lg) x.drawImage(lg, W / 2 - 80, 92, 160, 102);
     x.textAlign = 'center'; x.fillStyle = C.acc; x.font = DF(D, 38, true); x.fillText('Yıldız Menüsü', W / 2, 254);
     const cx0 = 118, cy0 = 300, cw = W - 236, ch = 1500;
-    x.save(); x.shadowColor = 'rgba(0,0,0,.45)'; x.shadowBlur = 50; x.shadowOffsetY = 24; x.fillStyle = '#F6F0E4'; rrect(x, cx0, cy0, cw, ch, 8); x.fill(); x.restore();
-    const INK = '#2A211B', ACC = '#8A6430', SOFT = 'rgba(42,33,27,.62)';
-    x.strokeStyle = 'rgba(138,100,48,.45)'; x.lineWidth = 1.5; rrect(x, cx0 + 26, cy0 + 26, cw - 52, ch - 52, 4); x.stroke();
-    if (D.orn === 1) { x.strokeStyle = 'rgba(138,100,48,.25)'; rrect(x, cx0 + 36, cy0 + 36, cw - 72, ch - 72, 3); x.stroke(); }
-    signs(x, d, W / 2, cy0 + 130, 120, 'rgba(138,100,48,.85)', INK, null);
+    x.save(); x.shadowColor = 'rgba(0,0,0,.45)'; x.shadowBlur = 50; x.shadowOffsetY = 24; x.fillStyle = '#FBFCFD'; rrect(x, cx0, cy0, cw, ch, 8); x.fill(); x.restore();
+    const INK = '#0B1B33', ACC = '#3D5A80', SOFT = 'rgba(11,27,51,.58)';
+    x.strokeStyle = 'rgba(61,90,128,.4)'; x.lineWidth = 1.5; rrect(x, cx0 + 26, cy0 + 26, cw - 52, ch - 52, 4); x.stroke();
+    if (D.orn === 1) { x.strokeStyle = 'rgba(61,90,128,.22)'; rrect(x, cx0 + 36, cy0 + 36, cw - 72, ch - 72, 3); x.stroke(); }
+    signs(x, d, W / 2, cy0 + 130, 120, 'rgba(61,90,128,.85)', INK, null);
     x.fillStyle = INK; fit(x, d.title, (s) => DF(D, s, false), cw - 140, 100, 56); x.fillText(d.title, W / 2, cy0 + 300);
     x.strokeStyle = ACC; x.lineWidth = 1.5; x.beginPath(); x.moveTo(W / 2 - 150, cy0 + 344); x.lineTo(W / 2 - 14, cy0 + 344); x.moveTo(W / 2 + 14, cy0 + 344); x.lineTo(W / 2 + 150, cy0 + 344); x.stroke();
     x.save(); x.translate(W / 2, cy0 + 344); x.rotate(Math.PI / 4); x.fillStyle = ACC; x.fillRect(-5, -5, 10, 10); x.restore();
@@ -256,7 +256,7 @@
       for (let i = 0; i < 72; i++) { const a = i / 72 * Math.PI * 2, r2 = i % 6 === 0 ? Rr - 16 : Rr - 8; x.beginPath(); x.moveTo(W / 2 + Math.cos(a) * Rr, cy + Math.sin(a) * Rr); x.lineTo(W / 2 + Math.cos(a) * r2, cy + Math.sin(a) * r2); x.stroke(); }
       x.globalAlpha = 1;
     }
-    signs(x, d, W / 2, cy, D.orn === 0 ? 190 : 250, C.acc, C.ink, 'rgba(156,116,55,.16)');
+    signs(x, d, W / 2, cy, D.orn === 0 ? 190 : 250, C.acc, C.ink, 'rgba(61,90,128,.12)');
     x.fillStyle = C.ink; fit(x, d.title, (s) => DF(D, s, false), 880, 108, 56); x.fillText(d.title, W / 2, 735);
     x.fillStyle = C.soft; x.font = BF(500, 24); spaced(x, d.sub, W / 2, 790, 2);
     x.fillStyle = C.ink; x.font = DF(D, 32, true);
