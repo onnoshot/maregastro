@@ -12,8 +12,37 @@
       "permanent": true
     },
     {
-      "source": "/dijitalmenu/",
-      "destination": "/dijitalmenu",
+      "source": "/dijitalmenu",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/qr/en/",
+      "permanent": true
+    },
+    {
+      "source": "/dijitalmenu/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "en"
+        }
+      ],
+      "destination": "/qr/en/",
+      "permanent": true
+    },
+    {
+      "source": "/dijitalmenu",
+      "destination": "/qr/",
+      "permanent": true
+    },
+    {
+      "source": "/dijitalmenu/:path*",
+      "destination": "/qr/",
       "permanent": true
     },
     {
@@ -35,14 +64,6 @@
     {
       "source": "/qr/en/",
       "destination": "/api/qr-page?lang=en"
-    },
-    {
-      "source": "/dijitalmenu",
-      "destination": "https://mare-gastro-dergi.vercel.app/dijitalmenu"
-    },
-    {
-      "source": "/dijitalmenu/:path*",
-      "destination": "https://mare-gastro-dergi.vercel.app/dijitalmenu/:path*"
     }
   ],
   "headers": [
