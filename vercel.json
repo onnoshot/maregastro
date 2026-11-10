@@ -19,10 +19,23 @@
     {
       "source": "/qr",
       "destination": "/qr/",
-      "permanent": false
+      "permanent": true
+    },
+    {
+      "source": "/qr/en",
+      "destination": "/qr/en/",
+      "permanent": true
     }
   ],
   "rewrites": [
+    {
+      "source": "/qr/",
+      "destination": "/api/qr-page?lang=tr"
+    },
+    {
+      "source": "/qr/en/",
+      "destination": "/api/qr-page?lang=en"
+    },
     {
       "source": "/dijitalmenu",
       "destination": "https://mare-gastro-dergi.vercel.app/dijitalmenu"
@@ -34,16 +47,7 @@
   ],
   "headers": [
     {
-      "source": "/qr/(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
-        }
-      ]
-    },
-    {
-      "source": "/qr",
+      "source": "/qr/app.html",
       "headers": [
         {
           "key": "X-Robots-Tag",
@@ -51,5 +55,10 @@
         }
       ]
     }
-  ]
+  ],
+  "functions": {
+    "api/qr-page.js": {
+      "includeFiles": "qr/app.html"
+    }
+  }
 }
