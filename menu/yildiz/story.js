@@ -5,7 +5,7 @@
 (function (root) {
   'use strict';
   const W = 1080, H = 1920;
-  const SITE_URL = 'maregastro.com/qr/yildiz', LUX_URL = 'maregastro.com/qr/imza';
+  const SITE_URL = 'maregastro.com/menu/yildiz', LUX_URL = 'maregastro.com/menu/imza';
   const LIGHT = [
     { id: 'white', bg: '#FFFFFF', ink: '#0B1B33', soft: 'rgba(11,27,51,.56)', acc: '#3D5A80' },
     { id: 'frost', bg: '#F3F5F9', ink: '#0E2240', soft: 'rgba(14,34,64,.56)', acc: '#4A6C96' },

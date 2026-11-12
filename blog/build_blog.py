@@ -2086,7 +2086,7 @@ POSTS += [
  "body":[
   ("Sapanca'da Alkollü Restoran Var mı?",
    ["Evet. Sapanca'da alkollü servis yapan restoranlar var; Kırkpınar'daki Mare Gastro bunlardan biri ve içkiyi bir yemek deneyiminin parçası olarak sunuyor. Restoran Salı'dan Pazar'a 09:00–00:00 arası açık, Pazartesi kapalı.",
-    "Menüde rakı-balık sofrasından şarap eşliğinde bir akşam yemeğine, gün batımında bir kokteyle kadar farklı seçenekler bulunuyor. Güncel liste ve fiyatlar için %s bakabilirsiniz; menü mevsime göre güncellenir."%L(SITE+"/qr/","dijital menümüze")]),
+    "Menüde rakı-balık sofrasından şarap eşliğinde bir akşam yemeğine, gün batımında bir kokteyle kadar farklı seçenekler bulunuyor. Güncel liste ve fiyatlar için %s bakabilirsiniz; menü mevsime göre güncellenir."%L(SITE+"/menu/","dijital menümüze")]),
   ("Menüde Hangi İçkiler Var?",
    ["Aşağıdaki tablo, 7 Kasım 2026'da canlı menümüzden alınmıştır. Aynı içeceğin farklı şişe boyları (ör. 20, 35, 50 ve 70 cl rakı) ayrı seçenek olarak sayıldı.",
     btable(["Kategori","Seçenek sayısı","Örnekler"],[
@@ -2198,7 +2198,7 @@ POSTS += [
     bvid("rhSfnoAOCIg","Kaya levreği ve Karasu kuşkonmazı")]),
   ("Bu Tabakların Ortak Noktası Ne?",
    ["Üç ortak çizgi var: yerel ürün (Karasu kuşkonmazı, Trakya eski kaşarı), bölgenin yemek kültürüne gönderme (ıslama, keşkek) ve asit dengesi (sirkeli soslar, nane yağı, domates). Şefin mutfak anlayışını %s daha ayrıntılı anlattık."%L(post_url("sef-dogan-anapa-kimdir"),"Şef Doğan Anapa kimdir yazımızda"),
-    "Güncel menü için %s, tüm videolar için %s bakabilirsiniz."%(L(SITE+"/qr/","dijital menümüze"),L(YT,"YouTube kanalımıza"))]),
+    "Güncel menü için %s, tüm videolar için %s bakabilirsiniz."%(L(SITE+"/menu/","dijital menümüze"),L(YT,"YouTube kanalımıza"))]),
  ],
  "faq":[
   ("Mare Gastro'nun imza tabakları neler?","Islama kalamar, deniz mahsullü buğday risotto, karpuz salatası yatağında kuzu kokoreç ve kabuklu ızgara karides öne çıkan tabaklardır. Kuzu incik ve kaya levreği yaz menüsünde yer aldı."),

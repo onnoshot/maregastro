@@ -423,48 +423,27 @@ svg{display:block}
 
 /* story videos (Instagram reels) */
 .sv-media video{max-width:100%;max-height:100%;aspect-ratio:9/16;object-fit:cover;border-radius:22px;box-shadow:var(--sh-md);background:#10202E;animation:svIn .7s var(--ease) both}
-/* story: Özel Günler (animated slide, 15s) */
-.oz{position:relative;height:100%;max-height:100%;aspect-ratio:9/16;max-width:100%;border-radius:22px;overflow:hidden;clip-path:inset(0 round 22px);background:var(--paper,#F6F0E5);box-shadow:var(--sh-md);display:flex;flex-direction:column;animation:svIn .7s var(--ease) both;color:var(--ink)}
-.oz-ph{position:relative;flex:0 0 58%;overflow:hidden;margin:10px 10px 0;border-radius:15px;clip-path:inset(0 round 15px);background:#e9e1d2}
+/* story: Özel Günler closing card (after the celebration reels) */
+.oz{position:relative;height:100%;max-height:100%;aspect-ratio:9/16;max-width:100%;border-radius:22px;overflow:hidden;clip-path:inset(0 round 22px);background:var(--bg,#FBF8F2);box-shadow:var(--sh-md);animation:svIn .7s var(--ease) both;color:var(--ink)}
 .sv-media .oz img{max-width:none;max-height:none;aspect-ratio:auto;border-radius:0;box-shadow:none;filter:none}
-.sv-media .oz .oz-i{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:ozImg 3.6s var(--ease) var(--d) both}
-@keyframes ozImg{0%{opacity:0;transform:scale(1.14);clip-path:inset(32% 0 32% 0)}16%{opacity:1;clip-path:inset(0 0 0 0)}80%{opacity:1;transform:scale(1.02)}100%{opacity:0;transform:scale(1)}}
-.sv-media .oz .oz-i:last-child{animation-name:ozImgL;animation-duration:4s}
-@keyframes ozImgL{0%{opacity:0;transform:scale(1.14);clip-path:inset(32% 0 32% 0)}15%{opacity:1;clip-path:inset(0 0 0 0)}100%{opacity:1;transform:scale(1.02)}}
-.oz-cap{flex:1;display:flex;flex-direction:column;padding:16px 20px 18px;min-height:0}
 .oz-eb{font-size:10.5px;font-weight:700;letter-spacing:.04em;color:var(--amber)}
-.oz-rot{position:relative;flex:1;overflow:hidden;margin-top:8px}
-.oz-o{position:absolute;inset:0;opacity:0;animation:ozTxt 3s var(--ease) var(--d) both}
-.oz-o:last-child{animation-name:ozTxtL}
-@keyframes ozTxt{0%{opacity:0;transform:translateY(26px)}14%,84%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-18px)}}
-@keyframes ozTxtL{0%{opacity:0;transform:translateY(26px)}14%,100%{opacity:1;transform:none}}
-.oz-no{font-size:11px;font-weight:600;color:var(--amber);font-variant-numeric:tabular-nums}
-.oz-o h3{font-size:clamp(24px,7.2vw,32px);font-weight:300;letter-spacing:-.02em;line-height:1.08;margin:4px 0 8px}
-.oz-o p{font-size:13.5px;line-height:1.45;color:var(--ink);opacity:.62;margin:0}
-.oz-steps{display:flex;gap:6px}
-.oz-steps span{flex:1;height:2px;border-radius:2px;background:rgba(16,32,46,.1);overflow:hidden}
-.oz-steps i{display:block;height:100%;background:var(--amber);transform-origin:left;transform:scaleX(0);animation:ozStep 3s linear var(--d) forwards}
-[dir=rtl] .oz-steps i{transform-origin:right}
-@keyframes ozStep{to{transform:scaleX(1)}}
-.oz-fin{position:absolute;inset:0;background:var(--bg,#FBF8F2);display:flex;flex-direction:column;justify-content:flex-end;padding:10px 24px 26px;transform:translateY(102%);animation:ozUp .9s var(--ease) 9.2s forwards}
-@keyframes ozUp{to{transform:none}}
-.oz-mo{position:absolute;top:10px;left:10px;right:10px;height:47%;display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:1fr 1fr;gap:6px}
-.sv-media .oz .oz-mo img{width:100%;height:100%;object-fit:cover;border-radius:12px;clip-path:inset(0 round 12px);opacity:0;animation:ozTile .9s var(--ease) both;animation-delay:calc(9.5s + var(--k) * .16s)}
+.oz-fin{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:10px 24px 26px}
+.oz-mo{position:absolute;top:10px;left:10px;right:10px;height:47%;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:6px}
+.sv-media .oz .oz-mo img{width:100%;height:100%;min-height:0;min-width:0;object-fit:cover;border-radius:12px;clip-path:inset(0 round 12px);opacity:0;animation:ozTile .9s var(--ease) both;animation-delay:calc(.25s + var(--k) * .16s)}
 .oz-mo img:first-child{grid-row:1/3}
 @keyframes ozTile{from{opacity:0;transform:scale(1.08);clip-path:inset(18% 0 18% 0 round 12px)}to{opacity:1;transform:none;clip-path:inset(0 round 12px)}}
 .oz-ic{width:132px;height:38px;color:var(--amber);margin-bottom:14px}
-.oz-ic path,.oz-ic circle{stroke-dasharray:160;stroke-dashoffset:160;animation:ozDraw 1.6s var(--ease) 9.8s forwards}
+.oz-ic path,.oz-ic circle{stroke-dasharray:160;stroke-dashoffset:160;animation:ozDraw 1.6s var(--ease) .7s forwards}
 @keyframes ozDraw{to{stroke-dashoffset:0}}
 .oz-fin .oz-eb,.oz-fin h3,.oz-fin p{opacity:0;animation:ozIn .8s var(--ease) both}
-.oz-fin .oz-eb{animation-delay:10s}
-.oz-fin h3{font-size:clamp(26px,7.8vw,36px);font-weight:300;letter-spacing:-.025em;line-height:1.05;margin:6px 0 10px;animation-delay:10.25s}
-.oz-fin p{font-size:13.5px;line-height:1.5;opacity:0;margin:0 0 16px;animation-delay:10.5s}
+.oz-fin .oz-eb{animation-delay:.9s}
+.oz-fin h3{font-size:clamp(26px,7.8vw,36px);font-weight:300;letter-spacing:-.025em;line-height:1.05;margin:6px 0 10px;animation-delay:1.1s}
+.oz-fin p{font-size:13.5px;line-height:1.5;margin:0 0 16px;color:rgba(16,32,46,.7);animation-delay:1.3s}
 @keyframes ozIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.oz-fin p{color:rgba(16,32,46,.7)}
 .oz-ch{display:flex;flex-wrap:wrap;gap:8px}
-.oz-ch span{font-size:12.5px;font-weight:500;padding:8px 13px;border-radius:999px;border:1px solid rgba(156,116,55,.35);color:var(--ink);background:rgba(156,116,55,.06);opacity:0;animation:ozIn .6s var(--ease) both;animation-delay:calc(10.9s + var(--k) * .18s)}
+.oz-ch span{font-size:12.5px;font-weight:500;padding:8px 13px;border-radius:999px;border:1px solid rgba(156,116,55,.35);color:var(--ink);background:rgba(156,116,55,.06);opacity:0;animation:ozIn .6s var(--ease) both;animation-delay:calc(1.6s + var(--k) * .15s)}
 .sv.paused .oz,.sv.paused .oz *{animation-play-state:paused!important}
-@media (prefers-reduced-motion:reduce){.sv-media .oz .oz-i,.oz-o,.oz-steps i{animation:none}.oz-ph .oz-i:last-child,.oz-rot .oz-o:last-child{opacity:1}.oz-fin{animation-duration:.01s}}
+@media (prefers-reduced-motion:reduce){.oz *{animation-duration:.01s!important;animation-delay:0s!important}}
 .sv-snd .s-on{display:none}
 .sv-snd.on .s-on{display:block}
 .sv-snd.on .s-off{display:none}
@@ -557,7 +536,7 @@ var API_MENU='/api/menu', API_QR='/api/qr', IMG='/images/';
 var PREVIEW_ORIGINS=['https://panel.maregastro.com','https://mare-gastro-dashboard.vercel.app','http://localhost:4173','http://127.0.0.1:4173'];
 var params=new URLSearchParams(location.search);
 var SSR=null; try{var sd=document.getElementById('qrData'); if(sd)SSR=JSON.parse(sd.textContent)}catch(e){}
-var URL_LANG=(SSR&&SSR.lang)||(/^\/qr\/en(\/|$)/.test(location.pathname)?'en':'tr');
+var URL_LANG=(SSR&&SSR.lang)||(/^\/(menu|qr)\/en(\/|$)/.test(location.pathname)?'en':'tr');
 var IS_BOT=/bot|crawl|spider|slurp|google|bing|yandex|duckduck|gpt|claude|perplexity|facebookexternalhit|preview/i.test(navigator.userAgent||'');
 var PREVIEW=params.get('preview')==='1';
 var TABLE=(params.get('masa')||params.get('t')||'').trim().slice(0,24);
@@ -639,7 +618,7 @@ function sc(kind){
 }
 function words(s){return String(s).split(/\s+/).filter(Boolean).map(function(w,i){return '<span class="w"><span style="--i:'+i+'">'+esc(w)+'</span></span>'}).join(' ')}
 var POSTERS={'kereviz-pureli-jumbo-karides-sogus':'jumbo-karides','somon-tartar':'somon-tartar','citir-somon':'citir-somon','ormanda-bir-yuruyus':'ormanda-bir-yuruyus','mezgit-tempura':'mezgit-tempura'};
-function yzHref(src){var m=location.search.match(/[?&]masa=([^&]+)/);return '/qr/yildiz/?from='+src+(m?'&masa='+m[1]:'')}
+function yzHref(src){var m=location.search.match(/[?&]masa=([^&]+)/);return '/menu/yildiz/?from='+src+(m?'&masa='+m[1]:'')}
 function yzCard(i){var no=(i+1<10?'0':'')+(i+1);return '<article class="poster yzc" data-yz="featured" role="link" tabindex="0" aria-label="Yıldız Menüsü: Şansını Dene"><div class="art"><div class="pz"><img src="/images/qr/yildiz-menusu.webp" alt="Yıldız Menüsü" loading="lazy" decoding="async"></div><span class="yz-new">Yeni</span></div>'+
   '<div class="cap"><div class="cap-top"><span class="no">Nº '+no+'</span><span>Yıldız Menüsü</span></div><h3 class="p-title">Şansını Dene</h3><p class="p-tag">Doğum gününe ve adına göre sana özel bir menü. Hızlı ve gerçekçi bir analiz.</p>'+
   '<div class="cap-bot yz-go"><span>Menünü keşfet</span><b>Başla<svg><use href="#i-star"/></svg></b></div></div></article>'}
@@ -648,7 +627,7 @@ var STORIES=[
  {k:'chef',c:'sef',l:{tr:'Şef',en:'Chef',ar:'الشيف',ru:'Шеф'},s:[{f:'sef-dogan-anapa'},{v:'sef-dokunus'},{v:'sef-karides',id:'jumbo-karides-izgara'},{v:'sef-ekip'}]},
  {k:'dishes',c:'lezzetler',l:{tr:'Lezzetler',en:'Dishes',ar:'الأطباق',ru:'Блюда'},s:[{v:'lz-kuzu-pirzola',id:'kuzu-pirzola'},{v:'lz-deniz-risotto',id:'deniz-mahsulleri-bugday-risotto'},{v:'lz-kaya-levregi',id:'mare-spesiyal-granyoz'},{v:'lz-incik-keskek',id:'incik-ruyasi'},{v:'lz-kuzu-kokorec',id:'kuzu-kokorec'},{v:'lz-sonbahar-makarna',id:'balkabagi-soslu-kestane-dolgulu-makarna'},{f:'jumbo-karides',id:'kereviz-pureli-jumbo-karides-sogus'},{f:'somon-tartar',id:'somon-tartar'},{f:'citir-somon',id:'citir-somon'},{f:'ormanda-bir-yuruyus',id:'ormanda-bir-yuruyus'},{f:'mezgit-tempura',id:'mezgit-tempura'}]},
  {k:'breakfast',c:'kahvalti',l:{tr:'Kahvaltı',en:'Breakfast',ar:'الإفطار',ru:'Завтрак'},s:[{v:'kahvalti-alafranga',id:'brioche-benedict'},{f:'gunaydin-sapanca',cat:'kahvalti'},{f:'yavas-sabahlar',cat:'kahvalti'}]},
- {k:'special',c:'ozel',l:{tr:'Özel Günler',en:'Celebrations',ar:'المناسبات',ru:'Праздники'},s:[{x:'ozel',d:15000}]},
+ {k:'special',c:'ozel',l:{tr:'Özel Günler',en:'Celebrations',ar:'المناسبات',ru:'Праздники'},s:[{v:'oz-dogum-gunu',wa:1},{v:'oz-o-an',wa:1},{v:'oz-kutlama',wa:1},{x:'ozel',d:9000}]},
  {k:'booking',l:{tr:'Rezervasyon',en:'Book a Table',ar:'الحجز',ru:'Бронь'},s:[{f:'masanizi-ayirtin',rez:1}]}
 ];
 var OZ={
@@ -657,16 +636,13 @@ var OZ={
  ar:{eb:'مار غاسترو · المناسبات',o:[['أعياد الميلاد','كعكتك وشموعك وإطلالة البحيرة.'],['ذكرى الزواج','مائدة لشخصين عند الغروب.'],['الخطوبة والزفاف','من لحظة الموافقة إلى الاحتفال الكبير.']],t:'نخطط لمناسبتك معك',p:'كل مناسبة مختلفة. راسلنا ونخطط ليومك معك، من ترتيب الطاولة إلى القائمة.',ch:['ترتيب الطاولة','قائمة خاصة','كعكة','تفاصيل خاصة بك'],cta:'راسلنا',msg:'مرحبًا، أكتب من قائمة مار غاسترو. أود معرفة تفاصيل تنظيم مناسبة خاصة (عيد ميلاد، ذكرى زواج، خطوبة أو زفاف).'},
  ru:{eb:'Mare Gastro · Праздники',o:[['День рождения','Ваш торт, свечи и вид на озеро.'],['Годовщина','Ужин для двоих на закате.'],['Помолвка и свадьба','От заветного «да» до большого праздника.']],t:'Всё под ваш праздник',p:'Каждый праздник особенный. Напишите нам, и мы вместе спланируем ваш день: от сервировки до меню.',ch:['Сервировка','Особое меню','Торт','Детали для вас'],cta:'Написать нам',msg:'Здравствуйте, пишу из QR-меню Mare Gastro. Хочу узнать об организации особого события (день рождения, годовщина, помолвка или свадьба).'}
 };
-var OZ_IMG=['luks-dogum-gunu-terasi','yildonumu-gunbatimi-sofrasi','golde-teklif-sofrasi'];
+var OZ_IMG=['oz-dogum-gunu','oz-o-an','oz-kutlama'];
 function ozHTML(){var z=OZ[lang]||OZ.en;
-  return '<div class="oz" aria-label="'+esc(z.t)+'"><div class="oz-ph">'+OZ_IMG.map(function(f,i){return '<img class="oz-i" style="--d:'+(i*3)+'s" src="/images/qr/ozel/'+f+'.webp" alt="'+esc(z.o[i][0])+'" decoding="async">'}).join('')+'</div>'+
-  '<div class="oz-cap"><div class="oz-eb">'+esc(z.eb)+'</div><div class="oz-rot">'+z.o.map(function(o,i){return '<div class="oz-o" style="--d:'+(i*3)+'s"><span class="oz-no">Nº 0'+(i+1)+'</span><h3>'+esc(o[0])+'</h3><p>'+esc(o[1])+'</p></div>'}).join('')+'</div>'+
-  '<div class="oz-steps">'+z.o.map(function(_,i){return '<span style="--d:'+(i*3)+'s"><i></i></span>'}).join('')+'</div></div>'+
-  '<div class="oz-fin"><div class="oz-mo">'+OZ_IMG.map(function(f,i){return '<img src="/images/qr/ozel/'+f+'.webp" alt="" style="--k:'+i+'">'}).join('')+'</div><svg class="oz-ic" viewBox="0 0 168 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+
+  return '<div class="oz" aria-label="'+esc(z.t)+'"><div class="oz-fin"><div class="oz-mo">'+OZ_IMG.map(function(f,i){return '<img src="'+vposter(f)+'" alt="" style="--k:'+i+'">'}).join('')+'</div><svg class="oz-ic" viewBox="0 0 168 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+
    '<path d="M8 40h32M11 40V28h26v12M11 33c4 3 9 3 13 0s9-3 13 0M17 28v-6M24 28v-8M31 28v-6M17 18c-1.5-2 1-4 0-6M24 16c-1.5-2 1-4 0-6M31 18c-1.5-2 1-4 0-6"/>'+
    '<circle cx="76" cy="31" r="10"/><circle cx="90" cy="31" r="10"/><path d="M80 15l3-5 3 5-3 4z"/>'+
    '<path d="M126 8h12l-1 12a5 5 0 0 1-10 0zM132 25v15M127 40h10M146 8h12l-1 12a5 5 0 0 1-10 0zM152 25v15M147 40h10M141 6l2-4M144 9l3-2"/></svg>'+
-   '<div class="oz-eb">'+esc(z.eb)+'</div><h3>'+esc(z.t)+'</h3><p>'+esc(z.p)+'</p><div class="oz-ch">'+z.ch.map(function(c,i){return '<span style="--k:'+i+'">'+esc(c)+'</span>'}).join('')+'</div></div></div>';
+   '<div class="oz-eb">'+z.o.map(function(o){return esc(o[0])}).join(' · ')+'</div><h3>'+esc(z.t)+'</h3><p>'+esc(z.p)+'</p><div class="oz-ch">'+z.ch.map(function(c,i){return '<span style="--k:'+i+'">'+esc(c)+'</span>'}).join('')+'</div></div></div>';
 }
 function ozCta(){var z=OZ[lang]||OZ.en;return '<a href="https://wa.me/905323540888?text='+encodeURIComponent(z.msg)+'" target="_blank" rel="noopener" data-ozwa>'+esc(z.cta)+'</a>'}
 function vsrc(v){return '/images/qr/reels/'+v+'.mp4'}
@@ -691,7 +667,7 @@ function svShow(){
   var cta='';
   if(sl.id&&ITEMS[sl.id])cta='<button data-svitem="'+esc(sl.id)+'">'+esc(tx(ITEMS[sl.id],'name'))+(ITEMS[sl.id].price!=null?' · '+money(deal(ITEMS[sl.id])?deal(ITEMS[sl.id]).np:ITEMS[sl.id].price):'')+'</button>';
   else if(sl.cat&&CATS[sl.cat])cta='<button data-svcat="'+esc(sl.cat)+'">'+esc(cl(sl.cat))+'</button>';
-  else if(sl.x)cta=ozCta();
+  else if(sl.x||sl.wa)cta=ozCta();
   else if(sl.rez)cta='<a href="/'+(lang==='tr'?'tr':lang)+'/#reservation" target="_blank" rel="noopener">'+esc(t('reserve'))+'</a>';
   $('#svCta').innerHTML=cta;
   if(sl.v){svVideo();return}
@@ -1009,7 +985,7 @@ function openLang(){
 $('#langs').addEventListener('click',function(e){var b=e.target.closest('[data-l]');if(!b)return;track('qr_lang_'+b.dataset.l);setLang(b.dataset.l,true);hideSheet()});
 function setLang(l,save){
   lang=T[l]?l:'tr'; if(save)store('mareQrLang',lang);
-  if(save&&!PREVIEW&&(lang==='tr'||lang==='en')){var np=lang==='en'?'/qr/en/':'/qr/';setTimeout(function(){try{if(location.pathname!==np)history.replaceState(history.state,'',np+location.search)}catch(e){}},450)}
+  if(save&&!PREVIEW&&(lang==='tr'||lang==='en')){var np=lang==='en'?'/menu/en/':'/menu/';setTimeout(function(){try{if(location.pathname!==np)history.replaceState(history.state,'',np+location.search)}catch(e){}},450)}
   document.documentElement.lang=lang; document.documentElement.dir=lang==='ar'?'rtl':'ltr';
   $('#langBtn').textContent=lang.toUpperCase();
   $$('#tabbar button').forEach(function(b){var k=b.dataset.t;if(k==='yz'){b.hidden=lang!=='tr';return}$('span',b).textContent=k==='home'?t('home'):k==='search'?t('search'):cl(k)});

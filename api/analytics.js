@@ -154,7 +154,7 @@ export default async function handler(req, res) {
       if (qrCache[key] && Date.now() < qrCache[key].exp) return send(res, 200, qrCache[key].body);
       const range = { startDate: (days - 1) + 'daysAgo', endDate: 'today' };
       const prevRange = { startDate: (days * 2 - 1) + 'daysAgo', endDate: days + 'daysAgo' };
-      const qrPage = { filter: { fieldName: 'pagePath', stringFilter: { matchType: 'BEGINS_WITH', value: '/qr' } } };
+      const qrPage = { orGroup: { expressions: ['/menu', '/qr'].map((value) => ({ filter: { fieldName: 'pagePath', stringFilter: { matchType: 'BEGINS_WITH', value } } })) } };
       const [[sumR, dayR, hourR, devR, langR], [itemR, listR, evR, searchR]] = await Promise.all([
         gaBatch(token, [
           { dateRanges: [{ ...range, name: 'cur' }, { ...prevRange, name: 'prev' }], dimensionFilter: qrPage,

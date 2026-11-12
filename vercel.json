@@ -20,7 +20,7 @@
           "value": "en"
         }
       ],
-      "destination": "/qr/en/",
+      "destination": "/menu/en/",
       "permanent": true
     },
     {
@@ -32,7 +32,7 @@
           "value": "en"
         }
       ],
-      "destination": "/qr/en/",
+      "destination": "/menu/en/",
       "permanent": true
     },
     {
@@ -44,48 +44,63 @@
           "value": "en"
         }
       ],
-      "destination": "/qr/en/",
+      "destination": "/menu/en/",
       "permanent": true
     },
     {
       "source": "/dijitalmenu/",
-      "destination": "/qr/",
+      "destination": "/menu/",
       "permanent": true
     },
     {
       "source": "/dijitalmenu",
-      "destination": "/qr/",
+      "destination": "/menu/",
       "permanent": true
     },
     {
       "source": "/dijitalmenu/:path*",
-      "destination": "/qr/",
+      "destination": "/menu/",
+      "permanent": true
+    },
+    {
+      "source": "/menu",
+      "destination": "/menu/",
+      "permanent": true
+    },
+    {
+      "source": "/menu/en",
+      "destination": "/menu/en/",
       "permanent": true
     },
     {
       "source": "/qr",
-      "destination": "/qr/",
+      "destination": "/menu/",
       "permanent": true
     },
     {
-      "source": "/qr/en",
-      "destination": "/qr/en/",
+      "source": "/qr/app.html",
+      "destination": "/menu/",
+      "permanent": true
+    },
+    {
+      "source": "/qr/:path*",
+      "destination": "/menu/:path*",
       "permanent": true
     }
   ],
   "rewrites": [
     {
-      "source": "/qr/",
+      "source": "/menu/",
       "destination": "/api/qr-page?lang=tr"
     },
     {
-      "source": "/qr/en/",
+      "source": "/menu/en/",
       "destination": "/api/qr-page?lang=en"
     }
   ],
   "headers": [
     {
-      "source": "/qr/app.html",
+      "source": "/menu/app.html",
       "headers": [
         {
           "key": "X-Robots-Tag",
@@ -96,7 +111,7 @@
   ],
   "functions": {
     "api/qr-page.js": {
-      "includeFiles": "qr/app.html"
+      "includeFiles": "menu/app.html"
     }
   }
 }

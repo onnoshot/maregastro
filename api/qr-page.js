@@ -1,5 +1,5 @@
 // Mare Gastro - QR menu page, server-rendered for search engines and AI crawlers.
-// /qr/ (tr) and /qr/en/ (en) are rewritten here. The app template (qr/app.html) gets:
+// /menu/ (tr) and /menu/en/ (en) are rewritten here. The app template (qr/app.html) gets:
 //   - per-language title, description, canonical, hreflang, Open Graph
 //   - Restaurant + Menu (sections, items, TRY offers) + BreadcrumbList JSON-LD
 //   - the whole menu as plain semantic HTML inside <main> (crawlers that don't run JS see it)
@@ -10,7 +10,7 @@ import path from 'node:path';
 import { list } from '@vercel/blob';
 
 const SITE = 'https://maregastro.com';
-const URLS = { tr: SITE + '/qr/', en: SITE + '/qr/en/' };
+const URLS = { tr: SITE + '/menu/', en: SITE + '/menu/en/' };
 let TEMPLATE = null;
 
 const COPY = {
@@ -43,7 +43,7 @@ async function blobJson(p) {
   return r.ok ? r.json() : null;
 }
 function template() {
-  if (!TEMPLATE) TEMPLATE = fs.readFileSync(path.join(process.cwd(), 'qr', 'app.html'), 'utf8');
+  if (!TEMPLATE) TEMPLATE = fs.readFileSync(path.join(process.cwd(), 'menu', 'app.html'), 'utf8');
   return TEMPLATE;
 }
 const nm = (it, lang) => (lang === 'en' && it.name_en) || it.name;
