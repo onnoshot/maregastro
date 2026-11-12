@@ -12,6 +12,78 @@
       "permanent": true
     },
     {
+      "source": "/dijitalmenu/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ru"
+        }
+      ],
+      "destination": "/menu/ru/",
+      "permanent": true
+    },
+    {
+      "source": "/dijitalmenu/",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ru"
+        }
+      ],
+      "destination": "/menu/ru/",
+      "permanent": true
+    },
+    {
+      "source": "/dijitalmenu",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ru"
+        }
+      ],
+      "destination": "/menu/ru/",
+      "permanent": true
+    },
+    {
+      "source": "/dijitalmenu/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ar"
+        }
+      ],
+      "destination": "/menu/ar/",
+      "permanent": true
+    },
+    {
+      "source": "/dijitalmenu/",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ar"
+        }
+      ],
+      "destination": "/menu/ar/",
+      "permanent": true
+    },
+    {
+      "source": "/dijitalmenu",
+      "has": [
+        {
+          "type": "query",
+          "key": "lang",
+          "value": "ar"
+        }
+      ],
+      "destination": "/menu/ar/",
+      "permanent": true
+    },
+    {
       "source": "/dijitalmenu/",
       "has": [
         {
@@ -86,6 +158,16 @@
       "source": "/qr/:path(.*)",
       "destination": "/menu/:path",
       "permanent": true
+    },
+    {
+      "source": "/menu/ar",
+      "destination": "/menu/ar/",
+      "permanent": true
+    },
+    {
+      "source": "/menu/ru",
+      "destination": "/menu/ru/",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -96,6 +178,14 @@
     {
       "source": "/menu/en/",
       "destination": "/api/qr-page?lang=en"
+    },
+    {
+      "source": "/menu/ar/",
+      "destination": "/api/qr-page?lang=ar"
+    },
+    {
+      "source": "/menu/ru/",
+      "destination": "/api/qr-page?lang=ru"
     }
   ],
   "headers": [

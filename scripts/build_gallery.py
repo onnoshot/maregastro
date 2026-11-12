@@ -17,6 +17,7 @@ IMG = os.path.join(ROOT, "images")
 OUT = os.path.join(IMG, "g")
 SITE = "https://maregastro.com"
 PATHS = {"tr": "/fotograflar.html", "en": "/en/photos.html", "ar": "/ar/photos.html", "ru": "/ru/photos.html"}
+MENU_URL = {"tr": "/menu/", "en": "/menu/en/", "ar": "/menu/ar/", "ru": "/menu/ru/"}
 HOME = {"tr": "/tr/", "en": "/en/", "ar": "/ar/", "ru": "/ru/"}
 FAQ = {"tr": "/sss.html", "en": "/en/faq.html", "ar": "/ar/faq.html", "ru": "/ru/faq.html"}
 
@@ -243,7 +244,7 @@ def page(lang, venue, dishes, chef, bar):
 <div class="cta"><a class="btn btn-p" href="{HOME[lang]}#reservation">{t['rez']}</a><a class="btn btn-s" href="https://www.instagram.com/maregastro/" target="_blank" rel="noopener" onclick="trackEvent('instagram_click',{{event_label:'gallery_footer'}})">{t['ig']}</a></div>
 </main>
 <div class="lb" id="lb" role="dialog" aria-modal="true"><button type="button" class="x" aria-label="{t['close']}">×</button><button type="button" class="pv" aria-label="{t['prev']}">‹</button><img alt=""><button type="button" class="nx" aria-label="{t['next']}">›</button><p></p></div>
-<footer>© 2026 Mare Gastro · Didi Otel · Sapanca<br><a href="{HOME[lang]}#menu">Menu</a><a href="{FAQ[lang]}">FAQ</a><a href="https://www.instagram.com/maregastro/" target="_blank" rel="noopener">Instagram</a></footer>
+<footer>© 2026 Mare Gastro · Didi Otel · Sapanca<br><a href="{MENU_URL[lang]}">Menu</a><a href="{FAQ[lang]}">FAQ</a><a href="https://www.instagram.com/maregastro/" target="_blank" rel="noopener">Instagram</a></footer>
 <script>{JS}</script>
 </body>
 </html>

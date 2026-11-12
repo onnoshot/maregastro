@@ -225,7 +225,7 @@ for l in LANGS:
     out = out.replace('content="tr_TR"', 'content="%s"' % LOCALE[l])
     out = out.replace("'tr-TR'", "'%s'" % JSLOCALE[l])
     # dijital QR menü sitenin hangi dilinde açıldıysa o dilde başlasın (/menu/en/ en, diğerleri ?lang=)
-    out = out.replace('href="/menu/" target="_blank"', 'href="%s" target="_blank"' % ('/menu/en/' if l == 'en' else '/menu/?lang=%s' % l))
+    out = out.replace('href="/menu/" target="_blank"', 'href="%s" target="_blank"' % ('/menu/en/' if l == 'en' else '/menu/%s/' % l))
     # NOT: Menu şemasının "inLanguage" alanı kasıtlı olarak "tr" kalır —
     # yemek içerikleri (isim/açıklama) tüm site dillerinde SADECE Türkçe.
     # mobil dil linkleri (mobil menü açılışına ekle)

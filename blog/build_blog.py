@@ -32,7 +32,7 @@ MAPS   = "https://maps.google.com/?cid=7177941338358519695"
 OUT    = os.path.dirname(os.path.abspath(__file__))
 
 # internal homepage anchors
-MENU="%s/tr/#menu"%SITE; REZ="%s/tr/#reservation"%SITE; STORY="%s/tr/#story"%SITE; CHEF="%s/tr/#chef"%SITE; LOC="%s/tr/#contact"%SITE
+MENU="%s/menu/"%SITE; REZ="%s/tr/#reservation"%SITE; STORY="%s/tr/#story"%SITE; CHEF="%s/tr/#chef"%SITE; LOC="%s/tr/#contact"%SITE
 
 def L(url,txt): return '<a href="%s">%s</a>'%(url,txt)
 def post_url(slug): return "%s/blog/%s.html"%(SITE,slug)

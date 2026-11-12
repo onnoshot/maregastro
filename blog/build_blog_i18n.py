@@ -88,7 +88,7 @@ def bfig(img, alt, caption):
     return ('<figure class="bbody-fig"><img src="/images/%s" alt="%s" loading="lazy">'
             '<figcaption>%s</figcaption></figure>' % (img, html.escape(alt), html.escape(caption)))
 def strip_tags(s): return re.sub(r"<[^>]+>", "", s)
-def MENU_A(lang): return "%s/%s/#menu" % (SITE, lang)
+def MENU_A(lang): return "%s/menu/%s" % (SITE, "" if lang == "tr" else lang + "/")
 def REZ_A(lang): return "%s/%s/#reservation" % (SITE, lang)
 def STORY_A(lang): return "%s/%s/#story" % (SITE, lang)
 def CHEF_A(lang): return "%s/%s/#chef" % (SITE, lang)

@@ -536,7 +536,7 @@ var API_MENU='/api/menu', API_QR='/api/qr', IMG='/images/';
 var PREVIEW_ORIGINS=['https://panel.maregastro.com','https://mare-gastro-dashboard.vercel.app','http://localhost:4173','http://127.0.0.1:4173'];
 var params=new URLSearchParams(location.search);
 var SSR=null; try{var sd=document.getElementById('qrData'); if(sd)SSR=JSON.parse(sd.textContent)}catch(e){}
-var URL_LANG=(SSR&&SSR.lang)||(/^\/(menu|qr)\/en(\/|$)/.test(location.pathname)?'en':'tr');
+var URL_LANG=(SSR&&SSR.lang)||((location.pathname.match(/^\/(?:menu|qr)\/(en|ar|ru)(?:\/|$)/)||[])[1])||'tr';
 var IS_BOT=/bot|crawl|spider|slurp|google|bing|yandex|duckduck|gpt|claude|perplexity|facebookexternalhit|preview/i.test(navigator.userAgent||'');
 var PREVIEW=params.get('preview')==='1';
 var TABLE=(params.get('masa')||params.get('t')||'').trim().slice(0,24);
@@ -985,7 +985,7 @@ function openLang(){
 $('#langs').addEventListener('click',function(e){var b=e.target.closest('[data-l]');if(!b)return;track('qr_lang_'+b.dataset.l);setLang(b.dataset.l,true);hideSheet()});
 function setLang(l,save){
   lang=T[l]?l:'tr'; if(save)store('mareQrLang',lang);
-  if(save&&!PREVIEW&&(lang==='tr'||lang==='en')){var np=lang==='en'?'/menu/en/':'/menu/';setTimeout(function(){try{if(location.pathname!==np)history.replaceState(history.state,'',np+location.search)}catch(e){}},450)}
+  if(save&&!PREVIEW){var np=lang==='tr'?'/menu/':'/menu/'+lang+'/';setTimeout(function(){try{if(location.pathname!==np)history.replaceState(history.state,'',np+location.search)}catch(e){}},450)}
   document.documentElement.lang=lang; document.documentElement.dir=lang==='ar'?'rtl':'ltr';
   $('#langBtn').textContent=lang.toUpperCase();
   $$('#tabbar button').forEach(function(b){var k=b.dataset.t;if(k==='yz'){b.hidden=lang!=='tr';return}$('span',b).textContent=k==='home'?t('home'):k==='search'?t('search'):cl(k)});

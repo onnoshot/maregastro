@@ -1,5 +1,5 @@
 // Mare Gastro - QR menu page, server-rendered for search engines and AI crawlers.
-// /menu/ (tr) and /menu/en/ (en) are rewritten here. The app template (qr/app.html) gets:
+// /menu/ (tr), /menu/en/, /menu/ar/, /menu/ru/ are rewritten here. The app template (menu/app.html) gets:
 //   - per-language title, description, canonical, hreflang, Open Graph
 //   - Restaurant + Menu (sections, items, TRY offers) + BreadcrumbList JSON-LD
 //   - the whole menu as plain semantic HTML inside <main> (crawlers that don't run JS see it)
@@ -10,7 +10,8 @@ import path from 'node:path';
 import { list } from '@vercel/blob';
 
 const SITE = 'https://maregastro.com';
-const URLS = { tr: SITE + '/menu/', en: SITE + '/menu/en/' };
+const LANGS = ['tr', 'en', 'ar', 'ru'];
+const URLS = { tr: SITE + '/menu/', en: SITE + '/menu/en/', ar: SITE + '/menu/ar/', ru: SITE + '/menu/ru/' };
 let TEMPLATE = null;
 
 const COPY = {
@@ -26,9 +27,27 @@ const COPY = {
     h1: 'Menu', h1sr: 'Mare Gastro Sapanca menu and prices', home: 'Home', homeUrl: SITE + '/en/',
     menuName: 'Mare Gastro Menu', ogLocale: 'en_GB',
   },
+  ar: {
+    title: 'قائمة Mare Gastro والأسعار | مطعم في سابانجا',
+    desc: 'قائمة Mare Gastro بالأسعار الحالية: مطبخ إيجه والبحر المتوسط، مأكولات بحرية، أطباق رئيسية، حلويات، نبيذ وراكي وكوكتيلات. سابانجا، في حديقة فندق Didi Otel.',
+    h1: 'القائمة', h1sr: 'قائمة Mare Gastro سابانجا والأسعار', home: 'الرئيسية', homeUrl: SITE + '/ar/',
+    menuName: 'قائمة Mare Gastro', ogLocale: 'ar_AR',
+  },
+  ru: {
+    title: 'Меню и цены Mare Gastro | Ресторан в Сапандже',
+    desc: 'Меню Mare Gastro с актуальными ценами: эгейская и средиземноморская кухня, морепродукты, основные блюда, десерты, вино, раки и коктейли. Сапанджа, сад отеля Didi Otel.',
+    h1: 'Меню', h1sr: 'Меню и цены Mare Gastro в Сапандже', home: 'Главная', homeUrl: SITE + '/ru/',
+    menuName: 'Меню Mare Gastro', ogLocale: 'ru_RU',
+  },
 };
 const CAT_EN = { yemek: 'Food', icecek: 'Drinks', b: 'Starters', s: 'Salads', a: 'Small Plates', n: 'Main Courses', kahvalti: 'Breakfast', t: 'Desserts', c: 'Kids', extra: 'Extras', sarap: 'Wines', 'kokteyl-al': 'Cocktails', 'kokteyl-sz': 'Non-Alcoholic Cocktails', raki: 'Rakı', viski: 'Whisky', votka: 'Vodka', cin: 'Gin', tekila: 'Tequila', rom: 'Rum', likor: 'Liqueurs', bira: 'Beer', 'soguk-kahve': 'Iced Coffee', 'soguk-icecek': 'Cold Drinks', milkshake: 'Milkshakes', frozen: 'Frozen', sampanya: 'Champagne', atistirmalik: 'Snacks', havuz: 'Pool Menu', 'sicak-icecek': 'Hot Drinks' };
 const GROUP_TR = { yemek: 'Yemekler', icecek: 'İçecekler' };
+// category names per language (same strings as the app's CAT_I18N)
+const CAT_L = {
+  ar: {yemek:"الطعام",icecek:"المشروبات",b:"المقبلات",s:"السلطات",a:"أطباق صغيرة",n:"الأطباق الرئيسية",kahvalti:"الإفطار",t:"الحلويات",c:"الأطفال",extra:"إضافات",sarap:"النبيذ","kokteyl-al":"كوكتيلات","kokteyl-sz":"كوكتيلات بدون كحول",raki:"راكي",viski:"ويسكي",votka:"فودكا",cin:"جين",tekila:"تيكيلا",rom:"روم",likor:"ليكور",bira:"بيرة","soguk-kahve":"قهوة مثلجة","soguk-icecek":"مشروبات باردة",milkshake:"ميلك شيك",frozen:"فروزن","taze-sikim":"عصير طازج",sampanya:"الشمبانيا",atistirmalik:"وجبات خفيفة",havuz:"قائمة المسبح","sicak-icecek":"مشروبات ساخنة"},
+  ru: {yemek:"Еда",icecek:"Напитки",b:"Закуски",s:"Салаты",a:"Горячие закуски",n:"Основные блюда",kahvalti:"Завтрак",t:"Десерты",c:"Детское меню",extra:"Дополнения",sarap:"Вина","kokteyl-al":"Коктейли","kokteyl-sz":"Безалкогольные коктейли",raki:"Раки",viski:"Виски",votka:"Водка",cin:"Джин",tekila:"Текила",rom:"Ром",likor:"Ликёры",bira:"Пиво","soguk-kahve":"Холодный кофе","soguk-icecek":"Холодные напитки",milkshake:"Милкшейки",frozen:"Фрозен","taze-sikim":"Свежевыжатые соки",sampanya:"Шампанское",atistirmalik:"Снэки",havuz:"Меню у бассейна","sicak-icecek":"Горячие напитки"},
+};
+const CUISINE = { tr: ['Ege', 'Akdeniz', 'Deniz Ürünleri', 'Fine Dining'], en: ['Aegean', 'Mediterranean', 'Seafood', 'Fine Dining'], ar: ['مطبخ إيجه', 'مطبخ البحر المتوسط', 'مأكولات بحرية', 'فاين داينينغ'], ru: ['Эгейская кухня', 'Средиземноморская кухня', 'Морепродукты', 'Высокая кухня'] };
 
 const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const tidy = (s) => String(s || '').replace(/\s*,\s*/g, ', ').replace(/\s{2,}/g, ' ').replace(/[\s,;]+$/, '').trim();
@@ -46,9 +65,9 @@ function template() {
   if (!TEMPLATE) TEMPLATE = fs.readFileSync(path.join(process.cwd(), 'menu', 'app.html'), 'utf8');
   return TEMPLATE;
 }
-const nm = (it, lang) => (lang === 'en' && it.name_en) || it.name;
-const ds = (it, lang) => tidy((lang === 'en' && it.desc_en) || it.desc);
-const catName = (c, lang) => (lang === 'en' ? CAT_EN[c.id] : c.name_tr) || c.name_tr || c.id;
+const nm = (it, lang) => (lang !== 'tr' && it['name_' + lang]) || (lang !== 'tr' && it.name_en) || it.name;
+const ds = (it, lang) => tidy(lang === 'tr' ? it.desc : (it['desc_' + lang] || it.desc_en || (lang === 'en' ? it.desc : '')));
+const catName = (c, lang) => (lang === 'en' ? CAT_EN[c.id] : lang === 'tr' ? c.name_tr : CAT_L[lang][c.id]) || c.name_tr || c.id;
 
 function schema(menu, lang) {
   const C = COPY[lang];
@@ -74,9 +93,9 @@ function schema(menu, lang) {
       '@type': 'Restaurant',
       '@id': SITE + '/#restaurant',
       name: 'Mare Gastro',
-      url: lang === 'en' ? SITE + '/en/' : SITE + '/tr/',
-      image: SITE + '/images/og-image.jpg',
-      servesCuisine: lang === 'en' ? ['Aegean', 'Mediterranean', 'Seafood', 'Fine Dining'] : ['Ege', 'Akdeniz', 'Deniz Ürünleri', 'Fine Dining'],
+      url: SITE + '/' + lang + '/',
+      image: SITE + '/images/og-mare-mekan.jpg',
+      servesCuisine: CUISINE[lang],
       priceRange: '$$$',
       telephone: '+905323540888',
       email: 'info@maregastro.com',
@@ -115,7 +134,7 @@ function menuHtml(menu, lang) {
   const C = COPY[lang];
   let h = '<section class="sec" id="s-menu-ssr"><div class="sh"><div><div class="eb">Mare Gastro</div><h1 class="st">' + esc(C.h1) + '<span class="sr"> · ' + esc(C.h1sr) + '</span></h1></div></div>';
   menu.groups.forEach((g) => {
-    h += '<h2 class="sr">' + esc(lang === 'en' ? CAT_EN[g.id] : GROUP_TR[g.id] || g.id) + '</h2>';
+    h += '<h2 class="sr">' + esc(lang === 'en' ? CAT_EN[g.id] : lang === 'tr' ? GROUP_TR[g.id] : CAT_L[lang][g.id] || g.id) + '</h2>';
     menu.categories.filter((c) => c.group === g.id).forEach((c) => {
       const items = menu.items.filter((it) => it.cat === c.id);
       if (!items.length) return;
@@ -140,6 +159,8 @@ function head(lang, menu) {
     '<link rel="canonical" href="' + URLS[lang] + '">',
     '<link rel="alternate" hreflang="tr" href="' + URLS.tr + '">',
     '<link rel="alternate" hreflang="en" href="' + URLS.en + '">',
+    '<link rel="alternate" hreflang="ar" href="' + URLS.ar + '">',
+    '<link rel="alternate" hreflang="ru" href="' + URLS.ru + '">',
     '<link rel="alternate" hreflang="x-default" href="' + URLS.tr + '">',
     '<meta property="og:type" content="website">',
     '<meta property="og:site_name" content="Mare Gastro">',
@@ -154,13 +175,13 @@ function head(lang, menu) {
 }
 
 export default async function handler(req, res) {
-  const lang = req.query.lang === 'en' ? 'en' : 'tr';
+  const lang = LANGS.includes(req.query.lang) ? req.query.lang : 'tr';
   let html = template();
   try {
     const [menu, cfg] = await Promise.all([blobJson('menu/menu-data.json'), blobJson('menu/qr-config.json').catch(() => null)]);
     if (menu && Array.isArray(menu.items)) {
       html = html
-        .replace('<html lang="tr">', '<html lang="' + lang + '">')
+        .replace('<html lang="tr">', '<html lang="' + lang + '"' + (lang === 'ar' ? ' dir="rtl"' : '') + '>')
         .replace(/<title>[\s\S]*?<\/title>\s*/, '')
         .replace(/<meta name="description"[^>]*>\s*/, '')
         .replace(/<meta name="robots"[^>]*>\s*/, '')
