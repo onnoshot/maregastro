@@ -29,6 +29,8 @@ def purl(slug, lang="tr"):
 
 
 def anchor(lang, a):
+    if a == "menu":  # 2026-11-12: menu links go to the live menu, not the home-page section
+        return "%s/menu/%s" % (SITE, "" if lang == "tr" else lang + "/")
     return "%s/%s/#%s" % (SITE, lang, a)
 
 
@@ -226,9 +228,9 @@ REFRESH_TR = [
   ]),
  ],
  "faq": [
-  ("Sapanca'da fine dining kişi başı ne kadar?", "Tutar seçilen tabaklara, içeceklere ve kişi sayısına göre değişir. Mare Gastro'da à la carte menü var; güncel tabak fiyatları maregastro.com/dijitalmenu adresindeki dijital menüde yer alıyor."),
+  ("Sapanca'da fine dining kişi başı ne kadar?", "Tutar seçilen tabaklara, içeceklere ve kişi sayısına göre değişir. Mare Gastro'da à la carte menü var; güncel tabak fiyatları maregastro.com/menu adresindeki dijital menüde yer alıyor."),
   ("Mare Gastro'da set menü var mı?", "Hayır. Mare Gastro'da sabit bir set menü yok; başlangıç, ara sıcak, ana yemek ve tatlılar à la carte olarak seçiliyor."),
-  ("Mare Gastro'nun güncel fiyatlarını nereden görebilirim?", "Ürün bazında güncel fiyatlar Mare Gastro'nun dijital menüsünde (maregastro.com/dijitalmenu) listeleniyor."),
+  ("Mare Gastro'nun güncel fiyatlarını nereden görebilirim?", "Ürün bazında güncel fiyatlar Mare Gastro'nun dijital menüsünde (maregastro.com/menu) listeleniyor."),
   ("İçecekler fiyata dahil mi?", "Hayır. Şarap, rakı, kokteyl ve diğer içecekler menüden ayrıca seçilir ve ayrıca hesaplanır."),
   ("Kuver ücreti var mı?", "Kuver ve servis detayları rezervasyon sırasında netleştirilir; ekip tüm sorularınızı yanıtlar."),
   ("Fine dining fiyatını en çok ne etkiler?", "En belirleyici unsur tabak seçimidir; deniz ürünleri ve kırmızı et ağırlıklı tabaklar ile şarap tercihi hesabı en çok etkileyen kalemlerdir."),
@@ -269,7 +271,7 @@ REFRESH_TR = [
   ]),
  ],
  "faq": [
-  ("Sapanca'da doğum günü kutlaması ne kadar tutar?", "Kişi sayısına, seçilen tabaklara ve içeceklere göre değişir. Mare Gastro'da à la carte menü var; güncel tabak fiyatları maregastro.com/dijitalmenu adresindeki dijital menüde yer alıyor."),
+  ("Sapanca'da doğum günü kutlaması ne kadar tutar?", "Kişi sayısına, seçilen tabaklara ve içeceklere göre değişir. Mare Gastro'da à la carte menü var; güncel tabak fiyatları maregastro.com/menu adresindeki dijital menüde yer alıyor."),
   ("Mare Gastro'da doğum günü paketi var mı?", "Hayır. Sabit bir paket yerine à la carte menüden seçim yapılıyor; pasta ve süsleme talepleri rezervasyon sırasında ayrıca planlanıyor."),
   ("Pasta ve süsleme fiyata dahil mi?", "Hayır, pasta ve süsleme talepleri rezervasyon sırasında ayrıca değerlendirilir ve netleştirilir."),
   ("İçecekler fiyata dahil mi?", "Hayır. İçecekler menüden ayrıca seçilir ve ayrıca hesaplanır."),

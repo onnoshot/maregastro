@@ -54,6 +54,7 @@ CATS = {
  "mevsim":{"en":"Season","ar":"الموسم","ru":"Сезон"},
  "raki":{"en":"Rakı & Fish","ar":"راكي وسمك","ru":"Раки и рыба"},
  "gece":{"en":"Open Late","ar":"مفتوح ليلًا","ru":"Открыто допоздна"},
+ "date":{"en":"Date Night","ar":"موعد غرامي","ru":"Свидание"},
 }
 
 NAV_LABELS = {
@@ -255,6 +256,12 @@ PAGE = """<!DOCTYPE html>
 </html>
 """
 
+_TR_POST_RE = re.compile(r'href="https://maregastro\.com/blog/([a-z0-9-]+)\.html"')
+def localize_links(h, lang):
+    """Body links are built at import time, before SLUGS is known, so they point at the Turkish post.
+    Re-point every in-text link to the same-language translation when it exists (2026-11-12)."""
+    return _TR_POST_RE.sub(lambda m: 'href="%s/%s/blog/%s.html"' % (SITE, lang, m.group(1)) if m.group(1) in SLUGS else m.group(0), h)
+
 def build_post(lang, slug, p, posts_by_slug):
     url = post_url(slug, lang)
     img = "%s/images/%s" % (SITE, p["img"])
@@ -268,8 +275,8 @@ def build_post(lang, slug, p, posts_by_slug):
       url=url, img=img, imgfile=p["img"], alt=html.escape(p["alt"]),
       date=p["date"], date_tr=(UPDATED_LABEL[lang] + " " + p["updated"]) if p.get("updated") else p["date"], read=p["read"], cat=CATS[p["cat"]][lang],
       site=SITE, lang=lang, home=NAV_LABELS[lang]["breadcrumb_home"], blogword=NAV_LABELS[lang]["blog"],
-      h1=p["h1"], lead=p["lead"],
-      body=body_html(p["body"]), faq=faq_accordion(lang, p["faq"]), cta=cta_html(lang),
+      h1=p["h1"], lead=localize_links(p["lead"], lang),
+      body=localize_links(body_html(p["body"]), lang), faq=localize_links(faq_accordion(lang, p["faq"]), lang), cta=cta_html(lang),
       related=related_html(lang, p["rel"], posts_by_slug), footer=footer_html(lang), nav=nav_html(lang),
       hreflang="\n".join(hreflang_links),
       schema=schema_graph(lang, p, slug), gtm_head=GTM_HEAD, gtm_body=GTM_BODY, locale=LOCALE[lang])
@@ -416,6 +423,16 @@ REL_MAP = {
  "mare-gastro-hikayesi": ["sef-dogan-anapa-kimdir","sef-dogan-anapa","didi-otel-restoran"],
  "mare-gastro-dijital-donusum-hikayesi": ["mare-gastro-hikayesi","sef-dogan-anapa-kimdir","didi-otel-restoran"],
  "sapanca-gun-batimi-restoran": ["sapanca-romantik-aksam-yemegi","sapanca-gol-manzarali-kahvalti","sapancada-ne-yenir"],
+ # 2026-11-12: translated in posts_i18n_extra.py
+ "ilk-bulusma-icin-mekan-onerisi": ["istanbula-yakin-date-mekani","sevgiliyle-gidilecek-mekanlar-sapanca","sef-dogan-anapa-kimdir"],
+ "istanbula-yakin-date-mekani": ["ilk-bulusma-icin-mekan-onerisi","sevgiliyle-gidilecek-mekanlar-sapanca","istanbula-yakin-luks-restoran"],
+ "sevgiliyle-gidilecek-mekanlar-sapanca": ["istanbula-yakin-date-mekani","sapanca-sevgiliyle-yemek-ve-konaklama","sapanca-romantik-aksam-yemegi"],
+ "sapanca-sevgiliyle-yemek-ve-konaklama": ["didi-otel-restoran","sevgiliyle-gidilecek-mekanlar-sapanca","sapanca-hafta-sonu-rotasi"],
+ "sapanca-date-gecesi-acik-kapali-mekan": ["istanbula-yakin-date-mekani","sapanca-kis-restoran","sapanca-yazin-acik-hava-restoran"],
+ "sapanca-alkollu-restoran": ["sapanca-raki-balik","sapanca-canli-muzik-mekanlari","sapanca-deniz-urunleri"],
+ "sapanca-canli-muzik-mekanlari": ["sapanca-alkollu-restoran","sapanca-gece-acik-restoran","sapanca-raki-balik"],
+ "mare-gastro-imza-tabaklar-nasil-hazirlaniyor": ["sef-dogan-anapa-kimdir","sef-dogan-anapa","sapanca-deniz-urunleri"],
+ "mare-gastro-google-yorumlari": ["sapanca-yildonumu-icin-en-iyi-mekan","sapanca-en-iyi-dogum-gunu-mekanlari","sef-dogan-anapa-kimdir"],
 }
 
 def run(posts_by_slug):

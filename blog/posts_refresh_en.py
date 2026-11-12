@@ -166,9 +166,9 @@ REFRESH = {
   ]),
  ],
  "faq": [
-  ("How much does fine dining cost per person in Sapanca?", "It depends on the dishes, drinks and number of guests. Mare Gastro has an à la carte menu; current dish prices are on its digital menu at maregastro.com/dijitalmenu."),
+  ("How much does fine dining cost per person in Sapanca?", "It depends on the dishes, drinks and number of guests. Mare Gastro has an à la carte menu; current dish prices are on its digital menu at maregastro.com/menu/en."),
   ("Does Mare Gastro have a set menu?", "No. There is no fixed set menu; starters, warm small plates, mains and desserts are ordered à la carte."),
-  ("Where can I see Mare Gastro's current prices?", "Current dish-by-dish prices are listed on Mare Gastro's digital menu (maregastro.com/dijitalmenu)."),
+  ("Where can I see Mare Gastro's current prices?", "Current dish-by-dish prices are listed on Mare Gastro's digital menu (maregastro.com/menu/en)."),
   ("Are drinks included in the price?", "No. Wine, rakı, cocktails and other drinks are ordered and charged separately."),
   ("Is there a cover charge?", "Cover and service details are confirmed when you book; the team will answer any questions."),
   ("What affects a fine dining bill the most?", "Dish choice is the biggest factor; seafood and red meat mains and your wine choice affect the total most."),
@@ -208,7 +208,7 @@ REFRESH = {
   ]),
  ],
  "faq": [
-  ("How much does a birthday dinner cost in Sapanca?", "It depends on the number of guests, dishes and drinks. Mare Gastro has an à la carte menu; current dish prices are on its digital menu at maregastro.com/dijitalmenu."),
+  ("How much does a birthday dinner cost in Sapanca?", "It depends on the number of guests, dishes and drinks. Mare Gastro has an à la carte menu; current dish prices are on its digital menu at maregastro.com/menu/en."),
   ("Does Mare Gastro offer a birthday package?", "No. Instead of a fixed package you order à la carte; cake and decoration requests are planned separately when booking."),
   ("Are cake and decoration included in the price?", "No, cake and decoration requests are discussed and confirmed separately when you book."),
   ("Are drinks included?", "No. Drinks are ordered from the menu and charged separately."),
