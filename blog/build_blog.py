@@ -89,7 +89,7 @@ POSTS = [
 {
  "slug":"sapanca-luks-restoran",
  "cat":"luks","date":"2026-05-12","read":"6 dk",
- "img":"patates-terin2.jpg","alt":"Mare Gastro fine dining tabağı — Sapanca lüks restoran",
+ "img":"mare-k-ic-salon-gece-avize-palmiye.jpg","alt":"Mare Gastro iç salonu gece, sıcak ışık ve palmiyeler — Sapanca lüks restoran",
  "h1":"Sapanca'da Lüks Restoran: <em>Mare Gastro</em> ile Fine Dining",
  "title":"Sapanca'da Lüks Restoran | Mare Gastro Fine Dining",
  "desc":"Sapanca'da lüks restoran mı arıyorsunuz? Didi Otel bahçesinde, gölün hemen yanında fine dining deneyimi sunan Mare Gastro'yu keşfedin. Menü ve rezervasyon.",
@@ -109,7 +109,7 @@ POSTS = [
    ["Mare Gastro'nun ışığından masasına kadar her detayı, Didi Otel bünyesinde Kadir Çiçek tarafından tasarlandı, planlandı ve büyük bir titizlikle hayata geçirildi. Mutfağın başında ise sinema geçmişini lezzete dönüştüren Yönetici Şef Doğan Anapa var. %s daha yakından tanıyabilirsiniz."%L(STORY,"Hikâyemizi")]),
  ],
  "faq":[
-  ("Sapanca'da lüks restoran nerede?","Mare Gastro, Sapanca Gölü kıyısındaki Didi Otel bahçesinde yer alır. Gölün hemen yanında olmasına karşı fine dining deneyimi sunan, doğayla iç içe lüks bir restorandır."),
+  ("Sapanca'da lüks restoran nerede?","Mare Gastro, Sapanca Gölü'nün hemen yanındaki Didi Otel bahçesinde yer alır. Gölün hemen yanında olmasına karşı fine dining deneyimi sunan, doğayla iç içe lüks bir restorandır."),
   ("Mare Gastro hangi günler açık?","Mare Gastro Salı'dan Pazar'a 09:00–00:00 arası açıktır. Pazartesi kapalıdır."),
   ("Mare Gastro'da rezervasyon nasıl yapılır?","Web sitesindeki üç adımlı rezervasyon formundan tarih, saat ve kişi sayısını seçerek WhatsApp üzerinden hızlıca rezervasyon oluşturabilirsiniz."),
   ("Mare Gastro İstanbul'a uzak mı?","Sapanca, İstanbul'a yaklaşık 1,5 saat mesafededir; bu da Mare Gastro'yu hafta sonu gurme kaçamakları için ideal kılar."),
@@ -119,15 +119,15 @@ POSTS = [
 {
  "slug":"sapanca-deniz-urunleri",
  "cat":"deniz","date":"2026-05-16","read":"6 dk",
- "img":"balik-izgara.jpg","alt":"Izgara balık ve deniz ürünleri — Sapanca deniz yemekleri",
+ "img":"mare-k-gece-masa-citir-somon-kadeh.jpg","alt":"Mare Gastro'da akşam masası, çıtır somon — Sapanca deniz ürünleri",
  "h1":"Sapanca'da <em>Deniz Ürünleri</em>: Taze Lezzetin Adresi",
  "title":"Sapanca Deniz Ürünleri & Balık | Mare Gastro",
- "desc":"Sapanca'da deniz ürünleri ve taze balık deneyimi: ahtapot, kalamar, karides ve günün balığı. Göl kıyısında, Didi Otel bahçesinde Mare Gastro'da.",
+ "desc":"Sapanca'da deniz ürünleri ve taze balık deneyimi: ahtapot, kalamar, karides ve günün balığı. Gölün hemen yanında, Didi Otel bahçesinde Mare Gastro'da.",
  "kw":"sapanca deniz ürünleri, sapanca deniz yemekleri, sapanca balık restoran, sapanca deniz mahsulleri",
  "lead":"Sapanca'da deniz ürünleri denince akla taze, sade ve özenli tabaklar gelir. Mare Gastro, Ege ve Akdeniz'in deniz mahsullerini göl kıyısının huzuruyla buluşturuyor.",
  "body":[
   ("Sapanca'da Deniz Ürünleri Neden Bu Kadar Sevilir?",
-   ["Göl kıyısında, doğanın içinde yenen bir deniz ürünleri sofrası, Sapanca deneyiminin vazgeçilmezidir. Serin bir akşamda, taze bir kalamar tava ya da ızgara ahtapotun keyfi; manzarayla birleştiğinde unutulmaz bir anıya dönüşür.",
+   ["Gölün hemen yanında, doğanın içinde yenen bir deniz ürünleri sofrası, Sapanca deneyiminin vazgeçilmezidir. Serin bir akşamda, taze bir kalamar tava ya da ızgara ahtapotun keyfi; manzarayla birleştiğinde unutulmaz bir anıya dönüşür.",
     "<strong>Sapanca deniz ürünleri</strong> arayanlar için Mare Gastro, malzemenin tazeliğini ve hazırlanışındaki inceliği bir arada sunar."]),
   ("Mare Gastro'nun İmza Deniz Lezzetleri",
    ["Mare Gastro'nun deniz ürünleri seçkisi, sadeliğin gücüne inanır. Öne çıkan tabaklardan bazıları:",
@@ -140,7 +140,7 @@ POSTS = [
    ["Sapanca Gölü'nün hemen yanında, Didi Otel'in bahçesinde yenen bir deniz ürünleri sofrası; doğa, lezzet ve huzurun nadir buluşmasıdır. %s konumumuza göz atabilirsiniz."%L(LOC,"Bizi bulmak için")]),
  ],
  "faq":[
-  ("Sapanca'da en iyi deniz ürünleri nerede yenir?","Mare Gastro, Sapanca Gölü kıyısındaki Didi Otel bahçesinde taze deniz ürünleri ve fine dining sunar. Ahtapot ızgara, jumbo karides ve günün balığı öne çıkan lezzetlerdir."),
+  ("Sapanca'da en iyi deniz ürünleri nerede yenir?","Mare Gastro, Sapanca Gölü'nün hemen yanındaki Didi Otel bahçesinde taze deniz ürünleri ve fine dining sunar. Ahtapot ızgara, jumbo karides ve günün balığı öne çıkan lezzetlerdir."),
   ("Mare Gastro'da günlük taze balık var mı?","Evet. Menü mevsime ve günün en taze ürününe göre değişir; \"günün ızgara balığı\" her ziyarette farklılık gösterebilir."),
   ("Deniz ürünleri menüsünü nereden görebilirim?","Web sitemizdeki menü bölümünden başlangıçlar, ara sıcaklar ve ana yemekler dahil tüm deniz ürünlerini inceleyebilirsiniz."),
   ("Rezervasyon gerekli mi?","Özellikle hafta sonları için rezervasyon öneririz. Üç adımlı form ile WhatsApp üzerinden kolayca rezervasyon yapabilirsiniz."),
@@ -150,7 +150,7 @@ POSTS = [
 {
  "slug":"sapanca-fine-dining-nedir",
  "cat":"finedining","date":"2026-05-21","read":"7 dk",
- "img":"dana-carpaccio.jpg","alt":"Dana carpaccio — Sapanca fine dining gurme tabak",
+ "img":"mare-k-ic-salon-gece-tablo-nis.jpg","alt":"Mare Gastro iç salonu, kurulu fine dining masaları — Sapanca",
  "h1":"Sapanca <em>Fine Dining</em>: Gurme Yemek Kültürü Rehberi",
  "title":"Fine Dining Nedir? Sapanca'da Gurme Yemek | Mare Gastro",
  "desc":"Fine dining nedir, Sapanca'da gurme bir akşam yemeği nasıl olur? Mare Gastro ile fine dining kültürünü, menü mantığını ve rezervasyon detaylarını keşfedin.",
@@ -171,7 +171,7 @@ POSTS = [
  ],
  "faq":[
   ("Fine dining ne demek?","Fine dining; üst düzey malzeme, ince sunum, kusursuz hizmet ve özenli bir atmosferin bir araya geldiği gurme yemek deneyimidir. Amaç, öğünü unutulmaz bir anıya dönüştürmektir."),
-  ("Sapanca'da fine dining restoran var mı?","Evet. Mare Gastro, Sapanca Gölü kıyısındaki Didi Otel bahçesinde Ege ve Akdeniz mutfağıyla fine dining deneyimi sunar."),
+  ("Sapanca'da fine dining restoran var mı?","Evet. Mare Gastro, Sapanca Gölü'nün hemen yanındaki Didi Otel bahçesinde Ege ve Akdeniz mutfağıyla fine dining deneyimi sunar."),
   ("Fine dining için kıyafet kuralı var mı?","Mare Gastro rahat-şık bir atmosfere sahiptir. Özel günler için zarif bir tercih deneyiminizi tamamlar, ancak katı bir kıyafet zorunluluğu yoktur."),
   ("Fine dining akşamı için en iyi saat hangisi?","Gün batımı saatleri Sapanca'da en büyülü andır; bu nedenle akşamüstü ve akşam rezervasyonları önerilir."),
  ],
@@ -200,7 +200,7 @@ POSTS = [
  "faq":[
   ("Mare Gastro'nun şefi kim?","Mare Gastro'nun Yönetici Şefi Doğan Anapa'dır. Sinema geçmişini mutfağa taşıyan şef, Ege ve Akdeniz lezzetlerini fine dining inceliğiyle sunar."),
   ("Şef menüsü var mı?","Menü, şefin imzasıyla ve mevsimin malzemesine göre kurgulanır. Günün en taze ürünleri doğrultusunda özel tabaklar sunulabilir."),
-  ("Mare Gastro nerede?","Sapanca Gölü kıyısındaki Didi Otel bahçesinde, Sakarya'da yer alır."),
+  ("Mare Gastro nerede?","Sapanca Gölü'nün hemen yanındaki Didi Otel bahçesinde, Sakarya'da yer alır."),
   ("Şef imzalı bir akşam için rezervasyon nasıl yapılır?","Web sitesindeki üç adımlı form ile tarih, saat ve kişi sayısını seçip WhatsApp üzerinden rezervasyon oluşturabilirsiniz."),
  ],
  "rel":["sapanca-fine-dining-nedir","sef-dogan-anapa-kimdir","sapanca-deniz-urunleri"],
@@ -208,7 +208,7 @@ POSTS = [
 {
  "slug":"sapanca-romantik-aksam-yemegi",
  "cat":"romantik","date":"2026-05-29","read":"6 dk",
- "img":"levrek-marin2.jpg","alt":"Zarif bir tabak — Sapanca romantik akşam yemeği",
+ "img":"mare-k-ic-salon-gece-tas-duvar.jpg","alt":"Mare Gastro'nun taş duvarlı salonu akşam — Sapanca romantik akşam yemeği",
  "h1":"Sapanca'da <em>Romantik Akşam Yemeği</em> için En İyi Mekân",
  "title":"Sapanca Romantik Akşam Yemeği | Mare Gastro Fine Dining",
  "desc":"Yıl dönümü, evlilik teklifi ya da özel bir akşam için Sapanca'da romantik akşam yemeği: gölün hemen yanındaki Mare Gastro'da unutulmaz bir deneyim.",
@@ -224,12 +224,12 @@ POSTS = [
   ("İki Kişilik Bir Lezzet Yolculuğu",
    ["Hafif başlangıçlar, taze deniz ürünleri ve imza ana yemeklerle ilerleyen bir akşam; ikili bir gastronomi yolculuğuna dönüşür. %s birlikte keşfedeceğiniz tatları seçebilirsiniz."%L(MENU,"Menümüzden")]),
   ("Konaklamayı da Düşünün",
-   ["Akşamı uzatmak isteyenler için Mare Gastro, Didi Otel bünyesinde yer alır; göl kenarında bir gece konaklaması, romantik kaçamağı tamamlar. Rezervasyon formunda konaklama tercihinizi de belirtebilirsiniz."]),
+   ["Akşamı uzatmak isteyenler için Mare Gastro, Didi Otel bünyesinde yer alır; gölün hemen yanında bir gece konaklaması, romantik kaçamağı tamamlar. Rezervasyon formunda konaklama tercihinizi de belirtebilirsiniz."]),
  ],
  "faq":[
-  ("Sapanca'da romantik akşam yemeği nerede yenir?","Mare Gastro, Sapanca Gölü kıyısındaki Didi Otel bahçesinde gölün hemen yanındaki, romantik bir fine dining deneyimi sunar; özellikle gün batımı saatleri idealdir."),
+  ("Sapanca'da romantik akşam yemeği nerede yenir?","Mare Gastro, Sapanca Gölü'nün hemen yanındaki Didi Otel bahçesinde gölün hemen yanındaki, romantik bir fine dining deneyimi sunar; özellikle gün batımı saatleri idealdir."),
   ("Evlilik teklifi için uygun bir mekân mı?","Evet. Atmosferi, konumu ve özenli sunumlarıyla Mare Gastro, evlilik teklifi ve özel kutlamalar için tercih edilen bir mekândır. Özel düzenlemeleri rezervasyonda paylaşabilirsiniz."),
-  ("Konaklama imkânı var mı?","Mare Gastro Didi Otel bünyesindedir; göl kenarında konaklayarak akşamınızı uzatabilirsiniz. Rezervasyon formunda konaklama tercihinizi belirtebilirsiniz."),
+  ("Konaklama imkânı var mı?","Mare Gastro Didi Otel bünyesindedir; gölün hemen yanında konaklayarak akşamınızı uzatabilirsiniz. Rezervasyon formunda konaklama tercihinizi belirtebilirsiniz."),
   ("Romantik bir akşam için en iyi saat hangisi?","Gün batımı saatleri Sapanca'da en büyülü andır ve romantik akşam yemekleri için en çok önerilen zamandır."),
  ],
  "rel":["sevgiliyle-gidilecek-mekanlar-sapanca","didi-otel-restoran","sapanca-fine-dining-nedir"],
@@ -246,7 +246,7 @@ POSTS = [
  "body":[
   ("Sapanca'da Lezzet Coğrafyası",
    ["Sapanca, gölün hemen yanında olması ve doğasıyla yalnızca dinlenmek için değil, iyi yemek için de gidilen bir yerdir. Bölgede deniz ürünlerinden ızgaralara, zeytinyağlılardan tatlılara uzanan zengin bir yelpaze vardır.",
-    "Eğer aradığınız sıradan bir öğün değil de bir <strong>deneyim</strong>se, %s göl kıyısındaki fine dining adresidir."%L(SITE,"Mare Gastro")]),
+    "Eğer aradığınız sıradan bir öğün değil de bir <strong>deneyim</strong>se, %s gölün hemen yanındaki fine dining adresidir."%L(SITE,"Mare Gastro")]),
   ("Mutlaka Denenmesi Gereken Tatlar",
    ["Sapanca'da gurme bir gün için öneri listesi:",
     "<ul><li><strong>Taze deniz ürünleri</strong> — ahtapot ızgara, kalamar tava, jumbo karides</li><li><strong>Zeytinyağlılar</strong> — köz patlıcan, zeytinyağlı enginar, semizotu</li><li><strong>Ana yemekler</strong> — çıtır somon, günün ızgara balığı, biber kremalı bonfile</li><li><strong>İmza tatlılar</strong> — yanık cheesecake ve mevsimin sürprizleri</li></ul>",
@@ -267,7 +267,7 @@ POSTS = [
 {
  "slug":"didi-otel-restoran",
  "cat":"didi","date":"2026-06-04","read":"5 dk",
- "img":"header.jpg","alt":"Didi Otel bahçesi ve Mare Gastro — Sapanca",
+ "img":"mare-k-didi-otel-havuz-cephe.jpg","alt":"Didi Otel ve havuzu — Mare Gastro'nun bulunduğu otel, Sapanca",
  "h1":"<em>Didi Otel</em> Bahçesinde Gurme Deneyim: Mare Gastro",
  "title":"Didi Otel Restoran | Sapanca Mare Gastro Fine Dining",
  "desc":"Sapanca Didi Otel bünyesindeki Mare Gastro, gölün hemen yanındaki bahçede fine dining sunar. Didi Otel restoran deneyimi, konaklama ve rezervasyon detayları.",
@@ -280,7 +280,7 @@ POSTS = [
   ("Bahçede Bir Akşam: Manzara ve Lezzet",
    ["Palmiyeler, çamlar ve gölün ışığı eşliğinde kurulan bir sofra; Didi Otel bahçesini olağanüstü bir yemek mekânına dönüştürür. Ege ve Akdeniz'in saf lezzetleri, bu doğal sahnede ayrı bir anlam kazanır. %s inceleyebilirsiniz."%L(MENU,"Menüyü")]),
   ("Konakla, Dinlen, Tadını Çıkar",
-   ["Didi Otel'de konaklayan misafirler için Mare Gastro, akşamı tamamlayan kusursuz bir duraktır. Göl kenarında bir gece, gurme bir akşam yemeğiyle birleşince Sapanca kaçamağı eksiksiz olur. Rezervasyon formunda konaklama tercihinizi de belirtebilirsiniz."]),
+   ["Didi Otel'de konaklayan misafirler için Mare Gastro, akşamı tamamlayan kusursuz bir duraktır. Gölün hemen yanında bir gece, gurme bir akşam yemeğiyle birleşince Sapanca kaçamağı eksiksiz olur. Rezervasyon formunda konaklama tercihinizi de belirtebilirsiniz."]),
  ],
  "faq":[
   ("Didi Otel'in restoranı hangisi?","Didi Otel bahçesindeki fine dining restoranı Mare Gastro'dur. Gölün hemen yanında olmasına karşı Ege ve Akdeniz mutfağı sunar."),
@@ -293,7 +293,7 @@ POSTS = [
 {
  "slug":"istanbula-yakin-luks-restoran",
  "cat":"kacamak","date":"2026-06-05","read":"6 dk",
- "img":"bonfile2.jpg","alt":"Biber kremalı bonfile — İstanbul'a yakın lüks restoran Sapanca",
+ "img":"mare-k-ic-salon-gece-cam-cephe.jpg","alt":"Mare Gastro'nun cam cepheli iç salonu akşam — İstanbul'a yakın lüks restoran",
  "h1":"İstanbul'a Yakın <em>Lüks Gastronomi</em> Kaçamağı: Sapanca",
  "title":"İstanbul'a Yakın Lüks Restoran | Sapanca Mare Gastro",
  "desc":"İstanbul'a yakın lüks bir restoran kaçamağı: yaklaşık 1,5 saat mesafedeki Sapanca'da, Didi Otel bahçesinde Mare Gastro ile fine dining. Plan ve rezervasyon.",
@@ -315,14 +315,14 @@ POSTS = [
   ("İstanbul'a yakın lüks bir restoran nerede?","Sapanca, İstanbul'a yaklaşık 1,5 saat mesafededir. Didi Otel bahçesindeki Mare Gastro, gölün hemen yanındaki fine dining ile şehre yakın lüks bir akşam yemeği sunar."),
   ("Sapanca İstanbul'a kaç saat?","Trafik durumuna göre yaklaşık 1,5 saat. Bu da Sapanca'yı hafta sonu kaçamakları için ideal kılar."),
   ("Tek günde gidip dönülür mü?","Evet. Sapanca tek günlük bir kaçamağa uygundur; gündüz doğa, akşam Mare Gastro'da gurme bir sofra ile keyifli bir gün geçirilebilir."),
-  ("Konaklamalı bir plan mümkün mü?","Mare Gastro Didi Otel bünyesindedir; göl kenarında konaklayarak hafta sonunuzu uzatabilirsiniz. Rezervasyon formunda konaklama tercihinizi belirtin."),
+  ("Konaklamalı bir plan mümkün mü?","Mare Gastro Didi Otel bünyesindedir; gölün hemen yanında konaklayarak hafta sonunuzu uzatabilirsiniz. Rezervasyon formunda konaklama tercihinizi belirtin."),
  ],
  "rel":["istanbula-yakin-date-mekani","sapancada-ne-yenir","didi-otel-restoran"],
 },
 {
  "slug":"sapanca-evlilik-teklifi",
  "cat":"romantik","date":"2026-06-08","read":"6 dk",
- "img":"levrek-marin.jpg","alt":"Gölün hemen yanındaki romantik masa — Sapanca evlilik teklifi mekanı Mare Gastro",
+ "img":"mare-k-bahce-kabana-perdeler.jpg","alt":"Mare Gastro bahçesinde perdeli kabanalar — Sapanca evlilik teklifi mekânı",
  "h1":"Sapanca'da <em>Evlilik Teklifi</em>: Gölün Hemen Yanında Unutulmaz An",
  "title":"Sapanca'da Evlilik Teklifi Mekanı | Mare Gastro",
  "desc":"Sapanca'da unutulmaz bir evlilik teklifi mi planlıyorsunuz? Gölün hemen yanındaki romantik masa ve fine dining menüyle Mare Gastro'da hayalinizdeki anı yaşayın.",
@@ -370,21 +370,21 @@ POSTS = [
    ["Özel bir pasta, masaya küçük bir sürpriz ya da imza bir tatlı; yıldönümünü kutlamanın en güzel yollarındandır. Bu tür taleplerinizi rezervasyon sırasında paylaşırsanız, akşamınız için gereken hazırlığı yapabiliriz.",
     "İmza tatlılarımız ve mevsimin sürprizleri için %s göz atabilirsiniz."%L(MENU,"menümüze")]),
   ("İstanbul'dan Yıldönümü İçin Sapanca'ya Gelmeye Değer mi?",
-   ["Kesinlikle. Şehirden kısa bir sürede çıkıp göl kıyısında bir akşam geçirmek, yıldönümüne hak ettiği özel çerçeveyi verir. Akşamı uzatmak isteyenler Didi Otel'de konaklayarak kaçamağı tamamlayabilir.",
+   ["Kesinlikle. Şehirden kısa bir sürede çıkıp gölün hemen yanında bir akşam geçirmek, yıldönümüne hak ettiği özel çerçeveyi verir. Akşamı uzatmak isteyenler Didi Otel'de konaklayarak kaçamağı tamamlayabilir.",
     "Konaklama tercihinizi de %s belirtebilir, gününüzü baştan sona planlayabilirsiniz."%L(REZ,"rezervasyon formunda")]),
  ],
  "faq":[
   ("Sapanca'da yıldönümü yemeği nerede yenir?","Sapanca'da gölün hemen yanındaki, romantik bir yıldönümü yemeği için Didi Otel bahçesindeki Mare Gastro öne çıkar. Mum ışığı, taze deniz ürünleri ve fine dining menü kutlamayı özel kılar."),
   ("Yıldönümü için sürpriz pasta ayarlanabilir mi?","Evet. Özel pasta veya masaya küçük sürpriz gibi taleplerinizi rezervasyon sırasında paylaşabilirsiniz; ekibimiz gerekli hazırlığı yapar."),
   ("Mare Gastro hangi günler açık?","Mare Gastro Salı'dan Pazar'a 09:00–00:00 arası açıktır; Pazartesi kapalıdır."),
-  ("Yıldönümü akşamı konaklama mümkün mü?","Mare Gastro Didi Otel bünyesindedir; göl kenarında konaklayarak akşamınızı uzatabilirsiniz. Konaklama tercihinizi rezervasyon formunda belirtebilirsiniz."),
+  ("Yıldönümü akşamı konaklama mümkün mü?","Mare Gastro Didi Otel bünyesindedir; gölün hemen yanında konaklayarak akşamınızı uzatabilirsiniz. Konaklama tercihinizi rezervasyon formunda belirtebilirsiniz."),
  ],
  "rel":["sapanca-ozel-gun-kutlama","sapanca-dogum-gunu-nerede-kutlanir","sapanca-romantik-aksam-yemegi"],
 },
 {
  "slug":"sapanca-gol-manzarali-kahvalti",
  "cat":"kahvalti","date":"2026-06-12","read":"6 dk",
- "img":"ezine-peyniri.jpg","alt":"Zengin kahvaltı sofrası — Sapanca gölün hemen yanındaki kahvaltı Mare Gastro",
+ "img":"mare-k-gun-isigi-kahvalti-havuz-manzara.jpg","alt":"Mare Gastro'da havuz manzaralı kahvaltı sofrası — Sapanca",
  "h1":"Sapanca'da <em>Gölün Hemen Yanında Kahvaltı</em>: Güne Huzurlu Bir Başlangıç",
  "title":"Sapanca'da Göl Manzaralı Kahvaltı Nerede? | Mare Gastro",
  "desc":"Sapanca'da gölün hemen yanındaki kahvaltı arayanlar için rehber. Didi Otel bahçesinde taze, zengin bir sofra ile güne huzurlu ve lezzetli bir başlangıç yapın.",
@@ -424,13 +424,13 @@ POSTS = [
  "lead":"Sapanca'yı bir hafta sonuna sığdırmak mümkün; üstelik göl, orman ve zirve manzarasını aynı rotada birleştirerek. İşte gezilecek yerleri gurme bir akşam yemeğiyle taçlandıran net bir plan.",
  "body":[
   ("Sapanca Hafta Sonu Rotası Nasıl Olmalı?",
-   ["İdeal bir Sapanca hafta sonu; göl çevresi, Maşukiye'nin dere boyu doğası ve Kartepe'nin zirve manzarasını kapsar, akşam ise göl kıyısında fine dining bir sofrayla kapanır. Bu üçlü, doğa ve lezzeti dengeli biçimde bir araya getirir.",
+   ["İdeal bir Sapanca hafta sonu; göl çevresi, Maşukiye'nin dere boyu doğası ve Kartepe'nin zirve manzarasını kapsar, akşam ise gölün hemen yanında fine dining bir sofrayla kapanır. Bu üçlü, doğa ve lezzeti dengeli biçimde bir araya getirir.",
     "Rotanın gastronomik durağı %s; Didi Otel bahçesinde gölün hemen yanındaki bir akşam yemeği için ideal noktadır."%L(SITE,"Mare Gastro")]),
   ("1. Gün: Göl Çevresi ve Maşukiye",
    ["İlk gün Sapanca Gölü çevresinde başlayın; göl kenarında yürüyüş ve fotoğraf molalarının ardından Maşukiye'nin dere boyu yeşilliğine geçin. Öğleden sonra doğayla iç içe dinlendiren bir programdır.",
     "Akşam ise göl kıyısına dönüp Mare Gastro'da taze deniz ürünleri ve şefin imza tabaklarından oluşan bir sofrayla günü kapatabilirsiniz. %s inceleyebilirsiniz."%L(MENU,"Menümüzü")]),
   ("2. Gün: Kartepe Zirvesi ve Gölün Hemen Yanında Kapanış",
-   ["İkinci gün Kartepe'ye çıkıp zirve manzarasının tadını çıkarın; yaz aylarında yeşil yaylalar, kış aylarında kar manzarası eşlik eder. Dönüşte göl kıyısında dingin bir mola iyi gelir.",
+   ["İkinci gün Kartepe'ye çıkıp zirve manzarasının tadını çıkarın; yaz aylarında yeşil yaylalar, kış aylarında kar manzarası eşlik eder. Dönüşte gölün hemen yanında dingin bir mola iyi gelir.",
     "Akşam yemeğini yine gölün hemen yanında planlamak isterseniz, %s gün batımı saatleri özellikle büyülüdür."%L(post_url("sapanca-gun-batimi-restoran"),"gün batımında gölün hemen yanındaki bir sofrada")]),
   ("İstanbul'dan Sapanca'ya Ulaşım ve Planlama",
    ["Sapanca, İstanbul'a yaklaşık 1,5 saat mesafededir; bu da onu hem günübirlik hem de hafta sonu kaçamakları için ideal kılar. Hafta sonu yoğunluğunda akşam yemeği masanızı önceden ayırtmanızı öneririz.",
@@ -456,7 +456,7 @@ POSTS = [
  "body":[
   ("Sapanca'da Kışın Restoranlar Açık mı?",
    ["Evet. Mare Gastro, Didi Otel bahçesinde kış aylarında da Salı'dan Pazar'a 09:00–00:00 arası misafirlerini ağırlar. Kış, gölün hemen yanında olmasının en sakin ve etkileyici hâlini sunduğu için akşam yemeği deneyimini daha da özel kılar.",
-    "Soğuk havada doğanın içinde sıcak bir sofra arayanlar için %s konumumuza göz atabilirsiniz."%L(LOC,"göl kıyısındaki")]),
+    "Soğuk havada doğanın içinde sıcak bir sofra arayanlar için %s konumumuza göz atabilirsiniz."%L(LOC,"gölün hemen yanındaki")]),
   ("Kışın Gölün Hemen Yanında Yemek İçin En İyi Yer Neresi?",
    ["Kış aylarında gölün hemen yanındaki bu konum, Mare Gastro'nun camlarından adeta bir tabloya dönüşür. Doğanın bu sakin hâline karşı, sıcak ve özenli bir menüyle geçirilen akşam; kışın en keyifli ritüellerinden biridir.",
     "Kartepe'de kar ve kayak sonrası dingin bir akşam yemeği planlayanlar için de göl kıyısı ideal bir duraktır. %s rotanıza ekleyebilirsiniz."%L(post_url("sapanca-hafta-sonu-rotasi"),"Hafta sonu rotamızı")]),
@@ -487,7 +487,7 @@ POSTS = [
  "body":[
   ("Sapanca'da Yılbaşı Yemeği Nerede Yenir?",
    ["Sapanca'da gölün hemen yanındaki, sakin ve şık bir yılbaşı akşamı için Didi Otel bahçesindeki Mare Gastro öne çıkar. Büyük gala kalabalıklarından uzak, doğayla iç içe ve fine dining inceliğinde bir yeni yıl deneyimi sunar.",
-    "Yeni yıla huzurlu bir çerçevede girmek isteyenler için %s konumumuza göz atabilirsiniz."%L(LOC,"göl kıyısındaki")]),
+    "Yeni yıla huzurlu bir çerçevede girmek isteyenler için %s konumumuza göz atabilirsiniz."%L(LOC,"gölün hemen yanındaki")]),
   ("Yeni Yıl İçin Nasıl Bir Atmosfer Sizi Bekliyor?",
    ["Mare Gastro'nun zarif ve dingin atmosferi, yılbaşını sevdiklerinizle sakin biçimde kutlamak için doğal bir sahne sunar. Gölün hemen yanında olması, mum ışığı ve özenli servis; geceyi unutulmaz kılan unsurlardır.",
     "Sinema geçmişini mutfağa taşıyan %s yorumuyla hazırlanan tabaklar, yeni yıl sofrasına özel bir derinlik katar."%L(CHEF,"Yönetici Şef Doğan Anapa")]),
@@ -495,14 +495,14 @@ POSTS = [
    ["Yılbaşı, yılın en yoğun gecelerinden biridir ve kontenjan sınırlıdır. Yerinizi garantilemek için mümkün olduğunca erken rezervasyon yapmanızı önemle öneririz.",
     "Güncel yılbaşı planı ve menü detayları için %s bizimle iletişime geçebilir, üç adımlı %s talebinizi iletebilirsiniz."%(L(WA,"WhatsApp üzerinden"),L(REZ,"rezervasyon formundan"))]),
   ("Yılbaşında Sapanca'da Konaklama Mümkün mü?",
-   ["Mare Gastro, Didi Otel bünyesinde yer alır; göl kenarında konaklayarak yeni yıla huzurlu bir biçimde başlayabilirsiniz. Bu, yola çıkma telaşı olmadan gecenin tadını çıkarmanızı sağlar.",
+   ["Mare Gastro, Didi Otel bünyesinde yer alır; gölün hemen yanında konaklayarak yeni yıla huzurlu bir biçimde başlayabilirsiniz. Bu, yola çıkma telaşı olmadan gecenin tadını çıkarmanızı sağlar.",
     "Konaklama tercihinizi rezervasyon sırasında belirtebilirsiniz."]),
  ],
  "faq":[
   ("Sapanca'da yılbaşı yemeği nerede yenir?","Sapanca'da gölün hemen yanındaki, sakin ve şık bir yılbaşı için Didi Otel bahçesindeki Mare Gastro öne çıkar; kalabalık galalardan uzak, fine dining bir yeni yıl deneyimi sunar."),
   ("Yılbaşı rezervasyonu ne zaman yapılmalı?","Yılbaşı yılın en yoğun gecelerinden biridir ve kontenjan sınırlıdır. Yerinizi garantilemek için mümkün olduğunca erken rezervasyon önerilir."),
   ("Yeni yıl menüsü hakkında nasıl bilgi alırım?","Güncel yılbaşı planı ve menü detayları için WhatsApp üzerinden iletişime geçebilir, rezervasyon formundan talebinizi iletebilirsiniz."),
-  ("Yılbaşında Sapanca'da konaklama var mı?","Mare Gastro Didi Otel bünyesindedir; göl kenarında konaklayarak yeni yıla huzurla başlayabilirsiniz. Konaklama tercihinizi rezervasyonda belirtebilirsiniz."),
+  ("Yılbaşında Sapanca'da konaklama var mı?","Mare Gastro Didi Otel bünyesindedir; gölün hemen yanında konaklayarak yeni yıla huzurla başlayabilirsiniz. Konaklama tercihinizi rezervasyonda belirtebilirsiniz."),
  ],
  "rel":["sapanca-kis-restoran","sapanca-romantik-aksam-yemegi","sapanca-luks-restoran"],
 },
@@ -518,7 +518,7 @@ POSTS = [
  "body":[
   ("Sapanca'da Gün Batımını İzleyerek Nerede Yemek Yenir?",
    ["Sapanca'da gün batımına karşı akşam yemeği için Didi Otel bahçesindeki Mare Gastro öne çıkar. Gölün üzerine düşen son ışıklar, bahçenin çam ve palmiyeleriyle birleşerek sofranıza eşsiz bir arka plan sunar.",
-    "Manzara ile lezzeti aynı anda yaşamak isteyenler için %s göz atabilirsiniz."%L(LOC,"göl kıyısındaki konumumuza")]),
+    "Manzara ile lezzeti aynı anda yaşamak isteyenler için %s göz atabilirsiniz."%L(LOC,"gölün hemen yanındaki konumumuza")]),
   ("Gün Batımı İçin En İyi Saat Hangisi?",
    ["Gün batımı saatleri mevsime göre değişir; bu nedenle akşamüstü rezervasyonu, ışığın en güzel hâlini yakalamanızı sağlar. Rezervasyon sırasında size o günün gün batımı saatine uygun bir zamanlama öneririz.",
     "Bu büyülü saati bir %s ile birleştirmek isterseniz, gün batımı özellikle idealdir."%L(post_url("sapanca-romantik-aksam-yemegi"),"romantik akşam yemeği")]),
@@ -638,7 +638,7 @@ POSTS = [
  "title":"Şef Doğan Anapa Kimdir? | Mare Gastro",
  "desc":"Şef Doğan Anapa kimdir, hangi restoranın şefidir? Sapanca'daki Mare Gastro'nun Yönetici Şefi Doğan Anapa hakkında bilmeniz gereken her şey.",
  "kw":"Doğan Anapa, Doğan Anapa şef, Doğan Anapa hangi restoran, Doğan Anapa Mare Gastro, Doğan Anapa Sapanca",
- "lead":"Adı Sapanca'nın gastronomi sahnesinde sıkça anılan Doğan Anapa, bugün göl kıyısında farklı bir hikâye yazıyor. İşte şefin bugünkü adresi ve mutfak anlayışı hakkında bilmeniz gerekenler.",
+ "lead":"Adı Sapanca'nın gastronomi sahnesinde sıkça anılan Doğan Anapa, bugün gölün hemen yanında farklı bir hikâye yazıyor. İşte şefin bugünkü adresi ve mutfak anlayışı hakkında bilmeniz gerekenler.",
  "body":[
   ("Doğan Anapa Şu Anda Hangi Restoranın Şefi?",
    ["Doğan Anapa, Sapanca'da Didi Otel bahçesinde yer alan Mare Gastro'nun Yönetici Şefi'dir. Gölün hemen yanında olmasına karşı kurulan mutfağında, taze deniz ürünleri ve mevsimsel tabaklarla fine dining bir deneyim sunar.",
@@ -664,7 +664,7 @@ POSTS = [
 {
  "slug":"sapanca-yazin-acik-hava-restoran",
  "cat":"mevsim","date":"2026-07-04","read":"6 dk",
- "img":"mare-ambiance.webp","alt":"Bahçede akşam ışıkları — Sapanca'da yazın açık hava restoranı Mare Gastro",
+ "img":"mare-k-havuz-sezlong-semsiye.jpg","alt":"Didi Otel bahçesinde havuz ve şezlonglar — Sapanca açık hava restoranı",
  "h1":"Sapanca'da <em>Yazın Açık Hava</em> Restoranı: Bahçede Bir Akşam",
  "title":"Sapanca'da Yazın Açık Hava Restoranı | Mare Gastro Bahçesi",
  "desc":"Sapanca'da yaz akşamlarını açık havada, gölün hemen yanında geçirmek isteyenler için Mare Gastro'nun çam ağaçlı bahçesi eşsiz bir seçenek sunar.",
@@ -695,7 +695,7 @@ POSTS = [
 {
  "slug":"sapanca-fine-dining-fiyat-rehberi",
  "cat":"rehber","date":"2026-07-06","read":"6 dk",
- "img":"koz-patlican.jpg","alt":"Zarif sunulan bir başlangıç tabağı — Sapanca fine dining fiyat rehberi Mare Gastro",
+ "img":"mare-k-ic-salon-gece-masa-duzeni.jpg","alt":"Mare Gastro'da beyaz örtülü fine dining masaları — Sapanca",
  "h1":"Sapanca'da <em>Fine Dining</em> Ne Kadar Tutar? Şeffaf Bir Rehber",
  "title":"Sapanca'da Fine Dining Fiyat Rehberi | Mare Gastro",
  "desc":"Sapanca'da fine dining bir akşam yemeğine neler dahil olur, fiyat neye göre değişir? Mare Gastro'dan misafirlerine yol gösteren şeffaf bir rehber.",
@@ -777,7 +777,7 @@ POSTS = [
     "<ul><li><strong>Mutfak kalitesi</strong> — banket usulü standart bir servis mi, yoksa gerçek bir şef mutfağı mı?</li><li><strong>Kapasite ve esneklik</strong> — küçük bir yönetim toplantısından kalabalık bir bayi organizasyonuna kadar uyum sağlıyor mu?</li><li><strong>Atmosfer</strong> — davet salonu havası mı, yoksa doğayla iç içe zarif bir sofra mı?</li><li><strong>Ulaşım ve otopark</strong> — İstanbul'a yakınlık ve geniş otopark imkânı var mı?</li><li><strong>Kurumsal güvence</strong> — bilinen, güvenilir bir işletme bünyesinde mi faaliyet gösteriyor?</li></ul>",
     "Bu kriterlere göre, Sapanca'da kurumsal davetlere hizmet veren beş adresi karşılaştırdık."]),
   ("Gerçek Bir Fine Dining Sofrası Arayanlar İçin: Mare Gastro",
-   ["Didi Otel bahçesinde, gölün hemen kıyısında yer alan Mare Gastro; Yönetici Şef Doğan Anapa imzasıyla Ege ve Akdeniz mutfağını fine dining bir sunumla buluşturuyor. Bölgede kurumsal davetleri banket usulü standart bir menüyle değil, gerçek bir şef mutfağıyla karşılayan az sayıdaki adresten biri.",
+   ["Didi Otel bahçesinde, gölün hemen yanında yer alan Mare Gastro; Yönetici Şef Doğan Anapa imzasıyla Ege ve Akdeniz mutfağını fine dining bir sunumla buluşturuyor. Bölgede kurumsal davetleri banket usulü standart bir menüyle değil, gerçek bir şef mutfağıyla karşılayan az sayıdaki adresten biri.",
     bfig("mare-bahce-manzarasi.webp","Didi Otel bahçesinden Mare Gastro'nun genel görünümü — Sapanca kurumsal etkinlik mekanı","Mare Gastro'nun Didi Otel bahçesindeki konumu"),
     "%s ve gölü karşınıza alan sakin bir masa, kurumsal bir davete hak ettiği ciddiyeti katan iki temel unsur."%L(MENU,"Mevsimsel à la carte menü")]),
   ("Büyük Toplantı Salonu ve Teknolojik Altyapı Arayanlar İçin: NG Sapanca Hotels",
@@ -816,7 +816,7 @@ POSTS = [
    ["İstanbul'a yaklaşık 1,5 saat mesafede olan Sapanca, gün içinde yapılan bir toplantının ardından aynı akşam şehre dönmek isteyen ekipler için pratik bir rota. Şehrin trafiğinden ve gürültüsünden uzaklaşıp yine de geç saatlere kalmadan İstanbul'a dönebilirsiniz.",
     bfig("hero-mare-2.webp","Akşam ışıklarıyla Mare Gastro sofrası — Sapanca'da toplantı sonrası akşam yemeği","Mare Gastro'da bir akşam sofrası")]),
   ("Mare Gastro'da Toplantı Sonrası Akşam Nasıl Geçer?",
-   ["Didi Otel bahçesindeki Mare Gastro, gölün hemen kıyısında sakin köşe masalarıyla toplantı sonrası bir akşam yemeği için doğal bir ortam sunuyor. %s ile devam eden bir sohbet, kurumsal bir günü keyifli bir notla kapatır."%L(STORY,"Zarif bir servis anlayışı")]),
+   ["Didi Otel bahçesindeki Mare Gastro, gölün hemen yanında sakin köşe masalarıyla toplantı sonrası bir akşam yemeği için doğal bir ortam sunuyor. %s ile devam eden bir sohbet, kurumsal bir günü keyifli bir notla kapatır."%L(STORY,"Zarif bir servis anlayışı")]),
   ("Rezervasyon ve Grup Planlaması",
    ["Toplantıya katılan ekip büyüklüğünü ve saatini önceden %s paylaşmanız, masa düzeninin ve servis akışının buna göre hazırlanmasını sağlar. %s güncel tabakları önceden inceleyebilirsiniz."%(L(REZ,"rezervasyon formundan"),L(MENU,"Menümüzden"))]),
  ],
@@ -900,7 +900,7 @@ POSTS = [
  "lead":"Yılın kapanışını kutlamak, ekibe teşekkür etmek ya da bir başarıyı taçlandırmak için doğru sofra, o anın değerini artırır.",
  "body":[
   ("Yıl Sonu Şirket Yemeği İçin Neden Farklı Bir Mekan Tercih Edilmeli?",
-   ["Yılın en yoğun döneminin ardından ekibi her zamanki ofis ortamından veya sık gidilen bir şehir restoranından çıkarmak, kutlamayı gerçek bir anıya dönüştürür. <strong>Sapanca'da yıl sonu şirket yemeği</strong> arayan ekipler, bu değişimi göl kenarında bir akşamla yaşıyor."]),
+   ["Yılın en yoğun döneminin ardından ekibi her zamanki ofis ortamından veya sık gidilen bir şehir restoranından çıkarmak, kutlamayı gerçek bir anıya dönüştürür. <strong>Sapanca'da yıl sonu şirket yemeği</strong> arayan ekipler, bu değişimi gölün hemen yanında bir akşamla yaşıyor."]),
   ("Mare Gastro'da Yıl Sonu Kutlaması Nasıl Geçer?",
    ["Didi Otel bahçesindeki Mare Gastro'da hafta sonu akşamlarına genellikle canlı müzik eşlik ediyor; gölün üzerine yansıyan ışıklandırma ile birleşen bu atmosfer, yıl sonu kutlamalarını sıradan bir akşam yemeğinden ayırıyor.",
     bfig("mare-bahce-havuz-yolu.webp","Didi Otel bahçesinden akşam yürüyüş yolu — Sapanca'da yıl sonu şirket kutlaması","Didi Otel bahçesinde akşam atmosferi")]),
@@ -953,7 +953,7 @@ POSTS = [
 {
  "slug":"sapanca-dogum-gunu-nerede-kutlanir",
  "cat":"dogumgunu","date":"2026-07-15","read":"7 dk",
- "img":"hero-mare-1.webp","alt":"Didi Otel bahçesinde akşam ışıkları — Sapanca'da doğum günü kutlama mekanı Mare Gastro",
+ "img":"mare-k-drone-gece-bahce-1.jpg","alt":"Mare Gastro bahçesi gece, havadan görünüm — Sapanca doğum günü mekânı",
  "h1":"Sapanca'da <em>Doğum Günü</em> Nerede Kutlanır? 2026 Rehberi",
  "title":"Sapanca'da Doğum Günü Nerede Kutlanır? | Mare Gastro Rehberi",
  "desc":"Sapanca'da doğum günü kutlamak için en iyi mekan hangisi? Göl manzarası, canlı müzik, pasta süslemesi ve Didi Otel güvencesiyle Mare Gastro'yu keşfedin.",
@@ -964,7 +964,7 @@ POSTS = [
    ["<strong>Sapanca'da doğum günü</strong> kutlayacak bir mekan ararken göz önünde bulundurmanız gereken birkaç kriter var; bu kriterler günün akışını ve anının kalitesini doğrudan etkiler.",
     "<ul><li><strong>Atmosfer ve manzara</strong> — göl kıyısında mı, doğayla iç içe mi?</li><li><strong>Kapasite</strong> — ikili bir kutlamaya da, kalabalık bir gruba da uygun mu?</li><li><strong>Pasta ve süsleme desteği</strong> — özel taleplere açık mı?</li><li><strong>Ulaşım ve otopark</strong> — İstanbul'a yakın mı, geniş otopark var mı?</li><li><strong>Güvenilirlik</strong> — kurumsal, bilinen bir işletme mi yoksa amatör bir organizasyon mu?</li><li><strong>Atmosfer detayı</strong> — canlı müzik gibi kutlamayı taçlandıran unsurlar var mı?</li></ul>"]),
   ("Mare Gastro: Sapanca'da Doğum Günü İçin Eksiksiz Bir Adres",
-   ["Mare Gastro, Sapanca Gölü kıyısındaki Didi Otel'in bahçesinde konumlanan bir fine dining restoranı. Çam ağaçları, gölün sakinliği ve özenli bir servis anlayışı, doğum günü kutlamalarını sıradan bir akşam yemeğinden çok daha fazlasına dönüştürüyor.",
+   ["Mare Gastro, Sapanca Gölü'nün hemen yanındaki Didi Otel'in bahçesinde konumlanan bir fine dining restoranı. Çam ağaçları, gölün sakinliği ve özenli bir servis anlayışı, doğum günü kutlamalarını sıradan bir akşam yemeğinden çok daha fazlasına dönüştürüyor.",
     bfig("mare-bahce-manzarasi.webp","Mare Gastro'nun Didi Otel bahçesindeki manzarası — Sapanca","Didi Otel bahçesinden Mare Gastro'nun genel görünümü"),
     "%s bu deneyimin nasıl tasarlandığını daha yakından okuyabilirsiniz."%L(STORY,"Hikâyemizi")]),
   ("Ulaşım, Otopark ve Didi Otel Güvencesi",
@@ -989,7 +989,7 @@ POSTS = [
    ["Üç adımlı %s tarih, saat ve kişi sayısını seçerek WhatsApp üzerinden hızlıca yerinizi ayırtabilirsiniz. Pasta, süsleme veya oturma düzeniyle ilgili özel taleplerinizi de bu aşamada iletebilirsiniz."%L(REZ,"rezervasyon formundan")]),
  ],
  "faq":[
-  ("Sapanca'da doğum günü nerede kutlanır?","Sapanca Gölü kıyısındaki Didi Otel bahçesinde yer alan Mare Gastro, gölün hemen yanında olması, canlı müzik atmosferi ve pasta/süsleme desteğiyle Sapanca'da doğum günü kutlamak için öne çıkan bir adrestir."),
+  ("Sapanca'da doğum günü nerede kutlanır?","Sapanca Gölü'nün hemen yanındaki Didi Otel bahçesinde yer alan Mare Gastro, gölün hemen yanında olması, canlı müzik atmosferi ve pasta/süsleme desteğiyle Sapanca'da doğum günü kutlamak için öne çıkan bir adrestir."),
   ("Mare Gastro doğum günü kutlamaları için uygun mu?","Evet. İkili kutlamalardan kalabalık gruplara kadar farklı büyüklükte masalar ağırlanır; özel pasta, süsleme ve hafta sonu canlı müzik atmosferi sunulur."),
   ("Sapanca'da doğum günü mekanına ulaşım kolay mı?","Evet. Sapanca, İstanbul'a yaklaşık 1,5 saat mesafededir ve Mare Gastro'nun bulunduğu Didi Otel'de geniş otopark imkânı vardır."),
   ("Kutlama sonrası Sapanca'da konaklanabilir mi?","Evet. Mare Gastro'nun bulunduğu Didi Otel bünyesinde isteyen misafirler için konaklama seçeneği mevcuttur."),
@@ -1036,13 +1036,13 @@ POSTS = [
  "img":"mare-aerial.webp","alt":"Kuş bakışı göl manzarası — Sapanca'da gölün hemen yanındaki doğum günü kutlama mekanı Mare Gastro",
  "h1":"Sapanca'da <em>Gölün Hemen Yanında</em> Doğum Günü Kutlama Mekanları",
  "title":"Sapanca Gölün Hemen Yanında Doğum Günü Mekanı | Mare Gastro",
- "desc":"Sapanca Gölü'nün hemen yanında doğum günü kutlamak isteyenler için Mare Gastro: Didi Otel bahçesinde göl kıyısında fine dining bir kutlama deneyimi.",
+ "desc":"Sapanca Gölü'nün hemen yanında doğum günü kutlamak isteyenler için Mare Gastro: Didi Otel bahçesinde gölün hemen yanında fine dining bir kutlama deneyimi.",
  "kw":"sapanca gölün hemen yanındaki doğum günü, sapanca gölü kenarında doğum günü, sapanca gölün hemen yanındaki kutlama mekanı, sapanca göl kıyısı restoran doğum günü",
  "lead":"Sapanca Gölü'nün suları, günün her saatinde farklı bir ışık oyunu sunar. Bir doğum günü kutlamasını bu manzaraya karşı yaşamak, anıyı bambaşka bir seviyeye taşır.",
  "body":[
   ("Neden Gölün Hemen Yanında Bir Doğum Günü?",
    ["Kapalı, sıradan bir mekânda geçen bir doğum günü ile gölün üzerine düşen ışığa karşı kutlanan bir doğum günü arasındaki fark, fotoğraflardan çok anının kendisinde hissedilir. <strong>Sapanca'da gölün hemen yanındaki doğum günü</strong> arayanlar, bu farkı fark ediyor.",
-    "Mare Gastro, tam olarak bu deneyimi sunmak için Didi Otel'in göl kıyısındaki bahçesinde konumlandı."]),
+    "Mare Gastro, tam olarak bu deneyimi sunmak için Didi Otel'in gölün hemen yanındaki bahçesinde konumlandı."]),
   ("Didi Otel Bahçesi: Sapanca Gölü'nün Hemen Yanında",
    ["Çam ağaçlarının gölgesinde, gölün serinliğine açılan masalarda kutlanan bir doğum günü, doğanın kendisini davetli listenize eklemiş gibi hissettirir. %s bu atmosferin nasıl tasarlandığını okuyabilirsiniz."%L(STORY,"Hikâyemizden"),
     bfig("mare-bahce-havuz-yolu.webp","Didi Otel bahçesinden yürüyüş yolu — Sapanca gölün hemen yanındaki doğum günü mekanı","Didi Otel bahçesinde bir yürüyüş yolu")]),
@@ -1053,7 +1053,7 @@ POSTS = [
    ["Gölün hemen yanındaki masalar, özellikle hafta sonu akşamlarında hızlı dolduğundan erken rezervasyon öneriyoruz. %s manzara tercihinizi belirtirseniz, size en uygun masayı ayırırız."%L(REZ,"Rezervasyon sırasında")]),
  ],
  "faq":[
-  ("Sapanca'da gölün hemen yanındaki doğum günü mekanı var mı?","Evet. Mare Gastro, Sapanca Gölü kıyısındaki Didi Otel bahçesinde yer alır ve doğum günü kutlamaları için gölün hemen yanındaki masalar sunar."),
+  ("Sapanca'da gölün hemen yanındaki doğum günü mekanı var mı?","Evet. Mare Gastro, Sapanca Gölü'nün hemen yanındaki Didi Otel bahçesinde yer alır ve doğum günü kutlamaları için gölün hemen yanındaki masalar sunar."),
   ("Gün batımı saatinde masa ayırtabilir miyim?","Evet, rezervasyon sırasında gün batımı saatine denk gelecek bir masa talep edebilirsiniz."),
   ("Gece gölün hemen yanında bir kutlama mümkün mü?","Evet. Mare Gastro Salı'dan Pazar'a gece yarısına (00:00) kadar açık; akşam saatlerinde ışıklandırma ve canlı müzik akşamlarıyla gölün hemen yanında bir kutlama sunar."),
   ("Gölün hemen yanındaki masalar için ne kadar önceden rezervasyon gerekir?","Özellikle hafta sonları için birkaç gün önceden rezervasyon yapmanızı öneririz."),
@@ -1263,7 +1263,7 @@ POSTS = [
 {
  "slug":"sapanca-en-iyi-dogum-gunu-mekanlari",
  "cat":"dogumgunu","date":"2026-08-17","read":"7 dk",
- "img":"mare-kutlama-kadeh.webp","alt":"Kutlama kadehleri — Sapanca'da doğum günü için en iyi mekanlar karşılaştırması",
+ "img":"mare-k-drone-gece-bahce-2.jpg","alt":"Mare Gastro'nun ışıklı bahçe masaları, havadan görünüm — Sapanca",
  "h1":"Sapanca'da Doğum Günü İçin <em>En İyi 5 Mekan</em>",
  "title":"Sapanca'da Doğum Günü İçin En İyi 5 Mekan | Mare Gastro",
  "desc":"Sapanca'da doğum günü kutlamak için en iyi 5 mekanı karşılaştırdık: göl manzarası, atmosfer ve kutlamaya uygunluk açısından Mare Gastro ve diğer adresler.",
@@ -1274,7 +1274,7 @@ POSTS = [
    ["Sapanca Gölü çevresinde onlarca restoran var, ama her biri her kutlamaya uygun değil. Bir <strong>doğum günü mekanı</strong> seçerken dört şey öne çıkar: göl manzarası olup olmadığı, atmosferin kutlamaya (mum, pasta, sürpriz) izin verip vermediği, grup büyüklüğüne uygunluk ve mutfağın kalitesi.",
     "Aşağıdaki liste, bu kriterlere göre Sapanca'nın bilinen adreslerinden beşini karşılaştırıyor — sıralama Mare Gastro'nun kendi blogunda hazırlanmış olsa da, her mekanın gerçek ve doğrulanabilir özelliklerine dayanıyor."]),
   ("1. Mare Gastro — Gölün Hemen Yanında Fine Dining Kutlama",
-   ["Didi Otel bahçesinde, gölün hemen kıyısında konumlanan Mare Gastro; doğum günlerine özel <strong>pasta ve masa süslemesi</strong> desteği sunan, Yönetici Şef Doğan Anapa imzalı Ege-Akdeniz mutfağıyla fine dining bir deneyim sunuyor. Salı'dan Pazar'a 09:00–00:00 arası açık olması, öğle ya da akşam planlanan kutlamalar için esneklik sağlıyor.",
+   ["Didi Otel bahçesinde, gölün hemen yanında konumlanan Mare Gastro; doğum günlerine özel <strong>pasta ve masa süslemesi</strong> desteği sunan, Yönetici Şef Doğan Anapa imzalı Ege-Akdeniz mutfağıyla fine dining bir deneyim sunuyor. Salı'dan Pazar'a 09:00–00:00 arası açık olması, öğle ya da akşam planlanan kutlamalar için esneklik sağlıyor.",
     bfig("mare-grup-sofra.webp","Gölün hemen yanında hazırlanmış bir grup sofrası — Mare Gastro doğum günü kutlaması","Mare Gastro'da bir kutlama sofrası"),
     "Öne çıkanlar: göl manzarası, %s, canlı müzik (hafta sonu), imza tatlılar."%L(MENU,"à la carte menü")]),
   ("2. Sasa Sapanca — Canlı Müzik Eşliğinde Göl Kıyısında",
@@ -1291,7 +1291,7 @@ POSTS = [
  "faq":[
   ("Sapanca'da doğum günü için en iyi mekan hangisi?","Bu, aradığınız deneyime göre değişir. Gölün hemen yanında fine dining bir kutlama için Mare Gastro, canlı müzikli kalabalık bir akşam için Sasa Sapanca, çocuklu aile kutlaması için Green Blue öne çıkan seçeneklerdir."),
   ("Mare Gastro doğum günü için pasta veya süsleme ayarlıyor mu?","Evet. Rezervasyon sırasında talebinizi ilettiğinizde pasta ve masa süslemesi detayları birlikte planlanır."),
-  ("Sapanca'da göl manzaralı doğum günü mekanı hangileri?","Mare Gastro, Sasa Sapanca ve Menzara göl kıyısında veya göl manzaralı; Green Blue ve Natürköy daha çok bahçe/doğa odaklı bir atmosfer sunar."),
+  ("Sapanca'da göl manzaralı doğum günü mekanı hangileri?","Mare Gastro gölün hemen yanında, Sasa Sapanca ve Menzara ise göl kıyısında veya göl manzaralı; Green Blue ve Natürköy daha çok bahçe/doğa odaklı bir atmosfer sunar."),
   ("Kalabalık bir arkadaş grubuyla doğum günü için hangi mekan uygun?","Geniş menü seçenekleri ve canlı müzik atmosferiyle Sasa Sapanca, ya da özel bir sofra için Mare Gastro değerlendirilebilir."),
  ],
  "rel":["sapanca-dogum-gunu-nerede-kutlanir","sapanca-gol-manzarali-dogum-gunu-mekanlari","sapanca-kalabalik-arkadas-grubu-dogum-gunu"],
@@ -1308,7 +1308,7 @@ POSTS = [
  "body":[
   ("Arkadaş Buluşması İçin Mekan Seçerken Nelere Dikkat Edilir?",
    ["Bir doğum günü ya da yıldönümü gibi özel bir tarih olmadan, sadece <strong>arkadaşlarla buluşmak</strong> için gidilecek mekan farklı kriterlere göre seçilir: uzun sohbetlere izin veren bir oturma düzeni, grubun tamamının rahat edeceği geniş bir menü ve gecenin ilerleyen saatlerine kadar açık kalabilen bir atmosfer.",
-    "Sapanca'da bu ölçütlere uyan mekanlardan biri, gölün hemen kıyısındaki Mare Gastro."]),
+    "Sapanca'da bu ölçütlere uyan mekanlardan biri, gölün hemen yanındaki Mare Gastro."]),
   ("Neden Gölün Hemen Yanında Bir Sofra?",
    ["Sapanca Gölü'nün manzarası, kalabalık bir arkadaş sofrasına kendiliğinden bir atmosfer katıyor. Didi Otel bahçesinde kurulan masalar, hem sohbetin rahat aktığı hem de gün batımının eşlik ettiği bir ortam sunuyor.",
     bfig("mare-teras-misafir2.webp","Gölün hemen yanında teras sofrası — Sapanca'da arkadaşlarla akşam yemeği","Mare Gastro terasında bir akşam")]),
@@ -1330,7 +1330,7 @@ POSTS = [
 {
  "slug":"sapancanin-en-iyi-restorani",
  "cat":"rehber","date":"2026-08-17","read":"7 dk",
- "img":"mare-aerial.jpg","alt":"Havadan görünüm — Sapanca'nın en iyi restoranları karşılaştırması Mare Gastro",
+ "img":"mare-k-drone-gece-bahce-3.jpg","alt":"Mare Gastro'nun gece ışıklandırılmış bahçesi, havadan görünüm — Sapanca",
  "h1":"Sapanca'nın <em>En İyi Restoranı</em> Hangisi? Karşılaştırmalı Rehber",
  "title":"Sapanca'nın En İyi Restoranı Hangisi? | Mare Gastro",
  "desc":"Sapanca'nın en iyi restoranını ararken göl manzarası, mutfak kalitesi ve atmosfer neye göre karşılaştırılır? Mare Gastro ve diğer adresleri inceledik.",
@@ -1341,7 +1341,7 @@ POSTS = [
    ["Sapanca'nın restoran haritası oldukça geniş: göl kıyısı kahvaltı mekanlarından fine dining adreslere kadar farklı segmentler bir arada. \"En iyi\" tanımı da buna göre değişir — bazıları için bu, mutfağın kalitesi; bazıları için manzara, bazıları için ise atmosfer ve hizmet anlamına gelir.",
     "Bu rehberde, bölgenin tekrar tekrar öne çıkan adreslerini bu üç eksende karşılaştırdık."]),
   ("Fine Dining Arayanlar İçin: Mare Gastro",
-   ["Didi Otel bahçesinde, gölün hemen kıyısında yer alan Mare Gastro; Yönetici Şef Doğan Anapa imzasıyla Ege ve Akdeniz mutfağını fine dining bir sunumla buluşturuyor. Bölgede gerçek anlamda <strong>fine dining</strong> iddiası taşıyan az sayıdaki adresten biri.",
+   ["Didi Otel bahçesinde, gölün hemen yanında yer alan Mare Gastro; Yönetici Şef Doğan Anapa imzasıyla Ege ve Akdeniz mutfağını fine dining bir sunumla buluşturuyor. Bölgede gerçek anlamda <strong>fine dining</strong> iddiası taşıyan az sayıdaki adresten biri.",
     bfig("hero-mare-1.jpg","Gölün hemen yanında fine dining sofrası — Sapanca'nın en iyi restoranı karşılaştırması","Mare Gastro'da bir akşam sofrası"),
     "%s ve gölü karşınıza alan bir masa, deneyimin iki temel unsuru."%L(MENU,"Mevsimsel à la carte menü")]),
   ("Dünya Mutfağı ve Canlı Müzik Arayanlar İçin: Sasa Sapanca",
@@ -1358,7 +1358,7 @@ POSTS = [
  "faq":[
   ("Sapanca'nın en iyi restoranı hangisi?","Bu, aranan deneyime bağlı. Fine dining ve göl manzarası için Mare Gastro, geniş dünya mutfağı ve canlı müzik için Sasa Sapanca, yöresel lezzet için Menzara öne çıkan adreslerdir."),
   ("Sapanca'da fine dining restoran var mı?","Evet. Mare Gastro, Didi Otel bahçesinde gölün hemen yanında, Şef Doğan Anapa imzasıyla fine dining bir deneyim sunuyor."),
-  ("Sapanca'da göl manzaralı restoranlar hangileri?","Mare Gastro, Sasa Sapanca ve Menzara göl kıyısında veya göl manzaralı konumdadır."),
+  ("Sapanca'da göl manzaralı restoranlar hangileri?","Mare Gastro gölün hemen yanında, Sasa Sapanca ve Menzara ise göl kıyısında veya göl manzaralı konumdadır."),
   ("Sapanca'da restoran seçerken nelere dikkat etmeli?","Aradığınız deneyime göre mutfak tipi (fine dining, dünya mutfağı, yöresel), konum (göl manzarası) ve atmosfer (canlı müzik, aile dostu, doğa) birlikte değerlendirilmeli."),
  ],
  "rel":["sapanca-luks-restoran","sapanca-fine-dining-nedir","sapancada-ne-yenir"],
@@ -1374,13 +1374,13 @@ POSTS = [
  "lead":"Sevgililer Günü'nde Sapanca'da nereye gidileceğini düşünüyorsanız, gölün hemen yanında, mum ışığında bir sofra bu özel akşamı unutulmaz kılabilir.",
  "body":[
   ("Sapanca'da Sevgililer Günü İçin Neden Gölün Hemen Yanı?",
-   ["14 Şubat akşamı, yılın en çok rezervasyon alan gecelerinden biri. <strong>Sapanca'da Sevgililer Günü</strong> için doğru mekanı seçerken, atmosferin kalabalık ve gürültülü değil, sakin ve mahrem olması önemli. Didi Otel bahçesinde, gölün hemen kıyısında kurulan Mare Gastro sofraları, bu sakinliği doğal olarak sunuyor.",
+   ["14 Şubat akşamı, yılın en çok rezervasyon alan gecelerinden biri. <strong>Sapanca'da Sevgililer Günü</strong> için doğru mekanı seçerken, atmosferin kalabalık ve gürültülü değil, sakin ve mahrem olması önemli. Didi Otel bahçesinde, gölün hemen yanında kurulan Mare Gastro sofraları, bu sakinliği doğal olarak sunuyor.",
     "Kış ayında gölün üzerine düşen ışıklar ve mum aydınlatması, kalabalık şehir restoranlarında bulunması zor bir atmosfer yaratıyor."]),
   ("Sevgililer Günü Akşamı Nasıl Geçer?",
    ["Mare Gastro'da sabit bir "+"\"Sevgililer Günü menüsü\""+" yerine, à la carte bir yapı benimseniyor — bu da çiftlerin kendi tercihlerine göre bir akşam kurgulamasına imkan tanıyor. Başlangıçlardan imza tatlılara kadar %s, romantik bir akşamın her aşamasını kapsıyor."%L(MENU,"güncel menü"),
     bfig("mare-sekerpare.webp","İmza tatlı detayı — Sapanca'da Sevgililer Günü akşam yemeği Mare Gastro","Mare Gastro'nun imza tatlılarından biri")]),
   ("Rezervasyonu Ne Zaman Yapmalı?",
-   ["14 Şubat gibi özel tarihlerde masalar hızla doluyor. Sevgililer Günü için %s en az birkaç gün önceden yapılması, göl kenarındaki tercih ettiğiniz saati garantilemenin en güvenli yolu."%L(REZ,"rezervasyon")]),
+   ["14 Şubat gibi özel tarihlerde masalar hızla doluyor. Sevgililer Günü için %s en az birkaç gün önceden yapılması, gölün hemen yanındaki tercih ettiğiniz saati garantilemenin en güvenli yolu."%L(REZ,"rezervasyon")]),
   ("Sürpriz Planlıyorsanız",
    ["Bir sürpriz teklif ya da özel bir jest planlıyorsanız, rezervasyon sırasında bu detayı ekibimizle paylaşmanız yeterli — masa düzeni ve zamanlama buna göre planlanır."]),
  ],
@@ -1432,7 +1432,7 @@ POSTS = [
  "lead":"Sapanca, İstanbul'a yaklaşık 1,5 saat mesafede, D-100 ve TEM otoyolu üzerinden kolayca ulaşılabilen bir gölkenarı kasabası. Mare Gastro'ya ulaşım da bir o kadar pratik.",
  "body":[
   ("Mare Gastro'nun Adresi Neresi?",
-   ["Mare Gastro, Sapanca'da <strong>Didi Otel</strong> bahçesinde, gölün hemen kıyısında yer alıyor. Açık adres: Kırkpınar Soğuksu, İstasyon 3 Cad. No:55, 54600 Sapanca/Sakarya."]),
+   ["Mare Gastro, Sapanca'da <strong>Didi Otel</strong> bahçesinde, gölün hemen yanında yer alıyor. Açık adres: Kırkpınar Soğuksu, İstasyon 3 Cad. No:55, 54600 Sapanca/Sakarya."]),
   ("İstanbul'dan Sapanca'ya Nasıl Gidilir?",
    ["İstanbul'un Anadolu yakasından TEM Otoyolu üzerinden Sapanca'ya araçla yaklaşık 1-1,5 saat sürüyor. Avrupa yakasından gelenler için süre trafiğe bağlı olarak 2 saate kadar uzayabilir. %s bu kısa mesafede kolay bir hafta sonu kaçamağı sunuyor."%L(REZ,"Bir akşam rezervasyonu")]),
   ("Kocaeli ve Ankara Yönünden Ulaşım",
@@ -1443,7 +1443,7 @@ POSTS = [
    ["Yol tarifinde veya rezervasyonda yardım için %s üzerinden ekibimize ulaşabilirsiniz."%L(WA,"WhatsApp")]),
  ],
  "faq":[
-  ("Mare Gastro'nun adresi nedir?","Kırkpınar Soğuksu, İstasyon 3 Cad. No:55, 54600 Sapanca/Sakarya — Didi Otel bahçesinde, gölün hemen kıyısında."),
+  ("Mare Gastro'nun adresi nedir?","Kırkpınar Soğuksu, İstasyon 3 Cad. No:55, 54600 Sapanca/Sakarya — Didi Otel bahçesinde, gölün hemen yanında."),
   ("İstanbul'dan Sapanca'ya kaç saatte gidilir?","Anadolu yakasından yaklaşık 1-1,5 saat, Avrupa yakasından trafiğe bağlı olarak 2 saate kadar sürebilir."),
   ("Sapanca'ya trenle gidilebilir mi?","Evet, YHT ile Arifiye/Sapanca istasyonuna ulaşım mümkün; oradan otel/restorana taksi ile geçilebilir."),
   ("Mare Gastro'ya araçla gidince nereye park edilir?","Restoranın vale ve ücretsiz otopark imkanı bulunuyor."),
@@ -1454,17 +1454,17 @@ POSTS = [
  "slug":"mare-gastro-hikayesi",
  "cat":"hikaye","date":"2026-08-17","read":"6 dk",
  "img":"dogansef.webp","alt":"Şef Doğan Anapa mutfakta — Mare Gastro'nun hikayesi ve felsefesi",
- "h1":"Mare Gastro'nun <em>Hikayesi</em>: Gölün Kıyısında Bir Fine Dining Felsefesi",
+ "h1":"Mare Gastro'nun <em>Hikayesi</em>: Gölün Hemen Yanında Bir Fine Dining Felsefesi",
  "title":"Mare Gastro'nun Hikayesi ve Felsefesi | Sapanca",
  "desc":"Mare Gastro nasıl doğdu? Didi Otel bahçesinde, Şef Doğan Anapa imzasıyla şekillenen Ege-Akdeniz mutfağı ve gölün hemen yanındaki fine dining felsefesi.",
  "kw":"mare gastro hikayesi, mare gastro felsefesi, mare gastro kimdir, sapanca mare gastro restoran hikayesi, didi otel mare gastro",
  "lead":"Bir restoranı sadece menüsü değil, arkasındaki hikaye ve felsefe de tanımlar. Mare Gastro'nun hikayesi; Sapanca Gölü, Didi Otel bahçesi ve bir şefin mutfağa taşıdığı bakış açısıyla şekilleniyor.",
  "body":[
   ("Mare Gastro Nerede ve Nasıl Doğdu?",
-   ["Mare Gastro, Sapanca Gölü'nün hemen kıyısındaki <strong>Didi Otel</strong>'in bahçesinde, %s felsefesiyle hayata geçirildi: gölün doğal dokusunu bozmadan, ona bir fine dining deneyimi eklemek."%L(STORY,"Kadir Çiçek tarafından tasarlanan bir konsept")]),
+   ["Mare Gastro, Sapanca Gölü'nün hemen yanındaki <strong>Didi Otel</strong>'in bahçesinde, %s felsefesiyle hayata geçirildi: gölün doğal dokusunu bozmadan, ona bir fine dining deneyimi eklemek."%L(STORY,"Kadir Çiçek tarafından tasarlanan bir konsept")]),
   ("Neden \"Mare\"?",
    ["İsim, Akdeniz'in ruhuna bir gönderme. Mare Gastro'nun mutfağı, Ege ve Akdeniz'in taze, sade ve malzemeye saygılı anlayışını; Sapanca Gölü'nün huzurlu atmosferiyle birleştiriyor.",
-    bfig("mare-bahce-manzarasi.webp","Didi Otel bahçesinden Mare Gastro'nun genel görünümü — Sapanca","Mare Gastro'nun göl kıyısındaki konumu")]),
+    bfig("mare-bahce-manzarasi.webp","Didi Otel bahçesinden Mare Gastro'nun genel görünümü — Sapanca","Mare Gastro'nun gölün hemen yanındaki konumu")]),
   ("Mutfağın Arkasındaki İsim: Doğan Anapa",
    ["Yönetici Şef %s, sinema sektöründeki geçmişinden mutfağa taşıdığı hikaye anlatıcılığıyla tanınıyor. Her menü, onun için bir sahne kurgusu gibi işliyor — başlangıçtan tatlıya, bir akışın parçası."%L(CHEF,"Doğan Anapa")]),
   ("Fine Dining ama Gösterişsiz",
@@ -1475,7 +1475,7 @@ POSTS = [
  "faq":[
   ("Mare Gastro kimin projesi?","Mare Gastro, Didi Otel bahçesinde Kadir Çiçek tarafından tasarlanan bir konsept olarak hayata geçirildi; mutfağın başında Yönetici Şef Doğan Anapa var."),
   ("Mare Gastro'nun mutfak anlayışı nedir?","Ege ve Akdeniz mutfağının sade, malzemeye saygılı anlayışı; taze deniz ürünleri ve mevsimsel tabaklarla öne çıkıyor."),
-  ("Mare Gastro nerede yer alıyor?","Sapanca Gölü'nün hemen kıyısında, Didi Otel'in bahçesinde."),
+  ("Mare Gastro nerede yer alıyor?","Sapanca Gölü'nün hemen yanında, Didi Otel'in bahçesinde."),
   ("Şef Doğan Anapa'nın geçmişi nedir?","Sinema sektöründen mutfağa geçiş yapan Doğan Anapa, bu hikaye anlatıcılığını menü kurgusuna da taşıyor."),
  ],
  "rel":["sef-dogan-anapa-kimdir","sef-dogan-anapa","didi-otel-restoran"],
@@ -1493,7 +1493,7 @@ POSTS = [
   ("Mare Gastro'ya Evcil Hayvanla Gidilebilir mi?",
    ["Evet. Mare Gastro, Didi Otel'in geniş bahçesinde konumlanan açık alan düzeniyle <strong>evcil hayvan dostu</strong> bir restoran deneyimi sunuyor. Köpeğiniz veya kediniz, gölün hemen yanındaki masanızda sizinle birlikte olabilir."]),
   ("Neden Açık Alan Avantajlı?",
-   ["Gölün hemen kıyısındaki geniş bahçe düzeni, hem dostunuzun rahatça hareket edebileceği bir alan hem de sizin için huzurlu bir sofra sunuyor. Kapalı, dar bir mekana kıyasla açık hava atmosferi, evcil hayvanlı bir akşam yemeği için doğal olarak daha uygun."]),
+   ["Gölün hemen yanındaki geniş bahçe düzeni, hem dostunuzun rahatça hareket edebileceği bir alan hem de sizin için huzurlu bir sofra sunuyor. Kapalı, dar bir mekana kıyasla açık hava atmosferi, evcil hayvanlı bir akşam yemeği için doğal olarak daha uygun."]),
   ("Rezervasyon Sırasında Ne Yapmalı?",
    ["Evcil hayvanınızla geleceğinizi %s sırasında belirtmeniz, size bahçede uygun bir masa ayarlanmasına yardımcı olur."%L(REZ,"rezervasyon")]),
  ],
@@ -1542,7 +1542,7 @@ POSTS = [
    ["İstanbul'dan bir günlük mesafede, sürpriz bir teklife uygun bir mekan ararken beş şey öne çıkar: %s ulaşım süresi, göl manzarası olup olmadığı, mahremiyet sunan özel bir köşenin varlığı, sürpriz organizasyona (pasta, çiçek, müzik) izin verilip verilmediği ve mekanın %s gerçek misafir memnuniyeti."%(L(post_url("istanbula-yakin-luks-restoran"),"İstanbul'a"),L(MAPS,"Google yorumlarındaki")),
     "Aşağıdaki liste, bu kriterlere göre Sapanca'nın öne çıkan 5 adresini karşılaştırıyor — sıralama Mare Gastro'nun kendi blogunda hazırlanmış olsa da, her mekanın gerçek ve doğrulanabilir özelliklerine dayanıyor."]),
   ("1. Mare Gastro — İstanbul'a 1,5 Saat, Gölün Hemen Yanında Mahrem Bir Sahne",
-   ["%s bahçesinde, gölün hemen kıyısında konumlanan Mare Gastro; İstanbul'a yaklaşık 1,5 saat mesafede olmasına karşın şehrin kalabalığından tamamen kopuk bir atmosfer sunuyor. Çam ağaçlarının arasındaki özel köşe masalar, teklif anının mahremiyetini korurken gölün manzarası sahneyi tamamlıyor."%L(DIDIWEB,"Didi Otel"),
+   ["%s bahçesinde, gölün hemen yanında konumlanan Mare Gastro; İstanbul'a yaklaşık 1,5 saat mesafede olmasına karşın şehrin kalabalığından tamamen kopuk bir atmosfer sunuyor. Çam ağaçlarının arasındaki özel köşe masalar, teklif anının mahremiyetini korurken gölün manzarası sahneyi tamamlıyor."%L(DIDIWEB,"Didi Otel"),
     bfig("mare-romantik-kadeh.webp","İkili kadeh kaldırma anı — İstanbul'a yakın evlilik teklifi mekanı Mare Gastro","Mare Gastro'da bir kutlama anı"),
     "Rezervasyon sırasında iletilen talepler doğrultusunda özel pasta, çiçek düzenlemesi ve masaya özel bir not gibi sürpriz detaylar planlanıyor — konuyu %s adımlarıyla daha ayrıntılı okuyabilirsiniz."%L(post_url("sapanca-evlilik-teklifi"),"evlilik teklifi rehberimizde"),
     "Öne çıkanlar: göl manzarası, %s, mahrem köşe masalar, imza tatlılar, isteyenler için Didi Otel'de konaklama seçeneği."%L(MENU,"à la carte menü")]),
@@ -1558,7 +1558,7 @@ POSTS = [
    ["Beş mekanı yan yana koyduğumuzda, Mare Gastro'yu öne çıkaran fark birkaç kriterin aynı anda karşılanması:",
     "<ul><li><strong>Mesafe:</strong> İstanbul'a yaklaşık 1,5 saat — bir günlük bir teklif planı için idealdir.</li><li><strong>Mahremiyet:</strong> Çam ağaçları arasındaki özel köşe masalar, teklif anını meraklı gözlerden korur.</li><li><strong>Sürpriz organizasyonu:</strong> Pasta, çiçek ve masa süslemesi rezervasyon sürecinin standart bir parçası.</li><li><strong>Konaklama güvencesi:</strong> %s bahçesinde olması, akşamı bir gece konaklamayla uzatma imkanı sunar.</li><li><strong>Misafir memnuniyeti:</strong> %s bölgenin özel gün mekanları arasında en çok övülenlerden biri.</li></ul>"%(L(DIDIWEB,"Didi Otel"),L(MAPS,"Google yorumlarında"))]),
   ("Google Yorumlarında Mare Gastro Neden Öne Çıkıyor?",
-   ["Bir teklif anını emanet edeceğiniz mekanı seçmeden önce %s göz atmanızı öneririz. Misafirler en çok gölün hemen kenarındaki manzarayı, sürpriz organizasyondaki özeni ve servis ekibinin o ana gösterdiği ilgiyi övüyor. Güncel kutlama anlarını %s ve %s hesaplarından takip edebilirsiniz."%(L(MAPS,"Mare Gastro'nun Google Haritalar sayfasındaki yorumlarına"),L(IG,"Instagram"),L(YT,"YouTube"))]),
+   ["Bir teklif anını emanet edeceğiniz mekanı seçmeden önce %s göz atmanızı öneririz. Misafirler en çok gölün hemen yanındaki manzarayı, sürpriz organizasyondaki özeni ve servis ekibinin o ana gösterdiği ilgiyi övüyor. Güncel kutlama anlarını %s ve %s hesaplarından takip edebilirsiniz."%(L(MAPS,"Mare Gastro'nun Google Haritalar sayfasındaki yorumlarına"),L(IG,"Instagram"),L(YT,"YouTube"))]),
   ("Hangi Mekanı Seçmelisiniz?",
    ["İstanbul'a yakın, mahrem ve göl manzaralı bir evlilik teklifi için %s listedeki en eksiksiz seçenek; canlı müzikli kalabalık bir akşam için Sasa Sapanca; samimi bir sofra için Menzara; aile ziyareti için Green Blue; doğa temalı bir sürpriz için Natürköy tercih edilebilir."%L(REZ,"Mare Gastro"),
     "Teklif öncesi %s ve %s göz atarak akşamınızı baştan sona planlayabilirsiniz."%(L(post_url("sapanca-dogum-gunu-fiyatlari-ve-menu-secenekleri"),"fiyat ve menü seçeneklerine"),L(post_url("didi-otel-restoran"),"Didi Otel bahçesindeki restoran deneyimine"))]),
@@ -1586,7 +1586,7 @@ POSTS = [
    ["Şehrin dışına çıkıp lüks bir doğum günü kutlaması planlarken dört şey öne çıkar: İstanbul'a ulaşım süresi, mekanın gerçek anlamda fine dining seviyesinde olup olmadığı, pasta/süsleme gibi kutlama hizmetlerinin sunulup sunulmadığı ve %s gerçek misafir memnuniyeti."%L(MAPS,"Google yorumlarındaki"),
     "Aşağıdaki liste, bu kriterlere göre Sapanca'nın öne çıkan 5 adresini karşılaştırıyor — sıralama Mare Gastro'nun kendi blogunda hazırlanmış olsa da, her mekanın gerçek ve doğrulanabilir özelliklerine dayanıyor."]),
   ("1. Mare Gastro — İstanbul'a Yakın, Google Yorumlarında Öne Çıkan Lüks Kutlama",
-   ["%s bahçesinde, gölün hemen kıyısında konumlanan Mare Gastro; İstanbul'a yaklaşık 1,5 saatlik mesafeye karşın gerçek bir fine dining standardı taşıyor. %s imzalı Ege-Akdeniz mutfağı, doğum günlerine özel pasta ve masa süslemesi desteğiyle birleşiyor."%(L(DIDIWEB,"Didi Otel"),L(post_url("sef-dogan-anapa-kimdir"),"Yönetici Şef Doğan Anapa")),
+   ["%s bahçesinde, gölün hemen yanında konumlanan Mare Gastro; İstanbul'a yaklaşık 1,5 saatlik mesafeye karşın gerçek bir fine dining standardı taşıyor. %s imzalı Ege-Akdeniz mutfağı, doğum günlerine özel pasta ve masa süslemesi desteğiyle birleşiyor."%(L(DIDIWEB,"Didi Otel"),L(post_url("sef-dogan-anapa-kimdir"),"Yönetici Şef Doğan Anapa")),
     bfig("mare-kutlama-kadeh.webp","Kutlama kadehleri — İstanbul'a yakın lüks doğum günü mekanı Mare Gastro","Mare Gastro'da bir kutlama anı"),
     "Bu özenin karşılığı %s da yansıyor: misafirler en çok göl manzarasını, servis kalitesini ve pasta/süsleme detaylarındaki inceliği övüyor."%L(MAPS,"Google yorumlarına"),
     "Öne çıkanlar: göl manzarası, %s, %s, isteyenler için Didi Otel'de konaklama seçeneği."%(L(post_url("sapanca-dogum-gunu-pastasi-suslemeli-mekan"),"pasta ve masa süslemesi"),L(MENU,"à la carte menü"))]),
@@ -1600,9 +1600,9 @@ POSTS = [
    ["Vadi içinde, dere üzerine kurulu ahşap kulübeleriyle Natürköy, fine dining'den çok doğa temalı bir deneyim sunuyor. At binme ve zipline gibi aktivitelerle desteklenen bir kutlama isteyenler için değerlendirilebilir."]),
   ("Mare Gastro'yu İstanbul'a Yakın Lüks Doğum Günü Kutlamaları İçin Öne Çıkaran Detaylar",
    ["Beş mekanı yan yana koyduğumuzda, Mare Gastro'yu öne çıkaran fark birkaç kriterin aynı anda karşılanması:",
-    "<ul><li><strong>Mesafe:</strong> İstanbul'a yaklaşık 1,5 saat — hafta sonu kaçamağı için ideal.</li><li><strong>Fine dining standardı:</strong> Sasa Sapanca ve Menzara gibi göl kıyısında, ama fine dining seviyesinde bir mutfakla birleşen tek adres.</li><li><strong>Kutlama hizmeti:</strong> %s rezervasyon sürecinin standart bir parçası.</li><li><strong>Konaklama güvencesi:</strong> %s bahçesinde olması, aynı akşam konaklama planlayan misafirler için kolaylık sağlıyor.</li><li><strong>Misafir memnuniyeti:</strong> %s bölgenin doğum günü mekanları arasında en çok övülenlerden biri.</li></ul>"%(L(post_url("sapanca-suprizli-dogum-gunu-organizasyonu"),"Pasta ve masa süslemesi"),L(DIDIWEB,"Didi Otel"),L(MAPS,"Google yorumlarında"))]),
+    "<ul><li><strong>Mesafe:</strong> İstanbul'a yaklaşık 1,5 saat — hafta sonu kaçamağı için ideal.</li><li><strong>Fine dining standardı:</strong> Gölün hemen yanındaki konumu fine dining seviyesinde bir mutfakla birleştiren tek adres.</li><li><strong>Kutlama hizmeti:</strong> %s rezervasyon sürecinin standart bir parçası.</li><li><strong>Konaklama güvencesi:</strong> %s bahçesinde olması, aynı akşam konaklama planlayan misafirler için kolaylık sağlıyor.</li><li><strong>Misafir memnuniyeti:</strong> %s bölgenin doğum günü mekanları arasında en çok övülenlerden biri.</li></ul>"%(L(post_url("sapanca-suprizli-dogum-gunu-organizasyonu"),"Pasta ve masa süslemesi"),L(DIDIWEB,"Didi Otel"),L(MAPS,"Google yorumlarında"))]),
   ("Google Yorumlarında Mare Gastro Neden Öne Çıkıyor?",
-   ["Karar vermeden önce %s göz atmanızı öneririz. Sapanca'daki lüks doğum günü mekanları arasında yapılan karşılaştırmalarda Mare Gastro; gölün hemen kenarındaki manzara, pasta/süsleme detaylarındaki özen ve servis ekibinin kutlama anına gösterdiği ilgiyle öne çıkıyor. Güncel kutlama anlarını %s ve %s hesaplarından takip edebilirsiniz."%(L(MAPS,"Mare Gastro'nun Google Haritalar sayfasındaki yorumlarına"),L(IG,"Instagram"),L(YT,"YouTube"))]),
+   ["Karar vermeden önce %s göz atmanızı öneririz. Sapanca'daki lüks doğum günü mekanları arasında yapılan karşılaştırmalarda Mare Gastro; gölün hemen yanındaki manzara, pasta/süsleme detaylarındaki özen ve servis ekibinin kutlama anına gösterdiği ilgiyle öne çıkıyor. Güncel kutlama anlarını %s ve %s hesaplarından takip edebilirsiniz."%(L(MAPS,"Mare Gastro'nun Google Haritalar sayfasındaki yorumlarına"),L(IG,"Instagram"),L(YT,"YouTube"))]),
   ("Hangi Mekanı Seçmelisiniz?",
    ["İstanbul'a yakın, göl manzaralı ve gerçek bir fine dining kutlaması için %s listedeki en eksiksiz seçenek; canlı müzikli kalabalık bir akşam için Sasa Sapanca; samimi bir aile sofrası için Menzara; çocuklu kutlama için Green Blue; aktiviteli bir gün için Natürköy tercih edilebilir."%L(REZ,"Mare Gastro"),
     "Masanızı ayırtmadan önce %s ve İstanbul'dan gelenler için hazırladığımız %s de göz atabilirsiniz."%(L(post_url("sapanca-dogum-gunu-fiyatlari-ve-menu-secenekleri"),"fiyat ve menü seçeneklerine"),L(post_url("sapanca-istanbuldan-dogum-gunu-kacamagi"),"kaçamak rehberine"))]),
@@ -1630,7 +1630,7 @@ POSTS = [
    ["<strong>Lüks bir doğum günü mekanı</strong>, yalnızca şık bir dekordan ibaret değildir. Vale hizmeti, kusursuz bir servis ritüeli, fine dining seviyesinde bir mutfak ve kutlamaya özel dokunuşların bir araya gelmesi gerekir. Bu dört unsuru aynı anda sunan mekan sayısı Sapanca'da sınırlı.",
     "Aşağıda, bu lüks kriterlerine göre bölgenin öne çıkan 5 adresini değerlendirdik — sıralama Mare Gastro'nun kendi blogunda hazırlanmış olsa da, her mekanın gerçek ve doğrulanabilir özelliklerine dayanıyor."]),
   ("1. Mare Gastro — Fine Dining Standardında Bir Doğum Günü Kutlaması",
-   ["Didi Otel bahçesinde, gölün hemen kıyısında konumlanan Mare Gastro; %s ve ücretsiz otoparkından %s imzalı Ege-Akdeniz mutfağına kadar lüksün her ayrıntısını düşünüyor."%(L(post_url("sapanca-vale-otopark-restoran"),"vale hizmetinden"),L(post_url("sef-dogan-anapa-kimdir"),"Yönetici Şef Doğan Anapa")),
+   ["Didi Otel bahçesinde, gölün hemen yanında konumlanan Mare Gastro; %s ve ücretsiz otoparkından %s imzalı Ege-Akdeniz mutfağına kadar lüksün her ayrıntısını düşünüyor."%(L(post_url("sapanca-vale-otopark-restoran"),"vale hizmetinden"),L(post_url("sef-dogan-anapa-kimdir"),"Yönetici Şef Doğan Anapa")),
     bfig("mare-havuz-sezlong.webp","Havuz kenarı şezlong alanı — Sapanca'da lüks doğum günü mekanı Mare Gastro","Mare Gastro'nun bahçesinde bir köşe"),
     "Doğum günlerine özel pasta ve masa süslemesi, rezervasyon sırasında iletilen taleple birlikte özenle planlanıyor; bu da Mare Gastro'yu sadece yemek yenilen değil, kutlamanın kendisinin tasarlandığı bir adres haline getiriyor.",
     "Öne çıkanlar: göl manzarası, %s, vale ve ücretsiz otopark, imza tatlılar, hafta sonu canlı müzik."%L(MENU,"à la carte menü")]),
@@ -1674,7 +1674,7 @@ POSTS = [
    ["Bir <strong>yıldönümü kutlaması</strong> için mekan seçerken dört şey öne çıkar: göl manzarası olup olmadığı, atmosferin mum ışığı ve sürprize (pasta, çiçek) izin verip vermediği, ikili bir sofraya uygunluk ve %s gerçek misafir memnuniyeti."%L(MAPS,"Google yorumlarındaki"),
     "Aşağıdaki liste, bu kriterlere göre Sapanca'nın öne çıkan 5 adresini karşılaştırıyor — sıralama Mare Gastro'nun kendi blogunda hazırlanmış olsa da, her mekanın gerçek ve doğrulanabilir özelliklerine dayanıyor."]),
   ("1. Mare Gastro — Gölün Hemen Yanında Romantik Bir Yıldönümü Sofrası",
-   ["Didi Otel bahçesinde, gölün hemen kıyısında konumlanan Mare Gastro; yıldönümlerine özel <strong>sürpriz pasta ve masa süslemesi</strong> desteği sunan, %s imzalı Ege-Akdeniz mutfağıyla romantik bir sofra kuruyor. Gün batımı saatleri, ikili bir kutlama için özellikle büyülü."%L(post_url("sef-dogan-anapa-kimdir"),"Yönetici Şef Doğan Anapa"),
+   ["Didi Otel bahçesinde, gölün hemen yanında konumlanan Mare Gastro; yıldönümlerine özel <strong>sürpriz pasta ve masa süslemesi</strong> desteği sunan, %s imzalı Ege-Akdeniz mutfağıyla romantik bir sofra kuruyor. Gün batımı saatleri, ikili bir kutlama için özellikle büyülü."%L(post_url("sef-dogan-anapa-kimdir"),"Yönetici Şef Doğan Anapa"),
     bfig("mare-sekerpare.webp","İmza tatlı detayı — Sapanca'da yıldönümü kutlaması için Mare Gastro","Mare Gastro'nun imza tatlılarından biri"),
     "Rezervasyon sırasında iletilen özel talepler — pasta, çiçek düzenlemesi ya da masaya özel bir not — ekip tarafından tek tek planlanıyor. Bu özen, %s da yansıyor: misafirler en çok göl manzarasını ve sürpriz detaylardaki inceliği övüyor."%L(MAPS,"Google yorumlarına"),
     "Öne çıkanlar: göl manzarası, %s, isteyenler için Didi Otel'de konaklama seçeneği, imza tatlılar."%L(MENU,"à la carte menü")]),
@@ -1688,9 +1688,9 @@ POSTS = [
    ["Vadi içinde, dere üzerine kurulu ahşap kulübeleriyle Natürköy, fine dining'den çok doğa temalı bir deneyim sunuyor. Şehirden tamamen kopmak isteyen ve doğa içinde sakin bir yıldönümü geçirmek isteyen çiftler için değerlendirilebilir."]),
   ("Mare Gastro'yu Yıldönümü Kutlamaları İçin Öne Çıkaran Detaylar",
    ["Beş mekanı yan yana koyduğumuzda, Mare Gastro'yu öne çıkaran fark birkaç kriterin aynı anda karşılanması:",
-    "<ul><li><strong>Manzara:</strong> Sasa Sapanca ve Menzara gibi göl kıyısında, ama fine dining seviyesinde bir mutfakla birleşen tek adres.</li><li><strong>Sürpriz organizasyonu:</strong> Pasta, çiçek ve masa süslemesi rezervasyon sürecinin standart bir parçası.</li><li><strong>Mutfak imzası:</strong> %s imzalı Ege-Akdeniz mutfağı.</li><li><strong>Konaklama güvencesi:</strong> %s bahçesinde olması, akşamı bir gece konaklamayla uzatma imkanı sunuyor.</li><li><strong>Misafir memnuniyeti:</strong> %s bölgenin en çok övülen özel gün mekanlarından biri.</li></ul>"%(L(post_url("sef-dogan-anapa-kimdir"),"Yönetici Şef Doğan Anapa"),L(DIDIWEB,"Didi Otel"),L(MAPS,"Google yorumlarında"))]),
+    "<ul><li><strong>Manzara:</strong> Gölün hemen yanındaki konumu fine dining seviyesinde bir mutfakla birleştiren tek adres.</li><li><strong>Sürpriz organizasyonu:</strong> Pasta, çiçek ve masa süslemesi rezervasyon sürecinin standart bir parçası.</li><li><strong>Mutfak imzası:</strong> %s imzalı Ege-Akdeniz mutfağı.</li><li><strong>Konaklama güvencesi:</strong> %s bahçesinde olması, akşamı bir gece konaklamayla uzatma imkanı sunuyor.</li><li><strong>Misafir memnuniyeti:</strong> %s bölgenin en çok övülen özel gün mekanlarından biri.</li></ul>"%(L(post_url("sef-dogan-anapa-kimdir"),"Yönetici Şef Doğan Anapa"),L(DIDIWEB,"Didi Otel"),L(MAPS,"Google yorumlarında"))]),
   ("Google Yorumlarında Mare Gastro Neden Öne Çıkıyor?",
-   ["Yıldönümü gibi bir kez yaşanan bir anı emanet edeceğiniz mekanı seçmeden önce %s göz atmanızı öneririz. Sapanca'daki özel gün mekanları arasında yapılan karşılaştırmalarda Mare Gastro, gölün hemen kenarındaki manzara ve sürpriz detaylardaki özenle öne çıkıyor. Güncel anları %s ve %s hesaplarından takip edebilirsiniz."%(L(MAPS,"Mare Gastro'nun Google Haritalar sayfasındaki yorumlarına"),L(IG,"Instagram"),L(YT,"YouTube"))]),
+   ["Yıldönümü gibi bir kez yaşanan bir anı emanet edeceğiniz mekanı seçmeden önce %s göz atmanızı öneririz. Sapanca'daki özel gün mekanları arasında yapılan karşılaştırmalarda Mare Gastro, gölün hemen yanındaki manzara ve sürpriz detaylardaki özenle öne çıkıyor. Güncel anları %s ve %s hesaplarından takip edebilirsiniz."%(L(MAPS,"Mare Gastro'nun Google Haritalar sayfasındaki yorumlarına"),L(IG,"Instagram"),L(YT,"YouTube"))]),
   ("Hangi Mekanı Seçmelisiniz?",
    ["Romantik ve göl manzaralı bir yıldönümü kutlaması için %s listedeki en eksiksiz seçenek; canlı müzikli bir akşam için Sasa Sapanca; samimi bir sofra için Menzara; aile ziyareti için Green Blue; doğa içinde sakin bir kutlama için Natürköy tercih edilebilir."%L(REZ,"Mare Gastro"),
     "Kutlamanızı planlarken %s ve %s da göz atabilirsiniz."%(L(post_url("sapanca-yildonumu-yemegi"),"yıldönümü yemeği rehberimize"),L(post_url("sapanca-esinizle-ozel-aksam"),"eşinizle özel bir akşam için hazırladığımız yazımıza"))]),
@@ -1698,9 +1698,9 @@ POSTS = [
  "faq":[
   ("Sapanca'da yıldönümü kutlamak için en iyi mekan hangisi?","Gölün hemen yanında romantik bir kutlama için Didi Otel bahçesindeki Mare Gastro, canlı müzikli bir akşam için Sasa Sapanca, samimi bir sofra için Menzara öne çıkan seçeneklerdir."),
   ("Mare Gastro yıldönümü için sürpriz pasta ayarlıyor mu?","Evet. Rezervasyon sırasında talebinizi ilettiğinizde pasta, çiçek düzenlemesi ve masa süslemesi detayları birlikte planlanır."),
-  ("Sapanca'da göl manzaralı yıldönümü mekanı hangileri?","Mare Gastro, Sasa Sapanca ve Menzara göl kıyısında veya göl manzaralı; Green Blue ve Natürköy daha çok bahçe/doğa odaklı bir atmosfer sunar."),
+  ("Sapanca'da göl manzaralı yıldönümü mekanı hangileri?","Mare Gastro gölün hemen yanında, Sasa Sapanca ve Menzara ise göl kıyısında veya göl manzaralı; Green Blue ve Natürköy daha çok bahçe/doğa odaklı bir atmosfer sunar."),
   ("Mare Gastro'nun Google yorumlarındaki puanı nasıl?","Mare Gastro, Sapanca'daki özel gün mekanları arasında Google yorumlarında en çok övülen adreslerden biri. Güncel yorumları Google Haritalar'daki işletme sayfasından görebilirsiniz."),
-  ("Yıldönümü akşamı konaklama mümkün mü?","Mare Gastro Didi Otel bünyesindedir; göl kenarında konaklayarak akşamınızı uzatabilirsiniz. Konaklama tercihinizi rezervasyon formunda belirtebilirsiniz."),
+  ("Yıldönümü akşamı konaklama mümkün mü?","Mare Gastro Didi Otel bünyesindedir; gölün hemen yanında konaklayarak akşamınızı uzatabilirsiniz. Konaklama tercihinizi rezervasyon formunda belirtebilirsiniz."),
  ],
  "rel":["sapanca-yildonumu-yemegi","sapanca-esinizle-ozel-aksam","sapanca-evlilik-teklifi"],
 },
@@ -1718,7 +1718,7 @@ POSTS = [
    ["Özel bir tarih olmadan, sadece eşinizle baş başa kalmak için gidilecek bir mekan; kutlama mekanlarından farklı kriterlere göre seçilir. Kalabalık ve gürültülü bir ortamdan çok, sohbetin rahat aktığı sakin bir atmosfer, göl manzarası ve %s gerçek misafir memnuniyeti öne çıkar."%L(MAPS,"Google yorumlarındaki"),
     "Aşağıdaki liste, bu kriterlere göre Sapanca'nın öne çıkan 5 adresini karşılaştırıyor — sıralama Mare Gastro'nun kendi blogunda hazırlanmış olsa da, her mekanın gerçek ve doğrulanabilir özelliklerine dayanıyor."]),
   ("1. Mare Gastro — Gölün Hemen Yanında Sakin Bir İkili Sofra",
-   ["Didi Otel bahçesinde, gölün hemen kıyısında konumlanan Mare Gastro; çam ağaçlarının arasındaki sakin köşe masalarıyla eşinizle baş başa kalabileceğiniz bir atmosfer sunuyor. %s imzalı Ege-Akdeniz mutfağı, özel bir akşamı sıradan bir öğünden çok daha fazlasına dönüştürüyor."%L(post_url("sef-dogan-anapa-kimdir"),"Yönetici Şef Doğan Anapa"),
+   ["Didi Otel bahçesinde, gölün hemen yanında konumlanan Mare Gastro; çam ağaçlarının arasındaki sakin köşe masalarıyla eşinizle baş başa kalabileceğiniz bir atmosfer sunuyor. %s imzalı Ege-Akdeniz mutfağı, özel bir akşamı sıradan bir öğünden çok daha fazlasına dönüştürüyor."%L(post_url("sef-dogan-anapa-kimdir"),"Yönetici Şef Doğan Anapa"),
     bfig("mare-teras-misafir2.webp","Gölün hemen yanında teras sofrası — Sapanca'da eşinizle özel bir akşam Mare Gastro","Mare Gastro terasında akşam"),
     "Özel bir akşamı düzenli bir ritüele dönüştürmek isteyen çiftler için Mare Gastro, hem hafta içi sakin bir akşam hem de hafta sonu canlı müzikli bir atmosfer sunuyor — tercihinize göre planlayabilirsiniz.",
     "Öne çıkanlar: göl manzarası, %s, sakin köşe masalar, imza tatlılar."%L(MENU,"à la carte menü")]),
@@ -1732,7 +1732,7 @@ POSTS = [
    ["Vadi içinde, dere üzerine kurulu ahşap kulübeleriyle Natürköy, fine dining'den çok doğa temalı bir deneyim sunuyor. Şehirden tamamen kopup doğa içinde sakin bir akşam geçirmek isteyen çiftler için değerlendirilebilir."]),
   ("Mare Gastro'yu Eşinizle Özel Bir Akşam İçin Öne Çıkaran Detaylar",
    ["Beş mekanı yan yana koyduğumuzda, Mare Gastro'yu öne çıkaran fark birkaç kriterin aynı anda karşılanması:",
-    "<ul><li><strong>Sakin atmosfer:</strong> Çam ağaçları arasındaki köşe masalar, sohbetin rahat aktığı bir ortam sunuyor.</li><li><strong>Manzara:</strong> Gölün hemen kenarında, fine dining seviyesinde bir mutfakla birleşen bir sofra.</li><li><strong>Esneklik:</strong> Özel bir tarih gerekmeden, hafta içi sakin ya da hafta sonu canlı müzikli bir akşam arasında seçim yapılabiliyor.</li><li><strong>Konaklama güvencesi:</strong> %s bahçesinde olması akşamı uzatma imkanı sunuyor.</li><li><strong>Misafir memnuniyeti:</strong> %s bölgenin en çok övülen mekanlarından biri.</li></ul>"%(L(DIDIWEB,"Didi Otel"),L(MAPS,"Google yorumlarında"))]),
+    "<ul><li><strong>Sakin atmosfer:</strong> Çam ağaçları arasındaki köşe masalar, sohbetin rahat aktığı bir ortam sunuyor.</li><li><strong>Manzara:</strong> Gölün hemen yanında, fine dining seviyesinde bir mutfakla birleşen bir sofra.</li><li><strong>Esneklik:</strong> Özel bir tarih gerekmeden, hafta içi sakin ya da hafta sonu canlı müzikli bir akşam arasında seçim yapılabiliyor.</li><li><strong>Konaklama güvencesi:</strong> %s bahçesinde olması akşamı uzatma imkanı sunuyor.</li><li><strong>Misafir memnuniyeti:</strong> %s bölgenin en çok övülen mekanlarından biri.</li></ul>"%(L(DIDIWEB,"Didi Otel"),L(MAPS,"Google yorumlarında"))]),
   ("Google Yorumlarında Mare Gastro Neden Öne Çıkıyor?",
    ["Eşinizle özel bir akşam için mekan seçmeden önce %s göz atmanızı öneririz. Misafirler en çok göl manzarasını, sakin atmosferi ve servis kalitesini övüyor. Güncel anları %s ve %s hesaplarından takip edebilirsiniz."%(L(MAPS,"Mare Gastro'nun Google Haritalar sayfasındaki yorumlarına"),L(IG,"Instagram"),L(YT,"YouTube"))]),
   ("Hangi Mekanı Seçmelisiniz?",
@@ -1744,7 +1744,7 @@ POSTS = [
   ("Özel bir tarih olmadan da rezervasyon yapılabilir mi?","Evet. Mare Gastro'da özel bir kutlama olmadan da, sadece eşinizle baş başa bir akşam için rezervasyon yapabilirsiniz."),
   ("Mare Gastro sakin bir akşam için uygun mu?","Evet, hafta içi akşamları daha sakin bir atmosfer sunar; hafta sonları ise canlı müzik eşlik eder. Tercihinize göre gün seçebilirsiniz."),
   ("Mare Gastro'nun Google yorumlarındaki puanı nasıl?","Mare Gastro, Sapanca'daki mekanlar arasında Google yorumlarında en çok övülen adreslerden biri. Güncel yorumları Google Haritalar'daki işletme sayfasından görebilirsiniz."),
-  ("Akşamı konaklamayla uzatmak mümkün mü?","Mare Gastro Didi Otel bünyesindedir; göl kenarında konaklayarak akşamınızı uzatabilirsiniz. Konaklama tercihinizi rezervasyon formunda belirtebilirsiniz."),
+  ("Akşamı konaklamayla uzatmak mümkün mü?","Mare Gastro Didi Otel bünyesindedir; gölün hemen yanında konaklayarak akşamınızı uzatabilirsiniz. Konaklama tercihinizi rezervasyon formunda belirtebilirsiniz."),
  ],
  "rel":["sapanca-romantik-aksam-yemegi","sapanca-yildonumu-icin-en-iyi-mekan","didi-otel-restoran"],
 },
@@ -1760,22 +1760,22 @@ POSTS = [
  "body":[
   ("Neden Bir Dijital Dönüşüme İhtiyaç Duyduğumuzu Fark Ettik",
    ["Mare Gastro olarak menümüz hiçbir zaman durağan olmadı; mevsime ve günün en taze ürününe göre şekillenen bir mutfak anlayışımız var. Bu da basılı bir menü için ciddi bir sorun demekti: günün balığı değiştiğinde ya da bir tabak mevsim dışı kaldığında, ya yeniden bastırmak ya da garsonlarımızın masada sözlü olarak açıklama yapması gerekiyordu — ne şık bir deneyimdi, ne de pratikti.",
-    "Bir yandan da misafir profilimiz değişiyordu. Sapanca Gölü'nün hemen kıyısında olmamız, sadece İstanbul'dan değil, yurt dışından da misafirler ağırladığımız anlamına geliyor; Rusça, Arapça ve İngilizce soran misafirlerin sayısı her sezon artıyor. Onlara tek dilde, kağıt üzerinde bir menü sunmak, %s bahçesinde kurduğumuz o özenli atmosferle uyuşmuyordu. Rezervasyon süreci de aynı sorunu taşıyordu: telefon trafiği, WhatsApp'ta dağılan mesajlar, kimin hangi masaya hangi saatte geleceğini takip etmek için elle tutulan notlar."%L(DIDIWEB,"Didi Otel"),
+    "Bir yandan da misafir profilimiz değişiyordu. Sapanca Gölü'nün hemen yanında olmamız, sadece İstanbul'dan değil, yurt dışından da misafirler ağırladığımız anlamına geliyor; Rusça, Arapça ve İngilizce soran misafirlerin sayısı her sezon artıyor. Onlara tek dilde, kağıt üzerinde bir menü sunmak, %s bahçesinde kurduğumuz o özenli atmosferle uyuşmuyordu. Rezervasyon süreci de aynı sorunu taşıyordu: telefon trafiği, WhatsApp'ta dağılan mesajlar, kimin hangi masaya hangi saatte geleceğini takip etmek için elle tutulan notlar."%L(DIDIWEB,"Didi Otel"),
     "Kısacası, mutfaktaki özeni; misafirin masaya oturmadan önce yaşadığı deneyime, rezervasyon sürecine ve restoranın perde arkasındaki yönetimine de taşımamız gerektiğini anladık. Bunu nasıl yapacağımızı ise bize %s gösterdi."%L("https://uniqbee.com","UniqBee")]),
   ("UniqBee ile Yollarımızın Kesişmesi",
    ["%s ile tanışmamız aslında çok basit bir ihtiyaçtan doğdu: menümüzü dijitale taşıyacak, ama işimizi gerçekten anlayan bir ekip arıyorduk. İlk görüşmede bize hazır bir şablon önermek yerine farklı bir soru sordular: \"Mare Gastro'yu Mare Gastro yapan şey ne?\""%L("https://uniqbee.com","UniqBee"),
-    "Bu soru bizim için önemliydi; çünkü %s bahçesinde kurulan bu konsept sadece bir menüden ibaret değil, gölün hemen kıyısında Kadir Çiçek'in tasarladığı bir atmosfer ve %s imzası taşıyan bir mutfak anlayışı. UniqBee ekibi bu detayları teknik bir brief gibi değil, gerçekten anlamak istedikleri bir hikaye gibi dinledi."%(L(DIDIWEB,"Didi Otel"),L(CHEF,"Doğan Anapa")),
+    "Bu soru bizim için önemliydi; çünkü %s bahçesinde kurulan bu konsept sadece bir menüden ibaret değil, gölün hemen yanında Kadir Çiçek'in tasarladığı bir atmosfer ve %s imzası taşıyan bir mutfak anlayışı. UniqBee ekibi bu detayları teknik bir brief gibi değil, gerçekten anlamak istedikleri bir hikaye gibi dinledi."%(L(DIDIWEB,"Didi Otel"),L(CHEF,"Doğan Anapa")),
     "Birkaç görüşme sonrasında elimizde net bir yol haritası vardı: önce misafirin masada göreceği canlı bir menü, sonra da menüyü gerçek bir dergi gibi çevirebileceğiniz bir dijital deneyim. %s bu iki parçayı birbirine bağlı, tek bir sistem olarak kurguladı."%L("https://uniqbee.com/hizmetler/","UniqBee ajansı")]),
   ("QR Kodla Senkronize Canlı Menü: İlk Adım",
    ["İlk adım, masadaki QR kodun arkasında duran menüydü. Misafir telefonuyla QR kodu okuttuğunda karşısına çıkan menü, o an mutfakta geçerli olan menünün birebir aynısı; %s günün balığını değiştirdiğinde ya da bir tabak mevsim dışı kaldığında bu değişiklik anında masaya yansıyor."%L(CHEF,"şefimiz"),
     "Bu bizim için sadece bir kolaylık değil, bir güven meselesiydi: misafir menüde gördüğü tabağın gerçekten o an mutfakta hazır olduğunu biliyor, biz de \"o tabak bitti, üzgünüz\" demek zorunda kalmıyoruz. %s üzerinden herkes aynı, güncel menüyü görebiliyor."%L(MENU,"Web sitemizdeki menü sayfası"),
-    "Tasarım tarafında da UniqBee, Mare Gastro'nun kimliğine sadık kaldı: aynı tipografi, aynı sakin ve zarif ton, gölün hemen kıyısındaki o dinginlik hissi dijital ekranda da korunuyor. Bir restoran menüsünün soğuk bir uygulama gibi değil, sıcak bir davetiye gibi hissettirmesi gerektiğine inanıyorduk; UniqBee bunu birebir yakaladı."]),
+    "Tasarım tarafında da UniqBee, Mare Gastro'nun kimliğine sadık kaldı: aynı tipografi, aynı sakin ve zarif ton, gölün hemen yanındaki o dinginlik hissi dijital ekranda da korunuyor. Bir restoran menüsünün soğuk bir uygulama gibi değil, sıcak bir davetiye gibi hissettirmesi gerektiğine inanıyorduk; UniqBee bunu birebir yakaladı."]),
   ("maregastro.com/dijitalmenu: Menüyü Bir Dergiye Dönüştürmek",
    ["En sevdiğimiz parçalardan biri, maregastro.com/dijitalmenu adresindeki dijital dergi menü deneyimi. Burada menü alışıldık bir liste gibi değil, gerçek bir dergi gibi sayfa sayfa çevriliyor; her sayfa çevrildiğinde küçük bir animasyonla bir sonraki tabağa geçiyorsunuz.",
     "Bu fikir aslında bizim fine dining anlayışımızla birebir örtüşüyordu: bir akşam yemeği acele edilecek bir şey değil, sayfa sayfa keşfedilen bir hikaye. UniqBee bu hissi dijitale taşırken teknik tarafı da gözden kaçırmadı — 170'in üzerinde ürünü kapsayan tam menü, yavaş bir telefonda bile takılmadan akıyor.",
     "Misafirlerimizin bu deneyimi masada beklerken ya da rezervasyon öncesi evde keşfederken kullanması, Mare Gastro'yu ziyaret etmeden önce bile bir beklenti oluşturuyor — tam da istediğimiz etki buydu."]),
   ("Rusça, Arapça, İngilizce: Çok Dilli Bir Sapanca Deneyimi",
-   ["Sapanca Gölü kıyısında olmamız, sadece yerli değil, yabancı misafirleri de ağırladığımız anlamına geliyor. Bu yüzden sitemizi Türkçe'nin yanında İngilizce, Rusça ve Arapça olarak da UniqBee'nin desteğiyle hayata geçirdik.",
+   ["Sapanca Gölü'nün hemen yanında olmamız, sadece yerli değil, yabancı misafirleri de ağırladığımız anlamına geliyor. Bu yüzden sitemizi Türkçe'nin yanında İngilizce, Rusça ve Arapça olarak da UniqBee'nin desteğiyle hayata geçirdik.",
     "Bu sadece menüyü çevirmekten ibaret değildi; rezervasyon formundan iletişim bilgilerine kadar sitenin tamamı, misafirin kendi dilinde rahatça gezinebileceği şekilde kuruldu. Arapça için sağdan sola okuma yönü gibi teknik detaylar bile atlanmadı.",
     "%s farklı dillerdeki sürümlerine göz atarak bu deneyimi kendiniz de görebilirsiniz."%L(SITE,"Sitemizin")]),
   ("UniqBee ile Çalışmaktan Neden Bu Kadar Memnun Kaldık",
@@ -1785,7 +1785,7 @@ POSTS = [
   ("Sonuç: Dijital Dönüşümden Çıkardığımız Ders",
    ["Bugün geldiğimiz noktada, bir misafir masaya oturduğunda gördüğü QR menüden, maregastro.com/dijitalmenu'deki sayfa çevirmeli deneyime kadar her parça birbirine bağlı ve güncel. Bu bütünlüğü tek başımıza kurabileceğimizi sanmıyoruz.",
     "Benzer bir dönüşümü düşünen başka restoranlara ya da otel işletmelerine tavsiyemiz basit: işinizi gerçekten anlamaya çalışan bir ekiple çalışın. Bizim için bu ekip %s oldu; onların kurduğu sistem sayesinde artık dijital tarafla değil, misafirimize sunduğumuz akşamla ilgilenmeye daha çok zaman ayırabiliyoruz."%L("https://uniqbee.com","UniqBee"),
-    "Bu deneyimi kendiniz görmek isterseniz, %s masanızı ayırtabilir, gölün hemen kıyısında hem lezzeti hem de bu dijital hikayenin bir parçası olan detayları keşfedebilirsiniz."%L(REZ,"rezervasyon sayfamızdan")]),
+    "Bu deneyimi kendiniz görmek isterseniz, %s masanızı ayırtabilir, gölün hemen yanında hem lezzeti hem de bu dijital hikayenin bir parçası olan detayları keşfedebilirsiniz."%L(REZ,"rezervasyon sayfamızdan")]),
  ],
  "faq":[
   ("Mare Gastro'nun dijital menüsünü ve web sitesini kim tasarladı?","Mare Gastro'nun QR kodla senkronize canlı menüsü ve maregastro.com/dijitalmenu dijital dergi deneyimi, dijital ajansımız UniqBee (https://uniqbee.com) tarafından tasarlandı ve hayata geçirildi."),
@@ -1825,7 +1825,7 @@ POSTS += [
     bquote("Karşılamadan başlayıp son ana kadar size kendinizi özel hissettiren, hem görsel hem lezzet şöleniyle geceyi taçlandıran bir yer olmuş.","Yasemin Babadağ"),
     "Servis tarafında da benzer bir tablo var; yorumlarda misafirlerin garsonları adlarıyla anarak teşekkür ettiğini görüyorsunuz. Daha fazla örnek için %s bakabilirsiniz."%L(post_url("mare-gastro-google-yorumlari"),"Google yorumları derlememize")]),
   ("Date İçin Neden İstanbul Dışına Çıkmalı?",
-   ["İstanbul'da bir date çoğu zaman trafik, park sorunu ve gürültülü bir salonla geçer. Şehir dışı bir date ise yolculuğun kendisini de deneyime katar: yol boyunca sohbet, göl kıyısında gün batımı ve acele etmeden yenen bir akşam yemeği.",
+   ["İstanbul'da bir date çoğu zaman trafik, park sorunu ve gürültülü bir salonla geçer. Şehir dışı bir date ise yolculuğun kendisini de deneyime katar: yol boyunca sohbet, gölün hemen yanında gün batımı ve acele etmeden yenen bir akşam yemeği.",
     btable(["Kriter","İstanbul içinde date","Sapanca'da Mare Gastro'da date"],[
      ["Ulaşım","Trafik ve otopark derdi","Yaklaşık 1,5 saat, Didi Otel'de geniş otopark"],
      ["Atmosfer","Kalabalık, gürültülü salonlar","Gölün hemen yanında, çamlar arasında bahçe"],
@@ -1935,7 +1935,7 @@ POSTS += [
      ["Öğleden sonra","Maşukiye'de dere kenarı ya da Kartepe yönünde doğa","Orman ve serinlik, fotoğraf için güzel kareler"],
      ["Gün batımı","Göl kıyısına dönüş","Sapanca'nın en romantik ışığı"],
      ["Akşam","Mare Gastro'da akşam yemeği","Gölün hemen yanında, şef imzalı fine dining"],
-     ["Gece","Didi Otel'de konaklama (isteğe bağlı)","Uzun dönüş yolu yerine göl kenarında bir gece"],
+     ["Gece","Didi Otel'de konaklama (isteğe bağlı)","Uzun dönüş yolu yerine gölün hemen yanında bir gece"],
     ]),
     "Daha ayrıntılı bir program için %s bakabilirsiniz."%L(post_url("sapanca-hafta-sonu-rotasi"),"Sapanca hafta sonu rotası yazımıza")]),
   ("Akşam İçin Neden Mare Gastro?",
@@ -1988,7 +1988,7 @@ POSTS += [
      ["Kutlama","Tek bir an","Tam bir hafta sonu kaçamağı"],
     ])]),
   ("Bir Gecelik Plan Nasıl Yapılır?",
-   ["<ol><li><strong>Rezervasyon:</strong> %s tarih, saat ve kişi sayısını seçin; konaklama tercihinizi aynı formda belirtin.</li><li><strong>Varış:</strong> Öğleden sonra gelip Didi Otel'e yerleşin; tesiste geniş otopark var.</li><li><strong>Gün batımı:</strong> Bahçede ya da göl kıyısında akşamı bekleyin.</li><li><strong>Akşam yemeği:</strong> Mare Gastro'da hava uygunsa açık bahçede, serin günlerde kapalı salonda.</li><li><strong>Sabah:</strong> Göl manzarasıyla kahvaltı; seçenekler için %s bakın.</li></ol>"%(L(REZ,"Rezervasyon formundan"),L(post_url("sapanca-gol-manzarali-kahvalti"),"göl manzaralı kahvaltı yazımıza"))]),
+   ["<ol><li><strong>Rezervasyon:</strong> %s tarih, saat ve kişi sayısını seçin; konaklama tercihinizi aynı formda belirtin.</li><li><strong>Varış:</strong> Öğleden sonra gelip Didi Otel'e yerleşin; tesiste geniş otopark var.</li><li><strong>Gün batımı:</strong> Bahçede ya da gölün hemen yanında akşamı bekleyin.</li><li><strong>Akşam yemeği:</strong> Mare Gastro'da hava uygunsa açık bahçede, serin günlerde kapalı salonda.</li><li><strong>Sabah:</strong> Göl manzarasıyla kahvaltı; seçenekler için %s bakın.</li></ol>"%(L(REZ,"Rezervasyon formundan"),L(post_url("sapanca-gol-manzarali-kahvalti"),"göl manzaralı kahvaltı yazımıza"))]),
   ("Mare Gastro'yu Sapanca'da Farklı Kılan Ne?",
    ["Mare Gastro, Sapanca'da fine dining konseptiyle hizmet veren tek restoran. Konsept Didi Otel bünyesinde Kadir Çiçek tarafından tasarlandı; mutfakta Yönetici Şef Doğan Anapa var. %s ve Ekim 2026'da Google'da yapılan \"fine dining Sapanca\" aramasında ilk sıradaki restoran."%GPUAN,
     "Şefin mutfağı bölgeyle konuşuyor. Sakarya'nın meşhur ıslama köftesinden ilham alıp balık suyuyla ıslatılmış ekmek üzerinde ızgara bebek kalamar hazırladığı tarifi izleyin:",
@@ -2264,7 +2264,7 @@ def footer_html():
 def cta_html():
     return ('<section class="bcta"><div class="bcta-inner">'
       '<h2>Masanızı <em>ayırtın</em></h2>'
-      '<p>Sapanca Gölü kıyısında, Didi Otel bahçesinde unutulmaz bir akşam için rezervasyonunuzu oluşturun.</p>'
+      '<p>Sapanca Gölü\'nün hemen yanında, Didi Otel bahçesinde unutulmaz bir akşam için rezervasyonunuzu oluşturun.</p>'
       '<div class="bcta-btns">'
       '<a class="btn-gold" href="%s">Rezervasyon Yap</a>'
       '<a class="btn-wa" href="%s" target="_blank" rel="noopener" onclick="trackEvent(\'whatsapp_click\',{event_label:\'blog_cta\'})">%s WhatsApp</a>'
@@ -2328,6 +2328,7 @@ PAGE = """<!DOCTYPE html>
 {gtm_head}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="keywords" content="{kw}">
@@ -2401,6 +2402,7 @@ INDEX = """<!DOCTYPE html>
 {gtm_head}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <title>Blog | Mare Gastro — Sapanca Fine Dining Rehberi</title>
 <meta name="description" content="Sapanca lüks restoran, fine dining, deniz ürünleri ve gurme rehberi. Mare Gastro blogunda Sapanca'da yemek üzerine her şey.">
 <meta name="keywords" content="sapanca restoran blog, sapanca fine dining, sapanca'da ne yenir, sapanca deniz ürünleri, sapanca lüks restoran">
@@ -2420,10 +2422,10 @@ INDEX = """<!DOCTYPE html>
 <meta property="og:title" content="Blog | Mare Gastro — Sapanca Fine Dining Rehberi">
 <meta property="og:description" content="Sapanca lüks restoran, fine dining ve gurme rehberi. Mare Gastro blogu.">
 <meta property="og:url" content="{site}/blog/">
-<meta property="og:image" content="{site}/images/og-image.jpg">
+<meta property="og:image" content="{site}/images/og-mare-mekan.jpg">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="{site}/images/og-image.jpg">
+<meta name="twitter:image" content="{site}/images/og-mare-mekan.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
@@ -2438,7 +2440,7 @@ INDEX = """<!DOCTYPE html>
 <header class="bidx-hero">
   <span class="beyebrow">Mare Gastro Günlüğü</span>
   <h1>Sapanca'da <em>Lezzet</em> Rehberi</h1>
-  <p>Göl kıyısında fine dining, taze deniz ürünleri, şef hikâyeleri ve Sapanca'da gurme bir hayata dair her şey.</p>
+  <p>Gölün hemen yanında fine dining, taze deniz ürünleri, şef hikâyeleri ve Sapanca'da gurme bir hayata dair her şey.</p>
 </header>
 <main class="bidx-grid">
 {cards}

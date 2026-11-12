@@ -33,7 +33,7 @@ REFRESH = {
   ]),
   ("The 5 Venues at a Glance", [
    table(["Venue", "Known for", "Best for", "Setting"], [
-    ["Mare Gastro", "Aegean-Mediterranean cuisine by Executive Chef Doğan Anapa; cake and table decoration on request", "Romantic or elegant birthdays, tables of 2–12", "Lakeside, indoor and outdoor seating"],
+    ["Mare Gastro", "Aegean-Mediterranean cuisine by Executive Chef Doğan Anapa; cake and table decoration on request", "Romantic or elegant birthdays, tables of 2–12", "Right by the lake, indoor and outdoor seating"],
     ["Sasa Sapanca", "Broad international menu, live music", "Large groups of friends", "Lakeside"],
     ["Menzara", "Black Sea cuisine, open since 2010", "Relaxed family dinners", "Lake-view balcony"],
     ["Green Blue", "Seafood, children's play area", "Family birthdays with kids", "Large garden"],
@@ -46,7 +46,7 @@ REFRESH = {
    "<ul><li><strong>View:</strong> right on the lake, or garden and nature focused?</li><li><strong>Celebration support:</strong> will the team plan a cake, candles, table decoration or a surprise?</li><li><strong>Group size:</strong> a table for two, or fifteen friends?</li><li><strong>Kitchen:</strong> à la carte fine dining, or a broad casual menu?</li></ul>",
   ]),
   ("1. Mare Gastro — Fine Dining Right by the Lake", [
-   "Mare Gastro is a fine dining restaurant on the shore of Lake Sapanca, in the garden of Didi Otel. Executive Chef Doğan Anapa runs an à la carte Aegean-Mediterranean menu, and birthday requests such as a cake or table decoration are planned with the team when you book.",
+   "Mare Gastro is a fine dining restaurant right next to Lake Sapanca, in the garden of Didi Otel. Executive Chef Doğan Anapa runs an à la carte Aegean-Mediterranean menu, and birthday requests such as a cake or table decoration are planned with the team when you book.",
    fig("mare-kutlama-kadeh.webp", "A birthday celebration at Mare Gastro", "A celebration table at Mare Gastro"),
    "The menu lists 13 starters, 8 warm small plates and 8 main courses (October 2026). Popular choices for birthday tables include the Mare Special Meagre Fish (with beurre blanc), Beef Tenderloin in Pepper Cream Sauce and the signature dessert A Walk in the Forest (chocolate mousse, crispy choux pastry, house-made vanilla ice cream). See every dish on %s." % _menu,
    q(T_BDAY, Q_BDAY[1]),
@@ -70,9 +70,9 @@ REFRESH = {
   ]),
  ],
  "faq": [
-  ("What is the best birthday restaurant in Sapanca?", "It depends on the celebration. For a lakeside fine dining birthday, Mare Gastro in the garden of Didi Otel; for a lively group night with live music, Sasa Sapanca; for a family celebration with children, Green Blue."),
+  ("What is the best birthday restaurant in Sapanca?", "It depends on the celebration. For a fine dining birthday right by the lake, Mare Gastro in the garden of Didi Otel; for a lively group night with live music, Sasa Sapanca; for a family celebration with children, Green Blue."),
   ("Can Mare Gastro arrange a birthday cake or decoration?", "Yes. Share your request when you book and the team will plan the cake and table decoration with you."),
-  ("Which Sapanca restaurants have a lake view for a birthday?", "Mare Gastro, Sasa Sapanca and Menzara are on the lakeshore or have lake views; Green Blue and Natürköy are more garden and nature focused."),
+  ("Which Sapanca restaurants have a lake view for a birthday?", "Mare Gastro is right next to the lake, while Sasa Sapanca and Menzara are on the lakeshore or have lake views; Green Blue and Natürköy are more garden and nature focused."),
   ("Where can a large group of friends celebrate a birthday in Sapanca?", "Sasa Sapanca suits large groups with its broad menu and live music; Mare Gastro suits groups who want a more refined table. Book ahead for larger groups."),
   ("What is Mare Gastro's Google rating?", "Mare Gastro is rated 4.9 on Google Maps as of 24 October 2026. Reviews most often praise the atmosphere, the service and special-occasion arrangements."),
   ("Can I stay overnight in Sapanca after the birthday dinner?", "Yes. Mare Gastro is in the garden of Didi Otel, so you can note an overnight stay on the reservation form."),
@@ -89,7 +89,7 @@ REFRESH = {
   ]),
   ("The 5 Venues at a Glance", [
    table(["Venue", "Romantic setting", "Surprise support", "Stay overnight"], [
-    ["Mare Gastro", "Lakeside, candle-lit, indoor and outdoor seating", "Cake, flowers and table decoration planned when booking", "Part of Didi Otel"],
+    ["Mare Gastro", "Right by the lake, candle-lit, indoor and outdoor seating", "Cake, flowers and table decoration planned when booking", "Part of Didi Otel"],
     ["Sasa Sapanca", "Lakeside, live music", "Ask the venue", "—"],
     ["Menzara", "Lake-view balcony", "Ask the venue", "—"],
     ["Green Blue", "Large garden, family atmosphere", "Ask the venue", "—"],
@@ -101,7 +101,7 @@ REFRESH = {
    "<ul><li><strong>View:</strong> a lake view at sunset does more for an anniversary than anything else.</li><li><strong>Atmosphere:</strong> candlelight and a calm table layout matter for a table for two.</li><li><strong>Surprises:</strong> will the team plan a cake, flowers or a personal note in advance?</li><li><strong>Real guest experience:</strong> what do couples who celebrated there say in their Google reviews?</li></ul>",
   ]),
   ("1. Mare Gastro — A Romantic Table Right by the Lake", [
-   "Mare Gastro is a fine dining restaurant on the shore of Lake Sapanca, in the garden of Didi Otel. Cake, flower arrangements and table decoration for anniversaries are planned one by one when you book, and the kitchen is led by Executive Chef Doğan Anapa's Aegean-Mediterranean menu.",
+   "Mare Gastro is a fine dining restaurant right next to Lake Sapanca, in the garden of Didi Otel. Cake, flower arrangements and table decoration for anniversaries are planned one by one when you book, and the kitchen is led by Executive Chef Doğan Anapa's Aegean-Mediterranean menu.",
    fig("mare-romantik-kadeh.webp", "A couple toasting by the lake at Mare Gastro", "An anniversary evening at Mare Gastro"),
    "Couples who celebrated their anniversary here mostly mention the atmosphere, the service and the music:",
    q(T_ANNIV2, Q_ANNIV2[1]),
@@ -126,9 +126,9 @@ REFRESH = {
   ]),
  ],
  "faq": [
-  ("What is the best place to celebrate an anniversary in Sapanca?", "For a romantic lakeside fine dining evening, Mare Gastro in the garden of Didi Otel; for live music, Sasa Sapanca; for a cosy table, Menzara."),
+  ("What is the best place to celebrate an anniversary in Sapanca?", "For a romantic fine dining evening right by the lake, Mare Gastro in the garden of Didi Otel; for live music, Sasa Sapanca; for a cosy table, Menzara."),
   ("Can Mare Gastro arrange a surprise cake for an anniversary?", "Yes. Share your request when you book and the cake, flowers and table decoration are planned with the team."),
-  ("Which romantic restaurants in Sapanca have a lake view?", "Mare Gastro, Sasa Sapanca and Menzara are on the lakeshore or have lake views; Green Blue and Natürköy are garden and nature focused."),
+  ("Which romantic restaurants in Sapanca have a lake view?", "Mare Gastro is right next to the lake, while Sasa Sapanca and Menzara are on the lakeshore or have lake views; Green Blue and Natürköy are garden and nature focused."),
   ("How far is Sapanca from Istanbul?", "Sapanca is about a 1.5-hour drive from Istanbul, which makes it a popular anniversary getaway."),
   ("What is Mare Gastro's Google rating?", "Mare Gastro is rated 4.9 on Google Maps as of 24 October 2026; couples celebrating anniversaries most often praise the atmosphere, service and music."),
   ("Can we stay overnight after an anniversary dinner?", "Yes. Mare Gastro is part of Didi Otel; note your stay on the reservation form."),
@@ -157,7 +157,7 @@ REFRESH = {
    "For example, the Mare Special Meagre Fish is 200 g of meagre with roasted baby potatoes, charred green pepper sauce, charred tomato and beurre blanc; the Beef Tenderloin in Pepper Cream Sauce is 200 g of tenderloin with black pepper cream sauce and matchstick fries. Portion weights printed on the menu make value easy to judge in advance.",
   ]),
   ("How to Judge Value for Money", [
-   "<ul><li><strong>Portion and ingredients:</strong> dishes with listed weights and ingredients make clear what you pay for.</li><li><strong>Freshness:</strong> with seafood, freshness is the real reason for price differences.</li><li><strong>Setting:</strong> a lakeside table and a quiet garden are part of the experience.</li><li><strong>Guest experience:</strong> check real reviews — Mare Gastro is %s.</li></ul>" % _g,
+   "<ul><li><strong>Portion and ingredients:</strong> dishes with listed weights and ingredients make clear what you pay for.</li><li><strong>Freshness:</strong> with seafood, freshness is the real reason for price differences.</li><li><strong>Setting:</strong> a table right by the lake and a quiet garden are part of the experience.</li><li><strong>Guest experience:</strong> check real reviews — Mare Gastro is %s.</li></ul>" % _g,
    q(T_LOCAL, Q_LOCAL[1]),
   ]),
   ("Where Can I See Current Prices?", [
@@ -258,7 +258,7 @@ REFRESH = {
   ("Which restaurant is Doğan Anapa the chef of?", "Doğan Anapa is the Executive Chef of Mare Gastro, in the garden of Didi Otel in Sapanca."),
   ("What is Doğan Anapa's cooking style?", "Seafood-focused Aegean-Mediterranean fine dining built on fresh, local and seasonal produce, with a storytelling approach shaped by his background in cinema."),
   ("What are Doğan Anapa's signature dishes?", "Highlights include the Mare Special Meagre Fish with beurre blanc, Mare Special Grilled Baby Calamari, Seafood Wheat Risotto, Bonito Carpaccio and the A Walk in the Forest dessert."),
-  ("Where is Mare Gastro?", "Mare Gastro is at Kırkpınar Soğuksu, İstasyon 3 Cad. No:55, Sapanca/Sakarya, in the garden of Didi Otel on the shore of Lake Sapanca."),
+  ("Where is Mare Gastro?", "Mare Gastro is at Kırkpınar Soğuksu, İstasyon 3 Cad. No:55, Sapanca/Sakarya, in the garden of Didi Otel right next to Lake Sapanca."),
   ("Where can I watch Chef Doğan Anapa's cooking videos?", "Mare Gastro's YouTube channel (@maregastro) publishes videos of the chef preparing signature dishes; follow @chefdogananapa on Instagram."),
  ],
 },

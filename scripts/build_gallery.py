@@ -206,6 +206,7 @@ def page(lang, venue, dishes, chef, bar):
 {GTM_HEAD}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <title>{html.escape(t['title'])}</title>
 <meta name="description" content="{html.escape(t['desc'])}">
 <meta name="theme-color" content="#FBF8F2">

@@ -65,7 +65,7 @@ NAV_LABELS = {
         "breadcrumb_home":"Home"},
  "ar": {"blog":"المدونة","menu":"القائمة","rez":"الحجز","home":"الرئيسية","read_more":"اقرأ المقال ←",
         "you_may_like":"قد يعجبك أيضًا","faq_title":"الأسئلة الشائعة","faq_sub":"Mare Gastro · سابانجا",
-        "cta_h":"احجز", "cta_h_em":"طاولتك", "cta_p":"احجز طاولتك لأمسية لا تُنسى على ضفاف بحيرة سابانجا، في حديقة فندق Didi Otel.",
+        "cta_h":"احجز", "cta_h_em":"طاولتك", "cta_p":"احجز طاولتك لأمسية لا تُنسى بجوار بحيرة سابانجا مباشرة، في حديقة فندق Didi Otel.",
         "cta_res":"إجراء حجز","cta_wa":"واتساب","cta_menu":"عرض القائمة",
         "footer_tag":"فاين داينينغ · سابانجا · حديقة فندق Didi Otel","footer_home":"الرئيسية","footer_within":"ضمن",
         "breadcrumb_home":"الرئيسية"},
@@ -198,6 +198,7 @@ PAGE = """<!DOCTYPE html>
 {gtm_head}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="keywords" content="{kw}">
@@ -285,7 +286,7 @@ INDEX_DESC = {"en":"Sapanca luxury restaurant, fine dining, seafood and gourmet 
               "ru":"Гид по роскошным ресторанам, высокой кухне и морепродуктам Сапанджа. Все о ресторанах Сапанджа из блога Mare Gastro."}
 INDEX_H1 = {"en":'Sapanca <em>Dining</em> Guide', "ar":'دليل <em>الطعام</em> في سابانجا', "ru":'Гид по <em>ресторанам</em> Сапанджа'}
 INDEX_SUB = {"en":"Fine dining by the lake, fresh seafood, chef stories, and everything about gourmet life in Sapanca.",
-             "ar":"فاين داينينغ على ضفاف البحيرة، مأكولات بحرية طازجة، وكل ما يخص الحياة الفاخرة في سابانجا.",
+             "ar":"فاين داينينغ بجوار البحيرة مباشرة، مأكولات بحرية طازجة، وكل ما يخص الحياة الفاخرة في سابانجا.",
              "ru":"Высокая кухня у озера, свежие морепродукты и все о гастрономической жизни в Сапанджа."}
 INDEX_EYEBROW = {"en":"Mare Gastro Journal", "ar":"مجلة Mare Gastro", "ru":"Журнал Mare Gastro"}
 
@@ -295,6 +296,7 @@ INDEX = """<!DOCTYPE html>
 {gtm_head}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{site}/{lang}/blog/">
@@ -307,7 +309,7 @@ INDEX = """<!DOCTYPE html>
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{site}/{lang}/blog/">
-<meta property="og:image" content="{site}/images/og-image.jpg">
+<meta property="og:image" content="{site}/images/og-mare-mekan.jpg">
 <meta property="og:locale" content="{locale}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -89,11 +89,11 @@ REFRESH_TR = [
  "lead": "Sapanca'da doğum günü mekanı seçerken manzara, atmosfer, grup büyüklüğü ve mutfak birlikte değerlendirilmeli. Bölgenin öne çıkan 5 adresini bu dört kritere göre karşılaştırdık ve 24 Ekim 2026'da güncelledik.",
  "body": [
   ("Kısa Cevap: Sapanca'da Doğum Günü Nerede Kutlanır?", [
-   "Göl kenarında şık bir fine dining kutlaması için <strong>Mare Gastro</strong> (Didi Otel bahçesi, %s), canlı müzikli kalabalık bir akşam için <strong>Sasa Sapanca</strong>, samimi bir aile sofrası için <strong>Menzara</strong>, çocuklu kutlama için <strong>Green Blue</strong>, doğa ve aktivite için <strong>Natürköy</strong> öne çıkıyor. Doğru seçim, kutlamanın tarzına bağlı." % _tr_g,
+   "Gölün hemen yanında şık bir fine dining kutlaması için <strong>Mare Gastro</strong> (Didi Otel bahçesi, %s), canlı müzikli kalabalık bir akşam için <strong>Sasa Sapanca</strong>, samimi bir aile sofrası için <strong>Menzara</strong>, çocuklu kutlama için <strong>Green Blue</strong>, doğa ve aktivite için <strong>Natürköy</strong> öne çıkıyor. Doğru seçim, kutlamanın tarzına bağlı." % _tr_g,
   ]),
   ("5 Mekan Bir Bakışta", [
    table(["Mekan", "Öne çıkan", "En uygun kutlama", "Ortam"], [
-    ["Mare Gastro", "Şef Doğan Anapa imzalı Ege-Akdeniz mutfağı, pasta ve masa süslemesi desteği", "Romantik veya zarif doğum günü, 2–12 kişilik sofralar", "Göl kıyısı, açık ve kapalı alan"],
+    ["Mare Gastro", "Şef Doğan Anapa imzalı Ege-Akdeniz mutfağı, pasta ve masa süslemesi desteği", "Romantik veya zarif doğum günü, 2–12 kişilik sofralar", "Gölün hemen yanı, açık ve kapalı alan"],
     ["Sasa Sapanca", "Geniş dünya mutfağı menüsü, canlı müzik", "Kalabalık arkadaş grubu", "Göl kıyısı"],
     ["Menzara", "Karadeniz mutfağı, 2010'dan beri hizmet", "Samimi aile sofrası", "Göl manzaralı balkon"],
     ["Green Blue", "Deniz ürünleri, çocuk oyun alanı", "Çocuklu aile kutlaması", "Geniş bahçe"],
@@ -106,11 +106,11 @@ REFRESH_TR = [
    "<ul><li><strong>Manzara:</strong> Göl kıyısında mı, yoksa bahçe/doğa odaklı mı?</li><li><strong>Kutlama desteği:</strong> Pasta, mum, masa süslemesi ve sürpriz için ekip planlama yapıyor mu?</li><li><strong>Grup büyüklüğü:</strong> İkili bir sofra mı, 15 kişilik bir arkadaş grubu mu?</li><li><strong>Mutfak:</strong> À la carte fine dining mi, geniş ve gündelik bir menü mü?</li></ul>",
   ]),
   ("1. Mare Gastro — Gölün Hemen Yanında Fine Dining Kutlama", [
-   "Mare Gastro, Sapanca'da Didi Otel bahçesinde, göl kıyısında yer alan bir fine dining restoran. Yönetici Şef Doğan Anapa'nın Ege-Akdeniz mutfağıyla à la carte servis yapıyor; doğum günü için pasta ve masa süslemesi talepleri rezervasyon sırasında ekiple birlikte planlanıyor.",
+   "Mare Gastro, Sapanca'da Didi Otel bahçesinde, gölün hemen yanında yer alan bir fine dining restoran. Yönetici Şef Doğan Anapa'nın Ege-Akdeniz mutfağıyla à la carte servis yapıyor; doğum günü için pasta ve masa süslemesi talepleri rezervasyon sırasında ekiple birlikte planlanıyor.",
    fig("mare-kutlama-kadeh.webp", "Mare Gastro'da bir doğum günü kutlaması", "Mare Gastro'da bir kutlama sofrası"),
    "Menüde 13 başlangıç, 8 ara sıcak ve 8 ana yemek yer alıyor (Ekim 2026). Doğum günü sofralarında sık tercih edilenler arasında Mare Spesiyal Granyöz (kaya levreği, beurre blanc sos), Biber Kremalı Bonfile ve imza tatlı Ormanda Bir Yürüyüş (çikolata mus, çıtır profiterol, ev yapımı vanilyalı dondurma) var. Tüm tabakları %s görebilirsiniz." % _tr_menu,
    quote(Q_BDAY[0], Q_BDAY[1], "tr"),
-   "Canlı müzik akşamları da düzenleniyor; misafir yorumlarında canlı müzik ve DJ performansları sıkça geçiyor. Didi Otel bünyesinde olduğu için kutlama sonrası göl kenarında konaklamak da mümkün.",
+   "Canlı müzik akşamları da düzenleniyor; misafir yorumlarında canlı müzik ve DJ performansları sıkça geçiyor. Didi Otel bünyesinde olduğu için kutlama sonrası gölün hemen yanında konaklamak da mümkün.",
   ]),
   ("2. Sasa Sapanca — Canlı Müzik Eşliğinde Göl Kıyısında", [
    "Göl kıyısındaki Sasa Sapanca; mezeler, burger, taco, kırmızı et ve balık gibi dünya mutfağından geniş bir menü ve canlı müzik sunuyor. Farklı damak zevklerine sahip kalabalık bir grubu ağırlamak için pratik bir seçenek.",
@@ -130,9 +130,9 @@ REFRESH_TR = [
   ]),
  ],
  "faq": [
-  ("Sapanca'da doğum günü için en iyi mekan hangisi?", "Kutlamanın tarzına bağlı. Göl kenarında fine dining bir doğum günü için Didi Otel bahçesindeki Mare Gastro, canlı müzikli kalabalık bir akşam için Sasa Sapanca, çocuklu aile kutlaması için Green Blue öne çıkıyor."),
+  ("Sapanca'da doğum günü için en iyi mekan hangisi?", "Kutlamanın tarzına bağlı. Gölün hemen yanında fine dining bir doğum günü için Didi Otel bahçesindeki Mare Gastro, canlı müzikli kalabalık bir akşam için Sasa Sapanca, çocuklu aile kutlaması için Green Blue öne çıkıyor."),
   ("Mare Gastro doğum günü için pasta veya süsleme ayarlıyor mu?", "Evet. Rezervasyon sırasında talebinizi ilettiğinizde pasta ve masa süslemesi detayları ekiple birlikte planlanır."),
-  ("Sapanca'da göl manzaralı doğum günü mekanları hangileri?", "Mare Gastro, Sasa Sapanca ve Menzara göl kıyısında veya göl manzaralı; Green Blue ve Natürköy daha çok bahçe ve doğa odaklı bir atmosfer sunar."),
+  ("Sapanca'da göl manzaralı doğum günü mekanları hangileri?", "Mare Gastro gölün hemen yanında, Sasa Sapanca ve Menzara ise göl kıyısında veya göl manzaralı; Green Blue ve Natürköy daha çok bahçe ve doğa odaklı bir atmosfer sunar."),
   ("Kalabalık bir arkadaş grubuyla doğum günü için hangi mekan uygun?", "Geniş menüsü ve canlı müziğiyle Sasa Sapanca, ya da daha özel ve şık bir sofra için Mare Gastro değerlendirilebilir. Kalabalık gruplarda önceden rezervasyon yapmak önemli."),
   ("Mare Gastro'nun Google puanı kaç?", "Mare Gastro'nun Google Haritalar puanı 24 Ekim 2026 itibarıyla 4,9. Misafirler yorumlarda en çok atmosferi, servisi ve özel gün organizasyonunu öne çıkarıyor."),
   ("Doğum günü kutlamasından sonra Sapanca'da konaklayabilir miyim?", "Evet. Mare Gastro, Didi Otel bahçesinde yer aldığı için konaklama tercihinizi rezervasyon formunda belirtebilirsiniz."),
@@ -145,11 +145,11 @@ REFRESH_TR = [
  "lead": "Bir yıldönümü akşamında mekan seçimi; göl manzarası, romantik atmosfer ve sürpriz organizasyonu birlikte değerlendirilerek yapılmalı. Sapanca'nın öne çıkan 5 adresini bu kriterlere göre karşılaştırdık ve 24 Ekim 2026'da güncelledik.",
  "body": [
   ("Kısa Cevap: Sapanca'da Yıldönümü Nerede Kutlanır?", [
-   "Göl kenarında, mum ışığında romantik bir yıldönümü yemeği için <strong>Mare Gastro</strong> (%s), canlı müzikli bir akşam için <strong>Sasa Sapanca</strong>, samimi bir sofra için <strong>Menzara</strong> öne çıkıyor. Şehirden tamamen uzaklaşmak isteyen çiftler için <strong>Natürköy</strong> doğa içinde sakin bir alternatif." % _tr_g,
+   "Gölün hemen yanında, mum ışığında romantik bir yıldönümü yemeği için <strong>Mare Gastro</strong> (%s), canlı müzikli bir akşam için <strong>Sasa Sapanca</strong>, samimi bir sofra için <strong>Menzara</strong> öne çıkıyor. Şehirden tamamen uzaklaşmak isteyen çiftler için <strong>Natürköy</strong> doğa içinde sakin bir alternatif." % _tr_g,
   ]),
   ("5 Mekan Bir Bakışta", [
    table(["Mekan", "Romantik atmosfer", "Sürpriz desteği", "Konaklama"], [
-    ["Mare Gastro", "Göl kıyısı, mum ışığı, açık ve kapalı alan", "Pasta, çiçek ve masa süslemesi rezervasyonda planlanır", "Didi Otel bünyesinde"],
+    ["Mare Gastro", "Gölün hemen yanı, mum ışığı, açık ve kapalı alan", "Pasta, çiçek ve masa süslemesi rezervasyonda planlanır", "Didi Otel bünyesinde"],
     ["Sasa Sapanca", "Göl kıyısı, canlı müzik", "Mekana sorulmalı", "—"],
     ["Menzara", "Göl manzaralı balkon", "Mekana sorulmalı", "—"],
     ["Green Blue", "Geniş bahçe, aile odaklı", "Mekana sorulmalı", "—"],
@@ -161,12 +161,12 @@ REFRESH_TR = [
    "<ul><li><strong>Manzara:</strong> Gün batımında göl manzarası, yıldönümü akşamını en çok güzelleştiren detay.</li><li><strong>Atmosfer:</strong> Mum ışığı ve sakin bir masa düzeni ikili sofra için önemli.</li><li><strong>Sürpriz organizasyonu:</strong> Pasta, çiçek ya da masaya özel bir not için ekip önceden plan yapıyor mu?</li><li><strong>Gerçek misafir deneyimi:</strong> Google yorumlarında yıldönümü kutlayan çiftler ne anlatıyor?</li></ul>",
   ]),
   ("1. Mare Gastro — Gölün Hemen Yanında Romantik Bir Yıldönümü Sofrası", [
-   "Mare Gastro, Didi Otel bahçesinde, Sapanca Gölü kıyısında yer alan bir fine dining restoran. Yıldönümü için pasta, çiçek düzenlemesi ve masa süslemesi talepleri rezervasyon sırasında tek tek planlanıyor; mutfakta Yönetici Şef Doğan Anapa'nın Ege-Akdeniz menüsü var.",
+   "Mare Gastro, Didi Otel bahçesinde, Sapanca Gölü'nün hemen yanında yer alan bir fine dining restoran. Yıldönümü için pasta, çiçek düzenlemesi ve masa süslemesi talepleri rezervasyon sırasında tek tek planlanıyor; mutfakta Yönetici Şef Doğan Anapa'nın Ege-Akdeniz menüsü var.",
    fig("mare-romantik-kadeh.webp", "Mare Gastro'da gölün yanında kadeh tokuşturan çift", "Mare Gastro'da yıldönümü akşamı"),
    "Yorumlarda yıldönümünü Mare Gastro'da kutlayan çiftler en çok atmosferi, servisi ve müziği anıyor:",
    quote(Q_ANNIV2[0], Q_ANNIV2[1], "tr"),
    quote(Q_ANNIV1[0], Q_ANNIV1[1], "tr"),
-   "İkili sofralarda sık tercih edilen tabaklar arasında Palamut Carpaccio, Kereviz Püreli Jumbo Karides Söğüş, Fırında Kremalı Levrek ve Çerkes Peynirli Cheesecake var. Didi Otel bünyesinde olduğu için akşamı göl kenarında konaklayarak uzatabilirsiniz.",
+   "İkili sofralarda sık tercih edilen tabaklar arasında Palamut Carpaccio, Kereviz Püreli Jumbo Karides Söğüş, Fırında Kremalı Levrek ve Çerkes Peynirli Cheesecake var. Didi Otel bünyesinde olduğu için akşamı gölün hemen yanında konaklayarak uzatabilirsiniz.",
   ]),
   ("2. Sasa Sapanca — Canlı Müzik Eşliğinde Göl Kıyısında", [
    "Göl kıyısındaki Sasa Sapanca, dünya mutfağından geniş bir menü ve canlı müzikle hareketli bir akşam yemeği atmosferi sunuyor. Farklı damak zevkleri olan çiftler için pratik bir seçenek.",
@@ -186,12 +186,12 @@ REFRESH_TR = [
   ]),
  ],
  "faq": [
-  ("Sapanca'da yıldönümü kutlamak için en iyi mekan hangisi?", "Göl kenarında romantik bir fine dining akşamı için Didi Otel bahçesindeki Mare Gastro, canlı müzikli bir akşam için Sasa Sapanca, samimi bir sofra için Menzara öne çıkan seçenekler."),
+  ("Sapanca'da yıldönümü kutlamak için en iyi mekan hangisi?", "Gölün hemen yanında romantik bir fine dining akşamı için Didi Otel bahçesindeki Mare Gastro, canlı müzikli bir akşam için Sasa Sapanca, samimi bir sofra için Menzara öne çıkan seçenekler."),
   ("Mare Gastro yıldönümü için sürpriz pasta ayarlıyor mu?", "Evet. Rezervasyon sırasında talebinizi ilettiğinizde pasta, çiçek düzenlemesi ve masa süslemesi ekiple birlikte planlanır."),
-  ("Sapanca'da göl manzaralı romantik restoranlar hangileri?", "Mare Gastro, Sasa Sapanca ve Menzara göl kıyısında veya göl manzaralı; Green Blue ve Natürköy daha çok bahçe ve doğa odaklı."),
+  ("Sapanca'da göl manzaralı romantik restoranlar hangileri?", "Mare Gastro gölün hemen yanında, Sasa Sapanca ve Menzara ise göl kıyısında veya göl manzaralı; Green Blue ve Natürköy daha çok bahçe ve doğa odaklı."),
   ("Mare Gastro'nun Google yorumlarındaki puanı kaç?", "24 Ekim 2026 itibarıyla Google Haritalar puanı 4,9. Yıldönümü kutlayan çiftler yorumlarda en çok atmosferi, servisi ve müziği öne çıkarıyor."),
   ("Yıldönümü akşamı Sapanca'da konaklama mümkün mü?", "Evet. Mare Gastro, Didi Otel bünyesinde yer alıyor; konaklama tercihinizi rezervasyon formunda belirtebilirsiniz."),
-  ("Yıldönümü için ne kadar önceden rezervasyon yapmalıyım?", "Hafta sonları ve özel günlerde göl kenarındaki masalar hızlı doluyor; birkaç gün önceden rezervasyon yapmanız ve sürpriz taleplerinizi o sırada iletmeniz önerilir."),
+  ("Yıldönümü için ne kadar önceden rezervasyon yapmalıyım?", "Hafta sonları ve özel günlerde gölün hemen yanındaki masalar hızlı doluyor; birkaç gün önceden rezervasyon yapmanız ve sürpriz taleplerinizi o sırada iletmeniz önerilir."),
  ],
 },
 {
@@ -217,7 +217,7 @@ REFRESH_TR = [
    "Örneğin Mare Spesiyal Granyöz; 200 gr kaya levreği, fırınlanmış baby patates, köz yeşil biber sos, köz domates ve beurre blanc sosla geliyor. Biber Kremalı Bonfile 200 gr dana bonfile, karabiber kremalı sos ve kibrit patatesle servis ediliyor. Gramajların menüde yazılı olması, fiyat/performansı önceden değerlendirmenizi kolaylaştırıyor.",
   ]),
   ("Fiyat/Performans Açısından Nelere Dikkat Etmeli?", [
-   "<ul><li><strong>Gramaj ve içerik:</strong> Menüde gramajı ve içeriği yazılı tabaklar, neye ödediğinizi netleştirir.</li><li><strong>Malzemenin tazeliği:</strong> Deniz ürünlerinde tazelik, fiyat farkının asıl nedenidir.</li><li><strong>Atmosfer:</strong> Göl kıyısında bir masa ve sakin bir bahçe, deneyimin parçasıdır.</li><li><strong>Misafir deneyimi:</strong> Fiyatı tartarken gerçek yorumlara bakın; Mare Gastro'nun %s.</li></ul>" % _tr_g,
+   "<ul><li><strong>Gramaj ve içerik:</strong> Menüde gramajı ve içeriği yazılı tabaklar, neye ödediğinizi netleştirir.</li><li><strong>Malzemenin tazeliği:</strong> Deniz ürünlerinde tazelik, fiyat farkının asıl nedenidir.</li><li><strong>Atmosfer:</strong> Gölün hemen yanında bir masa ve sakin bir bahçe, deneyimin parçasıdır.</li><li><strong>Misafir deneyimi:</strong> Fiyatı tartarken gerçek yorumlara bakın; Mare Gastro'nun %s.</li></ul>" % _tr_g,
    quote(Q_LOCAL[0], Q_LOCAL[1], "tr"),
   ]),
   ("Güncel Fiyatları Nereden Görebilirim?", [
@@ -320,7 +320,7 @@ REFRESH_TR = [
   ("Doğan Anapa hangi restoranın şefi?", "Doğan Anapa, Sapanca'da Didi Otel bahçesinde yer alan Mare Gastro'nun Yönetici Şefi'dir."),
   ("Doğan Anapa'nın mutfak tarzı nedir?", "Taze, yerel ve mevsimsel malzemeye dayanan, deniz ürünleri ağırlıklı bir Ege-Akdeniz fine dining mutfağı; sinema geçmişinden gelen anlatı odaklı bir yaklaşımla menüyü kurguluyor."),
   ("Doğan Anapa'nın imza yemekleri nelerdir?", "Mare Spesiyal Granyöz (kaya levreği, beurre blanc), Mare Spesiyal Islama Kalamar, Deniz Mahsülleri Buğday Risotto, Palamut Carpaccio ve Ormanda Bir Yürüyüş tatlısı öne çıkan tabaklar arasında."),
-  ("Mare Gastro nerede?", "Mare Gastro, Kırkpınar Soğuksu, İstasyon 3 Cad. No:55, Sapanca/Sakarya adresinde, Didi Otel bahçesinde, Sapanca Gölü kıyısında."),
+  ("Mare Gastro nerede?", "Mare Gastro, Kırkpınar Soğuksu, İstasyon 3 Cad. No:55, Sapanca/Sakarya adresinde, Didi Otel bahçesinde, Sapanca Gölü'nün hemen yanında."),
   ("Şef Doğan Anapa'nın yemek videolarını nereden izleyebilirim?", "Mare Gastro'nun YouTube kanalında (@maregastro) şefin imza tabaklarını hazırladığı videolar yayınlanıyor; Instagram'da @chefdogananapa hesabını takip edebilirsiniz."),
  ],
 },

@@ -40,12 +40,12 @@ REFRESH_TR2 += [
     {
         "slug": "sapancada-ne-yenir", "updated": UPDATED,
         "title": "Sapanca'da Ne Yenir? Yerel Lezzetler ve Öneriler (2026) | Mare Gastro",
-        "desc": "Sapanca'da ne yenir? Adapazarı ıslama köftesi ve keşkek gibi yerel tatlar, göl kenarında deniz ürünleri ve Mare Gastro'da şefin bu tatlara getirdiği yorumlar.",
-        "lead": "<strong>Kısa cevap:</strong> Sapanca'da bölgenin iki klasiği öne çıkar: Adapazarı'nın ıslama köftesi ve keşkek. Göl kenarında ise deniz ürünleri, mezeler ve serpme kahvaltı aranır. Mare Gastro'da Şef Doğan Anapa bu yerel tatları yorumluyor; örneğin ıslama köfteden ilham alan Islama Kalamar menüde.",
+        "desc": "Sapanca'da ne yenir? Adapazarı ıslama köftesi ve keşkek gibi yerel tatlar, gölün hemen yanında deniz ürünleri ve Mare Gastro'da şefin bu tatlara getirdiği yorumlar.",
+        "lead": "<strong>Kısa cevap:</strong> Sapanca'da bölgenin iki klasiği öne çıkar: Adapazarı'nın ıslama köftesi ve keşkek. Gölün hemen yanında ise deniz ürünleri, mezeler ve serpme kahvaltı aranır. Mare Gastro'da Şef Doğan Anapa bu yerel tatları yorumluyor; örneğin ıslama köfteden ilham alan Islama Kalamar menüde.",
     },
     {
         "slug": "sapanca-romantik-aksam-yemegi", "updated": UPDATED,
-        "title": "Sapanca Romantik Akşam Yemeği: Göl Kenarında Fine Dining (2026) | Mare Gastro",
+        "title": "Sapanca Romantik Akşam Yemeği: Gölün Hemen Yanında Fine Dining (2026) | Mare Gastro",
         "desc": "Sapanca'da romantik akşam yemeği için Mare Gastro: Didi Otel bahçesinde açık ve kapalı alan, Google'da 4,9, özel gün hazırlığı ve aynı bahçede konaklama.",
         "lead": "<strong>Kısa cevap:</strong> Sapanca'da romantik bir akşam yemeği için Mare Gastro, Didi Otel bahçesinde gölün hemen yanında fine dining sunuyor: açık bahçe ve kapalı salon, Google'da 4,9 puan (Ekim 2026), Salı–Pazar 09:00–00:00. Rezervasyonda not bırakırsanız ekip özel gün hazırlığını sizinle planlar ve sakin bir köşe ayarlar; gece aynı bahçedeki Didi Otel'de kalabilirsiniz.",
     },

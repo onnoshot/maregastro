@@ -47,7 +47,7 @@ T = {
    ("Vejetaryen seçenekleriniz var mı?", "Evet. Humus, zeytinyağlı enginar, patlıcan biber kızartması ve mevsim salataları gibi et içermeyen tabaklarımız var. Vegan veya glutensiz taleplerinizi rezervasyon sırasında iletirseniz mutfağımız buna göre hazırlanır."),
    ("Alkollü içecek servisi var mı?", "Evet. Şaraplar, şampanyalar, rakılar, alkollü ve alkolsüz kokteyller, biralar ve sıcak-soğuk içecekler menümüzde yer alır."),
    ("Otopark var mı?", "Evet. Otoparkımız ücretsizdir ve vale hizmeti vardır."),
-   ("Konaklama yapabilir miyim?", "Mare Gastro, Didi Otel'in bünyesindedir. Rezervasyon formunda konaklama isteğinizi belirtebilir, Didi Otel'de göl kenarında bir gece geçirebilirsiniz. " + a("https://sapancadidiotel.com/", "Didi Otel")),
+   ("Konaklama yapabilir miyim?", "Mare Gastro, Didi Otel'in bünyesindedir. Rezervasyon formunda konaklama isteğinizi belirtebilir, Didi Otel'de gölün hemen yanında bir gece geçirebilirsiniz. " + a("https://sapancadidiotel.com/", "Didi Otel")),
    ("Açık alanınız var mı?", "Evet. Hem açık hem kapalı oturma alanımız var; bahçede açık havada yemek yiyebilirsiniz."),
    ("Canlı müzik oluyor mu?", "Hafta sonu akşamlarında canlı müzik atmosfere eşlik ediyor. Özel etkinlikler rezervasyon bölümündeki takvimde görünür."),
    ("Doğum günü, yıldönümü veya evlilik teklifi için uygun mu?", "Evet. Özel gün kutlamaları için rezervasyon sırasında notunuzu iletin, ekibimiz hazırlığı sizinle planlasın. Fikir almak için: " + a(bp("tr", "sapanca-en-iyi-dogum-gunu-mekanlari"), "doğum günü") + ", " + a(bp("tr", "sapanca-yildonumu-icin-en-iyi-mekan"), "yıldönümü") + ", " + a(bp("tr", "sapanca-istanbula-yakin-evlilik-teklifi-mekanlari"), "evlilik teklifi") + "."),
@@ -181,6 +181,7 @@ def page(lang):
 {GTM_HEAD}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <title>{html.escape(t['title'])}</title>
 <meta name="description" content="{html.escape(t['desc'])}">
 <meta name="theme-color" content="#FBF8F2">
@@ -193,7 +194,7 @@ def page(lang):
 <meta property="og:title" content="{html.escape(t['title'])}">
 <meta property="og:description" content="{html.escape(t['desc'])}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{SITE}/images/og-image.jpg">
+<meta property="og:image" content="{SITE}/images/og-mare-mekan.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
 <style>{CSS}</style>
