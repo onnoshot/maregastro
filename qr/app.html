@@ -423,6 +423,48 @@ svg{display:block}
 
 /* story videos (Instagram reels) */
 .sv-media video{max-width:100%;max-height:100%;aspect-ratio:9/16;object-fit:cover;border-radius:22px;box-shadow:var(--sh-md);background:#10202E;animation:svIn .7s var(--ease) both}
+/* story: Özel Günler (animated slide, 15s) */
+.oz{position:relative;height:100%;max-height:100%;aspect-ratio:9/16;max-width:100%;border-radius:22px;overflow:hidden;clip-path:inset(0 round 22px);background:var(--paper,#F6F0E5);box-shadow:var(--sh-md);display:flex;flex-direction:column;animation:svIn .7s var(--ease) both;color:var(--ink)}
+.oz-ph{position:relative;flex:0 0 58%;overflow:hidden;margin:10px 10px 0;border-radius:15px;clip-path:inset(0 round 15px);background:#e9e1d2}
+.sv-media .oz img{max-width:none;max-height:none;aspect-ratio:auto;border-radius:0;box-shadow:none;filter:none}
+.sv-media .oz .oz-i{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:ozImg 3.6s var(--ease) var(--d) both}
+@keyframes ozImg{0%{opacity:0;transform:scale(1.14);clip-path:inset(32% 0 32% 0)}16%{opacity:1;clip-path:inset(0 0 0 0)}80%{opacity:1;transform:scale(1.02)}100%{opacity:0;transform:scale(1)}}
+.sv-media .oz .oz-i:last-child{animation-name:ozImgL;animation-duration:4s}
+@keyframes ozImgL{0%{opacity:0;transform:scale(1.14);clip-path:inset(32% 0 32% 0)}15%{opacity:1;clip-path:inset(0 0 0 0)}100%{opacity:1;transform:scale(1.02)}}
+.oz-cap{flex:1;display:flex;flex-direction:column;padding:16px 20px 18px;min-height:0}
+.oz-eb{font-size:10.5px;font-weight:700;letter-spacing:.04em;color:var(--amber)}
+.oz-rot{position:relative;flex:1;overflow:hidden;margin-top:8px}
+.oz-o{position:absolute;inset:0;opacity:0;animation:ozTxt 3s var(--ease) var(--d) both}
+.oz-o:last-child{animation-name:ozTxtL}
+@keyframes ozTxt{0%{opacity:0;transform:translateY(26px)}14%,84%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-18px)}}
+@keyframes ozTxtL{0%{opacity:0;transform:translateY(26px)}14%,100%{opacity:1;transform:none}}
+.oz-no{font-size:11px;font-weight:600;color:var(--amber);font-variant-numeric:tabular-nums}
+.oz-o h3{font-size:clamp(24px,7.2vw,32px);font-weight:300;letter-spacing:-.02em;line-height:1.08;margin:4px 0 8px}
+.oz-o p{font-size:13.5px;line-height:1.45;color:var(--ink);opacity:.62;margin:0}
+.oz-steps{display:flex;gap:6px}
+.oz-steps span{flex:1;height:2px;border-radius:2px;background:rgba(16,32,46,.1);overflow:hidden}
+.oz-steps i{display:block;height:100%;background:var(--amber);transform-origin:left;transform:scaleX(0);animation:ozStep 3s linear var(--d) forwards}
+[dir=rtl] .oz-steps i{transform-origin:right}
+@keyframes ozStep{to{transform:scaleX(1)}}
+.oz-fin{position:absolute;inset:0;background:var(--bg,#FBF8F2);display:flex;flex-direction:column;justify-content:flex-end;padding:10px 24px 26px;transform:translateY(102%);animation:ozUp .9s var(--ease) 9.2s forwards}
+@keyframes ozUp{to{transform:none}}
+.oz-mo{position:absolute;top:10px;left:10px;right:10px;height:47%;display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:1fr 1fr;gap:6px}
+.sv-media .oz .oz-mo img{width:100%;height:100%;object-fit:cover;border-radius:12px;clip-path:inset(0 round 12px);opacity:0;animation:ozTile .9s var(--ease) both;animation-delay:calc(9.5s + var(--k) * .16s)}
+.oz-mo img:first-child{grid-row:1/3}
+@keyframes ozTile{from{opacity:0;transform:scale(1.08);clip-path:inset(18% 0 18% 0 round 12px)}to{opacity:1;transform:none;clip-path:inset(0 round 12px)}}
+.oz-ic{width:132px;height:38px;color:var(--amber);margin-bottom:14px}
+.oz-ic path,.oz-ic circle{stroke-dasharray:160;stroke-dashoffset:160;animation:ozDraw 1.6s var(--ease) 9.8s forwards}
+@keyframes ozDraw{to{stroke-dashoffset:0}}
+.oz-fin .oz-eb,.oz-fin h3,.oz-fin p{opacity:0;animation:ozIn .8s var(--ease) both}
+.oz-fin .oz-eb{animation-delay:10s}
+.oz-fin h3{font-size:clamp(26px,7.8vw,36px);font-weight:300;letter-spacing:-.025em;line-height:1.05;margin:6px 0 10px;animation-delay:10.25s}
+.oz-fin p{font-size:13.5px;line-height:1.5;opacity:0;margin:0 0 16px;animation-delay:10.5s}
+@keyframes ozIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.oz-fin p{color:rgba(16,32,46,.7)}
+.oz-ch{display:flex;flex-wrap:wrap;gap:8px}
+.oz-ch span{font-size:12.5px;font-weight:500;padding:8px 13px;border-radius:999px;border:1px solid rgba(156,116,55,.35);color:var(--ink);background:rgba(156,116,55,.06);opacity:0;animation:ozIn .6s var(--ease) both;animation-delay:calc(10.9s + var(--k) * .18s)}
+.sv.paused .oz,.sv.paused .oz *{animation-play-state:paused!important}
+@media (prefers-reduced-motion:reduce){.sv-media .oz .oz-i,.oz-o,.oz-steps i{animation:none}.oz-ph .oz-i:last-child,.oz-rot .oz-o:last-child{opacity:1}.oz-fin{animation-duration:.01s}}
 .sv-snd .s-on{display:none}
 .sv-snd.on .s-on{display:block}
 .sv-snd.on .s-off{display:none}
@@ -603,19 +645,36 @@ function yzCard(i){var no=(i+1<10?'0':'')+(i+1);return '<article class="poster y
   '<div class="cap-bot yz-go"><span>Menünü keşfet</span><b>Başla<svg><use href="#i-star"/></svg></b></div></div></article>'}
 function pimg(f){return '/images/qr/'+(lang==='tr'?'tr':'en')+'/'+f+'.webp'}
 var STORIES=[
- {k:'mare',l:{tr:'Mare',en:'Mare',ar:'مار',ru:'Mare'},s:[{f:'aksamin-en-guzel-hali'},{f:'ege-sapanca'}]},
- {k:'chef',l:{tr:'Şef',en:'Chef',ar:'الشيف',ru:'Шеф'},s:[{f:'sef-dogan-anapa'},{v:'sef-dokunus'},{v:'sef-karides',id:'jumbo-karides-izgara'},{v:'sef-ekip'}]},
- {k:'dishes',l:{tr:'Lezzetler',en:'Dishes',ar:'الأطباق',ru:'Блюда'},s:[{v:'lz-kuzu-pirzola',id:'kuzu-pirzola'},{v:'lz-deniz-risotto',id:'deniz-mahsulleri-bugday-risotto'},{v:'lz-kaya-levregi',id:'mare-spesiyal-granyoz'},{v:'lz-incik-keskek',id:'incik-ruyasi'},{v:'lz-kuzu-kokorec',id:'kuzu-kokorec'},{v:'lz-sonbahar-makarna',id:'balkabagi-soslu-kestane-dolgulu-makarna'},{f:'jumbo-karides',id:'kereviz-pureli-jumbo-karides-sogus'},{f:'somon-tartar',id:'somon-tartar'},{f:'citir-somon',id:'citir-somon'},{f:'ormanda-bir-yuruyus',id:'ormanda-bir-yuruyus'},{f:'mezgit-tempura',id:'mezgit-tempura'}]},
- {k:'breakfast',l:{tr:'Kahvaltı',en:'Breakfast',ar:'الإفطار',ru:'Завтрак'},s:[{v:'kahvalti-alafranga',id:'brioche-benedict'},{f:'gunaydin-sapanca',cat:'kahvalti'},{f:'yavas-sabahlar',cat:'kahvalti'}]},
- {k:'evening',l:{tr:'Akşam',en:'Evening',ar:'المساء',ru:'Вечер'},s:[{f:'gece-yarisina-kadar'},{f:'citir-somon-masa',id:'citir-somon'}]},
+ {k:'chef',c:'sef',l:{tr:'Şef',en:'Chef',ar:'الشيف',ru:'Шеф'},s:[{f:'sef-dogan-anapa'},{v:'sef-dokunus'},{v:'sef-karides',id:'jumbo-karides-izgara'},{v:'sef-ekip'}]},
+ {k:'dishes',c:'lezzetler',l:{tr:'Lezzetler',en:'Dishes',ar:'الأطباق',ru:'Блюда'},s:[{v:'lz-kuzu-pirzola',id:'kuzu-pirzola'},{v:'lz-deniz-risotto',id:'deniz-mahsulleri-bugday-risotto'},{v:'lz-kaya-levregi',id:'mare-spesiyal-granyoz'},{v:'lz-incik-keskek',id:'incik-ruyasi'},{v:'lz-kuzu-kokorec',id:'kuzu-kokorec'},{v:'lz-sonbahar-makarna',id:'balkabagi-soslu-kestane-dolgulu-makarna'},{f:'jumbo-karides',id:'kereviz-pureli-jumbo-karides-sogus'},{f:'somon-tartar',id:'somon-tartar'},{f:'citir-somon',id:'citir-somon'},{f:'ormanda-bir-yuruyus',id:'ormanda-bir-yuruyus'},{f:'mezgit-tempura',id:'mezgit-tempura'}]},
+ {k:'breakfast',c:'kahvalti',l:{tr:'Kahvaltı',en:'Breakfast',ar:'الإفطار',ru:'Завтрак'},s:[{v:'kahvalti-alafranga',id:'brioche-benedict'},{f:'gunaydin-sapanca',cat:'kahvalti'},{f:'yavas-sabahlar',cat:'kahvalti'}]},
+ {k:'special',c:'ozel',l:{tr:'Özel Günler',en:'Celebrations',ar:'المناسبات',ru:'Праздники'},s:[{x:'ozel',d:15000}]},
  {k:'booking',l:{tr:'Rezervasyon',en:'Book a Table',ar:'الحجز',ru:'Бронь'},s:[{f:'masanizi-ayirtin',rez:1}]}
 ];
+var OZ={
+ tr:{eb:'Mare Gastro · Özel Günler',o:[['Doğum Günü','Pastanız, mumlarınız ve göl manzarası.'],['Yıl Dönümü','Gün batımında iki kişilik bir sofra.'],['Nişan ve Düğün','Evet anından kalabalık kutlamaya.']],t:'Size Özel Kurgulayalım',p:'Her organizasyon farklıdır. Bize yazın; masa düzeninden menüye, gününüzü sizinle birlikte planlayalım.',ch:['Masa Düzeni','Özel Menü','Pasta','Size Özel Detaylar'],cta:'Bize Yazın',msg:'Merhaba, Mare Gastro QR menüsünden yazıyorum. Özel bir gün (doğum günü, yıl dönümü, nişan ya da düğün) organizasyonu için bilgi almak istiyorum.'},
+ en:{eb:'Mare Gastro · Celebrations',o:[['Birthdays','Your cake, your candles and the lake view.'],['Anniversaries','A table for two at sunset.'],['Engagements and Weddings','From the moment of yes to the big celebration.']],t:'Planned Around You',p:'Every celebration is different. Write to us and we will plan your day with you, from the table setting to the menu.',ch:['Table Setting','Custom Menu','Cake','Personal Details'],cta:'Write to Us',msg:'Hello, I am writing from the Mare Gastro QR menu. I would like information about organising a special occasion (birthday, anniversary, engagement or wedding).'},
+ ar:{eb:'مار غاسترو · المناسبات',o:[['أعياد الميلاد','كعكتك وشموعك وإطلالة البحيرة.'],['ذكرى الزواج','مائدة لشخصين عند الغروب.'],['الخطوبة والزفاف','من لحظة الموافقة إلى الاحتفال الكبير.']],t:'نخطط لمناسبتك معك',p:'كل مناسبة مختلفة. راسلنا ونخطط ليومك معك، من ترتيب الطاولة إلى القائمة.',ch:['ترتيب الطاولة','قائمة خاصة','كعكة','تفاصيل خاصة بك'],cta:'راسلنا',msg:'مرحبًا، أكتب من قائمة مار غاسترو. أود معرفة تفاصيل تنظيم مناسبة خاصة (عيد ميلاد، ذكرى زواج، خطوبة أو زفاف).'},
+ ru:{eb:'Mare Gastro · Праздники',o:[['День рождения','Ваш торт, свечи и вид на озеро.'],['Годовщина','Ужин для двоих на закате.'],['Помолвка и свадьба','От заветного «да» до большого праздника.']],t:'Всё под ваш праздник',p:'Каждый праздник особенный. Напишите нам, и мы вместе спланируем ваш день: от сервировки до меню.',ch:['Сервировка','Особое меню','Торт','Детали для вас'],cta:'Написать нам',msg:'Здравствуйте, пишу из QR-меню Mare Gastro. Хочу узнать об организации особого события (день рождения, годовщина, помолвка или свадьба).'}
+};
+var OZ_IMG=['luks-dogum-gunu-terasi','yildonumu-gunbatimi-sofrasi','golde-teklif-sofrasi'];
+function ozHTML(){var z=OZ[lang]||OZ.en;
+  return '<div class="oz" aria-label="'+esc(z.t)+'"><div class="oz-ph">'+OZ_IMG.map(function(f,i){return '<img class="oz-i" style="--d:'+(i*3)+'s" src="/images/qr/ozel/'+f+'.webp" alt="'+esc(z.o[i][0])+'" decoding="async">'}).join('')+'</div>'+
+  '<div class="oz-cap"><div class="oz-eb">'+esc(z.eb)+'</div><div class="oz-rot">'+z.o.map(function(o,i){return '<div class="oz-o" style="--d:'+(i*3)+'s"><span class="oz-no">Nº 0'+(i+1)+'</span><h3>'+esc(o[0])+'</h3><p>'+esc(o[1])+'</p></div>'}).join('')+'</div>'+
+  '<div class="oz-steps">'+z.o.map(function(_,i){return '<span style="--d:'+(i*3)+'s"><i></i></span>'}).join('')+'</div></div>'+
+  '<div class="oz-fin"><div class="oz-mo">'+OZ_IMG.map(function(f,i){return '<img src="/images/qr/ozel/'+f+'.webp" alt="" style="--k:'+i+'">'}).join('')+'</div><svg class="oz-ic" viewBox="0 0 168 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+
+   '<path d="M8 40h32M11 40V28h26v12M11 33c4 3 9 3 13 0s9-3 13 0M17 28v-6M24 28v-8M31 28v-6M17 18c-1.5-2 1-4 0-6M24 16c-1.5-2 1-4 0-6M31 18c-1.5-2 1-4 0-6"/>'+
+   '<circle cx="76" cy="31" r="10"/><circle cx="90" cy="31" r="10"/><path d="M80 15l3-5 3 5-3 4z"/>'+
+   '<path d="M126 8h12l-1 12a5 5 0 0 1-10 0zM132 25v15M127 40h10M146 8h12l-1 12a5 5 0 0 1-10 0zM152 25v15M147 40h10M141 6l2-4M144 9l3-2"/></svg>'+
+   '<div class="oz-eb">'+esc(z.eb)+'</div><h3>'+esc(z.t)+'</h3><p>'+esc(z.p)+'</p><div class="oz-ch">'+z.ch.map(function(c,i){return '<span style="--k:'+i+'">'+esc(c)+'</span>'}).join('')+'</div></div></div>';
+}
+function ozCta(){var z=OZ[lang]||OZ.en;return '<a href="https://wa.me/905323540888?text='+encodeURIComponent(z.msg)+'" target="_blank" rel="noopener" data-ozwa>'+esc(z.cta)+'</a>'}
 function vsrc(v){return '/images/qr/reels/'+v+'.mp4'}
 function vposter(v){return '/images/qr/reels/'+v+'.webp'}
 function storyLabel(st){return st.l[lang]||st.l.en}
 function storiesHTML(){
   var seen={};try{seen=JSON.parse(store('mareQrSeen')||'{}')||{}}catch(e){}
-  return '<div class="stories" id="stories">'+STORIES.map(function(st,i){return '<button class="sto'+(seen[i]?' seen':'')+'" data-story="'+i+'"><span class="ring"><img src="'+(st.s[0].v?vposter(st.s[0].v):pimg(st.s[0].f))+'" alt="" loading="lazy"></span><span>'+esc(storyLabel(st))+'</span></button>'}).join('')+'</div>';
+  return '<div class="stories" id="stories">'+STORIES.map(function(st,i){return '<button class="sto'+(seen[i]?' seen':'')+'" data-story="'+i+'"><span class="ring"><img src="'+(st.c?'/images/qr/cover/'+st.c+'.webp':st.s[0].v?vposter(st.s[0].v):pimg(st.s[0].f))+'" alt="" loading="lazy"></span><span>'+esc(storyLabel(st))+'</span></button>'}).join('')+'</div>';
 }
 var sv={st:-1,i:0,t:null,paused:false,muted:true};
 function svOpen(n){track('qr_story_'+(STORIES[n].k||n));sv.st=n;sv.i=0;$('#sv').classList.add('on');document.body.style.overflow='hidden';history.pushState({sv:1},'');svShow();
@@ -627,16 +686,19 @@ function svShow(){
   $('#svTitle').textContent=storyLabel(st);
   $('#svBars').innerHTML=st.s.map(function(_,j){return '<span class="'+(j<sv.i?'done':j===sv.i?'run':'')+'"><i></i></span>'}).join('');
   var old=$('#svMedia video');if(old){old.pause();old.removeAttribute('src');old.load()}
-  $('#svMedia').innerHTML=(sl.v?'<video class="sv-vid" src="'+vsrc(sl.v)+'" poster="'+vposter(sl.v)+'" playsinline muted autoplay preload="auto" disablepictureinpicture></video>':'<img src="'+pimg(sl.f)+'" alt="'+esc(storyLabel(st))+'">')+'<span class="sv-tap l"></span><span class="sv-tap r"></span>';
+  $('#svMedia').innerHTML=(sl.x?ozHTML():sl.v?'<video class="sv-vid" src="'+vsrc(sl.v)+'" poster="'+vposter(sl.v)+'" playsinline muted autoplay preload="auto" disablepictureinpicture></video>':'<img src="'+pimg(sl.f)+'" alt="'+esc(storyLabel(st))+'">')+'<span class="sv-tap l"></span><span class="sv-tap r"></span>';
   $('#svSnd').hidden=!sl.v;$('#svSnd').classList.toggle('on',!sv.muted);
   var cta='';
   if(sl.id&&ITEMS[sl.id])cta='<button data-svitem="'+esc(sl.id)+'">'+esc(tx(ITEMS[sl.id],'name'))+(ITEMS[sl.id].price!=null?' · '+money(deal(ITEMS[sl.id])?deal(ITEMS[sl.id]).np:ITEMS[sl.id].price):'')+'</button>';
   else if(sl.cat&&CATS[sl.cat])cta='<button data-svcat="'+esc(sl.cat)+'">'+esc(cl(sl.cat))+'</button>';
+  else if(sl.x)cta=ozCta();
   else if(sl.rez)cta='<a href="/'+(lang==='tr'?'tr':lang)+'/#reservation" target="_blank" rel="noopener">'+esc(t('reserve'))+'</a>';
   $('#svCta').innerHTML=cta;
   if(sl.v){svVideo();return}
-  if(!sv.paused)sv.t=setTimeout(svNext,5500);
+  sv.dur=sl.d||5500;sv.start=Date.now();sv.pausedAt=0;var rb=$('#svBars .run i');if(rb&&sl.d)rb.style.animationDuration=(sl.d/1000)+'s';
+  if(!sv.paused)sv.t=setTimeout(svNext,sv.dur);
 }
+function svStill(){clearTimeout(sv.t);var sl=STORIES[sv.st]&&STORIES[sv.st].s[sv.i];if(!sl)return;if(!sl.x){svShow();return}if(sv.pausedAt){sv.start+=Date.now()-sv.pausedAt;sv.pausedAt=0}sv.t=setTimeout(svNext,Math.max(400,sv.dur-(Date.now()-sv.start)))}
 function svVideo(){
   var vd=$('#svMedia video'),bar=$('#svBars .run i');if(!vd)return;
   vd.muted=sv.muted;
@@ -661,10 +723,10 @@ function svPrev(){if(sv.i>0){sv.i--;svShow()}else if(sv.st>0){sv.st--;sv.i=0;svS
     var rtl=document.documentElement.dir==='rtl';
     if(e.target.closest('.sv-tap.l')){rtl?svNext():svPrev()}
     else if(e.target.closest('.sv-tap.r')){rtl?svPrev():svNext()}
-    else if(e.target.closest('.sv-media')){if(!$('#svMedia video'))svShow()}
+    else if(e.target.closest('.sv-media')){if(!$('#svMedia video'))svStill()}
   });
-  function resume(){sv.paused=false;el.classList.remove('paused');if(sv.st<0)return;var vd=$('#svMedia video');if(vd){var p=vd.play();if(p&&p.catch)p.catch(function(){});if(sv.arm)sv.arm()}else svShow()}
-  el.addEventListener('touchstart',function(e){if(!e.target.closest('.sv-media'))return;t0=Date.now();y0=e.touches[0].clientY;dy=0;sv.paused=true;clearTimeout(sv.t);el.classList.add('paused');var vd=$('#svMedia video');if(vd)vd.pause()},{passive:true});
+  function resume(){sv.paused=false;el.classList.remove('paused');if(sv.st<0)return;var vd=$('#svMedia video');if(vd){var p=vd.play();if(p&&p.catch)p.catch(function(){});if(sv.arm)sv.arm()}else svStill()}
+  el.addEventListener('touchstart',function(e){if(!e.target.closest('.sv-media'))return;t0=Date.now();y0=e.touches[0].clientY;dy=0;sv.paused=true;clearTimeout(sv.t);sv.pausedAt=Date.now();el.classList.add('paused');var vd=$('#svMedia video');if(vd)vd.pause()},{passive:true});
   el.addEventListener('touchmove',function(e){if(y0==null)return;dy=e.touches[0].clientY-y0;if(dy>0)$('.sv-in',el).style.transform='translateY('+dy+'px)'},{passive:true});
   el.addEventListener('touchend',function(){
     if(y0==null)return; y0=null; $('.sv-in',el).style.transform='';
@@ -862,6 +924,7 @@ document.addEventListener('click',function(e){
   if(a.classList.contains('stay-btn'))track('qr_stay_book');
   else if(a.classList.contains('stay-lnk'))track('qr_stay_rooms');
   else if(a.classList.contains('rezc'))track('qr_reserve_click');
+  else if(a.hasAttribute('data-ozwa'))track('qr_special_whatsapp');
   else if(a.id==='staySnd')track('qr_video_sound');
   else if(/instagram\.com/.test(a.href||''))track('qr_instagram');
   else if(/#reservation/.test(a.href||''))track('qr_reserve_click');
