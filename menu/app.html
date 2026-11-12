@@ -1065,7 +1065,8 @@ if(PREVIEW){
 (function boot(){
   var saved=store('mareQrLang');
   var nav=(navigator.language||'tr').slice(0,2).toLowerCase();
-  var l=params.get('lang')||(IS_BOT?URL_LANG:(saved||(URL_LANG!=='tr'?URL_LANG:(T[nav]?nav:URL_LANG))));
+  var PATH_LANG=(location.pathname.match(/^\/(?:menu|qr)\/(en|ar|ru)(?:\/|$)/)||[])[1];
+  var l=params.get('lang')||PATH_LANG||(IS_BOT?URL_LANG:(saved||(T[nav]?nav:URL_LANG)));
   if(TABLE){$('#tableChip').hidden=false}
   setLang(l,false);
   var sp=$('#splash');

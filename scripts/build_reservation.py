@@ -27,6 +27,7 @@ FORM = {l: h + "#reservation" for l, h in HOME.items()}
 MENU = {"tr": "/menu/", "en": "/menu/en/", "ar": "/menu/ar/", "ru": "/menu/ru/"}
 FAQ = {"tr": "/sss.html", "en": "/en/faq.html", "ar": "/ar/faq.html", "ru": "/ru/faq.html"}
 BLOG = {"tr": "/blog/", "en": "/en/blog/", "ar": "/ar/blog/", "ru": "/ru/blog/"}
+FOOT = {"tr": ("Menü", "SSS"), "en": ("Menu", "FAQ"), "ar": ("القائمة", "الأسئلة الشائعة"), "ru": ("Меню", "Вопросы")}
 TEL = "tel:+905323540888"
 PHONE = "+90 532 354 08 88"
 MAIL = "info@maregastro.com"
@@ -111,13 +112,13 @@ T = {
          ("التأكيد", "راجع بياناتك وأرسلها عبر واتساب. يؤكد فريقنا حجزك عبر واتساب.")],
   facts_h="معلومات سريعة",
   facts=[("ساعات العمل", "الثلاثاء–الأحد 09:00–00:00 · مغلق يوم الاثنين"),
-         ("الهاتف وواتساب", '<span dir="ltr">' + a(TEL, PHONE) + "</span>"),
+         ("الهاتف وواتساب", '<span dir="ltr" style="white-space:nowrap">' + a(TEL, PHONE) + "</span>"),
          ("البريد الإلكتروني", a("mailto:" + MAIL, MAIL)),
          ("العنوان", '<span dir="ltr">' + ADDR + "</span> · " + a(MAPS, "الاتجاهات", True)),
          ("موقف السيارات", "موقف مجاني وخدمة صف السيارات"),
          ("القائمة", a(MENU["ar"], "القائمة والأسعار الحالية"))],
   qa=[
-   ("كيف أحجز طاولة في Mare Gastro؟", "أسرع طريقة هي " + a(FORM["ar"], "نموذج الحجز") + " على موقعنا: اختر التاريخ والوقت وعدد الأشخاص وأرسله عبر واتساب، ويؤكد فريقنا الحجز هناك. يمكنك أيضًا " + a(WA, "مراسلتنا على واتساب", True) + " مباشرة أو الاتصال على " + '<span dir="ltr">' + a(TEL, PHONE) + "</span>."),
+   ("كيف أحجز طاولة في Mare Gastro؟", "أسرع طريقة هي " + a(FORM["ar"], "نموذج الحجز") + " على موقعنا: اختر التاريخ والوقت وعدد الأشخاص وأرسله عبر واتساب، ويؤكد فريقنا الحجز هناك. يمكنك أيضًا " + a(WA, "مراسلتنا على واتساب", True) + " مباشرة أو الاتصال على " + '<span dir="ltr" style="white-space:nowrap">' + a(TEL, PHONE) + "</span>."),
    ("ما الأيام والأوقات المتاحة للحجز؟", "نستقبل الحجوزات من الثلاثاء إلى الأحد بين 09:00 و00:00 كل نصف ساعة. نغلق يوم الاثنين. يُستخدم النموذج نفسه للإفطار والغداء والعشاء."),
    ("ماذا عن المجموعات الكبيرة أو المناسبات الخاصة؟", "عند اختيار 10 أشخاص أو أكثر في النموذج يُعامل طلبك كتنظيم خاص، ونخطط التفاصيل معك عبر واتساب. أفكار: " + a(bp("ar", "sapanca-toplu-organizasyon-grup-yemegi"), "عشاء المجموعات") + " و" + a(bp("ar", "sapanca-is-yemegi-kurumsal-davet"), "الدعوات المؤسسية") + "."),
    ("هل تساعدون في أعياد الميلاد وذكرى الزواج وطلب الزواج؟", "نعم. أخبرنا عن المناسبة عند الحجز أو عبر واتساب وسنخطط معك ترتيب الطاولة والكعكة والقائمة. أفكار: " + a(bp("ar", "sapanca-dogum-gunu-nerede-kutlanir"), "أعياد الميلاد") + "، " + a(bp("ar", "sapanca-yildonumu-icin-en-iyi-mekan"), "ذكرى الزواج") + "، " + a(bp("ar", "sapanca-istanbula-yakin-evlilik-teklifi-mekanlari"), "طلب الزواج") + "، " + a(bp("ar", "sapanca-nisan-yemegi"), "عشاء الخطوبة") + "."),
@@ -248,7 +249,7 @@ def page(lang):
 <h2 class="sec">{faq_h}</h2>
 {qa}{btns % ''}
 </main>
-<footer>© 2026 Mare Gastro · Didi Otel · Sapanca<br><a href="{MENU[lang]}">Menu</a><a href="{FAQ[lang]}">FAQ</a><a href="{BLOG[lang]}">Blog</a><a href="https://www.instagram.com/maregastro/" target="_blank" rel="noopener">Instagram</a></footer>
+<footer>© 2026 Mare Gastro · Didi Otel · Sapanca<br><a href="{MENU[lang]}">{FOOT[lang][0]}</a><a href="{FAQ[lang]}">{FOOT[lang][1]}</a><a href="{BLOG[lang]}">Blog</a><a href="https://www.instagram.com/maregastro/" target="_blank" rel="noopener">Instagram</a></footer>
 </body>
 </html>
 """
