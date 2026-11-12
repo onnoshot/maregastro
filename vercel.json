@@ -83,8 +83,8 @@
       "permanent": true
     },
     {
-      "source": "/qr/:path*",
-      "destination": "/menu/:path*",
+      "source": "/qr/:path(.*)",
+      "destination": "/menu/:path",
       "permanent": true
     }
   ],
