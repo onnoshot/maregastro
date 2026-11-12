@@ -597,7 +597,7 @@ function sc(kind){
 }
 function words(s){return String(s).split(/\s+/).filter(Boolean).map(function(w,i){return '<span class="w"><span style="--i:'+i+'">'+esc(w)+'</span></span>'}).join(' ')}
 var POSTERS={'kereviz-pureli-jumbo-karides-sogus':'jumbo-karides','somon-tartar':'somon-tartar','citir-somon':'citir-somon','ormanda-bir-yuruyus':'ormanda-bir-yuruyus','mezgit-tempura':'mezgit-tempura'};
-function yzHref(src){var m=location.search.match(/[?&]masa=([^&]+)/);return '/qr/yildiz/?utm_source=qr_menu&utm_medium='+src+(m?'&masa='+m[1]:'')}
+function yzHref(src){var m=location.search.match(/[?&]masa=([^&]+)/);return '/qr/yildiz/?from='+src+(m?'&masa='+m[1]:'')}
 function yzCard(i){var no=(i+1<10?'0':'')+(i+1);return '<article class="poster yzc" data-yz="featured" role="link" tabindex="0" aria-label="Yıldız Menüsü: Şansını Dene"><div class="art"><div class="pz"><img src="/images/qr/yildiz-menusu.webp" alt="Yıldız Menüsü" loading="lazy" decoding="async"></div><span class="yz-new">Yeni</span></div>'+
   '<div class="cap"><div class="cap-top"><span class="no">Nº '+no+'</span><span>Yıldız Menüsü</span></div><h3 class="p-title">Şansını Dene</h3><p class="p-tag">Doğum gününe ve adına göre sana özel bir menü. Hızlı ve gerçekçi bir analiz.</p>'+
   '<div class="cap-bot yz-go"><span>Menünü keşfet</span><b>Başla<svg><use href="#i-star"/></svg></b></div></div></article>'}

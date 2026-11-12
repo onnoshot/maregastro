@@ -60,6 +60,7 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];var p
 {
  "@context": "https://schema.org",
  "@type": "Restaurant",
+ "@id": "https://maregastro.com/#restaurant",
  "name": "Mare Gastro",
  "image": "https://maregastro.com/images/hero-mare-1.webp",
  "url": "https://maregastro.com/en/",
@@ -100,8 +101,8 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];var p
    "closes": "00:00"
   }
  ],
- "acceptsReservations": "True",
- "hasMenu": "https://maregastro.com/en/#menu",
+ "acceptsReservations": true,
+ "hasMenu": "https://maregastro.com/qr/en/",
  "hasMap": "https://maps.google.com/?cid=7177941338358519695",
  "currenciesAccepted": "TRY",
  "sameAs": [
@@ -1209,7 +1210,7 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];var p
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://maregastro.com/#chef-dogan-anapa", "name": "Doğan Anapa", "jobTitle": "Executive Chef", "image": "https://maregastro.com/images/dogan-anapa-sef-bahce.jpg", "worksFor": {"@type": "Restaurant", "name": "Mare Gastro", "url": "https://maregastro.com/en/"}, "award": "Gourmand 2023 — Türkiye representative", "knowsAbout": ["Aegean cuisine", "Mediterranean cuisine", "Seafood", "Fine dining"], "sameAs": ["https://www.instagram.com/chefdogananapa/"], "url": "https://maregastro.com/en/#chef"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://maregastro.com/#chef-dogan-anapa", "name": "Doğan Anapa", "jobTitle": "Executive Chef", "image": "https://maregastro.com/images/dogan-anapa-sef-bahce.jpg", "worksFor": {"@type": "Restaurant", "@id": "https://maregastro.com/#restaurant", "name": "Mare Gastro", "url": "https://maregastro.com/en/"}, "award": "Gourmand 2023 — Türkiye representative", "knowsAbout": ["Aegean cuisine", "Mediterranean cuisine", "Seafood", "Fine dining"], "sameAs": ["https://www.instagram.com/chefdogananapa/"], "url": "https://maregastro.com/en/#chef"}</script>
 <link rel="stylesheet" href="/assets/v2/site.css?v=5">
 </head>
 <body>
@@ -1884,7 +1885,7 @@ let mcYear=mcToday0.getFullYear(), mcMonth=mcToday0.getMonth();
 let CLOSED_DAYS=new Set();
 const MC_FULL_MSG='All our tables are booked for this date, please choose another date.';
 const MC_FULL_TIP='All tables booked';
-function mcFullDay(){showErr('err1',MC_FULL_MSG);closeMcDetail();}
+function mcFullDay(){showErr('err1',MC_FULL_MSG,'full');closeMcDetail();}
 async function loadClosedDays(){
   try{
     const r=await fetch('/api/closed-days',{cache:'no-store'});
@@ -2060,8 +2061,10 @@ function selK(card,val){
   },{rootMargin:'200px 0px',threshold:.1});
   vids.forEach(v=>io.observe(v));
 })();
-function showErr(id,msg){
+function showErr(id,msg,code){
   trackEvent('form_error',{event_label:id});
+  // Hangi kontrolde takildigi GA4'te ozel boyut olmadan gorunsun diye ayri olay adi.
+  if(code)trackEvent('form_error_'+code,{event_label:id});
   const el=document.getElementById(id);
   el.textContent=msg;el.classList.add('show');
   el.classList.remove('shk');void el.offsetWidth;el.classList.add('shk');
@@ -2070,19 +2073,19 @@ function clearErr(id){document.getElementById(id).classList.remove('show')}
 function gS(n){
   if(n===2){
     clearErr('err1');
-    if(!document.getElementById('rdate').value){showErr('err1','Please select a date.');return}
+    if(!document.getElementById('rdate').value){showErr('err1','Please select a date.','date');return}
     const selD=new Date(document.getElementById('rdate').value+'T00:00:00');
-    if(selD.getDay()===1){showErr('err1','We\'re closed on Mondays, please choose another date.');return}
-    if(CLOSED_DAYS.has(document.getElementById('rdate').value)){showErr('err1',MC_FULL_MSG);return}
+    if(selD.getDay()===1){showErr('err1','We\'re closed on Mondays, please choose another date.','monday');return}
+    if(CLOSED_DAYS.has(document.getElementById('rdate').value)){showErr('err1',MC_FULL_MSG,'full');return}
   }
   if(n===3){
     clearErr('err2');
-    if(!selTime_val){showErr('err2','Please select a time.');return}
-    if(!document.getElementById('rName').value.trim()){showErr('err2','Please enter your full name.');return}
+    if(!selTime_val){showErr('err2','Please select a time.','time');return}
+    if(!document.getElementById('rName').value.trim()){showErr('err2','Please enter your full name.','name');return}
     const phoneVal=document.getElementById('rPhone').value.trim();
-    if(!phoneVal){showErr('err2','Please enter your phone number.');return}
-    if(!MarePhone.valid(document.getElementById('rPhone'))){showErr('err2','Please enter a valid phone number.');return}
-    if(!selKon_val){showErr('err2','Please choose your stay preference.');return}
+    if(!phoneVal){showErr('err2','Please enter your phone number.','phone');return}
+    if(!MarePhone.valid(document.getElementById('rPhone'))){showErr('err2','Please enter a valid phone number.','phone_invalid');return}
+    if(!selKon_val){showErr('err2','Please choose your stay preference.','stay');return}
     const d=document.getElementById('rdate').value;
     const fmt=new Date(d).toLocaleDateString('en-US',{day:'numeric',month:'long',year:'numeric'});
     document.getElementById('sD').textContent=fmt;
@@ -2158,8 +2161,8 @@ function submitReservation(a){
   const name=document.getElementById('rName').value.trim();
   const phone=MarePhone.value(document.getElementById('rPhone'));
   const email=document.getElementById('rEmail').value.trim();
-  if(!name){showErr('err2','Please enter your full name.');return false}
-  if(!phone){showErr('err2','Please enter your phone number.');return false}
+  if(!name){showErr('err2','Please enter your full name.','name');return false}
+  if(!phone){showErr('err2','Please enter your phone number.','phone');return false}
   const d=document.getElementById('rdate').value;
   const fmt=mareTrDateFmt(d);
   const msg=`Merhaba, Mare Gastro rezervasyon talebim:\n\nAd Soyad: ${name}\nTelefon: ${phone}${email?'\nE-posta: '+email:''}\n\nTarih: ${fmt}\nSaat: ${selTime_val}\nKişi Sayısı: ${guestCount}\nKonaklama: ${selKon_val}\n\nOnayınızı bekliyorum.`;

@@ -164,8 +164,10 @@ export default async function handler(req, res) {
         .replace(/<title>[\s\S]*?<\/title>\s*/, '')
         .replace(/<meta name="description"[^>]*>\s*/, '')
         .replace(/<meta name="robots"[^>]*>\s*/, '')
-        .replace('</head>', head(lang, menu) + '\n<script id="qrData" type="application/json">' + inlineJson({ lang, menu, cfg: cfg || { showcases: [], discounts: {} } }) + '</script>\n</head>')
-        .replace(/<main id="main">[\s\S]*?<\/main>/, '<main id="main">' + menuHtml(menu, lang) + '</main>');
+        // Fonksiyonla degistir: metin olarak verilirse icindeki "$$" / "$&" ozel desen sayilir
+        // ("$$$" fiyat araligi "$$" oluyordu, menu metnindeki $ isaretleri de bozulabilir).
+        .replace('</head>', () => head(lang, menu) + '\n<script id="qrData" type="application/json">' + inlineJson({ lang, menu, cfg: cfg || { showcases: [], discounts: {} } }) + '</script>\n</head>')
+        .replace(/<main id="main">[\s\S]*?<\/main>/, () => '<main id="main">' + menuHtml(menu, lang) + '</main>');
     }
   } catch (e) {
     // Template alone still works: the app fetches the menu itself.

@@ -57,6 +57,14 @@ function trDateToIso(s) {
   return m[3] + '-' + String(mi + 1).padStart(2, '0') + '-' + m[1].padStart(2, '0');
 }
 
+// AR/EN/RU form konaklama secenegini kendi dilinde gonderebiliyor; panel ve raporlar Turkce degeri sayar.
+function normKonaklama(v) {
+  const t = String(v || '').trim();
+  if (/^(no\b|нет|لا)/i.test(t)) return 'Hayır, sadece yemek';
+  if (/^(yes\b|да|نعم)/i.test(t)) return 'Evet, konaklama istiyorum';
+  return t;
+}
+
 function cors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
@@ -166,7 +174,7 @@ export default async function handler(req, res) {
       id: makeId(), createdAt: new Date().toISOString(),
       name: String(b.name).trim(), phone: normalizePhone(b.phone).phone, email: String(b.email || '').trim(),
       date: String(b.date).trim(), time: String(b.time).trim(),
-      guests: Number(b.guests) || null, konaklama: String(b.konaklama || '').trim(),
+      guests: Number(b.guests) || null, konaklama: normKonaklama(b.konaklama),
       channel: String(b.channel || 'Doğrudan').trim().slice(0, 40),
       note: String(b.note || '').trim().slice(0, 500),
       status,

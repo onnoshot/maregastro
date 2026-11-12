@@ -26,7 +26,8 @@ const JOURNEY_EXTRA = ['view_contact', 'menu_group_click', 'digital_menu_open', 
   'occasion_click', 'reviews_more_click', 'events_info_open', 'rez_time_select', 'rez_guests_change', 'rez_stay_select',
   'language_switch', 'instagram_click', 'email_click', 'tripadvisor_click', 'didi_hotel_click', 'directions_click', 'blog_click',
   'whatsapp_click', 'phone_click', 'menu_click', 'availability_check', 'form_start', 'form_details_start', 'form_error',
-  'engaged_30s', 'engaged_90s', 'engaged_180s', 'engaged_300s'];
+  'engaged_30s', 'engaged_90s', 'engaged_180s', 'engaged_300s',
+  'form_error_date', 'form_error_monday', 'form_error_full', 'form_error_time', 'form_error_name', 'form_error_phone', 'form_error_phone_invalid', 'form_error_stay'];
 const JOURNEY_EVENTS = [...JOURNEY_STEPS.map((x) => x[0]), ...JOURNEY_EXTRA];
 const JOURNEY_SINCE = '2026-11-07';
 let journeyCache = null;
