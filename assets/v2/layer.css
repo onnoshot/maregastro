@@ -718,13 +718,17 @@ html.rez-on .wa-fab{opacity:0;transform:scale(.6);pointer-events:none}
   .nav-dmenu:active{transform:scale(.95)}
   nav.on-hero .nav-dmenu{background:#fff;color:var(--ink)!important}
   .mflags{display:block;position:relative}
-  .mflag-btn{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.7);border:1px solid rgba(16,32,46,.12);padding:0}
-  nav.on-hero .mflag-btn{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.32)}
-  .mf{width:20px;height:20px;border-radius:50%;overflow:hidden;display:grid;place-items:center;font-size:27px;line-height:1;flex:none;box-shadow:inset 0 0 0 1px rgba(16,32,46,.08)}
+  .mflag-btn{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:transparent;border:1px solid rgba(16,32,46,.14);padding:0;transition:transform .2s var(--ease)}
+  .mflag-btn:active{transform:scale(.9)}
+  nav.on-hero .mflag-btn{border-color:rgba(255,255,255,.4)}
+  .mf{width:18px;height:18px;display:block;flex:none;clip-path:circle(50%)}
+  .mflag-btn .mf{width:18px;height:18px}
+  .mflag-menu .mf{width:16px;height:16px;outline:1px solid rgba(16,32,46,.08);outline-offset:-1px;border-radius:50%}
   .mflag-menu{position:absolute;top:calc(100% + 10px);right:-6px;display:flex;flex-direction:column;gap:2px;padding:6px;min-width:150px;border-radius:16px;background:rgba(255,255,255,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 18px 44px -14px rgba(16,32,46,.4),inset 0 0 0 1px rgba(16,32,46,.06);opacity:0;visibility:hidden;transform:translateY(-6px) scale(.97);transform-origin:top right;transition:all .22s var(--ease)}
   [dir=rtl] .mflag-menu{right:auto;left:-6px;transform-origin:top left}
   .mflags.open .mflag-menu{opacity:1;visibility:visible;transform:none}
-  .mflag-menu a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:11px;color:var(--ink);font-size:13.5px;font-weight:500;text-decoration:none}
+  .mflag-menu{min-width:132px!important;padding:5px!important;border-radius:14px!important}
+  .mflag-menu a{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:10px;color:var(--ink);font-size:12.5px;font-weight:500;letter-spacing:-.005em;text-decoration:none}
   .mflag-menu a.on{background:var(--amber3);color:var(--amber)}
   .mflag-menu a:active{background:rgba(16,32,46,.06)}
   .mob-langs{display:none!important}
@@ -733,3 +737,8 @@ html.rez-on .wa-fab{opacity:0;transform:scale(.6);pointer-events:none}
   .mob-menu{z-index:9500!important;overflow-y:auto;justify-content:flex-start!important;padding-top:calc(84px + env(safe-area-inset-top,0px))!important;padding-bottom:calc(32px + var(--sab))!important}
   html.mob-open .v2-bar,html.mob-open .wa-fab,html.mob-open .v2-top{opacity:0!important;pointer-events:none!important;transform:translateY(24px)!important}
 }
+
+/* ── Story signature: Kadir Çiçek portrait in the gold ring (2026-11-13) ── */
+.story-sign-mark.has-img{width:46px;height:46px;padding:3px;background:#fff}
+.story-sign-mark.has-img::before{display:none}
+.story-sign-mark.has-img img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;filter:saturate(.9)}
