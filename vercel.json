@@ -1,5 +1,7 @@
 {
   "redirects": [
+    { "source": "/rezervasyon", "destination": "/rezervasyon.html", "permanent": true },
+    { "source": "/rezervasyon/", "destination": "/rezervasyon.html", "permanent": true },
     {
       "source": "/:path*",
       "has": [
