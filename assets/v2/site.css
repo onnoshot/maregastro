@@ -2007,3 +2007,29 @@ html.rez-on .wa-fab{opacity:0;transform:scale(.6);pointer-events:none}
 .hbtns{max-width:236px!important;gap:9px!important}
 .hbtns .btn-main,.hbtns .btn-ghost{height:40px!important;min-height:40px!important;font-size:13.5px!important;min-width:136px!important;padding:0 20px!important}
 @media(min-width:480px){.hbtns{max-width:none!important}}
+
+/* ── Mobile header: Dijital Menü pill + minimal flag switcher, slimmer logo (2026-11-13) ── */
+.nav-dmenu,.mflags{display:none}
+@media(max-width:859px){
+  nav .nav-res{display:none!important}
+  nav .nl img{height:21px!important;opacity:.8!important}
+  .nav-right{gap:8px!important}
+  .nav-dmenu{display:inline-flex;align-items:center;height:34px;padding:0 14px;border-radius:999px;background:var(--ink);color:#fff!important;font-size:12.5px;font-weight:600;letter-spacing:-.005em;text-decoration:none;white-space:nowrap;box-shadow:0 6px 16px -8px rgba(16,32,46,.5);transition:transform .2s var(--ease)}
+  .nav-dmenu:active{transform:scale(.95)}
+  nav.on-hero .nav-dmenu{background:#fff;color:var(--ink)!important}
+  .mflags{display:block;position:relative}
+  .mflag-btn{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.7);border:1px solid rgba(16,32,46,.12);padding:0}
+  nav.on-hero .mflag-btn{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.32)}
+  .mf{width:20px;height:20px;border-radius:50%;overflow:hidden;display:grid;place-items:center;font-size:27px;line-height:1;flex:none;box-shadow:inset 0 0 0 1px rgba(16,32,46,.08)}
+  .mflag-menu{position:absolute;top:calc(100% + 10px);right:-6px;display:flex;flex-direction:column;gap:2px;padding:6px;min-width:150px;border-radius:16px;background:rgba(255,255,255,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 18px 44px -14px rgba(16,32,46,.4),inset 0 0 0 1px rgba(16,32,46,.06);opacity:0;visibility:hidden;transform:translateY(-6px) scale(.97);transform-origin:top right;transition:all .22s var(--ease)}
+  [dir=rtl] .mflag-menu{right:auto;left:-6px;transform-origin:top left}
+  .mflags.open .mflag-menu{opacity:1;visibility:visible;transform:none}
+  .mflag-menu a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:11px;color:var(--ink);font-size:13.5px;font-weight:500;text-decoration:none}
+  .mflag-menu a.on{background:var(--amber3);color:var(--amber)}
+  .mflag-menu a:active{background:rgba(16,32,46,.06)}
+  .mob-langs{display:none!important}
+  /* hamburger menu sits above the bottom bar; bar + bubbles hide while it is open */
+  .mob-ov{z-index:9400!important}
+  .mob-menu{z-index:9500!important;overflow-y:auto;justify-content:flex-start!important;padding-top:calc(84px + env(safe-area-inset-top,0px))!important;padding-bottom:calc(32px + var(--sab))!important}
+  html.mob-open .v2-bar,html.mob-open .wa-fab,html.mob-open .v2-top{opacity:0!important;pointer-events:none!important;transform:translateY(24px)!important}
+}

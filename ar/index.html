@@ -1212,7 +1212,7 @@ function trackEvent(name,params){try{window.dataLayer=window.dataLayer||[];var p
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://maregastro.com/#chef-dogan-anapa", "name": "Doğan Anapa", "jobTitle": "الشيف التنفيذي", "image": "https://maregastro.com/images/dogan-anapa-sef-bahce.jpg", "worksFor": {"@type": "Restaurant", "@id": "https://maregastro.com/#restaurant", "name": "Mare Gastro", "url": "https://maregastro.com/ar/"}, "award": "Gourmand 2023 — Türkiye representative", "knowsAbout": ["Aegean cuisine", "Mediterranean cuisine", "Seafood", "Fine dining"], "sameAs": ["https://www.instagram.com/chefdogananapa/"], "url": "https://maregastro.com/ar/#chef"}</script>
-<link rel="stylesheet" href="/assets/v2/site.css?v=8">
+<link rel="stylesheet" href="/assets/v2/site.css?v=9">
 </head>
 <body>
 <script>(function(d){d.classList.add("v2-js");try{if(sessionStorage.getItem("mare_v2_seen"))d.classList.add("v2-seen");sessionStorage.setItem("mare_v2_seen","1")}catch(e){}setTimeout(function(){if(!d.classList.contains("v2-ready")){d.classList.add("v2-fallback");var l=document.getElementById("v2Loader");if(l)l.classList.add("done")}},4000)})(document.documentElement)</script>
@@ -1253,6 +1253,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <img src="/images/DidiLogo1.png" alt="Didi Otel">
     </a>
     <button class="nav-res" onclick="trackEvent('menu_click',{event_label:'header',element:'reservation'});goTo('#reservation')">الحجز</button>
+    <a class="nav-dmenu" href="/menu/ar/" onclick="trackEvent('menu_click',{event_label:'header_mobile',element:'digital_menu'})">القائمة الرقمية</a><div class="mflags" id="mflags"><button class="mflag-btn" type="button" aria-label="اختر اللغة" aria-haspopup="true" onclick="event.stopPropagation();this.parentNode.classList.toggle('open')"><span class="mf">🇸🇦</span></button><div class="mflag-menu" role="menu"><a href="/tr/" hreflang="tr" lang="tr" class="" aria-label="Türkçe"><span class="mf">🇹🇷</span><span class="mf-n">Türkçe</span></a><a href="/en/" hreflang="en" lang="en" class="" aria-label="English"><span class="mf">🇬🇧</span><span class="mf-n">English</span></a><a href="/ar/" hreflang="ar" lang="ar" class="on" aria-label="العربية"><span class="mf">🇸🇦</span><span class="mf-n">العربية</span></a><a href="/ru/" hreflang="ru" lang="ru" class="" aria-label="Русский"><span class="mf">🇷🇺</span><span class="mf-n">Русский</span></a></div></div><script>document.addEventListener("click",function(e){var m=document.getElementById("mflags");if(m&&!m.contains(e.target))m.classList.remove("open")})</script>
     <button class="ham" onclick="openMob()" aria-label="القائمة">
       <span></span><span></span><span></span>
     </button>
@@ -1692,8 +1693,8 @@ if(cur&&crng){
 /* ── NAV ── */
 function goTo(id){var el=document.querySelector(id);if(!el)return;var b=document.body;b.style.scrollSnapType='none';el.scrollIntoView({behavior:'smooth'});clearTimeout(window.__snapT);window.__snapT=setTimeout(function(){b.style.scrollSnapType=''},780)}
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a){var id=a.getAttribute('href');if(id&&id.length>1&&document.querySelector(id)){e.preventDefault();goTo(id)}}});
-function openMob(){document.getElementById('mobMenu').classList.add('open');document.getElementById('mobOv').classList.add('open');document.body.style.overflow='hidden'}
-function closeMob(){document.getElementById('mobMenu').classList.remove('open');document.getElementById('mobOv').classList.remove('open');document.body.style.overflow=''}
+function openMob(){document.documentElement.classList.add('mob-open');document.getElementById('mobMenu').classList.add('open');document.getElementById('mobOv').classList.add('open');document.body.style.overflow='hidden'}
+function closeMob(){document.documentElement.classList.remove('mob-open');document.getElementById('mobMenu').classList.remove('open');document.getElementById('mobOv').classList.remove('open');document.body.style.overflow=''}
 
 /* ── PAGE DOTS ── */
 const pages=['home','story','chef','menu','reservation','contact'];
