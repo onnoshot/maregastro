@@ -105,8 +105,9 @@ async function gaBatch(token, requests) {
       method: 'POST',
       headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
       body: JSON.stringify({ requests }),
+      signal: AbortSignal.timeout(15000),
     });
-    if (r.status === 429 && attempt < 2) { await sleep(900 * (attempt + 1) + Math.random() * 400); continue; }
+    if ((r.status === 429 || r.status >= 500) && attempt < 1) { await sleep(900 * (attempt + 1) + Math.random() * 400); continue; }
     if (!r.ok) {
       const err = new Error('ga4 ' + r.status + ' ' + (await r.text()).slice(0, 300));
       err.status = r.status;
