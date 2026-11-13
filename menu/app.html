@@ -448,6 +448,22 @@ svg{display:block}
 .sv-snd.on .s-on{display:block}
 .sv-snd.on .s-off{display:none}
 .sv-snd svg{width:20px;height:20px}
+
+/* ── Floating glass header, same structure as the homepage nav (2026-11-13) ── */
+:root{--hdr:68px}
+.hdr{background:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border-bottom:none!important;pointer-events:none;padding-top:calc(var(--sat) + 10px)!important}
+.hdr-in{pointer-events:auto;height:50px!important;margin:0 12px 8px;padding:0 8px 0 16px!important;gap:8px!important;border-radius:16px;background:rgba(251,248,242,.8);-webkit-backdrop-filter:blur(40px) saturate(200%);backdrop-filter:blur(40px) saturate(200%);border:1px solid rgba(16,32,46,.06);box-shadow:0 8px 28px rgba(16,32,46,.14),inset 0 1px 0 rgba(255,255,255,.5);transition:box-shadow .3s}
+.hdr.scrolled .hdr-in{box-shadow:0 10px 30px rgba(16,32,46,.2),inset 0 1px 0 rgba(255,255,255,.5)}
+[dir=rtl] .hdr-in{padding:0 16px 0 8px!important}
+.logo-a{display:flex;align-items:center;flex:none;color:var(--ink)}
+.hdr .logo{width:54px!important;opacity:.85}
+.hdr .ibtn{width:34px!important;height:34px!important;background:transparent;box-shadow:none;border:1px solid rgba(16,32,46,.12)}
+.hdr .ibtn svg{width:16px;height:16px}
+.hdr-cta{display:inline-flex;align-items:center;height:34px;padding:0 14px;border-radius:999px;background:var(--ink);color:#fff;font-size:12.5px;font-weight:600;letter-spacing:-.005em;text-decoration:none;white-space:nowrap;box-shadow:0 6px 16px -8px rgba(16,32,46,.5);transition:transform .2s var(--ease)}
+.hdr-cta:active{transform:scale(.95)}
+.lang-b .fl{width:18px!important;height:18px!important;clip-path:circle(50%);display:block}
+@media(min-width:900px){.hdr{padding-top:calc(var(--sat) + 14px)!important}.hdr-in{max-width:1124px;margin:0 auto 8px;height:54px!important;border-radius:18px}}
+@media(min-width:900px){:root{--hdr:76px}}
 </style>
 <script>
 (function(){if(/[?&]preview=1/.test(location.search))return;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-LMZ66PTR0T';document.head.appendChild(s);
@@ -455,7 +471,7 @@ window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(argu
 var m=location.search.match(/[?&]masa=([^&]+)/);gtag('config','G-LMZ66PTR0T',{content_group:'qr_menu',page_location:location.origin+location.pathname,qr_table:m?decodeURIComponent(m[1]):undefined});})();
 </script>
 </head>
-<body>
+<body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="fl-tr" viewBox="0 0 24 24"><rect width="24" height="24" fill="#E30A17"/><circle cx="10" cy="12" r="5.4" fill="#fff"/><circle cx="11.35" cy="12" r="4.35" fill="#E30A17"/><polygon points="13.65,12.00 15.17,11.47 15.20,9.86 16.18,11.14 17.72,10.68 16.80,12.00 17.72,13.32 16.18,12.86 15.20,14.14 15.17,12.53" fill="#fff"/></symbol><symbol id="fl-en" viewBox="0 0 24 24"><rect width="24" height="24" fill="#012169"/><path d="M0 0L24 24M24 0L0 24" stroke="#fff" stroke-width="4.6"/><path d="M0 0L24 24M24 0L0 24" stroke="#C8102E" stroke-width="1.6"/><path d="M12 0V24M0 12H24" stroke="#fff" stroke-width="6.4"/><path d="M12 0V24M0 12H24" stroke="#C8102E" stroke-width="3.6"/></symbol><symbol id="fl-ar" viewBox="0 0 24 24"><rect width="24" height="24" fill="#006C35"/><path d="M6.6 9.4c1.6-.9 3.2.6 4.6-.3s3-.6 4.4.1 1.6.2 1.8-.3M7.6 11.9h8.8" stroke="#fff" stroke-width="1.05" fill="none" stroke-linecap="round"/><path d="M6.8 15.4h10.2l.9-.9" stroke="#fff" stroke-width="1.05" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="fl-ru" viewBox="0 0 24 24"><rect width="24" height="8" fill="#fff"/><rect y="8" width="24" height="8" fill="#0039A6"/><rect y="16" width="24" height="8" fill="#D52B1E"/></symbol></defs></svg>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="logo" viewBox="0 0 692 440"><g transform="translate(0,440) scale(0.1,-0.1)" fill="currentColor" stroke="none"><path d="M3005 3910 c-33 -4 -85 -8 -115 -9 -79 -2 -85 -9 -56 -62 43 -80 46 -69 -72 -367 -61 -152 -141 -353 -177 -447 -86 -218 -136 -314 -189 -363 -23 -22 -47 -41 -53 -43 -6 -2 -13 -13 -15 -24 -3 -19 3 -20 190 -23 179 -2 192 -1 192 16 0 10 -15 25 -34 36 -40 21 -76 81 -76 127 0 36 15 91 51 190 l22 59 259 -2 259 -3 40 -95 c63 -149 71 -185 54 -226 -9 -22 -27 -40 -49 -51 -22 -10 -36 -24 -36 -35 0 -17 15 -18 302 -16 212 2 302 6 305 14 2 6 -19 28 -46 47 -27 20 -62 57 -78 84 -26 44 -157 348 -414 955 l-104 248 -50 -2 c-27 0 -77 -4 -110 -8z m33 -530 c55 -135 105 -257 111 -272 l11 -28 -226 0 -225 0 7 23 c25 81 209 536 214 530 4 -5 52 -118 108 -253z M540 3890 c0 -5 18 -21 41 -35 56 -36 79 -89 79 -185 0 -154 -50 -854 -65 -905 -20 -68 -47 -110 -90 -137 -19 -13 -35 -31 -35 -40 0 -17 16 -18 190 -18 175 0 190 1 190 18 0 9 -13 23 -30 30 -36 16 -77 68 -96 119 -18 52 -17 157 6 518 11 171 20 326 21 345 l1 35 22 -50 c12 -27 114 -267 226 -532 l204 -483 70 0 71 0 140 358 c319 817 283 731 289 681 9 -73 46 -738 46 -825 0 -93 -21 -138 -77 -164 -18 -8 -33 -23 -33 -32 0 -17 20 -18 285 -18 278 0 285 0 285 20 0 11 -7 20 -15 20 -8 0 -30 16 -49 35 -25 25 -37 48 -45 87 -15 74 -64 882 -59 973 4 82 20 113 79 153 19 13 36 28 37 33 3 6 -83 8 -229 7 l-232 -3 -73 -185 c-41 -102 -122 -308 -181 -457 -58 -150 -110 -273 -113 -273 -8 0 -51 97 -189 425 -55 132 -124 296 -153 365 l-54 125 -232 3 c-151 1 -232 -1 -232 -8z M3870 3891 c0 -4 18 -20 41 -35 71 -47 69 -33 69 -623 0 -511 -1 -529 -20 -561 -11 -18 -36 -42 -55 -53 -19 -12 -35 -27 -35 -35 0 -12 45 -14 288 -12 310 3 326 7 248 51 -23 13 -48 38 -60 62 -19 37 -21 56 -21 260 l0 220 37 3 c51 4 114 -14 139 -41 11 -12 39 -60 61 -107 22 -47 67 -140 99 -207 32 -67 73 -138 90 -158 73 -83 184 -107 417 -88 69 5 82 9 82 24 0 12 -11 20 -32 24 -60 14 -135 105 -222 270 -43 83 -91 168 -105 190 -29 43 -81 77 -151 99 l-45 14 30 7 c79 18 186 60 226 90 53 38 104 111 120 169 6 23 9 75 7 116 -7 128 -71 216 -200 275 -107 49 -175 55 -609 55 -219 0 -399 -4 -399 -9z m685 -72 c53 -13 119 -67 145 -120 43 -83 43 -245 1 -328 -25 -48 -78 -95 -128 -112 -22 -8 -83 -13 -143 -14 l-105 0 -3 293 -2 292 95 0 c53 0 116 -5 140 -11z M5320 3888 c1 -7 15 -22 32 -33 17 -11 41 -33 52 -48 21 -28 21 -39 24 -553 3 -504 2 -526 -17 -569 -14 -32 -30 -50 -55 -62 -22 -10 -36 -24 -36 -35 0 -17 25 -18 545 -18 300 0 545 1 545 3 0 1 11 83 24 181 14 99 23 183 20 188 -3 4 -14 8 -24 8 -14 0 -28 -19 -51 -67 -44 -91 -125 -172 -204 -203 -53 -21 -81 -24 -232 -28 l-173 -4 0 287 0 287 128 -4 c165 -5 209 -27 254 -125 13 -29 25 -43 38 -43 19 0 20 8 20 211 0 210 0 210 -22 207 -14 -2 -25 -14 -31 -33 -16 -50 -57 -96 -106 -118 -35 -16 -73 -22 -163 -25 l-118 -4 0 272 0 272 158 -4 c134 -4 166 -8 217 -28 76 -30 152 -104 185 -182 20 -46 30 -58 48 -58 27 0 27 0 7 175 -8 72 -15 138 -15 148 0 16 -32 17 -525 17 -414 0 -525 -3 -525 -12z M1490 2272 c-118 -59 -118 -275 0 -334 102 -52 220 18 220 130 l0 43 -72 -3 c-57 -2 -73 -6 -73 -18 0 -11 13 -15 50 -16 28 -1 51 -4 53 -8 15 -39 -34 -102 -88 -111 -78 -13 -140 54 -140 150 0 67 26 115 74 139 36 17 43 18 80 5 26 -9 48 -26 61 -46 11 -18 28 -32 38 -33 23 0 22 10 -6 51 -27 41 -79 69 -127 69 -19 0 -51 -8 -70 -18z M3033 2275 c-20 -8 -39 -28 -50 -49 -15 -33 -16 -39 -1 -70 17 -35 42 -48 145 -75 74 -20 84 -89 17 -117 -48 -20 -98 -9 -129 28 -14 16 -32 28 -40 26 -12 -3 -12 -7 1 -35 55 -112 275 -62 249 56 -9 42 -35 61 -111 82 -75 21 -104 42 -104 74 0 35 34 58 85 58 46 0 85 -23 85 -50 0 -7 9 -13 20 -13 42 0 8 63 -46 86 -42 18 -80 17 -121 -1z M5295 2276 c-42 -18 -83 -69 -91 -112 -24 -129 34 -229 138 -241 69 -8 129 23 157 79 28 59 28 146 0 204 -34 71 -128 103 -204 70z m109 -30 c93 -39 114 -186 37 -261 -24 -22 -40 -28 -75 -29 -80 -2 -129 55 -129 150 0 65 26 113 73 136 42 22 51 22 94 4z M2315 2263 c-3 -10 -31 -81 -60 -158 -29 -77 -56 -148 -60 -157 -5 -14 -2 -18 13 -18 16 0 24 12 37 50 l17 50 78 0 78 0 17 -50 c12 -37 22 -50 36 -50 17 0 17 5 -10 78 -44 117 -88 235 -96 255 -4 9 -15 17 -25 17 -10 0 -21 -8 -25 -17z m52 -95 c12 -35 25 -71 28 -80 6 -16 0 -18 -55 -18 -55 0 -61 2 -55 18 3 9 16 45 28 80 12 34 24 62 27 62 3 0 15 -28 27 -62z M3692 2268 c3 -8 27 -14 61 -16 l57 -3 0 -159 c0 -153 1 -160 20 -160 19 0 20 7 20 160 l0 160 60 0 c47 0 60 3 60 15 0 13 -22 15 -141 15 -108 0 -140 -3 -137 -12z M4460 2105 c0 -168 1 -175 20 -175 18 0 20 7 20 71 l0 70 47 -3 c47 -3 47 -3 86 -70 27 -47 45 -68 58 -68 19 0 19 1 3 33 -9 17 -28 50 -42 72 -19 29 -21 40 -12 43 8 3 24 16 37 30 35 38 32 104 -6 143 -28 28 -33 29 -120 29 l-91 0 0 -175z m170 135 c50 -27 49 -100 0 -125 -16 -8 -52 -15 -80 -15 l-50 0 0 75 0 75 56 0 c30 0 64 -5 74 -10z M2755 1644 c-16 -2 -82 -11 -145 -20 -307 -41 -628 -152 -892 -307 -100 -59 -254 -174 -303 -227 l-30 -32 69 -65 c258 -240 704 -430 1173 -500 168 -24 591 -24 758 0 315 47 584 131 857 267 249 125 411 241 598 431 74 75 157 153 184 173 93 70 292 156 362 156 l24 0 -25 -57 c-37 -83 -110 -187 -169 -239 -28 -25 -104 -72 -169 -105 -115 -57 -118 -59 -90 -70 57 -21 150 -72 209 -115 100 -71 162 -150 219 -277 l26 -59 -43 7 c-76 13 -203 64 -289 117 -56 34 -119 87 -186 155 -56 57 -106 103 -110 103 -4 -1 -24 -14 -43 -30 l-34 -30 94 -96 c52 -52 125 -117 161 -144 139 -104 329 -176 492 -187 l88 -6 -6 29 c-28 121 -71 225 -129 313 -47 70 -150 175 -205 207 -17 10 -31 21 -31 24 0 4 24 24 54 44 107 73 205 202 263 346 25 61 53 160 53 187 0 7 -121 -6 -201 -22 -133 -28 -281 -97 -388 -180 -31 -24 -108 -97 -171 -162 -63 -65 -154 -149 -202 -186 -321 -250 -753 -426 -1213 -493 -150 -22 -521 -25 -675 -6 -325 41 -652 145 -888 283 -104 60 -245 159 -259 182 -15 25 199 170 387 261 454 219 991 287 1540 196 326 -55 614 -165 956 -365 31 -18 31 -18 67 9 21 16 37 31 37 35 0 12 -170 113 -288 171 -268 133 -515 212 -812 261 -99 17 -180 22 -385 24 -143 2 -273 1 -290 -1z M2010 1173 c-40 -14 -53 -69 -22 -96 53 -48 133 19 90 75 -15 19 -47 28 -68 21z"/></g></symbol>
@@ -482,11 +498,12 @@ var m=location.search.match(/[?&]masa=([^&]+)/);gtag('config','G-LMZ66PTR0T',{co
 <div class="app" id="app">
   <header class="hdr" id="hdr">
     <div class="hdr-in">
-      <svg class="logo" role="img" aria-label="Mare Gastro"><use href="#logo"/></svg>
+      <a class="logo-a" id="homeLnk" href="/tr/" aria-label="Mare Gastro ana sayfa"><svg class="logo" role="img" aria-label="Mare Gastro"><use href="#logo"/></svg></a>
       <span class="sp"></span>
       <span class="chip-t" id="tableChip" hidden><i></i><span></span></span>
       <button class="ibtn" id="searchBtn" aria-label="Ara"><svg><use href="#i-search"/></svg></button>
-      <button class="ibtn lang-b" id="langBtn" aria-label="Dil">TR</button>
+      <a class="hdr-cta" id="hdrRez" href="/rezervasyon.html#reservation">Rezervasyon</a>
+      <button class="ibtn lang-b" id="langBtn" aria-label="Dil"><svg class="fl" aria-hidden="true"><use href="#fl-tr"/></svg></button>
     </div>
   </header>
 
@@ -987,7 +1004,7 @@ function setLang(l,save){
   lang=T[l]?l:'tr'; if(save)store('mareQrLang',lang);
   if(save&&!PREVIEW){var np=lang==='tr'?'/menu/':'/menu/'+lang+'/';setTimeout(function(){try{if(location.pathname!==np)history.replaceState(history.state,'',np+location.search)}catch(e){}},450)}
   document.documentElement.lang=lang; document.documentElement.dir=lang==='ar'?'rtl':'ltr';
-  $('#langBtn').textContent=lang.toUpperCase();
+  $('#langBtn').innerHTML='<svg class="fl" aria-hidden="true"><use href="#fl-'+lang+'"/></svg>';$('#hdrRez').textContent=t('reserve');$('#hdrRez').href=(lang==='tr'?'/rezervasyon.html':'/'+lang+'/')+'#reservation';$('#homeLnk').href='/'+lang+'/';
   $$('#tabbar button').forEach(function(b){var k=b.dataset.t;if(k==='yz'){b.hidden=lang!=='tr';return}$('span',b).textContent=k==='home'?t('home'):k==='search'?t('search'):cl(k)});
   if(TABLE){$('#tableChip span').textContent=t('table')+' '+TABLE}
   if(MENU)render();
@@ -1007,6 +1024,7 @@ document.addEventListener('keydown',function(e){
   if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('[role=button][data-id]')){e.preventDefault();openItem(e.target.dataset.id)}
 });
 $('#searchBtn').addEventListener('click',function(){track('qr_search_open');openSearch()});
+$('#hdrRez').addEventListener('click',function(){track('qr_reserve_header')});
 $('#langBtn').addEventListener('click',openLang);
 $('#dealbar').addEventListener('click',function(){track('qr_deals_bar');scrollToEl($('#s-deals'),hdrH()+4)});
 $('#tabbar').addEventListener('click',function(e){
