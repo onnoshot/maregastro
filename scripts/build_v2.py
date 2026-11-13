@@ -93,7 +93,7 @@ T = {
  "tr": dict(
   marquee=["Ege & Akdeniz Mutfağı", "Sapanca Gölü", "Fine Dining", "Didi Otel Bahçesi", "Şef Doğan Anapa", "Açık & Kapalı Alan", "Canlı Müzik"],
   stats_eyebrow="Rakamlarla Mare",
-  stats=[("4,9", "4.9", "Google puanı", 1), ("200+", "200", "Menüdeki lezzet", 0), ("2023", "2023", "Gourmand Ödülü", 0), ("12–00", None, "Salı – Pazar açık", 0)],
+  stats=[("4,9", "4.9", "Google puanı", 1), ("200+", "200", "Menüdeki lezzet", 0), ("2023", "2023", "Gourmand Ödülü", 0), ("09–00", None, "Salı – Pazar açık", 0)],
   amb_eyebrow="Mekân", amb_title="Bahçede, ışıkta, <em>göle karşı</em>",
   amb_body="Gün ışığında gölgeli kabanalar, akşam olunca mum ışığında bir teras. Fotoğraflara dokunarak büyütün.",
   amb_alts=["Mare Gastro bahçe manzarası", "Kabana oturma alanı", "Terasta misafir", "Akşam terası", "Sofra detayı", "Havuz kenarı şezlonglar"],
@@ -109,7 +109,7 @@ T = {
  "en": dict(
   marquee=["Aegean & Mediterranean Cuisine", "Lake Sapanca", "Fine Dining", "Didi Hotel Garden", "Chef Doğan Anapa", "Indoor & Outdoor", "Live Music"],
   stats_eyebrow="Mare in Numbers",
-  stats=[("4.9", "4.9", "Google rating", 1), ("200+", "200", "Dishes & drinks", 0), ("2023", "2023", "Gourmand Award", 0), ("12–00", None, "Open Tuesday – Sunday", 0)],
+  stats=[("4.9", "4.9", "Google rating", 1), ("200+", "200", "Dishes & drinks", 0), ("2023", "2023", "Gourmand Award", 0), ("09–00", None, "Open Tuesday – Sunday", 0)],
   amb_eyebrow="The Place", amb_title="In the garden, in the light, <em>by the lake</em>",
   amb_body="Shaded cabanas by day, a candlelit terrace by night. Tap a photo to enlarge it.",
   amb_alts=["Mare Gastro garden view", "Cabana seating", "Guest on the terrace", "Evening terrace", "Table detail", "Poolside loungers"],
@@ -125,7 +125,7 @@ T = {
  "ar": dict(
   marquee=["مطبخ إيجه والبحر المتوسط", "بحيرة سابانجا", "مطعم فاخر", "حديقة فندق ديدي", "الشيف دوغان أنابا", "أماكن داخلية وخارجية", "موسيقى حية"],
   stats_eyebrow="ماري بالأرقام",
-  stats=[("4.9", "4.9", "تقييم Google", 1), ("200+", "200", "طبق ومشروب", 0), ("2023", "2023", "جائزة Gourmand", 0), ("12–00", None, "مفتوح من الثلاثاء إلى الأحد", 0)],
+  stats=[("4.9", "4.9", "تقييم Google", 1), ("200+", "200", "طبق ومشروب", 0), ("2023", "2023", "جائزة Gourmand", 0), ("09–00", None, "مفتوح من الثلاثاء إلى الأحد", 0)],
   amb_eyebrow="المكان", amb_title="في الحديقة، تحت الضوء، <em>قرب البحيرة</em>",
   amb_body="أكواخ مظللة نهاراً، وتراس على ضوء الشموع ليلاً. اضغط على الصورة لتكبيرها.",
   amb_alts=["إطلالة حديقة ماري غاسترو", "جلسة الكابانا", "ضيف على التراس", "التراس مساءً", "تفاصيل المائدة", "كراسي بجانب المسبح"],
@@ -141,7 +141,7 @@ T = {
  "ru": dict(
   marquee=["Эгейская и средиземноморская кухня", "Озеро Сапанджа", "Fine Dining", "Сад отеля Didi", "Шеф Доган Анапа", "Зал и терраса", "Живая музыка"],
   stats_eyebrow="Mare в цифрах",
-  stats=[("4,9", "4.9", "рейтинг Google", 1), ("200+", "200", "блюд и напитков", 0), ("2023", "2023", "премия Gourmand", 0), ("12–00", None, "со вторника по воскресенье", 0)],
+  stats=[("4,9", "4.9", "рейтинг Google", 1), ("200+", "200", "блюд и напитков", 0), ("2023", "2023", "премия Gourmand", 0), ("09–00", None, "со вторника по воскресенье", 0)],
   amb_eyebrow="Место", amb_title="В саду, в свете, <em>у озера</em>",
   amb_body="Тенистые кабаны днём и терраса при свечах вечером. Нажмите на фото, чтобы увеличить.",
   amb_alts=["Вид на сад Mare Gastro", "Кабаны", "Гость на террасе", "Вечерняя терраса", "Детали сервировки", "Шезлонги у бассейна"],

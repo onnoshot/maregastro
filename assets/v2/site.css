@@ -2000,3 +2000,10 @@ nav .nlinks a{font-size:13px;font-weight:500;letter-spacing:-.005em;text-transfo
 /* the WhatsApp bubble hides while the reservation form is on screen (it covered calendar days) */
 .wa-fab{transition:opacity .3s var(--ease),transform .3s var(--ease)}
 html.rez-on .wa-fab{opacity:0;transform:scale(.6);pointer-events:none}
+
+/* ── Hero: smaller logo + buttons (2026-11-13) ── */
+.hero-logo img{width:150px!important}
+@media(min-width:768px){.hero-logo img{width:210px!important}}
+.hbtns{max-width:270px!important;gap:10px!important}
+.hbtns .btn-main,.hbtns .btn-ghost{height:44px!important;min-height:44px!important;font-size:14px!important;min-width:150px!important;padding:0 22px!important}
+@media(min-width:480px){.hbtns{max-width:none!important}}

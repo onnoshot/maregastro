@@ -102,7 +102,7 @@ def build_restaurant_schema(lang):
         "openingHoursSpecification": [{
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            "opens": "12:00",
+            "opens": "09:00",
             "closes": "00:00",
         }],
         "acceptsReservations": "True",
