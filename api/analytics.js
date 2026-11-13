@@ -9,6 +9,7 @@
 // Gerekli env: GA_SA_JSON (Google servis hesabi JSON anahtari, analytics.readonly yetkili,
 // bu GA4 property'de Goruntuleyici olarak eklenmis olmali), MARE_ADMIN_KEY
 import { JWT } from 'google-auth-library';
+import { put, list } from '@vercel/blob';
 
 const PROPERTY_ID = '542527885';
 const CONVERSION_EVENTS = ['whatsapp_click', 'phone_click', 'availability_check', 'menu_click', 'reservation_submit_click'];
@@ -95,15 +96,63 @@ async function searchReport(sa) {
   return { ok: false, needsAccess: true };
 }
 
+// GA4 mulk basina ayni anda en fazla 10 Core istegi kabul eder (Realtime kovasi ayri).
+// Kota baska bir istemci tarafindan doldugunda 429 doner: kisa bekleyip tekrar deneriz.
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 async function gaBatch(token, requests) {
-  const r = await fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${PROPERTY_ID}:batchRunReports`, {
-    method: 'POST',
-    headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ requests }),
-  });
-  if (!r.ok) throw new Error('ga4 ' + r.status + ' ' + (await r.text()).slice(0, 300));
-  const j = await r.json();
-  return j.reports || [];
+  for (let attempt = 0; ; attempt++) {
+    const r = await fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${PROPERTY_ID}:batchRunReports`, {
+      method: 'POST',
+      headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ requests }),
+    });
+    if (r.status === 429 && attempt < 2) { await sleep(900 * (attempt + 1) + Math.random() * 400); continue; }
+    if (!r.ok) {
+      const err = new Error('ga4 ' + r.status + ' ' + (await r.text()).slice(0, 300));
+      err.status = r.status;
+      throw err;
+    }
+    const j = await r.json();
+    return j.reports || [];
+  }
+}
+
+// Son basarili yaniti Blob'da sakla; GA4 hata verirse (kota, kesinti) panel bos kalmasin,
+// son bilinen veri "stale" isaretiyle gosterilsin. Sadece toplu site istatistikleri, kisisel veri yok.
+const STALE_PREFIX = 'analytics-cache/';
+async function stash(key, body) {
+  if (!key || !process.env.BLOB_READ_WRITE_TOKEN) return;
+  try {
+    await put(STALE_PREFIX + key + '.json', JSON.stringify(body), {
+      access: 'public', contentType: 'application/json', addRandomSuffix: false, allowOverwrite: true, cacheControlMaxAge: 0,
+    });
+  } catch (e) { /* onbellek yazilamadi; yanit yine de doner */ }
+}
+async function loadStale(key) {
+  if (!key || !process.env.BLOB_READ_WRITE_TOKEN) return null;
+  try {
+    const path = STALE_PREFIX + key + '.json';
+    const r0 = await list({ prefix: path, limit: 1 });
+    const hit = r0.blobs.find((x) => x.pathname === path);
+    if (!hit) return null;
+    const r = await fetch(hit.url + (hit.url.includes('?') ? '&' : '?') + 't=' + Date.now(), { cache: 'no-store' });
+    return r.ok ? await r.json() : null;
+  } catch (e) { return null; }
+}
+function cacheKeyOf(q) {
+  q = q || {};
+  if (String(q.month || '').trim()) return /^\d{4}-\d{2}$/.test(String(q.month).trim()) ? 'month-' + String(q.month).trim() : null;
+  if (String(q.qr || '') === '1') return 'qr' + ([7, 30, 90].includes(Number(q.days)) ? Number(q.days) : 30);
+  if (String(q.qrlive || '') === '1' || String(q.realtime || '') === '1' || String(q.search || '') === '1') return null;
+  if (String(q.journey || '') === '1') return 'journey';
+  if (String(q.insights || '') === '1') return 'insights';
+  return 'main';
+}
+// Core istekleri paralel degil sirayla: ayni anda tek sorgu = mulkun 10'luk kotasini zorlamaz.
+async function inSeries(thunks) { const out = []; for (const f of thunks) out.push(await f()); return out; }
+async function done(res, key, body) {
+  await stash(key, body);
+  return send(res, 200, body);
 }
 
 export default async function handler(req, res) {
@@ -141,7 +190,7 @@ export default async function handler(req, res) {
       const monthChannels = (chOnlyR.rows || []).map((row) => ({
         name: row.dimensionValues[0].value, sessions: parseInt(row.metricValues[0].value, 10),
       }));
-      return send(res, 200, { ok: true, month: monthParam, startDate, endDate, channels: monthChannels });
+      return done(res, 'month-' + monthParam, { ok: true, month: monthParam, startDate, endDate, channels: monthChannels });
     }
 
     // ── ?qr=1&days=7|30|90 → QR menu: kullanim, en cok bakilan urunler, tiklanan alanlar ──
@@ -155,8 +204,8 @@ export default async function handler(req, res) {
       const range = { startDate: (days - 1) + 'daysAgo', endDate: 'today' };
       const prevRange = { startDate: (days * 2 - 1) + 'daysAgo', endDate: days + 'daysAgo' };
       const qrPage = { orGroup: { expressions: ['/menu', '/qr'].map((value) => ({ filter: { fieldName: 'pagePath', stringFilter: { matchType: 'BEGINS_WITH', value } } })) } };
-      const [[sumR, dayR, hourR, devR, langR], [itemR, listR, evR, searchR]] = await Promise.all([
-        gaBatch(token, [
+      const [[sumR, dayR, hourR, devR, langR], [itemR, listR, evR, searchR]] = await inSeries([
+        () => gaBatch(token, [
           { dateRanges: [{ ...range, name: 'cur' }, { ...prevRange, name: 'prev' }], dimensionFilter: qrPage,
             metrics: ['sessions', 'activeUsers', 'screenPageViews', 'userEngagementDuration', 'engagedSessions'].map((name) => ({ name })) },
           { dateRanges: [range], dimensions: [{ name: 'date' }], metrics: [{ name: 'activeUsers' }, { name: 'sessions' }], dimensionFilter: qrPage, orderBys: [{ dimension: { dimensionName: 'date' } }], limit: 100 },
@@ -164,7 +213,7 @@ export default async function handler(req, res) {
           { dateRanges: [range], dimensions: [{ name: 'deviceCategory' }], metrics: [{ name: 'activeUsers' }], dimensionFilter: qrPage, limit: 5 },
           { dateRanges: [range], dimensions: [{ name: 'language' }], metrics: [{ name: 'activeUsers' }], dimensionFilter: qrPage, orderBys: [{ metric: { metricName: 'activeUsers' }, desc: true }], limit: 6 },
         ]),
-        gaBatch(token, [
+        () => gaBatch(token, [
           { dateRanges: [range], dimensions: [{ name: 'itemId' }, { name: 'itemName' }], metrics: [{ name: 'itemsViewed' }, { name: 'itemsClickedInList' }, { name: 'itemsViewedInList' }],
             orderBys: [{ metric: { metricName: 'itemsViewed' }, desc: true }], limit: 250 },
           { dateRanges: [range], dimensions: [{ name: 'itemListName' }], metrics: [{ name: 'itemsClickedInList' }], orderBys: [{ metric: { metricName: 'itemsClickedInList' }, desc: true }], limit: 30 },
@@ -192,7 +241,7 @@ export default async function handler(req, res) {
         searches: pairs(searchR).filter((x) => x.name && x.name !== '(not set)'),
       };
       qrCache[key] = { body, exp: Date.now() + 5 * 60 * 1000 };
-      return send(res, 200, body);
+      return done(res, key, body);
     }
 
     // ── ?qrlive=1 → son 30 dakika QR menu olaylari ──
@@ -286,7 +335,7 @@ export default async function handler(req, res) {
       });
       journeyCache = { ok: true, updatedAt: new Date().toISOString(), since: JOURNEY_SINCE, startDate: d30.startDate, days: spanDays, steps: JOURNEY_STEPS, base, events, byLang, daily };
       journeyCacheExpiry = Date.now() + 5 * 60 * 1000;
-      return send(res, 200, journeyCache);
+      return done(res, 'journey', journeyCache);
     }
 
     if (String((req.query && req.query.search) || '') === '1') {
@@ -307,12 +356,12 @@ export default async function handler(req, res) {
         dateRanges: [d30], dimensions: [{ name: dim }], metrics: [{ name: metric }],
         orderBys: [{ metric: { metricName: metric }, desc: true }], limit,
       });
-      const [[hourR, dowR, cityR, langR, nvrR], [landR, srcR, sumR, evCmpR, evDayR], [menuR, aiR]] = await Promise.all([
-        gaBatch(token, [
+      const [[hourR, dowR, cityR, langR, nvrR], [landR, srcR, sumR, evCmpR, evDayR], [menuR, aiR]] = await inSeries([
+        () => gaBatch(token, [
           top('hour', 'activeUsers', 24), top('dayOfWeek', 'activeUsers', 7),
           top('city', 'sessions', 10), top('language', 'sessions', 6), top('newVsReturning', 'activeUsers', 3),
         ]),
-        gaBatch(token, [
+        () => gaBatch(token, [
           { ...top('landingPage', 'sessions', 8), metrics: [{ name: 'sessions' }, { name: 'engagementRate' }] },
           top('sessionSourceMedium', 'sessions', 10),
           { dateRanges: compare, metrics: ['sessions', 'activeUsers', 'engagedSessions', 'averageSessionDuration', 'screenPageViewsPerSession'].map((name) => ({ name })) },
@@ -326,7 +375,7 @@ export default async function handler(req, res) {
             orderBys: [{ dimension: { dimensionName: 'date' } }], limit: 200,
           },
         ]),
-        gaBatch(token, [{
+        () => gaBatch(token, [{
           dateRanges: [d30], dimensions: [{ name: 'pageTitle' }], metrics: [{ name: 'eventCount' }],
           dimensionFilter: { filter: { fieldName: 'eventName', stringFilter: { value: 'menu_section_view' } } },
           orderBys: [{ metric: { metricName: 'eventCount' }, desc: true }], limit: 14,
@@ -363,13 +412,13 @@ export default async function handler(req, res) {
         aiVisits: (aiR.rows || []).map((row) => ({ source: row.dimensionValues[0].value, landing: row.dimensionValues[1].value, period: row.dimensionValues[2] ? row.dimensionValues[2].value : 'cur', sessions: Number(row.metricValues[0].value) })),
       };
       insightsCacheExpiry = Date.now() + 5 * 60 * 1000;
-      return send(res, 200, insightsCache);
+      return done(res, 'insights', insightsCache);
     }
 
     // GA4 batchRunReports istek basina en fazla 5 rapor kabul ediyor; 6 raporu
-    // iki gruba bolup PARALEL (Promise.all) cagiriyoruz — sirali olsaydi 2x yavas olurdu.
-    const [[dailyR, totR, chR], [evR, pageR, devR]] = await Promise.all([
-      gaBatch(token, [
+    // iki gruba bolup SIRAYLA cagiriyoruz (mulk basina 10 eszamanli istek kotasi).
+    const [[dailyR, totR, chR], [evR, pageR, devR]] = await inSeries([
+      () => gaBatch(token, [
         { // 0: gunluk ziyaretci trendi
           dateRanges: [{ startDate: '29daysAgo', endDate: 'today' }],
           dimensions: [{ name: 'date' }], metrics: [{ name: 'activeUsers' }],
@@ -388,7 +437,7 @@ export default async function handler(req, res) {
           orderBys: [{ metric: { metricName: 'sessions' }, desc: true }], limit: 8,
         },
       ]),
-      gaBatch(token, [
+      () => gaBatch(token, [
         { // 3: donusum event'leri
           dateRanges: [{ startDate: '29daysAgo', endDate: 'today' }],
           dimensions: [{ name: 'eventName' }], metrics: [{ name: 'eventCount' }],
@@ -425,8 +474,14 @@ export default async function handler(req, res) {
 
     const devices = (devR.rows || []).map((row) => ({ name: row.dimensionValues[0].value, users: parseInt(row.metricValues[0].value, 10) }));
 
-    return send(res, 200, { ok: true, updatedAt: new Date().toISOString(), totals, daily, channels, events, pages, devices });
+    return done(res, 'main', { ok: true, updatedAt: new Date().toISOString(), totals, daily, channels, events, pages, devices });
   } catch (e) {
+    const stale = await loadStale(cacheKeyOf(req.query));
+    if (stale) {
+      const reason = e.status === 429 ? 'quota' : 'error';
+      return send(res, 200, { ...stale, stale: true, staleReason: reason, staleError: String(e.message || e).slice(0, 160) });
+    }
+    if (e.status === 429) return send(res, 503, { error: 'Google Analytics şu an yoğun (aynı anda çok fazla sorgu). Birkaç dakika sonra tekrar deneyin.', code: 'ga4_quota' });
     return send(res, 500, { error: 'GA4 verisi alinamadi: ' + (e.message || e) });
   }
 }
