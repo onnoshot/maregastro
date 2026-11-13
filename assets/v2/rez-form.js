@@ -403,3 +403,7 @@ function submitReservation(a){
   return true;
 }
 
+
+// WhatsApp balonu form ekrandayken gizlenir (takvim gunlerini kapatiyordu).
+(function(){var s=document.getElementById('reservation');if(!s||!('IntersectionObserver' in window))return;
+new IntersectionObserver(function(es){document.documentElement.classList.toggle('rez-on',es[0].isIntersecting)},{rootMargin:'-20% 0px -20% 0px'}).observe(s);})();

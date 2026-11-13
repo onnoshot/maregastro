@@ -1979,3 +1979,24 @@ nav .nlinks a{font-size:13px;font-weight:500;letter-spacing:-.005em;text-transfo
 .pdot.on::before{background:var(--amber);width:8px;height:8px}
 @media(max-width:767px){.pdots{right:2px}}
 .kfoot-t a{color:var(--amber-ink)!important}
+
+/* ── Unified desktop width (2026-11-13): every section's content edge is the same 1084px box
+   (1180 wrap - 2x48 padding, as .v2-wrap); the header bar is 1124px so logo/button sit on that edge ── */
+@media(min-width:1024px){
+  nav,nav.on-hero{left:max(18px,calc((100% - 1124px)/2))!important;right:max(18px,calc((100% - 1124px)/2))!important}
+  .about-wrap,.konum-wrap,.rez-inner{max-width:1180px!important;padding-left:48px!important;padding-right:48px!important;margin-left:auto;margin-right:auto}
+  .st-grid{max-width:1084px}
+  .kfoot-main,.kfoot-bottom{max-width:1084px}
+  .sig-track{padding-left:max(48px,calc((100% - 1084px)/2));padding-right:max(48px,calc((100% - 1084px)/2));scroll-padding-left:max(48px,calc((100% - 1084px)/2))}
+  .v2-rev .rev-marquee{max-width:1084px;margin-left:auto;margin-right:auto}
+}
+
+/* ── Mobile app polish (2026-11-13) ── */
+@media(max-width:1023px){
+  .pdots{display:none!important}               /* side dots sat on top of pills/calendar */
+}
+.mc-nav{width:40px;height:40px;font-size:16px}
+@media(max-width:767px){.mc-nav{width:44px;height:44px}}
+/* the WhatsApp bubble hides while the reservation form is on screen (it covered calendar days) */
+.wa-fab{transition:opacity .3s var(--ease),transform .3s var(--ease)}
+html.rez-on .wa-fab{opacity:0;transform:scale(.6);pointer-events:none}
