@@ -668,7 +668,7 @@ function svShow(){
   if(sl.id&&ITEMS[sl.id])cta='<button data-svitem="'+esc(sl.id)+'">'+esc(tx(ITEMS[sl.id],'name'))+(ITEMS[sl.id].price!=null?' · '+money(deal(ITEMS[sl.id])?deal(ITEMS[sl.id]).np:ITEMS[sl.id].price):'')+'</button>';
   else if(sl.cat&&CATS[sl.cat])cta='<button data-svcat="'+esc(sl.cat)+'">'+esc(cl(sl.cat))+'</button>';
   else if(sl.x||sl.wa)cta=ozCta();
-  else if(sl.rez)cta='<a href="/'+(lang==='tr'?'tr':lang)+'/#reservation" target="_blank" rel="noopener">'+esc(t('reserve'))+'</a>';
+  else if(sl.rez)cta='<a href="'+(lang==='tr'?'/rezervasyon.html':'/'+lang+'/')+'#reservation">'+esc(t('reserve'))+'</a>';
   $('#svCta').innerHTML=cta;
   if(sl.v){svVideo();return}
   sv.dur=sl.d||5500;sv.start=Date.now();sv.pausedAt=0;var rb=$('#svBars .run i');if(rb&&sl.d)rb.style.animationDuration=(sl.d/1000)+'s';
@@ -785,7 +785,7 @@ function render(){
     '<div class="stay-c"><span class="stay-off">'+esc(t('stayOff'))+'</span><p>'+esc(t('stayTx'))+'</p>'+
     '<a class="stay-btn" href="'+wa+'" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#i-cal"/></svg>'+esc(t('stayBtn'))+'</a>'+
     '<a class="stay-lnk" href="'+didi+'" target="_blank" rel="noopener">'+esc(t('stayRooms'))+'</a></div></div></section>';
-  html+='<a class="rezc rv" href="/'+(lang==='tr'?'tr':lang)+'/#reservation" target="_blank" rel="noopener"><img src="'+pimg('masanizi-ayirtin')+'" alt="'+esc(t('reserve'))+'" loading="lazy"><span><svg width="16" height="16"><use href="#i-cal"/></svg>'+esc(t('reserve'))+'</span></a>';
+  html+='<a class="rezc rv" href="'+(lang==='tr'?'/rezervasyon.html':'/'+lang+'/')+'#reservation"><img src="'+pimg('masanizi-ayirtin')+'" alt="'+esc(t('reserve'))+'" loading="lazy"><span><svg width="16" height="16"><use href="#i-cal"/></svg>'+esc(t('reserve'))+'</span></a>';
   $('#main').innerHTML=html;setTimeout(applyGo,0);
   renderGroup(curGroup,false);
   renderFoot();
