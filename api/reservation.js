@@ -10,6 +10,7 @@ import { put, list, del } from '@vercel/blob';
 import crypto from 'node:crypto';
 import { loadClosedDays } from './closed-days.js';
 import { normalizePhone, withPhone } from './_lib/phone.js';
+import { pushAll } from './_lib/push.js';
 
 const PREFIX = 'reservation/';
 const STATUSES = ['Beklemede', 'Onaylandı', 'İptal Edildi', 'Tamamlandı', 'Gelmedi'];
@@ -216,6 +217,11 @@ export default async function handler(req, res) {
       return send(res, 500, { error: 'Kayit yazilamadi: ' + (e.message || e) });
     }
     {
+      const pushP = isManual ? Promise.resolve() : pushAll({
+        title: 'Yeni Rezervasyon',
+        body: rec.name + ' · ' + rec.date + ' ' + rec.time + ' · ' + (rec.guests || '-') + ' kişi',
+        tag: 'rez-' + rec.id, url: '/#rez', id: rec.id,
+      });
       await tgSend(
         '<b>Yeni Rezervasyon Talebi</b>' + (isManual ? ' (dashboard\'dan elle eklendi)' : ' (siteden)') + '\n' +
         'Ad Soyad: ' + rec.name + '\n' +
@@ -226,6 +232,7 @@ export default async function handler(req, res) {
         'Kaynak: ' + rec.channel +
         (rec.note ? '\nNot: ' + rec.note : '')
       );
+      await pushP;
     }
     return send(res, 200, { ok: true, id: rec.id, item: withPhone(rec) });
   }
