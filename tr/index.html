@@ -1910,7 +1910,10 @@ function applyDeepDate(){
   if(isNaN(d)||d<mcToday0||d.getDay()===1)return;
   mcYear=d.getFullYear();mcMonth=d.getMonth();renderMiniCal();
   if(CLOSED_DAYS.has(iso)){mcFullDay();}else{mcSelectDay(iso);gS(2);}
-  setTimeout(()=>goTo('#reservation'),350);
+  // motion.js (Lenis) yuklenip goTo'yu degistirdikten sonra kaydir; gec yerlesim kaymasina karsi bir kez daha.
+  const jump=()=>{try{window.goTo('#reservation')}catch(e){document.getElementById('reservation').scrollIntoView()}};
+  const go=()=>{setTimeout(jump,450);setTimeout(()=>{const r=document.getElementById('reservation').getBoundingClientRect();if(Math.abs(r.top)>140)jump();},2300);};
+  if(document.readyState==='complete')go();else window.addEventListener('load',go,{once:true});
 }
 const ICON_SVGS={
   star:'<path d="M12 2.5l2.2 5.3 5.7.5-4.3 3.8 1.3 5.6-4.9-3-4.9 3 1.3-5.6-4.3-3.8 5.7-.5z"/>',
