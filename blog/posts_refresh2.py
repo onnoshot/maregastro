@@ -51,9 +51,9 @@ REFRESH_TR2 += [
     },
     {
         "slug": "sapanca-gol-manzarali-kahvalti", "updated": UPDATED,
-        "title": "Sapanca Kahvaltı Yerleri: Serpme Kahvaltı ve Kuymak (2026) | Mare Gastro",
-        "desc": "Sapanca'da kahvaltı nerede yapılır? Mare Gastro'da serpme kahvaltı, tabak kahvaltı, kuymak ve Brioche Benedict; Didi Otel bahçesinde, Salı–Pazar 09:00'dan itibaren.",
-        "lead": "<strong>Kısa cevap:</strong> Sapanca'da kahvaltı için Mare Gastro'nun kahvaltı menüsünde Serpme Kahvaltı, Tabak Kahvaltı, Kuymak ve Brioche Benedict var. Restoran Didi Otel bahçesinde, Salı'dan Pazar'a 09:00'dan itibaren açık; Pazartesi kapalı. Hafta sonu masalar çabuk dolduğu için rezervasyon önerilir.",
+        "title": "Sapanca Kahvaltı: Serpme Kahvaltı ve Brioche Benedict (2026)",
+        "desc": "Sapanca'da kahvaltı nerede yapılır? Mare Gastro'da serpme kahvaltı ve Brioche Benedict; Didi Otel misafirlerine tabak kahvaltı. Salı–Pazar 09:00'dan itibaren.",
+        "lead": "<strong>Kısa cevap:</strong> Sapanca'da kahvaltı için Mare Gastro'nun kahvaltı menüsünde Serpme Kahvaltı ve Brioche Benedict var; Didi Otel'de konaklayan misafirlere kahvaltı Mare Gastro'da tabak kahvaltı olarak servis ediliyor, serpme kahvaltı ek ücretle seçilebiliyor. Restoran Salı'dan Pazar'a 09:00'dan itibaren açık, Pazartesi kapalı; çocuklu misafirler 15:00'e kadar ağırlanıyor.",
     },
 ]
 

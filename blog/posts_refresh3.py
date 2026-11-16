@@ -372,7 +372,7 @@ REFRESH_TR3.append({
                 "<strong>Saat kaçta kapanıyor?</strong> İstanbul'dan akşam çıkanlar için geç saat önemli.",
                 "<strong>Park nasıl?</strong> Hafta sonu Sapanca'da park yeri, akşamın keyfini doğrudan etkiliyor.",
             ]),
-            "Mare Gastro için cevaplar kısaca: kutlama desteği var, ikili masadan kalabalık sofraya kadar plan yapılıyor, açık ve kapalı alan var, alkol servisi var, Salı–Pazar 00:00'a kadar açık, otopark ücretsiz ve vale var.",
+            "Mare Gastro için cevaplar kısaca: kutlama desteği var, ikili masadan kalabalık sofraya kadar plan yapılıyor, açık ve kapalı alan var, alkol servisi var, Salı–Pazar 00:00'a kadar açık (mutfakta son sipariş 23:00), otopark ücretsiz ve vale var. Çocuklu misafirler 15:00'e kadar ağırlanıyor.",
         ])]),
         (2, [("Mare Gastro Menüsünde Neler Var?", [
             "10 Kasım 2026 itibarıyla menüde 13 başlangıç, 3 salata, 8 ara sıcak, 11 ana yemek ve 5 tatlı var. Öne çıkanlar: Mare Spesiyal Islama Kalamar (Adapazarı ıslama geleneğinden ilham), Deniz Mahsülleri Buğday Risotto (Trakya eski kaşarıyla), Mare Spesiyal Granyöz (kaya levreği), Kuzu Pirzola ve imza tatlı Ormanda Bir Yürüyüş.",
@@ -384,7 +384,7 @@ REFRESH_TR3.append({
         ("Sapanca'nın en iyi restoranı hangisi?", "Aranan deneyime bağlı. Gölün hemen yanında fine dining için Mare Gastro, dünya mutfağı ve canlı müzik için Sasa Sapanca, yöresel lezzet için Menzara, çocuklu aile için Green Blue, doğa ve aktivite için Natürköy öne çıkan adreslerdir."),
         ("Sapanca'da fine dining restoran var mı?", "Evet. Mare Gastro, Didi Otel bahçesinde gölün hemen yanında, Yönetici Şef Doğan Anapa imzasıyla à la carte fine dining sunuyor; Google Haritalar puanı 4,9 (24 Ekim 2026)."),
         ("Sapanca'da göl manzaralı restoranlar hangileri?", "Mare Gastro gölün hemen yanında; Sasa Sapanca göl kıyısında, Menzara göl manzaralı bir balkona sahip. Green Blue ve Natürköy daha çok bahçe ve doğa odaklı."),
-        ("Sapanca'da geç saate kadar açık restoran var mı?", "Mare Gastro Salı'dan Pazar'a gece yarısına (00:00) kadar açık; Pazartesi kapalı."),
+        ("Sapanca'da geç saate kadar açık restoran var mı?", "Mare Gastro Salı'dan Pazar'a 00:00'a kadar açık, mutfakta son sipariş 23:00; Pazartesi kapalı."),
         ("Sapanca'da restoran seçerken nelere dikkat etmeli?", "Kutlama türü, kişi sayısı, açık/kapalı alan, alkol servisi, kapanış saati ve otopark. Bu altı soru, Sapanca'da doğru restoranı seçmenin en hızlı yolu."),
     ],
     "rel": ["sapanca-aksam-yemegi-rehberi", "sapanca-luks-restoran", "kirkpinar-restoranlari"],
@@ -396,14 +396,14 @@ REFRESH_TR3.append({
 REFRESH_TR3.append({
     "slug": "sapanca-gece-acik-restoran", "updated": UPDATED, "read": "6 dk",
     "img": "mare-k-ic-salon-gece-cam-cephe.jpg", "alt": "Mare Gastro kapalı salonu gece, cam cephe ve havuz ışığı — Sapanca gece açık restoran",
-    "title": "Sapanca'da Gece Açık Restoran: 00:00'a Kadar Mare Gastro",
-    "h1": "Sapanca'da <em>Gece Açık</em> Restoran: Gece Yarısına Kadar Bir Sofra",
-    "desc": "Sapanca'da gece açık restoran mı arıyorsunuz? Mare Gastro Salı–Pazar 00:00'a kadar açık: canlı müzik, kokteyl, şef mutfağı ve ücretsiz otopark.",
-    "kw": "sapanca gece açık restoran, sapanca gece mekanları, sapanca geç saate kadar açık restoran, sapanca gece yemek, sapanca akşam mekanları",
-    "lead": "<strong>Kısa cevap:</strong> Evet, Sapanca'da gece yarısına kadar açık bir restoran var: Mare Gastro, Didi Otel bahçesinde Salı'dan Pazar'a 09:00–00:00 arası hizmet veriyor, Pazartesi kapalı. Gece servisinde şefin à la carte menüsü, kokteyl ve şarap listesi var; çoğu hafta sonu akşamlara canlı müzik eşlik ediyor.",
+    "title": "Sapanca'da Geç Saat Akşam Yemeği: 00:00'a Kadar Açık",
+    "h1": "Sapanca'da <em>Geç Saat</em> Akşam Yemeği: Gece Yarısına Kadar Açık Restoran",
+    "desc": "Sapanca'da geç saatte nerede yemek yenir? Mare Gastro Salı–Pazar 00:00'a kadar açık, mutfakta son sipariş 23:00. Canlı müzik, kokteyl, ücretsiz otopark.",
+    "kw": "sapanca gece açık restoran, sapanca geç saat akşam yemeği, sapanca geç saate kadar açık restoran, sapanca gece mekanları, sapanca akşam mekanları",
+    "lead": "<strong>Kısa cevap:</strong> Sapanca'da geç saatte akşam yemeği için Mare Gastro, Didi Otel bahçesinde Salı'dan Pazar'a 00:00'a kadar açık; mutfakta son sipariş 23:00, Pazartesi kapalı. Restoran 24 saat açık değil: gece yarısı kapanıyor. Akşam servisinde şefin à la carte menüsü, kokteyl ve şarap listesi var; çoğu hafta sonu canlı müzik eşlik ediyor.",
     "body": [
-        ("Sapanca'da Gece Geç Saatte Açık Restoran Var mı?", [
-            "Sapanca'daki restoranların önemli bir kısmı kahvaltı ve gündüz odaklı çalışıyor; akşam ilerledikçe seçenekler azalıyor. Mare Gastro ise sabah 09:00'da kahvaltıyla açılıp gece yarısı kapanan bir düzende çalışıyor. İstanbul'dan iş çıkışı yola düşenler ya da akşamı uzatmak isteyenler için bu, oturup acele etmeden yemek yiyebilmek demek.",
+        ("Sapanca'da Geç Saatte Akşam Yemeği Nerede Yenir?", [
+            "Sapanca'daki restoranların önemli bir kısmı kahvaltı ve gündüz odaklı çalışıyor; akşam ilerledikçe seçenekler azalıyor. Mare Gastro ise sabah 09:00'da kahvaltıyla açılıp gece yarısı kapanan bir düzende çalışıyor; mutfak son siparişleri 23:00'e kadar alıyor. İstanbul'dan iş çıkışı yola düşenler için bu, 21:00–22:00 gibi bir masada acele etmeden yemek yiyebilmek demek.",
             igfig("mare-k-ic-salon-gece-cam-cephe.jpg", "Mare Gastro salonu gece, cam cepheye vuran havuz ışığı", "\"Akşam uzasın, biz buradayız\": Mare Gastro'da bir gece", IGP["aksam"], portrait=True, label="Instagram'da gör"),
         ]),
         ("Mare Gastro'da Bir Gün Nasıl Akar?", [
@@ -412,16 +412,17 @@ REFRESH_TR3.append({
                 ["Gün içi", "À la carte menü, salatalar, atıştırmalıklar"],
                 ["Akşam", "Başlangıçlar, ara sıcaklar, ana yemekler; kokteyl, şarap ve rakı"],
                 ["Hafta sonu akşamları", "Çoğu hafta sonu canlı müzik"],
+                ["23:00", "Mutfakta son sipariş"],
                 ["00:00", "Kapanış (Salı–Pazar); Pazartesi kapalı"],
             ]),
-            "Geç bir saatte gelecekseniz mutfağın son sipariş saatini rezervasyon notunda sormanızı öneririz; ekip planlamayı buna göre yapar.",
+            "Mutfakta son sipariş 23:00. 22:00'den sonra gelecekseniz geliş saatinizi rezervasyon notuna yazın; ana yemeklerin 23:00'ten önce sipariş edilmesi gerekiyor.",
         ]),
         ("Geç Saatte Neler Yenir, Neler İçilir?", [
             "Gece sofrasında en sık görülen düzen, birkaç paylaşılan başlangıç ve bir ara sıcakla açılıp bir ana yemekle devam etmek. Islama kalamar, ahtapot güveç ve jumbo karides gibi ara sıcaklar gece masasına iyi gidiyor; ağır bir akşam yemeği istemeyenler için Humus, Girit Ezme ya da Pancar Borani gibi başlangıçlar yeterli olabilir.",
             "İçki tarafında rakı, şarap, şampanya ve imza kokteyller var; ayrıntılı liste %s. Rakı eşliğinde uzun bir gece planlıyorsanız %s okuyabilirsiniz." % (P("sapanca-alkollu-restoran", "alkollü restoran yazımızda"), P("sapanca-raki-balik", "rakı-balık rehberimizi")),
         ]),
-        ("Gece Mekanı mı, Restoran mı?", [
-            "\"Sapanca gece mekanları\" araması genellikle iki farklı isteği kapsıyor: geç saate kadar oturulabilen bir restoran ya da müzikli bir eğlence mekanı. Mare Gastro birincisi: gece kulübü değil, canlı müzik eşliğinde yemek yenen bir restoran. Müzik, sohbeti bastırmayacak seviyede tutuluyor.",
+        ("Gece Mekanı mı, Geç Saate Kadar Açık Restoran mı?", [
+            "\"Sapanca gece mekanları\" araması genellikle iki farklı isteği kapsıyor: geç saate kadar oturulabilen bir restoran ya da müzikli bir eğlence mekanı. Mare Gastro ikincisi: gece kulübü değil, gece yarısı kapanan ve canlı müzik eşliğinde akşam yemeği sunan bir restoran. Müzik, sohbeti bastırmayacak seviyede tutuluyor.",
             "Hafta sonu canlı müzik programını %s takip edebilirsiniz; geçmiş sahnelerden biri aşağıda." % P("sapanca-canli-muzik-mekanlari", "canlı müzik yazımızdan"),
             video("GiwkPYUSVyY", "Mare Gastro sahnesinde canlı müzik akşamı", "tr"),
         ]),
@@ -433,9 +434,10 @@ REFRESH_TR3.append({
         ]),
     ],
     "faq": [
-        ("Sapanca'da gece açık restoran var mı?", "Evet. Mare Gastro, Didi Otel bahçesinde Salı'dan Pazar'a gece yarısına (00:00) kadar açık; Pazartesi kapalı."),
+        ("Sapanca'da gece açık restoran var mı?", "Geç saate kadar açık restoran var: Mare Gastro, Didi Otel bahçesinde Salı'dan Pazar'a 00:00'a kadar açık, mutfakta son sipariş 23:00; Pazartesi kapalı."),
+        ("Mare Gastro 24 saat açık mı?", "Hayır. Mare Gastro Salı–Pazar 09:00–00:00 arası açık, mutfakta son sipariş 23:00; Pazartesi kapalı."),
         ("Mare Gastro hangi saatlerde açık?", "Salı–Pazar 09:00–00:00. Sabah kahvaltıyla açılır, gece yarısı kapanır; Pazartesi kapalıdır."),
-        ("Geç saatte mutfak açık mı?", "Mutfak akşam boyunca à la carte servis veriyor. Geç bir saatte gelecekseniz son sipariş saatini rezervasyonda sormanız önerilir."),
+        ("Mutfak kaça kadar açık?", "Mutfakta son sipariş 23:00; restoran 00:00'da kapanıyor."),
         ("Mare Gastro gece kulübü mü?", "Hayır. Mare Gastro bir restoran; çoğu hafta sonu canlı müzik eşliğinde akşam yemeği sunuyor, müzik sohbeti bastırmayacak seviyede."),
         ("Gece için rezervasyon gerekir mi?", "Cuma ve Cumartesi geceleri ile canlı müzik olan akşamlarda önceden rezervasyon önerilir."),
     ],
@@ -565,13 +567,13 @@ REFRESH_TR3.append({
             fig("mare-k-didi-otel-havuz-cephe.jpg", "Didi Otel cephesi ve havuz, Sapanca", "Didi Otel ve havuz; Mare Gastro aynı bahçede", ),
         ]),
         ("Menüde Neler Var?", [
-            "10 Kasım 2026 itibarıyla menü 13 başlangıç, 3 salata, 8 ara sıcak, 11 ana yemek ve 5 tatlıdan oluşuyor; sabahları serpme kahvaltı ve Brioche Benedict var. Çocuklar için Izgara Köfte, gün içinde hamburger, tost ve patates tava gibi atıştırmalıklar da bulunuyor.",
+            "10 Kasım 2026 itibarıyla menü 13 başlangıç, 3 salata, 8 ara sıcak, 11 ana yemek ve 5 tatlıdan oluşuyor; sabahları serpme kahvaltı ve Brioche Benedict var. Didi Otel'de konaklayan misafirlere kahvaltı Mare Gastro'da tabak kahvaltı olarak servis ediliyor; serpme kahvaltı ek ücretle seçilebiliyor. Çocuklu misafirler 15:00'e kadar (kahvaltı saatleri) ağırlanıyor; çocuk menüsü (Izgara Köfte) yalnızca bu saatlerde geçerli.",
             igfig("girit-ezme-pancar-portakal-2026.webp", "Mare Gastro'da portakal çektirmeli ve pancar dilimli Girit ezme", "Girit Ezme, Pancar, Portakal: geleneksel bir mezenin Mare yorumu", IGP["girit"], label="Instagram'da gör"),
             "Güncel tabaklar ve fiyatlar %s. Kahvaltı ayrıntıları için %s bakabilirsiniz." % (L(MENU, "dijital menüde"), P("sapanca-gol-manzarali-kahvalti", "kahvaltı yazımıza")),
         ]),
         ("Konaklama ve Akşam Yemeğini Birlikte Planlamak", [
             "Akşam yemeğinden sonra İstanbul'a dönmek yerine gecelemek isteyenler için en kolay yol, aynı bahçedeki Didi Otel. Doğum günü, yıldönümü ya da evlilik teklifi gibi özel akşamlarda yemek ve konaklamayı birlikte planlamak, ulaşım derdini ortadan kaldırıyor. Bunu %s ayrıntılı anlattık." % P("sapanca-sevgiliyle-yemek-ve-konaklama", "akşam yemeği ve konaklama yazımızda"),
-            "Çocuklu aileler için restoran tarafındaki seçenekleri %s topladık." % P("sapanca-cocuklu-aile-restorani", "çocuklu aile restoranı rehberimizde"),
+            "Çocuklu aileler için gündüz seçeneklerini %s topladık; 15:00'ten sonra restoran yalnızca yetişkin misafirlere hizmet veriyor." % P("sapanca-cocukla-kahvalti", "çocukla kahvaltı rehberimizde"),
         ]),
     ],
     "faq": [
@@ -579,9 +581,9 @@ REFRESH_TR3.append({
         ("Mare Gastro Didi Otel'in neresinde?", "Otelin bahçesinde; otel ile aynı girişi ve otoparkı paylaşıyor. Adres: Kırkpınar Soğuksu, İstasyon 3 Cad. No:55, Sapanca/Sakarya."),
         ("Otelde kalmadan Mare Gastro'da yemek yenebilir mi?", "Evet. Mare Gastro herkese açık; otel misafiri olmadan da rezervasyon yapıp gelebilirsiniz. Otopark ücretsiz."),
         ("Mare Gastro hangi günler açık?", "Salı'dan Pazar'a 09:00–00:00 arası açık; Pazartesi kapalı."),
-        ("Didi Otel'de kahvaltı Mare Gastro'da mı yapılıyor?", "Mare Gastro'nun kahvaltı menüsü (serpme kahvaltı ve Brioche Benedict) Salı–Pazar 09:00'dan itibaren herkese açık. Otel konaklamasına dahil kahvaltı koşulları için Didi Otel'e danışın."),
+        ("Didi Otel'de kahvaltı Mare Gastro'da mı yapılıyor?", "Evet. Didi Otel'de konaklayan misafirlere kahvaltı Mare Gastro'da tabak kahvaltı olarak servis ediliyor; serpme kahvaltı ek ücretle seçilebiliyor. Kahvaltı menüsü Salı–Pazar 09:00'dan itibaren herkese açık."),
     ],
-    "rel": ["sapanca-sevgiliyle-yemek-ve-konaklama", "sapanca-luks-restoran", "sapanca-cocuklu-aile-restorani"],
+    "rel": ["sapanca-sevgiliyle-yemek-ve-konaklama", "sapanca-luks-restoran", "sapanca-cocukla-kahvalti"],
 })
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -603,7 +605,7 @@ REFRESH_TR3.append({
                 ["Ara sıcaklar", "3'lü Deniz Mahsülü Lezzeti, Mare Spesiyal Islama Kalamar, Kalamar Tava, Tereyağlı Karides"],
                 ["Ana yemekler", "Mare Spesiyal Granyöz, Biber Kremalı Bonfile, Kuzu Pirzola, Çıtır Somon, Deniz Mahsülleri Buğday Risotto"],
                 ["Tatlılar", "Ormanda Bir Yürüyüş, Çerkes Peynirli Cheesecake, Çıtır Kabak Tatlısı, Mare Şekerpare"],
-                ["Çocuklar için", "Izgara Köfte (çocuk menüsü); atıştırmalıklarda hamburger, tost, patates tava"],
+                ["Çocuklar için (yalnızca 15:00'e kadar)", "Izgara Köfte (çocuk menüsü); atıştırmalıklarda hamburger, tost, patates tava. Çocuklu misafirler 15:00'e kadar ağırlanıyor"],
                 ["Ekstralar", "Pasta, çerez, süzme yoğurt"],
             ]),
             "Menü 10 Kasım 2026'da güncellendi; mevsime göre değişebilir.",
@@ -641,7 +643,7 @@ REFRESH_TR3.append({
         ("Mare Gastro'da doğum günü paketi var mı?", "Hayır. Sabit bir paket yerine à la carte menüden seçim yapılıyor; pasta ve süsleme talepleri rezervasyon sırasında planlanıyor."),
         ("Mare Gastro'da pasta sipariş edilebilir mi?", "Evet. Pasta, dijital menünün Ekstralar bölümünde ayrı bir kalem olarak yer alıyor; doğum günü olduğunu rezervasyonda belirtmeniz yeterli."),
         ("İçecekler fiyata dahil mi?", "Hayır. İçecekler menüden ayrıca seçilir ve ayrıca hesaplanır."),
-        ("Çocuklar için menü var mı?", "Evet. Çocuk menüsünde Izgara Köfte var (Kasım 2026); ayrıca hamburger, tost ve patates tava gibi atıştırmalıklar bulunuyor."),
+        ("Çocuklu bir doğum günü akşamı yapılabilir mi?", "Mare Gastro'da çocuklu misafirler 15:00'e kadar (kahvaltı saatleri) ağırlanıyor; 15:00'ten sonra çocuk kabul edilmiyor. Çocuklu bir kutlamayı gündüz planlayabilirsiniz; çocuk menüsünde Izgara Köfte var."),
         ("Güncel fiyat bilgisini nasıl öğrenebilirim?", "Dijital menüden ürün bazında fiyatları görebilir, kalabalık grup planları için rezervasyon formu veya WhatsApp üzerinden ekiple görüşebilirsiniz."),
     ],
     "rel": ["sapanca-en-iyi-dogum-gunu-mekanlari", "sapanca-kalabalik-arkadas-grubu-dogum-gunu", "sapanca-bekarliga-veda-yemegi"],
@@ -662,13 +664,13 @@ _MORE = {
                 ["20:00", "Sapanca'ya varış; aracı ücretsiz otoparka bırakın, vale var"],
                 ["20:15", "Başlangıçlar ve bir kokteyl"],
                 ["21:00", "Ana yemek; hafta sonuysa canlı müzik"],
-                ["22:30", "Tatlı, kahve; isteyen için gece aynı bahçedeki Didi Otel"],
+                ["22:30", "Tatlı, kahve (mutfakta son sipariş 23:00); isteyen için gece aynı bahçedeki Didi Otel"],
             ]),
             "Hafta içi akşamları trafik genellikle daha akıcı; hafta sonu ise Cuma akşamı çıkışlarında yol süresi uzayabiliyor. Anlık süre için %s rotasını kullanın." % P("sapancaya-nasil-gidilir", "Mare Gastro yol tarifi sayfasındaki"),
         ]),
         ("Gece Yemeği İçin 4 Öneri", [
             ol([
-                "<strong>Rezervasyonda geliş saatinizi yazın.</strong> Masa ve mutfak buna göre hazırlanır.",
+                "<strong>Rezervasyonda geliş saatinizi yazın.</strong> Mutfakta son sipariş 23:00; geç varışlarda masa ve mutfak buna göre hazırlanır.",
                 "<strong>Paylaşımlı başlangıçlarla açın.</strong> Geç saatte ağır bir ana yemek yerine birkaç meze ve bir ara sıcak da yeterli olabilir.",
                 "<strong>Dönüşü baştan düşünün.</strong> Alkol alınacaksa şoför ya da konaklama planlayın.",
                 "<strong>Yanınıza bir ceket alın.</strong> Bahçede oturacaksanız göl çevresinde geceler serinliyor.",
@@ -697,7 +699,7 @@ _MORE = {
                 ["Öğleden sonra", "Otele giriş, bahçede dinlenme"],
                 ["Gün batımı", "Bahçede bir içecek; kışın 17:30, yazın 20:30 civarı"],
                 ["Akşam", "Mare Gastro'da akşam yemeği; hafta sonuysa canlı müzik"],
-                ["Ertesi sabah", "09:00'dan itibaren kahvaltı menüsü"],
+                ["Ertesi sabah", "Mare Gastro'da tabak kahvaltı (otel misafirlerine); serpme kahvaltı ek ücretle"],
             ]),
             "Otelde kalıyorsanız akşam yemeği için de rezervasyon yapmanızı öneririz; hafta sonu akşamları restoran dışarıdan gelen misafirlerle de doluyor.",
         ]),

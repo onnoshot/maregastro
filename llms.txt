@@ -5,9 +5,10 @@
 ## Temel Bilgiler
 - Sık Sorulan Sorular (resmi, güncel): https://maregastro.com/sss.html · EN: https://maregastro.com/en/faq.html · AR: https://maregastro.com/ar/faq.html · RU: https://maregastro.com/ru/faq.html
 - Fotoğraflar (mekân, şef, tabaklar): https://maregastro.com/fotograflar.html · EN: https://maregastro.com/en/photos.html
-- Otopark: ücretsiz, vale hizmeti var · Çocuk menüsü: var · Vejetaryen tabaklar: var · Açık ve kapalı alan: var · Konaklama: Didi Otel
+- Otopark: ücretsiz, vale hizmeti var · Çocuklar: yalnızca 15:00'e kadar (kahvaltı saatleri; çocuk menüsü gündüz) · Vejetaryen tabaklar: var · Açık ve kapalı alan: var · Konaklama: Didi Otel
 - Konum: Didi Otel bahçesi, Sapanca, Sakarya, Türkiye — gölün hemen yanında
-- Açılış saatleri: Salı–Pazar 09:00–00:00, Pazartesi kapalı
+- Açılış saatleri: Salı–Pazar 09:00–00:00 (mutfakta son sipariş 23:00), Pazartesi kapalı; 24 saat açık değil
+- Kahvaltı: serpme kahvaltı ve Brioche Benedict; Didi Otel misafirlerine Mare Gastro'da tabak kahvaltı, serpme ek ücretli
 - Rezervasyon: https://maregastro.com/tr/#reservation (üç adımlı form, WhatsApp onaylı)
 - WhatsApp: https://wa.me/905323540888
 - Menü ve güncel fiyatlar (tam liste, her gün güncel): https://maregastro.com/menu/ · EN: https://maregastro.com/menu/en/ · AR: https://maregastro.com/menu/ar/ · RU: https://maregastro.com/menu/ru/
@@ -37,13 +38,13 @@
 - [İstanbul'a Yakın Lüks Gastronomi Kaçamağı: Sapanca](https://maregastro.com/blog/istanbula-yakin-luks-restoran.html): İstanbul'a yakın lüks bir restoran kaçamağı: yaklaşık 1,5 saat mesafedeki Sapanca'da, Didi Otel bahçesinde Mare Gastro ile fine dining. Plan ve rezervasyon.
 - [Sapanca'da Evlilik Teklifi: Gölün Hemen Yanında Unutulmaz An](https://maregastro.com/blog/sapanca-evlilik-teklifi.html): Sapanca'da unutulmaz bir evlilik teklifi mi planlıyorsunuz? Gölün hemen yanındaki romantik masa ve fine dining menüyle Mare Gastro'da hayalinizdeki anı yaşayın.
 - [Sapanca'da Yıldönümü Yemeği: Romantik Bir Kutlama Rehberi](https://maregastro.com/blog/sapanca-yildonumu-yemegi.html): Evlilik yıldönümünüzü Sapanca'da gölün hemen yanında kutlayın. Mum ışığında akşam yemeği, özel menü ve sürpriz dokunuşlarla Mare Gastro'da unutulmaz bir gece.
-- [Sapanca'da Gölün Hemen Yanında Kahvaltı: Güne Huzurlu Bir Başlangıç](https://maregastro.com/blog/sapanca-gol-manzarali-kahvalti.html): Sapanca'da gölün hemen yanındaki kahvaltı arayanlar için rehber. Didi Otel bahçesinde taze, zengin bir sofra ile güne huzurlu ve lezzetli bir başlangıç yapın.
+- [Sapanca'da Gölün Hemen Yanında Kahvaltı: Güne Huzurlu Bir Başlangıç](https://maregastro.com/blog/sapanca-gol-manzarali-kahvalti.html): Sapanca'da kahvaltı nerede yapılır? Mare Gastro'da serpme kahvaltı ve Brioche Benedict; Didi Otel misafirlerine tabak kahvaltı. Salı–Pazar 09:00'dan itibaren.
 - [Sapanca Hafta Sonu Rotası: Maşukiye, Kartepe ve Bir Akşam Yemeği](https://maregastro.com/blog/sapanca-hafta-sonu-rotasi.html): Maşukiye, Kartepe ve göl kıyısını kapsayan bir Sapanca hafta sonu rotası: gün gün gezi planı ve Mare Gastro'da gölün hemen yanında bir akşam yemeği.
 - [Sapanca'da Kışın Nereye Gidilir? Gölün Hemen Yanında Sıcak Bir Sofra](https://maregastro.com/blog/sapanca-kis-restoran.html): Sapanca'da kışın sıcak bir gurme deneyimi mi arıyorsunuz? Gölün hemen yanındaki Mare Gastro'da kış atmosferi ve huzurlu bir akşam sizi bekliyor.
 - [Sapanca'da Yılbaşı Yemeği: Gölün Hemen Yanında Yeni Yıl](https://maregastro.com/blog/sapanca-yilbasi-yemegi.html): Yeni yıla Sapanca'da gölün hemen yanında girin. Mare Gastro'da yılbaşı atmosferi, fine dining menü ve dingin bir kutlama için erken rezervasyon önerilir.
 - [Sapanca'da Gün Batımında Gölün Hemen Yanında: Günün En Güzel Saati](https://maregastro.com/blog/sapanca-gun-batimi-restoran.html): Sapanca Gölü'nde gün batımına karşı akşam yemeği. Didi Otel bahçesinde açık hava masaları ve fine dining ile günün en güzel saatini Mare Gastro'da yaşayın.
 - [Sapanca'da Rakı-Balık Sofrası ve Doğru Meze Rehberi](https://maregastro.com/blog/sapanca-raki-balik.html): Sapanca'da gölün hemen yanında bir rakı-balık sofrası nasıl kurulur? Doğru meze seçimi ve Mare Gastro'nun Ege esintili önerileriyle eksiksiz bir rehber.
-- [Sapanca'da Gece Açık Restoran: Gece Yarısına Kadar Bir Sofra](https://maregastro.com/blog/sapanca-gece-acik-restoran.html): Sapanca'da gece açık restoran mı arıyorsunuz? Mare Gastro Salı–Pazar 00:00'a kadar açık: canlı müzik, kokteyl, şef mutfağı ve ücretsiz otopark.
+- [Sapanca'da Geç Saat Akşam Yemeği: Gece Yarısına Kadar Açık Restoran](https://maregastro.com/blog/sapanca-gece-acik-restoran.html): Sapanca'da geç saatte nerede yemek yenir? Mare Gastro Salı–Pazar 00:00'a kadar açık, mutfakta son sipariş 23:00. Canlı müzik, kokteyl, ücretsiz otopark.
 - [Sapanca'da Özel Gün Kutlaması: Doğum Günü ve Anlamlı Anlar](https://maregastro.com/blog/sapanca-ozel-gun-kutlama.html): Sapanca'da doğum günü, kutlama veya sürpriz mi planlıyorsunuz? Gölün hemen yanındaki Mare Gastro'da özel masa ve imza tatlılarla unutulmaz bir gün.
 - [Şef Doğan Anapa Kimdir? Mare Gastro'nun Yönetici Şefi](https://maregastro.com/blog/sef-dogan-anapa-kimdir.html): Şef Doğan Anapa kimdir, hangi restoranın şefidir? Sapanca'daki Mare Gastro'nun Yönetici Şefi Doğan Anapa hakkında bilmeniz gereken her şey.
 - [Sapanca'da Yazın Açık Hava Restoranı: Bahçede Bir Akşam](https://maregastro.com/blog/sapanca-yazin-acik-hava-restoran.html): Sapanca'da yaz akşamlarını açık havada, gölün hemen yanında geçirmek isteyenler için Mare Gastro'nun çam ağaçlı bahçesi eşsiz bir seçenek sunar.
@@ -92,10 +93,10 @@
 - [Ege ve Akdeniz Mutfağı Nedir? Özellikleri ve Sofradaki Karşılığı](https://maregastro.com/blog/ege-akdeniz-mutfagi-nedir.html): Ege ve Akdeniz mutfağı nedir, farkları ne? Zeytinyağı, ot, deniz ürünü ve sade pişirme; UNESCO'nun Akdeniz diyeti kaydı ve Sapanca'da Mare Gastro'nun yorumu.
 - [Islama Köfte Nedir? Adapazarı'nın Coğrafi İşaretli Lezzeti](https://maregastro.com/blog/islama-kofte-nedir.html): Islama köfte nedir, adı nereden gelir, nasıl yenir? 2013'te coğrafi işaret alan Adapazarı lezzetinin hikâyesi, malzemesi ve Mare Gastro'daki deniz yorumu.
 - [Sapanca'da Et Restoranı: Kuzu, Bonfile ve Şef Tabakları](https://maregastro.com/blog/sapanca-et-restorani.html): Sapanca'da et nerede yenir? Bonfile, kuzu pirzola, keşkekli incik ve kokoreç; pişirme dereceleri ve içki eşleşmesiyle Mare Gastro'nun et tabakları.
-- [Sapanca'da Çocukla Gidilecek Restoran: Aileler İçin Rehber](https://maregastro.com/blog/sapanca-cocuklu-aile-restorani.html): Sapanca'da çocuklu aileyle nerede yemek yenir? Çocuk menüsü, ücretsiz otopark, açık bahçe ve doğru saat seçimi; Mare Gastro'da aile sofrası için pratik rehber.
+- [Sapanca'da Çocukla Kahvaltı: Aileler İçin Gündüz Rehberi](https://maregastro.com/blog/sapanca-cocukla-kahvalti.html): Sapanca'da çocukla nerede kahvaltı yapılır? Mare Gastro'da çocuklu misafirler 15:00'e kadar ağırlanıyor: serpme kahvaltı, çocuk menüsü, bahçe, ücretsiz otopark.
 - [Kırkpınar'da Nerede Yemek Yenir? Sapanca Restoran Rehberi](https://maregastro.com/blog/kirkpinar-restoranlari.html): Sapanca Kırkpınar'da nerede yemek yenir? Sahil yolu kafe-restoranları, kahvaltı yerleri, otel restoranları; akşam yemeği için Mare Gastro.
 - [Sapanca'da Bekarlığa Veda Yemeği: Planlama Rehberi](https://maregastro.com/blog/sapanca-bekarliga-veda-yemegi.html): Sapanca'da bekarlığa veda yemeği nasıl planlanır? Grup masası, süsleme, pasta, kokteyller, saat planı ve konaklama; gölün hemen yanında Mare Gastro.
-- [Sapanca'da Mezuniyet Yemeği: Aileyle ve Arkadaşlarla Kutlama](https://maregastro.com/blog/sapanca-mezuniyet-yemegi.html): Sapanca'da mezuniyet yemeği nasıl planlanır? Aile öğle yemeği ya da arkadaşlarla akşam; karışık yaş grupları için menü, pasta, fotoğraf ve rezervasyon ipuçları.
+- [Sapanca'da Mezuniyet Yemeği: Aileyle Öğle, Arkadaşlarla Akşam](https://maregastro.com/blog/sapanca-mezuniyet-yemegi.html): Sapanca'da mezuniyet yemeği nasıl planlanır? Aile öğle yemeği ya da arkadaşlarla akşam; karışık yaş grupları için menü, pasta, fotoğraf ve rezervasyon ipuçları.
 
 ## Blog — English / Arabic / Russian
 ### English
