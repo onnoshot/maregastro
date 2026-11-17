@@ -205,7 +205,7 @@ export default async function handler(req, res) {
       const range = { startDate: (days - 1) + 'daysAgo', endDate: 'today' };
       const prevRange = { startDate: (days * 2 - 1) + 'daysAgo', endDate: days + 'daysAgo' };
       const qrPage = { orGroup: { expressions: ['/menu', '/qr'].map((value) => ({ filter: { fieldName: 'pagePath', stringFilter: { matchType: 'BEGINS_WITH', value } } })) } };
-      const [[sumR, dayR, hourR, devR, langR], [itemR, listR, evR, searchR]] = await inSeries([
+      const [[sumR, dayR, hourR, devR, langR], [itemR, listR, evR, searchR, astroSrcR]] = await inSeries([
         () => gaBatch(token, [
           { dateRanges: [{ ...range, name: 'cur' }, { ...prevRange, name: 'prev' }], dimensionFilter: qrPage,
             metrics: ['sessions', 'activeUsers', 'screenPageViews', 'userEngagementDuration', 'engagedSessions'].map((name) => ({ name })) },
@@ -219,10 +219,14 @@ export default async function handler(req, res) {
             orderBys: [{ metric: { metricName: 'itemsViewed' }, desc: true }], limit: 250 },
           { dateRanges: [range], dimensions: [{ name: 'itemListName' }], metrics: [{ name: 'itemsClickedInList' }], orderBys: [{ metric: { metricName: 'itemsClickedInList' }, desc: true }], limit: 30 },
           { dateRanges: [range], dimensions: [{ name: 'eventName' }], metrics: [{ name: 'eventCount' }, { name: 'totalUsers' }],
-            dimensionFilter: { filter: { fieldName: 'eventName', stringFilter: { matchType: 'BEGINS_WITH', value: 'qr_' } } }, limit: 500 },
+            dimensionFilter: { orGroup: { expressions: ['qr_', 'astro_'].map((value) => ({ filter: { fieldName: 'eventName', stringFilter: { matchType: 'BEGINS_WITH', value } } })) } }, limit: 500 },
           { dateRanges: [range], dimensions: [{ name: 'searchTerm' }], metrics: [{ name: 'eventCount' }],
             dimensionFilter: { andGroup: { expressions: [{ filter: { fieldName: 'eventName', stringFilter: { value: 'search' } } }, qrPage] } },
             orderBys: [{ metric: { metricName: 'eventCount' }, desc: true }], limit: 20 },
+          // Şansını Dene (Yıldız Menüsü): sayfayı açanların oturum kaynağı (story QR'ı = utm_source=story)
+          { dateRanges: [range], dimensions: [{ name: 'sessionSource' }], metrics: [{ name: 'totalUsers' }],
+            dimensionFilter: { filter: { fieldName: 'eventName', stringFilter: { value: 'astro_open' } } },
+            orderBys: [{ metric: { metricName: 'totalUsers' }, desc: true }], limit: 12 },
         ]),
       ]);
       const pairs = (rep) => (rep.rows || []).map((row) => ({ name: row.dimensionValues[0].value, value: Number(row.metricValues[0].value) }));
@@ -240,6 +244,7 @@ export default async function handler(req, res) {
         lists: pairs(listR).filter((x) => x.name && x.name !== '(not set)'),
         events: (evR.rows || []).map((row) => ({ name: row.dimensionValues[0].value, count: Number(row.metricValues[0].value), users: Number(row.metricValues[1].value) })),
         searches: pairs(searchR).filter((x) => x.name && x.name !== '(not set)'),
+        astroSources: pairs(astroSrcR || {}),
       };
       qrCache[key] = { body, exp: Date.now() + 5 * 60 * 1000 };
       return done(res, key, body);

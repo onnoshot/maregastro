@@ -1492,6 +1492,9 @@ function run(){
   loading(r, () => {
     S.tab = 'okuma'; renderResult(); show('s-res', true); requestAnimationFrame(segPill);
     track('astro_result', { mode: r.mode, astro_style: r.style, astro_sign: r.reading[0].sign, astro_diet: r.diet.join(',') || 'none', value: r.total, currency: 'TRY' });
+    // GA4'te özel boyut yok: panel kırılımları olay adından okur (astro_st_<içki tarzı>, astro_sg_<burç>)
+    if (r.style) track('astro_st_' + r.style);
+    r.reading.forEach((p) => { if (p && p.sign) track('astro_sg_' + p.sign); });
     setTimeout(prepareStory, 600);
   });
 }
@@ -1559,6 +1562,7 @@ $$('.choice').forEach((b) => b.addEventListener('click', () => {
   S.mode = m === 'c' ? 'c' : 's'; S.gender = m === 'c' ? null : m; S.step = 0; S.variant = 0;
   renderPerson(); show('s-person', true);
   track('astro_start', { mode: m });
+  track('astro_m_' + m); // f=Kadın, m=Erkek, c=Çift (panel kırılımı)
   if (matchMedia('(pointer:fine)').matches) setTimeout(() => $('#nm').focus(), 350);
 }));
 $('#nm').addEventListener('input', (e) => { P().name = e.target.value; $('#pErr').textContent = ''; validate(); });

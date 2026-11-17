@@ -1012,7 +1012,7 @@ function setLang(l,save){
 
 /* ── global clicks ── */
 document.addEventListener('click',function(e){
-  var yz=e.target.closest('[data-yz]'); if(yz){track('qr_yildiz_open',{source:yz.dataset.yz});try{sessionStorage.setItem('yz_from_qr','1');sessionStorage.setItem('qr_scroll',String(Math.round(scrollY)))}catch(_){}location.href=yzHref(yz.dataset.yz);return}
+  var yz=e.target.closest('[data-yz]'); if(yz){track('qr_yildiz_open',{source:yz.dataset.yz});track('qr_yz_'+yz.dataset.yz);try{sessionStorage.setItem('yz_from_qr','1');sessionStorage.setItem('qr_scroll',String(Math.round(scrollY)))}catch(_){}location.href=yzHref(yz.dataset.yz);return}
   var so=e.target.closest('[data-story]'); if(so){svOpen(+so.dataset.story);return}
   var c=e.target.closest('[data-id]'); if(c&&!e.target.closest('.sheet .x')){openItem(c.dataset.id,srcOf(c));return}
   var g=e.target.closest('#seg button'); if(g){track(g.dataset.g==='icecek'?'qr_tab_drinks':'qr_tab_food');if(g.dataset.g!==curGroup){renderGroup(g.dataset.g,true)}jumpMenu();return}
