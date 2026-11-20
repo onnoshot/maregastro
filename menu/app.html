@@ -446,13 +446,13 @@ svg{display:block}
 @media (prefers-reduced-motion:reduce){.oz *{animation-duration:.01s!important;animation-delay:0s!important}}
 /* story: Kahvaltı closing card — scene 1: 09:00–15:00 sun arc; scene 2 (5s): 21-item spread grouped + price */
 .kb{container-type:size}
-.kb-ph{position:absolute;top:10px;left:10px;right:10px;height:40%;border-radius:14px;overflow:hidden;clip-path:inset(0 round 14px);animation:kbShrink .9s var(--ease) 5s forwards}
+.kb-ph{position:absolute;top:10px;left:10px;right:10px;height:36%;border-radius:14px;overflow:hidden;clip-path:inset(0 round 14px);animation:kbShrink .9s var(--ease) 5s forwards}
 @keyframes kbShrink{to{height:15%}}
 .sv-media .oz .kb-ph img{width:100%;height:100%;object-fit:cover;opacity:0;animation:ozTile 1s var(--ease) .15s both,kbZoom 16s linear .15s both}
 @keyframes kbZoom{from{transform:scale(1.12)}to{transform:scale(1.02)}}
 .kb-s1{position:absolute;inset:0;animation:kbOut .5s var(--ease) 4.7s forwards}
 @keyframes kbOut{to{opacity:0;transform:translateY(-10px);visibility:hidden}}
-.kb-sky{position:absolute;left:24px;right:24px;top:calc(40% + 30px);opacity:0;animation:ozIn .8s var(--ease) .5s both}
+.kb-sky{position:absolute;left:24px;right:24px;top:calc(36% + 4cqh);opacity:0;animation:ozIn .8s var(--ease) .5s both}
 .kb-arc{display:block;width:100%;max-width:260px;height:auto;margin:0 auto;overflow:visible;color:var(--amber)}
 .kb-hz{stroke:rgba(16,32,46,.18);stroke-width:1.2}
 .kb-tr{stroke:rgba(156,116,55,.25);stroke-width:1.4;stroke-dasharray:3 5}
@@ -463,9 +463,13 @@ svg{display:block}
 .kb-sun path{stroke:currentColor;stroke-width:1.6;stroke-linecap:round;transform-box:fill-box;transform-origin:center;animation:kbRay 3s linear infinite}
 @keyframes kbSun{to{offset-distance:100%}}
 @keyframes kbRay{to{transform:rotate(90deg)}}
-.kb-h{display:flex;justify-content:space-between;max-width:260px;margin:22px auto 0;font-variant-numeric:tabular-nums}
+.kb-h{display:flex;justify-content:space-between;max-width:260px;margin:min(22px,2.8cqh) auto 0;font-variant-numeric:tabular-nums}
 .kb-h b{font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
-.kb-fin h3{font-size:clamp(24px,7cqw,32px)}
+.kb-fin h3{font-size:clamp(22px,4.6cqh,32px)}
+.kb-fin p{font-size:clamp(11.5px,2.2cqh,14px);margin:0}
+@container (max-height:440px){.kb-fin p{display:none}}
+.kb-arc{max-width:min(240px,62cqw)}
+.kb-h{max-width:min(240px,62cqw)}
 .kb-s2{position:absolute;left:0;right:0;top:calc(15% + 10px);bottom:0;display:flex;flex-direction:column;padding:3.2cqh 6.5cqw 3cqh;visibility:hidden;animation:kbVis 0s 5.2s forwards}
 @keyframes kbVis{to{visibility:visible}}
 .kb-hd{opacity:0;animation:ozIn .7s var(--ease) 5.3s both}
@@ -706,16 +710,16 @@ function ozHTML(){var z=OZ[lang]||OZ.en;
 }
 function ozCta(){var z=OZ[lang]||OZ.en;return '<a href="https://wa.me/905323540888?text='+encodeURIComponent(z.msg)+'" target="_blank" rel="noopener" data-ozwa>'+esc(z.cta)+'</a>'}
 var KB={
- tr:{eb:'Mare Gastro · Kahvaltı',t:'Gölün Hemen Yanında Kahvaltı',h:'Her gün 09:00–15:00 · Rezervasyonla',t2:'21 Çeşit Serpme Kahvaltı',pl:'Kişi Başı',pr:'1.200 ₺',pn:'Tüm sofra ve çay dahil',
+ tr:{eb:'Mare Gastro · Kahvaltı',t:'Doğal Lezzetlerle Ağır Ağır Bir Sabah',ip:'Ezine ve çeçil peynirinden çiçek balına, sahanda sucuktan sıcak pişiye; acele etmeden, keyifle kurulan bir sofra.',h:'Her gün 09:00–15:00 · Rezervasyonla',t2:'21 Çeşit Serpme Kahvaltı',pl:'Kişi Başı',pr:'1.200 ₺',pn:'Tüm sofra ve çay dahil',
   g:[['Peynirler',['Ezine Peyniri','Taze Kaşar','Çeçil Peyniri']],['Zeytin & Acuka',['Siyah Zeytin','Izgara Yeşil Zeytin','Acuka']],['Bal, Kaymak & Reçel',['Çiçek Balı','Kaymak','Tereyağı','Tarçınlı Elma Reçeli','Çilek Reçeli']],['Sebze Tabakları',['Söğüş Tabağı','Domates Soslu Patlıcan Biber Kızartma']],['Sıcaklar',['Sahanda Sucuk','Omlet / Menemen','Patates Kızartması']],['Hamur İşleri',['Gözleme','Pişi','Muska Böreği']],['Meyve & Çay',['Mevsim Meyvesi','Çay']]],
   cta:'WhatsApp ile Yer Ayırt',msg:'Merhaba, Mare Gastro QR menüsünden yazıyorum. Kahvaltı için rezervasyon yaptırmak istiyorum.\nTarih:\nSaat (09:00-15:00):\nKişi sayısı:'},
- en:{eb:'Mare Gastro · Breakfast',t:'Breakfast Right by the Lake',h:'Daily 09:00–15:00 · By reservation',t2:'21-Dish Breakfast Spread',pl:'Per Person',pr:'₺1,200',pn:'Whole spread and tea included',
+ en:{eb:'Mare Gastro · Breakfast',t:'A Slow Morning of Natural Flavours',ip:'From Ezine and çeçil cheese to flower honey, sizzling sucuk and warm pişi; a table set for an unhurried morning.',h:'Daily 09:00–15:00 · By reservation',t2:'21-Dish Breakfast Spread',pl:'Per Person',pr:'₺1,200',pn:'Whole spread and tea included',
   g:[['Cheeses',['Ezine Cheese','Fresh Kashar','Çeçil String Cheese']],['Olives & Acuka',['Black Olives','Grilled Green Olives','Acuka Pepper Spread']],['Honey, Kaymak & Jam',['Flower Honey','Kaymak Clotted Cream','Butter','Cinnamon Apple Jam','Strawberry Jam']],['Garden Plates',['Fresh Vegetable Plate','Fried Aubergine & Peppers in Tomato Sauce']],['Hot Plates',['Sucuk in a Pan','Omelette / Menemen','French Fries']],['Pastries',['Gözleme','Pişi','Muska Börek']],['Fruit & Tea',['Seasonal Fruit','Turkish Tea']]],
   cta:'Reserve on WhatsApp',msg:'Hello, I am writing from the Mare Gastro QR menu. I would like to book a table for breakfast.\nDate:\nTime (09:00-15:00):\nGuests:'},
- ar:{eb:'مار غاسترو · الإفطار',t:'إفطار بجوار البحيرة مباشرة',h:'يوميًا 09:00–15:00 · بالحجز',t2:'إفطار مفتوح من 21 صنفًا',pl:'للشخص',pr:'1200 ₺',pn:'تشمل المائدة كاملة والشاي',
+ ar:{eb:'مار غاسترو · الإفطار',t:'صباح هادئ بنكهات طبيعية',ip:'من جبنة إزينه وجيجيل إلى عسل الزهور والسجق الساخن والبيشي الطازج؛ مائدة تُعدّ لصباح بلا عجلة.',h:'يوميًا 09:00–15:00 · بالحجز',t2:'إفطار مفتوح من 21 صنفًا',pl:'للشخص',pr:'1200 ₺',pn:'تشمل المائدة كاملة والشاي',
   g:[['الأجبان',['جبنة إزينه','قشقوان طازج','جبنة جيجيل']],['الزيتون والأجوكا',['زيتون أسود','زيتون أخضر مشوي','أجوكا']],['العسل والقشطة والمربى',['عسل الزهور','قشطة','زبدة','مربى التفاح بالقرفة','مربى الفراولة']],['أطباق الخضار',['طبق خضار طازجة','باذنجان وفلفل مقلي بصلصة الطماطم']],['الأطباق الساخنة',['سجق في المقلاة','أومليت / منمن','بطاطس مقلية']],['المعجنات',['غوزلمة','بيشي','بوريك موسكا']],['الفاكهة والشاي',['فاكهة الموسم','شاي']]],
   cta:'احجز عبر واتساب',msg:'مرحبًا، أكتب من قائمة مار غاسترو. أود حجز طاولة للإفطار.\nالتاريخ:\nالوقت (09:00-15:00):\nعدد الأشخاص:'},
- ru:{eb:'Mare Gastro · Завтрак',t:'Завтрак прямо у озера',h:'Ежедневно 09:00–15:00 · по брони',t2:'Турецкий завтрак: 21 блюдо',pl:'На человека',pr:'1 200 ₺',pn:'Весь стол и чай включены',
+ ru:{eb:'Mare Gastro · Завтрак',t:'Неспешное утро натуральных вкусов',ip:'От сыров эзине и чечил до цветочного мёда, шкварчащего суджука и тёплых пиши — стол для неспешного утра.',h:'Ежедневно 09:00–15:00 · по брони',t2:'Турецкий завтрак: 21 блюдо',pl:'На человека',pr:'1 200 ₺',pn:'Весь стол и чай включены',
   g:[['Сыры',['Сыр эзине','Свежий кашар','Сыр чечил']],['Оливки и акука',['Чёрные оливки','Зелёные оливки гриль','Акука']],['Мёд, каймак и варенье',['Цветочный мёд','Каймак','Сливочное масло','Яблочное варенье с корицей','Клубничное варенье']],['Овощные тарелки',['Свежие овощи','Баклажаны и перец в томатном соусе']],['Горячее',['Суджук на сковороде','Омлет / менемен','Картофель фри']],['Выпечка',['Гёзлеме','Пиши','Бёрек муска']],['Фрукты и чай',['Сезонные фрукты','Чай']]],
   cta:'Забронировать в WhatsApp',msg:'Здравствуйте, пишу из QR-меню Mare Gastro. Хочу забронировать стол на завтрак.\nДата:\nВремя (09:00-15:00):\nГостей:'}
 };
@@ -724,7 +728,7 @@ function kbHTML(){var z=KB[lang]||KB.en;
    '<div class="kb-s1"><div class="kb-sky"><svg class="kb-arc" viewBox="0 0 240 120" fill="none"><path class="kb-hz" d="M8 112h224"/><path class="kb-tr" d="M24 112A96 96 0 0 1 216 112"/><path class="kb-run" d="M24 112A96 96 0 0 1 216 112" pathLength="1"/>'+
    '<g class="kb-sun"><circle r="9"/><path d="M0-15v-4M0 15v4M-15 0h-4M15 0h4M-10.6-10.6l-2.8-2.8M10.6 10.6l2.8 2.8M-10.6 10.6l-2.8 2.8M10.6-10.6l2.8-2.8"/></g></svg>'+
    '<div class="kb-h"><b>09:00</b><b>15:00</b></div></div>'+
-   '<div class="oz-fin kb-fin"><div class="oz-eb">'+esc(z.eb)+'</div><h3>'+esc(z.t)+'</h3></div></div>'+
+   '<div class="oz-fin kb-fin"><div class="oz-eb">'+esc(z.eb)+'</div><h3>'+esc(z.t)+'</h3><p>'+esc(z.ip)+'</p></div></div>'+
    '<div class="kb-s2"><div class="kb-hd"><div class="oz-eb">'+esc(z.h)+'</div><h3>'+esc(z.t2)+'</h3></div>'+
    '<div class="kb-gr">'+z.g.map(function(g,i){return '<div class="kb-g'+(g[1].length>4?' w':'')+'" style="--k:'+i+'"><b><i>0'+(i+1)+'</i>'+esc(g[0])+'</b><span>'+g[1].map(esc).join(' · ')+'</span></div>'}).join('')+'</div>'+
    '<div class="kb-pr"><div><small>'+esc(z.pl)+'</small><em>'+esc(z.pn)+'</em></div><strong>'+esc(z.pr)+'</strong></div></div></div>';
